@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.2 (2025-10-22)
+
+Full Changelog: [v0.4.1...v0.4.2](https://github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/compare/v0.4.1...v0.4.2)
+
+### Documentation
+
+* **readme:** test add custom code ([85ccee4](https://github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/commit/85ccee41b85322778dfb91d246af3d8c5158c6e7))
+
 ## 0.4.1 (2025-10-18)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/compare/v0.4.0...v0.4.1)
