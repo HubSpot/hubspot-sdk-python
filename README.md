@@ -9,6 +9,10 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 It is generated with [Stainless](https://www.stainless.com/).
 
+## Custom code
+
+Test information.
+
 ## Documentation
 
 The REST API documentation can be found on [developers.hubspot.com](https://developers.hubspot.com/docs/api-reference/overview). The full API of this library can be found in [api.md](api.md).
