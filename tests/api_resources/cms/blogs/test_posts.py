@@ -179,7 +179,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -357,7 +356,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -539,7 +537,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -724,7 +721,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -917,7 +913,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -1098,7 +1093,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -1281,7 +1275,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -1467,7 +1460,6 @@ class TestPosts:
                         "archived_in_dashboard": True,
                         "author_name": "authorName",
                         "campaign": "campaign",
-                        "campaign_name": "campaignName",
                         "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                         "name": "name",
                         "password": "password",
@@ -1589,7 +1581,7 @@ class TestPosts:
     def test_method_attach_to_lang_group(self, client: HubSpot) -> None:
         post = client.cms.blogs.posts.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         )
         assert post is None
@@ -1599,7 +1591,7 @@ class TestPosts:
     def test_method_attach_to_lang_group_with_all_params(self, client: HubSpot) -> None:
         post = client.cms.blogs.posts.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
             primary_language="primaryLanguage",
         )
@@ -1610,7 +1602,7 @@ class TestPosts:
     def test_raw_response_attach_to_lang_group(self, client: HubSpot) -> None:
         response = client.cms.blogs.posts.with_raw_response.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         )
 
@@ -1624,7 +1616,7 @@ class TestPosts:
     def test_streaming_response_attach_to_lang_group(self, client: HubSpot) -> None:
         with client.cms.blogs.posts.with_streaming_response.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         ) as response:
             assert not response.is_closed
@@ -2365,7 +2357,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -2544,7 +2535,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -2727,7 +2717,6 @@ class TestPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -2913,7 +2902,6 @@ class TestPosts:
                         "archived_in_dashboard": True,
                         "author_name": "authorName",
                         "campaign": "campaign",
-                        "campaign_name": "campaignName",
                         "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                         "name": "name",
                         "password": "password",
@@ -3133,7 +3121,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -3311,7 +3298,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -3493,7 +3479,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -3678,7 +3663,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -3871,7 +3855,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -4052,7 +4035,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -4235,7 +4217,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -4421,7 +4402,6 @@ class TestAsyncPosts:
                         "archived_in_dashboard": True,
                         "author_name": "authorName",
                         "campaign": "campaign",
-                        "campaign_name": "campaignName",
                         "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                         "name": "name",
                         "password": "password",
@@ -4543,7 +4523,7 @@ class TestAsyncPosts:
     async def test_method_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
         post = await async_client.cms.blogs.posts.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         )
         assert post is None
@@ -4553,7 +4533,7 @@ class TestAsyncPosts:
     async def test_method_attach_to_lang_group_with_all_params(self, async_client: AsyncHubSpot) -> None:
         post = await async_client.cms.blogs.posts.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
             primary_language="primaryLanguage",
         )
@@ -4564,7 +4544,7 @@ class TestAsyncPosts:
     async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.posts.with_raw_response.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         )
 
@@ -4578,7 +4558,7 @@ class TestAsyncPosts:
     async def test_streaming_response_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.posts.with_streaming_response.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         ) as response:
             assert not response.is_closed
@@ -5319,7 +5299,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -5498,7 +5477,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -5681,7 +5659,6 @@ class TestAsyncPosts:
                     "archived_in_dashboard": True,
                     "author_name": "authorName",
                     "campaign": "campaign",
-                    "campaign_name": "campaignName",
                     "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "name": "name",
                     "password": "password",
@@ -5867,7 +5844,6 @@ class TestAsyncPosts:
                         "archived_in_dashboard": True,
                         "author_name": "authorName",
                         "campaign": "campaign",
-                        "campaign_name": "campaignName",
                         "created": parse_datetime("2019-12-27T18:11:19.117Z"),
                         "name": "name",
                         "password": "password",

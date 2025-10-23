@@ -27,13 +27,13 @@ from ....._response import (
 from .....pagination import SyncPage, AsyncPage
 from ....._base_client import AsyncPaginator, make_request_options
 from .....types.crm.objects import (
+    contact_get_params,
     contact_list_params,
-    contact_read_params,
     contact_merge_params,
-    contact_purge_params,
     contact_create_params,
     contact_search_params,
     contact_update_params,
+    contact_gdpr_delete_params,
 )
 from .....types.crm.filter_group_param import FilterGroupParam
 from .....types.crm.simple_public_object import SimplePublicObject
@@ -58,7 +58,7 @@ class ContactsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return ContactsResourceWithRawResponse(self)
 
@@ -67,7 +67,7 @@ class ContactsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return ContactsResourceWithStreamingResponse(self)
 
@@ -272,52 +272,7 @@ class ContactsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def merge(
-        self,
-        *,
-        object_id_to_merge: str,
-        primary_object_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SimplePublicObject:
-        """Merge two contact records.
-
-        Learn more about
-        [merging records](https://knowledge.hubspot.com/records/merge-records).
-
-        Args:
-          object_id_to_merge: The ID of the company to merge into the primary.
-
-          primary_object_id: The ID of the primary company, which the other will merge into.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/crm/v3/objects/contacts/merge",
-            body=maybe_transform(
-                {
-                    "object_id_to_merge": object_id_to_merge,
-                    "primary_object_id": primary_object_id,
-                },
-                contact_merge_params.ContactMergeParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SimplePublicObject,
-        )
-
-    def purge(
+    def gdpr_delete(
         self,
         *,
         object_id: str,
@@ -359,7 +314,7 @@ class ContactsResource(SyncAPIResource):
                     "object_id": object_id,
                     "id_property": id_property,
                 },
-                contact_purge_params.ContactPurgeParams,
+                contact_gdpr_delete_params.ContactGdprDeleteParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -367,7 +322,7 @@ class ContactsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         contact_id: str,
         *,
@@ -425,10 +380,55 @@ class ContactsResource(SyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    contact_read_params.ContactReadParams,
+                    contact_get_params.ContactGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
+        )
+
+    def merge(
+        self,
+        *,
+        object_id_to_merge: str,
+        primary_object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SimplePublicObject:
+        """Merge two contact records.
+
+        Learn more about
+        [merging records](https://knowledge.hubspot.com/records/merge-records).
+
+        Args:
+          object_id_to_merge: The ID of the company to merge into the primary.
+
+          primary_object_id: The ID of the primary company, which the other will merge into.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/crm/v3/objects/contacts/merge",
+            body=maybe_transform(
+                {
+                    "object_id_to_merge": object_id_to_merge,
+                    "primary_object_id": primary_object_id,
+                },
+                contact_merge_params.ContactMergeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SimplePublicObject,
         )
 
     def search(
@@ -504,7 +504,7 @@ class AsyncContactsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncContactsResourceWithRawResponse(self)
 
@@ -513,7 +513,7 @@ class AsyncContactsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncContactsResourceWithStreamingResponse(self)
 
@@ -718,52 +718,7 @@ class AsyncContactsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def merge(
-        self,
-        *,
-        object_id_to_merge: str,
-        primary_object_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SimplePublicObject:
-        """Merge two contact records.
-
-        Learn more about
-        [merging records](https://knowledge.hubspot.com/records/merge-records).
-
-        Args:
-          object_id_to_merge: The ID of the company to merge into the primary.
-
-          primary_object_id: The ID of the primary company, which the other will merge into.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/crm/v3/objects/contacts/merge",
-            body=await async_maybe_transform(
-                {
-                    "object_id_to_merge": object_id_to_merge,
-                    "primary_object_id": primary_object_id,
-                },
-                contact_merge_params.ContactMergeParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SimplePublicObject,
-        )
-
-    async def purge(
+    async def gdpr_delete(
         self,
         *,
         object_id: str,
@@ -805,7 +760,7 @@ class AsyncContactsResource(AsyncAPIResource):
                     "object_id": object_id,
                     "id_property": id_property,
                 },
-                contact_purge_params.ContactPurgeParams,
+                contact_gdpr_delete_params.ContactGdprDeleteParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -813,7 +768,7 @@ class AsyncContactsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         contact_id: str,
         *,
@@ -871,10 +826,55 @@ class AsyncContactsResource(AsyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    contact_read_params.ContactReadParams,
+                    contact_get_params.ContactGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
+        )
+
+    async def merge(
+        self,
+        *,
+        object_id_to_merge: str,
+        primary_object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SimplePublicObject:
+        """Merge two contact records.
+
+        Learn more about
+        [merging records](https://knowledge.hubspot.com/records/merge-records).
+
+        Args:
+          object_id_to_merge: The ID of the company to merge into the primary.
+
+          primary_object_id: The ID of the primary company, which the other will merge into.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/crm/v3/objects/contacts/merge",
+            body=await async_maybe_transform(
+                {
+                    "object_id_to_merge": object_id_to_merge,
+                    "primary_object_id": primary_object_id,
+                },
+                contact_merge_params.ContactMergeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SimplePublicObject,
         )
 
     async def search(
@@ -955,14 +955,14 @@ class ContactsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             contacts.delete,
         )
+        self.gdpr_delete = to_raw_response_wrapper(
+            contacts.gdpr_delete,
+        )
+        self.get = to_raw_response_wrapper(
+            contacts.get,
+        )
         self.merge = to_raw_response_wrapper(
             contacts.merge,
-        )
-        self.purge = to_raw_response_wrapper(
-            contacts.purge,
-        )
-        self.read = to_raw_response_wrapper(
-            contacts.read,
         )
         self.search = to_raw_response_wrapper(
             contacts.search,
@@ -989,14 +989,14 @@ class AsyncContactsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             contacts.delete,
         )
+        self.gdpr_delete = async_to_raw_response_wrapper(
+            contacts.gdpr_delete,
+        )
+        self.get = async_to_raw_response_wrapper(
+            contacts.get,
+        )
         self.merge = async_to_raw_response_wrapper(
             contacts.merge,
-        )
-        self.purge = async_to_raw_response_wrapper(
-            contacts.purge,
-        )
-        self.read = async_to_raw_response_wrapper(
-            contacts.read,
         )
         self.search = async_to_raw_response_wrapper(
             contacts.search,
@@ -1023,14 +1023,14 @@ class ContactsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             contacts.delete,
         )
+        self.gdpr_delete = to_streamed_response_wrapper(
+            contacts.gdpr_delete,
+        )
+        self.get = to_streamed_response_wrapper(
+            contacts.get,
+        )
         self.merge = to_streamed_response_wrapper(
             contacts.merge,
-        )
-        self.purge = to_streamed_response_wrapper(
-            contacts.purge,
-        )
-        self.read = to_streamed_response_wrapper(
-            contacts.read,
         )
         self.search = to_streamed_response_wrapper(
             contacts.search,
@@ -1057,14 +1057,14 @@ class AsyncContactsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             contacts.delete,
         )
+        self.gdpr_delete = async_to_streamed_response_wrapper(
+            contacts.gdpr_delete,
+        )
+        self.get = async_to_streamed_response_wrapper(
+            contacts.get,
+        )
         self.merge = async_to_streamed_response_wrapper(
             contacts.merge,
-        )
-        self.purge = async_to_streamed_response_wrapper(
-            contacts.purge,
-        )
-        self.read = async_to_streamed_response_wrapper(
-            contacts.read,
         )
         self.search = async_to_streamed_response_wrapper(
             contacts.search,

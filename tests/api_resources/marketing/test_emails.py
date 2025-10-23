@@ -580,7 +580,7 @@ class TestEmails:
     @parametrize
     def test_method_create_ab_test_variation(self, client: HubSpot) -> None:
         email = client.marketing.emails.create_ab_test_variation(
-            content_id="7",
+            content_id="contentId",
             variation_name="variationName",
         )
         assert_matches_type(PublicEmail, email, path=["response"])
@@ -589,7 +589,7 @@ class TestEmails:
     @parametrize
     def test_raw_response_create_ab_test_variation(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.create_ab_test_variation(
-            content_id="7",
+            content_id="contentId",
             variation_name="variationName",
         )
 
@@ -602,7 +602,7 @@ class TestEmails:
     @parametrize
     def test_streaming_response_create_ab_test_variation(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.create_ab_test_variation(
-            content_id="7",
+            content_id="contentId",
             variation_name="variationName",
         ) as response:
             assert not response.is_closed
@@ -879,45 +879,6 @@ class TestEmails:
             client.marketing.emails.with_raw_response.get_revisions(
                 email_id="",
             )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_list_full(self, client: HubSpot) -> None:
-        email = client.marketing.emails.list_full()
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_list_full_with_all_params(self, client: HubSpot) -> None:
-        email = client.marketing.emails.list_full(
-            email_ids=[0],
-            end_timestamp="endTimestamp",
-            property="property",
-            start_timestamp="startTimestamp",
-        )
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_list_full(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.list_full()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = response.parse()
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_list_full(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.list_full() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = response.parse()
-            assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1966,7 +1927,7 @@ class TestAsyncEmails:
     @parametrize
     async def test_method_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.create_ab_test_variation(
-            content_id="7",
+            content_id="contentId",
             variation_name="variationName",
         )
         assert_matches_type(PublicEmail, email, path=["response"])
@@ -1975,7 +1936,7 @@ class TestAsyncEmails:
     @parametrize
     async def test_raw_response_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.create_ab_test_variation(
-            content_id="7",
+            content_id="contentId",
             variation_name="variationName",
         )
 
@@ -1988,7 +1949,7 @@ class TestAsyncEmails:
     @parametrize
     async def test_streaming_response_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.create_ab_test_variation(
-            content_id="7",
+            content_id="contentId",
             variation_name="variationName",
         ) as response:
             assert not response.is_closed
@@ -2265,45 +2226,6 @@ class TestAsyncEmails:
             await async_client.marketing.emails.with_raw_response.get_revisions(
                 email_id="",
             )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_list_full(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.list_full()
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_list_full_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.list_full(
-            email_ids=[0],
-            end_timestamp="endTimestamp",
-            property="property",
-            start_timestamp="startTimestamp",
-        )
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_list_full(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.list_full()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = await response.parse()
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_list_full(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.list_full() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = await response.parse()
-            assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize

@@ -9,9 +9,13 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types import Folder, FolderActionResponse, FolderUpdateTaskLocator
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
+from hubspot_sdk.types.files import (
+    Folder,
+    FolderActionResponse,
+    FolderUpdateTaskLocator,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -345,16 +349,16 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_async(self, client: HubSpot) -> None:
-        folder = client.files.folders.update_async(
+    def test_method_update_async_by_id(self, client: HubSpot) -> None:
+        folder = client.files.folders.update_async_by_id(
             id="id",
         )
         assert_matches_type(FolderUpdateTaskLocator, folder, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_async_with_all_params(self, client: HubSpot) -> None:
-        folder = client.files.folders.update_async(
+    def test_method_update_async_by_id_with_all_params(self, client: HubSpot) -> None:
+        folder = client.files.folders.update_async_by_id(
             id="id",
             name="name",
             parent_folder_id=0,
@@ -363,8 +367,8 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_async(self, client: HubSpot) -> None:
-        response = client.files.folders.with_raw_response.update_async(
+    def test_raw_response_update_async_by_id(self, client: HubSpot) -> None:
+        response = client.files.folders.with_raw_response.update_async_by_id(
             id="id",
         )
 
@@ -375,8 +379,8 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_async(self, client: HubSpot) -> None:
-        with client.files.folders.with_streaming_response.update_async(
+    def test_streaming_response_update_async_by_id(self, client: HubSpot) -> None:
+        with client.files.folders.with_streaming_response.update_async_by_id(
             id="id",
         ) as response:
             assert not response.is_closed
@@ -771,16 +775,16 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_async(self, async_client: AsyncHubSpot) -> None:
-        folder = await async_client.files.folders.update_async(
+    async def test_method_update_async_by_id(self, async_client: AsyncHubSpot) -> None:
+        folder = await async_client.files.folders.update_async_by_id(
             id="id",
         )
         assert_matches_type(FolderUpdateTaskLocator, folder, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_async_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        folder = await async_client.files.folders.update_async(
+    async def test_method_update_async_by_id_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        folder = await async_client.files.folders.update_async_by_id(
             id="id",
             name="name",
             parent_folder_id=0,
@@ -789,8 +793,8 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_async(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.files.folders.with_raw_response.update_async(
+    async def test_raw_response_update_async_by_id(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.files.folders.with_raw_response.update_async_by_id(
             id="id",
         )
 
@@ -801,8 +805,8 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_async(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.files.folders.with_streaming_response.update_async(
+    async def test_streaming_response_update_async_by_id(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.files.folders.with_streaming_response.update_async_by_id(
             id="id",
         ) as response:
             assert not response.is_closed

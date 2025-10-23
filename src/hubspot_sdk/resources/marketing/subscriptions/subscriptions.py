@@ -6,6 +6,14 @@ from typing_extensions import Literal
 
 import httpx
 
+from .v4.v4 import (
+    V4Resource,
+    AsyncV4Resource,
+    V4ResourceWithRawResponse,
+    AsyncV4ResourceWithRawResponse,
+    V4ResourceWithStreamingResponse,
+    AsyncV4ResourceWithStreamingResponse,
+)
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
@@ -27,12 +35,16 @@ __all__ = ["SubscriptionsResource", "AsyncSubscriptionsResource"]
 
 class SubscriptionsResource(SyncAPIResource):
     @cached_property
+    def v4(self) -> V4Resource:
+        return V4Resource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> SubscriptionsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return SubscriptionsResourceWithRawResponse(self)
 
@@ -41,7 +53,7 @@ class SubscriptionsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return SubscriptionsResourceWithStreamingResponse(self)
 
@@ -230,12 +242,16 @@ class SubscriptionsResource(SyncAPIResource):
 
 class AsyncSubscriptionsResource(AsyncAPIResource):
     @cached_property
+    def v4(self) -> AsyncV4Resource:
+        return AsyncV4Resource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncSubscriptionsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncSubscriptionsResourceWithRawResponse(self)
 
@@ -244,7 +260,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncSubscriptionsResourceWithStreamingResponse(self)
 
@@ -448,6 +464,10 @@ class SubscriptionsResourceWithRawResponse:
             subscriptions.unsubscribe,
         )
 
+    @cached_property
+    def v4(self) -> V4ResourceWithRawResponse:
+        return V4ResourceWithRawResponse(self._subscriptions.v4)
+
 
 class AsyncSubscriptionsResourceWithRawResponse:
     def __init__(self, subscriptions: AsyncSubscriptionsResource) -> None:
@@ -465,6 +485,10 @@ class AsyncSubscriptionsResourceWithRawResponse:
         self.unsubscribe = async_to_raw_response_wrapper(
             subscriptions.unsubscribe,
         )
+
+    @cached_property
+    def v4(self) -> AsyncV4ResourceWithRawResponse:
+        return AsyncV4ResourceWithRawResponse(self._subscriptions.v4)
 
 
 class SubscriptionsResourceWithStreamingResponse:
@@ -484,6 +508,10 @@ class SubscriptionsResourceWithStreamingResponse:
             subscriptions.unsubscribe,
         )
 
+    @cached_property
+    def v4(self) -> V4ResourceWithStreamingResponse:
+        return V4ResourceWithStreamingResponse(self._subscriptions.v4)
+
 
 class AsyncSubscriptionsResourceWithStreamingResponse:
     def __init__(self, subscriptions: AsyncSubscriptionsResource) -> None:
@@ -501,3 +529,7 @@ class AsyncSubscriptionsResourceWithStreamingResponse:
         self.unsubscribe = async_to_streamed_response_wrapper(
             subscriptions.unsubscribe,
         )
+
+    @cached_property
+    def v4(self) -> AsyncV4ResourceWithStreamingResponse:
+        return AsyncV4ResourceWithStreamingResponse(self._subscriptions.v4)

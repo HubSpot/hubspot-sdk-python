@@ -30,7 +30,6 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...pagination import SyncPage, AsyncPage
-from ...types.file import File
 from ...types.files import (
     file_get_params,
     file_search_params,
@@ -42,10 +41,11 @@ from ...types.files import (
     file_import_from_url_async_params,
 )
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.file_stat import FileStat
-from ...types.signed_url import SignedURL
-from ...types.file_action_response import FileActionResponse
-from ...types.import_from_url_task_locator import ImportFromURLTaskLocator
+from ...types.files.file import File
+from ...types.files.file_stat import FileStat
+from ...types.files.signed_url import SignedURL
+from ...types.files.file_action_response import FileActionResponse
+from ...types.files.import_from_url_task_locator import ImportFromURLTaskLocator
 
 __all__ = ["FilesResource", "AsyncFilesResource"]
 
@@ -57,7 +57,7 @@ class FilesResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return FilesResourceWithRawResponse(self)
 
@@ -66,7 +66,7 @@ class FilesResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return FilesResourceWithStreamingResponse(self)
 
@@ -105,10 +105,6 @@ class FilesResource(SyncAPIResource):
           access: NONE: Do not run any duplicate validation. REJECT: Reject the upload if a
               duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload
               a new file and return the found duplicate instead.
-
-          clear_expires: Indicates whether the expiration date of the file should be cleared.
-
-          expires_at: Specifies the date and time when the file will expire.
 
           is_usable_in_content: Mark whether the file should be used in new content or not.
 
@@ -296,7 +292,7 @@ class FilesResource(SyncAPIResource):
             cast_to=FileStat,
         )
 
-    def get_import_from_url_async_status(
+    def get_import_task_status(
         self,
         task_id: str,
         *,
@@ -814,7 +810,7 @@ class AsyncFilesResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncFilesResourceWithRawResponse(self)
 
@@ -823,7 +819,7 @@ class AsyncFilesResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncFilesResourceWithStreamingResponse(self)
 
@@ -862,10 +858,6 @@ class AsyncFilesResource(AsyncAPIResource):
           access: NONE: Do not run any duplicate validation. REJECT: Reject the upload if a
               duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload
               a new file and return the found duplicate instead.
-
-          clear_expires: Indicates whether the expiration date of the file should be cleared.
-
-          expires_at: Specifies the date and time when the file will expire.
 
           is_usable_in_content: Mark whether the file should be used in new content or not.
 
@@ -1055,7 +1047,7 @@ class AsyncFilesResource(AsyncAPIResource):
             cast_to=FileStat,
         )
 
-    async def get_import_from_url_async_status(
+    async def get_import_task_status(
         self,
         task_id: str,
         *,
@@ -1585,8 +1577,8 @@ class FilesResourceWithRawResponse:
         self.get_by_path = to_raw_response_wrapper(
             files.get_by_path,
         )
-        self.get_import_from_url_async_status = to_raw_response_wrapper(
-            files.get_import_from_url_async_status,
+        self.get_import_task_status = to_raw_response_wrapper(
+            files.get_import_task_status,
         )
         self.get_signed_url = to_raw_response_wrapper(
             files.get_signed_url,
@@ -1624,8 +1616,8 @@ class AsyncFilesResourceWithRawResponse:
         self.get_by_path = async_to_raw_response_wrapper(
             files.get_by_path,
         )
-        self.get_import_from_url_async_status = async_to_raw_response_wrapper(
-            files.get_import_from_url_async_status,
+        self.get_import_task_status = async_to_raw_response_wrapper(
+            files.get_import_task_status,
         )
         self.get_signed_url = async_to_raw_response_wrapper(
             files.get_signed_url,
@@ -1663,8 +1655,8 @@ class FilesResourceWithStreamingResponse:
         self.get_by_path = to_streamed_response_wrapper(
             files.get_by_path,
         )
-        self.get_import_from_url_async_status = to_streamed_response_wrapper(
-            files.get_import_from_url_async_status,
+        self.get_import_task_status = to_streamed_response_wrapper(
+            files.get_import_task_status,
         )
         self.get_signed_url = to_streamed_response_wrapper(
             files.get_signed_url,
@@ -1702,8 +1694,8 @@ class AsyncFilesResourceWithStreamingResponse:
         self.get_by_path = async_to_streamed_response_wrapper(
             files.get_by_path,
         )
-        self.get_import_from_url_async_status = async_to_streamed_response_wrapper(
-            files.get_import_from_url_async_status,
+        self.get_import_task_status = async_to_streamed_response_wrapper(
+            files.get_import_task_status,
         )
         self.get_signed_url = async_to_streamed_response_wrapper(
             files.get_signed_url,

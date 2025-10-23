@@ -24,8 +24,22 @@ from .posts import (
     PostsResourceWithStreamingResponse,
     AsyncPostsResourceWithStreamingResponse,
 )
+from .authors import (
+    AuthorsResource,
+    AsyncAuthorsResource,
+    AuthorsResourceWithRawResponse,
+    AsyncAuthorsResourceWithRawResponse,
+    AuthorsResourceWithStreamingResponse,
+    AsyncAuthorsResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "AuthorsResource",
+    "AsyncAuthorsResource",
+    "AuthorsResourceWithRawResponse",
+    "AsyncAuthorsResourceWithRawResponse",
+    "AuthorsResourceWithStreamingResponse",
+    "AsyncAuthorsResourceWithStreamingResponse",
     "PostsResource",
     "AsyncPostsResource",
     "PostsResourceWithRawResponse",

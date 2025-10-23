@@ -23,13 +23,13 @@ from ...types.files import (
     folder_search_params,
     folder_get_by_id_params,
     folder_get_by_path_params,
-    folder_update_async_params,
     folder_update_by_id_params,
+    folder_update_async_by_id_params,
 )
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.folder import Folder
-from ...types.folder_action_response import FolderActionResponse
-from ...types.folder_update_task_locator import FolderUpdateTaskLocator
+from ...types.files.folder import Folder
+from ...types.files.folder_action_response import FolderActionResponse
+from ...types.files.folder_update_task_locator import FolderUpdateTaskLocator
 
 __all__ = ["FoldersResource", "AsyncFoldersResource"]
 
@@ -41,7 +41,7 @@ class FoldersResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return FoldersResourceWithRawResponse(self)
 
@@ -50,7 +50,7 @@ class FoldersResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return FoldersResourceWithStreamingResponse(self)
 
@@ -396,7 +396,7 @@ class FoldersResource(SyncAPIResource):
             model=Folder,
         )
 
-    def update_async(
+    def update_async_by_id(
         self,
         *,
         id: str,
@@ -439,7 +439,7 @@ class FoldersResource(SyncAPIResource):
                     "name": name,
                     "parent_folder_id": parent_folder_id,
                 },
-                folder_update_async_params.FolderUpdateAsyncParams,
+                folder_update_async_by_id_params.FolderUpdateAsyncByIDParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -505,7 +505,7 @@ class AsyncFoldersResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncFoldersResourceWithRawResponse(self)
 
@@ -514,7 +514,7 @@ class AsyncFoldersResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncFoldersResourceWithStreamingResponse(self)
 
@@ -864,7 +864,7 @@ class AsyncFoldersResource(AsyncAPIResource):
             model=Folder,
         )
 
-    async def update_async(
+    async def update_async_by_id(
         self,
         *,
         id: str,
@@ -907,7 +907,7 @@ class AsyncFoldersResource(AsyncAPIResource):
                     "name": name,
                     "parent_folder_id": parent_folder_id,
                 },
-                folder_update_async_params.FolderUpdateAsyncParams,
+                folder_update_async_by_id_params.FolderUpdateAsyncByIDParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -991,8 +991,8 @@ class FoldersResourceWithRawResponse:
         self.search = to_raw_response_wrapper(
             folders.search,
         )
-        self.update_async = to_raw_response_wrapper(
-            folders.update_async,
+        self.update_async_by_id = to_raw_response_wrapper(
+            folders.update_async_by_id,
         )
         self.update_by_id = to_raw_response_wrapper(
             folders.update_by_id,
@@ -1024,8 +1024,8 @@ class AsyncFoldersResourceWithRawResponse:
         self.search = async_to_raw_response_wrapper(
             folders.search,
         )
-        self.update_async = async_to_raw_response_wrapper(
-            folders.update_async,
+        self.update_async_by_id = async_to_raw_response_wrapper(
+            folders.update_async_by_id,
         )
         self.update_by_id = async_to_raw_response_wrapper(
             folders.update_by_id,
@@ -1057,8 +1057,8 @@ class FoldersResourceWithStreamingResponse:
         self.search = to_streamed_response_wrapper(
             folders.search,
         )
-        self.update_async = to_streamed_response_wrapper(
-            folders.update_async,
+        self.update_async_by_id = to_streamed_response_wrapper(
+            folders.update_async_by_id,
         )
         self.update_by_id = to_streamed_response_wrapper(
             folders.update_by_id,
@@ -1090,8 +1090,8 @@ class AsyncFoldersResourceWithStreamingResponse:
         self.search = async_to_streamed_response_wrapper(
             folders.search,
         )
-        self.update_async = async_to_streamed_response_wrapper(
-            folders.update_async,
+        self.update_async_by_id = async_to_streamed_response_wrapper(
+            folders.update_async_by_id,
         )
         self.update_by_id = async_to_streamed_response_wrapper(
             folders.update_by_id,

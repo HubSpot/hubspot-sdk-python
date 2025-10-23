@@ -9,11 +9,10 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types import Property
 from hubspot_sdk.types.crm import (
-    BatchResponseProperty,
-    CreatedResponsePropertyGroup,
-    CollectionResponsePropertyGroup,
+    Property,
+    CreatedResponseProperty,
+    CollectionResponseProperty,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -27,49 +26,85 @@ class TestProperties:
     def test_method_create(self, client: HubSpot) -> None:
         property = client.crm.properties.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            field_type="select",
+            group_name="contactinformation",
+            label="My Contact Property",
+            name="my_contact_property",
+            type="enumeration",
         )
-        assert_matches_type(CreatedResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: HubSpot) -> None:
         property = client.crm.properties.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
-            display_order=-1,
+            field_type="select",
+            group_name="contactinformation",
+            label="My Contact Property",
+            name="my_contact_property",
+            type="enumeration",
+            calculation_formula="calculationFormula",
+            data_sensitivity="non_sensitive",
+            description="description",
+            display_order=2,
+            external_options=True,
+            form_field=True,
+            has_unique_value=False,
+            hidden=False,
+            options=[
+                {
+                    "hidden": False,
+                    "label": "Option A",
+                    "value": "A",
+                    "description": "Choice number one",
+                    "display_order": 1,
+                },
+                {
+                    "hidden": False,
+                    "label": "Option B",
+                    "value": "B",
+                    "description": "Choice number two",
+                    "display_order": 2,
+                },
+            ],
+            referenced_object_type="referencedObjectType",
         )
-        assert_matches_type(CreatedResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.crm.properties.with_raw_response.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            field_type="select",
+            group_name="contactinformation",
+            label="My Contact Property",
+            name="my_contact_property",
+            type="enumeration",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = response.parse()
-        assert_matches_type(CreatedResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.crm.properties.with_streaming_response.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            field_type="select",
+            group_name="contactinformation",
+            label="My Contact Property",
+            name="my_contact_property",
+            type="enumeration",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = response.parse()
-            assert_matches_type(CreatedResponsePropertyGroup, property, path=["response"])
+            assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -79,8 +114,11 @@ class TestProperties:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.with_raw_response.create(
                 object_type="",
-                label="My Property Group",
-                name="mypropertygroup",
+                field_type="select",
+                group_name="contactinformation",
+                label="My Contact Property",
+                name="my_contact_property",
+                type="enumeration",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -173,33 +211,43 @@ class TestProperties:
     @parametrize
     def test_method_list(self, client: HubSpot) -> None:
         property = client.crm.properties.list(
-            "objectType",
+            object_type="objectType",
         )
-        assert_matches_type(CollectionResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CollectionResponseProperty, property, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
+        property = client.crm.properties.list(
+            object_type="objectType",
+            archived=True,
+            properties="properties",
+        )
+        assert_matches_type(CollectionResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.crm.properties.with_raw_response.list(
-            "objectType",
+            object_type="objectType",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = response.parse()
-        assert_matches_type(CollectionResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CollectionResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.crm.properties.with_streaming_response.list(
-            "objectType",
+            object_type="objectType",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = response.parse()
-            assert_matches_type(CollectionResponsePropertyGroup, property, path=["response"])
+            assert_matches_type(CollectionResponseProperty, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -208,7 +256,7 @@ class TestProperties:
     def test_path_params_list(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.with_raw_response.list(
-                "",
+                object_type="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -265,8 +313,8 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_name(self, client: HubSpot) -> None:
-        property = client.crm.properties.get_by_name(
+    def test_method_get(self, client: HubSpot) -> None:
+        property = client.crm.properties.get(
             property_name="propertyName",
             object_type="objectType",
         )
@@ -274,8 +322,8 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_name_with_all_params(self, client: HubSpot) -> None:
-        property = client.crm.properties.get_by_name(
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+        property = client.crm.properties.get(
             property_name="propertyName",
             object_type="objectType",
             archived=True,
@@ -285,8 +333,8 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_by_name(self, client: HubSpot) -> None:
-        response = client.crm.properties.with_raw_response.get_by_name(
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.crm.properties.with_raw_response.get(
             property_name="propertyName",
             object_type="objectType",
         )
@@ -298,8 +346,8 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_name(self, client: HubSpot) -> None:
-        with client.crm.properties.with_streaming_response.get_by_name(
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.crm.properties.with_streaming_response.get(
             property_name="propertyName",
             object_type="objectType",
         ) as response:
@@ -313,78 +361,17 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_by_name(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
-            client.crm.properties.with_raw_response.get_by_name(
+            client.crm.properties.with_raw_response.get(
                 property_name="propertyName",
                 object_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `property_name` but received ''"):
-            client.crm.properties.with_raw_response.get_by_name(
+            client.crm.properties.with_raw_response.get(
                 property_name="",
                 object_type="objectType",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        property = client.crm.properties.read(
-            object_type="objectType",
-            archived=True,
-            inputs=[{"name": "my_custom_property"}],
-        )
-        assert_matches_type(BatchResponseProperty, property, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read_with_all_params(self, client: HubSpot) -> None:
-        property = client.crm.properties.read(
-            object_type="objectType",
-            archived=True,
-            inputs=[{"name": "my_custom_property"}],
-            data_sensitivity="non_sensitive",
-        )
-        assert_matches_type(BatchResponseProperty, property, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.crm.properties.with_raw_response.read(
-            object_type="objectType",
-            archived=True,
-            inputs=[{"name": "my_custom_property"}],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        property = response.parse()
-        assert_matches_type(BatchResponseProperty, property, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.crm.properties.with_streaming_response.read(
-            object_type="objectType",
-            archived=True,
-            inputs=[{"name": "my_custom_property"}],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            property = response.parse()
-            assert_matches_type(BatchResponseProperty, property, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
-            client.crm.properties.with_raw_response.read(
-                object_type="",
-                archived=True,
-                inputs=[{"name": "my_custom_property"}],
             )
 
 
@@ -398,49 +385,85 @@ class TestAsyncProperties:
     async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         property = await async_client.crm.properties.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            field_type="select",
+            group_name="contactinformation",
+            label="My Contact Property",
+            name="my_contact_property",
+            type="enumeration",
         )
-        assert_matches_type(CreatedResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
         property = await async_client.crm.properties.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
-            display_order=-1,
+            field_type="select",
+            group_name="contactinformation",
+            label="My Contact Property",
+            name="my_contact_property",
+            type="enumeration",
+            calculation_formula="calculationFormula",
+            data_sensitivity="non_sensitive",
+            description="description",
+            display_order=2,
+            external_options=True,
+            form_field=True,
+            has_unique_value=False,
+            hidden=False,
+            options=[
+                {
+                    "hidden": False,
+                    "label": "Option A",
+                    "value": "A",
+                    "description": "Choice number one",
+                    "display_order": 1,
+                },
+                {
+                    "hidden": False,
+                    "label": "Option B",
+                    "value": "B",
+                    "description": "Choice number two",
+                    "display_order": 2,
+                },
+            ],
+            referenced_object_type="referencedObjectType",
         )
-        assert_matches_type(CreatedResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.properties.with_raw_response.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            field_type="select",
+            group_name="contactinformation",
+            label="My Contact Property",
+            name="my_contact_property",
+            type="enumeration",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = await response.parse()
-        assert_matches_type(CreatedResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.properties.with_streaming_response.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            field_type="select",
+            group_name="contactinformation",
+            label="My Contact Property",
+            name="my_contact_property",
+            type="enumeration",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = await response.parse()
-            assert_matches_type(CreatedResponsePropertyGroup, property, path=["response"])
+            assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -450,8 +473,11 @@ class TestAsyncProperties:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.with_raw_response.create(
                 object_type="",
-                label="My Property Group",
-                name="mypropertygroup",
+                field_type="select",
+                group_name="contactinformation",
+                label="My Contact Property",
+                name="my_contact_property",
+                type="enumeration",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -544,33 +570,43 @@ class TestAsyncProperties:
     @parametrize
     async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         property = await async_client.crm.properties.list(
-            "objectType",
+            object_type="objectType",
         )
-        assert_matches_type(CollectionResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CollectionResponseProperty, property, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        property = await async_client.crm.properties.list(
+            object_type="objectType",
+            archived=True,
+            properties="properties",
+        )
+        assert_matches_type(CollectionResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.properties.with_raw_response.list(
-            "objectType",
+            object_type="objectType",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = await response.parse()
-        assert_matches_type(CollectionResponsePropertyGroup, property, path=["response"])
+        assert_matches_type(CollectionResponseProperty, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.properties.with_streaming_response.list(
-            "objectType",
+            object_type="objectType",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = await response.parse()
-            assert_matches_type(CollectionResponsePropertyGroup, property, path=["response"])
+            assert_matches_type(CollectionResponseProperty, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -579,7 +615,7 @@ class TestAsyncProperties:
     async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.with_raw_response.list(
-                "",
+                object_type="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -636,8 +672,8 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_name(self, async_client: AsyncHubSpot) -> None:
-        property = await async_client.crm.properties.get_by_name(
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        property = await async_client.crm.properties.get(
             property_name="propertyName",
             object_type="objectType",
         )
@@ -645,8 +681,8 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_name_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        property = await async_client.crm.properties.get_by_name(
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        property = await async_client.crm.properties.get(
             property_name="propertyName",
             object_type="objectType",
             archived=True,
@@ -656,8 +692,8 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_name(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.properties.with_raw_response.get_by_name(
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.crm.properties.with_raw_response.get(
             property_name="propertyName",
             object_type="objectType",
         )
@@ -669,8 +705,8 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_name(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.properties.with_streaming_response.get_by_name(
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.crm.properties.with_streaming_response.get(
             property_name="propertyName",
             object_type="objectType",
         ) as response:
@@ -684,76 +720,15 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_by_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
-            await async_client.crm.properties.with_raw_response.get_by_name(
+            await async_client.crm.properties.with_raw_response.get(
                 property_name="propertyName",
                 object_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `property_name` but received ''"):
-            await async_client.crm.properties.with_raw_response.get_by_name(
+            await async_client.crm.properties.with_raw_response.get(
                 property_name="",
                 object_type="objectType",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        property = await async_client.crm.properties.read(
-            object_type="objectType",
-            archived=True,
-            inputs=[{"name": "my_custom_property"}],
-        )
-        assert_matches_type(BatchResponseProperty, property, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        property = await async_client.crm.properties.read(
-            object_type="objectType",
-            archived=True,
-            inputs=[{"name": "my_custom_property"}],
-            data_sensitivity="non_sensitive",
-        )
-        assert_matches_type(BatchResponseProperty, property, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.properties.with_raw_response.read(
-            object_type="objectType",
-            archived=True,
-            inputs=[{"name": "my_custom_property"}],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        property = await response.parse()
-        assert_matches_type(BatchResponseProperty, property, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.properties.with_streaming_response.read(
-            object_type="objectType",
-            archived=True,
-            inputs=[{"name": "my_custom_property"}],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            property = await response.parse()
-            assert_matches_type(BatchResponseProperty, property, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
-            await async_client.crm.properties.with_raw_response.read(
-                object_type="",
-                archived=True,
-                inputs=[{"name": "my_custom_property"}],
             )

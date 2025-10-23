@@ -8,6 +8,14 @@ from .v4 import (
     V4ResourceWithStreamingResponse,
     AsyncV4ResourceWithStreamingResponse,
 )
+from .schema import (
+    SchemaResource,
+    AsyncSchemaResource,
+    SchemaResourceWithRawResponse,
+    AsyncSchemaResourceWithRawResponse,
+    SchemaResourceWithStreamingResponse,
+    AsyncSchemaResourceWithStreamingResponse,
+)
 from .associations import (
     AssociationsResource,
     AsyncAssociationsResource,
@@ -18,6 +26,12 @@ from .associations import (
 )
 
 __all__ = [
+    "SchemaResource",
+    "AsyncSchemaResource",
+    "SchemaResourceWithRawResponse",
+    "AsyncSchemaResourceWithRawResponse",
+    "SchemaResourceWithStreamingResponse",
+    "AsyncSchemaResourceWithStreamingResponse",
     "V4Resource",
     "AsyncV4Resource",
     "V4ResourceWithRawResponse",

@@ -36,7 +36,8 @@ from ...._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.cms.hubdb import (
     table_get_params,
     table_list_params,
@@ -44,8 +45,8 @@ from ....types.cms.hubdb import (
     table_export_params,
     table_get_draft_params,
     table_unpublish_params,
+    table_list_draft_params,
     table_clone_draft_params,
-    table_list_drafts_params,
     table_reset_draft_params,
     table_export_draft_params,
     table_import_draft_params,
@@ -69,7 +70,7 @@ class TablesResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return TablesResourceWithRawResponse(self)
 
@@ -78,7 +79,7 @@ class TablesResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return TablesResourceWithStreamingResponse(self)
 
@@ -174,7 +175,7 @@ class TablesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalHubDBTableV3ForwardPaging:
+    ) -> SyncPage[HubDBTableV3]:
         """
         Returns the details for the published version of each table defined in an
         account, including column definitions.
@@ -211,8 +212,9 @@ class TablesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/cms/v3/hubdb/tables",
+            page=SyncPage[HubDBTableV3],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -236,10 +238,10 @@ class TablesResource(SyncAPIResource):
                     table_list_params.TableListParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalHubDBTableV3ForwardPaging,
+            model=HubDBTableV3,
         )
 
-    def archive(
+    def delete(
         self,
         table_id_or_name: str,
         *,
@@ -616,7 +618,7 @@ class TablesResource(SyncAPIResource):
             cast_to=ImportResult,
         )
 
-    def list_drafts(
+    def list_draft(
         self,
         *,
         after: str | Omit = omit,
@@ -696,7 +698,7 @@ class TablesResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    table_list_drafts_params.TableListDraftsParams,
+                    table_list_draft_params.TableListDraftParams,
                 ),
             ),
             cast_to=CollectionResponseWithTotalHubDBTableV3ForwardPaging,
@@ -939,7 +941,7 @@ class AsyncTablesResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncTablesResourceWithRawResponse(self)
 
@@ -948,7 +950,7 @@ class AsyncTablesResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncTablesResourceWithStreamingResponse(self)
 
@@ -1023,7 +1025,7 @@ class AsyncTablesResource(AsyncAPIResource):
             cast_to=HubDBTableV3,
         )
 
-    async def list(
+    def list(
         self,
         *,
         after: str | Omit = omit,
@@ -1044,7 +1046,7 @@ class AsyncTablesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalHubDBTableV3ForwardPaging:
+    ) -> AsyncPaginator[HubDBTableV3, AsyncPage[HubDBTableV3]]:
         """
         Returns the details for the published version of each table defined in an
         account, including column definitions.
@@ -1081,14 +1083,15 @@ class AsyncTablesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/cms/v3/hubdb/tables",
+            page=AsyncPage[HubDBTableV3],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "archived": archived,
@@ -1106,10 +1109,10 @@ class AsyncTablesResource(AsyncAPIResource):
                     table_list_params.TableListParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalHubDBTableV3ForwardPaging,
+            model=HubDBTableV3,
         )
 
-    async def archive(
+    async def delete(
         self,
         table_id_or_name: str,
         *,
@@ -1486,7 +1489,7 @@ class AsyncTablesResource(AsyncAPIResource):
             cast_to=ImportResult,
         )
 
-    async def list_drafts(
+    async def list_draft(
         self,
         *,
         after: str | Omit = omit,
@@ -1566,7 +1569,7 @@ class AsyncTablesResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    table_list_drafts_params.TableListDraftsParams,
+                    table_list_draft_params.TableListDraftParams,
                 ),
             ),
             cast_to=CollectionResponseWithTotalHubDBTableV3ForwardPaging,
@@ -1812,8 +1815,8 @@ class TablesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             tables.list,
         )
-        self.archive = to_raw_response_wrapper(
-            tables.archive,
+        self.delete = to_raw_response_wrapper(
+            tables.delete,
         )
         self.clone_draft = to_raw_response_wrapper(
             tables.clone_draft,
@@ -1838,8 +1841,8 @@ class TablesResourceWithRawResponse:
         self.import_draft = to_raw_response_wrapper(
             tables.import_draft,
         )
-        self.list_drafts = to_raw_response_wrapper(
-            tables.list_drafts,
+        self.list_draft = to_raw_response_wrapper(
+            tables.list_draft,
         )
         self.publish_draft = to_raw_response_wrapper(
             tables.publish_draft,
@@ -1865,8 +1868,8 @@ class AsyncTablesResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             tables.list,
         )
-        self.archive = async_to_raw_response_wrapper(
-            tables.archive,
+        self.delete = async_to_raw_response_wrapper(
+            tables.delete,
         )
         self.clone_draft = async_to_raw_response_wrapper(
             tables.clone_draft,
@@ -1891,8 +1894,8 @@ class AsyncTablesResourceWithRawResponse:
         self.import_draft = async_to_raw_response_wrapper(
             tables.import_draft,
         )
-        self.list_drafts = async_to_raw_response_wrapper(
-            tables.list_drafts,
+        self.list_draft = async_to_raw_response_wrapper(
+            tables.list_draft,
         )
         self.publish_draft = async_to_raw_response_wrapper(
             tables.publish_draft,
@@ -1918,8 +1921,8 @@ class TablesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             tables.list,
         )
-        self.archive = to_streamed_response_wrapper(
-            tables.archive,
+        self.delete = to_streamed_response_wrapper(
+            tables.delete,
         )
         self.clone_draft = to_streamed_response_wrapper(
             tables.clone_draft,
@@ -1944,8 +1947,8 @@ class TablesResourceWithStreamingResponse:
         self.import_draft = to_streamed_response_wrapper(
             tables.import_draft,
         )
-        self.list_drafts = to_streamed_response_wrapper(
-            tables.list_drafts,
+        self.list_draft = to_streamed_response_wrapper(
+            tables.list_draft,
         )
         self.publish_draft = to_streamed_response_wrapper(
             tables.publish_draft,
@@ -1971,8 +1974,8 @@ class AsyncTablesResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             tables.list,
         )
-        self.archive = async_to_streamed_response_wrapper(
-            tables.archive,
+        self.delete = async_to_streamed_response_wrapper(
+            tables.delete,
         )
         self.clone_draft = async_to_streamed_response_wrapper(
             tables.clone_draft,
@@ -1997,8 +2000,8 @@ class AsyncTablesResourceWithStreamingResponse:
         self.import_draft = async_to_streamed_response_wrapper(
             tables.import_draft,
         )
-        self.list_drafts = async_to_streamed_response_wrapper(
-            tables.list_drafts,
+        self.list_draft = async_to_streamed_response_wrapper(
+            tables.list_draft,
         )
         self.publish_draft = async_to_streamed_response_wrapper(
             tables.publish_draft,

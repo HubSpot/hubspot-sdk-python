@@ -28,6 +28,22 @@ from .subscriptions.subscriptions import (
     SubscriptionsResourceWithStreamingResponse,
     AsyncSubscriptionsResourceWithStreamingResponse,
 )
+from .transactional.transactional import (
+    TransactionalResource,
+    AsyncTransactionalResource,
+    TransactionalResourceWithRawResponse,
+    AsyncTransactionalResourceWithRawResponse,
+    TransactionalResourceWithStreamingResponse,
+    AsyncTransactionalResourceWithStreamingResponse,
+)
+from .marketing_events.marketing_events import (
+    MarketingEventsResource,
+    AsyncMarketingEventsResource,
+    MarketingEventsResourceWithRawResponse,
+    AsyncMarketingEventsResourceWithRawResponse,
+    MarketingEventsResourceWithStreamingResponse,
+    AsyncMarketingEventsResourceWithStreamingResponse,
+)
 
 __all__ = ["MarketingResource", "AsyncMarketingResource"]
 
@@ -42,8 +58,16 @@ class MarketingResource(SyncAPIResource):
         return FormsResource(self._client)
 
     @cached_property
+    def marketing_events(self) -> MarketingEventsResource:
+        return MarketingEventsResource(self._client)
+
+    @cached_property
     def subscriptions(self) -> SubscriptionsResource:
         return SubscriptionsResource(self._client)
+
+    @cached_property
+    def transactional(self) -> TransactionalResource:
+        return TransactionalResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> MarketingResourceWithRawResponse:
@@ -51,7 +75,7 @@ class MarketingResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return MarketingResourceWithRawResponse(self)
 
@@ -60,7 +84,7 @@ class MarketingResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return MarketingResourceWithStreamingResponse(self)
 
@@ -75,8 +99,16 @@ class AsyncMarketingResource(AsyncAPIResource):
         return AsyncFormsResource(self._client)
 
     @cached_property
+    def marketing_events(self) -> AsyncMarketingEventsResource:
+        return AsyncMarketingEventsResource(self._client)
+
+    @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResource:
         return AsyncSubscriptionsResource(self._client)
+
+    @cached_property
+    def transactional(self) -> AsyncTransactionalResource:
+        return AsyncTransactionalResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncMarketingResourceWithRawResponse:
@@ -84,7 +116,7 @@ class AsyncMarketingResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncMarketingResourceWithRawResponse(self)
 
@@ -93,7 +125,7 @@ class AsyncMarketingResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncMarketingResourceWithStreamingResponse(self)
 
@@ -111,8 +143,16 @@ class MarketingResourceWithRawResponse:
         return FormsResourceWithRawResponse(self._marketing.forms)
 
     @cached_property
+    def marketing_events(self) -> MarketingEventsResourceWithRawResponse:
+        return MarketingEventsResourceWithRawResponse(self._marketing.marketing_events)
+
+    @cached_property
     def subscriptions(self) -> SubscriptionsResourceWithRawResponse:
         return SubscriptionsResourceWithRawResponse(self._marketing.subscriptions)
+
+    @cached_property
+    def transactional(self) -> TransactionalResourceWithRawResponse:
+        return TransactionalResourceWithRawResponse(self._marketing.transactional)
 
 
 class AsyncMarketingResourceWithRawResponse:
@@ -128,8 +168,16 @@ class AsyncMarketingResourceWithRawResponse:
         return AsyncFormsResourceWithRawResponse(self._marketing.forms)
 
     @cached_property
+    def marketing_events(self) -> AsyncMarketingEventsResourceWithRawResponse:
+        return AsyncMarketingEventsResourceWithRawResponse(self._marketing.marketing_events)
+
+    @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResourceWithRawResponse:
         return AsyncSubscriptionsResourceWithRawResponse(self._marketing.subscriptions)
+
+    @cached_property
+    def transactional(self) -> AsyncTransactionalResourceWithRawResponse:
+        return AsyncTransactionalResourceWithRawResponse(self._marketing.transactional)
 
 
 class MarketingResourceWithStreamingResponse:
@@ -145,8 +193,16 @@ class MarketingResourceWithStreamingResponse:
         return FormsResourceWithStreamingResponse(self._marketing.forms)
 
     @cached_property
+    def marketing_events(self) -> MarketingEventsResourceWithStreamingResponse:
+        return MarketingEventsResourceWithStreamingResponse(self._marketing.marketing_events)
+
+    @cached_property
     def subscriptions(self) -> SubscriptionsResourceWithStreamingResponse:
         return SubscriptionsResourceWithStreamingResponse(self._marketing.subscriptions)
+
+    @cached_property
+    def transactional(self) -> TransactionalResourceWithStreamingResponse:
+        return TransactionalResourceWithStreamingResponse(self._marketing.transactional)
 
 
 class AsyncMarketingResourceWithStreamingResponse:
@@ -162,5 +218,13 @@ class AsyncMarketingResourceWithStreamingResponse:
         return AsyncFormsResourceWithStreamingResponse(self._marketing.forms)
 
     @cached_property
+    def marketing_events(self) -> AsyncMarketingEventsResourceWithStreamingResponse:
+        return AsyncMarketingEventsResourceWithStreamingResponse(self._marketing.marketing_events)
+
+    @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResourceWithStreamingResponse:
         return AsyncSubscriptionsResourceWithStreamingResponse(self._marketing.subscriptions)
+
+    @cached_property
+    def transactional(self) -> AsyncTransactionalResourceWithStreamingResponse:
+        return AsyncTransactionalResourceWithStreamingResponse(self._marketing.transactional)

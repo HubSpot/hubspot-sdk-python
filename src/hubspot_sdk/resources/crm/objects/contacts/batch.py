@@ -20,9 +20,9 @@ from ....._base_client import make_request_options
 from .....types.crm.objects.contacts import (
     batch_read_params,
     batch_create_params,
-    batch_delete_params,
     batch_update_params,
     batch_upsert_params,
+    batch_archive_params,
 )
 from .....types.crm.simple_public_object_id_param import SimplePublicObjectIDParam
 from .....types.crm.batch_response_simple_public_object import BatchResponseSimplePublicObject
@@ -41,7 +41,7 @@ class BatchResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return BatchResourceWithRawResponse(self)
 
@@ -50,7 +50,7 @@ class BatchResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return BatchResourceWithStreamingResponse(self)
 
@@ -126,7 +126,7 @@ class BatchResource(SyncAPIResource):
             cast_to=BatchResponseSimplePublicObject,
         )
 
-    def delete(
+    def archive(
         self,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
@@ -157,7 +157,7 @@ class BatchResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/crm/v3/objects/contacts/batch/archive",
-            body=maybe_transform({"inputs": inputs}, batch_delete_params.BatchDeleteParams),
+            body=maybe_transform({"inputs": inputs}, batch_archive_params.BatchArchiveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -264,7 +264,7 @@ class AsyncBatchResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncBatchResourceWithRawResponse(self)
 
@@ -273,7 +273,7 @@ class AsyncBatchResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncBatchResourceWithStreamingResponse(self)
 
@@ -349,7 +349,7 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=BatchResponseSimplePublicObject,
         )
 
-    async def delete(
+    async def archive(
         self,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
@@ -380,7 +380,7 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/crm/v3/objects/contacts/batch/archive",
-            body=await async_maybe_transform({"inputs": inputs}, batch_delete_params.BatchDeleteParams),
+            body=await async_maybe_transform({"inputs": inputs}, batch_archive_params.BatchArchiveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -490,8 +490,8 @@ class BatchResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             batch.update,
         )
-        self.delete = to_raw_response_wrapper(
-            batch.delete,
+        self.archive = to_raw_response_wrapper(
+            batch.archive,
         )
         self.read = to_raw_response_wrapper(
             batch.read,
@@ -511,8 +511,8 @@ class AsyncBatchResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             batch.update,
         )
-        self.delete = async_to_raw_response_wrapper(
-            batch.delete,
+        self.archive = async_to_raw_response_wrapper(
+            batch.archive,
         )
         self.read = async_to_raw_response_wrapper(
             batch.read,
@@ -532,8 +532,8 @@ class BatchResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             batch.update,
         )
-        self.delete = to_streamed_response_wrapper(
-            batch.delete,
+        self.archive = to_streamed_response_wrapper(
+            batch.archive,
         )
         self.read = to_streamed_response_wrapper(
             batch.read,
@@ -553,8 +553,8 @@ class AsyncBatchResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             batch.update,
         )
-        self.delete = async_to_streamed_response_wrapper(
-            batch.delete,
+        self.archive = async_to_streamed_response_wrapper(
+            batch.archive,
         )
         self.read = async_to_streamed_response_wrapper(
             batch.read,

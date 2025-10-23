@@ -6,17 +6,17 @@ from typing import Any, Dict, cast
 
 import httpx
 
+from .batch import (
+    BatchResource,
+    AsyncBatchResource,
+    BatchResourceWithRawResponse,
+    AsyncBatchResourceWithRawResponse,
+    BatchResourceWithStreamingResponse,
+    AsyncBatchResourceWithStreamingResponse,
+)
 from ....._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
-from .draft.draft import (
-    DraftResource,
-    AsyncDraftResource,
-    DraftResourceWithRawResponse,
-    AsyncDraftResourceWithRawResponse,
-    DraftResourceWithStreamingResponse,
-    AsyncDraftResourceWithStreamingResponse,
-)
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
     to_raw_response_wrapper,
@@ -24,14 +24,15 @@ from ....._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....._base_client import make_request_options
+from .....pagination import SyncPage, AsyncPage
+from ....._base_client import AsyncPaginator, make_request_options
 from .....types.cms.hubdb import (
     row_get_params,
     row_list_params,
     row_create_params,
     row_get_draft_params,
+    row_list_draft_params,
     row_clone_draft_params,
-    row_list_drafts_params,
     row_update_draft_params,
     row_replace_draft_params,
 )
@@ -46,8 +47,8 @@ __all__ = ["RowsResource", "AsyncRowsResource"]
 
 class RowsResource(SyncAPIResource):
     @cached_property
-    def draft(self) -> DraftResource:
-        return DraftResource(self._client)
+    def batch(self) -> BatchResource:
+        return BatchResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> RowsResourceWithRawResponse:
@@ -55,7 +56,7 @@ class RowsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return RowsResourceWithRawResponse(self)
 
@@ -64,7 +65,7 @@ class RowsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return RowsResourceWithStreamingResponse(self)
 
@@ -145,7 +146,7 @@ class RowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3:
+    ) -> SyncPage[object]:
         """Returns a set of rows in the published version of the specified table.
 
         Row
@@ -181,31 +182,27 @@ class RowsResource(SyncAPIResource):
         """
         if not table_id_or_name:
             raise ValueError(f"Expected a non-empty value for `table_id_or_name` but received {table_id_or_name!r}")
-        return cast(
-            UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
-            self._get(
-                f"/cms/v3/hubdb/tables/{table_id_or_name}/rows",
-                options=make_request_options(
-                    extra_headers=extra_headers,
-                    extra_query=extra_query,
-                    extra_body=extra_body,
-                    timeout=timeout,
-                    query=maybe_transform(
-                        {
-                            "after": after,
-                            "archived": archived,
-                            "limit": limit,
-                            "offset": offset,
-                            "properties": properties,
-                            "sort": sort,
-                        },
-                        row_list_params.RowListParams,
-                    ),
+        return self._get_api_list(
+            f"/cms/v3/hubdb/tables/{table_id_or_name}/rows",
+            page=SyncPage[object],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "limit": limit,
+                        "offset": offset,
+                        "properties": properties,
+                        "sort": sort,
+                    },
+                    row_list_params.RowListParams,
                 ),
-                cast_to=cast(
-                    Any, UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3
-                ),  # Union types cannot be passed in as arguments in the type system
             ),
+            model=object,
         )
 
     def clone_draft(
@@ -371,7 +368,7 @@ class RowsResource(SyncAPIResource):
             cast_to=HubDBTableRowV3,
         )
 
-    def list_drafts(
+    def list_draft(
         self,
         table_id_or_name: str,
         *,
@@ -439,7 +436,7 @@ class RowsResource(SyncAPIResource):
                             "properties": properties,
                             "sort": sort,
                         },
-                        row_list_drafts_params.RowListDraftsParams,
+                        row_list_draft_params.RowListDraftParams,
                     ),
                 ),
                 cast_to=cast(
@@ -581,8 +578,8 @@ class RowsResource(SyncAPIResource):
 
 class AsyncRowsResource(AsyncAPIResource):
     @cached_property
-    def draft(self) -> AsyncDraftResource:
-        return AsyncDraftResource(self._client)
+    def batch(self) -> AsyncBatchResource:
+        return AsyncBatchResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncRowsResourceWithRawResponse:
@@ -590,7 +587,7 @@ class AsyncRowsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncRowsResourceWithRawResponse(self)
 
@@ -599,7 +596,7 @@ class AsyncRowsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncRowsResourceWithStreamingResponse(self)
 
@@ -664,7 +661,7 @@ class AsyncRowsResource(AsyncAPIResource):
             cast_to=HubDBTableRowV3,
         )
 
-    async def list(
+    def list(
         self,
         table_id_or_name: str,
         *,
@@ -680,7 +677,7 @@ class AsyncRowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3:
+    ) -> AsyncPaginator[object, AsyncPage[object]]:
         """Returns a set of rows in the published version of the specified table.
 
         Row
@@ -716,31 +713,27 @@ class AsyncRowsResource(AsyncAPIResource):
         """
         if not table_id_or_name:
             raise ValueError(f"Expected a non-empty value for `table_id_or_name` but received {table_id_or_name!r}")
-        return cast(
-            UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
-            await self._get(
-                f"/cms/v3/hubdb/tables/{table_id_or_name}/rows",
-                options=make_request_options(
-                    extra_headers=extra_headers,
-                    extra_query=extra_query,
-                    extra_body=extra_body,
-                    timeout=timeout,
-                    query=await async_maybe_transform(
-                        {
-                            "after": after,
-                            "archived": archived,
-                            "limit": limit,
-                            "offset": offset,
-                            "properties": properties,
-                            "sort": sort,
-                        },
-                        row_list_params.RowListParams,
-                    ),
+        return self._get_api_list(
+            f"/cms/v3/hubdb/tables/{table_id_or_name}/rows",
+            page=AsyncPage[object],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "limit": limit,
+                        "offset": offset,
+                        "properties": properties,
+                        "sort": sort,
+                    },
+                    row_list_params.RowListParams,
                 ),
-                cast_to=cast(
-                    Any, UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3
-                ),  # Union types cannot be passed in as arguments in the type system
             ),
+            model=object,
         )
 
     async def clone_draft(
@@ -906,7 +899,7 @@ class AsyncRowsResource(AsyncAPIResource):
             cast_to=HubDBTableRowV3,
         )
 
-    async def list_drafts(
+    async def list_draft(
         self,
         table_id_or_name: str,
         *,
@@ -974,7 +967,7 @@ class AsyncRowsResource(AsyncAPIResource):
                             "properties": properties,
                             "sort": sort,
                         },
-                        row_list_drafts_params.RowListDraftsParams,
+                        row_list_draft_params.RowListDraftParams,
                     ),
                 ),
                 cast_to=cast(
@@ -1136,8 +1129,8 @@ class RowsResourceWithRawResponse:
         self.get_draft = to_raw_response_wrapper(
             rows.get_draft,
         )
-        self.list_drafts = to_raw_response_wrapper(
-            rows.list_drafts,
+        self.list_draft = to_raw_response_wrapper(
+            rows.list_draft,
         )
         self.replace_draft = to_raw_response_wrapper(
             rows.replace_draft,
@@ -1147,8 +1140,8 @@ class RowsResourceWithRawResponse:
         )
 
     @cached_property
-    def draft(self) -> DraftResourceWithRawResponse:
-        return DraftResourceWithRawResponse(self._rows.draft)
+    def batch(self) -> BatchResourceWithRawResponse:
+        return BatchResourceWithRawResponse(self._rows.batch)
 
 
 class AsyncRowsResourceWithRawResponse:
@@ -1173,8 +1166,8 @@ class AsyncRowsResourceWithRawResponse:
         self.get_draft = async_to_raw_response_wrapper(
             rows.get_draft,
         )
-        self.list_drafts = async_to_raw_response_wrapper(
-            rows.list_drafts,
+        self.list_draft = async_to_raw_response_wrapper(
+            rows.list_draft,
         )
         self.replace_draft = async_to_raw_response_wrapper(
             rows.replace_draft,
@@ -1184,8 +1177,8 @@ class AsyncRowsResourceWithRawResponse:
         )
 
     @cached_property
-    def draft(self) -> AsyncDraftResourceWithRawResponse:
-        return AsyncDraftResourceWithRawResponse(self._rows.draft)
+    def batch(self) -> AsyncBatchResourceWithRawResponse:
+        return AsyncBatchResourceWithRawResponse(self._rows.batch)
 
 
 class RowsResourceWithStreamingResponse:
@@ -1210,8 +1203,8 @@ class RowsResourceWithStreamingResponse:
         self.get_draft = to_streamed_response_wrapper(
             rows.get_draft,
         )
-        self.list_drafts = to_streamed_response_wrapper(
-            rows.list_drafts,
+        self.list_draft = to_streamed_response_wrapper(
+            rows.list_draft,
         )
         self.replace_draft = to_streamed_response_wrapper(
             rows.replace_draft,
@@ -1221,8 +1214,8 @@ class RowsResourceWithStreamingResponse:
         )
 
     @cached_property
-    def draft(self) -> DraftResourceWithStreamingResponse:
-        return DraftResourceWithStreamingResponse(self._rows.draft)
+    def batch(self) -> BatchResourceWithStreamingResponse:
+        return BatchResourceWithStreamingResponse(self._rows.batch)
 
 
 class AsyncRowsResourceWithStreamingResponse:
@@ -1247,8 +1240,8 @@ class AsyncRowsResourceWithStreamingResponse:
         self.get_draft = async_to_streamed_response_wrapper(
             rows.get_draft,
         )
-        self.list_drafts = async_to_streamed_response_wrapper(
-            rows.list_drafts,
+        self.list_draft = async_to_streamed_response_wrapper(
+            rows.list_draft,
         )
         self.replace_draft = async_to_streamed_response_wrapper(
             rows.replace_draft,
@@ -1258,5 +1251,5 @@ class AsyncRowsResourceWithStreamingResponse:
         )
 
     @cached_property
-    def draft(self) -> AsyncDraftResourceWithStreamingResponse:
-        return AsyncDraftResourceWithStreamingResponse(self._rows.draft)
+    def batch(self) -> AsyncBatchResourceWithStreamingResponse:
+        return AsyncBatchResourceWithStreamingResponse(self._rows.batch)

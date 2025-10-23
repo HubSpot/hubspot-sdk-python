@@ -10,6 +10,7 @@ import pytest
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.cms import HubDBTableRowV3, UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3
+from hubspot_sdk.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -82,7 +83,7 @@ class TestRows:
         row = client.cms.hubdb.rows.list(
             table_id_or_name="tableIdOrName",
         )
-        assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
+        assert_matches_type(SyncPage[object], row, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -96,7 +97,7 @@ class TestRows:
             properties=["string"],
             sort=["string"],
         )
-        assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
+        assert_matches_type(SyncPage[object], row, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -108,7 +109,7 @@ class TestRows:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         row = response.parse()
-        assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
+        assert_matches_type(SyncPage[object], row, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -120,7 +121,7 @@ class TestRows:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             row = response.parse()
-            assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
+            assert_matches_type(SyncPage[object], row, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -372,16 +373,16 @@ class TestRows:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_drafts(self, client: HubSpot) -> None:
-        row = client.cms.hubdb.rows.list_drafts(
+    def test_method_list_draft(self, client: HubSpot) -> None:
+        row = client.cms.hubdb.rows.list_draft(
             table_id_or_name="tableIdOrName",
         )
         assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_drafts_with_all_params(self, client: HubSpot) -> None:
-        row = client.cms.hubdb.rows.list_drafts(
+    def test_method_list_draft_with_all_params(self, client: HubSpot) -> None:
+        row = client.cms.hubdb.rows.list_draft(
             table_id_or_name="tableIdOrName",
             after="after",
             archived=True,
@@ -394,8 +395,8 @@ class TestRows:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_drafts(self, client: HubSpot) -> None:
-        response = client.cms.hubdb.rows.with_raw_response.list_drafts(
+    def test_raw_response_list_draft(self, client: HubSpot) -> None:
+        response = client.cms.hubdb.rows.with_raw_response.list_draft(
             table_id_or_name="tableIdOrName",
         )
 
@@ -406,8 +407,8 @@ class TestRows:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_drafts(self, client: HubSpot) -> None:
-        with client.cms.hubdb.rows.with_streaming_response.list_drafts(
+    def test_streaming_response_list_draft(self, client: HubSpot) -> None:
+        with client.cms.hubdb.rows.with_streaming_response.list_draft(
             table_id_or_name="tableIdOrName",
         ) as response:
             assert not response.is_closed
@@ -420,9 +421,9 @@ class TestRows:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list_drafts(self, client: HubSpot) -> None:
+    def test_path_params_list_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
-            client.cms.hubdb.rows.with_raw_response.list_drafts(
+            client.cms.hubdb.rows.with_raw_response.list_draft(
                 table_id_or_name="",
             )
 
@@ -639,7 +640,7 @@ class TestAsyncRows:
         row = await async_client.cms.hubdb.rows.list(
             table_id_or_name="tableIdOrName",
         )
-        assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
+        assert_matches_type(AsyncPage[object], row, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -653,7 +654,7 @@ class TestAsyncRows:
             properties=["string"],
             sort=["string"],
         )
-        assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
+        assert_matches_type(AsyncPage[object], row, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -665,7 +666,7 @@ class TestAsyncRows:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         row = await response.parse()
-        assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
+        assert_matches_type(AsyncPage[object], row, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -677,7 +678,7 @@ class TestAsyncRows:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             row = await response.parse()
-            assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
+            assert_matches_type(AsyncPage[object], row, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -929,16 +930,16 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_drafts(self, async_client: AsyncHubSpot) -> None:
-        row = await async_client.cms.hubdb.rows.list_drafts(
+    async def test_method_list_draft(self, async_client: AsyncHubSpot) -> None:
+        row = await async_client.cms.hubdb.rows.list_draft(
             table_id_or_name="tableIdOrName",
         )
         assert_matches_type(UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3, row, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_drafts_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        row = await async_client.cms.hubdb.rows.list_drafts(
+    async def test_method_list_draft_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        row = await async_client.cms.hubdb.rows.list_draft(
             table_id_or_name="tableIdOrName",
             after="after",
             archived=True,
@@ -951,8 +952,8 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_drafts(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.cms.hubdb.rows.with_raw_response.list_drafts(
+    async def test_raw_response_list_draft(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.cms.hubdb.rows.with_raw_response.list_draft(
             table_id_or_name="tableIdOrName",
         )
 
@@ -963,8 +964,8 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_drafts(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.cms.hubdb.rows.with_streaming_response.list_drafts(
+    async def test_streaming_response_list_draft(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.cms.hubdb.rows.with_streaming_response.list_draft(
             table_id_or_name="tableIdOrName",
         ) as response:
             assert not response.is_closed
@@ -977,9 +978,9 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list_drafts(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
-            await async_client.cms.hubdb.rows.with_raw_response.list_drafts(
+            await async_client.cms.hubdb.rows.with_raw_response.list_draft(
                 table_id_or_name="",
             )
 

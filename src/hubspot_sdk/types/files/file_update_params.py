@@ -30,10 +30,8 @@ class FileUpdateParams(TypedDict, total=False):
     """
 
     clear_expires: Annotated[bool, PropertyInfo(alias="clearExpires")]
-    """Indicates whether the expiration date of the file should be cleared."""
 
     expires_at: Annotated[Union[str, datetime], PropertyInfo(alias="expiresAt", format="iso8601")]
-    """Specifies the date and time when the file will expire."""
 
     is_usable_in_content: Annotated[bool, PropertyInfo(alias="isUsableInContent")]
     """Mark whether the file should be used in new content or not."""

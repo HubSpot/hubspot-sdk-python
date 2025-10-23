@@ -10,7 +10,16 @@ from .tags import (
     TagsResourceWithStreamingResponse,
     AsyncTagsResourceWithStreamingResponse,
 )
-from .posts import (
+from .authors import (
+    AuthorsResource,
+    AsyncAuthorsResource,
+    AuthorsResourceWithRawResponse,
+    AsyncAuthorsResourceWithRawResponse,
+    AuthorsResourceWithStreamingResponse,
+    AsyncAuthorsResourceWithStreamingResponse,
+)
+from ...._compat import cached_property
+from .posts.posts import (
     PostsResource,
     AsyncPostsResource,
     PostsResourceWithRawResponse,
@@ -18,13 +27,16 @@ from .posts import (
     PostsResourceWithStreamingResponse,
     AsyncPostsResourceWithStreamingResponse,
 )
-from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 
 __all__ = ["BlogsResource", "AsyncBlogsResource"]
 
 
 class BlogsResource(SyncAPIResource):
+    @cached_property
+    def authors(self) -> AuthorsResource:
+        return AuthorsResource(self._client)
+
     @cached_property
     def posts(self) -> PostsResource:
         return PostsResource(self._client)
@@ -39,7 +51,7 @@ class BlogsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return BlogsResourceWithRawResponse(self)
 
@@ -48,12 +60,16 @@ class BlogsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return BlogsResourceWithStreamingResponse(self)
 
 
 class AsyncBlogsResource(AsyncAPIResource):
+    @cached_property
+    def authors(self) -> AsyncAuthorsResource:
+        return AsyncAuthorsResource(self._client)
+
     @cached_property
     def posts(self) -> AsyncPostsResource:
         return AsyncPostsResource(self._client)
@@ -68,7 +84,7 @@ class AsyncBlogsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncBlogsResourceWithRawResponse(self)
 
@@ -77,7 +93,7 @@ class AsyncBlogsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncBlogsResourceWithStreamingResponse(self)
 
@@ -85,6 +101,10 @@ class AsyncBlogsResource(AsyncAPIResource):
 class BlogsResourceWithRawResponse:
     def __init__(self, blogs: BlogsResource) -> None:
         self._blogs = blogs
+
+    @cached_property
+    def authors(self) -> AuthorsResourceWithRawResponse:
+        return AuthorsResourceWithRawResponse(self._blogs.authors)
 
     @cached_property
     def posts(self) -> PostsResourceWithRawResponse:
@@ -100,6 +120,10 @@ class AsyncBlogsResourceWithRawResponse:
         self._blogs = blogs
 
     @cached_property
+    def authors(self) -> AsyncAuthorsResourceWithRawResponse:
+        return AsyncAuthorsResourceWithRawResponse(self._blogs.authors)
+
+    @cached_property
     def posts(self) -> AsyncPostsResourceWithRawResponse:
         return AsyncPostsResourceWithRawResponse(self._blogs.posts)
 
@@ -113,6 +137,10 @@ class BlogsResourceWithStreamingResponse:
         self._blogs = blogs
 
     @cached_property
+    def authors(self) -> AuthorsResourceWithStreamingResponse:
+        return AuthorsResourceWithStreamingResponse(self._blogs.authors)
+
+    @cached_property
     def posts(self) -> PostsResourceWithStreamingResponse:
         return PostsResourceWithStreamingResponse(self._blogs.posts)
 
@@ -124,6 +152,10 @@ class BlogsResourceWithStreamingResponse:
 class AsyncBlogsResourceWithStreamingResponse:
     def __init__(self, blogs: AsyncBlogsResource) -> None:
         self._blogs = blogs
+
+    @cached_property
+    def authors(self) -> AsyncAuthorsResourceWithStreamingResponse:
+        return AsyncAuthorsResourceWithStreamingResponse(self._blogs.authors)
 
     @cached_property
     def posts(self) -> AsyncPostsResourceWithStreamingResponse:

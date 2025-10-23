@@ -1,0 +1,498 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import Union, Iterable
+from datetime import datetime
+
+import httpx
+
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from ..._base_client import make_request_options
+from ...types.account import (
+    activity_list_audit_logs_params,
+    activity_list_login_activities_params,
+    activity_list_security_activities_params,
+)
+from ...types.account.collection_response_public_login_audit_forward_paging import (
+    CollectionResponsePublicLoginAuditForwardPaging,
+)
+from ...types.account.collection_response_hydrated_critical_action_forward_paging import (
+    CollectionResponseHydratedCriticalActionForwardPaging,
+)
+from ...types.account.collection_response_public_api_user_action_event_forward_paging import (
+    CollectionResponsePublicAPIUserActionEventForwardPaging,
+)
+
+__all__ = ["ActivityResource", "AsyncActivityResource"]
+
+
+class ActivityResource(SyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> ActivityResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        """
+        return ActivityResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ActivityResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
+        """
+        return ActivityResourceWithStreamingResponse(self)
+
+    def list_audit_logs(
+        self,
+        *,
+        acting_user_id: Iterable[int] | Omit = omit,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        occurred_after: Union[str, datetime] | Omit = omit,
+        occurred_before: Union[str, datetime] | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CollectionResponsePublicAPIUserActionEventForwardPaging:
+        """
+        Retrieve activity history for user actions related to approvals, content
+        updates, CRM object updates, security activity, and more (Enterprise only).
+        Learn more about
+        [activities included in audit log exports](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history-in-a-centralized-audit-log?hubs_content=knowledge.hubspot.com/account-management/view-and-export-account-activity-history&hubs_content-cta=centralized%20audit%20log#data-included-in-the-centralized-audit-log).
+
+        Args:
+          acting_user_id: The ID of a user, for retrieving user-specific logs.
+
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          occurred_after: A timestamp, as a starting point for retrieving activity logs.
+
+          occurred_before: A timestamp, as an end point for retrieving activity logs.
+
+          sort: Set to `occurredAt` to order results by the time of the event. By default,
+              events are ordered from oldest to newest.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/account-info/v3/activity/audit-logs",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "acting_user_id": acting_user_id,
+                        "after": after,
+                        "limit": limit,
+                        "occurred_after": occurred_after,
+                        "occurred_before": occurred_before,
+                        "sort": sort,
+                    },
+                    activity_list_audit_logs_params.ActivityListAuditLogsParams,
+                ),
+            ),
+            cast_to=CollectionResponsePublicAPIUserActionEventForwardPaging,
+        )
+
+    def list_login_activities(
+        self,
+        *,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        user_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CollectionResponsePublicLoginAuditForwardPaging:
+        """
+        Retrieve logs of user actions related to
+        [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
+
+        Args:
+          after: The cursor token value to get the next set of results. You can get this from the
+              `paging.next.after` JSON property of a paged response containing more results.
+
+          limit: The maximum number of results to display per page. Max value of limit is 200.
+
+          user_id: The ID of a user, for retrieving user-specific logs.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/account-info/v3/activity/login",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                        "user_id": user_id,
+                    },
+                    activity_list_login_activities_params.ActivityListLoginActivitiesParams,
+                ),
+            ),
+            cast_to=CollectionResponsePublicLoginAuditForwardPaging,
+        )
+
+    def list_security_activities(
+        self,
+        *,
+        after: str | Omit = omit,
+        from_timestamp: int | Omit = omit,
+        limit: int | Omit = omit,
+        to_timestamp: int | Omit = omit,
+        user_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CollectionResponseHydratedCriticalActionForwardPaging:
+        """
+        Retrieve logs of user actions related to
+        [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
+
+        Args:
+          after: The cursor token value to get the next set of results. You can get this from the
+              `paging.next.after` JSON property of a paged response containing more results.
+
+          from_timestamp: The start time, for retrieving logs within a specific timeframe.
+
+          limit: The maximum number of results to display per page. Max value of limit is 200.
+
+          to_timestamp: The end time, for retrieving logs within a specific timeframe.
+
+          user_id: The ID of a user, for retrieving user-specific logs.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/account-info/v3/activity/security",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "from_timestamp": from_timestamp,
+                        "limit": limit,
+                        "to_timestamp": to_timestamp,
+                        "user_id": user_id,
+                    },
+                    activity_list_security_activities_params.ActivityListSecurityActivitiesParams,
+                ),
+            ),
+            cast_to=CollectionResponseHydratedCriticalActionForwardPaging,
+        )
+
+
+class AsyncActivityResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncActivityResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncActivityResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncActivityResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
+        """
+        return AsyncActivityResourceWithStreamingResponse(self)
+
+    async def list_audit_logs(
+        self,
+        *,
+        acting_user_id: Iterable[int] | Omit = omit,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        occurred_after: Union[str, datetime] | Omit = omit,
+        occurred_before: Union[str, datetime] | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CollectionResponsePublicAPIUserActionEventForwardPaging:
+        """
+        Retrieve activity history for user actions related to approvals, content
+        updates, CRM object updates, security activity, and more (Enterprise only).
+        Learn more about
+        [activities included in audit log exports](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history-in-a-centralized-audit-log?hubs_content=knowledge.hubspot.com/account-management/view-and-export-account-activity-history&hubs_content-cta=centralized%20audit%20log#data-included-in-the-centralized-audit-log).
+
+        Args:
+          acting_user_id: The ID of a user, for retrieving user-specific logs.
+
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          occurred_after: A timestamp, as a starting point for retrieving activity logs.
+
+          occurred_before: A timestamp, as an end point for retrieving activity logs.
+
+          sort: Set to `occurredAt` to order results by the time of the event. By default,
+              events are ordered from oldest to newest.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/account-info/v3/activity/audit-logs",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "acting_user_id": acting_user_id,
+                        "after": after,
+                        "limit": limit,
+                        "occurred_after": occurred_after,
+                        "occurred_before": occurred_before,
+                        "sort": sort,
+                    },
+                    activity_list_audit_logs_params.ActivityListAuditLogsParams,
+                ),
+            ),
+            cast_to=CollectionResponsePublicAPIUserActionEventForwardPaging,
+        )
+
+    async def list_login_activities(
+        self,
+        *,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        user_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CollectionResponsePublicLoginAuditForwardPaging:
+        """
+        Retrieve logs of user actions related to
+        [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
+
+        Args:
+          after: The cursor token value to get the next set of results. You can get this from the
+              `paging.next.after` JSON property of a paged response containing more results.
+
+          limit: The maximum number of results to display per page. Max value of limit is 200.
+
+          user_id: The ID of a user, for retrieving user-specific logs.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/account-info/v3/activity/login",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                        "user_id": user_id,
+                    },
+                    activity_list_login_activities_params.ActivityListLoginActivitiesParams,
+                ),
+            ),
+            cast_to=CollectionResponsePublicLoginAuditForwardPaging,
+        )
+
+    async def list_security_activities(
+        self,
+        *,
+        after: str | Omit = omit,
+        from_timestamp: int | Omit = omit,
+        limit: int | Omit = omit,
+        to_timestamp: int | Omit = omit,
+        user_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CollectionResponseHydratedCriticalActionForwardPaging:
+        """
+        Retrieve logs of user actions related to
+        [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
+
+        Args:
+          after: The cursor token value to get the next set of results. You can get this from the
+              `paging.next.after` JSON property of a paged response containing more results.
+
+          from_timestamp: The start time, for retrieving logs within a specific timeframe.
+
+          limit: The maximum number of results to display per page. Max value of limit is 200.
+
+          to_timestamp: The end time, for retrieving logs within a specific timeframe.
+
+          user_id: The ID of a user, for retrieving user-specific logs.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/account-info/v3/activity/security",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "from_timestamp": from_timestamp,
+                        "limit": limit,
+                        "to_timestamp": to_timestamp,
+                        "user_id": user_id,
+                    },
+                    activity_list_security_activities_params.ActivityListSecurityActivitiesParams,
+                ),
+            ),
+            cast_to=CollectionResponseHydratedCriticalActionForwardPaging,
+        )
+
+
+class ActivityResourceWithRawResponse:
+    def __init__(self, activity: ActivityResource) -> None:
+        self._activity = activity
+
+        self.list_audit_logs = to_raw_response_wrapper(
+            activity.list_audit_logs,
+        )
+        self.list_login_activities = to_raw_response_wrapper(
+            activity.list_login_activities,
+        )
+        self.list_security_activities = to_raw_response_wrapper(
+            activity.list_security_activities,
+        )
+
+
+class AsyncActivityResourceWithRawResponse:
+    def __init__(self, activity: AsyncActivityResource) -> None:
+        self._activity = activity
+
+        self.list_audit_logs = async_to_raw_response_wrapper(
+            activity.list_audit_logs,
+        )
+        self.list_login_activities = async_to_raw_response_wrapper(
+            activity.list_login_activities,
+        )
+        self.list_security_activities = async_to_raw_response_wrapper(
+            activity.list_security_activities,
+        )
+
+
+class ActivityResourceWithStreamingResponse:
+    def __init__(self, activity: ActivityResource) -> None:
+        self._activity = activity
+
+        self.list_audit_logs = to_streamed_response_wrapper(
+            activity.list_audit_logs,
+        )
+        self.list_login_activities = to_streamed_response_wrapper(
+            activity.list_login_activities,
+        )
+        self.list_security_activities = to_streamed_response_wrapper(
+            activity.list_security_activities,
+        )
+
+
+class AsyncActivityResourceWithStreamingResponse:
+    def __init__(self, activity: AsyncActivityResource) -> None:
+        self._activity = activity
+
+        self.list_audit_logs = async_to_streamed_response_wrapper(
+            activity.list_audit_logs,
+        )
+        self.list_login_activities = async_to_streamed_response_wrapper(
+            activity.list_login_activities,
+        )
+        self.list_security_activities = async_to_streamed_response_wrapper(
+            activity.list_security_activities,
+        )

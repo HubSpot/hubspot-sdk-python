@@ -7,8 +7,8 @@ from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
-from .public_access_rule_param import PublicAccessRuleParam
-from .content_language_variation_param import ContentLanguageVariationParam
+from ..public_access_rule_param import PublicAccessRuleParam
+from ..content_language_variation_param import ContentLanguageVariationParam
 
 __all__ = ["PostUpdateDraftParams"]
 
@@ -1040,4 +1040,4 @@ class PostUpdateDraftParams(TypedDict, total=False):
     """A data structure containing the data for all the modules for this page."""
 
 
-from .layout_section_param import LayoutSectionParam
+from ..layout_section_param import LayoutSectionParam

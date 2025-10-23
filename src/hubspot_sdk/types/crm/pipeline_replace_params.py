@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
+from .pipeline_stage_input_param import PipelineStageInputParam
 
 __all__ = ["PipelineReplaceParams"]
 
@@ -13,32 +14,19 @@ __all__ = ["PipelineReplaceParams"]
 class PipelineReplaceParams(TypedDict, total=False):
     object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
 
-    pipeline_id: Required[Annotated[str, PropertyInfo(alias="pipelineId")]]
-
     display_order: Required[Annotated[int, PropertyInfo(alias="displayOrder")]]
-    """The order for displaying this pipeline stage.
+    """The order for displaying this pipeline.
 
-    If two pipeline stages have a matching `displayOrder`, they will be sorted
+    If two pipelines have a matching `displayOrder`, they will be sorted
     alphabetically by label.
     """
 
     label: Required[str]
-    """A label used to organize pipeline stages in HubSpot's UI.
+    """A unique label used to organize pipelines in HubSpot's UI"""
 
-    Each pipeline stage's label must be unique within that pipeline.
-    """
+    stages: Required[Iterable[PipelineStageInputParam]]
+    """Pipeline stage inputs used to create the new or replacement pipeline."""
 
-    metadata: Dict[str, str]
-    """
-    A JSON object containing properties that are not present on all object
-    pipelines.
+    validate_deal_stage_usages_before_delete: Annotated[bool, PropertyInfo(alias="validateDealStageUsagesBeforeDelete")]
 
-    For `deals` pipelines, the `probability` field is required
-    (`{ "probability": 0.5 }`), and represents the likelihood a deal will close.
-    Possible values are between 0.0 and 1.0 in increments of 0.1.
-
-    For `tickets` pipelines, the `ticketState` field is optional
-    (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
-    has been closed by a member of your Support team. Possible values are `OPEN` or
-    `CLOSED`.
-    """
+    validate_references_before_delete: Annotated[bool, PropertyInfo(alias="validateReferencesBeforeDelete")]

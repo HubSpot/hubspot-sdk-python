@@ -962,6 +962,8 @@ class PublicEmail(BaseModel):
     )
     """Data structure representing the subscription fields of the email."""
 
+    teams_with_access: Optional[List[str]] = FieldInfo(alias="teamsWithAccess", default=None)
+
     testing: Optional[PublicEmailTestingDetails] = None
     """AB testing related data. This property is only returned for AB type emails."""
 
@@ -1012,6 +1014,8 @@ class PublicEmail(BaseModel):
 
     updated_by_id: Optional[str] = FieldInfo(alias="updatedById", default=None)
     """The ID of the user who last updated the email."""
+
+    users_with_access: Optional[List[str]] = FieldInfo(alias="usersWithAccess", default=None)
 
     webversion: Optional[PublicWebversionDetails] = None
 
