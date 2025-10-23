@@ -1,9 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from .error import Error as Error
+from .option import Option as Option
 from .paging import Paging as Paging
+from .property import Property as Property
 from .next_page import NextPage as NextPage
 from .error_detail import ErrorDetail as ErrorDetail
+from .option_input import OptionInput as OptionInput
 from .task_locator import TaskLocator as TaskLocator
 from .version_user import VersionUser as VersionUser
 from .previous_page import PreviousPage as PreviousPage
@@ -46,6 +49,7 @@ from .public_unified_events_filter import PublicUnifiedEventsFilter as PublicUni
 from .ab_test_create_request_v_next import AbTestCreateRequestVNext as AbTestCreateRequestVNext
 from .public_event_analytics_filter import PublicEventAnalyticsFilter as PublicEventAnalyticsFilter
 from .public_form_submission_filter import PublicFormSubmissionFilter as PublicFormSubmissionFilter
+from .property_modification_metadata import PropertyModificationMetadata as PropertyModificationMetadata
 from .public_bool_property_operation import PublicBoolPropertyOperation as PublicBoolPropertyOperation
 from .public_date_property_operation import PublicDatePropertyOperation as PublicDatePropertyOperation
 from .public_in_list_filter_metadata import PublicInListFilterMetadata as PublicInListFilterMetadata

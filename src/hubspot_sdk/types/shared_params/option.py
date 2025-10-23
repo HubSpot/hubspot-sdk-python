@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["OptionParam"]
+__all__ = ["Option"]
 
 
-class OptionParam(TypedDict, total=False):
+class Option(TypedDict, total=False):
     hidden: Required[bool]
     """Hidden options will not be displayed in HubSpot."""
 

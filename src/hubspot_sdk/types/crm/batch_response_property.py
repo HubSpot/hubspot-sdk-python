@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .property import Property
 from ..._models import BaseModel
+from ..shared.property import Property
 from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponseProperty"]

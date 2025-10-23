@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 from .tag import Tag as Tag
+from .blog import Blog as Blog
 from .blog_post import BlogPost as BlogPost
 from .tag_param import TagParam as TagParam
 from .blog_author import BlogAuthor as BlogAuthor
 from .margin_param import MarginParam as MarginParam
+from .version_blog import VersionBlog as VersionBlog
 from .padding_param import PaddingParam as PaddingParam
 from .blog_post_param import BlogPostParam as BlogPostParam
 from .tag_list_params import TagListParams as TagListParams
@@ -26,6 +28,7 @@ from .batch_response_tag import BatchResponseTag as BatchResponseTag
 from .post_create_params import PostCreateParams as PostCreateParams
 from .post_delete_params import PostDeleteParams as PostDeleteParams
 from .post_update_params import PostUpdateParams as PostUpdateParams
+from .setting_list_params import SettingListParams as SettingListParams
 from .author_create_params import AuthorCreateParams as AuthorCreateParams
 from .author_delete_params import AuthorDeleteParams as AuthorDeleteParams
 from .author_update_params import AuthorUpdateParams as AuthorUpdateParams
@@ -46,7 +49,9 @@ from .author_update_batch_params import AuthorUpdateBatchParams as AuthorUpdateB
 from .batch_response_blog_author import BatchResponseBlogAuthor as BatchResponseBlogAuthor
 from .tag_set_lang_primary_params import TagSetLangPrimaryParams as TagSetLangPrimaryParams
 from .post_set_lang_primary_params import PostSetLangPrimaryParams as PostSetLangPrimaryParams
+from .setting_list_revisions_params import SettingListRevisionsParams as SettingListRevisionsParams
 from .author_update_languages_params import AuthorUpdateLanguagesParams as AuthorUpdateLanguagesParams
+from .setting_update_languages_params import SettingUpdateLanguagesParams as SettingUpdateLanguagesParams
 from .tag_attach_to_lang_group_params import TagAttachToLangGroupParams as TagAttachToLangGroupParams
 from .post_attach_to_lang_group_params import PostAttachToLangGroupParams as PostAttachToLangGroupParams
 from .tag_create_lang_variation_params import TagCreateLangVariationParams as TagCreateLangVariationParams
@@ -56,15 +61,27 @@ from .tag_detach_from_lang_group_params import TagDetachFromLangGroupParams as T
 from .author_attach_to_lang_group_params import AuthorAttachToLangGroupParams as AuthorAttachToLangGroupParams
 from .author_set_new_lang_primary_params import AuthorSetNewLangPrimaryParams as AuthorSetNewLangPrimaryParams
 from .post_detach_from_lang_group_params import PostDetachFromLangGroupParams as PostDetachFromLangGroupParams
+from .setting_attach_to_lang_group_params import SettingAttachToLangGroupParams as SettingAttachToLangGroupParams
+from .setting_set_new_lang_primary_params import SettingSetNewLangPrimaryParams as SettingSetNewLangPrimaryParams
 from .author_detach_from_lang_group_params import AuthorDetachFromLangGroupParams as AuthorDetachFromLangGroupParams
+from .setting_detach_from_lang_group_params import SettingDetachFromLangGroupParams as SettingDetachFromLangGroupParams
 from .author_create_language_variation_params import (
     AuthorCreateLanguageVariationParams as AuthorCreateLanguageVariationParams,
+)
+from .setting_create_language_variation_params import (
+    SettingCreateLanguageVariationParams as SettingCreateLanguageVariationParams,
+)
+from .collection_response_with_total_version_blog import (
+    CollectionResponseWithTotalVersionBlog as CollectionResponseWithTotalVersionBlog,
 )
 from .collection_response_with_total_version_blog_post import (
     CollectionResponseWithTotalVersionBlogPost as CollectionResponseWithTotalVersionBlogPost,
 )
 from .collection_response_with_total_tag_forward_paging import (
     CollectionResponseWithTotalTagForwardPaging as CollectionResponseWithTotalTagForwardPaging,
+)
+from .collection_response_with_total_blog_forward_paging import (
+    CollectionResponseWithTotalBlogForwardPaging as CollectionResponseWithTotalBlogForwardPaging,
 )
 from .collection_response_with_total_blog_post_forward_paging import (
     CollectionResponseWithTotalBlogPostForwardPaging as CollectionResponseWithTotalBlogPostForwardPaging,

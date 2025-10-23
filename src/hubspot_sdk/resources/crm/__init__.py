@@ -88,8 +88,22 @@ from .associations import (
     AssociationsResourceWithStreamingResponse,
     AsyncAssociationsResourceWithStreamingResponse,
 )
+from .app_uninstalls import (
+    AppUninstallsResource,
+    AsyncAppUninstallsResource,
+    AppUninstallsResourceWithRawResponse,
+    AsyncAppUninstallsResourceWithRawResponse,
+    AppUninstallsResourceWithStreamingResponse,
+    AsyncAppUninstallsResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "AppUninstallsResource",
+    "AsyncAppUninstallsResource",
+    "AppUninstallsResourceWithRawResponse",
+    "AsyncAppUninstallsResourceWithRawResponse",
+    "AppUninstallsResourceWithStreamingResponse",
+    "AsyncAppUninstallsResourceWithStreamingResponse",
     "AssociationsResource",
     "AsyncAssociationsResource",
     "AssociationsResourceWithRawResponse",

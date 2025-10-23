@@ -2,8 +2,8 @@
 
 from typing import List, Optional
 
-from .property import Property
 from ..._models import BaseModel
+from ..shared.property import Property
 from ..marketing.paging import Paging
 
 __all__ = ["CollectionResponseProperty"]

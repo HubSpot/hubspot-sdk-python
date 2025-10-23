@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from .option_input_param import OptionInputParam
+from ..shared_params.option_input import OptionInput
 
 __all__ = ["PropertyUpdateParams"]
 
@@ -58,7 +58,7 @@ class PropertyUpdateParams(TypedDict, total=False):
     label: str
     """A human-readable property label that will be shown in HubSpot."""
 
-    options: Iterable[OptionInputParam]
+    options: Iterable[OptionInput]
     """A list of valid options for the property."""
 
     type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"]

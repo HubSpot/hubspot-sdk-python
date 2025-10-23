@@ -7,8 +7,8 @@ from typing_extensions import Required, TypedDict
 
 from .behavioral_event_http_completion_request_param import BehavioralEventHTTPCompletionRequestParam
 
-__all__ = ["BatchSendParams"]
+__all__ = ["SendSendBatchParams"]
 
 
-class BatchSendParams(TypedDict, total=False):
+class SendSendBatchParams(TypedDict, total=False):
     inputs: Required[Iterable[BehavioralEventHTTPCompletionRequestParam]]

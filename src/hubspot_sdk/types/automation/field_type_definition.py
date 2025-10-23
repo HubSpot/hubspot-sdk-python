@@ -6,7 +6,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..crm.option import Option
+from ..shared.option import Option
 
 __all__ = ["FieldTypeDefinition"]
 

@@ -8,10 +8,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["EventSendParams"]
+__all__ = ["SendSendParams"]
 
 
-class EventSendParams(TypedDict, total=False):
+class SendSendParams(TypedDict, total=False):
     event_name: Required[Annotated[str, PropertyInfo(alias="eventName")]]
     """The internal name of the event (`pe<portalID>_eventName`).
 

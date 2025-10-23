@@ -6,16 +6,18 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["OptionInputParam"]
+__all__ = ["OptionInput"]
 
 
-class OptionInputParam(TypedDict, total=False):
+class OptionInput(TypedDict, total=False):
+    display_order: Required[Annotated[int, PropertyInfo(alias="displayOrder")]]
+    """Options are shown in order starting with the lowest positive integer value.
+
+    Values of -1 will cause the option to be displayed after any positive values.
+    """
+
     hidden: Required[bool]
-    """
-    If true, the option will not be shown in forms, bots, or meeting scheduling
-    pages. Supported for contact, company, ticket, and custom object enumeration
-    properties.
-    """
+    """Hidden options won't be shown in HubSpot."""
 
     label: Required[str]
     """A human-readable option label that will be shown in HubSpot."""
@@ -28,9 +30,3 @@ class OptionInputParam(TypedDict, total=False):
 
     description: str
     """A description of the option."""
-
-    display_order: Annotated[int, PropertyInfo(alias="displayOrder")]
-    """Options are shown in order starting with the lowest positive integer value.
-
-    Values of -1 will cause the option to be displayed after any positive values.
-    """

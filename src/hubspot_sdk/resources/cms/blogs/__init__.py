@@ -32,6 +32,14 @@ from .authors import (
     AuthorsResourceWithStreamingResponse,
     AsyncAuthorsResourceWithStreamingResponse,
 )
+from .settings import (
+    SettingsResource,
+    AsyncSettingsResource,
+    SettingsResourceWithRawResponse,
+    AsyncSettingsResourceWithRawResponse,
+    SettingsResourceWithStreamingResponse,
+    AsyncSettingsResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AuthorsResource",
@@ -46,6 +54,12 @@ __all__ = [
     "AsyncPostsResourceWithRawResponse",
     "PostsResourceWithStreamingResponse",
     "AsyncPostsResourceWithStreamingResponse",
+    "SettingsResource",
+    "AsyncSettingsResource",
+    "SettingsResourceWithRawResponse",
+    "AsyncSettingsResourceWithRawResponse",
+    "SettingsResourceWithStreamingResponse",
+    "AsyncSettingsResourceWithStreamingResponse",
     "TagsResource",
     "AsyncTagsResource",
     "TagsResourceWithRawResponse",

@@ -6,9 +6,12 @@ from . import shared
 from .. import _compat
 from .shared import (
     Error as Error,
+    Option as Option,
     Paging as Paging,
     NextPage as NextPage,
+    Property as Property,
     ErrorDetail as ErrorDetail,
+    OptionInput as OptionInput,
     TaskLocator as TaskLocator,
     VersionUser as VersionUser,
     PreviousPage as PreviousPage,
@@ -55,6 +58,7 @@ from .shared import (
     PublicBoolPropertyOperation as PublicBoolPropertyOperation,
     PublicDatePropertyOperation as PublicDatePropertyOperation,
     PublicNumAssociationsFilter as PublicNumAssociationsFilter,
+    PropertyModificationMetadata as PropertyModificationMetadata,
     PublicFiscalQuarterReference as PublicFiscalQuarterReference,
     PublicIntegrationEventFilter as PublicIntegrationEventFilter,
     PublicNumOccurrencesRefineBy as PublicNumOccurrencesRefineBy,

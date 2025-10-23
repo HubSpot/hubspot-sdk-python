@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from ..crm.option_param import OptionParam
+from ..shared_params.option import Option
 
 __all__ = ["ColumnRequestParam"]
 
@@ -21,7 +21,7 @@ class ColumnRequestParam(TypedDict, total=False):
     name: Required[str]
     """Name of the column"""
 
-    options: Required[Iterable[OptionParam]]
+    options: Required[Iterable[Option]]
     """Options to choose for select and multi-select columns"""
 
     type: Required[

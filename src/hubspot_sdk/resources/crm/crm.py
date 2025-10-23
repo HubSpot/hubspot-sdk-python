@@ -36,6 +36,14 @@ from .lists.lists import (
     ListsResourceWithStreamingResponse,
     AsyncListsResourceWithStreamingResponse,
 )
+from .app_uninstalls import (
+    AppUninstallsResource,
+    AsyncAppUninstallsResource,
+    AppUninstallsResourceWithRawResponse,
+    AsyncAppUninstallsResourceWithRawResponse,
+    AppUninstallsResourceWithStreamingResponse,
+    AsyncAppUninstallsResourceWithStreamingResponse,
+)
 from .objects.objects import (
     ObjectsResource,
     AsyncObjectsResource,
@@ -89,6 +97,10 @@ __all__ = ["CRMResource", "AsyncCRMResource"]
 
 
 class CRMResource(SyncAPIResource):
+    @cached_property
+    def app_uninstalls(self) -> AppUninstallsResource:
+        return AppUninstallsResource(self._client)
+
     @cached_property
     def associations(self) -> AssociationsResource:
         return AssociationsResource(self._client)
@@ -150,6 +162,10 @@ class CRMResource(SyncAPIResource):
 
 
 class AsyncCRMResource(AsyncAPIResource):
+    @cached_property
+    def app_uninstalls(self) -> AsyncAppUninstallsResource:
+        return AsyncAppUninstallsResource(self._client)
+
     @cached_property
     def associations(self) -> AsyncAssociationsResource:
         return AsyncAssociationsResource(self._client)
@@ -215,6 +231,10 @@ class CRMResourceWithRawResponse:
         self._crm = crm
 
     @cached_property
+    def app_uninstalls(self) -> AppUninstallsResourceWithRawResponse:
+        return AppUninstallsResourceWithRawResponse(self._crm.app_uninstalls)
+
+    @cached_property
     def associations(self) -> AssociationsResourceWithRawResponse:
         return AssociationsResourceWithRawResponse(self._crm.associations)
 
@@ -258,6 +278,10 @@ class CRMResourceWithRawResponse:
 class AsyncCRMResourceWithRawResponse:
     def __init__(self, crm: AsyncCRMResource) -> None:
         self._crm = crm
+
+    @cached_property
+    def app_uninstalls(self) -> AsyncAppUninstallsResourceWithRawResponse:
+        return AsyncAppUninstallsResourceWithRawResponse(self._crm.app_uninstalls)
 
     @cached_property
     def associations(self) -> AsyncAssociationsResourceWithRawResponse:
@@ -305,6 +329,10 @@ class CRMResourceWithStreamingResponse:
         self._crm = crm
 
     @cached_property
+    def app_uninstalls(self) -> AppUninstallsResourceWithStreamingResponse:
+        return AppUninstallsResourceWithStreamingResponse(self._crm.app_uninstalls)
+
+    @cached_property
     def associations(self) -> AssociationsResourceWithStreamingResponse:
         return AssociationsResourceWithStreamingResponse(self._crm.associations)
 
@@ -348,6 +376,10 @@ class CRMResourceWithStreamingResponse:
 class AsyncCRMResourceWithStreamingResponse:
     def __init__(self, crm: AsyncCRMResource) -> None:
         self._crm = crm
+
+    @cached_property
+    def app_uninstalls(self) -> AsyncAppUninstallsResourceWithStreamingResponse:
+        return AsyncAppUninstallsResourceWithStreamingResponse(self._crm.app_uninstalls)
 
     @cached_property
     def associations(self) -> AsyncAssociationsResourceWithStreamingResponse:
