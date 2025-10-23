@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.4 (2025-10-23)
+
+Full Changelog: [v0.4.3...v0.4.4](https://github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/compare/v0.4.3...v0.4.4)
+
+### Chores
+
+* remove custom code ([10eadea](https://github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/commit/10eadeacbde3531a4666570ad97c571a40e7ed68))
+
 ## 0.4.3 (2025-10-22)
 
 Full Changelog: [v0.4.2...v0.4.3](https://github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/compare/v0.4.2...v0.4.3)
