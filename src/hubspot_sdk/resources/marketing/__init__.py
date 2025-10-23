@@ -32,6 +32,22 @@ from .subscriptions import (
     SubscriptionsResourceWithStreamingResponse,
     AsyncSubscriptionsResourceWithStreamingResponse,
 )
+from .transactional import (
+    TransactionalResource,
+    AsyncTransactionalResource,
+    TransactionalResourceWithRawResponse,
+    AsyncTransactionalResourceWithRawResponse,
+    TransactionalResourceWithStreamingResponse,
+    AsyncTransactionalResourceWithStreamingResponse,
+)
+from .marketing_events import (
+    MarketingEventsResource,
+    AsyncMarketingEventsResource,
+    MarketingEventsResourceWithRawResponse,
+    AsyncMarketingEventsResourceWithRawResponse,
+    MarketingEventsResourceWithStreamingResponse,
+    AsyncMarketingEventsResourceWithStreamingResponse,
+)
 
 __all__ = [
     "EmailsResource",
@@ -46,12 +62,24 @@ __all__ = [
     "AsyncFormsResourceWithRawResponse",
     "FormsResourceWithStreamingResponse",
     "AsyncFormsResourceWithStreamingResponse",
+    "MarketingEventsResource",
+    "AsyncMarketingEventsResource",
+    "MarketingEventsResourceWithRawResponse",
+    "AsyncMarketingEventsResourceWithRawResponse",
+    "MarketingEventsResourceWithStreamingResponse",
+    "AsyncMarketingEventsResourceWithStreamingResponse",
     "SubscriptionsResource",
     "AsyncSubscriptionsResource",
     "SubscriptionsResourceWithRawResponse",
     "AsyncSubscriptionsResourceWithRawResponse",
     "SubscriptionsResourceWithStreamingResponse",
     "AsyncSubscriptionsResourceWithStreamingResponse",
+    "TransactionalResource",
+    "AsyncTransactionalResource",
+    "TransactionalResourceWithRawResponse",
+    "AsyncTransactionalResourceWithRawResponse",
+    "TransactionalResourceWithStreamingResponse",
+    "AsyncTransactionalResourceWithStreamingResponse",
     "MarketingResource",
     "AsyncMarketingResource",
     "MarketingResourceWithRawResponse",

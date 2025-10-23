@@ -7,8 +7,8 @@ from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
-from .public_access_rule_param import PublicAccessRuleParam
-from .content_language_variation_param import ContentLanguageVariationParam
+from ..public_access_rule_param import PublicAccessRuleParam
+from ..content_language_variation_param import ContentLanguageVariationParam
 
 __all__ = ["PostUpdateParams"]
 
@@ -1043,4 +1043,4 @@ class PostUpdateParams(TypedDict, total=False):
     """Specifies whether to update deleted blog posts. Defaults to `false`."""
 
 
-from .layout_section_param import LayoutSectionParam
+from ..layout_section_param import LayoutSectionParam

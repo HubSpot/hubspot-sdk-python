@@ -9,9 +9,15 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types import File, FileStat, SignedURL, FileActionResponse, ImportFromURLTaskLocator
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
+from hubspot_sdk.types.files import (
+    File,
+    FileStat,
+    SignedURL,
+    FileActionResponse,
+    ImportFromURLTaskLocator,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -264,16 +270,16 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_import_from_url_async_status(self, client: HubSpot) -> None:
-        file = client.files.files.get_import_from_url_async_status(
+    def test_method_get_import_task_status(self, client: HubSpot) -> None:
+        file = client.files.files.get_import_task_status(
             "taskId",
         )
         assert_matches_type(FileActionResponse, file, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_import_from_url_async_status(self, client: HubSpot) -> None:
-        response = client.files.files.with_raw_response.get_import_from_url_async_status(
+    def test_raw_response_get_import_task_status(self, client: HubSpot) -> None:
+        response = client.files.files.with_raw_response.get_import_task_status(
             "taskId",
         )
 
@@ -284,8 +290,8 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_import_from_url_async_status(self, client: HubSpot) -> None:
-        with client.files.files.with_streaming_response.get_import_from_url_async_status(
+    def test_streaming_response_get_import_task_status(self, client: HubSpot) -> None:
+        with client.files.files.with_streaming_response.get_import_task_status(
             "taskId",
         ) as response:
             assert not response.is_closed
@@ -298,9 +304,9 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_import_from_url_async_status(self, client: HubSpot) -> None:
+    def test_path_params_get_import_task_status(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
-            client.files.files.with_raw_response.get_import_from_url_async_status(
+            client.files.files.with_raw_response.get_import_task_status(
                 "",
             )
 
@@ -827,16 +833,16 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_import_from_url_async_status(self, async_client: AsyncHubSpot) -> None:
-        file = await async_client.files.files.get_import_from_url_async_status(
+    async def test_method_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
+        file = await async_client.files.files.get_import_task_status(
             "taskId",
         )
         assert_matches_type(FileActionResponse, file, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_import_from_url_async_status(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.files.files.with_raw_response.get_import_from_url_async_status(
+    async def test_raw_response_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.files.files.with_raw_response.get_import_task_status(
             "taskId",
         )
 
@@ -847,8 +853,8 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_import_from_url_async_status(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.files.files.with_streaming_response.get_import_from_url_async_status(
+    async def test_streaming_response_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.files.files.with_streaming_response.get_import_task_status(
             "taskId",
         ) as response:
             assert not response.is_closed
@@ -861,9 +867,9 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_import_from_url_async_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
-            await async_client.files.files.with_raw_response.get_import_from_url_async_status(
+            await async_client.files.files.with_raw_response.get_import_task_status(
                 "",
             )
 

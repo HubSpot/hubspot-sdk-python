@@ -2,7 +2,17 @@
 
 from __future__ import annotations
 
-from .actions import (
+from ..._compat import cached_property
+from .workflows import (
+    WorkflowsResource,
+    AsyncWorkflowsResource,
+    WorkflowsResourceWithRawResponse,
+    AsyncWorkflowsResourceWithRawResponse,
+    WorkflowsResourceWithStreamingResponse,
+    AsyncWorkflowsResourceWithStreamingResponse,
+)
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from .actions.actions import (
     ActionsResource,
     AsyncActionsResource,
     ActionsResourceWithRawResponse,
@@ -10,8 +20,6 @@ from .actions import (
     ActionsResourceWithStreamingResponse,
     AsyncActionsResourceWithStreamingResponse,
 )
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
 
 __all__ = ["AutomationResource", "AsyncAutomationResource"]
 
@@ -22,12 +30,16 @@ class AutomationResource(SyncAPIResource):
         return ActionsResource(self._client)
 
     @cached_property
+    def workflows(self) -> WorkflowsResource:
+        return WorkflowsResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AutomationResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AutomationResourceWithRawResponse(self)
 
@@ -36,7 +48,7 @@ class AutomationResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AutomationResourceWithStreamingResponse(self)
 
@@ -47,12 +59,16 @@ class AsyncAutomationResource(AsyncAPIResource):
         return AsyncActionsResource(self._client)
 
     @cached_property
+    def workflows(self) -> AsyncWorkflowsResource:
+        return AsyncWorkflowsResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncAutomationResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncAutomationResourceWithRawResponse(self)
 
@@ -61,7 +77,7 @@ class AsyncAutomationResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncAutomationResourceWithStreamingResponse(self)
 
@@ -74,6 +90,10 @@ class AutomationResourceWithRawResponse:
     def actions(self) -> ActionsResourceWithRawResponse:
         return ActionsResourceWithRawResponse(self._automation.actions)
 
+    @cached_property
+    def workflows(self) -> WorkflowsResourceWithRawResponse:
+        return WorkflowsResourceWithRawResponse(self._automation.workflows)
+
 
 class AsyncAutomationResourceWithRawResponse:
     def __init__(self, automation: AsyncAutomationResource) -> None:
@@ -82,6 +102,10 @@ class AsyncAutomationResourceWithRawResponse:
     @cached_property
     def actions(self) -> AsyncActionsResourceWithRawResponse:
         return AsyncActionsResourceWithRawResponse(self._automation.actions)
+
+    @cached_property
+    def workflows(self) -> AsyncWorkflowsResourceWithRawResponse:
+        return AsyncWorkflowsResourceWithRawResponse(self._automation.workflows)
 
 
 class AutomationResourceWithStreamingResponse:
@@ -92,6 +116,10 @@ class AutomationResourceWithStreamingResponse:
     def actions(self) -> ActionsResourceWithStreamingResponse:
         return ActionsResourceWithStreamingResponse(self._automation.actions)
 
+    @cached_property
+    def workflows(self) -> WorkflowsResourceWithStreamingResponse:
+        return WorkflowsResourceWithStreamingResponse(self._automation.workflows)
+
 
 class AsyncAutomationResourceWithStreamingResponse:
     def __init__(self, automation: AsyncAutomationResource) -> None:
@@ -100,3 +128,7 @@ class AsyncAutomationResourceWithStreamingResponse:
     @cached_property
     def actions(self) -> AsyncActionsResourceWithStreamingResponse:
         return AsyncActionsResourceWithStreamingResponse(self._automation.actions)
+
+    @cached_property
+    def workflows(self) -> AsyncWorkflowsResourceWithStreamingResponse:
+        return AsyncWorkflowsResourceWithStreamingResponse(self._automation.workflows)

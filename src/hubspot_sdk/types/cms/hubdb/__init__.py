@@ -10,14 +10,14 @@ from .table_list_params import TableListParams as TableListParams
 from .table_create_params import TableCreateParams as TableCreateParams
 from .table_export_params import TableExportParams as TableExportParams
 from .row_get_draft_params import RowGetDraftParams as RowGetDraftParams
+from .row_list_draft_params import RowListDraftParams as RowListDraftParams
 from .row_clone_draft_params import RowCloneDraftParams as RowCloneDraftParams
-from .row_list_drafts_params import RowListDraftsParams as RowListDraftsParams
 from .table_get_draft_params import TableGetDraftParams as TableGetDraftParams
 from .table_unpublish_params import TableUnpublishParams as TableUnpublishParams
 from .row_update_draft_params import RowUpdateDraftParams as RowUpdateDraftParams
+from .table_list_draft_params import TableListDraftParams as TableListDraftParams
 from .row_replace_draft_params import RowReplaceDraftParams as RowReplaceDraftParams
 from .table_clone_draft_params import TableCloneDraftParams as TableCloneDraftParams
-from .table_list_drafts_params import TableListDraftsParams as TableListDraftsParams
 from .table_reset_draft_params import TableResetDraftParams as TableResetDraftParams
 from .table_export_draft_params import TableExportDraftParams as TableExportDraftParams
 from .table_import_draft_params import TableImportDraftParams as TableImportDraftParams

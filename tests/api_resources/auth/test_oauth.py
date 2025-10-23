@@ -9,7 +9,11 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.auth import TokenResponseIf, RefreshTokenInfoResponse
+from hubspot_sdk.types.auth import (
+    TokenResponseIf,
+    AccessTokenInfoResponse,
+    RefreshTokenInfoResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,14 +23,14 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
-        oauth = client.auth.oauth.create()
+    def test_method_create_access_token(self, client: HubSpot) -> None:
+        oauth = client.auth.oauth.create_access_token()
         assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
-        oauth = client.auth.oauth.create(
+    def test_method_create_access_token_with_all_params(self, client: HubSpot) -> None:
+        oauth = client.auth.oauth.create_access_token(
             client_id="client_id",
             client_secret="client_secret",
             code="code",
@@ -38,8 +42,8 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
-        response = client.auth.oauth.with_raw_response.create()
+    def test_raw_response_create_access_token(self, client: HubSpot) -> None:
+        response = client.auth.oauth.with_raw_response.create_access_token()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -48,8 +52,8 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
-        with client.auth.oauth.with_streaming_response.create() as response:
+    def test_streaming_response_create_access_token(self, client: HubSpot) -> None:
+        with client.auth.oauth.with_streaming_response.create_access_token() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -60,16 +64,16 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
-        oauth = client.auth.oauth.delete(
+    def test_method_delete_refresh_token(self, client: HubSpot) -> None:
+        oauth = client.auth.oauth.delete_refresh_token(
             "token",
         )
         assert oauth is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
-        response = client.auth.oauth.with_raw_response.delete(
+    def test_raw_response_delete_refresh_token(self, client: HubSpot) -> None:
+        response = client.auth.oauth.with_raw_response.delete_refresh_token(
             "token",
         )
 
@@ -80,8 +84,8 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
-        with client.auth.oauth.with_streaming_response.delete(
+    def test_streaming_response_delete_refresh_token(self, client: HubSpot) -> None:
+        with client.auth.oauth.with_streaming_response.delete_refresh_token(
             "token",
         ) as response:
             assert not response.is_closed
@@ -94,24 +98,66 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete_refresh_token(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `token` but received ''"):
-            client.auth.oauth.with_raw_response.delete(
+            client.auth.oauth.with_raw_response.delete_refresh_token(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
-        oauth = client.auth.oauth.get(
+    def test_method_get_access_token(self, client: HubSpot) -> None:
+        oauth = client.auth.oauth.get_access_token(
+            "token",
+        )
+        assert_matches_type(AccessTokenInfoResponse, oauth, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_get_access_token(self, client: HubSpot) -> None:
+        response = client.auth.oauth.with_raw_response.get_access_token(
+            "token",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        oauth = response.parse()
+        assert_matches_type(AccessTokenInfoResponse, oauth, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_get_access_token(self, client: HubSpot) -> None:
+        with client.auth.oauth.with_streaming_response.get_access_token(
+            "token",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            oauth = response.parse()
+            assert_matches_type(AccessTokenInfoResponse, oauth, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_get_access_token(self, client: HubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `token` but received ''"):
+            client.auth.oauth.with_raw_response.get_access_token(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_refresh_token(self, client: HubSpot) -> None:
+        oauth = client.auth.oauth.get_refresh_token(
             "token",
         )
         assert_matches_type(RefreshTokenInfoResponse, oauth, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
-        response = client.auth.oauth.with_raw_response.get(
+    def test_raw_response_get_refresh_token(self, client: HubSpot) -> None:
+        response = client.auth.oauth.with_raw_response.get_refresh_token(
             "token",
         )
 
@@ -122,8 +168,8 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
-        with client.auth.oauth.with_streaming_response.get(
+    def test_streaming_response_get_refresh_token(self, client: HubSpot) -> None:
+        with client.auth.oauth.with_streaming_response.get_refresh_token(
             "token",
         ) as response:
             assert not response.is_closed
@@ -136,9 +182,9 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get_refresh_token(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `token` but received ''"):
-            client.auth.oauth.with_raw_response.get(
+            client.auth.oauth.with_raw_response.get_refresh_token(
                 "",
             )
 
@@ -150,14 +196,14 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
-        oauth = await async_client.auth.oauth.create()
+    async def test_method_create_access_token(self, async_client: AsyncHubSpot) -> None:
+        oauth = await async_client.auth.oauth.create_access_token()
         assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        oauth = await async_client.auth.oauth.create(
+    async def test_method_create_access_token_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        oauth = await async_client.auth.oauth.create_access_token(
             client_id="client_id",
             client_secret="client_secret",
             code="code",
@@ -169,8 +215,8 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.auth.oauth.with_raw_response.create()
+    async def test_raw_response_create_access_token(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.auth.oauth.with_raw_response.create_access_token()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -179,8 +225,8 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.auth.oauth.with_streaming_response.create() as response:
+    async def test_streaming_response_create_access_token(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.auth.oauth.with_streaming_response.create_access_token() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -191,16 +237,16 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
-        oauth = await async_client.auth.oauth.delete(
+    async def test_method_delete_refresh_token(self, async_client: AsyncHubSpot) -> None:
+        oauth = await async_client.auth.oauth.delete_refresh_token(
             "token",
         )
         assert oauth is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.auth.oauth.with_raw_response.delete(
+    async def test_raw_response_delete_refresh_token(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.auth.oauth.with_raw_response.delete_refresh_token(
             "token",
         )
 
@@ -211,8 +257,8 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.auth.oauth.with_streaming_response.delete(
+    async def test_streaming_response_delete_refresh_token(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.auth.oauth.with_streaming_response.delete_refresh_token(
             "token",
         ) as response:
             assert not response.is_closed
@@ -225,24 +271,66 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete_refresh_token(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `token` but received ''"):
-            await async_client.auth.oauth.with_raw_response.delete(
+            await async_client.auth.oauth.with_raw_response.delete_refresh_token(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
-        oauth = await async_client.auth.oauth.get(
+    async def test_method_get_access_token(self, async_client: AsyncHubSpot) -> None:
+        oauth = await async_client.auth.oauth.get_access_token(
+            "token",
+        )
+        assert_matches_type(AccessTokenInfoResponse, oauth, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_get_access_token(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.auth.oauth.with_raw_response.get_access_token(
+            "token",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        oauth = await response.parse()
+        assert_matches_type(AccessTokenInfoResponse, oauth, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_access_token(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.auth.oauth.with_streaming_response.get_access_token(
+            "token",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            oauth = await response.parse()
+            assert_matches_type(AccessTokenInfoResponse, oauth, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_get_access_token(self, async_client: AsyncHubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `token` but received ''"):
+            await async_client.auth.oauth.with_raw_response.get_access_token(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_refresh_token(self, async_client: AsyncHubSpot) -> None:
+        oauth = await async_client.auth.oauth.get_refresh_token(
             "token",
         )
         assert_matches_type(RefreshTokenInfoResponse, oauth, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.auth.oauth.with_raw_response.get(
+    async def test_raw_response_get_refresh_token(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.auth.oauth.with_raw_response.get_refresh_token(
             "token",
         )
 
@@ -253,8 +341,8 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.auth.oauth.with_streaming_response.get(
+    async def test_streaming_response_get_refresh_token(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.auth.oauth.with_streaming_response.get_refresh_token(
             "token",
         ) as response:
             assert not response.is_closed
@@ -267,8 +355,8 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_refresh_token(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `token` but received ''"):
-            await async_client.auth.oauth.with_raw_response.get(
+            await async_client.auth.oauth.with_raw_response.get_refresh_token(
                 "",
             )

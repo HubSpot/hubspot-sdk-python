@@ -16,9 +16,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.auth import oauth_create_params
+from ...types.auth import oauth_create_access_token_params
 from ..._base_client import make_request_options
 from ...types.auth.token_response_if import TokenResponseIf
+from ...types.auth.access_token_info_response import AccessTokenInfoResponse
 from ...types.auth.refresh_token_info_response import RefreshTokenInfoResponse
 
 __all__ = ["OAuthResource", "AsyncOAuthResource"]
@@ -31,7 +32,7 @@ class OAuthResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return OAuthResourceWithRawResponse(self)
 
@@ -40,11 +41,11 @@ class OAuthResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return OAuthResourceWithStreamingResponse(self)
 
-    def create(
+    def create_access_token(
         self,
         *,
         client_id: str | Omit = omit,
@@ -95,7 +96,7 @@ class OAuthResource(SyncAPIResource):
                     "redirect_uri": redirect_uri,
                     "refresh_token": refresh_token,
                 },
-                oauth_create_params.OAuthCreateParams,
+                oauth_create_access_token_params.OAuthCreateAccessTokenParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -103,7 +104,7 @@ class OAuthResource(SyncAPIResource):
             cast_to=TokenResponseIf,
         )
 
-    def delete(
+    def delete_refresh_token(
         self,
         token: str,
         *,
@@ -142,7 +143,45 @@ class OAuthResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def get(
+    def get_access_token(
+        self,
+        token: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AccessTokenInfoResponse:
+        """
+        Retrieve a token's metadata, including the email address of the user that the
+        token was created for and the ID of the account it's associated with.
+
+        Note: HubSpot access tokens will fluctuate in size as the information that's
+        encoded in them changes over time. It's recommended to allow for tokens to be up
+        to 300 characters to account for any potential changes.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not token:
+            raise ValueError(f"Expected a non-empty value for `token` but received {token!r}")
+        return self._get(
+            f"/oauth/v1/access-tokens/{token}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AccessTokenInfoResponse,
+        )
+
+    def get_refresh_token(
         self,
         token: str,
         *,
@@ -186,7 +225,7 @@ class AsyncOAuthResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncOAuthResourceWithRawResponse(self)
 
@@ -195,11 +234,11 @@ class AsyncOAuthResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncOAuthResourceWithStreamingResponse(self)
 
-    async def create(
+    async def create_access_token(
         self,
         *,
         client_id: str | Omit = omit,
@@ -250,7 +289,7 @@ class AsyncOAuthResource(AsyncAPIResource):
                     "redirect_uri": redirect_uri,
                     "refresh_token": refresh_token,
                 },
-                oauth_create_params.OAuthCreateParams,
+                oauth_create_access_token_params.OAuthCreateAccessTokenParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -258,7 +297,7 @@ class AsyncOAuthResource(AsyncAPIResource):
             cast_to=TokenResponseIf,
         )
 
-    async def delete(
+    async def delete_refresh_token(
         self,
         token: str,
         *,
@@ -297,7 +336,45 @@ class AsyncOAuthResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def get(
+    async def get_access_token(
+        self,
+        token: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AccessTokenInfoResponse:
+        """
+        Retrieve a token's metadata, including the email address of the user that the
+        token was created for and the ID of the account it's associated with.
+
+        Note: HubSpot access tokens will fluctuate in size as the information that's
+        encoded in them changes over time. It's recommended to allow for tokens to be up
+        to 300 characters to account for any potential changes.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not token:
+            raise ValueError(f"Expected a non-empty value for `token` but received {token!r}")
+        return await self._get(
+            f"/oauth/v1/access-tokens/{token}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AccessTokenInfoResponse,
+        )
+
+    async def get_refresh_token(
         self,
         token: str,
         *,
@@ -338,14 +415,17 @@ class OAuthResourceWithRawResponse:
     def __init__(self, oauth: OAuthResource) -> None:
         self._oauth = oauth
 
-        self.create = to_raw_response_wrapper(
-            oauth.create,
+        self.create_access_token = to_raw_response_wrapper(
+            oauth.create_access_token,
         )
-        self.delete = to_raw_response_wrapper(
-            oauth.delete,
+        self.delete_refresh_token = to_raw_response_wrapper(
+            oauth.delete_refresh_token,
         )
-        self.get = to_raw_response_wrapper(
-            oauth.get,
+        self.get_access_token = to_raw_response_wrapper(
+            oauth.get_access_token,
+        )
+        self.get_refresh_token = to_raw_response_wrapper(
+            oauth.get_refresh_token,
         )
 
 
@@ -353,14 +433,17 @@ class AsyncOAuthResourceWithRawResponse:
     def __init__(self, oauth: AsyncOAuthResource) -> None:
         self._oauth = oauth
 
-        self.create = async_to_raw_response_wrapper(
-            oauth.create,
+        self.create_access_token = async_to_raw_response_wrapper(
+            oauth.create_access_token,
         )
-        self.delete = async_to_raw_response_wrapper(
-            oauth.delete,
+        self.delete_refresh_token = async_to_raw_response_wrapper(
+            oauth.delete_refresh_token,
         )
-        self.get = async_to_raw_response_wrapper(
-            oauth.get,
+        self.get_access_token = async_to_raw_response_wrapper(
+            oauth.get_access_token,
+        )
+        self.get_refresh_token = async_to_raw_response_wrapper(
+            oauth.get_refresh_token,
         )
 
 
@@ -368,14 +451,17 @@ class OAuthResourceWithStreamingResponse:
     def __init__(self, oauth: OAuthResource) -> None:
         self._oauth = oauth
 
-        self.create = to_streamed_response_wrapper(
-            oauth.create,
+        self.create_access_token = to_streamed_response_wrapper(
+            oauth.create_access_token,
         )
-        self.delete = to_streamed_response_wrapper(
-            oauth.delete,
+        self.delete_refresh_token = to_streamed_response_wrapper(
+            oauth.delete_refresh_token,
         )
-        self.get = to_streamed_response_wrapper(
-            oauth.get,
+        self.get_access_token = to_streamed_response_wrapper(
+            oauth.get_access_token,
+        )
+        self.get_refresh_token = to_streamed_response_wrapper(
+            oauth.get_refresh_token,
         )
 
 
@@ -383,12 +469,15 @@ class AsyncOAuthResourceWithStreamingResponse:
     def __init__(self, oauth: AsyncOAuthResource) -> None:
         self._oauth = oauth
 
-        self.create = async_to_streamed_response_wrapper(
-            oauth.create,
+        self.create_access_token = async_to_streamed_response_wrapper(
+            oauth.create_access_token,
         )
-        self.delete = async_to_streamed_response_wrapper(
-            oauth.delete,
+        self.delete_refresh_token = async_to_streamed_response_wrapper(
+            oauth.delete_refresh_token,
         )
-        self.get = async_to_streamed_response_wrapper(
-            oauth.get,
+        self.get_access_token = async_to_streamed_response_wrapper(
+            oauth.get_access_token,
+        )
+        self.get_refresh_token = async_to_streamed_response_wrapper(
+            oauth.get_refresh_token,
         )

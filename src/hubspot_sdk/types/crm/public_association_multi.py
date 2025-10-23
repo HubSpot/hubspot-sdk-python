@@ -5,7 +5,7 @@ from typing import List, Optional
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..associated_id import AssociatedID
+from .associated_id import AssociatedID
 from ..marketing.paging import Paging
 from ..shared.public_object_id import PublicObjectID
 

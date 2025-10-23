@@ -9,7 +9,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from .content_language_variation import ContentLanguageVariation
+from ..content_language_variation import ContentLanguageVariation
 
 __all__ = ["BlogPost"]
 
@@ -1026,4 +1026,4 @@ class BlogPost(BaseModel):
     """A data structure containing the data for all the modules for this page."""
 
 
-from .layout_section import LayoutSection
+from ..layout_section import LayoutSection

@@ -13,7 +13,6 @@ from hubspot_sdk.types.crm import (
     SimplePublicObject,
     CreatedResponseSimplePublicObject,
     SimplePublicObjectWithAssociations,
-    BatchResponseSimplePublicUpsertObject,
     CollectionResponseWithTotalSimplePublicObject,
 )
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -43,7 +42,7 @@ class TestDeals:
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 279,
+                            "association_type_id": 0,
                         }
                     ],
                 }
@@ -258,6 +257,61 @@ class TestDeals:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_get(self, client: HubSpot) -> None:
+        deal = client.crm.objects.deals.get(
+            deal_id="dealId",
+        )
+        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+        deal = client.crm.objects.deals.get(
+            deal_id="dealId",
+            archived=True,
+            associations=["string"],
+            id_property="idProperty",
+            properties=["string"],
+            properties_with_history=["string"],
+        )
+        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.crm.objects.deals.with_raw_response.get(
+            deal_id="dealId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        deal = response.parse()
+        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.crm.objects.deals.with_streaming_response.get(
+            deal_id="dealId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            deal = response.parse()
+            assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_get(self, client: HubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deal_id` but received ''"):
+            client.crm.objects.deals.with_raw_response.get(
+                deal_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_method_merge(self, client: HubSpot) -> None:
         deal = client.crm.objects.deals.merge(
             object_id_to_merge="objectIdToMerge",
@@ -295,61 +349,6 @@ class TestDeals:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        deal = client.crm.objects.deals.read(
-            deal_id="dealId",
-        )
-        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read_with_all_params(self, client: HubSpot) -> None:
-        deal = client.crm.objects.deals.read(
-            deal_id="dealId",
-            archived=True,
-            associations=["string"],
-            id_property="idProperty",
-            properties=["string"],
-            properties_with_history=["string"],
-        )
-        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.crm.objects.deals.with_raw_response.read(
-            deal_id="dealId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        deal = response.parse()
-        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.crm.objects.deals.with_streaming_response.read(
-            deal_id="dealId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            deal = response.parse()
-            assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deal_id` but received ''"):
-            client.crm.objects.deals.with_raw_response.read(
-                deal_id="",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
     def test_method_search(self, client: HubSpot) -> None:
         deal = client.crm.objects.deals.search()
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, deal, path=["response"])
@@ -364,9 +363,9 @@ class TestDeals:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "propertyName",
-                            "high_value": "highValue",
-                            "value": "value",
+                            "property_name": "",
+                            "high_value": "",
+                            "value": "",
                             "values": ["string"],
                         }
                     ]
@@ -401,55 +400,6 @@ class TestDeals:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_upsert(self, client: HubSpot) -> None:
-        deal = client.crm.objects.deals.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-        assert_matches_type(BatchResponseSimplePublicUpsertObject, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_upsert(self, client: HubSpot) -> None:
-        response = client.crm.objects.deals.with_raw_response.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        deal = response.parse()
-        assert_matches_type(BatchResponseSimplePublicUpsertObject, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_upsert(self, client: HubSpot) -> None:
-        with client.crm.objects.deals.with_streaming_response.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            deal = response.parse()
-            assert_matches_type(BatchResponseSimplePublicUpsertObject, deal, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
 
 class TestAsyncDeals:
     parametrize = pytest.mark.parametrize(
@@ -475,7 +425,7 @@ class TestAsyncDeals:
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 279,
+                            "association_type_id": 0,
                         }
                     ],
                 }
@@ -690,6 +640,61 @@ class TestAsyncDeals:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        deal = await async_client.crm.objects.deals.get(
+            deal_id="dealId",
+        )
+        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        deal = await async_client.crm.objects.deals.get(
+            deal_id="dealId",
+            archived=True,
+            associations=["string"],
+            id_property="idProperty",
+            properties=["string"],
+            properties_with_history=["string"],
+        )
+        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.crm.objects.deals.with_raw_response.get(
+            deal_id="dealId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        deal = await response.parse()
+        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.crm.objects.deals.with_streaming_response.get(
+            deal_id="dealId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            deal = await response.parse()
+            assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deal_id` but received ''"):
+            await async_client.crm.objects.deals.with_raw_response.get(
+                deal_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     async def test_method_merge(self, async_client: AsyncHubSpot) -> None:
         deal = await async_client.crm.objects.deals.merge(
             object_id_to_merge="objectIdToMerge",
@@ -727,61 +732,6 @@ class TestAsyncDeals:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        deal = await async_client.crm.objects.deals.read(
-            deal_id="dealId",
-        )
-        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        deal = await async_client.crm.objects.deals.read(
-            deal_id="dealId",
-            archived=True,
-            associations=["string"],
-            id_property="idProperty",
-            properties=["string"],
-            properties_with_history=["string"],
-        )
-        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.objects.deals.with_raw_response.read(
-            deal_id="dealId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        deal = await response.parse()
-        assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.objects.deals.with_streaming_response.read(
-            deal_id="dealId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            deal = await response.parse()
-            assert_matches_type(SimplePublicObjectWithAssociations, deal, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deal_id` but received ''"):
-            await async_client.crm.objects.deals.with_raw_response.read(
-                deal_id="",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
     async def test_method_search(self, async_client: AsyncHubSpot) -> None:
         deal = await async_client.crm.objects.deals.search()
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, deal, path=["response"])
@@ -796,9 +746,9 @@ class TestAsyncDeals:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "propertyName",
-                            "high_value": "highValue",
-                            "value": "value",
+                            "property_name": "",
+                            "high_value": "",
+                            "value": "",
                             "values": ["string"],
                         }
                     ]
@@ -830,54 +780,5 @@ class TestAsyncDeals:
 
             deal = await response.parse()
             assert_matches_type(CollectionResponseWithTotalSimplePublicObject, deal, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_upsert(self, async_client: AsyncHubSpot) -> None:
-        deal = await async_client.crm.objects.deals.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-        assert_matches_type(BatchResponseSimplePublicUpsertObject, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_upsert(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.objects.deals.with_raw_response.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        deal = await response.parse()
-        assert_matches_type(BatchResponseSimplePublicUpsertObject, deal, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_upsert(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.objects.deals.with_streaming_response.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            deal = await response.parse()
-            assert_matches_type(BatchResponseSimplePublicUpsertObject, deal, path=["response"])
 
         assert cast(Any, response.is_closed) is True

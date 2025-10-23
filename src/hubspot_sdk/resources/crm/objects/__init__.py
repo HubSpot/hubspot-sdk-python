@@ -8,6 +8,14 @@ from .deals import (
     DealsResourceWithStreamingResponse,
     AsyncDealsResourceWithStreamingResponse,
 )
+from .custom import (
+    CustomResource,
+    AsyncCustomResource,
+    CustomResourceWithRawResponse,
+    AsyncCustomResourceWithRawResponse,
+    CustomResourceWithStreamingResponse,
+    AsyncCustomResourceWithStreamingResponse,
+)
 from .objects import (
     ObjectsResource,
     AsyncObjectsResource,
@@ -32,6 +40,14 @@ from .contacts import (
     ContactsResourceWithStreamingResponse,
     AsyncContactsResourceWithStreamingResponse,
 )
+from .meetings import (
+    MeetingsResource,
+    AsyncMeetingsResource,
+    MeetingsResourceWithRawResponse,
+    AsyncMeetingsResourceWithRawResponse,
+    MeetingsResourceWithStreamingResponse,
+    AsyncMeetingsResourceWithStreamingResponse,
+)
 from .companies import (
     CompaniesResource,
     AsyncCompaniesResource,
@@ -39,6 +55,14 @@ from .companies import (
     AsyncCompaniesResourceWithRawResponse,
     CompaniesResourceWithStreamingResponse,
     AsyncCompaniesResourceWithStreamingResponse,
+)
+from .deal_splits import (
+    DealSplitsResource,
+    AsyncDealSplitsResource,
+    DealSplitsResourceWithRawResponse,
+    AsyncDealSplitsResourceWithRawResponse,
+    DealSplitsResourceWithStreamingResponse,
+    AsyncDealSplitsResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -54,12 +78,30 @@ __all__ = [
     "AsyncContactsResourceWithRawResponse",
     "ContactsResourceWithStreamingResponse",
     "AsyncContactsResourceWithStreamingResponse",
+    "CustomResource",
+    "AsyncCustomResource",
+    "CustomResourceWithRawResponse",
+    "AsyncCustomResourceWithRawResponse",
+    "CustomResourceWithStreamingResponse",
+    "AsyncCustomResourceWithStreamingResponse",
+    "DealSplitsResource",
+    "AsyncDealSplitsResource",
+    "DealSplitsResourceWithRawResponse",
+    "AsyncDealSplitsResourceWithRawResponse",
+    "DealSplitsResourceWithStreamingResponse",
+    "AsyncDealSplitsResourceWithStreamingResponse",
     "DealsResource",
     "AsyncDealsResource",
     "DealsResourceWithRawResponse",
     "AsyncDealsResourceWithRawResponse",
     "DealsResourceWithStreamingResponse",
     "AsyncDealsResourceWithStreamingResponse",
+    "MeetingsResource",
+    "AsyncMeetingsResource",
+    "MeetingsResourceWithRawResponse",
+    "AsyncMeetingsResourceWithRawResponse",
+    "MeetingsResourceWithStreamingResponse",
+    "AsyncMeetingsResourceWithStreamingResponse",
     "SchemasResource",
     "AsyncSchemasResource",
     "SchemasResourceWithRawResponse",

@@ -42,7 +42,7 @@ class TestContacts:
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 279,
+                            "association_type_id": 0,
                         }
                     ],
                 }
@@ -239,6 +239,103 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_gdpr_delete(self, client: HubSpot) -> None:
+        contact = client.crm.objects.contacts.gdpr_delete(
+            object_id="objectId",
+        )
+        assert contact is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_gdpr_delete_with_all_params(self, client: HubSpot) -> None:
+        contact = client.crm.objects.contacts.gdpr_delete(
+            object_id="objectId",
+            id_property="idProperty",
+        )
+        assert contact is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_gdpr_delete(self, client: HubSpot) -> None:
+        response = client.crm.objects.contacts.with_raw_response.gdpr_delete(
+            object_id="objectId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = response.parse()
+        assert contact is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_gdpr_delete(self, client: HubSpot) -> None:
+        with client.crm.objects.contacts.with_streaming_response.gdpr_delete(
+            object_id="objectId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = response.parse()
+            assert contact is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get(self, client: HubSpot) -> None:
+        contact = client.crm.objects.contacts.get(
+            contact_id="contactId",
+        )
+        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+        contact = client.crm.objects.contacts.get(
+            contact_id="contactId",
+            archived=True,
+            associations=["string"],
+            properties=["string"],
+            properties_with_history=["string"],
+        )
+        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.crm.objects.contacts.with_raw_response.get(
+            contact_id="contactId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = response.parse()
+        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.crm.objects.contacts.with_streaming_response.get(
+            contact_id="contactId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = response.parse()
+            assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_get(self, client: HubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
+            client.crm.objects.contacts.with_raw_response.get(
+                contact_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_method_merge(self, client: HubSpot) -> None:
         contact = client.crm.objects.contacts.merge(
             object_id_to_merge="objectIdToMerge",
@@ -276,103 +373,6 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_purge(self, client: HubSpot) -> None:
-        contact = client.crm.objects.contacts.purge(
-            object_id="objectId",
-        )
-        assert contact is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_purge_with_all_params(self, client: HubSpot) -> None:
-        contact = client.crm.objects.contacts.purge(
-            object_id="objectId",
-            id_property="idProperty",
-        )
-        assert contact is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_purge(self, client: HubSpot) -> None:
-        response = client.crm.objects.contacts.with_raw_response.purge(
-            object_id="objectId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        contact = response.parse()
-        assert contact is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_purge(self, client: HubSpot) -> None:
-        with client.crm.objects.contacts.with_streaming_response.purge(
-            object_id="objectId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            contact = response.parse()
-            assert contact is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        contact = client.crm.objects.contacts.read(
-            contact_id="contactId",
-        )
-        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read_with_all_params(self, client: HubSpot) -> None:
-        contact = client.crm.objects.contacts.read(
-            contact_id="contactId",
-            archived=True,
-            associations=["string"],
-            properties=["string"],
-            properties_with_history=["string"],
-        )
-        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.crm.objects.contacts.with_raw_response.read(
-            contact_id="contactId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        contact = response.parse()
-        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.crm.objects.contacts.with_streaming_response.read(
-            contact_id="contactId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            contact = response.parse()
-            assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
-            client.crm.objects.contacts.with_raw_response.read(
-                contact_id="",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
     def test_method_search(self, client: HubSpot) -> None:
         contact = client.crm.objects.contacts.search()
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, contact, path=["response"])
@@ -387,9 +387,9 @@ class TestContacts:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "propertyName",
-                            "high_value": "highValue",
-                            "value": "value",
+                            "property_name": "",
+                            "high_value": "",
+                            "value": "",
                             "values": ["string"],
                         }
                     ]
@@ -449,7 +449,7 @@ class TestAsyncContacts:
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 279,
+                            "association_type_id": 0,
                         }
                     ],
                 }
@@ -646,6 +646,103 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    async def test_method_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+        contact = await async_client.crm.objects.contacts.gdpr_delete(
+            object_id="objectId",
+        )
+        assert contact is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_gdpr_delete_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        contact = await async_client.crm.objects.contacts.gdpr_delete(
+            object_id="objectId",
+            id_property="idProperty",
+        )
+        assert contact is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.crm.objects.contacts.with_raw_response.gdpr_delete(
+            object_id="objectId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = await response.parse()
+        assert contact is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.crm.objects.contacts.with_streaming_response.gdpr_delete(
+            object_id="objectId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = await response.parse()
+            assert contact is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        contact = await async_client.crm.objects.contacts.get(
+            contact_id="contactId",
+        )
+        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        contact = await async_client.crm.objects.contacts.get(
+            contact_id="contactId",
+            archived=True,
+            associations=["string"],
+            properties=["string"],
+            properties_with_history=["string"],
+        )
+        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.crm.objects.contacts.with_raw_response.get(
+            contact_id="contactId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = await response.parse()
+        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.crm.objects.contacts.with_streaming_response.get(
+            contact_id="contactId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = await response.parse()
+            assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
+            await async_client.crm.objects.contacts.with_raw_response.get(
+                contact_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     async def test_method_merge(self, async_client: AsyncHubSpot) -> None:
         contact = await async_client.crm.objects.contacts.merge(
             object_id_to_merge="objectIdToMerge",
@@ -683,103 +780,6 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_purge(self, async_client: AsyncHubSpot) -> None:
-        contact = await async_client.crm.objects.contacts.purge(
-            object_id="objectId",
-        )
-        assert contact is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_purge_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        contact = await async_client.crm.objects.contacts.purge(
-            object_id="objectId",
-            id_property="idProperty",
-        )
-        assert contact is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_purge(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.objects.contacts.with_raw_response.purge(
-            object_id="objectId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        contact = await response.parse()
-        assert contact is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_purge(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.objects.contacts.with_streaming_response.purge(
-            object_id="objectId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            contact = await response.parse()
-            assert contact is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        contact = await async_client.crm.objects.contacts.read(
-            contact_id="contactId",
-        )
-        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        contact = await async_client.crm.objects.contacts.read(
-            contact_id="contactId",
-            archived=True,
-            associations=["string"],
-            properties=["string"],
-            properties_with_history=["string"],
-        )
-        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.objects.contacts.with_raw_response.read(
-            contact_id="contactId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        contact = await response.parse()
-        assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.objects.contacts.with_streaming_response.read(
-            contact_id="contactId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            contact = await response.parse()
-            assert_matches_type(SimplePublicObjectWithAssociations, contact, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
-            await async_client.crm.objects.contacts.with_raw_response.read(
-                contact_id="",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
     async def test_method_search(self, async_client: AsyncHubSpot) -> None:
         contact = await async_client.crm.objects.contacts.search()
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, contact, path=["response"])
@@ -794,9 +794,9 @@ class TestAsyncContacts:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "propertyName",
-                            "high_value": "highValue",
-                            "value": "value",
+                            "property_name": "",
+                            "high_value": "",
+                            "value": "",
                             "values": ["string"],
                         }
                     ]

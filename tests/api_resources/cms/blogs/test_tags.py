@@ -296,7 +296,7 @@ class TestTags:
     def test_method_attach_to_lang_group(self, client: HubSpot) -> None:
         tag = client.cms.blogs.tags.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         )
         assert tag is None
@@ -306,7 +306,7 @@ class TestTags:
     def test_method_attach_to_lang_group_with_all_params(self, client: HubSpot) -> None:
         tag = client.cms.blogs.tags.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
             primary_language="primaryLanguage",
         )
@@ -317,7 +317,7 @@ class TestTags:
     def test_raw_response_attach_to_lang_group(self, client: HubSpot) -> None:
         response = client.cms.blogs.tags.with_raw_response.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         )
 
@@ -331,7 +331,7 @@ class TestTags:
     def test_streaming_response_attach_to_lang_group(self, client: HubSpot) -> None:
         with client.cms.blogs.tags.with_streaming_response.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         ) as response:
             assert not response.is_closed
@@ -977,7 +977,7 @@ class TestAsyncTags:
     async def test_method_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
         tag = await async_client.cms.blogs.tags.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         )
         assert tag is None
@@ -987,7 +987,7 @@ class TestAsyncTags:
     async def test_method_attach_to_lang_group_with_all_params(self, async_client: AsyncHubSpot) -> None:
         tag = await async_client.cms.blogs.tags.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
             primary_language="primaryLanguage",
         )
@@ -998,7 +998,7 @@ class TestAsyncTags:
     async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.tags.with_raw_response.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         )
 
@@ -1012,7 +1012,7 @@ class TestAsyncTags:
     async def test_streaming_response_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.tags.with_streaming_response.attach_to_lang_group(
             id="id",
-            language="af",
+            language="language",
             primary_id="primaryId",
         ) as response:
             assert not response.is_closed

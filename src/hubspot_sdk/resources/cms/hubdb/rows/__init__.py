@@ -8,22 +8,22 @@ from .rows import (
     RowsResourceWithStreamingResponse,
     AsyncRowsResourceWithStreamingResponse,
 )
-from .draft import (
-    DraftResource,
-    AsyncDraftResource,
-    DraftResourceWithRawResponse,
-    AsyncDraftResourceWithRawResponse,
-    DraftResourceWithStreamingResponse,
-    AsyncDraftResourceWithStreamingResponse,
+from .batch import (
+    BatchResource,
+    AsyncBatchResource,
+    BatchResourceWithRawResponse,
+    AsyncBatchResourceWithRawResponse,
+    BatchResourceWithStreamingResponse,
+    AsyncBatchResourceWithStreamingResponse,
 )
 
 __all__ = [
-    "DraftResource",
-    "AsyncDraftResource",
-    "DraftResourceWithRawResponse",
-    "AsyncDraftResourceWithRawResponse",
-    "DraftResourceWithStreamingResponse",
-    "AsyncDraftResourceWithStreamingResponse",
+    "BatchResource",
+    "AsyncBatchResource",
+    "BatchResourceWithRawResponse",
+    "AsyncBatchResourceWithRawResponse",
+    "BatchResourceWithStreamingResponse",
+    "AsyncBatchResourceWithStreamingResponse",
     "RowsResource",
     "AsyncRowsResource",
     "RowsResourceWithRawResponse",

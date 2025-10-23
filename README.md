@@ -16,9 +16,12 @@ The REST API documentation can be found on [developers.hubspot.com](https://deve
 ## Installation
 
 ```sh
-# install from PyPI
-pip install hubspot-sdk
+# install from this staging repo
+pip install git+ssh://git@github.com/stainless-sdks/hubspot-sdk-python.git
 ```
+
+> [!NOTE]
+> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install hubspot-sdk`
 
 ## Usage
 
@@ -69,8 +72,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from PyPI
-pip install hubspot-sdk[aiohttp]
+# install from this staging repo
+pip install 'hubspot-sdk[aiohttp] @ git+ssh://git@github.com/stainless-sdks/hubspot-sdk-python.git'
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
@@ -184,7 +187,7 @@ from hubspot_sdk import HubSpot
 
 client = HubSpot()
 
-public_action_definition = client.automation.actions.create(
+public_action_definition = client.automation.actions.definitions.create(
     app_id=0,
     action_url="actionUrl",
     functions=[
@@ -228,7 +231,7 @@ from hubspot_sdk import HubSpot
 
 client = HubSpot()
 
-client.cms.hubdb.import_draft_table(
+client.cms.hubdb.tables.import_draft(
     table_id_or_name="tableIdOrName",
     file=Path("/path/to/file"),
 )
@@ -376,9 +379,9 @@ contact = response.parse()  # get the object that `crm.objects.contacts.create()
 print(contact.created_resource_id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/tree/main/src/hubspot_sdk/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/hubspot-sdk-python/tree/main/src/hubspot_sdk/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/tree/main/src/hubspot_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/hubspot-sdk-python/tree/main/src/hubspot_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -484,7 +487,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/hubspot-sdk-python/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 

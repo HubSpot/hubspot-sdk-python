@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from ..option_param import OptionParam
+from ..crm.option_param import OptionParam
 
 __all__ = ["FieldTypeDefinitionParam"]
 

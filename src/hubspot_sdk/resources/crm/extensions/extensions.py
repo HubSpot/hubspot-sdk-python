@@ -2,7 +2,17 @@
 
 from __future__ import annotations
 
-from .calling import (
+from .cards import (
+    CardsResource,
+    AsyncCardsResource,
+    CardsResourceWithRawResponse,
+    AsyncCardsResourceWithRawResponse,
+    CardsResourceWithStreamingResponse,
+    AsyncCardsResourceWithStreamingResponse,
+)
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from .calling.calling import (
     CallingResource,
     AsyncCallingResource,
     CallingResourceWithRawResponse,
@@ -10,8 +20,14 @@ from .calling import (
     CallingResourceWithStreamingResponse,
     AsyncCallingResourceWithStreamingResponse,
 )
-from ...._compat import cached_property
-from ...._resource import SyncAPIResource, AsyncAPIResource
+from .videoconferencing.videoconferencing import (
+    VideoconferencingResource,
+    AsyncVideoconferencingResource,
+    VideoconferencingResourceWithRawResponse,
+    AsyncVideoconferencingResourceWithRawResponse,
+    VideoconferencingResourceWithStreamingResponse,
+    AsyncVideoconferencingResourceWithStreamingResponse,
+)
 
 __all__ = ["ExtensionsResource", "AsyncExtensionsResource"]
 
@@ -22,12 +38,20 @@ class ExtensionsResource(SyncAPIResource):
         return CallingResource(self._client)
 
     @cached_property
+    def cards(self) -> CardsResource:
+        return CardsResource(self._client)
+
+    @cached_property
+    def videoconferencing(self) -> VideoconferencingResource:
+        return VideoconferencingResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> ExtensionsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return ExtensionsResourceWithRawResponse(self)
 
@@ -36,7 +60,7 @@ class ExtensionsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return ExtensionsResourceWithStreamingResponse(self)
 
@@ -47,12 +71,20 @@ class AsyncExtensionsResource(AsyncAPIResource):
         return AsyncCallingResource(self._client)
 
     @cached_property
+    def cards(self) -> AsyncCardsResource:
+        return AsyncCardsResource(self._client)
+
+    @cached_property
+    def videoconferencing(self) -> AsyncVideoconferencingResource:
+        return AsyncVideoconferencingResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncExtensionsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncExtensionsResourceWithRawResponse(self)
 
@@ -61,7 +93,7 @@ class AsyncExtensionsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/alzheltkovskiy-hubspot/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncExtensionsResourceWithStreamingResponse(self)
 
@@ -74,6 +106,14 @@ class ExtensionsResourceWithRawResponse:
     def calling(self) -> CallingResourceWithRawResponse:
         return CallingResourceWithRawResponse(self._extensions.calling)
 
+    @cached_property
+    def cards(self) -> CardsResourceWithRawResponse:
+        return CardsResourceWithRawResponse(self._extensions.cards)
+
+    @cached_property
+    def videoconferencing(self) -> VideoconferencingResourceWithRawResponse:
+        return VideoconferencingResourceWithRawResponse(self._extensions.videoconferencing)
+
 
 class AsyncExtensionsResourceWithRawResponse:
     def __init__(self, extensions: AsyncExtensionsResource) -> None:
@@ -82,6 +122,14 @@ class AsyncExtensionsResourceWithRawResponse:
     @cached_property
     def calling(self) -> AsyncCallingResourceWithRawResponse:
         return AsyncCallingResourceWithRawResponse(self._extensions.calling)
+
+    @cached_property
+    def cards(self) -> AsyncCardsResourceWithRawResponse:
+        return AsyncCardsResourceWithRawResponse(self._extensions.cards)
+
+    @cached_property
+    def videoconferencing(self) -> AsyncVideoconferencingResourceWithRawResponse:
+        return AsyncVideoconferencingResourceWithRawResponse(self._extensions.videoconferencing)
 
 
 class ExtensionsResourceWithStreamingResponse:
@@ -92,6 +140,14 @@ class ExtensionsResourceWithStreamingResponse:
     def calling(self) -> CallingResourceWithStreamingResponse:
         return CallingResourceWithStreamingResponse(self._extensions.calling)
 
+    @cached_property
+    def cards(self) -> CardsResourceWithStreamingResponse:
+        return CardsResourceWithStreamingResponse(self._extensions.cards)
+
+    @cached_property
+    def videoconferencing(self) -> VideoconferencingResourceWithStreamingResponse:
+        return VideoconferencingResourceWithStreamingResponse(self._extensions.videoconferencing)
+
 
 class AsyncExtensionsResourceWithStreamingResponse:
     def __init__(self, extensions: AsyncExtensionsResource) -> None:
@@ -100,3 +156,11 @@ class AsyncExtensionsResourceWithStreamingResponse:
     @cached_property
     def calling(self) -> AsyncCallingResourceWithStreamingResponse:
         return AsyncCallingResourceWithStreamingResponse(self._extensions.calling)
+
+    @cached_property
+    def cards(self) -> AsyncCardsResourceWithStreamingResponse:
+        return AsyncCardsResourceWithStreamingResponse(self._extensions.cards)
+
+    @cached_property
+    def videoconferencing(self) -> AsyncVideoconferencingResourceWithStreamingResponse:
+        return AsyncVideoconferencingResourceWithStreamingResponse(self._extensions.videoconferencing)
