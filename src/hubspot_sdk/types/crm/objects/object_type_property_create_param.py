@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
-from ..option_input_param import OptionInputParam
+from ...shared_params.option_input import OptionInput
 
 __all__ = ["ObjectTypePropertyCreateParam"]
 
@@ -58,7 +58,7 @@ class ObjectTypePropertyCreateParam(TypedDict, total=False):
     ]
     """Controls how numeric properties are formatted in the HubSpot UI"""
 
-    options: Iterable[OptionInputParam]
+    options: Iterable[OptionInput]
     """A list of available options for the property.
 
     This field is only required for enumerated properties.

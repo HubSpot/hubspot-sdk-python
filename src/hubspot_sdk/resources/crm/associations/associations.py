@@ -84,8 +84,6 @@ class AssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociation:
         """
-        Associate all pairs of objects identified in the request body.
-
         Args:
           extra_headers: Send extra headers
 
@@ -122,9 +120,6 @@ class AssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Remove the associations between all pairs of objects identified in the request
-        body.
-
         Args:
           extra_headers: Send extra headers
 
@@ -162,9 +157,6 @@ class AssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociationMulti:
         """
-        Get the IDs of all `{toObjectType}` objects associated with those specified in
-        the request body.
-
         Args:
           extra_headers: Send extra headers
 
@@ -230,8 +222,6 @@ class AsyncAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociation:
         """
-        Associate all pairs of objects identified in the request body.
-
         Args:
           extra_headers: Send extra headers
 
@@ -268,9 +258,6 @@ class AsyncAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Remove the associations between all pairs of objects identified in the request
-        body.
-
         Args:
           extra_headers: Send extra headers
 
@@ -308,9 +295,6 @@ class AsyncAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociationMulti:
         """
-        Get the IDs of all `{toObjectType}` objects associated with those specified in
-        the request body.
-
         Args:
           extra_headers: Send extra headers
 

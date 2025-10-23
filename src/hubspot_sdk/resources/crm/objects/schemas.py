@@ -25,7 +25,7 @@ from ....types.crm.objects import (
     schema_create_association_params,
 )
 from ....types.crm.objects.object_schema import ObjectSchema
-from ....types.crm.objects.association_definition import AssociationDefinition
+from ....types.events.association_definition import AssociationDefinition
 from ....types.crm.objects.object_type_definition import ObjectTypeDefinition
 from ....types.crm.objects.object_type_property_create_param import ObjectTypePropertyCreateParam
 from ....types.crm.objects.object_type_definition_labels_param import ObjectTypeDefinitionLabelsParam

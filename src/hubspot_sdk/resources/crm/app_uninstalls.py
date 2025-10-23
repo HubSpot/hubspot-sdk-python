@@ -2,12 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Iterable
-
 import httpx
 
 from ..._types import Body, Query, Headers, NoneType, NotGiven, not_given
-from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -17,36 +14,33 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.events import batch_send_params
-from ...types.events.behavioral_event_http_completion_request_param import BehavioralEventHTTPCompletionRequestParam
 
-__all__ = ["BatchResource", "AsyncBatchResource"]
+__all__ = ["AppUninstallsResource", "AsyncAppUninstallsResource"]
 
 
-class BatchResource(SyncAPIResource):
+class AppUninstallsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> BatchResourceWithRawResponse:
+    def with_raw_response(self) -> AppUninstallsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
-        return BatchResourceWithRawResponse(self)
+        return AppUninstallsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> BatchResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AppUninstallsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
-        return BatchResourceWithStreamingResponse(self)
+        return AppUninstallsResourceWithStreamingResponse(self)
 
-    def send(
+    def uninstall(
         self,
         *,
-        inputs: Iterable[BehavioralEventHTTPCompletionRequestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -54,22 +48,15 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
-        Send multiple event completions at once.
+        """Use this endpoint to uninstall your app from a customer's HubSpot account.
 
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
+        If
+        successful, this endpoint will return a 204 and the customer will receive an
+        email notification that the developer has uninstall the app from their account.
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/events/v3/send/batch",
-            body=maybe_transform({"inputs": inputs}, batch_send_params.BatchSendParams),
+        return self._delete(
+            "/appinstalls/v3/external-install",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -77,30 +64,29 @@ class BatchResource(SyncAPIResource):
         )
 
 
-class AsyncBatchResource(AsyncAPIResource):
+class AsyncAppUninstallsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncBatchResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncAppUninstallsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncBatchResourceWithRawResponse(self)
+        return AsyncAppUninstallsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncBatchResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncAppUninstallsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
-        return AsyncBatchResourceWithStreamingResponse(self)
+        return AsyncAppUninstallsResourceWithStreamingResponse(self)
 
-    async def send(
+    async def uninstall(
         self,
         *,
-        inputs: Iterable[BehavioralEventHTTPCompletionRequestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -108,22 +94,15 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
-        Send multiple event completions at once.
+        """Use this endpoint to uninstall your app from a customer's HubSpot account.
 
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
+        If
+        successful, this endpoint will return a 204 and the customer will receive an
+        email notification that the developer has uninstall the app from their account.
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/events/v3/send/batch",
-            body=await async_maybe_transform({"inputs": inputs}, batch_send_params.BatchSendParams),
+        return await self._delete(
+            "/appinstalls/v3/external-install",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -131,37 +110,37 @@ class AsyncBatchResource(AsyncAPIResource):
         )
 
 
-class BatchResourceWithRawResponse:
-    def __init__(self, batch: BatchResource) -> None:
-        self._batch = batch
+class AppUninstallsResourceWithRawResponse:
+    def __init__(self, app_uninstalls: AppUninstallsResource) -> None:
+        self._app_uninstalls = app_uninstalls
 
-        self.send = to_raw_response_wrapper(
-            batch.send,
+        self.uninstall = to_raw_response_wrapper(
+            app_uninstalls.uninstall,
         )
 
 
-class AsyncBatchResourceWithRawResponse:
-    def __init__(self, batch: AsyncBatchResource) -> None:
-        self._batch = batch
+class AsyncAppUninstallsResourceWithRawResponse:
+    def __init__(self, app_uninstalls: AsyncAppUninstallsResource) -> None:
+        self._app_uninstalls = app_uninstalls
 
-        self.send = async_to_raw_response_wrapper(
-            batch.send,
+        self.uninstall = async_to_raw_response_wrapper(
+            app_uninstalls.uninstall,
         )
 
 
-class BatchResourceWithStreamingResponse:
-    def __init__(self, batch: BatchResource) -> None:
-        self._batch = batch
+class AppUninstallsResourceWithStreamingResponse:
+    def __init__(self, app_uninstalls: AppUninstallsResource) -> None:
+        self._app_uninstalls = app_uninstalls
 
-        self.send = to_streamed_response_wrapper(
-            batch.send,
+        self.uninstall = to_streamed_response_wrapper(
+            app_uninstalls.uninstall,
         )
 
 
-class AsyncBatchResourceWithStreamingResponse:
-    def __init__(self, batch: AsyncBatchResource) -> None:
-        self._batch = batch
+class AsyncAppUninstallsResourceWithStreamingResponse:
+    def __init__(self, app_uninstalls: AsyncAppUninstallsResource) -> None:
+        self._app_uninstalls = app_uninstalls
 
-        self.send = async_to_streamed_response_wrapper(
-            batch.send,
+        self.uninstall = async_to_streamed_response_wrapper(
+            app_uninstalls.uninstall,
         )

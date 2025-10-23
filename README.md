@@ -1,7 +1,7 @@
 # Hub Spot Python API library
 
 <!-- prettier-ignore -->
-[![PyPI version](https://img.shields.io/pypi/v/hubspot-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/hubspot-sdk/)
+[![PyPI version](https://img.shields.io/pypi/v/hubspot_sdk.svg?label=pypi%20(stable))](https://pypi.org/project/hubspot_sdk/)
 
 The Hub Spot Python library provides convenient access to the Hub Spot REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -21,7 +21,7 @@ pip install git+ssh://git@github.com/stainless-sdks/hubspot-sdk-python.git
 ```
 
 > [!NOTE]
-> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install hubspot-sdk`
+> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install hubspot_sdk`
 
 ## Usage
 
@@ -73,7 +73,7 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from this staging repo
-pip install 'hubspot-sdk[aiohttp] @ git+ssh://git@github.com/stainless-sdks/hubspot-sdk-python.git'
+pip install 'hubspot_sdk[aiohttp] @ git+ssh://git@github.com/stainless-sdks/hubspot-sdk-python.git'
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:

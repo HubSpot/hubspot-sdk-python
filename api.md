@@ -11,8 +11,12 @@ from hubspot_sdk.types import (
     ForwardPaging,
     HubDBTableRowV3Wrapper,
     NextPage,
+    Option,
+    OptionInput,
     Paging,
     PreviousPage,
+    Property,
+    PropertyModificationMetadata,
     PublicAbsoluteComparativeTimestampRefineBy,
     PublicAbsoluteRangedTimestampRefineBy,
     PublicAdsSearchFilter,
@@ -217,6 +221,41 @@ Methods:
 
 - <code title="get /automation/v4/actions/{appId}/{definitionId}/revisions">client.automation.actions.revisions.<a href="./src/hubspot_sdk/resources/automation/actions/revisions.py">list</a>(definition_id, \*, app_id, \*\*<a href="src/hubspot_sdk/types/automation/actions/revision_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/automation/public_action_revision.py">SyncPage[PublicActionRevision]</a></code>
 - <code title="get /automation/v4/actions/{appId}/{definitionId}/revisions/{revisionId}">client.automation.actions.revisions.<a href="./src/hubspot_sdk/resources/automation/actions/revisions.py">read</a>(revision_id, \*, app_id, definition_id) -> <a href="./src/hubspot_sdk/types/automation/public_action_revision.py">PublicActionRevision</a></code>
+
+## Sequences
+
+Types:
+
+```python
+from hubspot_sdk.types.automation import (
+    CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging,
+    EmailSettingsResponse,
+    MeetingSettingsResponse,
+    PublicEmailPatternResponse,
+    PublicSequenceEnrollmentLiteResponse,
+    PublicSequenceEnrollmentRequest,
+    PublicSequenceEnrollmentResponse,
+    PublicSequenceLiteResponse,
+    PublicSequenceResponse,
+    PublicSequenceSettingsResponse,
+    PublicSequenceStepDependencyResponse,
+    PublicSequenceStepResponse,
+    PublicTaskPatternResponse,
+    UnenrollmentSettingsResponse,
+)
+```
+
+Methods:
+
+- <code title="get /automation/v4/sequences/">client.automation.sequences.<a href="./src/hubspot_sdk/resources/automation/sequences/sequences.py">list</a>() -> <a href="./src/hubspot_sdk/types/automation/collection_response_with_total_public_sequence_lite_response_forward_paging.py">CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging</a></code>
+- <code title="get /automation/v4/sequences/{sequenceId}">client.automation.sequences.<a href="./src/hubspot_sdk/resources/automation/sequences/sequences.py">get</a>(sequence_id) -> <a href="./src/hubspot_sdk/types/automation/public_sequence_response.py">PublicSequenceResponse</a></code>
+
+### Enrollments
+
+Methods:
+
+- <code title="post /automation/v4/sequences/enrollments">client.automation.sequences.enrollments.<a href="./src/hubspot_sdk/resources/automation/sequences/enrollments.py">enroll</a>(\*\*<a href="src/hubspot_sdk/types/automation/sequences/enrollment_enroll_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/automation/public_sequence_enrollment_lite_response.py">PublicSequenceEnrollmentLiteResponse</a></code>
+- <code title="get /automation/v4/sequences/enrollments/contact/{contactId}">client.automation.sequences.enrollments.<a href="./src/hubspot_sdk/resources/automation/sequences/enrollments.py">get_by_contact_id</a>(contact_id) -> <a href="./src/hubspot_sdk/types/automation/public_sequence_enrollment_response.py">PublicSequenceEnrollmentResponse</a></code>
 
 ## Workflows
 
@@ -448,6 +487,32 @@ Methods:
 - <code title="post /cms/v3/blogs/posts/batch/update">client.cms.blogs.posts.batch.<a href="./src/hubspot_sdk/resources/cms/blogs/posts/batch.py">update</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/posts/batch_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/blogs/batch_response_blog_post.py">BatchResponseBlogPost</a></code>
 - <code title="post /cms/v3/blogs/posts/batch/archive">client.cms.blogs.posts.batch.<a href="./src/hubspot_sdk/resources/cms/blogs/posts/batch.py">delete</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/posts/batch_delete_params.py">params</a>) -> None</code>
 - <code title="post /cms/v3/blogs/posts/batch/read">client.cms.blogs.posts.batch.<a href="./src/hubspot_sdk/resources/cms/blogs/posts/batch.py">read</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/posts/batch_read_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/blogs/batch_response_blog_post.py">BatchResponseBlogPost</a></code>
+
+### Settings
+
+Types:
+
+```python
+from hubspot_sdk.types.cms.blogs import (
+    Blog,
+    BlogLanguageCloneRequestVNext,
+    CollectionResponseWithTotalBlogForwardPaging,
+    CollectionResponseWithTotalVersionBlog,
+    VersionBlog,
+)
+```
+
+Methods:
+
+- <code title="get /cms/v3/blog-settings/settings">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/setting_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/blogs/blog.py">SyncPage[Blog]</a></code>
+- <code title="post /cms/v3/blog-settings/settings/multi-language/attach-to-lang-group">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">attach_to_lang_group</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/setting_attach_to_lang_group_params.py">params</a>) -> None</code>
+- <code title="post /cms/v3/blog-settings/settings/multi-language/create-language-variation">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">create_language_variation</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/setting_create_language_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/blogs/blog.py">Blog</a></code>
+- <code title="post /cms/v3/blog-settings/settings/multi-language/detach-from-lang-group">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">detach_from_lang_group</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/setting_detach_from_lang_group_params.py">params</a>) -> None</code>
+- <code title="get /cms/v3/blog-settings/settings/{blogId}">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">get</a>(blog_id) -> <a href="./src/hubspot_sdk/types/cms/blogs/blog.py">Blog</a></code>
+- <code title="get /cms/v3/blog-settings/settings/{blogId}/revisions/{revisionId}">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">get_revision</a>(revision_id, \*, blog_id) -> <a href="./src/hubspot_sdk/types/cms/blogs/version_blog.py">VersionBlog</a></code>
+- <code title="get /cms/v3/blog-settings/settings/{blogId}/revisions">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">list_revisions</a>(blog_id, \*\*<a href="src/hubspot_sdk/types/cms/blogs/setting_list_revisions_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/blogs/collection_response_with_total_version_blog.py">CollectionResponseWithTotalVersionBlog</a></code>
+- <code title="put /cms/v3/blog-settings/settings/multi-language/set-new-lang-primary">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">set_new_lang_primary</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/setting_set_new_lang_primary_params.py">params</a>) -> None</code>
+- <code title="post /cms/v3/blog-settings/settings/multi-language/update-languages">client.cms.blogs.settings.<a href="./src/hubspot_sdk/resources/cms/blogs/settings.py">update_languages</a>(\*\*<a href="src/hubspot_sdk/types/cms/blogs/setting_update_languages_params.py">params</a>) -> None</code>
 
 ### Tags
 
@@ -838,12 +903,15 @@ from hubspot_sdk.types.crm import (
     Filter,
     LabelsBetweenObjectPair,
     MultiAssociatedObjectWithLabel,
-    Option,
-    Property,
-    PropertyModificationMetadata,
     PublicDefaultAssociation,
 )
 ```
+
+## AppUninstalls
+
+Methods:
+
+- <code title="delete /appinstalls/v3/external-install">client.crm.app_uninstalls.<a href="./src/hubspot_sdk/resources/crm/app_uninstalls.py">uninstall</a>() -> None</code>
 
 ## Associations
 
@@ -1407,7 +1475,6 @@ from hubspot_sdk.types.crm.objects import (
     ObjectTypeDefinitionLabels,
     ObjectTypeDefinitionPatch,
     ObjectTypePropertyCreate,
-    OptionInput,
 )
 ```
 
@@ -1418,7 +1485,7 @@ Methods:
 - <code title="get /crm-object-schemas/v3/schemas">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
 - <code title="delete /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">delete</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_delete_params.py">params</a>) -> None</code>
 - <code title="delete /crm-object-schemas/v3/schemas/{objectType}/associations/{associationIdentifier}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">archive_association</a>(association_identifier, \*, object_type) -> None</code>
-- <code title="post /crm-object-schemas/v3/schemas/{objectType}/associations">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">create_association</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/association_definition.py">AssociationDefinition</a></code>
+- <code title="post /crm-object-schemas/v3/schemas/{objectType}/associations">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">create_association</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/association_definition.py">AssociationDefinition</a></code>
 - <code title="get /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">read</a>(object_type) -> <a href="./src/hubspot_sdk/types/crm/objects/object_schema.py">ObjectSchema</a></code>
 
 ## Owners
@@ -1506,10 +1573,10 @@ from hubspot_sdk.types.crm import (
 Methods:
 
 - <code title="post /crm/v3/properties/{objectType}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">create</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/created_response_property.py">CreatedResponseProperty</a></code>
-- <code title="patch /crm/v3/properties/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">update</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/property.py">Property</a></code>
+- <code title="patch /crm/v3/properties/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">update</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 - <code title="get /crm/v3/properties/{objectType}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">list</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_property.py">CollectionResponseProperty</a></code>
 - <code title="delete /crm/v3/properties/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">delete</a>(property_name, \*, object_type) -> None</code>
-- <code title="get /crm/v3/properties/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">get</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/property.py">Property</a></code>
+- <code title="get /crm/v3/properties/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">get</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 
 ### Batch
 
@@ -1585,6 +1652,91 @@ Types:
 
 ```python
 from hubspot_sdk.types.events import (
+    CollectionResponseExternalUnifiedEvent,
+    ExternalUnifiedEvent,
+    VisibleExternalEventTypeNames,
+)
+```
+
+Methods:
+
+- <code title="get /events/v3/events/">client.events.<a href="./src/hubspot_sdk/resources/events/events.py">list</a>(\*\*<a href="src/hubspot_sdk/types/events/event_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/external_unified_event.py">SyncPage[ExternalUnifiedEvent]</a></code>
+- <code title="get /events/v3/events/event-types">client.events.<a href="./src/hubspot_sdk/resources/events/events.py">list_event_types</a>() -> <a href="./src/hubspot_sdk/types/events/visible_external_event_type_names.py">VisibleExternalEventTypeNames</a></code>
+
+## EventDefinitions
+
+Types:
+
+```python
+from hubspot_sdk.types.events import (
+    AbsoluteComparativeTimestampRefineBy,
+    AbsoluteRangedTimestampRefineBy,
+    AllHistoryRefineBy,
+    AllPropertyTypesOperation,
+    AssociationDefinition,
+    BehavioralEventTypeDefinitionLabels,
+    BoolPropertyOperation,
+    CalendarDatePropertyOperation,
+    CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPaging,
+    ComboEventRule,
+    ComboEventRuleBranch,
+    ComparativeDatePropertyOperation,
+    ComparativePropertyUpdatedOperation,
+    DatePoint,
+    DatePropertyOperation,
+    DateTimePropertyOperation,
+    EnumerationPropertyOperation,
+    ExternalBehavioralEventPropertyCreate,
+    ExternalBehavioralEventPropertyDefinitionPatch,
+    ExternalBehavioralEventTypeDefinition,
+    ExternalBehavioralEventTypeDefinitionEgg,
+    ExternalBehavioralEventTypeDefinitionPatch,
+    FiscalQuarter,
+    FiscalYear,
+    IndexedTimePoint,
+    IndexOffset,
+    MonthReference,
+    MultiStringPropertyOperation,
+    NowReference,
+    NumberPropertyOperation,
+    NumOccurrencesRefineBy,
+    PropertyFilter,
+    PropertyReferencedTime,
+    QuarterReference,
+    RangedDatePropertyOperation,
+    RangedNumberPropertyOperation,
+    RangedTimeOperation,
+    RelativeComparativeTimestampRefineBy,
+    RelativeRangedTimestampRefineBy,
+    RollingDateRangePropertyOperation,
+    RollingPropertyUpdatedOperation,
+    SetOccurrencesRefineBy,
+    StringPropertyOperation,
+    TimeOffset,
+    TimePointOperation,
+    TodayReference,
+    WeekReference,
+    YearReference,
+)
+```
+
+Methods:
+
+- <code title="post /events/v3/event-definitions">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">create</a>(\*\*<a href="src/hubspot_sdk/types/events/event_definition_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/external_behavioral_event_type_definition.py">ExternalBehavioralEventTypeDefinition</a></code>
+- <code title="patch /events/v3/event-definitions/{eventName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">update</a>(event_name, \*\*<a href="src/hubspot_sdk/types/events/event_definition_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/external_behavioral_event_type_definition.py">ExternalBehavioralEventTypeDefinition</a></code>
+- <code title="get /events/v3/event-definitions">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">list</a>(\*\*<a href="src/hubspot_sdk/types/events/event_definition_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/external_behavioral_event_type_definition.py">SyncPage[ExternalBehavioralEventTypeDefinition]</a></code>
+- <code title="delete /events/v3/event-definitions/{eventName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">delete</a>(event_name) -> None</code>
+- <code title="post /events/v3/event-definitions/{eventName}/property">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">create_property</a>(event_name, \*\*<a href="src/hubspot_sdk/types/events/event_definition_create_property_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
+- <code title="delete /events/v3/event-definitions/{eventName}/property/{propertyName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">delete_property</a>(property_name, \*, event_name) -> None</code>
+- <code title="get /events/v3/event-definitions/{eventName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">get</a>(event_name) -> <a href="./src/hubspot_sdk/types/events/external_behavioral_event_type_definition.py">ExternalBehavioralEventTypeDefinition</a></code>
+- <code title="patch /events/v3/event-definitions/{eventName}/property/{propertyName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">update_property</a>(property_name, \*, event_name, \*\*<a href="src/hubspot_sdk/types/events/event_definition_update_property_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
+
+## Send
+
+Types:
+
+```python
+from hubspot_sdk.types.events import (
     BatchedBehavioralEventHTTPCompletionRequest,
     BehavioralEventHTTPCompletionRequest,
 )
@@ -1592,13 +1744,8 @@ from hubspot_sdk.types.events import (
 
 Methods:
 
-- <code title="post /events/v3/send">client.events.<a href="./src/hubspot_sdk/resources/events/events.py">send</a>(\*\*<a href="src/hubspot_sdk/types/events/event_send_params.py">params</a>) -> None</code>
-
-## Batch
-
-Methods:
-
-- <code title="post /events/v3/send/batch">client.events.batch.<a href="./src/hubspot_sdk/resources/events/batch.py">send</a>(\*\*<a href="src/hubspot_sdk/types/events/batch_send_params.py">params</a>) -> None</code>
+- <code title="post /events/v3/send">client.events.send.<a href="./src/hubspot_sdk/resources/events/send.py">send</a>(\*\*<a href="src/hubspot_sdk/types/events/send_send_params.py">params</a>) -> None</code>
+- <code title="post /events/v3/send/batch">client.events.send.<a href="./src/hubspot_sdk/resources/events/send.py">send_batch</a>(\*\*<a href="src/hubspot_sdk/types/events/send_send_batch_params.py">params</a>) -> None</code>
 
 # Files
 

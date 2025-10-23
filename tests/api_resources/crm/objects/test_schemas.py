@@ -9,10 +9,10 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
+from hubspot_sdk.types.events import AssociationDefinition
 from hubspot_sdk.types.crm.objects import (
     ObjectSchema,
     ObjectTypeDefinition,
-    AssociationDefinition,
     CollectionResponseObjectSchemaNoPaging,
 )
 
@@ -66,18 +66,18 @@ class TestSchemas:
                     "number_display_hint": "unformatted",
                     "options": [
                         {
+                            "display_order": 1,
                             "hidden": False,
                             "label": "Option A",
                             "value": "A",
                             "description": "Choice number one",
-                            "display_order": 1,
                         },
                         {
+                            "display_order": 2,
                             "hidden": False,
                             "label": "Option B",
                             "value": "B",
                             "description": "Choice number two",
-                            "display_order": 2,
                         },
                     ],
                     "option_sort_strategy": "DISPLAY_ORDER",
@@ -498,18 +498,18 @@ class TestAsyncSchemas:
                     "number_display_hint": "unformatted",
                     "options": [
                         {
+                            "display_order": 1,
                             "hidden": False,
                             "label": "Option A",
                             "value": "A",
                             "description": "Choice number one",
-                            "display_order": 1,
                         },
                         {
+                            "display_order": 2,
                             "hidden": False,
                             "label": "Option B",
                             "value": "B",
                             "description": "Choice number two",
-                            "display_order": 2,
                         },
                     ],
                     "option_sort_strategy": "DISPLAY_ORDER",

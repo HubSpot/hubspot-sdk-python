@@ -1,12 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .batch import (
-    BatchResource,
-    AsyncBatchResource,
-    BatchResourceWithRawResponse,
-    AsyncBatchResourceWithRawResponse,
-    BatchResourceWithStreamingResponse,
-    AsyncBatchResourceWithStreamingResponse,
+from .send import (
+    SendResource,
+    AsyncSendResource,
+    SendResourceWithRawResponse,
+    AsyncSendResourceWithRawResponse,
+    SendResourceWithStreamingResponse,
+    AsyncSendResourceWithStreamingResponse,
 )
 from .events import (
     EventsResource,
@@ -16,14 +16,28 @@ from .events import (
     EventsResourceWithStreamingResponse,
     AsyncEventsResourceWithStreamingResponse,
 )
+from .event_definitions import (
+    EventDefinitionsResource,
+    AsyncEventDefinitionsResource,
+    EventDefinitionsResourceWithRawResponse,
+    AsyncEventDefinitionsResourceWithRawResponse,
+    EventDefinitionsResourceWithStreamingResponse,
+    AsyncEventDefinitionsResourceWithStreamingResponse,
+)
 
 __all__ = [
-    "BatchResource",
-    "AsyncBatchResource",
-    "BatchResourceWithRawResponse",
-    "AsyncBatchResourceWithRawResponse",
-    "BatchResourceWithStreamingResponse",
-    "AsyncBatchResourceWithStreamingResponse",
+    "EventDefinitionsResource",
+    "AsyncEventDefinitionsResource",
+    "EventDefinitionsResourceWithRawResponse",
+    "AsyncEventDefinitionsResourceWithRawResponse",
+    "EventDefinitionsResourceWithStreamingResponse",
+    "AsyncEventDefinitionsResourceWithStreamingResponse",
+    "SendResource",
+    "AsyncSendResource",
+    "SendResourceWithRawResponse",
+    "AsyncSendResourceWithRawResponse",
+    "SendResourceWithStreamingResponse",
+    "AsyncSendResourceWithStreamingResponse",
     "EventsResource",
     "AsyncEventsResource",
     "EventsResourceWithRawResponse",

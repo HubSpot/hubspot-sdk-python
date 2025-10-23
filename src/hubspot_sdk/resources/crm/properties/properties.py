@@ -35,8 +35,8 @@ from ...._response import (
 )
 from ....types.crm import property_get_params, property_list_params, property_create_params, property_update_params
 from ...._base_client import make_request_options
-from ....types.crm.property import Property
-from ....types.crm.option_input_param import OptionInputParam
+from ....types.shared.property import Property
+from ....types.shared_params.option_input import OptionInput
 from ....types.crm.created_response_property import CreatedResponseProperty
 from ....types.crm.collection_response_property import CollectionResponseProperty
 
@@ -101,7 +101,7 @@ class PropertiesResource(SyncAPIResource):
         form_field: bool | Omit = omit,
         has_unique_value: bool | Omit = omit,
         hidden: bool | Omit = omit,
-        options: Iterable[OptionInputParam] | Omit = omit,
+        options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -216,7 +216,7 @@ class PropertiesResource(SyncAPIResource):
         group_name: str | Omit = omit,
         hidden: bool | Omit = omit,
         label: str | Omit = omit,
-        options: Iterable[OptionInputParam] | Omit = omit,
+        options: Iterable[OptionInput] | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -481,7 +481,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         form_field: bool | Omit = omit,
         has_unique_value: bool | Omit = omit,
         hidden: bool | Omit = omit,
-        options: Iterable[OptionInputParam] | Omit = omit,
+        options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -596,7 +596,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         group_name: str | Omit = omit,
         hidden: bool | Omit = omit,
         label: str | Omit = omit,
-        options: Iterable[OptionInputParam] | Omit = omit,
+        options: Iterable[OptionInput] | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

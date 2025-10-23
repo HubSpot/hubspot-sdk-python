@@ -2,12 +2,9 @@
 
 from __future__ import annotations
 
-from .option import Option as Option
 from .pipeline import Pipeline as Pipeline
-from .property import Property as Property
 from .event_detail import EventDetail as EventDetail
 from .filter_param import FilterParam as FilterParam
-from .option_param import OptionParam as OptionParam
 from .public_owner import PublicOwner as PublicOwner
 from .associated_id import AssociatedID as AssociatedID
 from .pipeline_stage import PipelineStage as PipelineStage
@@ -23,7 +20,6 @@ from .filter_group_param import FilterGroupParam as FilterGroupParam
 from .import_list_params import ImportListParams as ImportListParams
 from .list_create_params import ListCreateParams as ListCreateParams
 from .list_search_params import ListSearchParams as ListSearchParams
-from .option_input_param import OptionInputParam as OptionInputParam
 from .public_association import PublicAssociation as PublicAssociation
 from .public_list_folder import PublicListFolder as PublicListFolder
 from .public_object_list import PublicObjectList as PublicObjectList
@@ -83,7 +79,6 @@ from .timeline_event_i_frame_param import TimelineEventIFrameParam as TimelineEv
 from .public_list_permissions_param import PublicListPermissionsParam as PublicListPermissionsParam
 from .simple_public_object_id_param import SimplePublicObjectIDParam as SimplePublicObjectIDParam
 from .timeline_event_template_token import TimelineEventTemplateToken as TimelineEventTemplateToken
-from .property_modification_metadata import PropertyModificationMetadata as PropertyModificationMetadata
 from .public_batch_migration_mapping import PublicBatchMigrationMapping as PublicBatchMigrationMapping
 from .created_response_property_group import CreatedResponsePropertyGroup as CreatedResponsePropertyGroup
 from .list_schedule_conversion_params import ListScheduleConversionParams as ListScheduleConversionParams

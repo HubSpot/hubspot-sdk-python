@@ -10,10 +10,10 @@ import pytest
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
-    Property,
     CreatedResponseProperty,
     CollectionResponseProperty,
 )
+from hubspot_sdk.types.shared import Property
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -54,18 +54,18 @@ class TestProperties:
             hidden=False,
             options=[
                 {
+                    "display_order": 1,
                     "hidden": False,
                     "label": "Option A",
                     "value": "A",
                     "description": "Choice number one",
-                    "display_order": 1,
                 },
                 {
+                    "display_order": 2,
                     "hidden": False,
                     "label": "Option B",
                     "value": "B",
                     "description": "Choice number two",
-                    "display_order": 2,
                 },
             ],
             referenced_object_type="referencedObjectType",
@@ -146,18 +146,18 @@ class TestProperties:
             label="My Contact Property",
             options=[
                 {
+                    "display_order": 1,
                     "hidden": False,
                     "label": "Option A",
                     "value": "A",
                     "description": "Choice number one",
-                    "display_order": 1,
                 },
                 {
+                    "display_order": 2,
                     "hidden": False,
                     "label": "Option B",
                     "value": "B",
                     "description": "Choice number two",
-                    "display_order": 2,
                 },
             ],
             type="enumeration",
@@ -413,18 +413,18 @@ class TestAsyncProperties:
             hidden=False,
             options=[
                 {
+                    "display_order": 1,
                     "hidden": False,
                     "label": "Option A",
                     "value": "A",
                     "description": "Choice number one",
-                    "display_order": 1,
                 },
                 {
+                    "display_order": 2,
                     "hidden": False,
                     "label": "Option B",
                     "value": "B",
                     "description": "Choice number two",
-                    "display_order": 2,
                 },
             ],
             referenced_object_type="referencedObjectType",
@@ -505,18 +505,18 @@ class TestAsyncProperties:
             label="My Contact Property",
             options=[
                 {
+                    "display_order": 1,
                     "hidden": False,
                     "label": "Option A",
                     "value": "A",
                     "description": "Choice number one",
-                    "display_order": 1,
                 },
                 {
+                    "display_order": 2,
                     "hidden": False,
                     "label": "Option B",
                     "value": "B",
                     "description": "Choice number two",
-                    "display_order": 2,
                 },
             ],
             type="enumeration",

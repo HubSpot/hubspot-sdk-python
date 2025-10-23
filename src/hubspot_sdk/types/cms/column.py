@@ -8,8 +8,8 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .foreign_id import ForeignID
-from ..crm.option import Option
 from .simple_user import SimpleUser
+from ..shared.option import Option
 
 __all__ = ["Column"]
 

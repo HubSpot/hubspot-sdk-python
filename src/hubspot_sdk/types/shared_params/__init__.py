@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .option import Option as Option
+from .option_input import OptionInput as OptionInput
 from .association_spec import AssociationSpec as AssociationSpec
 from .public_object_id import PublicObjectID as PublicObjectID
 from .public_date_point import PublicDatePoint as PublicDatePoint

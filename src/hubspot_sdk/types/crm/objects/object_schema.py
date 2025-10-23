@@ -5,10 +5,10 @@ from datetime import datetime
 
 from pydantic import Field as FieldInfo
 
-from ..property import Property
 from ...._models import BaseModel
-from .association_definition import AssociationDefinition
+from ...shared.property import Property
 from .object_type_definition_labels import ObjectTypeDefinitionLabels
+from ...events.association_definition import AssociationDefinition
 
 __all__ = ["ObjectSchema"]
 

@@ -42,7 +42,6 @@ from .contact_update_params import ContactUpdateParams as ContactUpdateParams
 from .meeting_create_params import MeetingCreateParams as MeetingCreateParams
 from .meeting_search_params import MeetingSearchParams as MeetingSearchParams
 from .meeting_update_params import MeetingUpdateParams as MeetingUpdateParams
-from .association_definition import AssociationDefinition as AssociationDefinition
 from .object_type_definition import ObjectTypeDefinition as ObjectTypeDefinition
 from .contact_gdpr_delete_params import ContactGdprDeleteParams as ContactGdprDeleteParams
 from .deal_split_batch_read_params import DealSplitBatchReadParams as DealSplitBatchReadParams
