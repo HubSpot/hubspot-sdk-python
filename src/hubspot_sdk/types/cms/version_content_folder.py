@@ -5,8 +5,8 @@ from datetime import datetime
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from .version_user import VersionUser
 from .content_folder import ContentFolder
+from ..shared.version_user import VersionUser
 
 __all__ = ["VersionContentFolder"]
 

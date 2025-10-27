@@ -12,6 +12,14 @@ from .forms import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .single_send import (
+    SingleSendResource,
+    AsyncSingleSendResource,
+    SingleSendResourceWithRawResponse,
+    AsyncSingleSendResourceWithRawResponse,
+    SingleSendResourceWithStreamingResponse,
+    AsyncSingleSendResourceWithStreamingResponse,
+)
 from .emails.emails import (
     EmailsResource,
     AsyncEmailsResource,
@@ -74,6 +82,10 @@ class MarketingResource(SyncAPIResource):
         return FormsResource(self._client)
 
     @cached_property
+    def single_send(self) -> SingleSendResource:
+        return SingleSendResource(self._client)
+
+    @cached_property
     def subscriptions(self) -> SubscriptionsResource:
         return SubscriptionsResource(self._client)
 
@@ -117,6 +129,10 @@ class AsyncMarketingResource(AsyncAPIResource):
     @cached_property
     def forms(self) -> AsyncFormsResource:
         return AsyncFormsResource(self._client)
+
+    @cached_property
+    def single_send(self) -> AsyncSingleSendResource:
+        return AsyncSingleSendResource(self._client)
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResource:
@@ -167,6 +183,10 @@ class MarketingResourceWithRawResponse:
         return FormsResourceWithRawResponse(self._marketing.forms)
 
     @cached_property
+    def single_send(self) -> SingleSendResourceWithRawResponse:
+        return SingleSendResourceWithRawResponse(self._marketing.single_send)
+
+    @cached_property
     def subscriptions(self) -> SubscriptionsResourceWithRawResponse:
         return SubscriptionsResourceWithRawResponse(self._marketing.subscriptions)
 
@@ -194,6 +214,10 @@ class AsyncMarketingResourceWithRawResponse:
     @cached_property
     def forms(self) -> AsyncFormsResourceWithRawResponse:
         return AsyncFormsResourceWithRawResponse(self._marketing.forms)
+
+    @cached_property
+    def single_send(self) -> AsyncSingleSendResourceWithRawResponse:
+        return AsyncSingleSendResourceWithRawResponse(self._marketing.single_send)
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResourceWithRawResponse:
@@ -225,6 +249,10 @@ class MarketingResourceWithStreamingResponse:
         return FormsResourceWithStreamingResponse(self._marketing.forms)
 
     @cached_property
+    def single_send(self) -> SingleSendResourceWithStreamingResponse:
+        return SingleSendResourceWithStreamingResponse(self._marketing.single_send)
+
+    @cached_property
     def subscriptions(self) -> SubscriptionsResourceWithStreamingResponse:
         return SubscriptionsResourceWithStreamingResponse(self._marketing.subscriptions)
 
@@ -252,6 +280,10 @@ class AsyncMarketingResourceWithStreamingResponse:
     @cached_property
     def forms(self) -> AsyncFormsResourceWithStreamingResponse:
         return AsyncFormsResourceWithStreamingResponse(self._marketing.forms)
+
+    @cached_property
+    def single_send(self) -> AsyncSingleSendResourceWithStreamingResponse:
+        return AsyncSingleSendResourceWithStreamingResponse(self._marketing.single_send)
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResourceWithStreamingResponse:

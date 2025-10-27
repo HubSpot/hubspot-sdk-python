@@ -5,8 +5,8 @@ from __future__ import annotations
 from typing import Dict
 from typing_extensions import Required, Annotated, TypedDict
 
-from ...._utils import PropertyInfo
-from ..public_single_send_email_param import PublicSingleSendEmailParam
+from ..._utils import PropertyInfo
+from .public_single_send_email_param import PublicSingleSendEmailParam
 
 __all__ = ["SingleSendSendParams"]
 

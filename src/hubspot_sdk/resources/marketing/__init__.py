@@ -40,6 +40,14 @@ from .marketing import (
     MarketingResourceWithStreamingResponse,
     AsyncMarketingResourceWithStreamingResponse,
 )
+from .single_send import (
+    SingleSendResource,
+    AsyncSingleSendResource,
+    SingleSendResourceWithRawResponse,
+    AsyncSingleSendResourceWithRawResponse,
+    SingleSendResourceWithStreamingResponse,
+    AsyncSingleSendResourceWithStreamingResponse,
+)
 from .subscriptions import (
     SubscriptionsResource,
     AsyncSubscriptionsResource,
@@ -82,6 +90,12 @@ __all__ = [
     "AsyncFormsResourceWithRawResponse",
     "FormsResourceWithStreamingResponse",
     "AsyncFormsResourceWithStreamingResponse",
+    "SingleSendResource",
+    "AsyncSingleSendResource",
+    "SingleSendResourceWithRawResponse",
+    "AsyncSingleSendResourceWithRawResponse",
+    "SingleSendResourceWithStreamingResponse",
+    "AsyncSingleSendResourceWithStreamingResponse",
     "SubscriptionsResource",
     "AsyncSubscriptionsResource",
     "SubscriptionsResourceWithRawResponse",

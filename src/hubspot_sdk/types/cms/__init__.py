@@ -51,7 +51,6 @@ from .parse_number import ParseNumber as ParseNumber
 from .styles_param import StylesParam as StylesParam
 from .time_between import TimeBetween as TimeBetween
 from .version_page import VersionPage as VersionPage
-from .version_user import VersionUser as VersionUser
 from .import_result import ImportResult as ImportResult
 from .indexed_field import IndexedField as IndexedField
 from .number_equals import NumberEquals as NumberEquals

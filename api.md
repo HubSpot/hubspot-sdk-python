@@ -2,6 +2,7 @@
 
 ```python
 from hubspot_sdk.types import (
+    AbTestCreateRequestVNext,
     ActionResponse,
     AssociationDefinition,
     AssociationDefinitionEgg,
@@ -101,6 +102,7 @@ from hubspot_sdk.types import (
     PublicYearReference,
     StandardError,
     TaskLocator,
+    VersionUser,
 )
 ```
 
@@ -110,20 +112,27 @@ Types:
 
 ```python
 from hubspot_sdk.types.account import (
-    ActingUser,
     APIUsage,
     CollectionResponseAPIUsage,
-    CollectionResponseHydratedCriticalActionForwardPaging,
-    CollectionResponsePublicAPIUserActionEventForwardPaging,
-    CollectionResponsePublicLoginAuditForwardPaging,
-    HydratedCriticalAction,
     PortalInformationResponse,
-    PublicAPIUserActionEvent,
-    PublicLoginAudit,
 )
 ```
 
 ## Activity
+
+Types:
+
+```python
+from hubspot_sdk.types.account import (
+    ActingUser,
+    CollectionResponseHydratedCriticalActionForwardPaging,
+    CollectionResponsePublicAPIUserActionEventForwardPaging,
+    CollectionResponsePublicLoginAuditForwardPaging,
+    HydratedCriticalAction,
+    PublicAPIUserActionEvent,
+    PublicLoginAudit,
+)
+```
 
 Methods:
 
@@ -395,7 +404,6 @@ from hubspot_sdk.types.cms import (
     SideOrCorner,
     Styles,
     UpdateLanguagesRequestVNext,
-    VersionUser,
 )
 ```
 
@@ -842,7 +850,6 @@ Types:
 
 ```python
 from hubspot_sdk.types.cms import (
-    AbTestCreateRequestVNext,
     AbTestEndRequestVNext,
     AbTestRerunRequestVNext,
     BatchInputContentFolder,
@@ -2822,56 +2829,10 @@ Types:
 
 ```python
 from hubspot_sdk.types.marketing import (
-    AppInfo,
-    AttendanceCounters,
-    BatchInputMarketingEventCreateRequestParams,
-    BatchInputMarketingEventEmailSubscriber,
-    BatchInputMarketingEventExternalUniqueIdentifier,
-    BatchInputMarketingEventPublicObjectIDDeleteRequest,
-    BatchInputMarketingEventPublicUpdateRequestFullV2,
-    BatchInputMarketingEventSubscriber,
-    BatchResponseMarketingEventPublicDefaultResponse,
-    BatchResponseMarketingEventPublicDefaultResponseV2,
-    BatchResponseMarketingEventPublicDefaultResponseV2WithErrors,
-    BatchResponseSubscriberEmailResponse,
-    BatchResponseSubscriberVidResponse,
-    CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging,
-    CollectionResponseSearchPublicResponseWrapperNoPaging,
-    CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging,
-    CollectionResponseWithTotalParticipationBreakdownForwardPaging,
-    CollectionResponseWithTotalPublicListNoPaging,
-    ContactAssociation,
-    CRMPropertyWrapper,
     EmailSendStatusView,
-    EventDetailSettings,
-    EventDetailSettingsURL,
     EventIDView,
-    MarketingEventAssociation,
-    MarketingEventCompleteRequestParams,
-    MarketingEventCreateRequestParams,
-    MarketingEventDefaultResponse,
-    MarketingEventEmailSubscriber,
-    MarketingEventExternalUniqueIdentifier,
-    MarketingEventIdentifiersResponse,
-    MarketingEventPublicDefaultResponse,
-    MarketingEventPublicDefaultResponseV2,
-    MarketingEventPublicObjectIDDeleteRequest,
-    MarketingEventPublicReadResponse,
-    MarketingEventPublicReadResponseV2,
-    MarketingEventPublicUpdateRequestFullV2,
-    MarketingEventPublicUpdateRequestV2,
-    MarketingEventSubscriber,
-    MarketingEventUpdateRequestParams,
-    ParticipationAssociations,
-    ParticipationBreakdown,
-    ParticipationProperties,
-    PropertyValue,
-    PublicList,
     PublicSingleSendEmail,
     PublicSingleSendRequestEgg,
-    SearchPublicResponseWrapper,
-    SubscriberEmailResponse,
-    SubscriberVidResponse,
 )
 ```
 
@@ -2966,13 +2927,120 @@ Methods:
 
 ## Emails
 
-### SingleSend
+Types:
+
+```python
+from hubspot_sdk.types.marketing import (
+    AggregateEmailStatistics,
+    CollectionResponseWithTotalEmailStatisticIntervalNoPaging,
+    CollectionResponseWithTotalPublicEmailForwardPaging,
+    CollectionResponseWithTotalVersionPublicEmail,
+    EmailCloneRequestVNext,
+    EmailCreateRequest,
+    EmailStatisticInterval,
+    EmailStatisticsData,
+    EmailUpdateRequest,
+    Interval,
+    Paging,
+    PublicButtonStyleSettings,
+    PublicDividerStyleSettings,
+    PublicEmail,
+    PublicEmailContent,
+    PublicEmailFromDetails,
+    PublicEmailRecipients,
+    PublicEmailStyleSettings,
+    PublicEmailSubscriptionDetails,
+    PublicEmailTestingDetails,
+    PublicEmailToDetails,
+    PublicFontStyle,
+    PublicRssEmailDetails,
+    PublicWebversionDetails,
+    SmartEmailField,
+    VersionPublicEmail,
+)
+```
 
 Methods:
 
-- <code title="post /marketing/v4/email/single-send">client.marketing.emails.single_send.<a href="./src/hubspot_sdk/resources/marketing/emails/single_send.py">send</a>(\*\*<a href="src/hubspot_sdk/types/marketing/emails/single_send_send_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/email_send_status_view.py">EmailSendStatusView</a></code>
+- <code title="post /marketing/v3/emails/">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">create</a>(\*\*<a href="src/hubspot_sdk/types/marketing/email_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+- <code title="patch /marketing/v3/emails/{emailId}">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">update</a>(email_id, \*\*<a href="src/hubspot_sdk/types/marketing/email_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+- <code title="get /marketing/v3/emails/">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">list</a>(\*\*<a href="src/hubspot_sdk/types/marketing/email_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">SyncPage[PublicEmail]</a></code>
+- <code title="delete /marketing/v3/emails/{emailId}">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">delete</a>(email_id, \*\*<a href="src/hubspot_sdk/types/marketing/email_delete_params.py">params</a>) -> None</code>
+- <code title="post /marketing/v3/emails/clone">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">clone</a>(\*\*<a href="src/hubspot_sdk/types/marketing/email_clone_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+- <code title="post /marketing/v3/emails/ab-test/create-variation">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">create_ab_test_variation</a>(\*\*<a href="src/hubspot_sdk/types/marketing/email_create_ab_test_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+- <code title="get /marketing/v3/emails/{emailId}">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">get</a>(email_id, \*\*<a href="src/hubspot_sdk/types/marketing/email_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+- <code title="get /marketing/v3/emails/{emailId}/ab-test/get-variation">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">get_ab_test_variation</a>(email_id) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+- <code title="get /marketing/v3/emails/{emailId}/draft">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">get_draft</a>(email_id) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+- <code title="get /marketing/v3/emails/{emailId}/revisions/{revisionId}">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">get_revision</a>(revision_id, \*, email_id) -> <a href="./src/hubspot_sdk/types/marketing/version_public_email.py">VersionPublicEmail</a></code>
+- <code title="get /marketing/v3/emails/{emailId}/revisions">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">list_revisions</a>(email_id, \*\*<a href="src/hubspot_sdk/types/marketing/email_list_revisions_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/collection_response_with_total_version_public_email.py">CollectionResponseWithTotalVersionPublicEmail</a></code>
+- <code title="post /marketing/v3/emails/{emailId}/publish">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">publish</a>(email_id) -> None</code>
+- <code title="post /marketing/v3/emails/{emailId}/draft/reset">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">reset_draft</a>(email_id) -> None</code>
+- <code title="post /marketing/v3/emails/{emailId}/revisions/{revisionId}/restore">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">restore_revision</a>(revision_id, \*, email_id) -> None</code>
+- <code title="post /marketing/v3/emails/{emailId}/revisions/{revisionId}/restore-to-draft">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">restore_revision_to_draft</a>(revision_id, \*, email_id) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+- <code title="post /marketing/v3/emails/{emailId}/unpublish">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">unpublish</a>(email_id) -> None</code>
+- <code title="patch /marketing/v3/emails/{emailId}/draft">client.marketing.emails.<a href="./src/hubspot_sdk/resources/marketing/emails/emails.py">update_draft</a>(email_id, \*\*<a href="src/hubspot_sdk/types/marketing/email_update_draft_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_email.py">PublicEmail</a></code>
+
+### Statistics
+
+Methods:
+
+- <code title="get /marketing/v3/emails/statistics/list">client.marketing.emails.statistics.<a href="./src/hubspot_sdk/resources/marketing/emails/statistics.py">get</a>(\*\*<a href="src/hubspot_sdk/types/marketing/emails/statistic_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/aggregate_email_statistics.py">AggregateEmailStatistics</a></code>
+- <code title="get /marketing/v3/emails/statistics/histogram">client.marketing.emails.statistics.<a href="./src/hubspot_sdk/resources/marketing/emails/statistics.py">get_histogram</a>(\*\*<a href="src/hubspot_sdk/types/marketing/emails/statistic_get_histogram_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/collection_response_with_total_email_statistic_interval_no_paging.py">CollectionResponseWithTotalEmailStatisticIntervalNoPaging</a></code>
 
 ## Events
+
+Types:
+
+```python
+from hubspot_sdk.types.marketing import (
+    AppInfo,
+    AttendanceCounters,
+    BatchInputMarketingEventCreateRequestParams,
+    BatchInputMarketingEventEmailSubscriber,
+    BatchInputMarketingEventExternalUniqueIdentifier,
+    BatchInputMarketingEventPublicObjectIDDeleteRequest,
+    BatchInputMarketingEventPublicUpdateRequestFullV2,
+    BatchInputMarketingEventSubscriber,
+    BatchResponseMarketingEventPublicDefaultResponse,
+    BatchResponseMarketingEventPublicDefaultResponseV2,
+    BatchResponseMarketingEventPublicDefaultResponseV2WithErrors,
+    BatchResponseSubscriberEmailResponse,
+    BatchResponseSubscriberVidResponse,
+    CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging,
+    CollectionResponseSearchPublicResponseWrapperNoPaging,
+    CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging,
+    CollectionResponseWithTotalParticipationBreakdownForwardPaging,
+    CollectionResponseWithTotalPublicListNoPaging,
+    ContactAssociation,
+    CRMPropertyWrapper,
+    EventDetailSettings,
+    EventDetailSettingsURL,
+    MarketingEventAssociation,
+    MarketingEventCompleteRequestParams,
+    MarketingEventCreateRequestParams,
+    MarketingEventDefaultResponse,
+    MarketingEventEmailSubscriber,
+    MarketingEventExternalUniqueIdentifier,
+    MarketingEventIdentifiersResponse,
+    MarketingEventPublicDefaultResponse,
+    MarketingEventPublicDefaultResponseV2,
+    MarketingEventPublicObjectIDDeleteRequest,
+    MarketingEventPublicReadResponse,
+    MarketingEventPublicReadResponseV2,
+    MarketingEventPublicUpdateRequestFullV2,
+    MarketingEventPublicUpdateRequestV2,
+    MarketingEventSubscriber,
+    MarketingEventUpdateRequestParams,
+    ParticipationAssociations,
+    ParticipationBreakdown,
+    ParticipationProperties,
+    PropertyValue,
+    PublicList,
+    SearchPublicResponseWrapper,
+    SubscriberEmailResponse,
+    SubscriberVidResponse,
+)
+```
 
 Methods:
 
@@ -3086,6 +3154,12 @@ Methods:
 - <code title="delete /marketing/v3/forms/{formId}">client.marketing.forms.<a href="./src/hubspot_sdk/resources/marketing/forms.py">delete</a>(form_id) -> None</code>
 - <code title="get /marketing/v3/forms/{formId}">client.marketing.forms.<a href="./src/hubspot_sdk/resources/marketing/forms.py">read</a>(form_id, \*\*<a href="src/hubspot_sdk/types/marketing/form_read_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/form_definition_base.py">FormDefinitionBase</a></code>
 - <code title="put /marketing/v3/forms/{formId}">client.marketing.forms.<a href="./src/hubspot_sdk/resources/marketing/forms.py">replace</a>(form_id) -> <a href="./src/hubspot_sdk/types/marketing/form_definition_base.py">FormDefinitionBase</a></code>
+
+## SingleSend
+
+Methods:
+
+- <code title="post /marketing/v4/email/single-send">client.marketing.single_send.<a href="./src/hubspot_sdk/resources/marketing/single_send.py">send</a>(\*\*<a href="src/hubspot_sdk/types/marketing/single_send_send_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/email_send_status_view.py">EmailSendStatusView</a></code>
 
 ## Subscriptions
 

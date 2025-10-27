@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+from .paging import Paging as Paging
 from .app_info import AppInfo as AppInfo
+from .interval import Interval as Interval
 from .file_field import FileField as FileField
 from .form_style import FormStyle as FormStyle
 from .email_field import EmailField as EmailField
@@ -11,6 +13,7 @@ from .phone_field import PhoneField as PhoneField
 from .public_list import PublicList as PublicList
 from .radio_field import RadioField as RadioField
 from .number_field import NumberField as NumberField
+from .public_email import PublicEmail as PublicEmail
 from .event_id_view import EventIDView as EventIDView
 from .dropdown_field import DropdownField as DropdownField
 from .property_value import PropertyValue as PropertyValue
@@ -18,6 +21,7 @@ from .dependent_field import DependentField as DependentField
 from .lifecycle_stage import LifecycleStage as LifecycleStage
 from .public_campaign import PublicCampaign as PublicCampaign
 from .datepicker_field import DatepickerField as DatepickerField
+from .email_get_params import EmailGetParams as EmailGetParams
 from .file_field_param import FileFieldParam as FileFieldParam
 from .form_list_params import FormListParams as FormListParams
 from .form_read_params import FormReadParams as FormReadParams
@@ -25,11 +29,14 @@ from .form_style_param import FormStyleParam as FormStyleParam
 from .metrics_counters import MetricsCounters as MetricsCounters
 from .contact_reference import ContactReference as ContactReference
 from .email_field_param import EmailFieldParam as EmailFieldParam
+from .email_list_params import EmailListParams as EmailListParams
 from .event_list_params import EventListParams as EventListParams
 from .field_group_param import FieldGroupParam as FieldGroupParam
 from .phone_field_param import PhoneFieldParam as PhoneFieldParam
+from .public_font_style import PublicFontStyle as PublicFontStyle
 from .public_spend_item import PublicSpendItem as PublicSpendItem
 from .radio_field_param import RadioFieldParam as RadioFieldParam
+from .email_clone_params import EmailCloneParams as EmailCloneParams
 from .form_update_params import FormUpdateParams as FormUpdateParams
 from .mobile_phone_field import MobilePhoneField as MobilePhoneField
 from .number_field_param import NumberFieldParam as NumberFieldParam
@@ -37,6 +44,9 @@ from .public_budget_item import PublicBudgetItem as PublicBudgetItem
 from .attendance_counters import AttendanceCounters as AttendanceCounters
 from .campaign_get_params import CampaignGetParams as CampaignGetParams
 from .contact_association import ContactAssociation as ContactAssociation
+from .email_create_params import EmailCreateParams as EmailCreateParams
+from .email_delete_params import EmailDeleteParams as EmailDeleteParams
+from .email_update_params import EmailUpdateParams as EmailUpdateParams
 from .event_create_params import EventCreateParams as EventCreateParams
 from .event_update_params import EventUpdateParams as EventUpdateParams
 from .smtp_api_token_view import SmtpAPITokenView as SmtpAPITokenView
@@ -48,7 +58,10 @@ from .form_display_options import FormDisplayOptions as FormDisplayOptions
 from .property_value_param import PropertyValueParam as PropertyValueParam
 from .public_budget_totals import PublicBudgetTotals as PublicBudgetTotals
 from .public_business_unit import PublicBusinessUnit as PublicBusinessUnit
+from .public_email_content import PublicEmailContent as PublicEmailContent
+from .version_public_email import VersionPublicEmail as VersionPublicEmail
 from .dependent_field_param import DependentFieldParam as DependentFieldParam
+from .email_statistics_data import EmailStatisticsData as EmailStatisticsData
 from .event_detail_settings import EventDetailSettings as EventDetailSettings
 from .lifecycle_stage_param import LifecycleStageParam as LifecycleStageParam
 from .multi_line_text_field import MultiLineTextField as MultiLineTextField
@@ -67,52 +80,80 @@ from .enumerated_field_option import EnumeratedFieldOption as EnumeratedFieldOpt
 from .form_post_submit_action import FormPostSubmitAction as FormPostSubmitAction
 from .number_field_validation import NumberFieldValidation as NumberFieldValidation
 from .participation_breakdown import ParticipationBreakdown as ParticipationBreakdown
+from .public_email_recipients import PublicEmailRecipients as PublicEmailRecipients
+from .public_email_to_details import PublicEmailToDetails as PublicEmailToDetails
+from .public_font_style_param import PublicFontStyleParam as PublicFontStyleParam
+from .single_send_send_params import SingleSendSendParams as SingleSendSendParams
+from .smart_email_field_param import SmartEmailFieldParam as SmartEmailFieldParam
 from .subscriber_vid_response import SubscriberVidResponse as SubscriberVidResponse
 from .subscription_definition import SubscriptionDefinition as SubscriptionDefinition
+from .email_statistic_interval import EmailStatisticInterval as EmailStatisticInterval
 from .hub_spot_form_definition import HubSpotFormDefinition as HubSpotFormDefinition
 from .mobile_phone_field_param import MobilePhoneFieldParam as MobilePhoneFieldParam
 from .participation_properties import ParticipationProperties as ParticipationProperties
 from .payment_link_radio_field import PaymentLinkRadioField as PaymentLinkRadioField
+from .public_rss_email_details import PublicRssEmailDetails as PublicRssEmailDetails
+from .email_update_draft_params import EmailUpdateDraftParams as EmailUpdateDraftParams
 from .event_delete_batch_params import EventDeleteBatchParams as EventDeleteBatchParams
 from .event_update_batch_params import EventUpdateBatchParams as EventUpdateBatchParams
 from .event_upsert_batch_params import EventUpsertBatchParams as EventUpsertBatchParams
 from .multiple_checkboxes_field import MultipleCheckboxesField as MultipleCheckboxesField
+from .public_email_from_details import PublicEmailFromDetails as PublicEmailFromDetails
+from .public_webversion_details import PublicWebversionDetails as PublicWebversionDetails
 from .subscriber_email_response import SubscriberEmailResponse as SubscriberEmailResponse
+from .aggregate_email_statistics import AggregateEmailStatistics as AggregateEmailStatistics
 from .form_display_options_param import FormDisplayOptionsParam as FormDisplayOptionsParam
 from .legal_consent_options_none import LegalConsentOptionsNone as LegalConsentOptionsNone
 from .participation_associations import ParticipationAssociations as ParticipationAssociations
+from .public_email_content_param import PublicEmailContentParam as PublicEmailContentParam
 from .public_subscription_status import PublicSubscriptionStatus as PublicSubscriptionStatus
+from .email_list_revisions_params import EmailListRevisionsParams as EmailListRevisionsParams
 from .hub_spot_form_configuration import HubSpotFormConfiguration as HubSpotFormConfiguration
 from .marketing_event_association import MarketingEventAssociation as MarketingEventAssociation
 from .multi_line_text_field_param import MultiLineTextFieldParam as MultiLineTextFieldParam
 from .public_campaign_input_param import PublicCampaignInputParam as PublicCampaignInputParam
 from .public_campaign_with_assets import PublicCampaignWithAssets as PublicCampaignWithAssets
+from .public_email_style_settings import PublicEmailStyleSettings as PublicEmailStyleSettings
 from .single_checkbox_field_param import SingleCheckboxFieldParam as SingleCheckboxFieldParam
 from .dependent_field_filter_param import DependentFieldFilterParam as DependentFieldFilterParam
 from .email_field_validation_param import EmailFieldValidationParam as EmailFieldValidationParam
 from .legal_consent_checkbox_param import LegalConsentCheckboxParam as LegalConsentCheckboxParam
 from .phone_field_validation_param import PhoneFieldValidationParam as PhoneFieldValidationParam
+from .public_button_style_settings import PublicButtonStyleSettings as PublicButtonStyleSettings
+from .public_email_testing_details import PublicEmailTestingDetails as PublicEmailTestingDetails
 from .single_line_text_field_param import SingleLineTextFieldParam as SingleLineTextFieldParam
 from .enumerated_field_option_param import EnumeratedFieldOptionParam as EnumeratedFieldOptionParam
 from .form_post_submit_action_param import FormPostSubmitActionParam as FormPostSubmitActionParam
 from .number_field_validation_param import NumberFieldValidationParam as NumberFieldValidationParam
+from .public_divider_style_settings import PublicDividerStyleSettings as PublicDividerStyleSettings
+from .public_email_recipients_param import PublicEmailRecipientsParam as PublicEmailRecipientsParam
+from .public_email_to_details_param import PublicEmailToDetailsParam as PublicEmailToDetailsParam
 from .revenue_attribution_aggregate import RevenueAttributionAggregate as RevenueAttributionAggregate
 from .subscription_subscribe_params import SubscriptionSubscribeParams as SubscriptionSubscribeParams
 from .batch_response_public_campaign import BatchResponsePublicCampaign as BatchResponsePublicCampaign
 from .payment_link_radio_field_param import PaymentLinkRadioFieldParam as PaymentLinkRadioFieldParam
+from .public_rss_email_details_param import PublicRssEmailDetailsParam as PublicRssEmailDetailsParam
 from .public_single_send_email_param import PublicSingleSendEmailParam as PublicSingleSendEmailParam
 from .search_public_response_wrapper import SearchPublicResponseWrapper as SearchPublicResponseWrapper
 from .multiple_checkboxes_field_param import MultipleCheckboxesFieldParam as MultipleCheckboxesFieldParam
+from .public_email_from_details_param import PublicEmailFromDetailsParam as PublicEmailFromDetailsParam
+from .public_webversion_details_param import PublicWebversionDetailsParam as PublicWebversionDetailsParam
 from .subscription_unsubscribe_params import SubscriptionUnsubscribeParams as SubscriptionUnsubscribeParams
 from .legal_consent_options_none_param import LegalConsentOptionsNoneParam as LegalConsentOptionsNoneParam
 from .marketing_event_default_response import MarketingEventDefaultResponse as MarketingEventDefaultResponse
 from .marketing_event_subscriber_param import MarketingEventSubscriberParam as MarketingEventSubscriberParam
 from .public_campaign_read_input_param import PublicCampaignReadInputParam as PublicCampaignReadInputParam
 from .hub_spot_form_configuration_param import HubSpotFormConfigurationParam as HubSpotFormConfigurationParam
+from .public_email_style_settings_param import PublicEmailStyleSettingsParam as PublicEmailStyleSettingsParam
+from .public_email_subscription_details import PublicEmailSubscriptionDetails as PublicEmailSubscriptionDetails
 from .subscription_definitions_response import SubscriptionDefinitionsResponse as SubscriptionDefinitionsResponse
+from .public_button_style_settings_param import PublicButtonStyleSettingsParam as PublicButtonStyleSettingsParam
 from .public_campaign_delete_input_param import PublicCampaignDeleteInputParam as PublicCampaignDeleteInputParam
+from .public_email_testing_details_param import PublicEmailTestingDetailsParam as PublicEmailTestingDetailsParam
+from .public_divider_style_settings_param import PublicDividerStyleSettingsParam as PublicDividerStyleSettingsParam
 from .marketing_event_identifiers_response import MarketingEventIdentifiersResponse as MarketingEventIdentifiersResponse
 from .marketing_event_public_read_response import MarketingEventPublicReadResponse as MarketingEventPublicReadResponse
+from .email_create_ab_test_variation_params import EmailCreateAbTestVariationParams as EmailCreateAbTestVariationParams
 from .event_get_by_external_event_id_params import EventGetByExternalEventIDParams as EventGetByExternalEventIDParams
 from .marketing_event_create_request_params import (
     MarketingEventCreateRequestParams as MarketingEventCreateRequestParams,
@@ -134,6 +175,9 @@ from .marketing_event_public_read_response_v2 import (
 )
 from .public_campaign_batch_update_item_param import (
     PublicCampaignBatchUpdateItemParam as PublicCampaignBatchUpdateItemParam,
+)
+from .public_email_subscription_details_param import (
+    PublicEmailSubscriptionDetailsParam as PublicEmailSubscriptionDetailsParam,
 )
 from .batch_response_subscriber_email_response import (
     BatchResponseSubscriberEmailResponse as BatchResponseSubscriberEmailResponse,
@@ -189,6 +233,9 @@ from .legal_consent_options_explicit_consent_to_process import (
 from .legal_consent_options_implicit_consent_to_process import (
     LegalConsentOptionsImplicitConsentToProcess as LegalConsentOptionsImplicitConsentToProcess,
 )
+from .collection_response_with_total_version_public_email import (
+    CollectionResponseWithTotalVersionPublicEmail as CollectionResponseWithTotalVersionPublicEmail,
+)
 from .marketing_event_public_update_request_full_v2_param import (
     MarketingEventPublicUpdateRequestFullV2Param as MarketingEventPublicUpdateRequestFullV2Param,
 )
@@ -222,11 +269,17 @@ from .collection_response_public_campaign_asset_forward_paging import (
 from .batch_response_marketing_event_public_default_response_v2 import (
     BatchResponseMarketingEventPublicDefaultResponseV2 as BatchResponseMarketingEventPublicDefaultResponseV2,
 )
+from .collection_response_with_total_public_email_forward_paging import (
+    CollectionResponseWithTotalPublicEmailForwardPaging as CollectionResponseWithTotalPublicEmailForwardPaging,
+)
 from .collection_response_search_public_response_wrapper_no_paging import (
     CollectionResponseSearchPublicResponseWrapperNoPaging as CollectionResponseSearchPublicResponseWrapperNoPaging,
 )
 from .collection_response_with_total_public_campaign_forward_paging import (
     CollectionResponseWithTotalPublicCampaignForwardPaging as CollectionResponseWithTotalPublicCampaignForwardPaging,
+)
+from .collection_response_with_total_email_statistic_interval_no_paging import (
+    CollectionResponseWithTotalEmailStatisticIntervalNoPaging as CollectionResponseWithTotalEmailStatisticIntervalNoPaging,
 )
 from .collection_response_with_total_participation_breakdown_forward_paging import (
     CollectionResponseWithTotalParticipationBreakdownForwardPaging as CollectionResponseWithTotalParticipationBreakdownForwardPaging,

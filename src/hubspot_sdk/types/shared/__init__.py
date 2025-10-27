@@ -8,6 +8,7 @@ from .next_page import NextPage as NextPage
 from .error_detail import ErrorDetail as ErrorDetail
 from .option_input import OptionInput as OptionInput
 from .task_locator import TaskLocator as TaskLocator
+from .version_user import VersionUser as VersionUser
 from .previous_page import PreviousPage as PreviousPage
 from .property_name import PropertyName as PropertyName
 from .forward_paging import ForwardPaging as ForwardPaging
@@ -55,6 +56,7 @@ from .public_not_all_filter_branch import PublicNotAllFilterBranch as PublicNotA
 from .public_not_any_filter_branch import PublicNotAnyFilterBranch as PublicNotAnyFilterBranch
 from .public_ranged_time_operation import PublicRangedTimeOperation as PublicRangedTimeOperation
 from .public_unified_events_filter import PublicUnifiedEventsFilter as PublicUnifiedEventsFilter
+from .ab_test_create_request_v_next import AbTestCreateRequestVNext as AbTestCreateRequestVNext
 from .object_type_definition_labels import ObjectTypeDefinitionLabels as ObjectTypeDefinitionLabels
 from .public_event_analytics_filter import PublicEventAnalyticsFilter as PublicEventAnalyticsFilter
 from .public_form_submission_filter import PublicFormSubmissionFilter as PublicFormSubmissionFilter
