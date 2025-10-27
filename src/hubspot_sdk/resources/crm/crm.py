@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+from .limits import (
+    LimitsResource,
+    AsyncLimitsResource,
+    LimitsResourceWithRawResponse,
+    AsyncLimitsResourceWithRawResponse,
+    LimitsResourceWithStreamingResponse,
+    AsyncLimitsResourceWithStreamingResponse,
+)
 from .owners import (
     OwnersResource,
     AsyncOwnersResource,
@@ -76,6 +84,14 @@ from .pipelines.pipelines import (
     PipelinesResourceWithStreamingResponse,
     AsyncPipelinesResourceWithStreamingResponse,
 )
+from .property_validations import (
+    PropertyValidationsResource,
+    AsyncPropertyValidationsResource,
+    PropertyValidationsResourceWithRawResponse,
+    AsyncPropertyValidationsResourceWithRawResponse,
+    PropertyValidationsResourceWithStreamingResponse,
+    AsyncPropertyValidationsResourceWithStreamingResponse,
+)
 from .extensions.extensions import (
     ExtensionsResource,
     AsyncExtensionsResource,
@@ -99,6 +115,14 @@ from .associations.associations import (
     AsyncAssociationsResourceWithRawResponse,
     AssociationsResourceWithStreamingResponse,
     AsyncAssociationsResourceWithStreamingResponse,
+)
+from .feature_flags.feature_flags import (
+    FeatureFlagsResource,
+    AsyncFeatureFlagsResource,
+    FeatureFlagsResourceWithRawResponse,
+    AsyncFeatureFlagsResourceWithRawResponse,
+    FeatureFlagsResourceWithStreamingResponse,
+    AsyncFeatureFlagsResourceWithStreamingResponse,
 )
 from .object_library.object_library import (
     ObjectLibraryResource,
@@ -130,8 +154,16 @@ class CRMResource(SyncAPIResource):
         return ExtensionsResource(self._client)
 
     @cached_property
+    def feature_flags(self) -> FeatureFlagsResource:
+        return FeatureFlagsResource(self._client)
+
+    @cached_property
     def imports(self) -> ImportsResource:
         return ImportsResource(self._client)
+
+    @cached_property
+    def limits(self) -> LimitsResource:
+        return LimitsResource(self._client)
 
     @cached_property
     def lists(self) -> ListsResource:
@@ -156,6 +188,10 @@ class CRMResource(SyncAPIResource):
     @cached_property
     def properties(self) -> PropertiesResource:
         return PropertiesResource(self._client)
+
+    @cached_property
+    def property_validations(self) -> PropertyValidationsResource:
+        return PropertyValidationsResource(self._client)
 
     @cached_property
     def timeline(self) -> TimelineResource:
@@ -203,8 +239,16 @@ class AsyncCRMResource(AsyncAPIResource):
         return AsyncExtensionsResource(self._client)
 
     @cached_property
+    def feature_flags(self) -> AsyncFeatureFlagsResource:
+        return AsyncFeatureFlagsResource(self._client)
+
+    @cached_property
     def imports(self) -> AsyncImportsResource:
         return AsyncImportsResource(self._client)
+
+    @cached_property
+    def limits(self) -> AsyncLimitsResource:
+        return AsyncLimitsResource(self._client)
 
     @cached_property
     def lists(self) -> AsyncListsResource:
@@ -229,6 +273,10 @@ class AsyncCRMResource(AsyncAPIResource):
     @cached_property
     def properties(self) -> AsyncPropertiesResource:
         return AsyncPropertiesResource(self._client)
+
+    @cached_property
+    def property_validations(self) -> AsyncPropertyValidationsResource:
+        return AsyncPropertyValidationsResource(self._client)
 
     @cached_property
     def timeline(self) -> AsyncTimelineResource:
@@ -279,8 +327,16 @@ class CRMResourceWithRawResponse:
         return ExtensionsResourceWithRawResponse(self._crm.extensions)
 
     @cached_property
+    def feature_flags(self) -> FeatureFlagsResourceWithRawResponse:
+        return FeatureFlagsResourceWithRawResponse(self._crm.feature_flags)
+
+    @cached_property
     def imports(self) -> ImportsResourceWithRawResponse:
         return ImportsResourceWithRawResponse(self._crm.imports)
+
+    @cached_property
+    def limits(self) -> LimitsResourceWithRawResponse:
+        return LimitsResourceWithRawResponse(self._crm.limits)
 
     @cached_property
     def lists(self) -> ListsResourceWithRawResponse:
@@ -305,6 +361,10 @@ class CRMResourceWithRawResponse:
     @cached_property
     def properties(self) -> PropertiesResourceWithRawResponse:
         return PropertiesResourceWithRawResponse(self._crm.properties)
+
+    @cached_property
+    def property_validations(self) -> PropertyValidationsResourceWithRawResponse:
+        return PropertyValidationsResourceWithRawResponse(self._crm.property_validations)
 
     @cached_property
     def timeline(self) -> TimelineResourceWithRawResponse:
@@ -336,8 +396,16 @@ class AsyncCRMResourceWithRawResponse:
         return AsyncExtensionsResourceWithRawResponse(self._crm.extensions)
 
     @cached_property
+    def feature_flags(self) -> AsyncFeatureFlagsResourceWithRawResponse:
+        return AsyncFeatureFlagsResourceWithRawResponse(self._crm.feature_flags)
+
+    @cached_property
     def imports(self) -> AsyncImportsResourceWithRawResponse:
         return AsyncImportsResourceWithRawResponse(self._crm.imports)
+
+    @cached_property
+    def limits(self) -> AsyncLimitsResourceWithRawResponse:
+        return AsyncLimitsResourceWithRawResponse(self._crm.limits)
 
     @cached_property
     def lists(self) -> AsyncListsResourceWithRawResponse:
@@ -362,6 +430,10 @@ class AsyncCRMResourceWithRawResponse:
     @cached_property
     def properties(self) -> AsyncPropertiesResourceWithRawResponse:
         return AsyncPropertiesResourceWithRawResponse(self._crm.properties)
+
+    @cached_property
+    def property_validations(self) -> AsyncPropertyValidationsResourceWithRawResponse:
+        return AsyncPropertyValidationsResourceWithRawResponse(self._crm.property_validations)
 
     @cached_property
     def timeline(self) -> AsyncTimelineResourceWithRawResponse:
@@ -393,8 +465,16 @@ class CRMResourceWithStreamingResponse:
         return ExtensionsResourceWithStreamingResponse(self._crm.extensions)
 
     @cached_property
+    def feature_flags(self) -> FeatureFlagsResourceWithStreamingResponse:
+        return FeatureFlagsResourceWithStreamingResponse(self._crm.feature_flags)
+
+    @cached_property
     def imports(self) -> ImportsResourceWithStreamingResponse:
         return ImportsResourceWithStreamingResponse(self._crm.imports)
+
+    @cached_property
+    def limits(self) -> LimitsResourceWithStreamingResponse:
+        return LimitsResourceWithStreamingResponse(self._crm.limits)
 
     @cached_property
     def lists(self) -> ListsResourceWithStreamingResponse:
@@ -419,6 +499,10 @@ class CRMResourceWithStreamingResponse:
     @cached_property
     def properties(self) -> PropertiesResourceWithStreamingResponse:
         return PropertiesResourceWithStreamingResponse(self._crm.properties)
+
+    @cached_property
+    def property_validations(self) -> PropertyValidationsResourceWithStreamingResponse:
+        return PropertyValidationsResourceWithStreamingResponse(self._crm.property_validations)
 
     @cached_property
     def timeline(self) -> TimelineResourceWithStreamingResponse:
@@ -450,8 +534,16 @@ class AsyncCRMResourceWithStreamingResponse:
         return AsyncExtensionsResourceWithStreamingResponse(self._crm.extensions)
 
     @cached_property
+    def feature_flags(self) -> AsyncFeatureFlagsResourceWithStreamingResponse:
+        return AsyncFeatureFlagsResourceWithStreamingResponse(self._crm.feature_flags)
+
+    @cached_property
     def imports(self) -> AsyncImportsResourceWithStreamingResponse:
         return AsyncImportsResourceWithStreamingResponse(self._crm.imports)
+
+    @cached_property
+    def limits(self) -> AsyncLimitsResourceWithStreamingResponse:
+        return AsyncLimitsResourceWithStreamingResponse(self._crm.limits)
 
     @cached_property
     def lists(self) -> AsyncListsResourceWithStreamingResponse:
@@ -476,6 +568,10 @@ class AsyncCRMResourceWithStreamingResponse:
     @cached_property
     def properties(self) -> AsyncPropertiesResourceWithStreamingResponse:
         return AsyncPropertiesResourceWithStreamingResponse(self._crm.properties)
+
+    @cached_property
+    def property_validations(self) -> AsyncPropertyValidationsResourceWithStreamingResponse:
+        return AsyncPropertyValidationsResourceWithStreamingResponse(self._crm.property_validations)
 
     @cached_property
     def timeline(self) -> AsyncTimelineResourceWithStreamingResponse:

@@ -2,6 +2,4 @@
 
 from __future__ import annotations
 
-from .statistic_get_params import StatisticGetParams as StatisticGetParams
 from .single_send_send_params import SingleSendSendParams as SingleSendSendParams
-from .statistic_get_histogram_params import StatisticGetHistogramParams as StatisticGetHistogramParams
