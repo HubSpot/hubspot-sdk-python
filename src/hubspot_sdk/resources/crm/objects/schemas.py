@@ -27,9 +27,9 @@ from ....types.crm.objects import (
 from ....types.crm.objects.object_schema import ObjectSchema
 from ....types.events.association_definition import AssociationDefinition
 from ....types.crm.objects.object_type_definition import ObjectTypeDefinition
+from ....types.shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
 from ....types.crm.objects.object_type_property_create_param import ObjectTypePropertyCreateParam
-from ....types.crm.objects.object_type_definition_labels_param import ObjectTypeDefinitionLabelsParam
-from ....types.crm.objects.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
+from ....types.shared.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
 
 __all__ = ["SchemasResource", "AsyncSchemasResource"]
 
@@ -58,7 +58,7 @@ class SchemasResource(SyncAPIResource):
         self,
         *,
         associated_objects: SequenceNotStr[str],
-        labels: ObjectTypeDefinitionLabelsParam,
+        labels: ObjectTypeDefinitionLabels,
         name: str,
         properties: Iterable[ObjectTypePropertyCreateParam],
         required_properties: SequenceNotStr[str],
@@ -81,8 +81,6 @@ class SchemasResource(SyncAPIResource):
 
         Args:
           associated_objects: Associations defined for this object type.
-
-          labels: Singular and plural labels for the object. Used in CRM display.
 
           name: A unique name for this object. For internal use only.
 
@@ -136,7 +134,7 @@ class SchemasResource(SyncAPIResource):
         *,
         clear_description: bool | Omit = omit,
         description: str | Omit = omit,
-        labels: ObjectTypeDefinitionLabelsParam | Omit = omit,
+        labels: ObjectTypeDefinitionLabels | Omit = omit,
         primary_display_property: str | Omit = omit,
         required_properties: SequenceNotStr[str] | Omit = omit,
         restorable: bool | Omit = omit,
@@ -153,8 +151,6 @@ class SchemasResource(SyncAPIResource):
         Update the details for an existing object schema.
 
         Args:
-          labels: Singular and plural labels for the object. Used in CRM display.
-
           primary_display_property: The name of the primary property for this object. This will be displayed as
               primary on the HubSpot record page for this object type.
 
@@ -336,12 +332,6 @@ class SchemasResource(SyncAPIResource):
         object types.
 
         Args:
-          from_object_type_id: ID of the primary object type to link from.
-
-          to_object_type_id: ID of the target object type to link to.
-
-          name: A unique name for this association.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -426,7 +416,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         self,
         *,
         associated_objects: SequenceNotStr[str],
-        labels: ObjectTypeDefinitionLabelsParam,
+        labels: ObjectTypeDefinitionLabels,
         name: str,
         properties: Iterable[ObjectTypePropertyCreateParam],
         required_properties: SequenceNotStr[str],
@@ -449,8 +439,6 @@ class AsyncSchemasResource(AsyncAPIResource):
 
         Args:
           associated_objects: Associations defined for this object type.
-
-          labels: Singular and plural labels for the object. Used in CRM display.
 
           name: A unique name for this object. For internal use only.
 
@@ -504,7 +492,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         *,
         clear_description: bool | Omit = omit,
         description: str | Omit = omit,
-        labels: ObjectTypeDefinitionLabelsParam | Omit = omit,
+        labels: ObjectTypeDefinitionLabels | Omit = omit,
         primary_display_property: str | Omit = omit,
         required_properties: SequenceNotStr[str] | Omit = omit,
         restorable: bool | Omit = omit,
@@ -521,8 +509,6 @@ class AsyncSchemasResource(AsyncAPIResource):
         Update the details for an existing object schema.
 
         Args:
-          labels: Singular and plural labels for the object. Used in CRM display.
-
           primary_display_property: The name of the primary property for this object. This will be displayed as
               primary on the HubSpot record page for this object type.
 
@@ -704,12 +690,6 @@ class AsyncSchemasResource(AsyncAPIResource):
         object types.
 
         Args:
-          from_object_type_id: ID of the primary object type to link from.
-
-          to_object_type_id: ID of the target object type to link to.
-
-          name: A unique name for this association.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

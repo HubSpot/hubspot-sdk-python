@@ -11,6 +11,10 @@ __all__ = ["PublicClient"]
 
 
 class PublicClient(BaseModel):
-    client_type: Literal["HUBSPOT", "SYSTEM", "INTEGRATION", "UNKNOWN"] = FieldInfo(alias="clientType")
+    client_type: Optional[Literal["HUBSPOT", "SYSTEM", "INTEGRATION", "UNKNOWN"]] = FieldInfo(
+        alias="clientType", default=None
+    )
+    """The type of the client."""
 
     integration_app_id: Optional[int] = FieldInfo(alias="integrationAppId", default=None)
+    """The ID of the client if the client is an integration."""

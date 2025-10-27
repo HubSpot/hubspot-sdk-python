@@ -264,7 +264,7 @@ class TestV4:
             body=[
                 {
                     "association_category": "HUBSPOT_DEFINED",
-                    "association_type_id": 279,
+                    "association_type_id": 0,
                 }
             ],
         )
@@ -281,7 +281,7 @@ class TestV4:
             body=[
                 {
                     "association_category": "HUBSPOT_DEFINED",
-                    "association_type_id": 279,
+                    "association_type_id": 0,
                 }
             ],
         )
@@ -302,7 +302,7 @@ class TestV4:
             body=[
                 {
                     "association_category": "HUBSPOT_DEFINED",
-                    "association_type_id": 279,
+                    "association_type_id": 0,
                 }
             ],
         ) as response:
@@ -326,7 +326,7 @@ class TestV4:
                 body=[
                     {
                         "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 279,
+                        "association_type_id": 0,
                     }
                 ],
             )
@@ -340,7 +340,7 @@ class TestV4:
                 body=[
                     {
                         "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 279,
+                        "association_type_id": 0,
                     }
                 ],
             )
@@ -354,7 +354,7 @@ class TestV4:
                 body=[
                     {
                         "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 279,
+                        "association_type_id": 0,
                     }
                 ],
             )
@@ -368,7 +368,7 @@ class TestV4:
                 body=[
                     {
                         "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 279,
+                        "association_type_id": 0,
                     }
                 ],
             )
@@ -622,7 +622,7 @@ class TestAsyncV4:
             body=[
                 {
                     "association_category": "HUBSPOT_DEFINED",
-                    "association_type_id": 279,
+                    "association_type_id": 0,
                 }
             ],
         )
@@ -639,7 +639,7 @@ class TestAsyncV4:
             body=[
                 {
                     "association_category": "HUBSPOT_DEFINED",
-                    "association_type_id": 279,
+                    "association_type_id": 0,
                 }
             ],
         )
@@ -660,7 +660,7 @@ class TestAsyncV4:
             body=[
                 {
                     "association_category": "HUBSPOT_DEFINED",
-                    "association_type_id": 279,
+                    "association_type_id": 0,
                 }
             ],
         ) as response:
@@ -684,7 +684,7 @@ class TestAsyncV4:
                 body=[
                     {
                         "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 279,
+                        "association_type_id": 0,
                     }
                 ],
             )
@@ -698,7 +698,7 @@ class TestAsyncV4:
                 body=[
                     {
                         "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 279,
+                        "association_type_id": 0,
                     }
                 ],
             )
@@ -712,7 +712,7 @@ class TestAsyncV4:
                 body=[
                     {
                         "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 279,
+                        "association_type_id": 0,
                     }
                 ],
             )
@@ -726,7 +726,7 @@ class TestAsyncV4:
                 body=[
                     {
                         "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 279,
+                        "association_type_id": 0,
                     }
                 ],
             )

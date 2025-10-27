@@ -48,11 +48,11 @@ class TestEventDefinitions:
                     "name": "name",
                     "options": [
                         {
-                            "display_order": 1,
-                            "hidden": False,
-                            "label": "Option A",
-                            "value": "A",
-                            "description": "Choice number one",
+                            "display_order": 0,
+                            "hidden": True,
+                            "label": "label",
+                            "value": "value",
+                            "description": "description",
                         }
                     ],
                 }
@@ -256,11 +256,11 @@ class TestEventDefinitions:
             name="name",
             options=[
                 {
-                    "display_order": 1,
-                    "hidden": False,
-                    "label": "Option A",
-                    "value": "A",
-                    "description": "Choice number one",
+                    "display_order": 0,
+                    "hidden": True,
+                    "label": "label",
+                    "value": "value",
+                    "description": "description",
                 }
             ],
         )
@@ -419,11 +419,11 @@ class TestEventDefinitions:
             label="label",
             options=[
                 {
-                    "display_order": 1,
-                    "hidden": False,
-                    "label": "Option A",
-                    "value": "A",
-                    "description": "Choice number one",
+                    "display_order": 0,
+                    "hidden": True,
+                    "label": "label",
+                    "value": "value",
+                    "description": "description",
                 }
             ],
         )
@@ -505,11 +505,11 @@ class TestAsyncEventDefinitions:
                     "name": "name",
                     "options": [
                         {
-                            "display_order": 1,
-                            "hidden": False,
-                            "label": "Option A",
-                            "value": "A",
-                            "description": "Choice number one",
+                            "display_order": 0,
+                            "hidden": True,
+                            "label": "label",
+                            "value": "value",
+                            "description": "description",
                         }
                     ],
                 }
@@ -713,11 +713,11 @@ class TestAsyncEventDefinitions:
             name="name",
             options=[
                 {
-                    "display_order": 1,
-                    "hidden": False,
-                    "label": "Option A",
-                    "value": "A",
-                    "description": "Choice number one",
+                    "display_order": 0,
+                    "hidden": True,
+                    "label": "label",
+                    "value": "value",
+                    "description": "description",
                 }
             ],
         )
@@ -876,11 +876,11 @@ class TestAsyncEventDefinitions:
             label="label",
             options=[
                 {
-                    "display_order": 1,
-                    "hidden": False,
-                    "label": "Option A",
-                    "value": "A",
-                    "description": "Choice number one",
+                    "display_order": 0,
+                    "hidden": True,
+                    "label": "label",
+                    "value": "value",
+                    "description": "description",
                 }
             ],
         )

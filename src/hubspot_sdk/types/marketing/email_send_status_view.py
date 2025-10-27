@@ -25,6 +25,8 @@ class EmailSendStatusView(BaseModel):
     event_id: Optional[EventIDView] = FieldInfo(alias="eventId", default=None)
     """The ID of a send event."""
 
+    message: Optional[str] = None
+
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """Time when the send was requested."""
 
@@ -73,6 +75,8 @@ class EmailSendStatusView(BaseModel):
             "NON_MARKETABLE_CONTACT",
             "PREVIOUSLY_UNSUBSCRIBED_BUSINESS_UNIT",
             "GDPR_DOI_ENABLED",
+            "HUBL_LIMIT_EXCEEDED",
+            "LOW_CONTACT_QUALITY_SCORE",
         ]
     ] = FieldInfo(alias="sendResult", default=None)
     """Result of the send."""

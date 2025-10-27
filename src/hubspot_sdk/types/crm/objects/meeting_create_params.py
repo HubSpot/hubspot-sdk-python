@@ -12,6 +12,6 @@ __all__ = ["MeetingCreateParams"]
 
 class MeetingCreateParams(TypedDict, total=False):
     properties: Required[Dict[str, str]]
-    """The company property values to set."""
+    """Key-value pairs for setting properties for the new object."""
 
     associations: Iterable[PublicAssociationsForObjectParam]

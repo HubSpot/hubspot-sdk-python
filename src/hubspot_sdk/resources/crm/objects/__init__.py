@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .calls import (
+    CallsResource,
+    AsyncCallsResource,
+    CallsResourceWithRawResponse,
+    AsyncCallsResourceWithRawResponse,
+    CallsResourceWithStreamingResponse,
+    AsyncCallsResourceWithStreamingResponse,
+)
 from .deals import (
     DealsResource,
     AsyncDealsResource,
@@ -8,6 +16,38 @@ from .deals import (
     DealsResourceWithStreamingResponse,
     AsyncDealsResourceWithStreamingResponse,
 )
+from .leads import (
+    LeadsResource,
+    AsyncLeadsResource,
+    LeadsResourceWithRawResponse,
+    AsyncLeadsResourceWithRawResponse,
+    LeadsResourceWithStreamingResponse,
+    AsyncLeadsResourceWithStreamingResponse,
+)
+from .notes import (
+    NotesResource,
+    AsyncNotesResource,
+    NotesResourceWithRawResponse,
+    AsyncNotesResourceWithRawResponse,
+    NotesResourceWithStreamingResponse,
+    AsyncNotesResourceWithStreamingResponse,
+)
+from .tasks import (
+    TasksResource,
+    AsyncTasksResource,
+    TasksResourceWithRawResponse,
+    AsyncTasksResourceWithRawResponse,
+    TasksResourceWithStreamingResponse,
+    AsyncTasksResourceWithStreamingResponse,
+)
+from .taxes import (
+    TaxesResource,
+    AsyncTaxesResource,
+    TaxesResourceWithRawResponse,
+    AsyncTaxesResourceWithRawResponse,
+    TaxesResourceWithStreamingResponse,
+    AsyncTaxesResourceWithStreamingResponse,
+)
 from .custom import (
     CustomResource,
     AsyncCustomResource,
@@ -15,6 +55,14 @@ from .custom import (
     AsyncCustomResourceWithRawResponse,
     CustomResourceWithStreamingResponse,
     AsyncCustomResourceWithStreamingResponse,
+)
+from .emails import (
+    EmailsResource,
+    AsyncEmailsResource,
+    EmailsResourceWithRawResponse,
+    AsyncEmailsResourceWithRawResponse,
+    EmailsResourceWithStreamingResponse,
+    AsyncEmailsResourceWithStreamingResponse,
 )
 from .objects import (
     ObjectsResource,
@@ -32,6 +80,14 @@ from .schemas import (
     SchemasResourceWithStreamingResponse,
     AsyncSchemasResourceWithStreamingResponse,
 )
+from .tickets import (
+    TicketsResource,
+    AsyncTicketsResource,
+    TicketsResourceWithRawResponse,
+    AsyncTicketsResourceWithRawResponse,
+    TicketsResourceWithStreamingResponse,
+    AsyncTicketsResourceWithStreamingResponse,
+)
 from .contacts import (
     ContactsResource,
     AsyncContactsResource,
@@ -39,6 +95,14 @@ from .contacts import (
     AsyncContactsResourceWithRawResponse,
     ContactsResourceWithStreamingResponse,
     AsyncContactsResourceWithStreamingResponse,
+)
+from .invoices import (
+    InvoicesResource,
+    AsyncInvoicesResource,
+    InvoicesResourceWithRawResponse,
+    AsyncInvoicesResourceWithRawResponse,
+    InvoicesResourceWithStreamingResponse,
+    AsyncInvoicesResourceWithStreamingResponse,
 )
 from .meetings import (
     MeetingsResource,
@@ -48,6 +112,14 @@ from .meetings import (
     MeetingsResourceWithStreamingResponse,
     AsyncMeetingsResourceWithStreamingResponse,
 )
+from .services import (
+    ServicesResource,
+    AsyncServicesResource,
+    ServicesResourceWithRawResponse,
+    AsyncServicesResourceWithRawResponse,
+    ServicesResourceWithStreamingResponse,
+    AsyncServicesResourceWithStreamingResponse,
+)
 from .companies import (
     CompaniesResource,
     AsyncCompaniesResource,
@@ -55,6 +127,14 @@ from .companies import (
     AsyncCompaniesResourceWithRawResponse,
     CompaniesResourceWithStreamingResponse,
     AsyncCompaniesResourceWithStreamingResponse,
+)
+from .line_items import (
+    LineItemsResource,
+    AsyncLineItemsResource,
+    LineItemsResourceWithRawResponse,
+    AsyncLineItemsResourceWithRawResponse,
+    LineItemsResourceWithStreamingResponse,
+    AsyncLineItemsResourceWithStreamingResponse,
 )
 from .deal_splits import (
     DealSplitsResource,
@@ -64,8 +144,44 @@ from .deal_splits import (
     DealSplitsResourceWithStreamingResponse,
     AsyncDealSplitsResourceWithStreamingResponse,
 )
+from .appointments import (
+    AppointmentsResource,
+    AsyncAppointmentsResource,
+    AppointmentsResourceWithRawResponse,
+    AsyncAppointmentsResourceWithRawResponse,
+    AppointmentsResourceWithStreamingResponse,
+    AsyncAppointmentsResourceWithStreamingResponse,
+)
+from .partner_clients import (
+    PartnerClientsResource,
+    AsyncPartnerClientsResource,
+    PartnerClientsResourceWithRawResponse,
+    AsyncPartnerClientsResourceWithRawResponse,
+    PartnerClientsResourceWithStreamingResponse,
+    AsyncPartnerClientsResourceWithStreamingResponse,
+)
+from .feedback_submissions import (
+    FeedbackSubmissionsResource,
+    AsyncFeedbackSubmissionsResource,
+    FeedbackSubmissionsResourceWithRawResponse,
+    AsyncFeedbackSubmissionsResourceWithRawResponse,
+    FeedbackSubmissionsResourceWithStreamingResponse,
+    AsyncFeedbackSubmissionsResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "AppointmentsResource",
+    "AsyncAppointmentsResource",
+    "AppointmentsResourceWithRawResponse",
+    "AsyncAppointmentsResourceWithRawResponse",
+    "AppointmentsResourceWithStreamingResponse",
+    "AsyncAppointmentsResourceWithStreamingResponse",
+    "CallsResource",
+    "AsyncCallsResource",
+    "CallsResourceWithRawResponse",
+    "AsyncCallsResourceWithRawResponse",
+    "CallsResourceWithStreamingResponse",
+    "AsyncCallsResourceWithStreamingResponse",
     "CompaniesResource",
     "AsyncCompaniesResource",
     "CompaniesResourceWithRawResponse",
@@ -96,18 +212,84 @@ __all__ = [
     "AsyncDealsResourceWithRawResponse",
     "DealsResourceWithStreamingResponse",
     "AsyncDealsResourceWithStreamingResponse",
+    "EmailsResource",
+    "AsyncEmailsResource",
+    "EmailsResourceWithRawResponse",
+    "AsyncEmailsResourceWithRawResponse",
+    "EmailsResourceWithStreamingResponse",
+    "AsyncEmailsResourceWithStreamingResponse",
+    "FeedbackSubmissionsResource",
+    "AsyncFeedbackSubmissionsResource",
+    "FeedbackSubmissionsResourceWithRawResponse",
+    "AsyncFeedbackSubmissionsResourceWithRawResponse",
+    "FeedbackSubmissionsResourceWithStreamingResponse",
+    "AsyncFeedbackSubmissionsResourceWithStreamingResponse",
+    "InvoicesResource",
+    "AsyncInvoicesResource",
+    "InvoicesResourceWithRawResponse",
+    "AsyncInvoicesResourceWithRawResponse",
+    "InvoicesResourceWithStreamingResponse",
+    "AsyncInvoicesResourceWithStreamingResponse",
+    "LeadsResource",
+    "AsyncLeadsResource",
+    "LeadsResourceWithRawResponse",
+    "AsyncLeadsResourceWithRawResponse",
+    "LeadsResourceWithStreamingResponse",
+    "AsyncLeadsResourceWithStreamingResponse",
+    "LineItemsResource",
+    "AsyncLineItemsResource",
+    "LineItemsResourceWithRawResponse",
+    "AsyncLineItemsResourceWithRawResponse",
+    "LineItemsResourceWithStreamingResponse",
+    "AsyncLineItemsResourceWithStreamingResponse",
     "MeetingsResource",
     "AsyncMeetingsResource",
     "MeetingsResourceWithRawResponse",
     "AsyncMeetingsResourceWithRawResponse",
     "MeetingsResourceWithStreamingResponse",
     "AsyncMeetingsResourceWithStreamingResponse",
+    "NotesResource",
+    "AsyncNotesResource",
+    "NotesResourceWithRawResponse",
+    "AsyncNotesResourceWithRawResponse",
+    "NotesResourceWithStreamingResponse",
+    "AsyncNotesResourceWithStreamingResponse",
+    "PartnerClientsResource",
+    "AsyncPartnerClientsResource",
+    "PartnerClientsResourceWithRawResponse",
+    "AsyncPartnerClientsResourceWithRawResponse",
+    "PartnerClientsResourceWithStreamingResponse",
+    "AsyncPartnerClientsResourceWithStreamingResponse",
     "SchemasResource",
     "AsyncSchemasResource",
     "SchemasResourceWithRawResponse",
     "AsyncSchemasResourceWithRawResponse",
     "SchemasResourceWithStreamingResponse",
     "AsyncSchemasResourceWithStreamingResponse",
+    "ServicesResource",
+    "AsyncServicesResource",
+    "ServicesResourceWithRawResponse",
+    "AsyncServicesResourceWithRawResponse",
+    "ServicesResourceWithStreamingResponse",
+    "AsyncServicesResourceWithStreamingResponse",
+    "TasksResource",
+    "AsyncTasksResource",
+    "TasksResourceWithRawResponse",
+    "AsyncTasksResourceWithRawResponse",
+    "TasksResourceWithStreamingResponse",
+    "AsyncTasksResourceWithStreamingResponse",
+    "TaxesResource",
+    "AsyncTaxesResource",
+    "TaxesResourceWithRawResponse",
+    "AsyncTaxesResourceWithRawResponse",
+    "TaxesResourceWithStreamingResponse",
+    "AsyncTaxesResourceWithStreamingResponse",
+    "TicketsResource",
+    "AsyncTicketsResource",
+    "TicketsResourceWithRawResponse",
+    "AsyncTicketsResourceWithRawResponse",
+    "TicketsResourceWithStreamingResponse",
+    "AsyncTicketsResourceWithStreamingResponse",
     "ObjectsResource",
     "AsyncObjectsResource",
     "ObjectsResourceWithRawResponse",

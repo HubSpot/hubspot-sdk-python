@@ -11,6 +11,14 @@ from .settings import (
     AsyncSettingsResourceWithStreamingResponse,
 )
 from ....._compat import cached_property
+from .transcripts import (
+    TranscriptsResource,
+    AsyncTranscriptsResource,
+    TranscriptsResourceWithRawResponse,
+    AsyncTranscriptsResourceWithRawResponse,
+    TranscriptsResourceWithStreamingResponse,
+    AsyncTranscriptsResourceWithStreamingResponse,
+)
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from .recording_settings import (
     RecordingSettingsResource,
@@ -46,6 +54,10 @@ class CallingResource(SyncAPIResource):
         return SettingsResource(self._client)
 
     @cached_property
+    def transcripts(self) -> TranscriptsResource:
+        return TranscriptsResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> CallingResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -77,6 +89,10 @@ class AsyncCallingResource(AsyncAPIResource):
     @cached_property
     def settings(self) -> AsyncSettingsResource:
         return AsyncSettingsResource(self._client)
+
+    @cached_property
+    def transcripts(self) -> AsyncTranscriptsResource:
+        return AsyncTranscriptsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncCallingResourceWithRawResponse:
@@ -114,6 +130,10 @@ class CallingResourceWithRawResponse:
     def settings(self) -> SettingsResourceWithRawResponse:
         return SettingsResourceWithRawResponse(self._calling.settings)
 
+    @cached_property
+    def transcripts(self) -> TranscriptsResourceWithRawResponse:
+        return TranscriptsResourceWithRawResponse(self._calling.transcripts)
+
 
 class AsyncCallingResourceWithRawResponse:
     def __init__(self, calling: AsyncCallingResource) -> None:
@@ -130,6 +150,10 @@ class AsyncCallingResourceWithRawResponse:
     @cached_property
     def settings(self) -> AsyncSettingsResourceWithRawResponse:
         return AsyncSettingsResourceWithRawResponse(self._calling.settings)
+
+    @cached_property
+    def transcripts(self) -> AsyncTranscriptsResourceWithRawResponse:
+        return AsyncTranscriptsResourceWithRawResponse(self._calling.transcripts)
 
 
 class CallingResourceWithStreamingResponse:
@@ -148,6 +172,10 @@ class CallingResourceWithStreamingResponse:
     def settings(self) -> SettingsResourceWithStreamingResponse:
         return SettingsResourceWithStreamingResponse(self._calling.settings)
 
+    @cached_property
+    def transcripts(self) -> TranscriptsResourceWithStreamingResponse:
+        return TranscriptsResourceWithStreamingResponse(self._calling.transcripts)
+
 
 class AsyncCallingResourceWithStreamingResponse:
     def __init__(self, calling: AsyncCallingResource) -> None:
@@ -164,3 +192,7 @@ class AsyncCallingResourceWithStreamingResponse:
     @cached_property
     def settings(self) -> AsyncSettingsResourceWithStreamingResponse:
         return AsyncSettingsResourceWithStreamingResponse(self._calling.settings)
+
+    @cached_property
+    def transcripts(self) -> AsyncTranscriptsResourceWithStreamingResponse:
+        return AsyncTranscriptsResourceWithStreamingResponse(self._calling.transcripts)

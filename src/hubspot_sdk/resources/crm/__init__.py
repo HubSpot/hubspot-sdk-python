@@ -16,6 +16,14 @@ from .lists import (
     ListsResourceWithStreamingResponse,
     AsyncListsResourceWithStreamingResponse,
 )
+from .users import (
+    UsersResource,
+    AsyncUsersResource,
+    UsersResourceWithRawResponse,
+    AsyncUsersResourceWithRawResponse,
+    UsersResourceWithStreamingResponse,
+    AsyncUsersResourceWithStreamingResponse,
+)
 from .owners import (
     OwnersResource,
     AsyncOwnersResource,
@@ -96,6 +104,14 @@ from .app_uninstalls import (
     AppUninstallsResourceWithStreamingResponse,
     AsyncAppUninstallsResourceWithStreamingResponse,
 )
+from .object_library import (
+    ObjectLibraryResource,
+    AsyncObjectLibraryResource,
+    ObjectLibraryResourceWithRawResponse,
+    AsyncObjectLibraryResourceWithRawResponse,
+    ObjectLibraryResourceWithStreamingResponse,
+    AsyncObjectLibraryResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AppUninstallsResource",
@@ -134,6 +150,12 @@ __all__ = [
     "AsyncListsResourceWithRawResponse",
     "ListsResourceWithStreamingResponse",
     "AsyncListsResourceWithStreamingResponse",
+    "ObjectLibraryResource",
+    "AsyncObjectLibraryResource",
+    "ObjectLibraryResourceWithRawResponse",
+    "AsyncObjectLibraryResourceWithRawResponse",
+    "ObjectLibraryResourceWithStreamingResponse",
+    "AsyncObjectLibraryResourceWithStreamingResponse",
     "ObjectsResource",
     "AsyncObjectsResource",
     "ObjectsResourceWithRawResponse",
@@ -164,6 +186,12 @@ __all__ = [
     "AsyncTimelineResourceWithRawResponse",
     "TimelineResourceWithStreamingResponse",
     "AsyncTimelineResourceWithStreamingResponse",
+    "UsersResource",
+    "AsyncUsersResource",
+    "UsersResourceWithRawResponse",
+    "AsyncUsersResourceWithRawResponse",
+    "UsersResourceWithStreamingResponse",
+    "AsyncUsersResourceWithStreamingResponse",
     "CRMResource",
     "AsyncCRMResource",
     "CRMResourceWithRawResponse",

@@ -16,8 +16,36 @@ from .settings import (
     SettingsResourceWithStreamingResponse,
     AsyncSettingsResourceWithStreamingResponse,
 )
+from .tax_rates import (
+    TaxRatesResource,
+    AsyncTaxRatesResource,
+    TaxRatesResourceWithRawResponse,
+    AsyncTaxRatesResourceWithRawResponse,
+    TaxRatesResourceWithStreamingResponse,
+    AsyncTaxRatesResourceWithStreamingResponse,
+)
+from .currencies import (
+    CurrenciesResource,
+    AsyncCurrenciesResource,
+    CurrenciesResourceWithRawResponse,
+    AsyncCurrenciesResourceWithRawResponse,
+    CurrenciesResourceWithStreamingResponse,
+    AsyncCurrenciesResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "CurrenciesResource",
+    "AsyncCurrenciesResource",
+    "CurrenciesResourceWithRawResponse",
+    "AsyncCurrenciesResourceWithRawResponse",
+    "CurrenciesResourceWithStreamingResponse",
+    "AsyncCurrenciesResourceWithStreamingResponse",
+    "TaxRatesResource",
+    "AsyncTaxRatesResource",
+    "TaxRatesResourceWithRawResponse",
+    "AsyncTaxRatesResourceWithRawResponse",
+    "TaxRatesResourceWithStreamingResponse",
+    "AsyncTaxRatesResourceWithStreamingResponse",
     "UsersResource",
     "AsyncUsersResource",
     "UsersResourceWithRawResponse",

@@ -19,9 +19,9 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.crm.properties import batch_read_params, batch_create_params, batch_delete_params
-from ....types.crm.property_name_param import PropertyNameParam
-from ....types.crm.property_create_param import PropertyCreateParam
-from ....types.crm.batch_response_property import BatchResponseProperty
+from ....types.shared_params.property_name import PropertyName
+from ....types.shared_params.property_create import PropertyCreate
+from ....types.shared.batch_response_property import BatchResponseProperty
 
 __all__ = ["BatchResource", "AsyncBatchResource"]
 
@@ -50,7 +50,7 @@ class BatchResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        inputs: Iterable[PropertyCreateParam],
+        inputs: Iterable[PropertyCreate],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -86,7 +86,7 @@ class BatchResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        inputs: Iterable[PropertyNameParam],
+        inputs: Iterable[PropertyName],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -126,7 +126,7 @@ class BatchResource(SyncAPIResource):
         object_type: str,
         *,
         archived: bool,
-        inputs: Iterable[PropertyNameParam],
+        inputs: Iterable[PropertyName],
         data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -190,7 +190,7 @@ class AsyncBatchResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        inputs: Iterable[PropertyCreateParam],
+        inputs: Iterable[PropertyCreate],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -226,7 +226,7 @@ class AsyncBatchResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        inputs: Iterable[PropertyNameParam],
+        inputs: Iterable[PropertyName],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -266,7 +266,7 @@ class AsyncBatchResource(AsyncAPIResource):
         object_type: str,
         *,
         archived: bool,
-        inputs: Iterable[PropertyNameParam],
+        inputs: Iterable[PropertyName],
         data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

@@ -61,15 +61,6 @@ class GroupsResource(SyncAPIResource):
         Create and return a copy of a new property group.
 
         Args:
-          label: A human-readable label that will be shown in HubSpot.
-
-          name: The internal property group name, which must be used when referencing the
-              property group via the API.
-
-          display_order: Property groups are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property group to be displayed after any
-              positive values.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -116,12 +107,6 @@ class GroupsResource(SyncAPIResource):
         fields will be overwritten.
 
         Args:
-          display_order: Property groups are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property group to be displayed after any
-              positive values.
-
-          label: A human-readable label that will be shown in HubSpot.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -295,15 +280,6 @@ class AsyncGroupsResource(AsyncAPIResource):
         Create and return a copy of a new property group.
 
         Args:
-          label: A human-readable label that will be shown in HubSpot.
-
-          name: The internal property group name, which must be used when referencing the
-              property group via the API.
-
-          display_order: Property groups are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property group to be displayed after any
-              positive values.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -350,12 +326,6 @@ class AsyncGroupsResource(AsyncAPIResource):
         fields will be overwritten.
 
         Args:
-          display_order: Property groups are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property group to be displayed after any
-              positive values.
-
-          label: A human-readable label that will be shown in HubSpot.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

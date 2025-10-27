@@ -22,8 +22,8 @@ class TestGroups:
     def test_method_create(self, client: HubSpot) -> None:
         group = client.crm.properties.groups.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            label="label",
+            name="name",
         )
         assert_matches_type(CreatedResponsePropertyGroup, group, path=["response"])
 
@@ -32,9 +32,9 @@ class TestGroups:
     def test_method_create_with_all_params(self, client: HubSpot) -> None:
         group = client.crm.properties.groups.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
-            display_order=-1,
+            label="label",
+            name="name",
+            display_order=0,
         )
         assert_matches_type(CreatedResponsePropertyGroup, group, path=["response"])
 
@@ -43,8 +43,8 @@ class TestGroups:
     def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.crm.properties.groups.with_raw_response.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            label="label",
+            name="name",
         )
 
         assert response.is_closed is True
@@ -57,8 +57,8 @@ class TestGroups:
     def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.crm.properties.groups.with_streaming_response.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            label="label",
+            name="name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -74,8 +74,8 @@ class TestGroups:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.groups.with_raw_response.create(
                 object_type="",
-                label="My Property Group",
-                name="mypropertygroup",
+                label="label",
+                name="name",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -93,8 +93,8 @@ class TestGroups:
         group = client.crm.properties.groups.update(
             group_name="groupName",
             object_type="objectType",
-            display_order=-1,
-            label="My Property Group",
+            display_order=0,
+            label="label",
         )
         assert_matches_type(PropertyGroup, group, path=["response"])
 
@@ -298,8 +298,8 @@ class TestAsyncGroups:
     async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         group = await async_client.crm.properties.groups.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            label="label",
+            name="name",
         )
         assert_matches_type(CreatedResponsePropertyGroup, group, path=["response"])
 
@@ -308,9 +308,9 @@ class TestAsyncGroups:
     async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
         group = await async_client.crm.properties.groups.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
-            display_order=-1,
+            label="label",
+            name="name",
+            display_order=0,
         )
         assert_matches_type(CreatedResponsePropertyGroup, group, path=["response"])
 
@@ -319,8 +319,8 @@ class TestAsyncGroups:
     async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.properties.groups.with_raw_response.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            label="label",
+            name="name",
         )
 
         assert response.is_closed is True
@@ -333,8 +333,8 @@ class TestAsyncGroups:
     async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.properties.groups.with_streaming_response.create(
             object_type="objectType",
-            label="My Property Group",
-            name="mypropertygroup",
+            label="label",
+            name="name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -350,8 +350,8 @@ class TestAsyncGroups:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.groups.with_raw_response.create(
                 object_type="",
-                label="My Property Group",
-                name="mypropertygroup",
+                label="label",
+                name="name",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -369,8 +369,8 @@ class TestAsyncGroups:
         group = await async_client.crm.properties.groups.update(
             group_name="groupName",
             object_type="objectType",
-            display_order=-1,
-            label="My Property Group",
+            display_order=0,
+            label="label",
         )
         assert_matches_type(PropertyGroup, group, path=["response"])
 

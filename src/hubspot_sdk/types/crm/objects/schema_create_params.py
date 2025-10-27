@@ -8,7 +8,7 @@ from typing_extensions import Required, Annotated, TypedDict
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 from .object_type_property_create_param import ObjectTypePropertyCreateParam
-from .object_type_definition_labels_param import ObjectTypeDefinitionLabelsParam
+from ...shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
 
 __all__ = ["SchemaCreateParams"]
 
@@ -17,8 +17,7 @@ class SchemaCreateParams(TypedDict, total=False):
     associated_objects: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="associatedObjects")]]
     """Associations defined for this object type."""
 
-    labels: Required[ObjectTypeDefinitionLabelsParam]
-    """Singular and plural labels for the object. Used in CRM display."""
+    labels: Required[ObjectTypeDefinitionLabels]
 
     name: Required[str]
     """A unique name for this object. For internal use only."""

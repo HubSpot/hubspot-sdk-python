@@ -2,6 +2,8 @@
 
 from .option import Option as Option
 from .option_input import OptionInput as OptionInput
+from .property_name import PropertyName as PropertyName
+from .property_create import PropertyCreate as PropertyCreate
 from .association_spec import AssociationSpec as AssociationSpec
 from .public_object_id import PublicObjectID as PublicObjectID
 from .public_date_point import PublicDatePoint as PublicDatePoint
@@ -33,6 +35,7 @@ from .public_not_all_filter_branch import PublicNotAllFilterBranch as PublicNotA
 from .public_not_any_filter_branch import PublicNotAnyFilterBranch as PublicNotAnyFilterBranch
 from .public_ranged_time_operation import PublicRangedTimeOperation as PublicRangedTimeOperation
 from .public_unified_events_filter import PublicUnifiedEventsFilter as PublicUnifiedEventsFilter
+from .object_type_definition_labels import ObjectTypeDefinitionLabels as ObjectTypeDefinitionLabels
 from .public_event_analytics_filter import PublicEventAnalyticsFilter as PublicEventAnalyticsFilter
 from .public_form_submission_filter import PublicFormSubmissionFilter as PublicFormSubmissionFilter
 from .public_bool_property_operation import PublicBoolPropertyOperation as PublicBoolPropertyOperation

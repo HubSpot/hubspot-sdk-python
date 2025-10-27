@@ -64,6 +64,14 @@ from .source_code import (
     SourceCodeResourceWithStreamingResponse,
     AsyncSourceCodeResourceWithStreamingResponse,
 )
+from .media_bridge import (
+    MediaBridgeResource,
+    AsyncMediaBridgeResource,
+    MediaBridgeResourceWithRawResponse,
+    AsyncMediaBridgeResourceWithRawResponse,
+    MediaBridgeResourceWithStreamingResponse,
+    AsyncMediaBridgeResourceWithStreamingResponse,
+)
 from .url_redirects import (
     URLRedirectsResource,
     AsyncURLRedirectsResource,
@@ -98,6 +106,12 @@ __all__ = [
     "AsyncHubdbResourceWithRawResponse",
     "HubdbResourceWithStreamingResponse",
     "AsyncHubdbResourceWithStreamingResponse",
+    "MediaBridgeResource",
+    "AsyncMediaBridgeResource",
+    "MediaBridgeResourceWithRawResponse",
+    "AsyncMediaBridgeResourceWithRawResponse",
+    "MediaBridgeResourceWithStreamingResponse",
+    "AsyncMediaBridgeResourceWithStreamingResponse",
     "PagesResource",
     "AsyncPagesResource",
     "PagesResourceWithRawResponse",

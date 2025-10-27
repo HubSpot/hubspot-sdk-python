@@ -36,6 +36,14 @@ from .lists.lists import (
     ListsResourceWithStreamingResponse,
     AsyncListsResourceWithStreamingResponse,
 )
+from .users.users import (
+    UsersResource,
+    AsyncUsersResource,
+    UsersResourceWithRawResponse,
+    AsyncUsersResourceWithRawResponse,
+    UsersResourceWithStreamingResponse,
+    AsyncUsersResourceWithStreamingResponse,
+)
 from .app_uninstalls import (
     AppUninstallsResource,
     AsyncAppUninstallsResource,
@@ -92,6 +100,14 @@ from .associations.associations import (
     AssociationsResourceWithStreamingResponse,
     AsyncAssociationsResourceWithStreamingResponse,
 )
+from .object_library.object_library import (
+    ObjectLibraryResource,
+    AsyncObjectLibraryResource,
+    ObjectLibraryResourceWithRawResponse,
+    AsyncObjectLibraryResourceWithRawResponse,
+    ObjectLibraryResourceWithStreamingResponse,
+    AsyncObjectLibraryResourceWithStreamingResponse,
+)
 
 __all__ = ["CRMResource", "AsyncCRMResource"]
 
@@ -122,6 +138,10 @@ class CRMResource(SyncAPIResource):
         return ListsResource(self._client)
 
     @cached_property
+    def object_library(self) -> ObjectLibraryResource:
+        return ObjectLibraryResource(self._client)
+
+    @cached_property
     def objects(self) -> ObjectsResource:
         return ObjectsResource(self._client)
 
@@ -140,6 +160,10 @@ class CRMResource(SyncAPIResource):
     @cached_property
     def timeline(self) -> TimelineResource:
         return TimelineResource(self._client)
+
+    @cached_property
+    def users(self) -> UsersResource:
+        return UsersResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> CRMResourceWithRawResponse:
@@ -187,6 +211,10 @@ class AsyncCRMResource(AsyncAPIResource):
         return AsyncListsResource(self._client)
 
     @cached_property
+    def object_library(self) -> AsyncObjectLibraryResource:
+        return AsyncObjectLibraryResource(self._client)
+
+    @cached_property
     def objects(self) -> AsyncObjectsResource:
         return AsyncObjectsResource(self._client)
 
@@ -205,6 +233,10 @@ class AsyncCRMResource(AsyncAPIResource):
     @cached_property
     def timeline(self) -> AsyncTimelineResource:
         return AsyncTimelineResource(self._client)
+
+    @cached_property
+    def users(self) -> AsyncUsersResource:
+        return AsyncUsersResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncCRMResourceWithRawResponse:
@@ -255,6 +287,10 @@ class CRMResourceWithRawResponse:
         return ListsResourceWithRawResponse(self._crm.lists)
 
     @cached_property
+    def object_library(self) -> ObjectLibraryResourceWithRawResponse:
+        return ObjectLibraryResourceWithRawResponse(self._crm.object_library)
+
+    @cached_property
     def objects(self) -> ObjectsResourceWithRawResponse:
         return ObjectsResourceWithRawResponse(self._crm.objects)
 
@@ -273,6 +309,10 @@ class CRMResourceWithRawResponse:
     @cached_property
     def timeline(self) -> TimelineResourceWithRawResponse:
         return TimelineResourceWithRawResponse(self._crm.timeline)
+
+    @cached_property
+    def users(self) -> UsersResourceWithRawResponse:
+        return UsersResourceWithRawResponse(self._crm.users)
 
 
 class AsyncCRMResourceWithRawResponse:
@@ -304,6 +344,10 @@ class AsyncCRMResourceWithRawResponse:
         return AsyncListsResourceWithRawResponse(self._crm.lists)
 
     @cached_property
+    def object_library(self) -> AsyncObjectLibraryResourceWithRawResponse:
+        return AsyncObjectLibraryResourceWithRawResponse(self._crm.object_library)
+
+    @cached_property
     def objects(self) -> AsyncObjectsResourceWithRawResponse:
         return AsyncObjectsResourceWithRawResponse(self._crm.objects)
 
@@ -322,6 +366,10 @@ class AsyncCRMResourceWithRawResponse:
     @cached_property
     def timeline(self) -> AsyncTimelineResourceWithRawResponse:
         return AsyncTimelineResourceWithRawResponse(self._crm.timeline)
+
+    @cached_property
+    def users(self) -> AsyncUsersResourceWithRawResponse:
+        return AsyncUsersResourceWithRawResponse(self._crm.users)
 
 
 class CRMResourceWithStreamingResponse:
@@ -353,6 +401,10 @@ class CRMResourceWithStreamingResponse:
         return ListsResourceWithStreamingResponse(self._crm.lists)
 
     @cached_property
+    def object_library(self) -> ObjectLibraryResourceWithStreamingResponse:
+        return ObjectLibraryResourceWithStreamingResponse(self._crm.object_library)
+
+    @cached_property
     def objects(self) -> ObjectsResourceWithStreamingResponse:
         return ObjectsResourceWithStreamingResponse(self._crm.objects)
 
@@ -371,6 +423,10 @@ class CRMResourceWithStreamingResponse:
     @cached_property
     def timeline(self) -> TimelineResourceWithStreamingResponse:
         return TimelineResourceWithStreamingResponse(self._crm.timeline)
+
+    @cached_property
+    def users(self) -> UsersResourceWithStreamingResponse:
+        return UsersResourceWithStreamingResponse(self._crm.users)
 
 
 class AsyncCRMResourceWithStreamingResponse:
@@ -402,6 +458,10 @@ class AsyncCRMResourceWithStreamingResponse:
         return AsyncListsResourceWithStreamingResponse(self._crm.lists)
 
     @cached_property
+    def object_library(self) -> AsyncObjectLibraryResourceWithStreamingResponse:
+        return AsyncObjectLibraryResourceWithStreamingResponse(self._crm.object_library)
+
+    @cached_property
     def objects(self) -> AsyncObjectsResourceWithStreamingResponse:
         return AsyncObjectsResourceWithStreamingResponse(self._crm.objects)
 
@@ -420,3 +480,7 @@ class AsyncCRMResourceWithStreamingResponse:
     @cached_property
     def timeline(self) -> AsyncTimelineResourceWithStreamingResponse:
         return AsyncTimelineResourceWithStreamingResponse(self._crm.timeline)
+
+    @cached_property
+    def users(self) -> AsyncUsersResourceWithStreamingResponse:
+        return AsyncUsersResourceWithStreamingResponse(self._crm.users)
