@@ -1806,21 +1806,6 @@ Methods:
 - <code title="post /crm/v3/objects/commerce_payments/batch/read">client.crm.objects.commerce_payments.batch.<a href="./src/hubspot_sdk/resources/crm/objects/commerce_payments/batch.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/commerce_payments/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
 - <code title="post /crm/v3/objects/commerce_payments/batch/upsert">client.crm.objects.commerce_payments.batch.<a href="./src/hubspot_sdk/resources/crm/objects/commerce_payments/batch.py">upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/commerce_payments/batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
 
-### CommerceSubscriptions
-
-Types:
-
-```python
-from hubspot_sdk.types.crm.objects import (
-    BatchReadInputSimplePublicObjectID,
-    BatchResponseSimplePublicObject,
-    BatchResponseSimplePublicUpsertObject,
-    PauseSubscriptionRequest,
-    SimplePublicObjectBatchInputForCreate,
-    UnpauseRequest,
-)
-```
-
 ### Communications
 
 Methods:
