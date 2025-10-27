@@ -11,6 +11,14 @@ from .schemas import (
     AsyncSchemasResourceWithStreamingResponse,
 )
 from .objects_ import objects_ as objects
+from .fees.fees import (
+    FeesResource,
+    AsyncFeesResource,
+    FeesResourceWithRawResponse,
+    AsyncFeesResourceWithRawResponse,
+    FeesResourceWithStreamingResponse,
+    AsyncFeesResourceWithStreamingResponse,
+)
 from ...._compat import cached_property
 from .calls.calls import (
     CallsResource,
@@ -19,6 +27,14 @@ from .calls.calls import (
     AsyncCallsResourceWithRawResponse,
     CallsResourceWithStreamingResponse,
     AsyncCallsResourceWithStreamingResponse,
+)
+from .carts.carts import (
+    CartsResource,
+    AsyncCartsResource,
+    CartsResourceWithRawResponse,
+    AsyncCartsResourceWithRawResponse,
+    CartsResourceWithStreamingResponse,
+    AsyncCartsResourceWithStreamingResponse,
 )
 from .deal_splits import (
     DealSplitsResource,
@@ -85,6 +101,30 @@ from .emails.emails import (
     EmailsResourceWithStreamingResponse,
     AsyncEmailsResourceWithStreamingResponse,
 )
+from .orders.orders import (
+    OrdersResource,
+    AsyncOrdersResource,
+    OrdersResourceWithRawResponse,
+    AsyncOrdersResourceWithRawResponse,
+    OrdersResourceWithStreamingResponse,
+    AsyncOrdersResourceWithStreamingResponse,
+)
+from .quotes.quotes import (
+    QuotesResource,
+    AsyncQuotesResource,
+    QuotesResourceWithRawResponse,
+    AsyncQuotesResourceWithRawResponse,
+    QuotesResourceWithStreamingResponse,
+    AsyncQuotesResourceWithStreamingResponse,
+)
+from .courses.courses import (
+    CoursesResource,
+    AsyncCoursesResource,
+    CoursesResourceWithRawResponse,
+    AsyncCoursesResourceWithRawResponse,
+    CoursesResourceWithStreamingResponse,
+    AsyncCoursesResourceWithStreamingResponse,
+)
 from .tickets.tickets import (
     TicketsResource,
     AsyncTicketsResource,
@@ -109,6 +149,14 @@ from .invoices.invoices import (
     InvoicesResourceWithStreamingResponse,
     AsyncInvoicesResourceWithStreamingResponse,
 )
+from .listings.listings import (
+    ListingsResource,
+    AsyncListingsResource,
+    ListingsResourceWithRawResponse,
+    AsyncListingsResourceWithRawResponse,
+    ListingsResourceWithStreamingResponse,
+    AsyncListingsResourceWithStreamingResponse,
+)
 from .meetings.meetings import (
     MeetingsResource,
     AsyncMeetingsResource,
@@ -116,6 +164,14 @@ from .meetings.meetings import (
     AsyncMeetingsResourceWithRawResponse,
     MeetingsResourceWithStreamingResponse,
     AsyncMeetingsResourceWithStreamingResponse,
+)
+from .products.products import (
+    ProductsResource,
+    AsyncProductsResource,
+    ProductsResourceWithRawResponse,
+    AsyncProductsResourceWithRawResponse,
+    ProductsResourceWithStreamingResponse,
+    AsyncProductsResourceWithStreamingResponse,
 )
 from .services.services import (
     ServicesResource,
@@ -133,6 +189,22 @@ from .companies.companies import (
     CompaniesResourceWithStreamingResponse,
     AsyncCompaniesResourceWithStreamingResponse,
 )
+from .contracts.contracts import (
+    ContractsResource,
+    AsyncContractsResource,
+    ContractsResourceWithRawResponse,
+    AsyncContractsResourceWithRawResponse,
+    ContractsResourceWithStreamingResponse,
+    AsyncContractsResourceWithStreamingResponse,
+)
+from .discounts.discounts import (
+    DiscountsResource,
+    AsyncDiscountsResource,
+    DiscountsResourceWithRawResponse,
+    AsyncDiscountsResourceWithRawResponse,
+    DiscountsResourceWithStreamingResponse,
+    AsyncDiscountsResourceWithStreamingResponse,
+)
 from .line_items.line_items import (
     LineItemsResource,
     AsyncLineItemsResource,
@@ -140,6 +212,14 @@ from .line_items.line_items import (
     AsyncLineItemsResourceWithRawResponse,
     LineItemsResourceWithStreamingResponse,
     AsyncLineItemsResourceWithStreamingResponse,
+)
+from .postal_mail.postal_mail import (
+    PostalMailResource,
+    AsyncPostalMailResource,
+    PostalMailResourceWithRawResponse,
+    AsyncPostalMailResourceWithRawResponse,
+    PostalMailResourceWithStreamingResponse,
+    AsyncPostalMailResourceWithStreamingResponse,
 )
 from .appointments.appointments import (
     AppointmentsResource,
@@ -149,6 +229,22 @@ from .appointments.appointments import (
     AppointmentsResourceWithStreamingResponse,
     AsyncAppointmentsResourceWithStreamingResponse,
 )
+from .goal_targets.goal_targets import (
+    GoalTargetsResource,
+    AsyncGoalTargetsResource,
+    GoalTargetsResourceWithRawResponse,
+    AsyncGoalTargetsResourceWithRawResponse,
+    GoalTargetsResourceWithStreamingResponse,
+    AsyncGoalTargetsResourceWithStreamingResponse,
+)
+from .communications.communications import (
+    CommunicationsResource,
+    AsyncCommunicationsResource,
+    CommunicationsResourceWithRawResponse,
+    AsyncCommunicationsResourceWithRawResponse,
+    CommunicationsResourceWithStreamingResponse,
+    AsyncCommunicationsResourceWithStreamingResponse,
+)
 from .partner_clients.partner_clients import (
     PartnerClientsResource,
     AsyncPartnerClientsResource,
@@ -156,6 +252,22 @@ from .partner_clients.partner_clients import (
     AsyncPartnerClientsResourceWithRawResponse,
     PartnerClientsResourceWithStreamingResponse,
     AsyncPartnerClientsResourceWithStreamingResponse,
+)
+from .partner_services.partner_services import (
+    PartnerServicesResource,
+    AsyncPartnerServicesResource,
+    PartnerServicesResourceWithRawResponse,
+    AsyncPartnerServicesResourceWithRawResponse,
+    PartnerServicesResourceWithStreamingResponse,
+    AsyncPartnerServicesResourceWithStreamingResponse,
+)
+from .commerce_payments.commerce_payments import (
+    CommercePaymentsResource,
+    AsyncCommercePaymentsResource,
+    CommercePaymentsResourceWithRawResponse,
+    AsyncCommercePaymentsResourceWithRawResponse,
+    CommercePaymentsResourceWithStreamingResponse,
+    AsyncCommercePaymentsResourceWithStreamingResponse,
 )
 from .feedback_submissions.feedback_submissions import (
     FeedbackSubmissionsResource,
@@ -179,12 +291,32 @@ class ObjectsResource(SyncAPIResource):
         return CallsResource(self._client)
 
     @cached_property
+    def carts(self) -> CartsResource:
+        return CartsResource(self._client)
+
+    @cached_property
+    def commerce_payments(self) -> CommercePaymentsResource:
+        return CommercePaymentsResource(self._client)
+
+    @cached_property
+    def communications(self) -> CommunicationsResource:
+        return CommunicationsResource(self._client)
+
+    @cached_property
     def companies(self) -> CompaniesResource:
         return CompaniesResource(self._client)
 
     @cached_property
     def contacts(self) -> ContactsResource:
         return ContactsResource(self._client)
+
+    @cached_property
+    def contracts(self) -> ContractsResource:
+        return ContractsResource(self._client)
+
+    @cached_property
+    def courses(self) -> CoursesResource:
+        return CoursesResource(self._client)
 
     @cached_property
     def custom(self) -> CustomResource:
@@ -199,12 +331,24 @@ class ObjectsResource(SyncAPIResource):
         return DealsResource(self._client)
 
     @cached_property
+    def discounts(self) -> DiscountsResource:
+        return DiscountsResource(self._client)
+
+    @cached_property
     def emails(self) -> EmailsResource:
         return EmailsResource(self._client)
 
     @cached_property
     def feedback_submissions(self) -> FeedbackSubmissionsResource:
         return FeedbackSubmissionsResource(self._client)
+
+    @cached_property
+    def fees(self) -> FeesResource:
+        return FeesResource(self._client)
+
+    @cached_property
+    def goal_targets(self) -> GoalTargetsResource:
+        return GoalTargetsResource(self._client)
 
     @cached_property
     def invoices(self) -> InvoicesResource:
@@ -219,6 +363,10 @@ class ObjectsResource(SyncAPIResource):
         return LineItemsResource(self._client)
 
     @cached_property
+    def listings(self) -> ListingsResource:
+        return ListingsResource(self._client)
+
+    @cached_property
     def meetings(self) -> MeetingsResource:
         return MeetingsResource(self._client)
 
@@ -231,8 +379,28 @@ class ObjectsResource(SyncAPIResource):
         return objects.ObjectsResource(self._client)
 
     @cached_property
+    def orders(self) -> OrdersResource:
+        return OrdersResource(self._client)
+
+    @cached_property
     def partner_clients(self) -> PartnerClientsResource:
         return PartnerClientsResource(self._client)
+
+    @cached_property
+    def partner_services(self) -> PartnerServicesResource:
+        return PartnerServicesResource(self._client)
+
+    @cached_property
+    def postal_mail(self) -> PostalMailResource:
+        return PostalMailResource(self._client)
+
+    @cached_property
+    def products(self) -> ProductsResource:
+        return ProductsResource(self._client)
+
+    @cached_property
+    def quotes(self) -> QuotesResource:
+        return QuotesResource(self._client)
 
     @cached_property
     def schemas(self) -> SchemasResource:
@@ -284,12 +452,32 @@ class AsyncObjectsResource(AsyncAPIResource):
         return AsyncCallsResource(self._client)
 
     @cached_property
+    def carts(self) -> AsyncCartsResource:
+        return AsyncCartsResource(self._client)
+
+    @cached_property
+    def commerce_payments(self) -> AsyncCommercePaymentsResource:
+        return AsyncCommercePaymentsResource(self._client)
+
+    @cached_property
+    def communications(self) -> AsyncCommunicationsResource:
+        return AsyncCommunicationsResource(self._client)
+
+    @cached_property
     def companies(self) -> AsyncCompaniesResource:
         return AsyncCompaniesResource(self._client)
 
     @cached_property
     def contacts(self) -> AsyncContactsResource:
         return AsyncContactsResource(self._client)
+
+    @cached_property
+    def contracts(self) -> AsyncContractsResource:
+        return AsyncContractsResource(self._client)
+
+    @cached_property
+    def courses(self) -> AsyncCoursesResource:
+        return AsyncCoursesResource(self._client)
 
     @cached_property
     def custom(self) -> AsyncCustomResource:
@@ -304,12 +492,24 @@ class AsyncObjectsResource(AsyncAPIResource):
         return AsyncDealsResource(self._client)
 
     @cached_property
+    def discounts(self) -> AsyncDiscountsResource:
+        return AsyncDiscountsResource(self._client)
+
+    @cached_property
     def emails(self) -> AsyncEmailsResource:
         return AsyncEmailsResource(self._client)
 
     @cached_property
     def feedback_submissions(self) -> AsyncFeedbackSubmissionsResource:
         return AsyncFeedbackSubmissionsResource(self._client)
+
+    @cached_property
+    def fees(self) -> AsyncFeesResource:
+        return AsyncFeesResource(self._client)
+
+    @cached_property
+    def goal_targets(self) -> AsyncGoalTargetsResource:
+        return AsyncGoalTargetsResource(self._client)
 
     @cached_property
     def invoices(self) -> AsyncInvoicesResource:
@@ -324,6 +524,10 @@ class AsyncObjectsResource(AsyncAPIResource):
         return AsyncLineItemsResource(self._client)
 
     @cached_property
+    def listings(self) -> AsyncListingsResource:
+        return AsyncListingsResource(self._client)
+
+    @cached_property
     def meetings(self) -> AsyncMeetingsResource:
         return AsyncMeetingsResource(self._client)
 
@@ -336,8 +540,28 @@ class AsyncObjectsResource(AsyncAPIResource):
         return objects.AsyncObjectsResource(self._client)
 
     @cached_property
+    def orders(self) -> AsyncOrdersResource:
+        return AsyncOrdersResource(self._client)
+
+    @cached_property
     def partner_clients(self) -> AsyncPartnerClientsResource:
         return AsyncPartnerClientsResource(self._client)
+
+    @cached_property
+    def partner_services(self) -> AsyncPartnerServicesResource:
+        return AsyncPartnerServicesResource(self._client)
+
+    @cached_property
+    def postal_mail(self) -> AsyncPostalMailResource:
+        return AsyncPostalMailResource(self._client)
+
+    @cached_property
+    def products(self) -> AsyncProductsResource:
+        return AsyncProductsResource(self._client)
+
+    @cached_property
+    def quotes(self) -> AsyncQuotesResource:
+        return AsyncQuotesResource(self._client)
 
     @cached_property
     def schemas(self) -> AsyncSchemasResource:
@@ -392,12 +616,32 @@ class ObjectsResourceWithRawResponse:
         return CallsResourceWithRawResponse(self._objects.calls)
 
     @cached_property
+    def carts(self) -> CartsResourceWithRawResponse:
+        return CartsResourceWithRawResponse(self._objects.carts)
+
+    @cached_property
+    def commerce_payments(self) -> CommercePaymentsResourceWithRawResponse:
+        return CommercePaymentsResourceWithRawResponse(self._objects.commerce_payments)
+
+    @cached_property
+    def communications(self) -> CommunicationsResourceWithRawResponse:
+        return CommunicationsResourceWithRawResponse(self._objects.communications)
+
+    @cached_property
     def companies(self) -> CompaniesResourceWithRawResponse:
         return CompaniesResourceWithRawResponse(self._objects.companies)
 
     @cached_property
     def contacts(self) -> ContactsResourceWithRawResponse:
         return ContactsResourceWithRawResponse(self._objects.contacts)
+
+    @cached_property
+    def contracts(self) -> ContractsResourceWithRawResponse:
+        return ContractsResourceWithRawResponse(self._objects.contracts)
+
+    @cached_property
+    def courses(self) -> CoursesResourceWithRawResponse:
+        return CoursesResourceWithRawResponse(self._objects.courses)
 
     @cached_property
     def custom(self) -> CustomResourceWithRawResponse:
@@ -412,12 +656,24 @@ class ObjectsResourceWithRawResponse:
         return DealsResourceWithRawResponse(self._objects.deals)
 
     @cached_property
+    def discounts(self) -> DiscountsResourceWithRawResponse:
+        return DiscountsResourceWithRawResponse(self._objects.discounts)
+
+    @cached_property
     def emails(self) -> EmailsResourceWithRawResponse:
         return EmailsResourceWithRawResponse(self._objects.emails)
 
     @cached_property
     def feedback_submissions(self) -> FeedbackSubmissionsResourceWithRawResponse:
         return FeedbackSubmissionsResourceWithRawResponse(self._objects.feedback_submissions)
+
+    @cached_property
+    def fees(self) -> FeesResourceWithRawResponse:
+        return FeesResourceWithRawResponse(self._objects.fees)
+
+    @cached_property
+    def goal_targets(self) -> GoalTargetsResourceWithRawResponse:
+        return GoalTargetsResourceWithRawResponse(self._objects.goal_targets)
 
     @cached_property
     def invoices(self) -> InvoicesResourceWithRawResponse:
@@ -432,6 +688,10 @@ class ObjectsResourceWithRawResponse:
         return LineItemsResourceWithRawResponse(self._objects.line_items)
 
     @cached_property
+    def listings(self) -> ListingsResourceWithRawResponse:
+        return ListingsResourceWithRawResponse(self._objects.listings)
+
+    @cached_property
     def meetings(self) -> MeetingsResourceWithRawResponse:
         return MeetingsResourceWithRawResponse(self._objects.meetings)
 
@@ -444,8 +704,28 @@ class ObjectsResourceWithRawResponse:
         return objects.ObjectsResourceWithRawResponse(self._objects.objects)
 
     @cached_property
+    def orders(self) -> OrdersResourceWithRawResponse:
+        return OrdersResourceWithRawResponse(self._objects.orders)
+
+    @cached_property
     def partner_clients(self) -> PartnerClientsResourceWithRawResponse:
         return PartnerClientsResourceWithRawResponse(self._objects.partner_clients)
+
+    @cached_property
+    def partner_services(self) -> PartnerServicesResourceWithRawResponse:
+        return PartnerServicesResourceWithRawResponse(self._objects.partner_services)
+
+    @cached_property
+    def postal_mail(self) -> PostalMailResourceWithRawResponse:
+        return PostalMailResourceWithRawResponse(self._objects.postal_mail)
+
+    @cached_property
+    def products(self) -> ProductsResourceWithRawResponse:
+        return ProductsResourceWithRawResponse(self._objects.products)
+
+    @cached_property
+    def quotes(self) -> QuotesResourceWithRawResponse:
+        return QuotesResourceWithRawResponse(self._objects.quotes)
 
     @cached_property
     def schemas(self) -> SchemasResourceWithRawResponse:
@@ -481,12 +761,32 @@ class AsyncObjectsResourceWithRawResponse:
         return AsyncCallsResourceWithRawResponse(self._objects.calls)
 
     @cached_property
+    def carts(self) -> AsyncCartsResourceWithRawResponse:
+        return AsyncCartsResourceWithRawResponse(self._objects.carts)
+
+    @cached_property
+    def commerce_payments(self) -> AsyncCommercePaymentsResourceWithRawResponse:
+        return AsyncCommercePaymentsResourceWithRawResponse(self._objects.commerce_payments)
+
+    @cached_property
+    def communications(self) -> AsyncCommunicationsResourceWithRawResponse:
+        return AsyncCommunicationsResourceWithRawResponse(self._objects.communications)
+
+    @cached_property
     def companies(self) -> AsyncCompaniesResourceWithRawResponse:
         return AsyncCompaniesResourceWithRawResponse(self._objects.companies)
 
     @cached_property
     def contacts(self) -> AsyncContactsResourceWithRawResponse:
         return AsyncContactsResourceWithRawResponse(self._objects.contacts)
+
+    @cached_property
+    def contracts(self) -> AsyncContractsResourceWithRawResponse:
+        return AsyncContractsResourceWithRawResponse(self._objects.contracts)
+
+    @cached_property
+    def courses(self) -> AsyncCoursesResourceWithRawResponse:
+        return AsyncCoursesResourceWithRawResponse(self._objects.courses)
 
     @cached_property
     def custom(self) -> AsyncCustomResourceWithRawResponse:
@@ -501,12 +801,24 @@ class AsyncObjectsResourceWithRawResponse:
         return AsyncDealsResourceWithRawResponse(self._objects.deals)
 
     @cached_property
+    def discounts(self) -> AsyncDiscountsResourceWithRawResponse:
+        return AsyncDiscountsResourceWithRawResponse(self._objects.discounts)
+
+    @cached_property
     def emails(self) -> AsyncEmailsResourceWithRawResponse:
         return AsyncEmailsResourceWithRawResponse(self._objects.emails)
 
     @cached_property
     def feedback_submissions(self) -> AsyncFeedbackSubmissionsResourceWithRawResponse:
         return AsyncFeedbackSubmissionsResourceWithRawResponse(self._objects.feedback_submissions)
+
+    @cached_property
+    def fees(self) -> AsyncFeesResourceWithRawResponse:
+        return AsyncFeesResourceWithRawResponse(self._objects.fees)
+
+    @cached_property
+    def goal_targets(self) -> AsyncGoalTargetsResourceWithRawResponse:
+        return AsyncGoalTargetsResourceWithRawResponse(self._objects.goal_targets)
 
     @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithRawResponse:
@@ -521,6 +833,10 @@ class AsyncObjectsResourceWithRawResponse:
         return AsyncLineItemsResourceWithRawResponse(self._objects.line_items)
 
     @cached_property
+    def listings(self) -> AsyncListingsResourceWithRawResponse:
+        return AsyncListingsResourceWithRawResponse(self._objects.listings)
+
+    @cached_property
     def meetings(self) -> AsyncMeetingsResourceWithRawResponse:
         return AsyncMeetingsResourceWithRawResponse(self._objects.meetings)
 
@@ -533,8 +849,28 @@ class AsyncObjectsResourceWithRawResponse:
         return objects.AsyncObjectsResourceWithRawResponse(self._objects.objects)
 
     @cached_property
+    def orders(self) -> AsyncOrdersResourceWithRawResponse:
+        return AsyncOrdersResourceWithRawResponse(self._objects.orders)
+
+    @cached_property
     def partner_clients(self) -> AsyncPartnerClientsResourceWithRawResponse:
         return AsyncPartnerClientsResourceWithRawResponse(self._objects.partner_clients)
+
+    @cached_property
+    def partner_services(self) -> AsyncPartnerServicesResourceWithRawResponse:
+        return AsyncPartnerServicesResourceWithRawResponse(self._objects.partner_services)
+
+    @cached_property
+    def postal_mail(self) -> AsyncPostalMailResourceWithRawResponse:
+        return AsyncPostalMailResourceWithRawResponse(self._objects.postal_mail)
+
+    @cached_property
+    def products(self) -> AsyncProductsResourceWithRawResponse:
+        return AsyncProductsResourceWithRawResponse(self._objects.products)
+
+    @cached_property
+    def quotes(self) -> AsyncQuotesResourceWithRawResponse:
+        return AsyncQuotesResourceWithRawResponse(self._objects.quotes)
 
     @cached_property
     def schemas(self) -> AsyncSchemasResourceWithRawResponse:
@@ -570,12 +906,32 @@ class ObjectsResourceWithStreamingResponse:
         return CallsResourceWithStreamingResponse(self._objects.calls)
 
     @cached_property
+    def carts(self) -> CartsResourceWithStreamingResponse:
+        return CartsResourceWithStreamingResponse(self._objects.carts)
+
+    @cached_property
+    def commerce_payments(self) -> CommercePaymentsResourceWithStreamingResponse:
+        return CommercePaymentsResourceWithStreamingResponse(self._objects.commerce_payments)
+
+    @cached_property
+    def communications(self) -> CommunicationsResourceWithStreamingResponse:
+        return CommunicationsResourceWithStreamingResponse(self._objects.communications)
+
+    @cached_property
     def companies(self) -> CompaniesResourceWithStreamingResponse:
         return CompaniesResourceWithStreamingResponse(self._objects.companies)
 
     @cached_property
     def contacts(self) -> ContactsResourceWithStreamingResponse:
         return ContactsResourceWithStreamingResponse(self._objects.contacts)
+
+    @cached_property
+    def contracts(self) -> ContractsResourceWithStreamingResponse:
+        return ContractsResourceWithStreamingResponse(self._objects.contracts)
+
+    @cached_property
+    def courses(self) -> CoursesResourceWithStreamingResponse:
+        return CoursesResourceWithStreamingResponse(self._objects.courses)
 
     @cached_property
     def custom(self) -> CustomResourceWithStreamingResponse:
@@ -590,12 +946,24 @@ class ObjectsResourceWithStreamingResponse:
         return DealsResourceWithStreamingResponse(self._objects.deals)
 
     @cached_property
+    def discounts(self) -> DiscountsResourceWithStreamingResponse:
+        return DiscountsResourceWithStreamingResponse(self._objects.discounts)
+
+    @cached_property
     def emails(self) -> EmailsResourceWithStreamingResponse:
         return EmailsResourceWithStreamingResponse(self._objects.emails)
 
     @cached_property
     def feedback_submissions(self) -> FeedbackSubmissionsResourceWithStreamingResponse:
         return FeedbackSubmissionsResourceWithStreamingResponse(self._objects.feedback_submissions)
+
+    @cached_property
+    def fees(self) -> FeesResourceWithStreamingResponse:
+        return FeesResourceWithStreamingResponse(self._objects.fees)
+
+    @cached_property
+    def goal_targets(self) -> GoalTargetsResourceWithStreamingResponse:
+        return GoalTargetsResourceWithStreamingResponse(self._objects.goal_targets)
 
     @cached_property
     def invoices(self) -> InvoicesResourceWithStreamingResponse:
@@ -610,6 +978,10 @@ class ObjectsResourceWithStreamingResponse:
         return LineItemsResourceWithStreamingResponse(self._objects.line_items)
 
     @cached_property
+    def listings(self) -> ListingsResourceWithStreamingResponse:
+        return ListingsResourceWithStreamingResponse(self._objects.listings)
+
+    @cached_property
     def meetings(self) -> MeetingsResourceWithStreamingResponse:
         return MeetingsResourceWithStreamingResponse(self._objects.meetings)
 
@@ -622,8 +994,28 @@ class ObjectsResourceWithStreamingResponse:
         return objects.ObjectsResourceWithStreamingResponse(self._objects.objects)
 
     @cached_property
+    def orders(self) -> OrdersResourceWithStreamingResponse:
+        return OrdersResourceWithStreamingResponse(self._objects.orders)
+
+    @cached_property
     def partner_clients(self) -> PartnerClientsResourceWithStreamingResponse:
         return PartnerClientsResourceWithStreamingResponse(self._objects.partner_clients)
+
+    @cached_property
+    def partner_services(self) -> PartnerServicesResourceWithStreamingResponse:
+        return PartnerServicesResourceWithStreamingResponse(self._objects.partner_services)
+
+    @cached_property
+    def postal_mail(self) -> PostalMailResourceWithStreamingResponse:
+        return PostalMailResourceWithStreamingResponse(self._objects.postal_mail)
+
+    @cached_property
+    def products(self) -> ProductsResourceWithStreamingResponse:
+        return ProductsResourceWithStreamingResponse(self._objects.products)
+
+    @cached_property
+    def quotes(self) -> QuotesResourceWithStreamingResponse:
+        return QuotesResourceWithStreamingResponse(self._objects.quotes)
 
     @cached_property
     def schemas(self) -> SchemasResourceWithStreamingResponse:
@@ -659,12 +1051,32 @@ class AsyncObjectsResourceWithStreamingResponse:
         return AsyncCallsResourceWithStreamingResponse(self._objects.calls)
 
     @cached_property
+    def carts(self) -> AsyncCartsResourceWithStreamingResponse:
+        return AsyncCartsResourceWithStreamingResponse(self._objects.carts)
+
+    @cached_property
+    def commerce_payments(self) -> AsyncCommercePaymentsResourceWithStreamingResponse:
+        return AsyncCommercePaymentsResourceWithStreamingResponse(self._objects.commerce_payments)
+
+    @cached_property
+    def communications(self) -> AsyncCommunicationsResourceWithStreamingResponse:
+        return AsyncCommunicationsResourceWithStreamingResponse(self._objects.communications)
+
+    @cached_property
     def companies(self) -> AsyncCompaniesResourceWithStreamingResponse:
         return AsyncCompaniesResourceWithStreamingResponse(self._objects.companies)
 
     @cached_property
     def contacts(self) -> AsyncContactsResourceWithStreamingResponse:
         return AsyncContactsResourceWithStreamingResponse(self._objects.contacts)
+
+    @cached_property
+    def contracts(self) -> AsyncContractsResourceWithStreamingResponse:
+        return AsyncContractsResourceWithStreamingResponse(self._objects.contracts)
+
+    @cached_property
+    def courses(self) -> AsyncCoursesResourceWithStreamingResponse:
+        return AsyncCoursesResourceWithStreamingResponse(self._objects.courses)
 
     @cached_property
     def custom(self) -> AsyncCustomResourceWithStreamingResponse:
@@ -679,12 +1091,24 @@ class AsyncObjectsResourceWithStreamingResponse:
         return AsyncDealsResourceWithStreamingResponse(self._objects.deals)
 
     @cached_property
+    def discounts(self) -> AsyncDiscountsResourceWithStreamingResponse:
+        return AsyncDiscountsResourceWithStreamingResponse(self._objects.discounts)
+
+    @cached_property
     def emails(self) -> AsyncEmailsResourceWithStreamingResponse:
         return AsyncEmailsResourceWithStreamingResponse(self._objects.emails)
 
     @cached_property
     def feedback_submissions(self) -> AsyncFeedbackSubmissionsResourceWithStreamingResponse:
         return AsyncFeedbackSubmissionsResourceWithStreamingResponse(self._objects.feedback_submissions)
+
+    @cached_property
+    def fees(self) -> AsyncFeesResourceWithStreamingResponse:
+        return AsyncFeesResourceWithStreamingResponse(self._objects.fees)
+
+    @cached_property
+    def goal_targets(self) -> AsyncGoalTargetsResourceWithStreamingResponse:
+        return AsyncGoalTargetsResourceWithStreamingResponse(self._objects.goal_targets)
 
     @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithStreamingResponse:
@@ -699,6 +1123,10 @@ class AsyncObjectsResourceWithStreamingResponse:
         return AsyncLineItemsResourceWithStreamingResponse(self._objects.line_items)
 
     @cached_property
+    def listings(self) -> AsyncListingsResourceWithStreamingResponse:
+        return AsyncListingsResourceWithStreamingResponse(self._objects.listings)
+
+    @cached_property
     def meetings(self) -> AsyncMeetingsResourceWithStreamingResponse:
         return AsyncMeetingsResourceWithStreamingResponse(self._objects.meetings)
 
@@ -711,8 +1139,28 @@ class AsyncObjectsResourceWithStreamingResponse:
         return objects.AsyncObjectsResourceWithStreamingResponse(self._objects.objects)
 
     @cached_property
+    def orders(self) -> AsyncOrdersResourceWithStreamingResponse:
+        return AsyncOrdersResourceWithStreamingResponse(self._objects.orders)
+
+    @cached_property
     def partner_clients(self) -> AsyncPartnerClientsResourceWithStreamingResponse:
         return AsyncPartnerClientsResourceWithStreamingResponse(self._objects.partner_clients)
+
+    @cached_property
+    def partner_services(self) -> AsyncPartnerServicesResourceWithStreamingResponse:
+        return AsyncPartnerServicesResourceWithStreamingResponse(self._objects.partner_services)
+
+    @cached_property
+    def postal_mail(self) -> AsyncPostalMailResourceWithStreamingResponse:
+        return AsyncPostalMailResourceWithStreamingResponse(self._objects.postal_mail)
+
+    @cached_property
+    def products(self) -> AsyncProductsResourceWithStreamingResponse:
+        return AsyncProductsResourceWithStreamingResponse(self._objects.products)
+
+    @cached_property
+    def quotes(self) -> AsyncQuotesResourceWithStreamingResponse:
+        return AsyncQuotesResourceWithStreamingResponse(self._objects.quotes)
 
     @cached_property
     def schemas(self) -> AsyncSchemasResourceWithStreamingResponse:

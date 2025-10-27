@@ -8,14 +8,6 @@ from .emails import (
     EmailsResourceWithStreamingResponse,
     AsyncEmailsResourceWithStreamingResponse,
 )
-from .statistics import (
-    StatisticsResource,
-    AsyncStatisticsResource,
-    StatisticsResourceWithRawResponse,
-    AsyncStatisticsResourceWithRawResponse,
-    StatisticsResourceWithStreamingResponse,
-    AsyncStatisticsResourceWithStreamingResponse,
-)
 from .single_send import (
     SingleSendResource,
     AsyncSingleSendResource,
@@ -32,12 +24,6 @@ __all__ = [
     "AsyncSingleSendResourceWithRawResponse",
     "SingleSendResourceWithStreamingResponse",
     "AsyncSingleSendResourceWithStreamingResponse",
-    "StatisticsResource",
-    "AsyncStatisticsResource",
-    "StatisticsResourceWithRawResponse",
-    "AsyncStatisticsResourceWithRawResponse",
-    "StatisticsResourceWithStreamingResponse",
-    "AsyncStatisticsResourceWithStreamingResponse",
     "EmailsResource",
     "AsyncEmailsResource",
     "EmailsResourceWithRawResponse",
