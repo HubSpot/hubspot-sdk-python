@@ -3,8 +3,8 @@
 from typing import List, Optional
 
 from ..._models import BaseModel
-from ..shared.paging import Paging
 from ..shared.property import Property
+from ..marketing.paging import Paging
 
 __all__ = ["CollectionResponseProperty"]
 
@@ -13,3 +13,4 @@ class CollectionResponseProperty(BaseModel):
     results: List[Property]
 
     paging: Optional[Paging] = None
+    """Contains information pagination of results."""

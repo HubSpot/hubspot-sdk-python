@@ -4,7 +4,7 @@ from typing import List, Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
-from ..shared.paging import Paging
+from ..marketing.paging import Paging
 
 __all__ = ["StreamingCollectionResponseWithTotalHubDBTableRowV3"]
 
@@ -17,3 +17,4 @@ class StreamingCollectionResponseWithTotalHubDBTableRowV3(BaseModel):
     type: Literal["STREAMING"]
 
     paging: Optional[Paging] = None
+    """Contains information pagination of results."""

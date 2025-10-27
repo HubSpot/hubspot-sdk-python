@@ -38,13 +38,13 @@ class TestDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -78,13 +78,13 @@ class TestDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -137,13 +137,13 @@ class TestDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -180,13 +180,13 @@ class TestDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -223,13 +223,13 @@ class TestDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -285,13 +285,13 @@ class TestDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -329,13 +329,13 @@ class TestDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -563,13 +563,13 @@ class TestAsyncDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -603,13 +603,13 @@ class TestAsyncDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -662,13 +662,13 @@ class TestAsyncDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -705,13 +705,13 @@ class TestAsyncDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -748,13 +748,13 @@ class TestAsyncDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -810,13 +810,13 @@ class TestAsyncDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
@@ -854,13 +854,13 @@ class TestAsyncDefinitions:
                         "name": "name",
                         "options": [
                             {
-                                "description": "description",
+                                "description": "",
                                 "display_order": 0,
                                 "double_data": 0,
-                                "hidden": True,
-                                "label": "label",
-                                "read_only": True,
-                                "value": "value",
+                                "hidden": False,
+                                "label": "",
+                                "read_only": False,
+                                "value": "",
                             }
                         ],
                         "type": "string",
