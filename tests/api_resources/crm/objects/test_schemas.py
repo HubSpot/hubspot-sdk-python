@@ -10,10 +10,10 @@ import pytest
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.events import AssociationDefinition
+from hubspot_sdk.types.shared import CollectionResponseObjectSchemaNoPaging
 from hubspot_sdk.types.crm.objects import (
     ObjectSchema,
     ObjectTypeDefinition,
-    CollectionResponseObjectSchemaNoPaging,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -67,14 +67,14 @@ class TestSchemas:
                     "options": [
                         {
                             "display_order": 1,
-                            "hidden": False,
+                            "hidden": True,
                             "label": "Option A",
                             "value": "A",
                             "description": "Choice number one",
                         },
                         {
                             "display_order": 2,
-                            "hidden": False,
+                            "hidden": True,
                             "label": "Option B",
                             "value": "B",
                             "description": "Choice number two",
@@ -159,8 +159,8 @@ class TestSchemas:
             clear_description=True,
             description="description",
             labels={
-                "plural": "My objects",
-                "singular": "My object",
+                "plural": "plural",
+                "singular": "singular",
             },
             primary_display_property="my_object_property",
             required_properties=["my_object_property"],
@@ -350,8 +350,8 @@ class TestSchemas:
     def test_method_create_association(self, client: HubSpot) -> None:
         schema = client.crm.objects.schemas.create_association(
             object_type="objectType",
-            from_object_type_id="2-123456",
-            to_object_type_id="contact",
+            from_object_type_id="fromObjectTypeId",
+            to_object_type_id="toObjectTypeId",
         )
         assert_matches_type(AssociationDefinition, schema, path=["response"])
 
@@ -360,9 +360,9 @@ class TestSchemas:
     def test_method_create_association_with_all_params(self, client: HubSpot) -> None:
         schema = client.crm.objects.schemas.create_association(
             object_type="objectType",
-            from_object_type_id="2-123456",
-            to_object_type_id="contact",
-            name="my_object_to_contact",
+            from_object_type_id="fromObjectTypeId",
+            to_object_type_id="toObjectTypeId",
+            name="name",
         )
         assert_matches_type(AssociationDefinition, schema, path=["response"])
 
@@ -371,8 +371,8 @@ class TestSchemas:
     def test_raw_response_create_association(self, client: HubSpot) -> None:
         response = client.crm.objects.schemas.with_raw_response.create_association(
             object_type="objectType",
-            from_object_type_id="2-123456",
-            to_object_type_id="contact",
+            from_object_type_id="fromObjectTypeId",
+            to_object_type_id="toObjectTypeId",
         )
 
         assert response.is_closed is True
@@ -385,8 +385,8 @@ class TestSchemas:
     def test_streaming_response_create_association(self, client: HubSpot) -> None:
         with client.crm.objects.schemas.with_streaming_response.create_association(
             object_type="objectType",
-            from_object_type_id="2-123456",
-            to_object_type_id="contact",
+            from_object_type_id="fromObjectTypeId",
+            to_object_type_id="toObjectTypeId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -402,8 +402,8 @@ class TestSchemas:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.objects.schemas.with_raw_response.create_association(
                 object_type="",
-                from_object_type_id="2-123456",
-                to_object_type_id="contact",
+                from_object_type_id="fromObjectTypeId",
+                to_object_type_id="toObjectTypeId",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -499,14 +499,14 @@ class TestAsyncSchemas:
                     "options": [
                         {
                             "display_order": 1,
-                            "hidden": False,
+                            "hidden": True,
                             "label": "Option A",
                             "value": "A",
                             "description": "Choice number one",
                         },
                         {
                             "display_order": 2,
-                            "hidden": False,
+                            "hidden": True,
                             "label": "Option B",
                             "value": "B",
                             "description": "Choice number two",
@@ -591,8 +591,8 @@ class TestAsyncSchemas:
             clear_description=True,
             description="description",
             labels={
-                "plural": "My objects",
-                "singular": "My object",
+                "plural": "plural",
+                "singular": "singular",
             },
             primary_display_property="my_object_property",
             required_properties=["my_object_property"],
@@ -782,8 +782,8 @@ class TestAsyncSchemas:
     async def test_method_create_association(self, async_client: AsyncHubSpot) -> None:
         schema = await async_client.crm.objects.schemas.create_association(
             object_type="objectType",
-            from_object_type_id="2-123456",
-            to_object_type_id="contact",
+            from_object_type_id="fromObjectTypeId",
+            to_object_type_id="toObjectTypeId",
         )
         assert_matches_type(AssociationDefinition, schema, path=["response"])
 
@@ -792,9 +792,9 @@ class TestAsyncSchemas:
     async def test_method_create_association_with_all_params(self, async_client: AsyncHubSpot) -> None:
         schema = await async_client.crm.objects.schemas.create_association(
             object_type="objectType",
-            from_object_type_id="2-123456",
-            to_object_type_id="contact",
-            name="my_object_to_contact",
+            from_object_type_id="fromObjectTypeId",
+            to_object_type_id="toObjectTypeId",
+            name="name",
         )
         assert_matches_type(AssociationDefinition, schema, path=["response"])
 
@@ -803,8 +803,8 @@ class TestAsyncSchemas:
     async def test_raw_response_create_association(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.schemas.with_raw_response.create_association(
             object_type="objectType",
-            from_object_type_id="2-123456",
-            to_object_type_id="contact",
+            from_object_type_id="fromObjectTypeId",
+            to_object_type_id="toObjectTypeId",
         )
 
         assert response.is_closed is True
@@ -817,8 +817,8 @@ class TestAsyncSchemas:
     async def test_streaming_response_create_association(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.schemas.with_streaming_response.create_association(
             object_type="objectType",
-            from_object_type_id="2-123456",
-            to_object_type_id="contact",
+            from_object_type_id="fromObjectTypeId",
+            to_object_type_id="toObjectTypeId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -834,8 +834,8 @@ class TestAsyncSchemas:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.objects.schemas.with_raw_response.create_association(
                 object_type="",
-                from_object_type_id="2-123456",
-                to_object_type_id="contact",
+                from_object_type_id="fromObjectTypeId",
+                to_object_type_id="toObjectTypeId",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")

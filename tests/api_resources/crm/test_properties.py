@@ -26,11 +26,11 @@ class TestProperties:
     def test_method_create(self, client: HubSpot) -> None:
         property = client.crm.properties.create(
             object_type="objectType",
-            field_type="select",
-            group_name="contactinformation",
-            label="My Contact Property",
-            name="my_contact_property",
-            type="enumeration",
+            field_type="booleancheckbox",
+            group_name="groupName",
+            label="label",
+            name="name",
+            type="bool",
         )
         assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
@@ -39,34 +39,27 @@ class TestProperties:
     def test_method_create_with_all_params(self, client: HubSpot) -> None:
         property = client.crm.properties.create(
             object_type="objectType",
-            field_type="select",
-            group_name="contactinformation",
-            label="My Contact Property",
-            name="my_contact_property",
-            type="enumeration",
+            field_type="booleancheckbox",
+            group_name="groupName",
+            label="label",
+            name="name",
+            type="bool",
             calculation_formula="calculationFormula",
             data_sensitivity="non_sensitive",
             description="description",
-            display_order=2,
+            display_order=0,
             external_options=True,
             form_field=True,
-            has_unique_value=False,
-            hidden=False,
+            has_unique_value=True,
+            hidden=True,
             options=[
                 {
-                    "display_order": 1,
-                    "hidden": False,
-                    "label": "Option A",
-                    "value": "A",
-                    "description": "Choice number one",
-                },
-                {
-                    "display_order": 2,
-                    "hidden": False,
-                    "label": "Option B",
-                    "value": "B",
-                    "description": "Choice number two",
-                },
+                    "display_order": 0,
+                    "hidden": True,
+                    "label": "label",
+                    "value": "value",
+                    "description": "description",
+                }
             ],
             referenced_object_type="referencedObjectType",
         )
@@ -77,11 +70,11 @@ class TestProperties:
     def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.crm.properties.with_raw_response.create(
             object_type="objectType",
-            field_type="select",
-            group_name="contactinformation",
-            label="My Contact Property",
-            name="my_contact_property",
-            type="enumeration",
+            field_type="booleancheckbox",
+            group_name="groupName",
+            label="label",
+            name="name",
+            type="bool",
         )
 
         assert response.is_closed is True
@@ -94,11 +87,11 @@ class TestProperties:
     def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.crm.properties.with_streaming_response.create(
             object_type="objectType",
-            field_type="select",
-            group_name="contactinformation",
-            label="My Contact Property",
-            name="my_contact_property",
-            type="enumeration",
+            field_type="booleancheckbox",
+            group_name="groupName",
+            label="label",
+            name="name",
+            type="bool",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -114,11 +107,11 @@ class TestProperties:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.with_raw_response.create(
                 object_type="",
-                field_type="select",
-                group_name="contactinformation",
-                label="My Contact Property",
-                name="my_contact_property",
-                type="enumeration",
+                field_type="booleancheckbox",
+                group_name="groupName",
+                label="label",
+                name="name",
+                type="bool",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -385,11 +378,11 @@ class TestAsyncProperties:
     async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         property = await async_client.crm.properties.create(
             object_type="objectType",
-            field_type="select",
-            group_name="contactinformation",
-            label="My Contact Property",
-            name="my_contact_property",
-            type="enumeration",
+            field_type="booleancheckbox",
+            group_name="groupName",
+            label="label",
+            name="name",
+            type="bool",
         )
         assert_matches_type(CreatedResponseProperty, property, path=["response"])
 
@@ -398,34 +391,27 @@ class TestAsyncProperties:
     async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
         property = await async_client.crm.properties.create(
             object_type="objectType",
-            field_type="select",
-            group_name="contactinformation",
-            label="My Contact Property",
-            name="my_contact_property",
-            type="enumeration",
+            field_type="booleancheckbox",
+            group_name="groupName",
+            label="label",
+            name="name",
+            type="bool",
             calculation_formula="calculationFormula",
             data_sensitivity="non_sensitive",
             description="description",
-            display_order=2,
+            display_order=0,
             external_options=True,
             form_field=True,
-            has_unique_value=False,
-            hidden=False,
+            has_unique_value=True,
+            hidden=True,
             options=[
                 {
-                    "display_order": 1,
-                    "hidden": False,
-                    "label": "Option A",
-                    "value": "A",
-                    "description": "Choice number one",
-                },
-                {
-                    "display_order": 2,
-                    "hidden": False,
-                    "label": "Option B",
-                    "value": "B",
-                    "description": "Choice number two",
-                },
+                    "display_order": 0,
+                    "hidden": True,
+                    "label": "label",
+                    "value": "value",
+                    "description": "description",
+                }
             ],
             referenced_object_type="referencedObjectType",
         )
@@ -436,11 +422,11 @@ class TestAsyncProperties:
     async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.properties.with_raw_response.create(
             object_type="objectType",
-            field_type="select",
-            group_name="contactinformation",
-            label="My Contact Property",
-            name="my_contact_property",
-            type="enumeration",
+            field_type="booleancheckbox",
+            group_name="groupName",
+            label="label",
+            name="name",
+            type="bool",
         )
 
         assert response.is_closed is True
@@ -453,11 +439,11 @@ class TestAsyncProperties:
     async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.properties.with_streaming_response.create(
             object_type="objectType",
-            field_type="select",
-            group_name="contactinformation",
-            label="My Contact Property",
-            name="my_contact_property",
-            type="enumeration",
+            field_type="booleancheckbox",
+            group_name="groupName",
+            label="label",
+            name="name",
+            type="bool",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -473,11 +459,11 @@ class TestAsyncProperties:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.with_raw_response.create(
                 object_type="",
-                field_type="select",
-                group_name="contactinformation",
-                label="My Contact Property",
-                name="my_contact_property",
-                type="enumeration",
+                field_type="booleancheckbox",
+                group_name="groupName",
+                label="label",
+                name="name",
+                type="bool",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")

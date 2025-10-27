@@ -14,8 +14,7 @@ from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.marketing import (
     PublicEmail,
     VersionPublicEmail,
-    AggregateEmailStatistics,
-    CollectionResponseWithTotalEmailStatisticIntervalNoPaging,
+    CollectionResponseWithTotalVersionPublicEmail,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -615,6 +614,61 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_get(self, client: HubSpot) -> None:
+        email = client.marketing.emails.get(
+            email_id="emailId",
+        )
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+        email = client.marketing.emails.get(
+            email_id="emailId",
+            archived=True,
+            included_properties=["string"],
+            include_stats=True,
+            marketing_campaign_names=True,
+            workflow_names=True,
+        )
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.marketing.emails.with_raw_response.get(
+            email_id="emailId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        email = response.parse()
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.marketing.emails.with_streaming_response.get(
+            email_id="emailId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            email = response.parse()
+            assert_matches_type(PublicEmail, email, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_get(self, client: HubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
+            client.marketing.emails.with_raw_response.get(
+                email_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_method_get_ab_test_variation(self, client: HubSpot) -> None:
         email = client.marketing.emails.get_ab_test_variation(
             "emailId",
@@ -699,86 +753,8 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_emails_list(self, client: HubSpot) -> None:
-        email = client.marketing.emails.get_emails_list()
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_get_emails_list_with_all_params(self, client: HubSpot) -> None:
-        email = client.marketing.emails.get_emails_list(
-            email_ids=[0],
-            end_timestamp="endTimestamp",
-            property="property",
-            start_timestamp="startTimestamp",
-        )
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_get_emails_list(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.get_emails_list()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = response.parse()
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_get_emails_list(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.get_emails_list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = response.parse()
-            assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_get_histogram(self, client: HubSpot) -> None:
-        email = client.marketing.emails.get_histogram()
-        assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_get_histogram_with_all_params(self, client: HubSpot) -> None:
-        email = client.marketing.emails.get_histogram(
-            email_ids=[0],
-            end_timestamp="endTimestamp",
-            interval="YEAR",
-            start_timestamp="startTimestamp",
-        )
-        assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_get_histogram(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.get_histogram()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = response.parse()
-        assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_get_histogram(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.get_histogram() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = response.parse()
-            assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_get_revision_by_id(self, client: HubSpot) -> None:
-        email = client.marketing.emails.get_revision_by_id(
+    def test_method_get_revision(self, client: HubSpot) -> None:
+        email = client.marketing.emails.get_revision(
             revision_id="revisionId",
             email_id="emailId",
         )
@@ -786,8 +762,8 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_revision_by_id(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.get_revision_by_id(
+    def test_raw_response_get_revision(self, client: HubSpot) -> None:
+        response = client.marketing.emails.with_raw_response.get_revision(
             revision_id="revisionId",
             email_id="emailId",
         )
@@ -799,8 +775,8 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_revision_by_id(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.get_revision_by_id(
+    def test_streaming_response_get_revision(self, client: HubSpot) -> None:
+        with client.marketing.emails.with_streaming_response.get_revision(
             revision_id="revisionId",
             email_id="emailId",
         ) as response:
@@ -814,84 +790,84 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_revision_by_id(self, client: HubSpot) -> None:
+    def test_path_params_get_revision(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            client.marketing.emails.with_raw_response.get_revision_by_id(
+            client.marketing.emails.with_raw_response.get_revision(
                 revision_id="revisionId",
                 email_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `revision_id` but received ''"):
-            client.marketing.emails.with_raw_response.get_revision_by_id(
+            client.marketing.emails.with_raw_response.get_revision(
                 revision_id="",
                 email_id="emailId",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_revisions(self, client: HubSpot) -> None:
-        email = client.marketing.emails.get_revisions(
+    def test_method_list_revisions(self, client: HubSpot) -> None:
+        email = client.marketing.emails.list_revisions(
             email_id="emailId",
         )
-        assert_matches_type(SyncPage[VersionPublicEmail], email, path=["response"])
+        assert_matches_type(CollectionResponseWithTotalVersionPublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_revisions_with_all_params(self, client: HubSpot) -> None:
-        email = client.marketing.emails.get_revisions(
+    def test_method_list_revisions_with_all_params(self, client: HubSpot) -> None:
+        email = client.marketing.emails.list_revisions(
             email_id="emailId",
             after="after",
             before="before",
             limit=0,
         )
-        assert_matches_type(SyncPage[VersionPublicEmail], email, path=["response"])
+        assert_matches_type(CollectionResponseWithTotalVersionPublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_revisions(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.get_revisions(
+    def test_raw_response_list_revisions(self, client: HubSpot) -> None:
+        response = client.marketing.emails.with_raw_response.list_revisions(
             email_id="emailId",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         email = response.parse()
-        assert_matches_type(SyncPage[VersionPublicEmail], email, path=["response"])
+        assert_matches_type(CollectionResponseWithTotalVersionPublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_revisions(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.get_revisions(
+    def test_streaming_response_list_revisions(self, client: HubSpot) -> None:
+        with client.marketing.emails.with_streaming_response.list_revisions(
             email_id="emailId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             email = response.parse()
-            assert_matches_type(SyncPage[VersionPublicEmail], email, path=["response"])
+            assert_matches_type(CollectionResponseWithTotalVersionPublicEmail, email, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_revisions(self, client: HubSpot) -> None:
+    def test_path_params_list_revisions(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            client.marketing.emails.with_raw_response.get_revisions(
+            client.marketing.emails.with_raw_response.list_revisions(
                 email_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_publish_or_send(self, client: HubSpot) -> None:
-        email = client.marketing.emails.publish_or_send(
+    def test_method_publish(self, client: HubSpot) -> None:
+        email = client.marketing.emails.publish(
             "emailId",
         )
         assert email is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_publish_or_send(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.publish_or_send(
+    def test_raw_response_publish(self, client: HubSpot) -> None:
+        response = client.marketing.emails.with_raw_response.publish(
             "emailId",
         )
 
@@ -902,8 +878,8 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_publish_or_send(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.publish_or_send(
+    def test_streaming_response_publish(self, client: HubSpot) -> None:
+        with client.marketing.emails.with_streaming_response.publish(
             "emailId",
         ) as response:
             assert not response.is_closed
@@ -916,65 +892,10 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_publish_or_send(self, client: HubSpot) -> None:
+    def test_path_params_publish(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            client.marketing.emails.with_raw_response.publish_or_send(
+            client.marketing.emails.with_raw_response.publish(
                 "",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        email = client.marketing.emails.read(
-            email_id="emailId",
-        )
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read_with_all_params(self, client: HubSpot) -> None:
-        email = client.marketing.emails.read(
-            email_id="emailId",
-            archived=True,
-            included_properties=["string"],
-            include_stats=True,
-            marketing_campaign_names=True,
-            workflow_names=True,
-        )
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.read(
-            email_id="emailId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = response.parse()
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.read(
-            email_id="emailId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = response.parse()
-            assert_matches_type(PublicEmail, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            client.marketing.emails.with_raw_response.read(
-                email_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -1017,52 +938,6 @@ class TestEmails:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.reset_draft(
                 "",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_restore_draft_revision(self, client: HubSpot) -> None:
-        email = client.marketing.emails.restore_draft_revision(
-            revision_id=0,
-            email_id="emailId",
-        )
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_restore_draft_revision(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.restore_draft_revision(
-            revision_id=0,
-            email_id="emailId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = response.parse()
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_restore_draft_revision(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.restore_draft_revision(
-            revision_id=0,
-            email_id="emailId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = response.parse()
-            assert_matches_type(PublicEmail, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_restore_draft_revision(self, client: HubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            client.marketing.emails.with_raw_response.restore_draft_revision(
-                revision_id=0,
-                email_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -1119,16 +994,62 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_unpublish_or_cancel(self, client: HubSpot) -> None:
-        email = client.marketing.emails.unpublish_or_cancel(
+    def test_method_restore_revision_to_draft(self, client: HubSpot) -> None:
+        email = client.marketing.emails.restore_revision_to_draft(
+            revision_id=0,
+            email_id="emailId",
+        )
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_restore_revision_to_draft(self, client: HubSpot) -> None:
+        response = client.marketing.emails.with_raw_response.restore_revision_to_draft(
+            revision_id=0,
+            email_id="emailId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        email = response.parse()
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_restore_revision_to_draft(self, client: HubSpot) -> None:
+        with client.marketing.emails.with_streaming_response.restore_revision_to_draft(
+            revision_id=0,
+            email_id="emailId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            email = response.parse()
+            assert_matches_type(PublicEmail, email, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_restore_revision_to_draft(self, client: HubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
+            client.marketing.emails.with_raw_response.restore_revision_to_draft(
+                revision_id=0,
+                email_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_unpublish(self, client: HubSpot) -> None:
+        email = client.marketing.emails.unpublish(
             "emailId",
         )
         assert email is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_unpublish_or_cancel(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.unpublish_or_cancel(
+    def test_raw_response_unpublish(self, client: HubSpot) -> None:
+        response = client.marketing.emails.with_raw_response.unpublish(
             "emailId",
         )
 
@@ -1139,8 +1060,8 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_unpublish_or_cancel(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.unpublish_or_cancel(
+    def test_streaming_response_unpublish(self, client: HubSpot) -> None:
+        with client.marketing.emails.with_streaming_response.unpublish(
             "emailId",
         ) as response:
             assert not response.is_closed
@@ -1153,24 +1074,24 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_unpublish_or_cancel(self, client: HubSpot) -> None:
+    def test_path_params_unpublish(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            client.marketing.emails.with_raw_response.unpublish_or_cancel(
+            client.marketing.emails.with_raw_response.unpublish(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_upsert_draft(self, client: HubSpot) -> None:
-        email = client.marketing.emails.upsert_draft(
+    def test_method_update_draft(self, client: HubSpot) -> None:
+        email = client.marketing.emails.update_draft(
             email_id="emailId",
         )
         assert_matches_type(PublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_upsert_draft_with_all_params(self, client: HubSpot) -> None:
-        email = client.marketing.emails.upsert_draft(
+    def test_method_update_draft_with_all_params(self, client: HubSpot) -> None:
+        email = client.marketing.emails.update_draft(
             email_id="emailId",
             active_domain="test.hs-sites.com",
             archived=False,
@@ -1333,8 +1254,8 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_upsert_draft(self, client: HubSpot) -> None:
-        response = client.marketing.emails.with_raw_response.upsert_draft(
+    def test_raw_response_update_draft(self, client: HubSpot) -> None:
+        response = client.marketing.emails.with_raw_response.update_draft(
             email_id="emailId",
         )
 
@@ -1345,8 +1266,8 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_upsert_draft(self, client: HubSpot) -> None:
-        with client.marketing.emails.with_streaming_response.upsert_draft(
+    def test_streaming_response_update_draft(self, client: HubSpot) -> None:
+        with client.marketing.emails.with_streaming_response.update_draft(
             email_id="emailId",
         ) as response:
             assert not response.is_closed
@@ -1359,9 +1280,9 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_upsert_draft(self, client: HubSpot) -> None:
+    def test_path_params_update_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            client.marketing.emails.with_raw_response.upsert_draft(
+            client.marketing.emails.with_raw_response.update_draft(
                 email_id="",
             )
 
@@ -1962,6 +1883,61 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.get(
+            email_id="emailId",
+        )
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.get(
+            email_id="emailId",
+            archived=True,
+            included_properties=["string"],
+            include_stats=True,
+            marketing_campaign_names=True,
+            workflow_names=True,
+        )
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.marketing.emails.with_raw_response.get(
+            email_id="emailId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        email = await response.parse()
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.marketing.emails.with_streaming_response.get(
+            email_id="emailId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            email = await response.parse()
+            assert_matches_type(PublicEmail, email, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
+            await async_client.marketing.emails.with_raw_response.get(
+                email_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     async def test_method_get_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get_ab_test_variation(
             "emailId",
@@ -2046,86 +2022,8 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_emails_list(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.get_emails_list()
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_get_emails_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.get_emails_list(
-            email_ids=[0],
-            end_timestamp="endTimestamp",
-            property="property",
-            start_timestamp="startTimestamp",
-        )
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_get_emails_list(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.get_emails_list()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = await response.parse()
-        assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_get_emails_list(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.get_emails_list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = await response.parse()
-            assert_matches_type(AggregateEmailStatistics, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_get_histogram(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.get_histogram()
-        assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_get_histogram_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.get_histogram(
-            email_ids=[0],
-            end_timestamp="endTimestamp",
-            interval="YEAR",
-            start_timestamp="startTimestamp",
-        )
-        assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_get_histogram(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.get_histogram()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = await response.parse()
-        assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_get_histogram(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.get_histogram() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = await response.parse()
-            assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_get_revision_by_id(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.get_revision_by_id(
+    async def test_method_get_revision(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.get_revision(
             revision_id="revisionId",
             email_id="emailId",
         )
@@ -2133,8 +2031,8 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_revision_by_id(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.get_revision_by_id(
+    async def test_raw_response_get_revision(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.marketing.emails.with_raw_response.get_revision(
             revision_id="revisionId",
             email_id="emailId",
         )
@@ -2146,8 +2044,8 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_revision_by_id(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.get_revision_by_id(
+    async def test_streaming_response_get_revision(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.marketing.emails.with_streaming_response.get_revision(
             revision_id="revisionId",
             email_id="emailId",
         ) as response:
@@ -2161,84 +2059,84 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_revision_by_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_revision(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            await async_client.marketing.emails.with_raw_response.get_revision_by_id(
+            await async_client.marketing.emails.with_raw_response.get_revision(
                 revision_id="revisionId",
                 email_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `revision_id` but received ''"):
-            await async_client.marketing.emails.with_raw_response.get_revision_by_id(
+            await async_client.marketing.emails.with_raw_response.get_revision(
                 revision_id="",
                 email_id="emailId",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_revisions(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.get_revisions(
+    async def test_method_list_revisions(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.list_revisions(
             email_id="emailId",
         )
-        assert_matches_type(AsyncPage[VersionPublicEmail], email, path=["response"])
+        assert_matches_type(CollectionResponseWithTotalVersionPublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_revisions_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.get_revisions(
+    async def test_method_list_revisions_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.list_revisions(
             email_id="emailId",
             after="after",
             before="before",
             limit=0,
         )
-        assert_matches_type(AsyncPage[VersionPublicEmail], email, path=["response"])
+        assert_matches_type(CollectionResponseWithTotalVersionPublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_revisions(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.get_revisions(
+    async def test_raw_response_list_revisions(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.marketing.emails.with_raw_response.list_revisions(
             email_id="emailId",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         email = await response.parse()
-        assert_matches_type(AsyncPage[VersionPublicEmail], email, path=["response"])
+        assert_matches_type(CollectionResponseWithTotalVersionPublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_revisions(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.get_revisions(
+    async def test_streaming_response_list_revisions(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.marketing.emails.with_streaming_response.list_revisions(
             email_id="emailId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             email = await response.parse()
-            assert_matches_type(AsyncPage[VersionPublicEmail], email, path=["response"])
+            assert_matches_type(CollectionResponseWithTotalVersionPublicEmail, email, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list_revisions(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            await async_client.marketing.emails.with_raw_response.get_revisions(
+            await async_client.marketing.emails.with_raw_response.list_revisions(
                 email_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_publish_or_send(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.publish_or_send(
+    async def test_method_publish(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.publish(
             "emailId",
         )
         assert email is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_publish_or_send(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.publish_or_send(
+    async def test_raw_response_publish(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.marketing.emails.with_raw_response.publish(
             "emailId",
         )
 
@@ -2249,8 +2147,8 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_publish_or_send(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.publish_or_send(
+    async def test_streaming_response_publish(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.marketing.emails.with_streaming_response.publish(
             "emailId",
         ) as response:
             assert not response.is_closed
@@ -2263,65 +2161,10 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_publish_or_send(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_publish(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            await async_client.marketing.emails.with_raw_response.publish_or_send(
+            await async_client.marketing.emails.with_raw_response.publish(
                 "",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.read(
-            email_id="emailId",
-        )
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.read(
-            email_id="emailId",
-            archived=True,
-            included_properties=["string"],
-            include_stats=True,
-            marketing_campaign_names=True,
-            workflow_names=True,
-        )
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.read(
-            email_id="emailId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = await response.parse()
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.read(
-            email_id="emailId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = await response.parse()
-            assert_matches_type(PublicEmail, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            await async_client.marketing.emails.with_raw_response.read(
-                email_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -2364,52 +2207,6 @@ class TestAsyncEmails:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.reset_draft(
                 "",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_restore_draft_revision(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.restore_draft_revision(
-            revision_id=0,
-            email_id="emailId",
-        )
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_restore_draft_revision(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.restore_draft_revision(
-            revision_id=0,
-            email_id="emailId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = await response.parse()
-        assert_matches_type(PublicEmail, email, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_restore_draft_revision(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.restore_draft_revision(
-            revision_id=0,
-            email_id="emailId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = await response.parse()
-            assert_matches_type(PublicEmail, email, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_restore_draft_revision(self, async_client: AsyncHubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            await async_client.marketing.emails.with_raw_response.restore_draft_revision(
-                revision_id=0,
-                email_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -2466,16 +2263,62 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_unpublish_or_cancel(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.unpublish_or_cancel(
+    async def test_method_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.restore_revision_to_draft(
+            revision_id=0,
+            email_id="emailId",
+        )
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.marketing.emails.with_raw_response.restore_revision_to_draft(
+            revision_id=0,
+            email_id="emailId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        email = await response.parse()
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.marketing.emails.with_streaming_response.restore_revision_to_draft(
+            revision_id=0,
+            email_id="emailId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            email = await response.parse()
+            assert_matches_type(PublicEmail, email, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
+            await async_client.marketing.emails.with_raw_response.restore_revision_to_draft(
+                revision_id=0,
+                email_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_unpublish(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.unpublish(
             "emailId",
         )
         assert email is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_unpublish_or_cancel(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.unpublish_or_cancel(
+    async def test_raw_response_unpublish(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.marketing.emails.with_raw_response.unpublish(
             "emailId",
         )
 
@@ -2486,8 +2329,8 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_unpublish_or_cancel(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.unpublish_or_cancel(
+    async def test_streaming_response_unpublish(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.marketing.emails.with_streaming_response.unpublish(
             "emailId",
         ) as response:
             assert not response.is_closed
@@ -2500,24 +2343,24 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_unpublish_or_cancel(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_unpublish(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            await async_client.marketing.emails.with_raw_response.unpublish_or_cancel(
+            await async_client.marketing.emails.with_raw_response.unpublish(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_upsert_draft(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.upsert_draft(
+    async def test_method_update_draft(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.update_draft(
             email_id="emailId",
         )
         assert_matches_type(PublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_upsert_draft_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        email = await async_client.marketing.emails.upsert_draft(
+    async def test_method_update_draft_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        email = await async_client.marketing.emails.update_draft(
             email_id="emailId",
             active_domain="test.hs-sites.com",
             archived=False,
@@ -2680,8 +2523,8 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_upsert_draft(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.emails.with_raw_response.upsert_draft(
+    async def test_raw_response_update_draft(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.marketing.emails.with_raw_response.update_draft(
             email_id="emailId",
         )
 
@@ -2692,8 +2535,8 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_upsert_draft(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.emails.with_streaming_response.upsert_draft(
+    async def test_streaming_response_update_draft(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.marketing.emails.with_streaming_response.update_draft(
             email_id="emailId",
         ) as response:
             assert not response.is_closed
@@ -2706,8 +2549,8 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_upsert_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
-            await async_client.marketing.emails.with_raw_response.upsert_draft(
+            await async_client.marketing.emails.with_raw_response.update_draft(
                 email_id="",
             )

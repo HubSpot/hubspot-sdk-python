@@ -11,7 +11,5 @@ __all__ = ["CompanyMergeParams"]
 
 class CompanyMergeParams(TypedDict, total=False):
     object_id_to_merge: Required[Annotated[str, PropertyInfo(alias="objectIdToMerge")]]
-    """The ID of the company to merge into the primary."""
 
     primary_object_id: Required[Annotated[str, PropertyInfo(alias="primaryObjectId")]]
-    """The ID of the primary company, which the other will merge into."""

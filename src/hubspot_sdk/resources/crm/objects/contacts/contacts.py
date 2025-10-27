@@ -92,7 +92,7 @@ class ContactsResource(SyncAPIResource):
         with other CRM records.
 
         Args:
-          properties: The company property values to set.
+          properties: Key-value pairs for setting properties for the new object.
 
           extra_headers: Send extra headers
 
@@ -140,7 +140,7 @@ class ContactsResource(SyncAPIResource):
         an error. Properties values can be cleared by passing an empty string.
 
         Args:
-          properties: The company property values to set.
+          properties: Key value pairs representing the properties of the object.
 
           extra_headers: Send extra headers
 
@@ -293,10 +293,7 @@ class ContactsResource(SyncAPIResource):
         [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
 
         Args:
-          object_id: The ID of the company to delete.
-
-          id_property: The name of a unique property, when identifying records by property instead of
-              ID.
+          id_property: The name of a property whose values are unique for this object
 
           extra_headers: Send extra headers
 
@@ -404,10 +401,6 @@ class ContactsResource(SyncAPIResource):
         [merging records](https://knowledge.hubspot.com/records/merge-records).
 
         Args:
-          object_id_to_merge: The ID of the company to merge into the primary.
-
-          primary_object_id: The ID of the primary company, which the other will merge into.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -538,7 +531,7 @@ class AsyncContactsResource(AsyncAPIResource):
         with other CRM records.
 
         Args:
-          properties: The company property values to set.
+          properties: Key-value pairs for setting properties for the new object.
 
           extra_headers: Send extra headers
 
@@ -586,7 +579,7 @@ class AsyncContactsResource(AsyncAPIResource):
         an error. Properties values can be cleared by passing an empty string.
 
         Args:
-          properties: The company property values to set.
+          properties: Key value pairs representing the properties of the object.
 
           extra_headers: Send extra headers
 
@@ -739,10 +732,7 @@ class AsyncContactsResource(AsyncAPIResource):
         [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
 
         Args:
-          object_id: The ID of the company to delete.
-
-          id_property: The name of a unique property, when identifying records by property instead of
-              ID.
+          id_property: The name of a property whose values are unique for this object
 
           extra_headers: Send extra headers
 
@@ -850,10 +840,6 @@ class AsyncContactsResource(AsyncAPIResource):
         [merging records](https://knowledge.hubspot.com/records/merge-records).
 
         Args:
-          object_id_to_merge: The ID of the company to merge into the primary.
-
-          primary_object_id: The ID of the primary company, which the other will merge into.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

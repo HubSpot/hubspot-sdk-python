@@ -2,10 +2,17 @@
 
 from __future__ import annotations
 
+from .speaker import Speaker as Speaker
+from .speaker_param import SpeakerParam as SpeakerParam
+from .transcript_response import TranscriptResponse as TranscriptResponse
+from .transcript_utterance import TranscriptUtterance as TranscriptUtterance
 from .setting_create_params import SettingCreateParams as SettingCreateParams
 from .setting_update_params import SettingUpdateParams as SettingUpdateParams
+from .transcript_create_params import TranscriptCreateParams as TranscriptCreateParams
+from .transcript_create_response import TranscriptCreateResponse as TranscriptCreateResponse
 from .recording_setting_create_params import RecordingSettingCreateParams as RecordingSettingCreateParams
 from .recording_setting_update_params import RecordingSettingUpdateParams as RecordingSettingUpdateParams
+from .transcript_create_utterance_param import TranscriptCreateUtteranceParam as TranscriptCreateUtteranceParam
 from .recording_setting_mark_ready_params import RecordingSettingMarkReadyParams as RecordingSettingMarkReadyParams
 from .channel_connection_setting_create_params import (
     ChannelConnectionSettingCreateParams as ChannelConnectionSettingCreateParams,

@@ -89,7 +89,7 @@ class CustomResource(SyncAPIResource):
         provided.
 
         Args:
-          properties: The company property values to set.
+          properties: Key-value pairs for setting properties for the new object.
 
           extra_headers: Send extra headers
 
@@ -139,7 +139,7 @@ class CustomResource(SyncAPIResource):
         an error. Properties values can be cleared by passing an empty string.
 
         Args:
-          properties: The company property values to set.
+          properties: Key value pairs representing the properties of the object.
 
           id_property: The name of a property whose values are unique for this object
 
@@ -298,10 +298,6 @@ class CustomResource(SyncAPIResource):
         Merge two objects with same type
 
         Args:
-          object_id_to_merge: The ID of the company to merge into the primary.
-
-          primary_object_id: The ID of the primary company, which the other will merge into.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -504,7 +500,7 @@ class AsyncCustomResource(AsyncAPIResource):
         provided.
 
         Args:
-          properties: The company property values to set.
+          properties: Key-value pairs for setting properties for the new object.
 
           extra_headers: Send extra headers
 
@@ -554,7 +550,7 @@ class AsyncCustomResource(AsyncAPIResource):
         an error. Properties values can be cleared by passing an empty string.
 
         Args:
-          properties: The company property values to set.
+          properties: Key value pairs representing the properties of the object.
 
           id_property: The name of a property whose values are unique for this object
 
@@ -715,10 +711,6 @@ class AsyncCustomResource(AsyncAPIResource):
         Merge two objects with same type
 
         Args:
-          object_id_to_merge: The ID of the company to merge into the primary.
-
-          primary_object_id: The ID of the primary company, which the other will merge into.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

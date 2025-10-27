@@ -11,10 +11,7 @@ __all__ = ["SchemaCreateAssociationParams"]
 
 class SchemaCreateAssociationParams(TypedDict, total=False):
     from_object_type_id: Required[Annotated[str, PropertyInfo(alias="fromObjectTypeId")]]
-    """ID of the primary object type to link from."""
 
     to_object_type_id: Required[Annotated[str, PropertyInfo(alias="toObjectTypeId")]]
-    """ID of the target object type to link to."""
 
     name: str
-    """A unique name for this association."""

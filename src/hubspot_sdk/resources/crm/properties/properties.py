@@ -114,43 +114,6 @@ class PropertiesResource(SyncAPIResource):
         Create and return a copy of a new property for the specified object type.
 
         Args:
-          field_type: Controls how the property appears in HubSpot.
-
-          group_name: The name of the property group the property belongs to.
-
-          label: A human-readable property label that will be shown in HubSpot.
-
-          name: The internal property name, which must be used when referencing the property via
-              the API.
-
-          type: The data type of the property.
-
-          calculation_formula: Represents a formula that is used to compute a calculated property.
-
-          description: A description of the property that will be shown as help text in HubSpot.
-
-          display_order: Properties are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property to be displayed after any positive
-              values.
-
-          external_options: Applicable only for 'enumeration' type properties. Should be set to true in
-              conjunction with a 'referencedObjectType' of 'OWNER'. Otherwise false.
-
-          form_field: Whether or not the property can be used in a HubSpot form.
-
-          has_unique_value: Whether or not the property's value must be unique. Once set, this can't be
-              changed.
-
-          hidden: If true, the option will not be shown in forms, bots, or meeting scheduling
-              pages. Supported for contact, company, ticket, and custom object enumeration
-              properties.
-
-          options: A list of valid options for the property. This field is required for enumerated
-              properties.
-
-          referenced_object_type: Should be set to 'OWNER' when 'externalOptions' is true, which causes the
-              property to dynamically pull option values from the current HubSpot users.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -494,43 +457,6 @@ class AsyncPropertiesResource(AsyncAPIResource):
         Create and return a copy of a new property for the specified object type.
 
         Args:
-          field_type: Controls how the property appears in HubSpot.
-
-          group_name: The name of the property group the property belongs to.
-
-          label: A human-readable property label that will be shown in HubSpot.
-
-          name: The internal property name, which must be used when referencing the property via
-              the API.
-
-          type: The data type of the property.
-
-          calculation_formula: Represents a formula that is used to compute a calculated property.
-
-          description: A description of the property that will be shown as help text in HubSpot.
-
-          display_order: Properties are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property to be displayed after any positive
-              values.
-
-          external_options: Applicable only for 'enumeration' type properties. Should be set to true in
-              conjunction with a 'referencedObjectType' of 'OWNER'. Otherwise false.
-
-          form_field: Whether or not the property can be used in a HubSpot form.
-
-          has_unique_value: Whether or not the property's value must be unique. Once set, this can't be
-              changed.
-
-          hidden: If true, the option will not be shown in forms, bots, or meeting scheduling
-              pages. Supported for contact, company, ticket, and custom object enumeration
-              properties.
-
-          options: A list of valid options for the property. This field is required for enumerated
-              properties.
-
-          referenced_object_type: Should be set to 'OWNER' when 'externalOptions' is true, which causes the
-              property to dynamically pull option values from the current HubSpot users.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

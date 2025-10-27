@@ -6,7 +6,7 @@ from datetime import datetime
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from .object_type_definition_labels import ObjectTypeDefinitionLabels
+from ...shared.object_type_definition_labels import ObjectTypeDefinitionLabels
 
 __all__ = ["ObjectTypeDefinition"]
 
@@ -16,7 +16,6 @@ class ObjectTypeDefinition(BaseModel):
     """A unique ID for this object type. Will be defined as {meta-type}-{unique ID}."""
 
     labels: ObjectTypeDefinitionLabels
-    """Singular and plural labels for the object. Used in CRM display."""
 
     name: str
     """A unique name for this object. For internal use only."""

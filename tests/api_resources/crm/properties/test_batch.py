@@ -9,7 +9,7 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm import BatchResponseProperty
+from hubspot_sdk.types.shared import BatchResponseProperty
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -24,11 +24,11 @@ class TestBatch:
             object_type="objectType",
             inputs=[
                 {
-                    "field_type": "select",
-                    "group_name": "contactinformation",
-                    "label": "My Contact Property",
-                    "name": "my_contact_property",
-                    "type": "enumeration",
+                    "field_type": "booleancheckbox",
+                    "group_name": "groupName",
+                    "label": "label",
+                    "name": "name",
+                    "type": "bool",
                 }
             ],
         )
@@ -41,11 +41,11 @@ class TestBatch:
             object_type="objectType",
             inputs=[
                 {
-                    "field_type": "select",
-                    "group_name": "contactinformation",
-                    "label": "My Contact Property",
-                    "name": "my_contact_property",
-                    "type": "enumeration",
+                    "field_type": "booleancheckbox",
+                    "group_name": "groupName",
+                    "label": "label",
+                    "name": "name",
+                    "type": "bool",
                 }
             ],
         )
@@ -62,11 +62,11 @@ class TestBatch:
             object_type="objectType",
             inputs=[
                 {
-                    "field_type": "select",
-                    "group_name": "contactinformation",
-                    "label": "My Contact Property",
-                    "name": "my_contact_property",
-                    "type": "enumeration",
+                    "field_type": "booleancheckbox",
+                    "group_name": "groupName",
+                    "label": "label",
+                    "name": "name",
+                    "type": "bool",
                 }
             ],
         ) as response:
@@ -86,11 +86,11 @@ class TestBatch:
                 object_type="",
                 inputs=[
                     {
-                        "field_type": "select",
-                        "group_name": "contactinformation",
-                        "label": "My Contact Property",
-                        "name": "my_contact_property",
-                        "type": "enumeration",
+                        "field_type": "booleancheckbox",
+                        "group_name": "groupName",
+                        "label": "label",
+                        "name": "name",
+                        "type": "bool",
                     }
                 ],
             )
@@ -100,7 +100,7 @@ class TestBatch:
     def test_method_delete(self, client: HubSpot) -> None:
         batch = client.crm.properties.batch.delete(
             object_type="objectType",
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         )
         assert batch is None
 
@@ -109,7 +109,7 @@ class TestBatch:
     def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.crm.properties.batch.with_raw_response.delete(
             object_type="objectType",
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         )
 
         assert response.is_closed is True
@@ -122,7 +122,7 @@ class TestBatch:
     def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.crm.properties.batch.with_streaming_response.delete(
             object_type="objectType",
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -138,7 +138,7 @@ class TestBatch:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.batch.with_raw_response.delete(
                 object_type="",
-                inputs=[{"name": "my_custom_property"}],
+                inputs=[{"name": "name"}],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -147,7 +147,7 @@ class TestBatch:
         batch = client.crm.properties.batch.read(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         )
         assert_matches_type(BatchResponseProperty, batch, path=["response"])
 
@@ -157,7 +157,7 @@ class TestBatch:
         batch = client.crm.properties.batch.read(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
             data_sensitivity="non_sensitive",
         )
         assert_matches_type(BatchResponseProperty, batch, path=["response"])
@@ -168,7 +168,7 @@ class TestBatch:
         response = client.crm.properties.batch.with_raw_response.read(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         )
 
         assert response.is_closed is True
@@ -182,7 +182,7 @@ class TestBatch:
         with client.crm.properties.batch.with_streaming_response.read(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -199,7 +199,7 @@ class TestBatch:
             client.crm.properties.batch.with_raw_response.read(
                 object_type="",
                 archived=True,
-                inputs=[{"name": "my_custom_property"}],
+                inputs=[{"name": "name"}],
             )
 
 
@@ -215,11 +215,11 @@ class TestAsyncBatch:
             object_type="objectType",
             inputs=[
                 {
-                    "field_type": "select",
-                    "group_name": "contactinformation",
-                    "label": "My Contact Property",
-                    "name": "my_contact_property",
-                    "type": "enumeration",
+                    "field_type": "booleancheckbox",
+                    "group_name": "groupName",
+                    "label": "label",
+                    "name": "name",
+                    "type": "bool",
                 }
             ],
         )
@@ -232,11 +232,11 @@ class TestAsyncBatch:
             object_type="objectType",
             inputs=[
                 {
-                    "field_type": "select",
-                    "group_name": "contactinformation",
-                    "label": "My Contact Property",
-                    "name": "my_contact_property",
-                    "type": "enumeration",
+                    "field_type": "booleancheckbox",
+                    "group_name": "groupName",
+                    "label": "label",
+                    "name": "name",
+                    "type": "bool",
                 }
             ],
         )
@@ -253,11 +253,11 @@ class TestAsyncBatch:
             object_type="objectType",
             inputs=[
                 {
-                    "field_type": "select",
-                    "group_name": "contactinformation",
-                    "label": "My Contact Property",
-                    "name": "my_contact_property",
-                    "type": "enumeration",
+                    "field_type": "booleancheckbox",
+                    "group_name": "groupName",
+                    "label": "label",
+                    "name": "name",
+                    "type": "bool",
                 }
             ],
         ) as response:
@@ -277,11 +277,11 @@ class TestAsyncBatch:
                 object_type="",
                 inputs=[
                     {
-                        "field_type": "select",
-                        "group_name": "contactinformation",
-                        "label": "My Contact Property",
-                        "name": "my_contact_property",
-                        "type": "enumeration",
+                        "field_type": "booleancheckbox",
+                        "group_name": "groupName",
+                        "label": "label",
+                        "name": "name",
+                        "type": "bool",
                     }
                 ],
             )
@@ -291,7 +291,7 @@ class TestAsyncBatch:
     async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.crm.properties.batch.delete(
             object_type="objectType",
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         )
         assert batch is None
 
@@ -300,7 +300,7 @@ class TestAsyncBatch:
     async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.properties.batch.with_raw_response.delete(
             object_type="objectType",
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         )
 
         assert response.is_closed is True
@@ -313,7 +313,7 @@ class TestAsyncBatch:
     async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.properties.batch.with_streaming_response.delete(
             object_type="objectType",
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -329,7 +329,7 @@ class TestAsyncBatch:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.batch.with_raw_response.delete(
                 object_type="",
-                inputs=[{"name": "my_custom_property"}],
+                inputs=[{"name": "name"}],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -338,7 +338,7 @@ class TestAsyncBatch:
         batch = await async_client.crm.properties.batch.read(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         )
         assert_matches_type(BatchResponseProperty, batch, path=["response"])
 
@@ -348,7 +348,7 @@ class TestAsyncBatch:
         batch = await async_client.crm.properties.batch.read(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
             data_sensitivity="non_sensitive",
         )
         assert_matches_type(BatchResponseProperty, batch, path=["response"])
@@ -359,7 +359,7 @@ class TestAsyncBatch:
         response = await async_client.crm.properties.batch.with_raw_response.read(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         )
 
         assert response.is_closed is True
@@ -373,7 +373,7 @@ class TestAsyncBatch:
         async with async_client.crm.properties.batch.with_streaming_response.read(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "my_custom_property"}],
+            inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -390,5 +390,5 @@ class TestAsyncBatch:
             await async_client.crm.properties.batch.with_raw_response.read(
                 object_type="",
                 archived=True,
-                inputs=[{"name": "my_custom_property"}],
+                inputs=[{"name": "name"}],
             )

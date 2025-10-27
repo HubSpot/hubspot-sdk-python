@@ -12,22 +12,27 @@ __all__ = ["PublicChannelAccount"]
 
 
 class PublicChannelAccount(BaseModel):
-    id: str
-
-    active: bool
-
     archived: bool
 
-    authorized: bool
+    id: Optional[str] = None
+    """The ID of the channel account."""
 
-    channel_id: str = FieldInfo(alias="channelId")
-
-    created_at: datetime = FieldInfo(alias="createdAt")
-
-    inbox_id: str = FieldInfo(alias="inboxId")
-
-    name: str
+    active: Optional[bool] = None
+    """Whether the channel account is turned on."""
 
     archived_at: Optional[datetime] = FieldInfo(alias="archivedAt", default=None)
 
+    authorized: Optional[bool] = None
+
+    channel_id: Optional[str] = FieldInfo(alias="channelId", default=None)
+    """The ID of the channel that the channel account is an instance of."""
+
+    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
+
     delivery_identifier: Optional[PublicDeliveryIdentifier] = FieldInfo(alias="deliveryIdentifier", default=None)
+
+    inbox_id: Optional[str] = FieldInfo(alias="inboxId", default=None)
+    """The ID of the conversations inbox that contains the channel account."""
+
+    name: Optional[str] = None
+    """The name of the channel account."""

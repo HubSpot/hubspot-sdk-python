@@ -7,8 +7,8 @@ from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
 from ...shared.property import Property
-from .object_type_definition_labels import ObjectTypeDefinitionLabels
 from ...events.association_definition import AssociationDefinition
+from ...shared.object_type_definition_labels import ObjectTypeDefinitionLabels
 
 __all__ = ["ObjectSchema"]
 
@@ -24,7 +24,6 @@ class ObjectSchema(BaseModel):
     """Associations defined for a given object type."""
 
     labels: ObjectTypeDefinitionLabels
-    """Singular and plural labels for the object. Used in CRM display."""
 
     name: str
     """A unique name for the schema's object type."""

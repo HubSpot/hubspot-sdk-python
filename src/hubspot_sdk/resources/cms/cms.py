@@ -68,6 +68,14 @@ from .url_redirects import (
     URLRedirectsResourceWithStreamingResponse,
     AsyncURLRedirectsResourceWithStreamingResponse,
 )
+from .media_bridge.media_bridge import (
+    MediaBridgeResource,
+    AsyncMediaBridgeResource,
+    MediaBridgeResourceWithRawResponse,
+    AsyncMediaBridgeResourceWithRawResponse,
+    MediaBridgeResourceWithStreamingResponse,
+    AsyncMediaBridgeResourceWithStreamingResponse,
+)
 
 __all__ = ["CmsResource", "AsyncCmsResource"]
 
@@ -88,6 +96,10 @@ class CmsResource(SyncAPIResource):
     @cached_property
     def hubdb(self) -> HubdbResource:
         return HubdbResource(self._client)
+
+    @cached_property
+    def media_bridge(self) -> MediaBridgeResource:
+        return MediaBridgeResource(self._client)
 
     @cached_property
     def pages(self) -> PagesResource:
@@ -141,6 +153,10 @@ class AsyncCmsResource(AsyncAPIResource):
     @cached_property
     def hubdb(self) -> AsyncHubdbResource:
         return AsyncHubdbResource(self._client)
+
+    @cached_property
+    def media_bridge(self) -> AsyncMediaBridgeResource:
+        return AsyncMediaBridgeResource(self._client)
 
     @cached_property
     def pages(self) -> AsyncPagesResource:
@@ -199,6 +215,10 @@ class CmsResourceWithRawResponse:
         return HubdbResourceWithRawResponse(self._cms.hubdb)
 
     @cached_property
+    def media_bridge(self) -> MediaBridgeResourceWithRawResponse:
+        return MediaBridgeResourceWithRawResponse(self._cms.media_bridge)
+
+    @cached_property
     def pages(self) -> PagesResourceWithRawResponse:
         return PagesResourceWithRawResponse(self._cms.pages)
 
@@ -234,6 +254,10 @@ class AsyncCmsResourceWithRawResponse:
     @cached_property
     def hubdb(self) -> AsyncHubdbResourceWithRawResponse:
         return AsyncHubdbResourceWithRawResponse(self._cms.hubdb)
+
+    @cached_property
+    def media_bridge(self) -> AsyncMediaBridgeResourceWithRawResponse:
+        return AsyncMediaBridgeResourceWithRawResponse(self._cms.media_bridge)
 
     @cached_property
     def pages(self) -> AsyncPagesResourceWithRawResponse:
@@ -273,6 +297,10 @@ class CmsResourceWithStreamingResponse:
         return HubdbResourceWithStreamingResponse(self._cms.hubdb)
 
     @cached_property
+    def media_bridge(self) -> MediaBridgeResourceWithStreamingResponse:
+        return MediaBridgeResourceWithStreamingResponse(self._cms.media_bridge)
+
+    @cached_property
     def pages(self) -> PagesResourceWithStreamingResponse:
         return PagesResourceWithStreamingResponse(self._cms.pages)
 
@@ -308,6 +336,10 @@ class AsyncCmsResourceWithStreamingResponse:
     @cached_property
     def hubdb(self) -> AsyncHubdbResourceWithStreamingResponse:
         return AsyncHubdbResourceWithStreamingResponse(self._cms.hubdb)
+
+    @cached_property
+    def media_bridge(self) -> AsyncMediaBridgeResourceWithStreamingResponse:
+        return AsyncMediaBridgeResourceWithStreamingResponse(self._cms.media_bridge)
 
     @cached_property
     def pages(self) -> AsyncPagesResourceWithStreamingResponse:

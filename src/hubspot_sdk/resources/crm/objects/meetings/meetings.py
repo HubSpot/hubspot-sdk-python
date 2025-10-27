@@ -87,7 +87,7 @@ class MeetingsResource(SyncAPIResource):
         provided.
 
         Args:
-          properties: The company property values to set.
+          properties: Key-value pairs for setting properties for the new object.
 
           extra_headers: Send extra headers
 
@@ -135,7 +135,7 @@ class MeetingsResource(SyncAPIResource):
         an empty string.
 
         Args:
-          properties: The company property values to set.
+          properties: Key value pairs representing the properties of the object.
 
           id_property: The name of a property whose values are unique for this object
 
@@ -439,7 +439,7 @@ class AsyncMeetingsResource(AsyncAPIResource):
         provided.
 
         Args:
-          properties: The company property values to set.
+          properties: Key-value pairs for setting properties for the new object.
 
           extra_headers: Send extra headers
 
@@ -487,7 +487,7 @@ class AsyncMeetingsResource(AsyncAPIResource):
         an empty string.
 
         Args:
-          properties: The company property values to set.
+          properties: Key value pairs representing the properties of the object.
 
           id_property: The name of a property whose values are unique for this object
 

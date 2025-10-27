@@ -14,7 +14,7 @@ class CustomUpdateParams(TypedDict, total=False):
     object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
 
     properties: Required[Dict[str, str]]
-    """The company property values to set."""
+    """Key value pairs representing the properties of the object."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
     """The name of a property whose values are unique for this object"""

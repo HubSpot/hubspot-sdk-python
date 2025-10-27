@@ -12,7 +12,7 @@ __all__ = ["CompanyUpdateParams"]
 
 class CompanyUpdateParams(TypedDict, total=False):
     properties: Required[Dict[str, str]]
-    """The company property values to set."""
+    """Key value pairs representing the properties of the object."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
     """The name of a property whose values are unique for this object"""

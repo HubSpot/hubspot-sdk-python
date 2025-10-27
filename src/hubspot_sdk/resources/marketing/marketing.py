@@ -10,7 +10,9 @@ from .forms import (
     FormsResourceWithStreamingResponse,
     AsyncFormsResourceWithStreamingResponse,
 )
-from .emails import (
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from .emails.emails import (
     EmailsResource,
     AsyncEmailsResource,
     EmailsResourceWithRawResponse,
@@ -18,8 +20,22 @@ from .emails import (
     EmailsResourceWithStreamingResponse,
     AsyncEmailsResourceWithStreamingResponse,
 )
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
+from .events.events import (
+    EventsResource,
+    AsyncEventsResource,
+    EventsResourceWithRawResponse,
+    AsyncEventsResourceWithRawResponse,
+    EventsResourceWithStreamingResponse,
+    AsyncEventsResourceWithStreamingResponse,
+)
+from .campaigns.campaigns import (
+    CampaignsResource,
+    AsyncCampaignsResource,
+    CampaignsResourceWithRawResponse,
+    AsyncCampaignsResourceWithRawResponse,
+    CampaignsResourceWithStreamingResponse,
+    AsyncCampaignsResourceWithStreamingResponse,
+)
 from .subscriptions.subscriptions import (
     SubscriptionsResource,
     AsyncSubscriptionsResource,
@@ -36,30 +52,26 @@ from .transactional.transactional import (
     TransactionalResourceWithStreamingResponse,
     AsyncTransactionalResourceWithStreamingResponse,
 )
-from .marketing_events.marketing_events import (
-    MarketingEventsResource,
-    AsyncMarketingEventsResource,
-    MarketingEventsResourceWithRawResponse,
-    AsyncMarketingEventsResourceWithRawResponse,
-    MarketingEventsResourceWithStreamingResponse,
-    AsyncMarketingEventsResourceWithStreamingResponse,
-)
 
 __all__ = ["MarketingResource", "AsyncMarketingResource"]
 
 
 class MarketingResource(SyncAPIResource):
     @cached_property
+    def campaigns(self) -> CampaignsResource:
+        return CampaignsResource(self._client)
+
+    @cached_property
     def emails(self) -> EmailsResource:
         return EmailsResource(self._client)
 
     @cached_property
-    def forms(self) -> FormsResource:
-        return FormsResource(self._client)
+    def events(self) -> EventsResource:
+        return EventsResource(self._client)
 
     @cached_property
-    def marketing_events(self) -> MarketingEventsResource:
-        return MarketingEventsResource(self._client)
+    def forms(self) -> FormsResource:
+        return FormsResource(self._client)
 
     @cached_property
     def subscriptions(self) -> SubscriptionsResource:
@@ -91,16 +103,20 @@ class MarketingResource(SyncAPIResource):
 
 class AsyncMarketingResource(AsyncAPIResource):
     @cached_property
+    def campaigns(self) -> AsyncCampaignsResource:
+        return AsyncCampaignsResource(self._client)
+
+    @cached_property
     def emails(self) -> AsyncEmailsResource:
         return AsyncEmailsResource(self._client)
 
     @cached_property
-    def forms(self) -> AsyncFormsResource:
-        return AsyncFormsResource(self._client)
+    def events(self) -> AsyncEventsResource:
+        return AsyncEventsResource(self._client)
 
     @cached_property
-    def marketing_events(self) -> AsyncMarketingEventsResource:
-        return AsyncMarketingEventsResource(self._client)
+    def forms(self) -> AsyncFormsResource:
+        return AsyncFormsResource(self._client)
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResource:
@@ -135,16 +151,20 @@ class MarketingResourceWithRawResponse:
         self._marketing = marketing
 
     @cached_property
+    def campaigns(self) -> CampaignsResourceWithRawResponse:
+        return CampaignsResourceWithRawResponse(self._marketing.campaigns)
+
+    @cached_property
     def emails(self) -> EmailsResourceWithRawResponse:
         return EmailsResourceWithRawResponse(self._marketing.emails)
 
     @cached_property
-    def forms(self) -> FormsResourceWithRawResponse:
-        return FormsResourceWithRawResponse(self._marketing.forms)
+    def events(self) -> EventsResourceWithRawResponse:
+        return EventsResourceWithRawResponse(self._marketing.events)
 
     @cached_property
-    def marketing_events(self) -> MarketingEventsResourceWithRawResponse:
-        return MarketingEventsResourceWithRawResponse(self._marketing.marketing_events)
+    def forms(self) -> FormsResourceWithRawResponse:
+        return FormsResourceWithRawResponse(self._marketing.forms)
 
     @cached_property
     def subscriptions(self) -> SubscriptionsResourceWithRawResponse:
@@ -160,16 +180,20 @@ class AsyncMarketingResourceWithRawResponse:
         self._marketing = marketing
 
     @cached_property
+    def campaigns(self) -> AsyncCampaignsResourceWithRawResponse:
+        return AsyncCampaignsResourceWithRawResponse(self._marketing.campaigns)
+
+    @cached_property
     def emails(self) -> AsyncEmailsResourceWithRawResponse:
         return AsyncEmailsResourceWithRawResponse(self._marketing.emails)
 
     @cached_property
-    def forms(self) -> AsyncFormsResourceWithRawResponse:
-        return AsyncFormsResourceWithRawResponse(self._marketing.forms)
+    def events(self) -> AsyncEventsResourceWithRawResponse:
+        return AsyncEventsResourceWithRawResponse(self._marketing.events)
 
     @cached_property
-    def marketing_events(self) -> AsyncMarketingEventsResourceWithRawResponse:
-        return AsyncMarketingEventsResourceWithRawResponse(self._marketing.marketing_events)
+    def forms(self) -> AsyncFormsResourceWithRawResponse:
+        return AsyncFormsResourceWithRawResponse(self._marketing.forms)
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResourceWithRawResponse:
@@ -185,16 +209,20 @@ class MarketingResourceWithStreamingResponse:
         self._marketing = marketing
 
     @cached_property
+    def campaigns(self) -> CampaignsResourceWithStreamingResponse:
+        return CampaignsResourceWithStreamingResponse(self._marketing.campaigns)
+
+    @cached_property
     def emails(self) -> EmailsResourceWithStreamingResponse:
         return EmailsResourceWithStreamingResponse(self._marketing.emails)
 
     @cached_property
-    def forms(self) -> FormsResourceWithStreamingResponse:
-        return FormsResourceWithStreamingResponse(self._marketing.forms)
+    def events(self) -> EventsResourceWithStreamingResponse:
+        return EventsResourceWithStreamingResponse(self._marketing.events)
 
     @cached_property
-    def marketing_events(self) -> MarketingEventsResourceWithStreamingResponse:
-        return MarketingEventsResourceWithStreamingResponse(self._marketing.marketing_events)
+    def forms(self) -> FormsResourceWithStreamingResponse:
+        return FormsResourceWithStreamingResponse(self._marketing.forms)
 
     @cached_property
     def subscriptions(self) -> SubscriptionsResourceWithStreamingResponse:
@@ -210,16 +238,20 @@ class AsyncMarketingResourceWithStreamingResponse:
         self._marketing = marketing
 
     @cached_property
+    def campaigns(self) -> AsyncCampaignsResourceWithStreamingResponse:
+        return AsyncCampaignsResourceWithStreamingResponse(self._marketing.campaigns)
+
+    @cached_property
     def emails(self) -> AsyncEmailsResourceWithStreamingResponse:
         return AsyncEmailsResourceWithStreamingResponse(self._marketing.emails)
 
     @cached_property
-    def forms(self) -> AsyncFormsResourceWithStreamingResponse:
-        return AsyncFormsResourceWithStreamingResponse(self._marketing.forms)
+    def events(self) -> AsyncEventsResourceWithStreamingResponse:
+        return AsyncEventsResourceWithStreamingResponse(self._marketing.events)
 
     @cached_property
-    def marketing_events(self) -> AsyncMarketingEventsResourceWithStreamingResponse:
-        return AsyncMarketingEventsResourceWithStreamingResponse(self._marketing.marketing_events)
+    def forms(self) -> AsyncFormsResourceWithStreamingResponse:
+        return AsyncFormsResourceWithStreamingResponse(self._marketing.forms)
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsResourceWithStreamingResponse:

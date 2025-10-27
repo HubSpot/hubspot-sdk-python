@@ -16,6 +16,14 @@ from .settings import (
     SettingsResourceWithStreamingResponse,
     AsyncSettingsResourceWithStreamingResponse,
 )
+from .transcripts import (
+    TranscriptsResource,
+    AsyncTranscriptsResource,
+    TranscriptsResourceWithRawResponse,
+    AsyncTranscriptsResourceWithRawResponse,
+    TranscriptsResourceWithStreamingResponse,
+    AsyncTranscriptsResourceWithStreamingResponse,
+)
 from .recording_settings import (
     RecordingSettingsResource,
     AsyncRecordingSettingsResource,
@@ -52,6 +60,12 @@ __all__ = [
     "AsyncSettingsResourceWithRawResponse",
     "SettingsResourceWithStreamingResponse",
     "AsyncSettingsResourceWithStreamingResponse",
+    "TranscriptsResource",
+    "AsyncTranscriptsResource",
+    "TranscriptsResourceWithRawResponse",
+    "AsyncTranscriptsResourceWithRawResponse",
+    "TranscriptsResourceWithStreamingResponse",
+    "AsyncTranscriptsResourceWithStreamingResponse",
     "CallingResource",
     "AsyncCallingResource",
     "CallingResourceWithRawResponse",

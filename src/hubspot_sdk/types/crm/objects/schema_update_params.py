@@ -6,7 +6,7 @@ from typing_extensions import Annotated, TypedDict
 
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
-from .object_type_definition_labels_param import ObjectTypeDefinitionLabelsParam
+from ...shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
 
 __all__ = ["SchemaUpdateParams"]
 
@@ -16,8 +16,7 @@ class SchemaUpdateParams(TypedDict, total=False):
 
     description: str
 
-    labels: ObjectTypeDefinitionLabelsParam
-    """Singular and plural labels for the object. Used in CRM display."""
+    labels: ObjectTypeDefinitionLabels
 
     primary_display_property: Annotated[str, PropertyInfo(alias="primaryDisplayProperty")]
     """The name of the primary property for this object.

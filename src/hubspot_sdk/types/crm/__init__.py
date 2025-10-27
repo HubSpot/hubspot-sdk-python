@@ -12,8 +12,10 @@ from .property_group import PropertyGroup as PropertyGroup
 from .import_row_core import ImportRowCore as ImportRowCore
 from .import_template import ImportTemplate as ImportTemplate
 from .list_get_params import ListGetParams as ListGetParams
+from .user_get_params import UserGetParams as UserGetParams
 from .list_list_params import ListListParams as ListListParams
 from .owner_get_params import OwnerGetParams as OwnerGetParams
+from .user_list_params import UserListParams as UserListParams
 from .owner_list_params import OwnerListParams as OwnerListParams
 from .public_audit_info import PublicAuditInfo as PublicAuditInfo
 from .filter_group_param import FilterGroupParam as FilterGroupParam
@@ -23,9 +25,11 @@ from .list_search_params import ListSearchParams as ListSearchParams
 from .public_association import PublicAssociation as PublicAssociation
 from .public_list_folder import PublicListFolder as PublicListFolder
 from .public_object_list import PublicObjectList as PublicObjectList
+from .user_create_params import UserCreateParams as UserCreateParams
+from .user_search_params import UserSearchParams as UserSearchParams
+from .user_update_params import UserUpdateParams as UserUpdateParams
 from .list_fetch_response import ListFetchResponse as ListFetchResponse
 from .property_get_params import PropertyGetParams as PropertyGetParams
-from .property_name_param import PropertyNameParam as PropertyNameParam
 from .public_import_error import PublicImportError as PublicImportError
 from .import_create_params import ImportCreateParams as ImportCreateParams
 from .list_create_response import ListCreateResponse as ListCreateResponse
@@ -36,7 +40,6 @@ from .property_list_params import PropertyListParams as PropertyListParams
 from .simple_public_object import SimplePublicObject as SimplePublicObject
 from .timeline_event_param import TimelineEventParam as TimelineEventParam
 from .value_with_timestamp import ValueWithTimestamp as ValueWithTimestamp
-from .property_create_param import PropertyCreateParam as PropertyCreateParam
 from .pipeline_create_params import PipelineCreateParams as PipelineCreateParams
 from .pipeline_delete_params import PipelineDeleteParams as PipelineDeleteParams
 from .pipeline_update_params import PipelineUpdateParams as PipelineUpdateParams
@@ -47,7 +50,6 @@ from .public_import_response import PublicImportResponse as PublicImportResponse
 from .record_list_membership import RecordListMembership as RecordListMembership
 from .timeline_event_i_frame import TimelineEventIFrame as TimelineEventIFrame
 from .association_read_params import AssociationReadParams as AssociationReadParams
-from .batch_response_property import BatchResponseProperty as BatchResponseProperty
 from .join_time_and_record_id import JoinTimeAndRecordID as JoinTimeAndRecordID
 from .list_update_name_params import ListUpdateNameParams as ListUpdateNameParams
 from .pipeline_replace_params import PipelineReplaceParams as PipelineReplaceParams
@@ -108,6 +110,9 @@ from .action_response_with_single_result_uri import (
 from .collection_response_pipeline_no_paging import (
     CollectionResponsePipelineNoPaging as CollectionResponsePipelineNoPaging,
 )
+from .object_type_enablement_public_response import (
+    ObjectTypeEnablementPublicResponse as ObjectTypeEnablementPublicResponse,
+)
 from .simple_public_object_batch_input_param import (
     SimplePublicObjectBatchInputParam as SimplePublicObjectBatchInputParam,
 )
@@ -140,6 +145,9 @@ from .created_response_labels_between_object_pair import (
 )
 from .collection_response_pipeline_stage_no_paging import (
     CollectionResponsePipelineStageNoPaging as CollectionResponsePipelineStageNoPaging,
+)
+from .portal_object_type_enablement_public_response import (
+    PortalObjectTypeEnablementPublicResponse as PortalObjectTypeEnablementPublicResponse,
 )
 from .simple_public_object_batch_input_upsert_param import (
     SimplePublicObjectBatchInputUpsertParam as SimplePublicObjectBatchInputUpsertParam,

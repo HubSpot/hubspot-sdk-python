@@ -10,9 +10,11 @@ from .option_input import OptionInput as OptionInput
 from .task_locator import TaskLocator as TaskLocator
 from .version_user import VersionUser as VersionUser
 from .previous_page import PreviousPage as PreviousPage
+from .property_name import PropertyName as PropertyName
 from .forward_paging import ForwardPaging as ForwardPaging
 from .standard_error import StandardError as StandardError
 from .action_response import ActionResponse as ActionResponse
+from .property_create import PropertyCreate as PropertyCreate
 from .association_spec import AssociationSpec as AssociationSpec
 from .public_object_id import PublicObjectID as PublicObjectID
 from .public_date_point import PublicDatePoint as PublicDatePoint
@@ -20,25 +22,33 @@ from .batch_input_string import BatchInputString as BatchInputString
 from .public_time_offset import PublicTimeOffset as PublicTimeOffset
 from .public_index_offset import PublicIndexOffset as PublicIndexOffset
 from .public_now_reference import PublicNowReference as PublicNowReference
+from .property_group_create import PropertyGroupCreate as PropertyGroupCreate
+from .property_group_update import PropertyGroupUpdate as PropertyGroupUpdate
 from .public_in_list_filter import PublicInListFilter as PublicInListFilter
 from .public_webinar_filter import PublicWebinarFilter as PublicWebinarFilter
 from .public_week_reference import PublicWeekReference as PublicWeekReference
 from .public_year_reference import PublicYearReference as PublicYearReference
+from .association_definition import AssociationDefinition as AssociationDefinition
 from .public_ads_time_filter import PublicAdsTimeFilter as PublicAdsTimeFilter
 from .public_constant_filter import PublicConstantFilter as PublicConstantFilter
 from .public_month_reference import PublicMonthReference as PublicMonthReference
 from .public_property_filter import PublicPropertyFilter as PublicPropertyFilter
 from .public_today_reference import PublicTodayReference as PublicTodayReference
+from .batch_response_property import BatchResponseProperty as BatchResponseProperty
 from .public_or_filter_branch import PublicOrFilterBranch as PublicOrFilterBranch
 from .public_ads_search_filter import PublicAdsSearchFilter as PublicAdsSearchFilter
 from .public_and_filter_branch import PublicAndFilterBranch as PublicAndFilterBranch
 from .public_quarter_reference import PublicQuarterReference as PublicQuarterReference
+from .batch_input_property_name import BatchInputPropertyName as BatchInputPropertyName
 from .public_email_event_filter import PublicEmailEventFilter as PublicEmailEventFilter
 from .public_indexed_time_point import PublicIndexedTimePoint as PublicIndexedTimePoint
+from .association_definition_egg import AssociationDefinitionEgg as AssociationDefinitionEgg
+from .batch_input_property_create import BatchInputPropertyCreate as BatchInputPropertyCreate
 from .hub_db_table_row_v3_wrapper import HubDBTableRowV3Wrapper as HubDBTableRowV3Wrapper
 from .public_cta_analytics_filter import PublicCtaAnalyticsFilter as PublicCtaAnalyticsFilter
 from .public_survey_monkey_filter import PublicSurveyMonkeyFilter as PublicSurveyMonkeyFilter
 from .public_time_point_operation import PublicTimePointOperation as PublicTimePointOperation
+from .batch_input_public_object_id import BatchInputPublicObjectID as BatchInputPublicObjectID
 from .public_all_history_refine_by import PublicAllHistoryRefineBy as PublicAllHistoryRefineBy
 from .public_event_filter_metadata import PublicEventFilterMetadata as PublicEventFilterMetadata
 from .public_fiscal_year_reference import PublicFiscalYearReference as PublicFiscalYearReference
@@ -47,6 +57,7 @@ from .public_not_any_filter_branch import PublicNotAnyFilterBranch as PublicNotA
 from .public_ranged_time_operation import PublicRangedTimeOperation as PublicRangedTimeOperation
 from .public_unified_events_filter import PublicUnifiedEventsFilter as PublicUnifiedEventsFilter
 from .ab_test_create_request_v_next import AbTestCreateRequestVNext as AbTestCreateRequestVNext
+from .object_type_definition_labels import ObjectTypeDefinitionLabels as ObjectTypeDefinitionLabels
 from .public_event_analytics_filter import PublicEventAnalyticsFilter as PublicEventAnalyticsFilter
 from .public_form_submission_filter import PublicFormSubmissionFilter as PublicFormSubmissionFilter
 from .property_modification_metadata import PropertyModificationMetadata as PropertyModificationMetadata
@@ -108,6 +119,9 @@ from .public_property_association_in_list_filter import (
 )
 from .public_relative_ranged_timestamp_refine_by import (
     PublicRelativeRangedTimestampRefineBy as PublicRelativeRangedTimestampRefineBy,
+)
+from .collection_response_object_schema_no_paging import (
+    CollectionResponseObjectSchemaNoPaging as CollectionResponseObjectSchemaNoPaging,
 )
 from .public_rolling_date_range_property_operation import (
     PublicRollingDateRangePropertyOperation as PublicRollingDateRangePropertyOperation,

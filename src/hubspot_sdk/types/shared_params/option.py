@@ -10,23 +10,22 @@ __all__ = ["Option"]
 
 
 class Option(TypedDict, total=False):
-    hidden: Required[bool]
-    """Hidden options will not be displayed in HubSpot."""
-
-    label: Required[str]
-    """A human-readable option label that will be shown in HubSpot."""
-
-    value: Required[str]
-    """
-    The internal value of the option, which must be used when setting the property
-    value through the API.
-    """
-
-    description: str
+    description: Required[str]
     """A description of the option."""
 
-    display_order: Annotated[int, PropertyInfo(alias="displayOrder")]
-    """Options are displayed in order starting with the lowest positive integer value.
+    display_order: Required[Annotated[int, PropertyInfo(alias="displayOrder")]]
+    """The position of the item relative to others in the list."""
 
-    Values of -1 will cause the option to be displayed after any positive values.
-    """
+    double_data: Required[Annotated[float, PropertyInfo(alias="doubleData")]]
+
+    hidden: Required[bool]
+    """Whether the option is displayed in HubSpot's UI."""
+
+    label: Required[str]
+    """A user-friendly label that identifies the option."""
+
+    read_only: Required[Annotated[bool, PropertyInfo(alias="readOnly")]]
+    """Whether the option is read-only."""
+
+    value: Required[str]
+    """The actual value of the option."""

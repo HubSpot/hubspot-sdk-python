@@ -91,7 +91,7 @@ class CompaniesResource(SyncAPIResource):
         with other CRM records.
 
         Args:
-          properties: The company property values to set.
+          properties: Key-value pairs for setting properties for the new object.
 
           extra_headers: Send extra headers
 
@@ -136,7 +136,7 @@ class CompaniesResource(SyncAPIResource):
         an empty string.
 
         Args:
-          properties: The company property values to set.
+          properties: Key value pairs representing the properties of the object.
 
           id_property: The name of a property whose values are unique for this object
 
@@ -358,10 +358,6 @@ class CompaniesResource(SyncAPIResource):
         [merging records](https://knowledge.hubspot.com/records/merge-records).
 
         Args:
-          object_id_to_merge: The ID of the company to merge into the primary.
-
-          primary_object_id: The ID of the primary company, which the other will merge into.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -492,7 +488,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         with other CRM records.
 
         Args:
-          properties: The company property values to set.
+          properties: Key-value pairs for setting properties for the new object.
 
           extra_headers: Send extra headers
 
@@ -537,7 +533,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         an empty string.
 
         Args:
-          properties: The company property values to set.
+          properties: Key value pairs representing the properties of the object.
 
           id_property: The name of a property whose values are unique for this object
 
@@ -761,10 +757,6 @@ class AsyncCompaniesResource(AsyncAPIResource):
         [merging records](https://knowledge.hubspot.com/records/merge-records).
 
         Args:
-          object_id_to_merge: The ID of the company to merge into the primary.
-
-          primary_object_id: The ID of the primary company, which the other will merge into.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
