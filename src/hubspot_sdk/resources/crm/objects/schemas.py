@@ -274,45 +274,6 @@ class SchemasResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def archive_association(
-        self,
-        association_identifier: str,
-        *,
-        object_type: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Removes an existing association from a schema.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_type:
-            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
-        if not association_identifier:
-            raise ValueError(
-                f"Expected a non-empty value for `association_identifier` but received {association_identifier!r}"
-            )
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            f"/crm-object-schemas/v3/schemas/{object_type}/associations/{association_identifier}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def create_association(
         self,
         object_type: str,
@@ -358,7 +319,46 @@ class SchemasResource(SyncAPIResource):
             cast_to=AssociationDefinition,
         )
 
-    def read(
+    def delete_association(
+        self,
+        association_identifier: str,
+        *,
+        object_type: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Removes an existing association from a schema.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        if not association_identifier:
+            raise ValueError(
+                f"Expected a non-empty value for `association_identifier` but received {association_identifier!r}"
+            )
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            f"/crm-object-schemas/v3/schemas/{object_type}/associations/{association_identifier}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def get(
         self,
         object_type: str,
         *,
@@ -632,45 +632,6 @@ class AsyncSchemasResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def archive_association(
-        self,
-        association_identifier: str,
-        *,
-        object_type: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Removes an existing association from a schema.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_type:
-            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
-        if not association_identifier:
-            raise ValueError(
-                f"Expected a non-empty value for `association_identifier` but received {association_identifier!r}"
-            )
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            f"/crm-object-schemas/v3/schemas/{object_type}/associations/{association_identifier}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def create_association(
         self,
         object_type: str,
@@ -716,7 +677,46 @@ class AsyncSchemasResource(AsyncAPIResource):
             cast_to=AssociationDefinition,
         )
 
-    async def read(
+    async def delete_association(
+        self,
+        association_identifier: str,
+        *,
+        object_type: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Removes an existing association from a schema.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        if not association_identifier:
+            raise ValueError(
+                f"Expected a non-empty value for `association_identifier` but received {association_identifier!r}"
+            )
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            f"/crm-object-schemas/v3/schemas/{object_type}/associations/{association_identifier}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def get(
         self,
         object_type: str,
         *,
@@ -766,14 +766,14 @@ class SchemasResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             schemas.delete,
         )
-        self.archive_association = to_raw_response_wrapper(
-            schemas.archive_association,
-        )
         self.create_association = to_raw_response_wrapper(
             schemas.create_association,
         )
-        self.read = to_raw_response_wrapper(
-            schemas.read,
+        self.delete_association = to_raw_response_wrapper(
+            schemas.delete_association,
+        )
+        self.get = to_raw_response_wrapper(
+            schemas.get,
         )
 
 
@@ -793,14 +793,14 @@ class AsyncSchemasResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             schemas.delete,
         )
-        self.archive_association = async_to_raw_response_wrapper(
-            schemas.archive_association,
-        )
         self.create_association = async_to_raw_response_wrapper(
             schemas.create_association,
         )
-        self.read = async_to_raw_response_wrapper(
-            schemas.read,
+        self.delete_association = async_to_raw_response_wrapper(
+            schemas.delete_association,
+        )
+        self.get = async_to_raw_response_wrapper(
+            schemas.get,
         )
 
 
@@ -820,14 +820,14 @@ class SchemasResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             schemas.delete,
         )
-        self.archive_association = to_streamed_response_wrapper(
-            schemas.archive_association,
-        )
         self.create_association = to_streamed_response_wrapper(
             schemas.create_association,
         )
-        self.read = to_streamed_response_wrapper(
-            schemas.read,
+        self.delete_association = to_streamed_response_wrapper(
+            schemas.delete_association,
+        )
+        self.get = to_streamed_response_wrapper(
+            schemas.get,
         )
 
 
@@ -847,12 +847,12 @@ class AsyncSchemasResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             schemas.delete,
         )
-        self.archive_association = async_to_streamed_response_wrapper(
-            schemas.archive_association,
-        )
         self.create_association = async_to_streamed_response_wrapper(
             schemas.create_association,
         )
-        self.read = async_to_streamed_response_wrapper(
-            schemas.read,
+        self.delete_association = async_to_streamed_response_wrapper(
+            schemas.delete_association,
+        )
+        self.get = async_to_streamed_response_wrapper(
+            schemas.get,
         )

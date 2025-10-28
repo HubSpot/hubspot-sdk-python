@@ -20,13 +20,13 @@ from .calling.calling import (
     CallingResourceWithStreamingResponse,
     AsyncCallingResourceWithStreamingResponse,
 )
-from .videoconferencing.videoconferencing import (
-    VideoconferencingResource,
-    AsyncVideoconferencingResource,
-    VideoconferencingResourceWithRawResponse,
-    AsyncVideoconferencingResourceWithRawResponse,
-    VideoconferencingResourceWithStreamingResponse,
-    AsyncVideoconferencingResourceWithStreamingResponse,
+from .video_conferencing.video_conferencing import (
+    VideoConferencingResource,
+    AsyncVideoConferencingResource,
+    VideoConferencingResourceWithRawResponse,
+    AsyncVideoConferencingResourceWithRawResponse,
+    VideoConferencingResourceWithStreamingResponse,
+    AsyncVideoConferencingResourceWithStreamingResponse,
 )
 
 __all__ = ["ExtensionsResource", "AsyncExtensionsResource"]
@@ -42,8 +42,8 @@ class ExtensionsResource(SyncAPIResource):
         return CardsResource(self._client)
 
     @cached_property
-    def videoconferencing(self) -> VideoconferencingResource:
-        return VideoconferencingResource(self._client)
+    def video_conferencing(self) -> VideoConferencingResource:
+        return VideoConferencingResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> ExtensionsResourceWithRawResponse:
@@ -75,8 +75,8 @@ class AsyncExtensionsResource(AsyncAPIResource):
         return AsyncCardsResource(self._client)
 
     @cached_property
-    def videoconferencing(self) -> AsyncVideoconferencingResource:
-        return AsyncVideoconferencingResource(self._client)
+    def video_conferencing(self) -> AsyncVideoConferencingResource:
+        return AsyncVideoConferencingResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncExtensionsResourceWithRawResponse:
@@ -111,8 +111,8 @@ class ExtensionsResourceWithRawResponse:
         return CardsResourceWithRawResponse(self._extensions.cards)
 
     @cached_property
-    def videoconferencing(self) -> VideoconferencingResourceWithRawResponse:
-        return VideoconferencingResourceWithRawResponse(self._extensions.videoconferencing)
+    def video_conferencing(self) -> VideoConferencingResourceWithRawResponse:
+        return VideoConferencingResourceWithRawResponse(self._extensions.video_conferencing)
 
 
 class AsyncExtensionsResourceWithRawResponse:
@@ -128,8 +128,8 @@ class AsyncExtensionsResourceWithRawResponse:
         return AsyncCardsResourceWithRawResponse(self._extensions.cards)
 
     @cached_property
-    def videoconferencing(self) -> AsyncVideoconferencingResourceWithRawResponse:
-        return AsyncVideoconferencingResourceWithRawResponse(self._extensions.videoconferencing)
+    def video_conferencing(self) -> AsyncVideoConferencingResourceWithRawResponse:
+        return AsyncVideoConferencingResourceWithRawResponse(self._extensions.video_conferencing)
 
 
 class ExtensionsResourceWithStreamingResponse:
@@ -145,8 +145,8 @@ class ExtensionsResourceWithStreamingResponse:
         return CardsResourceWithStreamingResponse(self._extensions.cards)
 
     @cached_property
-    def videoconferencing(self) -> VideoconferencingResourceWithStreamingResponse:
-        return VideoconferencingResourceWithStreamingResponse(self._extensions.videoconferencing)
+    def video_conferencing(self) -> VideoConferencingResourceWithStreamingResponse:
+        return VideoConferencingResourceWithStreamingResponse(self._extensions.video_conferencing)
 
 
 class AsyncExtensionsResourceWithStreamingResponse:
@@ -162,5 +162,5 @@ class AsyncExtensionsResourceWithStreamingResponse:
         return AsyncCardsResourceWithStreamingResponse(self._extensions.cards)
 
     @cached_property
-    def videoconferencing(self) -> AsyncVideoconferencingResourceWithStreamingResponse:
-        return AsyncVideoconferencingResourceWithStreamingResponse(self._extensions.videoconferencing)
+    def video_conferencing(self) -> AsyncVideoConferencingResourceWithStreamingResponse:
+        return AsyncVideoConferencingResourceWithStreamingResponse(self._extensions.video_conferencing)

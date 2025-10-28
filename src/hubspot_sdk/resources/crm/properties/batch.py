@@ -18,7 +18,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.crm.properties import batch_read_params, batch_create_params, batch_delete_params
+from ....types.crm.properties import batch_get_params, batch_create_params, batch_delete_params
 from ....types.shared_params.property_name import PropertyName
 from ....types.shared_params.property_create import PropertyCreate
 from ....types.shared.batch_response_property import BatchResponseProperty
@@ -121,7 +121,7 @@ class BatchResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         object_type: str,
         *,
@@ -157,7 +157,7 @@ class BatchResource(SyncAPIResource):
                     "inputs": inputs,
                     "data_sensitivity": data_sensitivity,
                 },
-                batch_read_params.BatchReadParams,
+                batch_get_params.BatchGetParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -261,7 +261,7 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         object_type: str,
         *,
@@ -297,7 +297,7 @@ class AsyncBatchResource(AsyncAPIResource):
                     "inputs": inputs,
                     "data_sensitivity": data_sensitivity,
                 },
-                batch_read_params.BatchReadParams,
+                batch_get_params.BatchGetParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -316,8 +316,8 @@ class BatchResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             batch.delete,
         )
-        self.read = to_raw_response_wrapper(
-            batch.read,
+        self.get = to_raw_response_wrapper(
+            batch.get,
         )
 
 
@@ -331,8 +331,8 @@ class AsyncBatchResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             batch.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            batch.read,
+        self.get = async_to_raw_response_wrapper(
+            batch.get,
         )
 
 
@@ -346,8 +346,8 @@ class BatchResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             batch.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            batch.read,
+        self.get = to_streamed_response_wrapper(
+            batch.get,
         )
 
 
@@ -361,6 +361,6 @@ class AsyncBatchResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             batch.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            batch.read,
+        self.get = async_to_streamed_response_wrapper(
+            batch.get,
         )

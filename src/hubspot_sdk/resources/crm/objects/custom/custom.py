@@ -27,8 +27,8 @@ from ....._response import (
 from .....pagination import SyncPage, AsyncPage
 from ....._base_client import AsyncPaginator, make_request_options
 from .....types.crm.objects import (
+    custom_get_params,
     custom_list_params,
-    custom_read_params,
     custom_merge_params,
     custom_create_params,
     custom_search_params,
@@ -281,49 +281,7 @@ class CustomResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def merge(
-        self,
-        object_type: str,
-        *,
-        object_id_to_merge: str,
-        primary_object_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SimplePublicObject:
-        """
-        Merge two objects with same type
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_type:
-            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
-        return self._post(
-            f"/crm/v3/objects/{object_type}/merge",
-            body=maybe_transform(
-                {
-                    "object_id_to_merge": object_id_to_merge,
-                    "primary_object_id": primary_object_id,
-                },
-                custom_merge_params.CustomMergeParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SimplePublicObject,
-        )
-
-    def read(
+    def get(
         self,
         object_id: str,
         *,
@@ -390,10 +348,52 @@ class CustomResource(SyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    custom_read_params.CustomReadParams,
+                    custom_get_params.CustomGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
+        )
+
+    def merge(
+        self,
+        object_type: str,
+        *,
+        object_id_to_merge: str,
+        primary_object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SimplePublicObject:
+        """
+        Merge two objects with same type
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        return self._post(
+            f"/crm/v3/objects/{object_type}/merge",
+            body=maybe_transform(
+                {
+                    "object_id_to_merge": object_id_to_merge,
+                    "primary_object_id": primary_object_id,
+                },
+                custom_merge_params.CustomMergeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SimplePublicObject,
         )
 
     def search(
@@ -694,49 +694,7 @@ class AsyncCustomResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def merge(
-        self,
-        object_type: str,
-        *,
-        object_id_to_merge: str,
-        primary_object_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SimplePublicObject:
-        """
-        Merge two objects with same type
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_type:
-            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
-        return await self._post(
-            f"/crm/v3/objects/{object_type}/merge",
-            body=await async_maybe_transform(
-                {
-                    "object_id_to_merge": object_id_to_merge,
-                    "primary_object_id": primary_object_id,
-                },
-                custom_merge_params.CustomMergeParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SimplePublicObject,
-        )
-
-    async def read(
+    async def get(
         self,
         object_id: str,
         *,
@@ -803,10 +761,52 @@ class AsyncCustomResource(AsyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    custom_read_params.CustomReadParams,
+                    custom_get_params.CustomGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
+        )
+
+    async def merge(
+        self,
+        object_type: str,
+        *,
+        object_id_to_merge: str,
+        primary_object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SimplePublicObject:
+        """
+        Merge two objects with same type
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        return await self._post(
+            f"/crm/v3/objects/{object_type}/merge",
+            body=await async_maybe_transform(
+                {
+                    "object_id_to_merge": object_id_to_merge,
+                    "primary_object_id": primary_object_id,
+                },
+                custom_merge_params.CustomMergeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SimplePublicObject,
         )
 
     async def search(
@@ -886,11 +886,11 @@ class CustomResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             custom.delete,
         )
+        self.get = to_raw_response_wrapper(
+            custom.get,
+        )
         self.merge = to_raw_response_wrapper(
             custom.merge,
-        )
-        self.read = to_raw_response_wrapper(
-            custom.read,
         )
         self.search = to_raw_response_wrapper(
             custom.search,
@@ -917,11 +917,11 @@ class AsyncCustomResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             custom.delete,
         )
+        self.get = async_to_raw_response_wrapper(
+            custom.get,
+        )
         self.merge = async_to_raw_response_wrapper(
             custom.merge,
-        )
-        self.read = async_to_raw_response_wrapper(
-            custom.read,
         )
         self.search = async_to_raw_response_wrapper(
             custom.search,
@@ -948,11 +948,11 @@ class CustomResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             custom.delete,
         )
+        self.get = to_streamed_response_wrapper(
+            custom.get,
+        )
         self.merge = to_streamed_response_wrapper(
             custom.merge,
-        )
-        self.read = to_streamed_response_wrapper(
-            custom.read,
         )
         self.search = to_streamed_response_wrapper(
             custom.search,
@@ -979,11 +979,11 @@ class AsyncCustomResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             custom.delete,
         )
+        self.get = async_to_streamed_response_wrapper(
+            custom.get,
+        )
         self.merge = async_to_streamed_response_wrapper(
             custom.merge,
-        )
-        self.read = async_to_streamed_response_wrapper(
-            custom.read,
         )
         self.search = async_to_streamed_response_wrapper(
             custom.search,

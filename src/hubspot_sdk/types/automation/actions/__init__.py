@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from .revision_list_params import RevisionListParams as RevisionListParams
+from .definition_get_params import DefinitionGetParams as DefinitionGetParams
 from .definition_list_params import DefinitionListParams as DefinitionListParams
-from .definition_read_params import DefinitionReadParams as DefinitionReadParams
 from .callback_complete_params import CallbackCompleteParams as CallbackCompleteParams
 from .definition_create_params import DefinitionCreateParams as DefinitionCreateParams
 from .definition_update_params import DefinitionUpdateParams as DefinitionUpdateParams

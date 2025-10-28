@@ -21,16 +21,16 @@ from ...._response import (
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.cms.blogs import (
+    tag_get_params,
     tag_list_params,
-    tag_read_params,
     tag_create_params,
     tag_delete_params,
     tag_update_params,
-    tag_read_batch_params,
+    tag_get_batch_params,
     tag_create_batch_params,
+    tag_delete_batch_params,
     tag_update_batch_params,
     tag_update_langs_params,
-    tag_archive_batch_params,
     tag_set_lang_primary_params,
     tag_attach_to_lang_group_params,
     tag_create_lang_variation_params,
@@ -1832,41 +1832,6 @@ class TagsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def archive_batch(
-        self,
-        *,
-        inputs: SequenceNotStr[str],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Delete the Blog Tag objects identified in the request body.
-
-        Args:
-          inputs: Strings to input.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/cms/v3/blogs/tags/batch/archive",
-            body=maybe_transform({"inputs": inputs}, tag_archive_batch_params.TagArchiveBatchParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def attach_to_lang_group(
         self,
         *,
@@ -2004,6 +1969,41 @@ class TagsResource(SyncAPIResource):
             cast_to=Tag,
         )
 
+    def delete_batch(
+        self,
+        *,
+        inputs: SequenceNotStr[str],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete the Blog Tag objects identified in the request body.
+
+        Args:
+          inputs: Strings to input.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/cms/v3/blogs/tags/batch/archive",
+            body=maybe_transform({"inputs": inputs}, tag_delete_batch_params.TagDeleteBatchParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     def detach_from_lang_group(
         self,
         *,
@@ -2039,7 +2039,7 @@ class TagsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         object_id: str,
         *,
@@ -2080,13 +2080,13 @@ class TagsResource(SyncAPIResource):
                         "archived": archived,
                         "property": property,
                     },
-                    tag_read_params.TagReadParams,
+                    tag_get_params.TagGetParams,
                 ),
             ),
             cast_to=Tag,
         )
 
-    def read_batch(
+    def get_batch(
         self,
         *,
         inputs: SequenceNotStr[str],
@@ -2116,13 +2116,13 @@ class TagsResource(SyncAPIResource):
         """
         return self._post(
             "/cms/v3/blogs/tags/batch/read",
-            body=maybe_transform({"inputs": inputs}, tag_read_batch_params.TagReadBatchParams),
+            body=maybe_transform({"inputs": inputs}, tag_get_batch_params.TagGetBatchParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"archived": archived}, tag_read_batch_params.TagReadBatchParams),
+                query=maybe_transform({"archived": archived}, tag_get_batch_params.TagGetBatchParams),
             ),
             cast_to=BatchResponseTag,
         )
@@ -4037,41 +4037,6 @@ class AsyncTagsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def archive_batch(
-        self,
-        *,
-        inputs: SequenceNotStr[str],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Delete the Blog Tag objects identified in the request body.
-
-        Args:
-          inputs: Strings to input.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/cms/v3/blogs/tags/batch/archive",
-            body=await async_maybe_transform({"inputs": inputs}, tag_archive_batch_params.TagArchiveBatchParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def attach_to_lang_group(
         self,
         *,
@@ -4209,6 +4174,41 @@ class AsyncTagsResource(AsyncAPIResource):
             cast_to=Tag,
         )
 
+    async def delete_batch(
+        self,
+        *,
+        inputs: SequenceNotStr[str],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete the Blog Tag objects identified in the request body.
+
+        Args:
+          inputs: Strings to input.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/cms/v3/blogs/tags/batch/archive",
+            body=await async_maybe_transform({"inputs": inputs}, tag_delete_batch_params.TagDeleteBatchParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def detach_from_lang_group(
         self,
         *,
@@ -4246,7 +4246,7 @@ class AsyncTagsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         object_id: str,
         *,
@@ -4287,13 +4287,13 @@ class AsyncTagsResource(AsyncAPIResource):
                         "archived": archived,
                         "property": property,
                     },
-                    tag_read_params.TagReadParams,
+                    tag_get_params.TagGetParams,
                 ),
             ),
             cast_to=Tag,
         )
 
-    async def read_batch(
+    async def get_batch(
         self,
         *,
         inputs: SequenceNotStr[str],
@@ -4323,13 +4323,13 @@ class AsyncTagsResource(AsyncAPIResource):
         """
         return await self._post(
             "/cms/v3/blogs/tags/batch/read",
-            body=await async_maybe_transform({"inputs": inputs}, tag_read_batch_params.TagReadBatchParams),
+            body=await async_maybe_transform({"inputs": inputs}, tag_get_batch_params.TagGetBatchParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"archived": archived}, tag_read_batch_params.TagReadBatchParams),
+                query=await async_maybe_transform({"archived": archived}, tag_get_batch_params.TagGetBatchParams),
             ),
             cast_to=BatchResponseTag,
         )
@@ -4471,9 +4471,6 @@ class TagsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             tags.delete,
         )
-        self.archive_batch = to_raw_response_wrapper(
-            tags.archive_batch,
-        )
         self.attach_to_lang_group = to_raw_response_wrapper(
             tags.attach_to_lang_group,
         )
@@ -4483,14 +4480,17 @@ class TagsResourceWithRawResponse:
         self.create_lang_variation = to_raw_response_wrapper(
             tags.create_lang_variation,
         )
+        self.delete_batch = to_raw_response_wrapper(
+            tags.delete_batch,
+        )
         self.detach_from_lang_group = to_raw_response_wrapper(
             tags.detach_from_lang_group,
         )
-        self.read = to_raw_response_wrapper(
-            tags.read,
+        self.get = to_raw_response_wrapper(
+            tags.get,
         )
-        self.read_batch = to_raw_response_wrapper(
-            tags.read_batch,
+        self.get_batch = to_raw_response_wrapper(
+            tags.get_batch,
         )
         self.set_lang_primary = to_raw_response_wrapper(
             tags.set_lang_primary,
@@ -4519,9 +4519,6 @@ class AsyncTagsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             tags.delete,
         )
-        self.archive_batch = async_to_raw_response_wrapper(
-            tags.archive_batch,
-        )
         self.attach_to_lang_group = async_to_raw_response_wrapper(
             tags.attach_to_lang_group,
         )
@@ -4531,14 +4528,17 @@ class AsyncTagsResourceWithRawResponse:
         self.create_lang_variation = async_to_raw_response_wrapper(
             tags.create_lang_variation,
         )
+        self.delete_batch = async_to_raw_response_wrapper(
+            tags.delete_batch,
+        )
         self.detach_from_lang_group = async_to_raw_response_wrapper(
             tags.detach_from_lang_group,
         )
-        self.read = async_to_raw_response_wrapper(
-            tags.read,
+        self.get = async_to_raw_response_wrapper(
+            tags.get,
         )
-        self.read_batch = async_to_raw_response_wrapper(
-            tags.read_batch,
+        self.get_batch = async_to_raw_response_wrapper(
+            tags.get_batch,
         )
         self.set_lang_primary = async_to_raw_response_wrapper(
             tags.set_lang_primary,
@@ -4567,9 +4567,6 @@ class TagsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             tags.delete,
         )
-        self.archive_batch = to_streamed_response_wrapper(
-            tags.archive_batch,
-        )
         self.attach_to_lang_group = to_streamed_response_wrapper(
             tags.attach_to_lang_group,
         )
@@ -4579,14 +4576,17 @@ class TagsResourceWithStreamingResponse:
         self.create_lang_variation = to_streamed_response_wrapper(
             tags.create_lang_variation,
         )
+        self.delete_batch = to_streamed_response_wrapper(
+            tags.delete_batch,
+        )
         self.detach_from_lang_group = to_streamed_response_wrapper(
             tags.detach_from_lang_group,
         )
-        self.read = to_streamed_response_wrapper(
-            tags.read,
+        self.get = to_streamed_response_wrapper(
+            tags.get,
         )
-        self.read_batch = to_streamed_response_wrapper(
-            tags.read_batch,
+        self.get_batch = to_streamed_response_wrapper(
+            tags.get_batch,
         )
         self.set_lang_primary = to_streamed_response_wrapper(
             tags.set_lang_primary,
@@ -4615,9 +4615,6 @@ class AsyncTagsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             tags.delete,
         )
-        self.archive_batch = async_to_streamed_response_wrapper(
-            tags.archive_batch,
-        )
         self.attach_to_lang_group = async_to_streamed_response_wrapper(
             tags.attach_to_lang_group,
         )
@@ -4627,14 +4624,17 @@ class AsyncTagsResourceWithStreamingResponse:
         self.create_lang_variation = async_to_streamed_response_wrapper(
             tags.create_lang_variation,
         )
+        self.delete_batch = async_to_streamed_response_wrapper(
+            tags.delete_batch,
+        )
         self.detach_from_lang_group = async_to_streamed_response_wrapper(
             tags.detach_from_lang_group,
         )
-        self.read = async_to_streamed_response_wrapper(
-            tags.read,
+        self.get = async_to_streamed_response_wrapper(
+            tags.get,
         )
-        self.read_batch = async_to_streamed_response_wrapper(
-            tags.read_batch,
+        self.get_batch = async_to_streamed_response_wrapper(
+            tags.get_batch,
         )
         self.set_lang_primary = async_to_streamed_response_wrapper(
             tags.set_lang_primary,

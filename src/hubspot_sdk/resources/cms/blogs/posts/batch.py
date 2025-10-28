@@ -17,7 +17,7 @@ from ....._response import (
     async_to_streamed_response_wrapper,
 )
 from ....._base_client import make_request_options
-from .....types.cms.blogs.posts import batch_read_params, batch_create_params, batch_delete_params, batch_update_params
+from .....types.cms.blogs.posts import batch_get_params, batch_create_params, batch_delete_params, batch_update_params
 from .....types.cms.blogs.blog_post_param import BlogPostParam
 from .....types.cms.blogs.batch_response_blog_post import BatchResponseBlogPost
 
@@ -157,7 +157,7 @@ class BatchResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         *,
         inputs: SequenceNotStr[str],
@@ -188,13 +188,13 @@ class BatchResource(SyncAPIResource):
         """
         return self._post(
             "/cms/v3/blogs/posts/batch/read",
-            body=maybe_transform({"inputs": inputs}, batch_read_params.BatchReadParams),
+            body=maybe_transform({"inputs": inputs}, batch_get_params.BatchGetParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"archived": archived}, batch_read_params.BatchReadParams),
+                query=maybe_transform({"archived": archived}, batch_get_params.BatchGetParams),
             ),
             cast_to=BatchResponseBlogPost,
         )
@@ -333,7 +333,7 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         *,
         inputs: SequenceNotStr[str],
@@ -364,13 +364,13 @@ class AsyncBatchResource(AsyncAPIResource):
         """
         return await self._post(
             "/cms/v3/blogs/posts/batch/read",
-            body=await async_maybe_transform({"inputs": inputs}, batch_read_params.BatchReadParams),
+            body=await async_maybe_transform({"inputs": inputs}, batch_get_params.BatchGetParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"archived": archived}, batch_read_params.BatchReadParams),
+                query=await async_maybe_transform({"archived": archived}, batch_get_params.BatchGetParams),
             ),
             cast_to=BatchResponseBlogPost,
         )
@@ -389,8 +389,8 @@ class BatchResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             batch.delete,
         )
-        self.read = to_raw_response_wrapper(
-            batch.read,
+        self.get = to_raw_response_wrapper(
+            batch.get,
         )
 
 
@@ -407,8 +407,8 @@ class AsyncBatchResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             batch.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            batch.read,
+        self.get = async_to_raw_response_wrapper(
+            batch.get,
         )
 
 
@@ -425,8 +425,8 @@ class BatchResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             batch.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            batch.read,
+        self.get = to_streamed_response_wrapper(
+            batch.get,
         )
 
 
@@ -443,6 +443,6 @@ class AsyncBatchResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             batch.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            batch.read,
+        self.get = async_to_streamed_response_wrapper(
+            batch.get,
         )

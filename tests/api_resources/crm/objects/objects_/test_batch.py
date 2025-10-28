@@ -177,8 +177,8 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        batch = client.crm.objects.objects.batch.read(
+    def test_method_get(self, client: HubSpot) -> None:
+        batch = client.crm.objects.objects.batch.get(
             object_type="objectType",
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -188,8 +188,8 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read_with_all_params(self, client: HubSpot) -> None:
-        batch = client.crm.objects.objects.batch.read(
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+        batch = client.crm.objects.objects.batch.get(
             object_type="objectType",
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -201,8 +201,8 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.crm.objects.objects.batch.with_raw_response.read(
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.crm.objects.objects.batch.with_raw_response.get(
             object_type="objectType",
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -216,8 +216,8 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.crm.objects.objects.batch.with_streaming_response.read(
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.crm.objects.objects.batch.with_streaming_response.get(
             object_type="objectType",
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -233,9 +233,9 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
-            client.crm.objects.objects.batch.with_raw_response.read(
+            client.crm.objects.objects.batch.with_raw_response.get(
                 object_type="",
                 inputs=[{"id": "id"}],
                 properties=["string"],
@@ -474,8 +474,8 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        batch = await async_client.crm.objects.objects.batch.read(
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        batch = await async_client.crm.objects.objects.batch.get(
             object_type="objectType",
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -485,8 +485,8 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        batch = await async_client.crm.objects.objects.batch.read(
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        batch = await async_client.crm.objects.objects.batch.get(
             object_type="objectType",
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -498,8 +498,8 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.objects.objects.batch.with_raw_response.read(
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.crm.objects.objects.batch.with_raw_response.get(
             object_type="objectType",
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -513,8 +513,8 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.objects.objects.batch.with_streaming_response.read(
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.crm.objects.objects.batch.with_streaming_response.get(
             object_type="objectType",
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -530,9 +530,9 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
-            await async_client.crm.objects.objects.batch.with_raw_response.read(
+            await async_client.crm.objects.objects.batch.with_raw_response.get(
                 object_type="",
                 inputs=[{"id": "id"}],
                 properties=["string"],

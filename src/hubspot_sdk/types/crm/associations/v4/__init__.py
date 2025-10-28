@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from .batch_batch_read_params import BatchBatchReadParams as BatchBatchReadParams
-from .batch_batch_create_params import BatchBatchCreateParams as BatchBatchCreateParams
-from .batch_batch_delete_params import BatchBatchDeleteParams as BatchBatchDeleteParams
-from .batch_batch_delete_labels_params import BatchBatchDeleteLabelsParams as BatchBatchDeleteLabelsParams
-from .batch_batch_associate_default_params import BatchBatchAssociateDefaultParams as BatchBatchAssociateDefaultParams
+from .batch_get_params import BatchGetParams as BatchGetParams
+from .batch_create_params import BatchCreateParams as BatchCreateParams
+from .batch_delete_params import BatchDeleteParams as BatchDeleteParams
+from .batch_delete_labels_params import BatchDeleteLabelsParams as BatchDeleteLabelsParams
+from .batch_create_default_params import BatchCreateDefaultParams as BatchCreateDefaultParams

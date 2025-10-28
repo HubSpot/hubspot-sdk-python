@@ -19,8 +19,8 @@ from ...._response import (
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.automation.actions import (
+    definition_get_params,
     definition_list_params,
-    definition_read_params,
     definition_create_params,
     definition_update_params,
 )
@@ -259,7 +259,7 @@ class DefinitionsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         definition_id: str,
         *,
@@ -295,7 +295,7 @@ class DefinitionsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"archived": archived}, definition_read_params.DefinitionReadParams),
+                query=maybe_transform({"archived": archived}, definition_get_params.DefinitionGetParams),
             ),
             cast_to=PublicActionDefinition,
         )
@@ -525,7 +525,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         definition_id: str,
         *,
@@ -561,7 +561,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"archived": archived}, definition_read_params.DefinitionReadParams),
+                query=await async_maybe_transform({"archived": archived}, definition_get_params.DefinitionGetParams),
             ),
             cast_to=PublicActionDefinition,
         )
@@ -583,8 +583,8 @@ class DefinitionsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             definitions.delete,
         )
-        self.read = to_raw_response_wrapper(
-            definitions.read,
+        self.get = to_raw_response_wrapper(
+            definitions.get,
         )
 
 
@@ -604,8 +604,8 @@ class AsyncDefinitionsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             definitions.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            definitions.read,
+        self.get = async_to_raw_response_wrapper(
+            definitions.get,
         )
 
 
@@ -625,8 +625,8 @@ class DefinitionsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             definitions.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            definitions.read,
+        self.get = to_streamed_response_wrapper(
+            definitions.get,
         )
 
 
@@ -646,6 +646,6 @@ class AsyncDefinitionsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             definitions.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            definitions.read,
+        self.get = async_to_streamed_response_wrapper(
+            definitions.get,
         )

@@ -53,7 +53,6 @@ from .public_import_metadata import PublicImportMetadata as PublicImportMetadata
 from .public_import_response import PublicImportResponse as PublicImportResponse
 from .record_list_membership import RecordListMembership as RecordListMembership
 from .timeline_event_i_frame import TimelineEventIFrame as TimelineEventIFrame
-from .association_read_params import AssociationReadParams as AssociationReadParams
 from .join_time_and_record_id import JoinTimeAndRecordID as JoinTimeAndRecordID
 from .list_update_name_params import ListUpdateNameParams as ListUpdateNameParams
 from .pipeline_limit_response import PipelineLimitResponse as PipelineLimitResponse
@@ -66,8 +65,6 @@ from .near_limit_record_sample import NearLimitRecordSample as NearLimitRecordSa
 from .public_association_multi import PublicAssociationMulti as PublicAssociationMulti
 from .public_association_param import PublicAssociationParam as PublicAssociationParam
 from .public_migration_mapping import PublicMigrationMapping as PublicMigrationMapping
-from .association_create_params import AssociationCreateParams as AssociationCreateParams
-from .association_delete_params import AssociationDeleteParams as AssociationDeleteParams
 from .created_response_property import CreatedResponseProperty as CreatedResponseProperty
 from .import_list_errors_params import ImportListErrorsParams as ImportListErrorsParams
 from .public_object_list_record import PublicObjectListRecord as PublicObjectListRecord

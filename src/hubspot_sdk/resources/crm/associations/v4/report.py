@@ -39,7 +39,7 @@ class ReportResource(SyncAPIResource):
         """
         return ReportResourceWithStreamingResponse(self)
 
-    def request_high_usage_report(
+    def get_high_usage_report(
         self,
         user_id: int,
         *,
@@ -92,7 +92,7 @@ class AsyncReportResource(AsyncAPIResource):
         """
         return AsyncReportResourceWithStreamingResponse(self)
 
-    async def request_high_usage_report(
+    async def get_high_usage_report(
         self,
         user_id: int,
         *,
@@ -129,8 +129,8 @@ class ReportResourceWithRawResponse:
     def __init__(self, report: ReportResource) -> None:
         self._report = report
 
-        self.request_high_usage_report = to_raw_response_wrapper(
-            report.request_high_usage_report,
+        self.get_high_usage_report = to_raw_response_wrapper(
+            report.get_high_usage_report,
         )
 
 
@@ -138,8 +138,8 @@ class AsyncReportResourceWithRawResponse:
     def __init__(self, report: AsyncReportResource) -> None:
         self._report = report
 
-        self.request_high_usage_report = async_to_raw_response_wrapper(
-            report.request_high_usage_report,
+        self.get_high_usage_report = async_to_raw_response_wrapper(
+            report.get_high_usage_report,
         )
 
 
@@ -147,8 +147,8 @@ class ReportResourceWithStreamingResponse:
     def __init__(self, report: ReportResource) -> None:
         self._report = report
 
-        self.request_high_usage_report = to_streamed_response_wrapper(
-            report.request_high_usage_report,
+        self.get_high_usage_report = to_streamed_response_wrapper(
+            report.get_high_usage_report,
         )
 
 
@@ -156,6 +156,6 @@ class AsyncReportResourceWithStreamingResponse:
     def __init__(self, report: AsyncReportResource) -> None:
         self._report = report
 
-        self.request_high_usage_report = async_to_streamed_response_wrapper(
-            report.request_high_usage_report,
+        self.get_high_usage_report = async_to_streamed_response_wrapper(
+            report.get_high_usage_report,
         )

@@ -29,8 +29,8 @@ from ....._response import (
 from .....pagination import SyncPage, AsyncPage
 from ....._base_client import AsyncPaginator, make_request_options
 from .....types.cms.blogs import (
+    post_get_params,
     post_list_params,
-    post_read_params,
     post_clone_params,
     post_create_params,
     post_delete_params,
@@ -2512,6 +2512,55 @@ class PostsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def get(
+        self,
+        object_id: str,
+        *,
+        archived: bool | Omit = omit,
+        property: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BlogPost:
+        """
+        Retrieve a blog post by the post ID.
+
+        Args:
+          archived: Specifies whether to return deleted blog posts. Defaults to `false`.
+
+          property: Specific properties to return.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._get(
+            f"/cms/v3/blogs/posts/{object_id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "archived": archived,
+                        "property": property,
+                    },
+                    post_get_params.PostGetParams,
+                ),
+            ),
+            cast_to=BlogPost,
+        )
+
     def get_draft_by_id(
         self,
         object_id: str,
@@ -2667,55 +2716,6 @@ class PostsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def read(
-        self,
-        object_id: str,
-        *,
-        archived: bool | Omit = omit,
-        property: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BlogPost:
-        """
-        Retrieve a blog post by the post ID.
-
-        Args:
-          archived: Specifies whether to return deleted blog posts. Defaults to `false`.
-
-          property: Specific properties to return.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get(
-            f"/cms/v3/blogs/posts/{object_id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "archived": archived,
-                        "property": property,
-                    },
-                    post_read_params.PostReadParams,
-                ),
-            ),
-            cast_to=BlogPost,
         )
 
     def reset_draft(
@@ -6478,6 +6478,55 @@ class AsyncPostsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def get(
+        self,
+        object_id: str,
+        *,
+        archived: bool | Omit = omit,
+        property: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BlogPost:
+        """
+        Retrieve a blog post by the post ID.
+
+        Args:
+          archived: Specifies whether to return deleted blog posts. Defaults to `false`.
+
+          property: Specific properties to return.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return await self._get(
+            f"/cms/v3/blogs/posts/{object_id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "archived": archived,
+                        "property": property,
+                    },
+                    post_get_params.PostGetParams,
+                ),
+            ),
+            cast_to=BlogPost,
+        )
+
     async def get_draft_by_id(
         self,
         object_id: str,
@@ -6633,55 +6682,6 @@ class AsyncPostsResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def read(
-        self,
-        object_id: str,
-        *,
-        archived: bool | Omit = omit,
-        property: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BlogPost:
-        """
-        Retrieve a blog post by the post ID.
-
-        Args:
-          archived: Specifies whether to return deleted blog posts. Defaults to `false`.
-
-          property: Specific properties to return.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return await self._get(
-            f"/cms/v3/blogs/posts/{object_id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "archived": archived,
-                        "property": property,
-                    },
-                    post_read_params.PostReadParams,
-                ),
-            ),
-            cast_to=BlogPost,
         )
 
     async def reset_draft(
@@ -8011,6 +8011,9 @@ class PostsResourceWithRawResponse:
         self.detach_from_lang_group = to_raw_response_wrapper(
             posts.detach_from_lang_group,
         )
+        self.get = to_raw_response_wrapper(
+            posts.get,
+        )
         self.get_draft_by_id = to_raw_response_wrapper(
             posts.get_draft_by_id,
         )
@@ -8022,9 +8025,6 @@ class PostsResourceWithRawResponse:
         )
         self.push_live = to_raw_response_wrapper(
             posts.push_live,
-        )
-        self.read = to_raw_response_wrapper(
-            posts.read,
         )
         self.reset_draft = to_raw_response_wrapper(
             posts.reset_draft,
@@ -8081,6 +8081,9 @@ class AsyncPostsResourceWithRawResponse:
         self.detach_from_lang_group = async_to_raw_response_wrapper(
             posts.detach_from_lang_group,
         )
+        self.get = async_to_raw_response_wrapper(
+            posts.get,
+        )
         self.get_draft_by_id = async_to_raw_response_wrapper(
             posts.get_draft_by_id,
         )
@@ -8092,9 +8095,6 @@ class AsyncPostsResourceWithRawResponse:
         )
         self.push_live = async_to_raw_response_wrapper(
             posts.push_live,
-        )
-        self.read = async_to_raw_response_wrapper(
-            posts.read,
         )
         self.reset_draft = async_to_raw_response_wrapper(
             posts.reset_draft,
@@ -8151,6 +8151,9 @@ class PostsResourceWithStreamingResponse:
         self.detach_from_lang_group = to_streamed_response_wrapper(
             posts.detach_from_lang_group,
         )
+        self.get = to_streamed_response_wrapper(
+            posts.get,
+        )
         self.get_draft_by_id = to_streamed_response_wrapper(
             posts.get_draft_by_id,
         )
@@ -8162,9 +8165,6 @@ class PostsResourceWithStreamingResponse:
         )
         self.push_live = to_streamed_response_wrapper(
             posts.push_live,
-        )
-        self.read = to_streamed_response_wrapper(
-            posts.read,
         )
         self.reset_draft = to_streamed_response_wrapper(
             posts.reset_draft,
@@ -8221,6 +8221,9 @@ class AsyncPostsResourceWithStreamingResponse:
         self.detach_from_lang_group = async_to_streamed_response_wrapper(
             posts.detach_from_lang_group,
         )
+        self.get = async_to_streamed_response_wrapper(
+            posts.get,
+        )
         self.get_draft_by_id = async_to_streamed_response_wrapper(
             posts.get_draft_by_id,
         )
@@ -8232,9 +8235,6 @@ class AsyncPostsResourceWithStreamingResponse:
         )
         self.push_live = async_to_streamed_response_wrapper(
             posts.push_live,
-        )
-        self.read = async_to_streamed_response_wrapper(
-            posts.read,
         )
         self.reset_draft = async_to_streamed_response_wrapper(
             posts.reset_draft,

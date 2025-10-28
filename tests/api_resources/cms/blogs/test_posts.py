@@ -1749,6 +1749,58 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_get(self, client: HubSpot) -> None:
+        post = client.cms.blogs.posts.get(
+            object_id="objectId",
+        )
+        assert_matches_type(BlogPost, post, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+        post = client.cms.blogs.posts.get(
+            object_id="objectId",
+            archived=True,
+            property="property",
+        )
+        assert_matches_type(BlogPost, post, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.cms.blogs.posts.with_raw_response.get(
+            object_id="objectId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        post = response.parse()
+        assert_matches_type(BlogPost, post, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.cms.blogs.posts.with_streaming_response.get(
+            object_id="objectId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            post = response.parse()
+            assert_matches_type(BlogPost, post, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_get(self, client: HubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
+            client.cms.blogs.posts.with_raw_response.get(
+                object_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_method_get_draft_by_id(self, client: HubSpot) -> None:
         post = client.cms.blogs.posts.get_draft_by_id(
             "objectId",
@@ -1934,58 +1986,6 @@ class TestPosts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.with_raw_response.push_live(
                 "",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        post = client.cms.blogs.posts.read(
-            object_id="objectId",
-        )
-        assert_matches_type(BlogPost, post, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_read_with_all_params(self, client: HubSpot) -> None:
-        post = client.cms.blogs.posts.read(
-            object_id="objectId",
-            archived=True,
-            property="property",
-        )
-        assert_matches_type(BlogPost, post, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.cms.blogs.posts.with_raw_response.read(
-            object_id="objectId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        post = response.parse()
-        assert_matches_type(BlogPost, post, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.cms.blogs.posts.with_streaming_response.read(
-            object_id="objectId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            post = response.parse()
-            assert_matches_type(BlogPost, post, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            client.cms.blogs.posts.with_raw_response.read(
-                object_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -4691,6 +4691,58 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        post = await async_client.cms.blogs.posts.get(
+            object_id="objectId",
+        )
+        assert_matches_type(BlogPost, post, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        post = await async_client.cms.blogs.posts.get(
+            object_id="objectId",
+            archived=True,
+            property="property",
+        )
+        assert_matches_type(BlogPost, post, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.cms.blogs.posts.with_raw_response.get(
+            object_id="objectId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        post = await response.parse()
+        assert_matches_type(BlogPost, post, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.cms.blogs.posts.with_streaming_response.get(
+            object_id="objectId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            post = await response.parse()
+            assert_matches_type(BlogPost, post, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
+            await async_client.cms.blogs.posts.with_raw_response.get(
+                object_id="",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     async def test_method_get_draft_by_id(self, async_client: AsyncHubSpot) -> None:
         post = await async_client.cms.blogs.posts.get_draft_by_id(
             "objectId",
@@ -4876,58 +4928,6 @@ class TestAsyncPosts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.with_raw_response.push_live(
                 "",
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        post = await async_client.cms.blogs.posts.read(
-            object_id="objectId",
-        )
-        assert_matches_type(BlogPost, post, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        post = await async_client.cms.blogs.posts.read(
-            object_id="objectId",
-            archived=True,
-            property="property",
-        )
-        assert_matches_type(BlogPost, post, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.cms.blogs.posts.with_raw_response.read(
-            object_id="objectId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        post = await response.parse()
-        assert_matches_type(BlogPost, post, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.cms.blogs.posts.with_streaming_response.read(
-            object_id="objectId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            post = await response.parse()
-            assert_matches_type(BlogPost, post, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            await async_client.cms.blogs.posts.with_raw_response.read(
-                object_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")

@@ -4,5 +4,5 @@ from __future__ import annotations
 
 from .batch_get_params import BatchGetParams as BatchGetParams
 from .batch_create_params import BatchCreateParams as BatchCreateParams
+from .batch_delete_params import BatchDeleteParams as BatchDeleteParams
 from .batch_update_params import BatchUpdateParams as BatchUpdateParams
-from .batch_archive_params import BatchArchiveParams as BatchArchiveParams

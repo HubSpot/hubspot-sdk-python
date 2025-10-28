@@ -77,8 +77,8 @@ class TestRevisions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        revision = client.automation.actions.revisions.read(
+    def test_method_get(self, client: HubSpot) -> None:
+        revision = client.automation.actions.revisions.get(
             revision_id="revisionId",
             app_id=0,
             definition_id="definitionId",
@@ -87,8 +87,8 @@ class TestRevisions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.automation.actions.revisions.with_raw_response.read(
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.automation.actions.revisions.with_raw_response.get(
             revision_id="revisionId",
             app_id=0,
             definition_id="definitionId",
@@ -101,8 +101,8 @@ class TestRevisions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.automation.actions.revisions.with_streaming_response.read(
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.automation.actions.revisions.with_streaming_response.get(
             revision_id="revisionId",
             app_id=0,
             definition_id="definitionId",
@@ -117,16 +117,16 @@ class TestRevisions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
-            client.automation.actions.revisions.with_raw_response.read(
+            client.automation.actions.revisions.with_raw_response.get(
                 revision_id="revisionId",
                 app_id=0,
                 definition_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `revision_id` but received ''"):
-            client.automation.actions.revisions.with_raw_response.read(
+            client.automation.actions.revisions.with_raw_response.get(
                 revision_id="",
                 app_id=0,
                 definition_id="definitionId",
@@ -197,8 +197,8 @@ class TestAsyncRevisions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        revision = await async_client.automation.actions.revisions.read(
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        revision = await async_client.automation.actions.revisions.get(
             revision_id="revisionId",
             app_id=0,
             definition_id="definitionId",
@@ -207,8 +207,8 @@ class TestAsyncRevisions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.automation.actions.revisions.with_raw_response.read(
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.automation.actions.revisions.with_raw_response.get(
             revision_id="revisionId",
             app_id=0,
             definition_id="definitionId",
@@ -221,8 +221,8 @@ class TestAsyncRevisions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.automation.actions.revisions.with_streaming_response.read(
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.automation.actions.revisions.with_streaming_response.get(
             revision_id="revisionId",
             app_id=0,
             definition_id="definitionId",
@@ -237,16 +237,16 @@ class TestAsyncRevisions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
-            await async_client.automation.actions.revisions.with_raw_response.read(
+            await async_client.automation.actions.revisions.with_raw_response.get(
                 revision_id="revisionId",
                 app_id=0,
                 definition_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `revision_id` but received ''"):
-            await async_client.automation.actions.revisions.with_raw_response.read(
+            await async_client.automation.actions.revisions.with_raw_response.get(
                 revision_id="",
                 app_id=0,
                 definition_id="definitionId",

@@ -126,7 +126,7 @@ class DomainsResource(SyncAPIResource):
             model=Domain,
         )
 
-    def read(
+    def get(
         self,
         domain_id: str,
         *,
@@ -261,7 +261,7 @@ class AsyncDomainsResource(AsyncAPIResource):
             model=Domain,
         )
 
-    async def read(
+    async def get(
         self,
         domain_id: str,
         *,
@@ -302,8 +302,8 @@ class DomainsResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             domains.list,
         )
-        self.read = to_raw_response_wrapper(
-            domains.read,
+        self.get = to_raw_response_wrapper(
+            domains.get,
         )
 
 
@@ -314,8 +314,8 @@ class AsyncDomainsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             domains.list,
         )
-        self.read = async_to_raw_response_wrapper(
-            domains.read,
+        self.get = async_to_raw_response_wrapper(
+            domains.get,
         )
 
 
@@ -326,8 +326,8 @@ class DomainsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             domains.list,
         )
-        self.read = to_streamed_response_wrapper(
-            domains.read,
+        self.get = to_streamed_response_wrapper(
+            domains.get,
         )
 
 
@@ -338,6 +338,6 @@ class AsyncDomainsResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             domains.list,
         )
-        self.read = async_to_streamed_response_wrapper(
-            domains.read,
+        self.get = async_to_streamed_response_wrapper(
+            domains.get,
         )

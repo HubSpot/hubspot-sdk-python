@@ -18,11 +18,11 @@ from ....._response import (
 )
 from ....._base_client import make_request_options
 from .....types.crm.objects.notes import (
-    batch_read_params,
+    batch_get_params,
     batch_create_params,
+    batch_delete_params,
     batch_update_params,
     batch_upsert_params,
-    batch_archive_params,
 )
 from .....types.crm.simple_public_object_id_param import SimplePublicObjectIDParam
 from .....types.crm.batch_response_simple_public_object import BatchResponseSimplePublicObject
@@ -118,7 +118,7 @@ class BatchResource(SyncAPIResource):
             cast_to=BatchResponseSimplePublicObject,
         )
 
-    def archive(
+    def delete(
         self,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
@@ -144,14 +144,14 @@ class BatchResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/crm/v3/objects/notes/batch/archive",
-            body=maybe_transform({"inputs": inputs}, batch_archive_params.BatchArchiveParams),
+            body=maybe_transform({"inputs": inputs}, batch_delete_params.BatchDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
@@ -197,14 +197,14 @@ class BatchResource(SyncAPIResource):
                     "properties_with_history": properties_with_history,
                     "id_property": id_property,
                 },
-                batch_read_params.BatchReadParams,
+                batch_get_params.BatchGetParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"archived": archived}, batch_read_params.BatchReadParams),
+                query=maybe_transform({"archived": archived}, batch_get_params.BatchGetParams),
             ),
             cast_to=BatchResponseSimplePublicObject,
         )
@@ -328,7 +328,7 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=BatchResponseSimplePublicObject,
         )
 
-    async def archive(
+    async def delete(
         self,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
@@ -354,14 +354,14 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/crm/v3/objects/notes/batch/archive",
-            body=await async_maybe_transform({"inputs": inputs}, batch_archive_params.BatchArchiveParams),
+            body=await async_maybe_transform({"inputs": inputs}, batch_delete_params.BatchDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
@@ -407,14 +407,14 @@ class AsyncBatchResource(AsyncAPIResource):
                     "properties_with_history": properties_with_history,
                     "id_property": id_property,
                 },
-                batch_read_params.BatchReadParams,
+                batch_get_params.BatchGetParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"archived": archived}, batch_read_params.BatchReadParams),
+                query=await async_maybe_transform({"archived": archived}, batch_get_params.BatchGetParams),
             ),
             cast_to=BatchResponseSimplePublicObject,
         )
@@ -464,11 +464,11 @@ class BatchResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             batch.update,
         )
-        self.archive = to_raw_response_wrapper(
-            batch.archive,
+        self.delete = to_raw_response_wrapper(
+            batch.delete,
         )
-        self.read = to_raw_response_wrapper(
-            batch.read,
+        self.get = to_raw_response_wrapper(
+            batch.get,
         )
         self.upsert = to_raw_response_wrapper(
             batch.upsert,
@@ -485,11 +485,11 @@ class AsyncBatchResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             batch.update,
         )
-        self.archive = async_to_raw_response_wrapper(
-            batch.archive,
+        self.delete = async_to_raw_response_wrapper(
+            batch.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            batch.read,
+        self.get = async_to_raw_response_wrapper(
+            batch.get,
         )
         self.upsert = async_to_raw_response_wrapper(
             batch.upsert,
@@ -506,11 +506,11 @@ class BatchResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             batch.update,
         )
-        self.archive = to_streamed_response_wrapper(
-            batch.archive,
+        self.delete = to_streamed_response_wrapper(
+            batch.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            batch.read,
+        self.get = to_streamed_response_wrapper(
+            batch.get,
         )
         self.upsert = to_streamed_response_wrapper(
             batch.upsert,
@@ -527,11 +527,11 @@ class AsyncBatchResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             batch.update,
         )
-        self.archive = async_to_streamed_response_wrapper(
-            batch.archive,
+        self.delete = async_to_streamed_response_wrapper(
+            batch.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            batch.read,
+        self.get = async_to_streamed_response_wrapper(
+            batch.get,
         )
         self.upsert = async_to_streamed_response_wrapper(
             batch.upsert,

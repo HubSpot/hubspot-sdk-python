@@ -18,11 +18,11 @@ from ....._response import (
 )
 from ....._base_client import make_request_options
 from .....types.crm.associations.v4 import (
-    batch_batch_read_params,
-    batch_batch_create_params,
-    batch_batch_delete_params,
-    batch_batch_delete_labels_params,
-    batch_batch_associate_default_params,
+    batch_get_params,
+    batch_create_params,
+    batch_delete_params,
+    batch_delete_labels_params,
+    batch_create_default_params,
 )
 from .....types.crm.associations.batch_response_void import BatchResponseVoid
 from .....types.crm.batch_response_public_default_association import BatchResponsePublicDefaultAssociation
@@ -62,47 +62,7 @@ class BatchResource(SyncAPIResource):
         """
         return BatchResourceWithStreamingResponse(self)
 
-    def batch_associate_default(
-        self,
-        to_object_type: str,
-        *,
-        from_object_type: str,
-        inputs: Iterable[PublicDefaultAssociationMultiPostParam],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponsePublicDefaultAssociation:
-        """
-        Create the default (most generic) association type between two object types
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not from_object_type:
-            raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
-        if not to_object_type:
-            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
-        return self._post(
-            f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/associate/default",
-            body=maybe_transform(
-                {"inputs": inputs}, batch_batch_associate_default_params.BatchBatchAssociateDefaultParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BatchResponsePublicDefaultAssociation,
-        )
-
-    def batch_create(
+    def create(
         self,
         to_object_type: str,
         *,
@@ -133,14 +93,14 @@ class BatchResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
         return self._post(
             f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/create",
-            body=maybe_transform({"inputs": inputs}, batch_batch_create_params.BatchBatchCreateParams),
+            body=maybe_transform({"inputs": inputs}, batch_create_params.BatchCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BatchResponseLabelsBetweenObjectPair,
         )
 
-    def batch_delete(
+    def delete(
         self,
         to_object_type: str,
         *,
@@ -171,14 +131,52 @@ class BatchResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
         return self._post(
             f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/archive",
-            body=maybe_transform({"inputs": inputs}, batch_batch_delete_params.BatchBatchDeleteParams),
+            body=maybe_transform({"inputs": inputs}, batch_delete_params.BatchDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BatchResponseVoid,
         )
 
-    def batch_delete_labels(
+    def create_default(
+        self,
+        to_object_type: str,
+        *,
+        from_object_type: str,
+        inputs: Iterable[PublicDefaultAssociationMultiPostParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponsePublicDefaultAssociation:
+        """
+        Create the default (most generic) association type between two object types
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not from_object_type:
+            raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
+        if not to_object_type:
+            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        return self._post(
+            f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/associate/default",
+            body=maybe_transform({"inputs": inputs}, batch_create_default_params.BatchCreateDefaultParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchResponsePublicDefaultAssociation,
+        )
+
+    def delete_labels(
         self,
         to_object_type: str,
         *,
@@ -211,14 +209,14 @@ class BatchResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
         return self._post(
             f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/labels/archive",
-            body=maybe_transform({"inputs": inputs}, batch_batch_delete_labels_params.BatchBatchDeleteLabelsParams),
+            body=maybe_transform({"inputs": inputs}, batch_delete_labels_params.BatchDeleteLabelsParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BatchResponseVoid,
         )
 
-    def batch_read(
+    def get(
         self,
         to_object_type: str,
         *,
@@ -254,7 +252,7 @@ class BatchResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
         return self._post(
             f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/read",
-            body=maybe_transform({"inputs": inputs}, batch_batch_read_params.BatchBatchReadParams),
+            body=maybe_transform({"inputs": inputs}, batch_get_params.BatchGetParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -282,47 +280,7 @@ class AsyncBatchResource(AsyncAPIResource):
         """
         return AsyncBatchResourceWithStreamingResponse(self)
 
-    async def batch_associate_default(
-        self,
-        to_object_type: str,
-        *,
-        from_object_type: str,
-        inputs: Iterable[PublicDefaultAssociationMultiPostParam],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponsePublicDefaultAssociation:
-        """
-        Create the default (most generic) association type between two object types
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not from_object_type:
-            raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
-        if not to_object_type:
-            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
-        return await self._post(
-            f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/associate/default",
-            body=await async_maybe_transform(
-                {"inputs": inputs}, batch_batch_associate_default_params.BatchBatchAssociateDefaultParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BatchResponsePublicDefaultAssociation,
-        )
-
-    async def batch_create(
+    async def create(
         self,
         to_object_type: str,
         *,
@@ -353,14 +311,14 @@ class AsyncBatchResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
         return await self._post(
             f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/create",
-            body=await async_maybe_transform({"inputs": inputs}, batch_batch_create_params.BatchBatchCreateParams),
+            body=await async_maybe_transform({"inputs": inputs}, batch_create_params.BatchCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BatchResponseLabelsBetweenObjectPair,
         )
 
-    async def batch_delete(
+    async def delete(
         self,
         to_object_type: str,
         *,
@@ -391,14 +349,52 @@ class AsyncBatchResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
         return await self._post(
             f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/archive",
-            body=await async_maybe_transform({"inputs": inputs}, batch_batch_delete_params.BatchBatchDeleteParams),
+            body=await async_maybe_transform({"inputs": inputs}, batch_delete_params.BatchDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BatchResponseVoid,
         )
 
-    async def batch_delete_labels(
+    async def create_default(
+        self,
+        to_object_type: str,
+        *,
+        from_object_type: str,
+        inputs: Iterable[PublicDefaultAssociationMultiPostParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponsePublicDefaultAssociation:
+        """
+        Create the default (most generic) association type between two object types
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not from_object_type:
+            raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
+        if not to_object_type:
+            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        return await self._post(
+            f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/associate/default",
+            body=await async_maybe_transform({"inputs": inputs}, batch_create_default_params.BatchCreateDefaultParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchResponsePublicDefaultAssociation,
+        )
+
+    async def delete_labels(
         self,
         to_object_type: str,
         *,
@@ -431,16 +427,14 @@ class AsyncBatchResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
         return await self._post(
             f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/labels/archive",
-            body=await async_maybe_transform(
-                {"inputs": inputs}, batch_batch_delete_labels_params.BatchBatchDeleteLabelsParams
-            ),
+            body=await async_maybe_transform({"inputs": inputs}, batch_delete_labels_params.BatchDeleteLabelsParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BatchResponseVoid,
         )
 
-    async def batch_read(
+    async def get(
         self,
         to_object_type: str,
         *,
@@ -476,7 +470,7 @@ class AsyncBatchResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
         return await self._post(
             f"/crm/v4/associations/{from_object_type}/{to_object_type}/batch/read",
-            body=await async_maybe_transform({"inputs": inputs}, batch_batch_read_params.BatchBatchReadParams),
+            body=await async_maybe_transform({"inputs": inputs}, batch_get_params.BatchGetParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -488,20 +482,20 @@ class BatchResourceWithRawResponse:
     def __init__(self, batch: BatchResource) -> None:
         self._batch = batch
 
-        self.batch_associate_default = to_raw_response_wrapper(
-            batch.batch_associate_default,
+        self.create = to_raw_response_wrapper(
+            batch.create,
         )
-        self.batch_create = to_raw_response_wrapper(
-            batch.batch_create,
+        self.delete = to_raw_response_wrapper(
+            batch.delete,
         )
-        self.batch_delete = to_raw_response_wrapper(
-            batch.batch_delete,
+        self.create_default = to_raw_response_wrapper(
+            batch.create_default,
         )
-        self.batch_delete_labels = to_raw_response_wrapper(
-            batch.batch_delete_labels,
+        self.delete_labels = to_raw_response_wrapper(
+            batch.delete_labels,
         )
-        self.batch_read = to_raw_response_wrapper(
-            batch.batch_read,
+        self.get = to_raw_response_wrapper(
+            batch.get,
         )
 
 
@@ -509,20 +503,20 @@ class AsyncBatchResourceWithRawResponse:
     def __init__(self, batch: AsyncBatchResource) -> None:
         self._batch = batch
 
-        self.batch_associate_default = async_to_raw_response_wrapper(
-            batch.batch_associate_default,
+        self.create = async_to_raw_response_wrapper(
+            batch.create,
         )
-        self.batch_create = async_to_raw_response_wrapper(
-            batch.batch_create,
+        self.delete = async_to_raw_response_wrapper(
+            batch.delete,
         )
-        self.batch_delete = async_to_raw_response_wrapper(
-            batch.batch_delete,
+        self.create_default = async_to_raw_response_wrapper(
+            batch.create_default,
         )
-        self.batch_delete_labels = async_to_raw_response_wrapper(
-            batch.batch_delete_labels,
+        self.delete_labels = async_to_raw_response_wrapper(
+            batch.delete_labels,
         )
-        self.batch_read = async_to_raw_response_wrapper(
-            batch.batch_read,
+        self.get = async_to_raw_response_wrapper(
+            batch.get,
         )
 
 
@@ -530,20 +524,20 @@ class BatchResourceWithStreamingResponse:
     def __init__(self, batch: BatchResource) -> None:
         self._batch = batch
 
-        self.batch_associate_default = to_streamed_response_wrapper(
-            batch.batch_associate_default,
+        self.create = to_streamed_response_wrapper(
+            batch.create,
         )
-        self.batch_create = to_streamed_response_wrapper(
-            batch.batch_create,
+        self.delete = to_streamed_response_wrapper(
+            batch.delete,
         )
-        self.batch_delete = to_streamed_response_wrapper(
-            batch.batch_delete,
+        self.create_default = to_streamed_response_wrapper(
+            batch.create_default,
         )
-        self.batch_delete_labels = to_streamed_response_wrapper(
-            batch.batch_delete_labels,
+        self.delete_labels = to_streamed_response_wrapper(
+            batch.delete_labels,
         )
-        self.batch_read = to_streamed_response_wrapper(
-            batch.batch_read,
+        self.get = to_streamed_response_wrapper(
+            batch.get,
         )
 
 
@@ -551,18 +545,18 @@ class AsyncBatchResourceWithStreamingResponse:
     def __init__(self, batch: AsyncBatchResource) -> None:
         self._batch = batch
 
-        self.batch_associate_default = async_to_streamed_response_wrapper(
-            batch.batch_associate_default,
+        self.create = async_to_streamed_response_wrapper(
+            batch.create,
         )
-        self.batch_create = async_to_streamed_response_wrapper(
-            batch.batch_create,
+        self.delete = async_to_streamed_response_wrapper(
+            batch.delete,
         )
-        self.batch_delete = async_to_streamed_response_wrapper(
-            batch.batch_delete,
+        self.create_default = async_to_streamed_response_wrapper(
+            batch.create_default,
         )
-        self.batch_delete_labels = async_to_streamed_response_wrapper(
-            batch.batch_delete_labels,
+        self.delete_labels = async_to_streamed_response_wrapper(
+            batch.delete_labels,
         )
-        self.batch_read = async_to_streamed_response_wrapper(
-            batch.batch_read,
+        self.get = async_to_streamed_response_wrapper(
+            batch.get,
         )
