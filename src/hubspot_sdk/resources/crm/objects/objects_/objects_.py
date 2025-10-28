@@ -27,8 +27,8 @@ from ....._response import (
 from .....pagination import SyncPage, AsyncPage
 from ....._base_client import AsyncPaginator, make_request_options
 from .....types.crm.objects import (
+    object_get_params,
     object_list_params,
-    object_read_params,
     object_create_params,
     object_search_params,
     object_update_params,
@@ -280,7 +280,7 @@ class ObjectsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         object_id: str,
         *,
@@ -347,7 +347,7 @@ class ObjectsResource(SyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    object_read_params.ObjectReadParams,
+                    object_get_params.ObjectGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
@@ -651,7 +651,7 @@ class AsyncObjectsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         object_id: str,
         *,
@@ -718,7 +718,7 @@ class AsyncObjectsResource(AsyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    object_read_params.ObjectReadParams,
+                    object_get_params.ObjectGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
@@ -801,8 +801,8 @@ class ObjectsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             objects.delete,
         )
-        self.read = to_raw_response_wrapper(
-            objects.read,
+        self.get = to_raw_response_wrapper(
+            objects.get,
         )
         self.search = to_raw_response_wrapper(
             objects.search,
@@ -829,8 +829,8 @@ class AsyncObjectsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             objects.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            objects.read,
+        self.get = async_to_raw_response_wrapper(
+            objects.get,
         )
         self.search = async_to_raw_response_wrapper(
             objects.search,
@@ -857,8 +857,8 @@ class ObjectsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             objects.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            objects.read,
+        self.get = to_streamed_response_wrapper(
+            objects.get,
         )
         self.search = to_streamed_response_wrapper(
             objects.search,
@@ -885,8 +885,8 @@ class AsyncObjectsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             objects.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            objects.read,
+        self.get = async_to_streamed_response_wrapper(
+            objects.get,
         )
         self.search = async_to_streamed_response_wrapper(
             objects.search,

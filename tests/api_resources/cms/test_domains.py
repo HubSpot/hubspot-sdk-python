@@ -66,16 +66,16 @@ class TestDomains:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        domain = client.cms.domains.read(
+    def test_method_get(self, client: HubSpot) -> None:
+        domain = client.cms.domains.get(
             "domainId",
         )
         assert_matches_type(Domain, domain, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.cms.domains.with_raw_response.read(
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.cms.domains.with_raw_response.get(
             "domainId",
         )
 
@@ -86,8 +86,8 @@ class TestDomains:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.cms.domains.with_streaming_response.read(
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.cms.domains.with_streaming_response.get(
             "domainId",
         ) as response:
             assert not response.is_closed
@@ -100,9 +100,9 @@ class TestDomains:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `domain_id` but received ''"):
-            client.cms.domains.with_raw_response.read(
+            client.cms.domains.with_raw_response.get(
                 "",
             )
 
@@ -159,16 +159,16 @@ class TestAsyncDomains:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        domain = await async_client.cms.domains.read(
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        domain = await async_client.cms.domains.get(
             "domainId",
         )
         assert_matches_type(Domain, domain, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.cms.domains.with_raw_response.read(
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.cms.domains.with_raw_response.get(
             "domainId",
         )
 
@@ -179,8 +179,8 @@ class TestAsyncDomains:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.cms.domains.with_streaming_response.read(
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.cms.domains.with_streaming_response.get(
             "domainId",
         ) as response:
             assert not response.is_closed
@@ -193,8 +193,8 @@ class TestAsyncDomains:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `domain_id` but received ''"):
-            await async_client.cms.domains.with_raw_response.read(
+            await async_client.cms.domains.with_raw_response.get(
                 "",
             )

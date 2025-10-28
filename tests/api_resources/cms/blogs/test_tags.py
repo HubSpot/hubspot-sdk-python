@@ -259,40 +259,6 @@ class TestTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_archive_batch(self, client: HubSpot) -> None:
-        tag = client.cms.blogs.tags.archive_batch(
-            inputs=["string"],
-        )
-        assert tag is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_raw_response_archive_batch(self, client: HubSpot) -> None:
-        response = client.cms.blogs.tags.with_raw_response.archive_batch(
-            inputs=["string"],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        tag = response.parse()
-        assert tag is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_streaming_response_archive_batch(self, client: HubSpot) -> None:
-        with client.cms.blogs.tags.with_streaming_response.archive_batch(
-            inputs=["string"],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            tag = response.parse()
-            assert tag is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
     def test_method_attach_to_lang_group(self, client: HubSpot) -> None:
         tag = client.cms.blogs.tags.attach_to_lang_group(
             id="id",
@@ -456,6 +422,40 @@ class TestTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_delete_batch(self, client: HubSpot) -> None:
+        tag = client.cms.blogs.tags.delete_batch(
+            inputs=["string"],
+        )
+        assert tag is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_delete_batch(self, client: HubSpot) -> None:
+        response = client.cms.blogs.tags.with_raw_response.delete_batch(
+            inputs=["string"],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tag = response.parse()
+        assert tag is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_delete_batch(self, client: HubSpot) -> None:
+        with client.cms.blogs.tags.with_streaming_response.delete_batch(
+            inputs=["string"],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tag = response.parse()
+            assert tag is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_method_detach_from_lang_group(self, client: HubSpot) -> None:
         tag = client.cms.blogs.tags.detach_from_lang_group(
             id="id",
@@ -490,16 +490,16 @@ class TestTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        tag = client.cms.blogs.tags.read(
+    def test_method_get(self, client: HubSpot) -> None:
+        tag = client.cms.blogs.tags.get(
             object_id="objectId",
         )
         assert_matches_type(Tag, tag, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read_with_all_params(self, client: HubSpot) -> None:
-        tag = client.cms.blogs.tags.read(
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+        tag = client.cms.blogs.tags.get(
             object_id="objectId",
             archived=True,
             property="property",
@@ -508,8 +508,8 @@ class TestTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.cms.blogs.tags.with_raw_response.read(
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.cms.blogs.tags.with_raw_response.get(
             object_id="objectId",
         )
 
@@ -520,8 +520,8 @@ class TestTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.cms.blogs.tags.with_streaming_response.read(
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.cms.blogs.tags.with_streaming_response.get(
             object_id="objectId",
         ) as response:
             assert not response.is_closed
@@ -534,24 +534,24 @@ class TestTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            client.cms.blogs.tags.with_raw_response.read(
+            client.cms.blogs.tags.with_raw_response.get(
                 object_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read_batch(self, client: HubSpot) -> None:
-        tag = client.cms.blogs.tags.read_batch(
+    def test_method_get_batch(self, client: HubSpot) -> None:
+        tag = client.cms.blogs.tags.get_batch(
             inputs=["string"],
         )
         assert_matches_type(BatchResponseTag, tag, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read_batch_with_all_params(self, client: HubSpot) -> None:
-        tag = client.cms.blogs.tags.read_batch(
+    def test_method_get_batch_with_all_params(self, client: HubSpot) -> None:
+        tag = client.cms.blogs.tags.get_batch(
             inputs=["string"],
             archived=True,
         )
@@ -559,8 +559,8 @@ class TestTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_read_batch(self, client: HubSpot) -> None:
-        response = client.cms.blogs.tags.with_raw_response.read_batch(
+    def test_raw_response_get_batch(self, client: HubSpot) -> None:
+        response = client.cms.blogs.tags.with_raw_response.get_batch(
             inputs=["string"],
         )
 
@@ -571,8 +571,8 @@ class TestTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_read_batch(self, client: HubSpot) -> None:
-        with client.cms.blogs.tags.with_streaming_response.read_batch(
+    def test_streaming_response_get_batch(self, client: HubSpot) -> None:
+        with client.cms.blogs.tags.with_streaming_response.get_batch(
             inputs=["string"],
         ) as response:
             assert not response.is_closed
@@ -940,40 +940,6 @@ class TestAsyncTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_archive_batch(self, async_client: AsyncHubSpot) -> None:
-        tag = await async_client.cms.blogs.tags.archive_batch(
-            inputs=["string"],
-        )
-        assert tag is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_raw_response_archive_batch(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.cms.blogs.tags.with_raw_response.archive_batch(
-            inputs=["string"],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        tag = await response.parse()
-        assert tag is None
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_streaming_response_archive_batch(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.cms.blogs.tags.with_streaming_response.archive_batch(
-            inputs=["string"],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            tag = await response.parse()
-            assert tag is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
     async def test_method_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
         tag = await async_client.cms.blogs.tags.attach_to_lang_group(
             id="id",
@@ -1137,6 +1103,40 @@ class TestAsyncTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    async def test_method_delete_batch(self, async_client: AsyncHubSpot) -> None:
+        tag = await async_client.cms.blogs.tags.delete_batch(
+            inputs=["string"],
+        )
+        assert tag is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_delete_batch(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.cms.blogs.tags.with_raw_response.delete_batch(
+            inputs=["string"],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tag = await response.parse()
+        assert tag is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_delete_batch(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.cms.blogs.tags.with_streaming_response.delete_batch(
+            inputs=["string"],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tag = await response.parse()
+            assert tag is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     async def test_method_detach_from_lang_group(self, async_client: AsyncHubSpot) -> None:
         tag = await async_client.cms.blogs.tags.detach_from_lang_group(
             id="id",
@@ -1171,16 +1171,16 @@ class TestAsyncTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        tag = await async_client.cms.blogs.tags.read(
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        tag = await async_client.cms.blogs.tags.get(
             object_id="objectId",
         )
         assert_matches_type(Tag, tag, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        tag = await async_client.cms.blogs.tags.read(
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        tag = await async_client.cms.blogs.tags.get(
             object_id="objectId",
             archived=True,
             property="property",
@@ -1189,8 +1189,8 @@ class TestAsyncTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.cms.blogs.tags.with_raw_response.read(
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.cms.blogs.tags.with_raw_response.get(
             object_id="objectId",
         )
 
@@ -1201,8 +1201,8 @@ class TestAsyncTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.cms.blogs.tags.with_streaming_response.read(
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.cms.blogs.tags.with_streaming_response.get(
             object_id="objectId",
         ) as response:
             assert not response.is_closed
@@ -1215,24 +1215,24 @@ class TestAsyncTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            await async_client.cms.blogs.tags.with_raw_response.read(
+            await async_client.cms.blogs.tags.with_raw_response.get(
                 object_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read_batch(self, async_client: AsyncHubSpot) -> None:
-        tag = await async_client.cms.blogs.tags.read_batch(
+    async def test_method_get_batch(self, async_client: AsyncHubSpot) -> None:
+        tag = await async_client.cms.blogs.tags.get_batch(
             inputs=["string"],
         )
         assert_matches_type(BatchResponseTag, tag, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        tag = await async_client.cms.blogs.tags.read_batch(
+    async def test_method_get_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        tag = await async_client.cms.blogs.tags.get_batch(
             inputs=["string"],
             archived=True,
         )
@@ -1240,8 +1240,8 @@ class TestAsyncTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_read_batch(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.cms.blogs.tags.with_raw_response.read_batch(
+    async def test_raw_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.cms.blogs.tags.with_raw_response.get_batch(
             inputs=["string"],
         )
 
@@ -1252,8 +1252,8 @@ class TestAsyncTags:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_read_batch(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.cms.blogs.tags.with_streaming_response.read_batch(
+    async def test_streaming_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.cms.blogs.tags.with_streaming_response.get_batch(
             inputs=["string"],
         ) as response:
             assert not response.is_closed

@@ -102,16 +102,16 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_archive(self, client: HubSpot) -> None:
-        batch = client.crm.objects.leads.batch.archive(
+    def test_method_delete(self, client: HubSpot) -> None:
+        batch = client.crm.objects.leads.batch.delete(
             inputs=[{"id": "id"}],
         )
         assert batch is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_archive(self, client: HubSpot) -> None:
-        response = client.crm.objects.leads.batch.with_raw_response.archive(
+    def test_raw_response_delete(self, client: HubSpot) -> None:
+        response = client.crm.objects.leads.batch.with_raw_response.delete(
             inputs=[{"id": "id"}],
         )
 
@@ -122,8 +122,8 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_archive(self, client: HubSpot) -> None:
-        with client.crm.objects.leads.batch.with_streaming_response.archive(
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
+        with client.crm.objects.leads.batch.with_streaming_response.delete(
             inputs=[{"id": "id"}],
         ) as response:
             assert not response.is_closed
@@ -277,16 +277,16 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_archive(self, async_client: AsyncHubSpot) -> None:
-        batch = await async_client.crm.objects.leads.batch.archive(
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+        batch = await async_client.crm.objects.leads.batch.delete(
             inputs=[{"id": "id"}],
         )
         assert batch is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_archive(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.objects.leads.batch.with_raw_response.archive(
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.crm.objects.leads.batch.with_raw_response.delete(
             inputs=[{"id": "id"}],
         )
 
@@ -297,8 +297,8 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_archive(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.objects.leads.batch.with_streaming_response.archive(
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.crm.objects.leads.batch.with_streaming_response.delete(
             inputs=[{"id": "id"}],
         ) as response:
             assert not response.is_closed

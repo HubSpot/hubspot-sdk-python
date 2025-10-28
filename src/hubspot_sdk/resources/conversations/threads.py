@@ -113,7 +113,7 @@ class ThreadsResource(SyncAPIResource):
             cast_to=CollectionResponsePublicThreadForwardPaging,
         )
 
-    def archive(
+    def delete(
         self,
         thread_id: str,
         *,
@@ -270,7 +270,7 @@ class AsyncThreadsResource(AsyncAPIResource):
             cast_to=CollectionResponsePublicThreadForwardPaging,
         )
 
-    async def archive(
+    async def delete(
         self,
         thread_id: str,
         *,
@@ -350,8 +350,8 @@ class ThreadsResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             threads.list,
         )
-        self.archive = to_raw_response_wrapper(
-            threads.archive,
+        self.delete = to_raw_response_wrapper(
+            threads.delete,
         )
         self.get = to_raw_response_wrapper(
             threads.get,
@@ -368,8 +368,8 @@ class AsyncThreadsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             threads.list,
         )
-        self.archive = async_to_raw_response_wrapper(
-            threads.archive,
+        self.delete = async_to_raw_response_wrapper(
+            threads.delete,
         )
         self.get = async_to_raw_response_wrapper(
             threads.get,
@@ -386,8 +386,8 @@ class ThreadsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             threads.list,
         )
-        self.archive = to_streamed_response_wrapper(
-            threads.archive,
+        self.delete = to_streamed_response_wrapper(
+            threads.delete,
         )
         self.get = to_streamed_response_wrapper(
             threads.get,
@@ -404,8 +404,8 @@ class AsyncThreadsResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             threads.list,
         )
-        self.archive = async_to_streamed_response_wrapper(
-            threads.archive,
+        self.delete = async_to_streamed_response_wrapper(
+            threads.delete,
         )
         self.get = async_to_streamed_response_wrapper(
             threads.get,

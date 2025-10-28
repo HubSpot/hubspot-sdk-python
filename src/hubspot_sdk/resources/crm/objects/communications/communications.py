@@ -27,8 +27,8 @@ from ....._response import (
 from .....pagination import SyncPage, AsyncPage
 from ....._base_client import AsyncPaginator, make_request_options
 from .....types.crm.objects import (
+    communication_get_params,
     communication_list_params,
-    communication_read_params,
     communication_create_params,
     communication_search_params,
     communication_update_params,
@@ -271,7 +271,7 @@ class CommunicationsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         communication_id: str,
         *,
@@ -335,7 +335,7 @@ class CommunicationsResource(SyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    communication_read_params.CommunicationReadParams,
+                    communication_get_params.CommunicationGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
@@ -631,7 +631,7 @@ class AsyncCommunicationsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         communication_id: str,
         *,
@@ -695,7 +695,7 @@ class AsyncCommunicationsResource(AsyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    communication_read_params.CommunicationReadParams,
+                    communication_get_params.CommunicationGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
@@ -779,8 +779,8 @@ class CommunicationsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             communications.delete,
         )
-        self.read = to_raw_response_wrapper(
-            communications.read,
+        self.get = to_raw_response_wrapper(
+            communications.get,
         )
         self.search = to_raw_response_wrapper(
             communications.search,
@@ -807,8 +807,8 @@ class AsyncCommunicationsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             communications.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            communications.read,
+        self.get = async_to_raw_response_wrapper(
+            communications.get,
         )
         self.search = async_to_raw_response_wrapper(
             communications.search,
@@ -835,8 +835,8 @@ class CommunicationsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             communications.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            communications.read,
+        self.get = to_streamed_response_wrapper(
+            communications.get,
         )
         self.search = to_streamed_response_wrapper(
             communications.search,
@@ -863,8 +863,8 @@ class AsyncCommunicationsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             communications.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            communications.read,
+        self.get = async_to_streamed_response_wrapper(
+            communications.get,
         )
         self.search = async_to_streamed_response_wrapper(
             communications.search,

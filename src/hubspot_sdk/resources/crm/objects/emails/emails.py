@@ -27,8 +27,8 @@ from ....._response import (
 from .....pagination import SyncPage, AsyncPage
 from ....._base_client import AsyncPaginator, make_request_options
 from .....types.crm.objects import (
+    email_get_params,
     email_list_params,
-    email_read_params,
     email_create_params,
     email_search_params,
     email_update_params,
@@ -268,7 +268,7 @@ class EmailsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         email_id: str,
         *,
@@ -332,7 +332,7 @@ class EmailsResource(SyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    email_read_params.EmailReadParams,
+                    email_get_params.EmailGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
@@ -619,7 +619,7 @@ class AsyncEmailsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         email_id: str,
         *,
@@ -683,7 +683,7 @@ class AsyncEmailsResource(AsyncAPIResource):
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
-                    email_read_params.EmailReadParams,
+                    email_get_params.EmailGetParams,
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
@@ -763,8 +763,8 @@ class EmailsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             emails.delete,
         )
-        self.read = to_raw_response_wrapper(
-            emails.read,
+        self.get = to_raw_response_wrapper(
+            emails.get,
         )
         self.search = to_raw_response_wrapper(
             emails.search,
@@ -791,8 +791,8 @@ class AsyncEmailsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             emails.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            emails.read,
+        self.get = async_to_raw_response_wrapper(
+            emails.get,
         )
         self.search = async_to_raw_response_wrapper(
             emails.search,
@@ -819,8 +819,8 @@ class EmailsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             emails.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            emails.read,
+        self.get = to_streamed_response_wrapper(
+            emails.get,
         )
         self.search = to_streamed_response_wrapper(
             emails.search,
@@ -847,8 +847,8 @@ class AsyncEmailsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             emails.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            emails.read,
+        self.get = async_to_streamed_response_wrapper(
+            emails.get,
         )
         self.search = async_to_streamed_response_wrapper(
             emails.search,

@@ -308,7 +308,7 @@ class URLRedirectsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         url_redirect_id: str,
         *,
@@ -625,7 +625,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         url_redirect_id: str,
         *,
@@ -675,8 +675,8 @@ class URLRedirectsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             url_redirects.delete,
         )
-        self.read = to_raw_response_wrapper(
-            url_redirects.read,
+        self.get = to_raw_response_wrapper(
+            url_redirects.get,
         )
 
 
@@ -696,8 +696,8 @@ class AsyncURLRedirectsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             url_redirects.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            url_redirects.read,
+        self.get = async_to_raw_response_wrapper(
+            url_redirects.get,
         )
 
 
@@ -717,8 +717,8 @@ class URLRedirectsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             url_redirects.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            url_redirects.read,
+        self.get = to_streamed_response_wrapper(
+            url_redirects.get,
         )
 
 
@@ -738,6 +738,6 @@ class AsyncURLRedirectsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             url_redirects.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            url_redirects.read,
+        self.get = async_to_streamed_response_wrapper(
+            url_redirects.get,
         )

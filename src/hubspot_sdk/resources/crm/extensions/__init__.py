@@ -24,13 +24,13 @@ from .extensions import (
     ExtensionsResourceWithStreamingResponse,
     AsyncExtensionsResourceWithStreamingResponse,
 )
-from .videoconferencing import (
-    VideoconferencingResource,
-    AsyncVideoconferencingResource,
-    VideoconferencingResourceWithRawResponse,
-    AsyncVideoconferencingResourceWithRawResponse,
-    VideoconferencingResourceWithStreamingResponse,
-    AsyncVideoconferencingResourceWithStreamingResponse,
+from .video_conferencing import (
+    VideoConferencingResource,
+    AsyncVideoConferencingResource,
+    VideoConferencingResourceWithRawResponse,
+    AsyncVideoConferencingResourceWithRawResponse,
+    VideoConferencingResourceWithStreamingResponse,
+    AsyncVideoConferencingResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -46,12 +46,12 @@ __all__ = [
     "AsyncCardsResourceWithRawResponse",
     "CardsResourceWithStreamingResponse",
     "AsyncCardsResourceWithStreamingResponse",
-    "VideoconferencingResource",
-    "AsyncVideoconferencingResource",
-    "VideoconferencingResourceWithRawResponse",
-    "AsyncVideoconferencingResourceWithRawResponse",
-    "VideoconferencingResourceWithStreamingResponse",
-    "AsyncVideoconferencingResourceWithStreamingResponse",
+    "VideoConferencingResource",
+    "AsyncVideoConferencingResource",
+    "VideoConferencingResourceWithRawResponse",
+    "AsyncVideoConferencingResourceWithRawResponse",
+    "VideoConferencingResourceWithStreamingResponse",
+    "AsyncVideoConferencingResourceWithStreamingResponse",
     "ExtensionsResource",
     "AsyncExtensionsResource",
     "ExtensionsResourceWithRawResponse",

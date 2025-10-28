@@ -279,16 +279,16 @@ class TestForms:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read(self, client: HubSpot) -> None:
-        form = client.marketing.forms.read(
+    def test_method_get(self, client: HubSpot) -> None:
+        form = client.marketing.forms.get(
             form_id="formId",
         )
         assert_matches_type(FormDefinitionBase, form, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_read_with_all_params(self, client: HubSpot) -> None:
-        form = client.marketing.forms.read(
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+        form = client.marketing.forms.get(
             form_id="formId",
             archived=True,
         )
@@ -296,8 +296,8 @@ class TestForms:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_read(self, client: HubSpot) -> None:
-        response = client.marketing.forms.with_raw_response.read(
+    def test_raw_response_get(self, client: HubSpot) -> None:
+        response = client.marketing.forms.with_raw_response.get(
             form_id="formId",
         )
 
@@ -308,8 +308,8 @@ class TestForms:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_read(self, client: HubSpot) -> None:
-        with client.marketing.forms.with_streaming_response.read(
+    def test_streaming_response_get(self, client: HubSpot) -> None:
+        with client.marketing.forms.with_streaming_response.get(
             form_id="formId",
         ) as response:
             assert not response.is_closed
@@ -322,9 +322,9 @@ class TestForms:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_read(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `form_id` but received ''"):
-            client.marketing.forms.with_raw_response.read(
+            client.marketing.forms.with_raw_response.get(
                 form_id="",
             )
 
@@ -634,16 +634,16 @@ class TestAsyncForms:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
-        form = await async_client.marketing.forms.read(
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+        form = await async_client.marketing.forms.get(
             form_id="formId",
         )
         assert_matches_type(FormDefinitionBase, form, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
-        form = await async_client.marketing.forms.read(
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+        form = await async_client.marketing.forms.get(
             form_id="formId",
             archived=True,
         )
@@ -651,8 +651,8 @@ class TestAsyncForms:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.marketing.forms.with_raw_response.read(
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.marketing.forms.with_raw_response.get(
             form_id="formId",
         )
 
@@ -663,8 +663,8 @@ class TestAsyncForms:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.marketing.forms.with_streaming_response.read(
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.marketing.forms.with_streaming_response.get(
             form_id="formId",
         ) as response:
             assert not response.is_closed
@@ -677,9 +677,9 @@ class TestAsyncForms:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `form_id` but received ''"):
-            await async_client.marketing.forms.with_raw_response.read(
+            await async_client.marketing.forms.with_raw_response.get(
                 form_id="",
             )
 

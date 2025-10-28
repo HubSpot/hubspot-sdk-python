@@ -95,7 +95,7 @@ class RevisionsResource(SyncAPIResource):
             model=PublicActionRevision,
         )
 
-    def read(
+    def get(
         self,
         revision_id: str,
         *,
@@ -206,7 +206,7 @@ class AsyncRevisionsResource(AsyncAPIResource):
             model=PublicActionRevision,
         )
 
-    async def read(
+    async def get(
         self,
         revision_id: str,
         *,
@@ -251,8 +251,8 @@ class RevisionsResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             revisions.list,
         )
-        self.read = to_raw_response_wrapper(
-            revisions.read,
+        self.get = to_raw_response_wrapper(
+            revisions.get,
         )
 
 
@@ -263,8 +263,8 @@ class AsyncRevisionsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             revisions.list,
         )
-        self.read = async_to_raw_response_wrapper(
-            revisions.read,
+        self.get = async_to_raw_response_wrapper(
+            revisions.get,
         )
 
 
@@ -275,8 +275,8 @@ class RevisionsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             revisions.list,
         )
-        self.read = to_streamed_response_wrapper(
-            revisions.read,
+        self.get = to_streamed_response_wrapper(
+            revisions.get,
         )
 
 
@@ -287,6 +287,6 @@ class AsyncRevisionsResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             revisions.list,
         )
-        self.read = async_to_streamed_response_wrapper(
-            revisions.read,
+        self.get = async_to_streamed_response_wrapper(
+            revisions.get,
         )

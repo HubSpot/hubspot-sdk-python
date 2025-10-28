@@ -20,8 +20,8 @@ from ..._response import (
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.marketing import (
+    form_get_params,
     form_list_params,
-    form_read_params,
     form_update_params,
 )
 from ...types.marketing.field_group_param import FieldGroupParam
@@ -225,7 +225,7 @@ class FormsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         form_id: str,
         *,
@@ -260,7 +260,7 @@ class FormsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"archived": archived}, form_read_params.FormReadParams),
+                query=maybe_transform({"archived": archived}, form_get_params.FormGetParams),
             ),
             cast_to=FormDefinitionBase,
         )
@@ -491,7 +491,7 @@ class AsyncFormsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         form_id: str,
         *,
@@ -526,7 +526,7 @@ class AsyncFormsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"archived": archived}, form_read_params.FormReadParams),
+                query=await async_maybe_transform({"archived": archived}, form_get_params.FormGetParams),
             ),
             cast_to=FormDefinitionBase,
         )
@@ -581,8 +581,8 @@ class FormsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             forms.delete,
         )
-        self.read = to_raw_response_wrapper(
-            forms.read,
+        self.get = to_raw_response_wrapper(
+            forms.get,
         )
         self.replace = to_raw_response_wrapper(
             forms.replace,
@@ -605,8 +605,8 @@ class AsyncFormsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             forms.delete,
         )
-        self.read = async_to_raw_response_wrapper(
-            forms.read,
+        self.get = async_to_raw_response_wrapper(
+            forms.get,
         )
         self.replace = async_to_raw_response_wrapper(
             forms.replace,
@@ -629,8 +629,8 @@ class FormsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             forms.delete,
         )
-        self.read = to_streamed_response_wrapper(
-            forms.read,
+        self.get = to_streamed_response_wrapper(
+            forms.get,
         )
         self.replace = to_streamed_response_wrapper(
             forms.replace,
@@ -653,8 +653,8 @@ class AsyncFormsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             forms.delete,
         )
-        self.read = async_to_streamed_response_wrapper(
-            forms.read,
+        self.get = async_to_streamed_response_wrapper(
+            forms.get,
         )
         self.replace = async_to_streamed_response_wrapper(
             forms.replace,

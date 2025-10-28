@@ -127,46 +127,6 @@ class FunctionsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def archive_by_function_type(
-        self,
-        function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
-        ],
-        *,
-        app_id: int,
-        definition_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Delete a function within a given definition.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not definition_id:
-            raise ValueError(f"Expected a non-empty value for `definition_id` but received {definition_id!r}")
-        if not function_type:
-            raise ValueError(f"Expected a non-empty value for `function_type` but received {function_type!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            f"/automation/v4/actions/{app_id}/{definition_id}/functions/{function_type}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def create_or_replace(
         self,
         function_id: str,
@@ -254,7 +214,7 @@ class FunctionsResource(SyncAPIResource):
             cast_to=PublicActionFunctionIdentifier,
         )
 
-    def get_by_function_type(
+    def delete_by_function_type(
         self,
         function_type: Literal[
             "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
@@ -268,9 +228,9 @@ class FunctionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicActionFunction:
+    ) -> None:
         """
-        Retrieve functions by a type for a given definition
+        Delete a function within a given definition.
 
         Args:
           extra_headers: Send extra headers
@@ -285,15 +245,16 @@ class FunctionsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `definition_id` but received {definition_id!r}")
         if not function_type:
             raise ValueError(f"Expected a non-empty value for `function_type` but received {function_type!r}")
-        return self._get(
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
             f"/automation/v4/actions/{app_id}/{definition_id}/functions/{function_type}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicActionFunction,
+            cast_to=NoneType,
         )
 
-    def read(
+    def get(
         self,
         function_id: str,
         *,
@@ -329,6 +290,45 @@ class FunctionsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `function_id` but received {function_id!r}")
         return self._get(
             f"/automation/v4/actions/{app_id}/{definition_id}/functions/{function_type}/{function_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PublicActionFunction,
+        )
+
+    def get_by_function_type(
+        self,
+        function_type: Literal[
+            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+        ],
+        *,
+        app_id: int,
+        definition_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PublicActionFunction:
+        """
+        Retrieve functions by a type for a given definition
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not definition_id:
+            raise ValueError(f"Expected a non-empty value for `definition_id` but received {definition_id!r}")
+        if not function_type:
+            raise ValueError(f"Expected a non-empty value for `function_type` but received {function_type!r}")
+        return self._get(
+            f"/automation/v4/actions/{app_id}/{definition_id}/functions/{function_type}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -433,46 +433,6 @@ class AsyncFunctionsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def archive_by_function_type(
-        self,
-        function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
-        ],
-        *,
-        app_id: int,
-        definition_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Delete a function within a given definition.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not definition_id:
-            raise ValueError(f"Expected a non-empty value for `definition_id` but received {definition_id!r}")
-        if not function_type:
-            raise ValueError(f"Expected a non-empty value for `function_type` but received {function_type!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            f"/automation/v4/actions/{app_id}/{definition_id}/functions/{function_type}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def create_or_replace(
         self,
         function_id: str,
@@ -560,7 +520,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
             cast_to=PublicActionFunctionIdentifier,
         )
 
-    async def get_by_function_type(
+    async def delete_by_function_type(
         self,
         function_type: Literal[
             "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
@@ -574,9 +534,9 @@ class AsyncFunctionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicActionFunction:
+    ) -> None:
         """
-        Retrieve functions by a type for a given definition
+        Delete a function within a given definition.
 
         Args:
           extra_headers: Send extra headers
@@ -591,15 +551,16 @@ class AsyncFunctionsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `definition_id` but received {definition_id!r}")
         if not function_type:
             raise ValueError(f"Expected a non-empty value for `function_type` but received {function_type!r}")
-        return await self._get(
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
             f"/automation/v4/actions/{app_id}/{definition_id}/functions/{function_type}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicActionFunction,
+            cast_to=NoneType,
         )
 
-    async def read(
+    async def get(
         self,
         function_id: str,
         *,
@@ -641,6 +602,45 @@ class AsyncFunctionsResource(AsyncAPIResource):
             cast_to=PublicActionFunction,
         )
 
+    async def get_by_function_type(
+        self,
+        function_type: Literal[
+            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+        ],
+        *,
+        app_id: int,
+        definition_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PublicActionFunction:
+        """
+        Retrieve functions by a type for a given definition
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not definition_id:
+            raise ValueError(f"Expected a non-empty value for `definition_id` but received {definition_id!r}")
+        if not function_type:
+            raise ValueError(f"Expected a non-empty value for `function_type` but received {function_type!r}")
+        return await self._get(
+            f"/automation/v4/actions/{app_id}/{definition_id}/functions/{function_type}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PublicActionFunction,
+        )
+
 
 class FunctionsResourceWithRawResponse:
     def __init__(self, functions: FunctionsResource) -> None:
@@ -652,20 +652,20 @@ class FunctionsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             functions.delete,
         )
-        self.archive_by_function_type = to_raw_response_wrapper(
-            functions.archive_by_function_type,
-        )
         self.create_or_replace = to_raw_response_wrapper(
             functions.create_or_replace,
         )
         self.create_or_replace_by_function_type = to_raw_response_wrapper(
             functions.create_or_replace_by_function_type,
         )
+        self.delete_by_function_type = to_raw_response_wrapper(
+            functions.delete_by_function_type,
+        )
+        self.get = to_raw_response_wrapper(
+            functions.get,
+        )
         self.get_by_function_type = to_raw_response_wrapper(
             functions.get_by_function_type,
-        )
-        self.read = to_raw_response_wrapper(
-            functions.read,
         )
 
 
@@ -679,20 +679,20 @@ class AsyncFunctionsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             functions.delete,
         )
-        self.archive_by_function_type = async_to_raw_response_wrapper(
-            functions.archive_by_function_type,
-        )
         self.create_or_replace = async_to_raw_response_wrapper(
             functions.create_or_replace,
         )
         self.create_or_replace_by_function_type = async_to_raw_response_wrapper(
             functions.create_or_replace_by_function_type,
         )
+        self.delete_by_function_type = async_to_raw_response_wrapper(
+            functions.delete_by_function_type,
+        )
+        self.get = async_to_raw_response_wrapper(
+            functions.get,
+        )
         self.get_by_function_type = async_to_raw_response_wrapper(
             functions.get_by_function_type,
-        )
-        self.read = async_to_raw_response_wrapper(
-            functions.read,
         )
 
 
@@ -706,20 +706,20 @@ class FunctionsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             functions.delete,
         )
-        self.archive_by_function_type = to_streamed_response_wrapper(
-            functions.archive_by_function_type,
-        )
         self.create_or_replace = to_streamed_response_wrapper(
             functions.create_or_replace,
         )
         self.create_or_replace_by_function_type = to_streamed_response_wrapper(
             functions.create_or_replace_by_function_type,
         )
+        self.delete_by_function_type = to_streamed_response_wrapper(
+            functions.delete_by_function_type,
+        )
+        self.get = to_streamed_response_wrapper(
+            functions.get,
+        )
         self.get_by_function_type = to_streamed_response_wrapper(
             functions.get_by_function_type,
-        )
-        self.read = to_streamed_response_wrapper(
-            functions.read,
         )
 
 
@@ -733,18 +733,18 @@ class AsyncFunctionsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             functions.delete,
         )
-        self.archive_by_function_type = async_to_streamed_response_wrapper(
-            functions.archive_by_function_type,
-        )
         self.create_or_replace = async_to_streamed_response_wrapper(
             functions.create_or_replace,
         )
         self.create_or_replace_by_function_type = async_to_streamed_response_wrapper(
             functions.create_or_replace_by_function_type,
         )
+        self.delete_by_function_type = async_to_streamed_response_wrapper(
+            functions.delete_by_function_type,
+        )
+        self.get = async_to_streamed_response_wrapper(
+            functions.get,
+        )
         self.get_by_function_type = async_to_streamed_response_wrapper(
             functions.get_by_function_type,
-        )
-        self.read = async_to_streamed_response_wrapper(
-            functions.read,
         )
