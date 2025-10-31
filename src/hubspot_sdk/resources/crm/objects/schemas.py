@@ -25,10 +25,10 @@ from ....types.crm.objects import (
     schema_create_association_params,
 )
 from ....types.crm.objects.object_schema import ObjectSchema
+from ....types.events.association_definition import AssociationDefinition
 from ....types.crm.objects.object_type_definition import ObjectTypeDefinition
 from ....types.shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
 from ....types.crm.objects.object_type_property_create_param import ObjectTypePropertyCreateParam
-from ....types.crm.objects.schema_create_association_response import SchemaCreateAssociationResponse
 from ....types.shared.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
 
 __all__ = ["SchemasResource", "AsyncSchemasResource"]
@@ -73,12 +73,7 @@ class SchemasResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectSchema:
-        """Define a new object schema, along with custom properties and associations.
-
-        The
-        entire object schema, including its object type ID, properties, and associations
-        will be returned in the response.
-
+        """
         Args:
           associated_objects: Associations defined for this object type.
 
@@ -148,8 +143,6 @@ class SchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectTypeDefinition:
         """
-        Update the details for an existing object schema.
-
         Args:
           primary_display_property: The name of the primary property for this object. This will be displayed as
               primary on the HubSpot record page for this object type.
@@ -206,8 +199,6 @@ class SchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectSchemaNoPaging:
         """
-        Returns all object schemas that have been defined for your account.
-
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -243,11 +234,7 @@ class SchemasResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Deletes a schema.
-
-        Any existing records of this schema must be deleted **first**.
-        Otherwise this call will fail.
-
+        """
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -287,11 +274,8 @@ class SchemasResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SchemaCreateAssociationResponse:
+    ) -> AssociationDefinition:
         """
-        Defines a new association between the primary schema's object type and other
-        object types.
-
         Args:
           extra_headers: Send extra headers
 
@@ -316,7 +300,7 @@ class SchemasResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SchemaCreateAssociationResponse,
+            cast_to=AssociationDefinition,
         )
 
     def delete_association(
@@ -332,8 +316,6 @@ class SchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Removes an existing association from a schema.
-
         Args:
           extra_headers: Send extra headers
 
@@ -370,8 +352,6 @@ class SchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectSchema:
         """
-        Returns an existing object schema.
-
         Args:
           extra_headers: Send extra headers
 
@@ -431,12 +411,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectSchema:
-        """Define a new object schema, along with custom properties and associations.
-
-        The
-        entire object schema, including its object type ID, properties, and associations
-        will be returned in the response.
-
+        """
         Args:
           associated_objects: Associations defined for this object type.
 
@@ -506,8 +481,6 @@ class AsyncSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectTypeDefinition:
         """
-        Update the details for an existing object schema.
-
         Args:
           primary_display_property: The name of the primary property for this object. This will be displayed as
               primary on the HubSpot record page for this object type.
@@ -564,8 +537,6 @@ class AsyncSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectSchemaNoPaging:
         """
-        Returns all object schemas that have been defined for your account.
-
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -601,11 +572,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Deletes a schema.
-
-        Any existing records of this schema must be deleted **first**.
-        Otherwise this call will fail.
-
+        """
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -645,11 +612,8 @@ class AsyncSchemasResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SchemaCreateAssociationResponse:
+    ) -> AssociationDefinition:
         """
-        Defines a new association between the primary schema's object type and other
-        object types.
-
         Args:
           extra_headers: Send extra headers
 
@@ -674,7 +638,7 @@ class AsyncSchemasResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SchemaCreateAssociationResponse,
+            cast_to=AssociationDefinition,
         )
 
     async def delete_association(
@@ -690,8 +654,6 @@ class AsyncSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Removes an existing association from a schema.
-
         Args:
           extra_headers: Send extra headers
 
@@ -728,8 +690,6 @@ class AsyncSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectSchema:
         """
-        Returns an existing object schema.
-
         Args:
           extra_headers: Send extra headers
 

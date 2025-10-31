@@ -1,0 +1,62 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import List, Optional
+from datetime import datetime
+from typing_extensions import Literal
+
+from pydantic import Field as FieldInfo
+
+from ..._models import BaseModel
+from ..shared.property import Property
+from .association_definition import AssociationDefinition
+from .behavioral_event_type_definition_labels import BehavioralEventTypeDefinitionLabels
+
+__all__ = ["ExternalBehavioralEventTypeDefinition"]
+
+
+class ExternalBehavioralEventTypeDefinition(BaseModel):
+    id: str
+
+    archived: bool
+
+    associations: List[AssociationDefinition]
+
+    fully_qualified_name: str = FieldInfo(alias="fullyQualifiedName")
+
+    labels: BehavioralEventTypeDefinitionLabels
+
+    name: str
+
+    object_type_id: str = FieldInfo(alias="objectTypeId")
+
+    properties: List[Property]
+
+    combo_event_rules: Optional["ComboEventRuleBranch"] = FieldInfo(alias="comboEventRules", default=None)
+
+    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
+
+    created_user_id: Optional[int] = FieldInfo(alias="createdUserId", default=None)
+
+    description: Optional[str] = None
+
+    primary_object: Optional[str] = FieldInfo(alias="primaryObject", default=None)
+
+    primary_object_id: Optional[str] = FieldInfo(alias="primaryObjectId", default=None)
+
+    tracking_type: Optional[
+        Literal[
+            "VISITED_URL",
+            "CLICKED_ELEMENT",
+            "CUSTOM_SCRIPT",
+            "MANUAL",
+            "IMPORT",
+            "PROPERTY_CHANGE",
+            "COMBO_EVENT",
+            "WEBHOOK",
+        ]
+    ] = FieldInfo(alias="trackingType", default=None)
+
+
+from .combo_event_rule_branch import ComboEventRuleBranch

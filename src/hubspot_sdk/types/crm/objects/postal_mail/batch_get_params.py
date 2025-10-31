@@ -22,7 +22,6 @@ class BatchGetParams(TypedDict, total=False):
     """Key-value pairs for setting properties for the new object and their histories."""
 
     archived: bool
-    """Whether to return only results that have been archived."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
     """

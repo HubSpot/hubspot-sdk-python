@@ -19,11 +19,9 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.crm.feature_flags import portal_update_params, portal_batch_delete_params, portal_batch_upsert_params
-from ....types.crm.feature_flags.portal_get_response import PortalGetResponse
-from ....types.crm.feature_flags.portal_delete_response import PortalDeleteResponse
-from ....types.crm.feature_flags.portal_update_response import PortalUpdateResponse
-from ....types.crm.feature_flags.portal_batch_delete_response import PortalBatchDeleteResponse
-from ....types.crm.feature_flags.portal_batch_upsert_response import PortalBatchUpsertResponse
+from ....types.crm.batch_portal_entry_param import BatchPortalEntryParam
+from ....types.crm.portal_flag_state_response import PortalFlagStateResponse
+from ....types.crm.portal_flag_state_batch_response import PortalFlagStateBatchResponse
 
 __all__ = ["PortalsResource", "AsyncPortalsResource"]
 
@@ -61,7 +59,7 @@ class PortalsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalUpdateResponse:
+    ) -> PortalFlagStateResponse:
         """
         Specify an account-level flag state for a specific HubSpot account.
 
@@ -82,7 +80,7 @@ class PortalsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalUpdateResponse,
+            cast_to=PortalFlagStateResponse,
         )
 
     def delete(
@@ -97,7 +95,7 @@ class PortalsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalDeleteResponse:
+    ) -> PortalFlagStateResponse:
         """Delete an account-level flag state for a specific HubSpot account.
 
         No request
@@ -119,7 +117,7 @@ class PortalsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalDeleteResponse,
+            cast_to=PortalFlagStateResponse,
         )
 
     def batch_delete(
@@ -134,7 +132,7 @@ class PortalsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalBatchDeleteResponse:
+    ) -> PortalFlagStateBatchResponse:
         """Delete an account-level flag state for multiple HubSpot accounts at once.
 
         Use
@@ -157,7 +155,7 @@ class PortalsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalBatchDeleteResponse,
+            cast_to=PortalFlagStateBatchResponse,
         )
 
     def batch_upsert(
@@ -165,14 +163,14 @@ class PortalsResource(SyncAPIResource):
         flag_name: str,
         *,
         app_id: int,
-        portal_states: Iterable[portal_batch_upsert_params.PortalState],
+        portal_states: Iterable[BatchPortalEntryParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalBatchUpsertResponse:
+    ) -> PortalFlagStateBatchResponse:
         """Set the portal flag state for multiple HubSpot accounts at once.
 
         Use this
@@ -195,7 +193,7 @@ class PortalsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalBatchUpsertResponse,
+            cast_to=PortalFlagStateBatchResponse,
         )
 
     def get(
@@ -210,7 +208,7 @@ class PortalsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalGetResponse:
+    ) -> PortalFlagStateResponse:
         """
         Retrieve the account-level flag state of a specific HubSpot account.
 
@@ -230,7 +228,7 @@ class PortalsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalGetResponse,
+            cast_to=PortalFlagStateResponse,
         )
 
 
@@ -267,7 +265,7 @@ class AsyncPortalsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalUpdateResponse:
+    ) -> PortalFlagStateResponse:
         """
         Specify an account-level flag state for a specific HubSpot account.
 
@@ -288,7 +286,7 @@ class AsyncPortalsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalUpdateResponse,
+            cast_to=PortalFlagStateResponse,
         )
 
     async def delete(
@@ -303,7 +301,7 @@ class AsyncPortalsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalDeleteResponse:
+    ) -> PortalFlagStateResponse:
         """Delete an account-level flag state for a specific HubSpot account.
 
         No request
@@ -325,7 +323,7 @@ class AsyncPortalsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalDeleteResponse,
+            cast_to=PortalFlagStateResponse,
         )
 
     async def batch_delete(
@@ -340,7 +338,7 @@ class AsyncPortalsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalBatchDeleteResponse:
+    ) -> PortalFlagStateBatchResponse:
         """Delete an account-level flag state for multiple HubSpot accounts at once.
 
         Use
@@ -365,7 +363,7 @@ class AsyncPortalsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalBatchDeleteResponse,
+            cast_to=PortalFlagStateBatchResponse,
         )
 
     async def batch_upsert(
@@ -373,14 +371,14 @@ class AsyncPortalsResource(AsyncAPIResource):
         flag_name: str,
         *,
         app_id: int,
-        portal_states: Iterable[portal_batch_upsert_params.PortalState],
+        portal_states: Iterable[BatchPortalEntryParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalBatchUpsertResponse:
+    ) -> PortalFlagStateBatchResponse:
         """Set the portal flag state for multiple HubSpot accounts at once.
 
         Use this
@@ -405,7 +403,7 @@ class AsyncPortalsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalBatchUpsertResponse,
+            cast_to=PortalFlagStateBatchResponse,
         )
 
     async def get(
@@ -420,7 +418,7 @@ class AsyncPortalsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalGetResponse:
+    ) -> PortalFlagStateResponse:
         """
         Retrieve the account-level flag state of a specific HubSpot account.
 
@@ -440,7 +438,7 @@ class AsyncPortalsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalGetResponse,
+            cast_to=PortalFlagStateResponse,
         )
 
 

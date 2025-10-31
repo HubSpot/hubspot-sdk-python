@@ -75,35 +75,8 @@ class SettingsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Blog]:
-        """Get the list of Blogs.
-
-        Supports paging and filtering. This method would be
-        useful for an integration that examined these models and used an external
-        service to suggest edits.
-
+        """
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
-
-          archived: Specifies whether to return archived Blogs. Defaults to `false`.
-
-          created_after: Only return Blogs created after the specified time.
-
-          created_at: Only return Blogs created at exactly the specified time.
-
-          created_before: Only return Blogs created before the specified time.
-
-          limit: The maximum number of results to return. Default is 100.
-
-          sort: Specifies which fields to use for sorting results. Valid fields are `name` and
-              `id`
-
-          updated_after: Only return Blogs last updated after the specified time.
-
-          updated_at: Only return Blogs last updated at exactly the specified time.
-
-          updated_before: Only return Blogs last updated before the specified time.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -154,8 +127,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Attach a blog to a multi-language group.
-
         Args:
           id: ID of the object to add to a multi-language group.
 
@@ -206,8 +177,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Blog:
         """
-        Create a new language variation from an existing blog
-
         Args:
           id: ID of blog to clone.
 
@@ -254,8 +223,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Detach a blog from a multi-language group.
-
         Args:
           id: ID of the object to remove from a multi-language group.
 
@@ -289,8 +256,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Blog:
         """
-        Retrieve the Blog object identified by the id in the path.
-
         Args:
           extra_headers: Send extra headers
 
@@ -323,8 +288,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VersionBlog:
         """
-        Retrieves a previous version of a Blog
-
         Args:
           extra_headers: Send extra headers
 
@@ -361,14 +324,7 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalVersionBlog:
         """
-        Retrieves all the previous versions of a Blog
-
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
-
-          limit: The maximum number of results to return. Default is 100.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -410,8 +366,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Set a blog as the primary language of a multi-language group.
-
         Args:
           id: ID of object to set as primary in multi-language group.
 
@@ -446,8 +400,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Explicitly set new languages for each blog in a multi-language group.
-
         Args:
           languages: Map of object IDs to associated languages of object in the multi-language group.
 
@@ -518,35 +470,8 @@ class AsyncSettingsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Blog, AsyncPage[Blog]]:
-        """Get the list of Blogs.
-
-        Supports paging and filtering. This method would be
-        useful for an integration that examined these models and used an external
-        service to suggest edits.
-
+        """
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
-
-          archived: Specifies whether to return archived Blogs. Defaults to `false`.
-
-          created_after: Only return Blogs created after the specified time.
-
-          created_at: Only return Blogs created at exactly the specified time.
-
-          created_before: Only return Blogs created before the specified time.
-
-          limit: The maximum number of results to return. Default is 100.
-
-          sort: Specifies which fields to use for sorting results. Valid fields are `name` and
-              `id`
-
-          updated_after: Only return Blogs last updated after the specified time.
-
-          updated_at: Only return Blogs last updated at exactly the specified time.
-
-          updated_before: Only return Blogs last updated before the specified time.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -597,8 +522,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Attach a blog to a multi-language group.
-
         Args:
           id: ID of the object to add to a multi-language group.
 
@@ -649,8 +572,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Blog:
         """
-        Create a new language variation from an existing blog
-
         Args:
           id: ID of blog to clone.
 
@@ -697,8 +618,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Detach a blog from a multi-language group.
-
         Args:
           id: ID of the object to remove from a multi-language group.
 
@@ -734,8 +653,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Blog:
         """
-        Retrieve the Blog object identified by the id in the path.
-
         Args:
           extra_headers: Send extra headers
 
@@ -768,8 +685,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VersionBlog:
         """
-        Retrieves a previous version of a Blog
-
         Args:
           extra_headers: Send extra headers
 
@@ -806,14 +721,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalVersionBlog:
         """
-        Retrieves all the previous versions of a Blog
-
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
-
-          limit: The maximum number of results to return. Default is 100.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -855,8 +763,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Set a blog as the primary language of a multi-language group.
-
         Args:
           id: ID of object to set as primary in multi-language group.
 
@@ -893,8 +799,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Explicitly set new languages for each blog in a multi-language group.
-
         Args:
           languages: Map of object IDs to associated languages of object in the multi-language group.
 

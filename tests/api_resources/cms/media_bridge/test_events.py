@@ -9,10 +9,10 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.cms.media_bridge import (
-    EventCreateMediaPlayedEventResponse,
-    EventCreateAttentionSpanEventResponse,
-    EventCreateMediaPlayedPercentEventResponse,
+from hubspot_sdk.types.cms import (
+    MediaPlayedEvent,
+    AttentionSpanEvent,
+    MediaPlayedPercentageEvent,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -30,7 +30,7 @@ class TestEvents:
             raw_data_map={"foo": 0},
             session_id="sessionId",
         )
-        assert_matches_type(EventCreateAttentionSpanEventResponse, event, path=["response"])
+        assert_matches_type(AttentionSpanEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -56,7 +56,7 @@ class TestEvents:
             page_url="pageUrl",
             raw_data_string="rawDataString",
         )
-        assert_matches_type(EventCreateAttentionSpanEventResponse, event, path=["response"])
+        assert_matches_type(AttentionSpanEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -71,7 +71,7 @@ class TestEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
-        assert_matches_type(EventCreateAttentionSpanEventResponse, event, path=["response"])
+        assert_matches_type(AttentionSpanEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -86,7 +86,7 @@ class TestEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = response.parse()
-            assert_matches_type(EventCreateAttentionSpanEventResponse, event, path=["response"])
+            assert_matches_type(AttentionSpanEvent, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -99,7 +99,7 @@ class TestEvents:
             session_id="sessionId",
             state="STARTED",
         )
-        assert_matches_type(EventCreateMediaPlayedEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -121,7 +121,7 @@ class TestEvents:
             page_name="pageName",
             page_url="pageUrl",
         )
-        assert_matches_type(EventCreateMediaPlayedEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -136,7 +136,7 @@ class TestEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
-        assert_matches_type(EventCreateMediaPlayedEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -151,7 +151,7 @@ class TestEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = response.parse()
-            assert_matches_type(EventCreateMediaPlayedEventResponse, event, path=["response"])
+            assert_matches_type(MediaPlayedEvent, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -164,7 +164,7 @@ class TestEvents:
             played_percent=0,
             session_id="sessionId",
         )
-        assert_matches_type(EventCreateMediaPlayedPercentEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedPercentageEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -185,7 +185,7 @@ class TestEvents:
             page_name="pageName",
             page_url="pageUrl",
         )
-        assert_matches_type(EventCreateMediaPlayedPercentEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedPercentageEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -200,7 +200,7 @@ class TestEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
-        assert_matches_type(EventCreateMediaPlayedPercentEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedPercentageEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -215,7 +215,7 @@ class TestEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = response.parse()
-            assert_matches_type(EventCreateMediaPlayedPercentEventResponse, event, path=["response"])
+            assert_matches_type(MediaPlayedPercentageEvent, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -234,7 +234,7 @@ class TestAsyncEvents:
             raw_data_map={"foo": 0},
             session_id="sessionId",
         )
-        assert_matches_type(EventCreateAttentionSpanEventResponse, event, path=["response"])
+        assert_matches_type(AttentionSpanEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -260,7 +260,7 @@ class TestAsyncEvents:
             page_url="pageUrl",
             raw_data_string="rawDataString",
         )
-        assert_matches_type(EventCreateAttentionSpanEventResponse, event, path=["response"])
+        assert_matches_type(AttentionSpanEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -275,7 +275,7 @@ class TestAsyncEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = await response.parse()
-        assert_matches_type(EventCreateAttentionSpanEventResponse, event, path=["response"])
+        assert_matches_type(AttentionSpanEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -290,7 +290,7 @@ class TestAsyncEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = await response.parse()
-            assert_matches_type(EventCreateAttentionSpanEventResponse, event, path=["response"])
+            assert_matches_type(AttentionSpanEvent, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -303,7 +303,7 @@ class TestAsyncEvents:
             session_id="sessionId",
             state="STARTED",
         )
-        assert_matches_type(EventCreateMediaPlayedEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -325,7 +325,7 @@ class TestAsyncEvents:
             page_name="pageName",
             page_url="pageUrl",
         )
-        assert_matches_type(EventCreateMediaPlayedEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -340,7 +340,7 @@ class TestAsyncEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = await response.parse()
-        assert_matches_type(EventCreateMediaPlayedEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -355,7 +355,7 @@ class TestAsyncEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = await response.parse()
-            assert_matches_type(EventCreateMediaPlayedEventResponse, event, path=["response"])
+            assert_matches_type(MediaPlayedEvent, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -368,7 +368,7 @@ class TestAsyncEvents:
             played_percent=0,
             session_id="sessionId",
         )
-        assert_matches_type(EventCreateMediaPlayedPercentEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedPercentageEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -389,7 +389,7 @@ class TestAsyncEvents:
             page_name="pageName",
             page_url="pageUrl",
         )
-        assert_matches_type(EventCreateMediaPlayedPercentEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedPercentageEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -404,7 +404,7 @@ class TestAsyncEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = await response.parse()
-        assert_matches_type(EventCreateMediaPlayedPercentEventResponse, event, path=["response"])
+        assert_matches_type(MediaPlayedPercentageEvent, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -419,6 +419,6 @@ class TestAsyncEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = await response.parse()
-            assert_matches_type(EventCreateMediaPlayedPercentEventResponse, event, path=["response"])
+            assert_matches_type(MediaPlayedPercentageEvent, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True

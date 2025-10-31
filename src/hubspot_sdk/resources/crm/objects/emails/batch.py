@@ -66,7 +66,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of emails
+        Create a batch of emails with specified properties and return the created
+        objects.
 
         Args:
           extra_headers: Send extra headers
@@ -98,7 +99,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of emails by internal ID, or unique property values
+        Update a batch of emails using their internal IDs or unique property values.
 
         Args:
           extra_headers: Send extra headers
@@ -130,7 +131,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a batch of emails by ID
+        Archive a batch of emails identified by their IDs.
 
         Args:
           extra_headers: Send extra headers
@@ -276,7 +277,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of emails
+        Create a batch of emails with specified properties and return the created
+        objects.
 
         Args:
           extra_headers: Send extra headers
@@ -308,7 +310,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of emails by internal ID, or unique property values
+        Update a batch of emails using their internal IDs or unique property values.
 
         Args:
           extra_headers: Send extra headers
@@ -340,7 +342,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a batch of emails by ID
+        Archive a batch of emails identified by their IDs.
 
         Args:
           extra_headers: Send extra headers

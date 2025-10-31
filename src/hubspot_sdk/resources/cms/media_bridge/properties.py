@@ -30,7 +30,7 @@ from ....types.shared_params.option_input import OptionInput
 from ....types.shared_params.property_name import PropertyName
 from ....types.shared_params.property_create import PropertyCreate
 from ....types.shared.batch_response_property import BatchResponseProperty
-from ....types.cms.media_bridge.property_list_response import PropertyListResponse
+from ....types.cms.collection_response_property_no_paging import CollectionResponsePropertyNoPaging
 
 __all__ = ["PropertiesResource", "AsyncPropertiesResource"]
 
@@ -230,7 +230,7 @@ class PropertiesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PropertyListResponse:
+    ) -> CollectionResponsePropertyNoPaging:
         """
         Get the existing properties defined for a media object type.
 
@@ -252,7 +252,7 @@ class PropertiesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PropertyListResponse,
+            cast_to=CollectionResponsePropertyNoPaging,
         )
 
     def delete(
@@ -654,7 +654,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PropertyListResponse:
+    ) -> CollectionResponsePropertyNoPaging:
         """
         Get the existing properties defined for a media object type.
 
@@ -676,7 +676,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PropertyListResponse,
+            cast_to=CollectionResponsePropertyNoPaging,
         )
 
     async def delete(

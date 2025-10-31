@@ -62,33 +62,7 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SettingsResponse:
         """
-        Set the menu label, target iframe URL, and dimensions for your calling
-        extension.
-
         Args:
-          name: The name of your calling service to display to users.
-
-          url: The URL to your phone/calling UI, built with the [Calling SDK](#).
-
-          height: The target height of the iframe that will contain your phone/calling UI.
-
-          is_ready: When true, this indicates that your calling app is ready for production. Users
-              will be able to select your calling app as their provider and can then click to
-              dial within HubSpot.
-
-          supports_custom_objects: When true, users will be able to click to dial from custom objects.
-
-          supports_inbound_calling: When true, this indicates that your calling app supports inbound calling within
-              HubSpot.
-
-          uses_calling_window: When false, this indicates that your calling app does not require the use of the
-              separate calling window to hold the call connection.
-
-          uses_remote: When false, this indicates that your calling app does not use the anchored
-              calling remote within the HubSpot app.
-
-          width: The target width of the iframe that will contain your phone/calling UI.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -140,32 +114,7 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SettingsResponse:
         """
-        Update existing calling extension settings.
-
         Args:
-          height: The target height of the iframe that will contain your phone/calling UI.
-
-          is_ready: When true, this indicates that your calling app is ready for production. Users
-              will be able to select your calling app as their provider and can then click to
-              dial within HubSpot.
-
-          name: The name of your calling service to display to users.
-
-          supports_custom_objects: When true, users will be able to click to dial from custom objects.
-
-          supports_inbound_calling: When true, this indicates that your calling app supports inbound calling within
-              HubSpot.
-
-          url: The URL to your phone/calling UI, built with the [Calling SDK](#).
-
-          uses_calling_window: When false, this indicates that your calling app does not require the use of the
-              separate calling window to hold the call connection.
-
-          uses_remote: When false, this indicates that your calling app does not use the anchored
-              calling remote within the HubSpot app.
-
-          width: The target width of the iframe that will contain your phone/calling UI.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -207,11 +156,7 @@ class SettingsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete a calling extension.
-
-        This will remove your service as an option for all
-        connected accounts.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -242,8 +187,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SettingsResponse:
         """
-        Retrieve the settings configured for the app.
-
         Args:
           extra_headers: Send extra headers
 
@@ -303,33 +246,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SettingsResponse:
         """
-        Set the menu label, target iframe URL, and dimensions for your calling
-        extension.
-
         Args:
-          name: The name of your calling service to display to users.
-
-          url: The URL to your phone/calling UI, built with the [Calling SDK](#).
-
-          height: The target height of the iframe that will contain your phone/calling UI.
-
-          is_ready: When true, this indicates that your calling app is ready for production. Users
-              will be able to select your calling app as their provider and can then click to
-              dial within HubSpot.
-
-          supports_custom_objects: When true, users will be able to click to dial from custom objects.
-
-          supports_inbound_calling: When true, this indicates that your calling app supports inbound calling within
-              HubSpot.
-
-          uses_calling_window: When false, this indicates that your calling app does not require the use of the
-              separate calling window to hold the call connection.
-
-          uses_remote: When false, this indicates that your calling app does not use the anchored
-              calling remote within the HubSpot app.
-
-          width: The target width of the iframe that will contain your phone/calling UI.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -381,32 +298,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SettingsResponse:
         """
-        Update existing calling extension settings.
-
         Args:
-          height: The target height of the iframe that will contain your phone/calling UI.
-
-          is_ready: When true, this indicates that your calling app is ready for production. Users
-              will be able to select your calling app as their provider and can then click to
-              dial within HubSpot.
-
-          name: The name of your calling service to display to users.
-
-          supports_custom_objects: When true, users will be able to click to dial from custom objects.
-
-          supports_inbound_calling: When true, this indicates that your calling app supports inbound calling within
-              HubSpot.
-
-          url: The URL to your phone/calling UI, built with the [Calling SDK](#).
-
-          uses_calling_window: When false, this indicates that your calling app does not require the use of the
-              separate calling window to hold the call connection.
-
-          uses_remote: When false, this indicates that your calling app does not use the anchored
-              calling remote within the HubSpot app.
-
-          width: The target width of the iframe that will contain your phone/calling UI.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -448,11 +340,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete a calling extension.
-
-        This will remove your service as an option for all
-        connected accounts.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -483,8 +371,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SettingsResponse:
         """
-        Retrieve the settings configured for the app.
-
         Args:
           extra_headers: Send extra headers
 

@@ -9,8 +9,8 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
+from hubspot_sdk.types.cms import CollectionResponsePropertyGroupNoPaging
 from hubspot_sdk.types.crm import PropertyGroup
-from hubspot_sdk.types.cms.media_bridge import GroupListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -99,7 +99,7 @@ class TestGroups:
             object_type="objectType",
             app_id="appId",
         )
-        assert_matches_type(GroupListResponse, group, path=["response"])
+        assert_matches_type(CollectionResponsePropertyGroupNoPaging, group, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -112,7 +112,7 @@ class TestGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         group = response.parse()
-        assert_matches_type(GroupListResponse, group, path=["response"])
+        assert_matches_type(CollectionResponsePropertyGroupNoPaging, group, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -125,7 +125,7 @@ class TestGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             group = response.parse()
-            assert_matches_type(GroupListResponse, group, path=["response"])
+            assert_matches_type(CollectionResponsePropertyGroupNoPaging, group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -435,7 +435,7 @@ class TestAsyncGroups:
             object_type="objectType",
             app_id="appId",
         )
-        assert_matches_type(GroupListResponse, group, path=["response"])
+        assert_matches_type(CollectionResponsePropertyGroupNoPaging, group, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -448,7 +448,7 @@ class TestAsyncGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         group = await response.parse()
-        assert_matches_type(GroupListResponse, group, path=["response"])
+        assert_matches_type(CollectionResponsePropertyGroupNoPaging, group, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -461,7 +461,7 @@ class TestAsyncGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             group = await response.parse()
-            assert_matches_type(GroupListResponse, group, path=["response"])
+            assert_matches_type(CollectionResponsePropertyGroupNoPaging, group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -58,15 +58,7 @@ class ChannelConnectionSettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelConnectionSettingsResponse:
         """
-        Configure
-        [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#create-channel-connection-settings)
-        for the app.
-
         Args:
-          is_ready: If true, this app will be considered to support channel connection
-
-          url: The URL to fetch phone numbers available for channel connection
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -104,15 +96,7 @@ class ChannelConnectionSettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelConnectionSettingsResponse:
         """
-        Update existing
-        [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#manage-the-webhook-settings-for-channel-connection)
-        for your app.
-
         Args:
-          is_ready: If true, this app will be considered to support channel connection
-
-          url: The URL to fetch phone numbers available for channel connection
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -148,10 +132,6 @@ class ChannelConnectionSettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete the
-        [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#delete-existing-channel-connection-settings)
-        for the app.
-
         Args:
           extra_headers: Send extra headers
 
@@ -182,9 +162,6 @@ class ChannelConnectionSettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelConnectionSettingsResponse:
         """
-        Retrieve the settings related to the app's
-        [channel connection](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#fetch-existing-channel-connection-settings).
-
         Args:
           extra_headers: Send extra headers
 
@@ -237,15 +214,7 @@ class AsyncChannelConnectionSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelConnectionSettingsResponse:
         """
-        Configure
-        [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#create-channel-connection-settings)
-        for the app.
-
         Args:
-          is_ready: If true, this app will be considered to support channel connection
-
-          url: The URL to fetch phone numbers available for channel connection
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -283,15 +252,7 @@ class AsyncChannelConnectionSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelConnectionSettingsResponse:
         """
-        Update existing
-        [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#manage-the-webhook-settings-for-channel-connection)
-        for your app.
-
         Args:
-          is_ready: If true, this app will be considered to support channel connection
-
-          url: The URL to fetch phone numbers available for channel connection
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -327,10 +288,6 @@ class AsyncChannelConnectionSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete the
-        [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#delete-existing-channel-connection-settings)
-        for the app.
-
         Args:
           extra_headers: Send extra headers
 
@@ -361,9 +318,6 @@ class AsyncChannelConnectionSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelConnectionSettingsResponse:
         """
-        Retrieve the settings related to the app's
-        [channel connection](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#fetch-existing-channel-connection-settings).
-
         Args:
           extra_headers: Send extra headers
 

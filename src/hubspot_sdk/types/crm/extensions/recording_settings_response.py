@@ -9,3 +9,4 @@ __all__ = ["RecordingSettingsResponse"]
 
 class RecordingSettingsResponse(BaseModel):
     url_to_retrieve_authed_recording: str = FieldInfo(alias="urlToRetrieveAuthedRecording")
+    """The URL used to retrieve authenticated call recordings."""

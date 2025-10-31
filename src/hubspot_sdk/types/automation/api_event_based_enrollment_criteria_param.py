@@ -40,24 +40,12 @@ class APIEventBasedEnrollmentCriteriaParam(TypedDict, total=False):
     list_membership_filter_branches: Required[
         Annotated[Iterable[ListMembershipFilterBranch], PropertyInfo(alias="listMembershipFilterBranches")]
     ]
-    """
-    If you want to listen to list-membership events (an object was added to a list,
-    an object was removed from a list) you need to use this
-    `listMembershipFilterBranches` property instead of `eventFilterBranches`,
-    because list membership events work differently.
-    """
 
     should_re_enroll: Required[Annotated[bool, PropertyInfo(alias="shouldReEnroll")]]
-    """Whether or not the same object can enroll in this workflow twice."""
 
     type: Required[Literal["EVENT_BASED"]]
-    """
-    The type of enrollment criteria this is, this can be "LIST_BASED",
-    "EVENT_BASED", or "MANUAL".
-    """
 
     refinement_criteria: Annotated[RefinementCriteria, PropertyInfo(alias="refinementCriteria")]
-    """List-based criteria to further refine which contacts will enroll in this flow."""
 
 
 from ..shared_params.public_or_filter_branch import PublicOrFilterBranch

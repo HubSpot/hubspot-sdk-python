@@ -12,7 +12,6 @@ __all__ = ["APIYearlyEnrollmentSchedule"]
 
 class APIYearlyEnrollmentSchedule(BaseModel):
     day_of_month: int = FieldInfo(alias="dayOfMonth")
-    """The day of the date each year to run this flow."""
 
     month: Literal[
         "JANUARY",
@@ -28,12 +27,7 @@ class APIYearlyEnrollmentSchedule(BaseModel):
         "NOVEMBER",
         "DECEMBER",
     ]
-    """The month of the date each year to run this flow."""
 
     time_of_day: APITimeOfDay = FieldInfo(alias="timeOfDay")
 
     type: Literal["YEARLY"]
-    """
-    The type of enrollment schedule this is, can be: "DAILY", "WEEKLY",
-    "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY"
-    """

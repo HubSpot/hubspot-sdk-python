@@ -18,10 +18,8 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.crm.feature_flags import app_update_params, app_list_portals_params
-from ....types.crm.feature_flags.app_get_response import AppGetResponse
-from ....types.crm.feature_flags.app_delete_response import AppDeleteResponse
-from ....types.crm.feature_flags.app_update_response import AppUpdateResponse
-from ....types.crm.feature_flags.app_list_portals_response import AppListPortalsResponse
+from ....types.crm.flag_response import FlagResponse
+from ....types.crm.portal_flag_state_batch_response import PortalFlagStateBatchResponse
 
 __all__ = ["AppsResource", "AsyncAppsResource"]
 
@@ -59,7 +57,7 @@ class AppsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AppUpdateResponse:
+    ) -> FlagResponse:
         """Set a feature flag for an app.
 
         For example, update the `hs-hide-crm-cards`
@@ -88,7 +86,7 @@ class AppsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AppUpdateResponse,
+            cast_to=FlagResponse,
         )
 
     def delete(
@@ -102,7 +100,7 @@ class AppsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AppDeleteResponse:
+    ) -> FlagResponse:
         """Delete a feature flag in an app.
 
         For example, delete the `hs-release-app-cards`
@@ -124,7 +122,7 @@ class AppsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AppDeleteResponse,
+            cast_to=FlagResponse,
         )
 
     def get(
@@ -138,7 +136,7 @@ class AppsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AppGetResponse:
+    ) -> FlagResponse:
         """Retrieve the current status of the app's feature flags.
 
         No request body is
@@ -160,7 +158,7 @@ class AppsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AppGetResponse,
+            cast_to=FlagResponse,
         )
 
     def list_portals(
@@ -176,7 +174,7 @@ class AppsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AppListPortalsResponse:
+    ) -> PortalFlagStateBatchResponse:
         """
         Retrieve a list of HubSpot accounts with an account-level flag setting for the
         specified app. No request body is included.
@@ -211,7 +209,7 @@ class AppsResource(SyncAPIResource):
                     app_list_portals_params.AppListPortalsParams,
                 ),
             ),
-            cast_to=AppListPortalsResponse,
+            cast_to=PortalFlagStateBatchResponse,
         )
 
 
@@ -248,7 +246,7 @@ class AsyncAppsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AppUpdateResponse:
+    ) -> FlagResponse:
         """Set a feature flag for an app.
 
         For example, update the `hs-hide-crm-cards`
@@ -277,7 +275,7 @@ class AsyncAppsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AppUpdateResponse,
+            cast_to=FlagResponse,
         )
 
     async def delete(
@@ -291,7 +289,7 @@ class AsyncAppsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AppDeleteResponse:
+    ) -> FlagResponse:
         """Delete a feature flag in an app.
 
         For example, delete the `hs-release-app-cards`
@@ -313,7 +311,7 @@ class AsyncAppsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AppDeleteResponse,
+            cast_to=FlagResponse,
         )
 
     async def get(
@@ -327,7 +325,7 @@ class AsyncAppsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AppGetResponse:
+    ) -> FlagResponse:
         """Retrieve the current status of the app's feature flags.
 
         No request body is
@@ -349,7 +347,7 @@ class AsyncAppsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AppGetResponse,
+            cast_to=FlagResponse,
         )
 
     async def list_portals(
@@ -365,7 +363,7 @@ class AsyncAppsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AppListPortalsResponse:
+    ) -> PortalFlagStateBatchResponse:
         """
         Retrieve a list of HubSpot accounts with an account-level flag setting for the
         specified app. No request body is included.
@@ -400,7 +398,7 @@ class AsyncAppsResource(AsyncAPIResource):
                     app_list_portals_params.AppListPortalsParams,
                 ),
             ),
-            cast_to=AppListPortalsResponse,
+            cast_to=PortalFlagStateBatchResponse,
         )
 
 

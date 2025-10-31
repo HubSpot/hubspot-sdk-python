@@ -13,7 +13,5 @@ class APIFlowBatchFetchMigrationWorkflowIDCoordinateParam(TypedDict, total=False
     flow_migration_status_for_classic_workflows: Required[
         Annotated[str, PropertyInfo(alias="flowMigrationStatusForClassicWorkflows")]
     ]
-    """The workflowId from the V3 API"""
 
     type: Required[Literal["WORKFLOW_ID"]]
-    """The type of input this is, can be FLOW_ID or WORKFLOW_ID"""

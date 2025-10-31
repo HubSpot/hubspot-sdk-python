@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
-from ...shared_params.association_spec import AssociationSpec
+from .association_spec_1_param import AssociationSpec1Param
 
 __all__ = ["V4UpdateParams"]
 
@@ -18,4 +18,4 @@ class V4UpdateParams(TypedDict, total=False):
 
     to_object_type: Required[Annotated[str, PropertyInfo(alias="toObjectType")]]
 
-    body: Required[Iterable[AssociationSpec]]
+    body: Required[Iterable[AssociationSpec1Param]]

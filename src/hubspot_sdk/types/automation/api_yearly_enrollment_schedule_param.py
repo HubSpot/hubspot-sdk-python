@@ -12,7 +12,6 @@ __all__ = ["APIYearlyEnrollmentScheduleParam"]
 
 class APIYearlyEnrollmentScheduleParam(TypedDict, total=False):
     day_of_month: Required[Annotated[int, PropertyInfo(alias="dayOfMonth")]]
-    """The day of the date each year to run this flow."""
 
     month: Required[
         Literal[
@@ -30,12 +29,7 @@ class APIYearlyEnrollmentScheduleParam(TypedDict, total=False):
             "DECEMBER",
         ]
     ]
-    """The month of the date each year to run this flow."""
 
     time_of_day: Required[Annotated[APITimeOfDayParam, PropertyInfo(alias="timeOfDay")]]
 
     type: Required[Literal["YEARLY"]]
-    """
-    The type of enrollment schedule this is, can be: "DAILY", "WEEKLY",
-    "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY"
-    """

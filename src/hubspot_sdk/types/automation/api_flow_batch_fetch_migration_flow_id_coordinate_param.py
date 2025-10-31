@@ -11,7 +11,5 @@ __all__ = ["APIFlowBatchFetchMigrationFlowIDCoordinateParam"]
 
 class APIFlowBatchFetchMigrationFlowIDCoordinateParam(TypedDict, total=False):
     flow_migration_statuses: Required[Annotated[str, PropertyInfo(alias="flowMigrationStatuses")]]
-    """The flowId from the V4 API"""
 
     type: Required[Literal["FLOW_ID"]]
-    """The type of input this is, can be FLOW_ID or WORKFLOW_ID"""

@@ -22,8 +22,8 @@ class TestSettings:
     def test_method_create(self, client: Hubspot) -> None:
         setting = client.crm.extensions.calling.settings.create(
             app_id=0,
-            name="HubPhone",
-            url="https://www.example.com/hubspot/iframe",
+            name="name",
+            url="url",
         )
         assert_matches_type(SettingsResponse, setting, path=["response"])
 
@@ -32,15 +32,15 @@ class TestSettings:
     def test_method_create_with_all_params(self, client: Hubspot) -> None:
         setting = client.crm.extensions.calling.settings.create(
             app_id=0,
-            name="HubPhone",
-            url="https://www.example.com/hubspot/iframe",
-            height=350,
+            name="name",
+            url="url",
+            height=0,
             is_ready=True,
             supports_custom_objects=True,
             supports_inbound_calling=True,
             uses_calling_window=True,
             uses_remote=True,
-            width=200,
+            width=0,
         )
         assert_matches_type(SettingsResponse, setting, path=["response"])
 
@@ -49,8 +49,8 @@ class TestSettings:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.extensions.calling.settings.with_raw_response.create(
             app_id=0,
-            name="HubPhone",
-            url="https://www.example.com/hubspot/iframe",
+            name="name",
+            url="url",
         )
 
         assert response.is_closed is True
@@ -63,8 +63,8 @@ class TestSettings:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.extensions.calling.settings.with_streaming_response.create(
             app_id=0,
-            name="HubPhone",
-            url="https://www.example.com/hubspot/iframe",
+            name="name",
+            url="url",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -204,8 +204,8 @@ class TestAsyncSettings:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         setting = await async_client.crm.extensions.calling.settings.create(
             app_id=0,
-            name="HubPhone",
-            url="https://www.example.com/hubspot/iframe",
+            name="name",
+            url="url",
         )
         assert_matches_type(SettingsResponse, setting, path=["response"])
 
@@ -214,15 +214,15 @@ class TestAsyncSettings:
     async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         setting = await async_client.crm.extensions.calling.settings.create(
             app_id=0,
-            name="HubPhone",
-            url="https://www.example.com/hubspot/iframe",
-            height=350,
+            name="name",
+            url="url",
+            height=0,
             is_ready=True,
             supports_custom_objects=True,
             supports_inbound_calling=True,
             uses_calling_window=True,
             uses_remote=True,
-            width=200,
+            width=0,
         )
         assert_matches_type(SettingsResponse, setting, path=["response"])
 
@@ -231,8 +231,8 @@ class TestAsyncSettings:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.extensions.calling.settings.with_raw_response.create(
             app_id=0,
-            name="HubPhone",
-            url="https://www.example.com/hubspot/iframe",
+            name="name",
+            url="url",
         )
 
         assert response.is_closed is True
@@ -245,8 +245,8 @@ class TestAsyncSettings:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.extensions.calling.settings.with_streaming_response.create(
             app_id=0,
-            name="HubPhone",
-            url="https://www.example.com/hubspot/iframe",
+            name="name",
+            url="url",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

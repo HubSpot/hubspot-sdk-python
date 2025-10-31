@@ -9,7 +9,10 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm import PropertyValidationGetResponse, PropertyValidationListResponse
+from hubspot_sdk.types.crm import (
+    CollectionResponsePublicPropertyValidationRuleNoPaging,
+    CollectionResponsePublicPropertyValidationRuleMapNoPaging,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +26,9 @@ class TestPropertyValidations:
         property_validation = client.crm.property_validations.list(
             "objectTypeId",
         )
-        assert_matches_type(PropertyValidationListResponse, property_validation, path=["response"])
+        assert_matches_type(
+            CollectionResponsePublicPropertyValidationRuleMapNoPaging, property_validation, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -35,7 +40,9 @@ class TestPropertyValidations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property_validation = response.parse()
-        assert_matches_type(PropertyValidationListResponse, property_validation, path=["response"])
+        assert_matches_type(
+            CollectionResponsePublicPropertyValidationRuleMapNoPaging, property_validation, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -47,7 +54,9 @@ class TestPropertyValidations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property_validation = response.parse()
-            assert_matches_type(PropertyValidationListResponse, property_validation, path=["response"])
+            assert_matches_type(
+                CollectionResponsePublicPropertyValidationRuleMapNoPaging, property_validation, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
@@ -66,7 +75,9 @@ class TestPropertyValidations:
             property_name="propertyName",
             object_type_id="objectTypeId",
         )
-        assert_matches_type(PropertyValidationGetResponse, property_validation, path=["response"])
+        assert_matches_type(
+            CollectionResponsePublicPropertyValidationRuleNoPaging, property_validation, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -79,7 +90,9 @@ class TestPropertyValidations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property_validation = response.parse()
-        assert_matches_type(PropertyValidationGetResponse, property_validation, path=["response"])
+        assert_matches_type(
+            CollectionResponsePublicPropertyValidationRuleNoPaging, property_validation, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -92,7 +105,9 @@ class TestPropertyValidations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property_validation = response.parse()
-            assert_matches_type(PropertyValidationGetResponse, property_validation, path=["response"])
+            assert_matches_type(
+                CollectionResponsePublicPropertyValidationRuleNoPaging, property_validation, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
@@ -123,7 +138,9 @@ class TestAsyncPropertyValidations:
         property_validation = await async_client.crm.property_validations.list(
             "objectTypeId",
         )
-        assert_matches_type(PropertyValidationListResponse, property_validation, path=["response"])
+        assert_matches_type(
+            CollectionResponsePublicPropertyValidationRuleMapNoPaging, property_validation, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -135,7 +152,9 @@ class TestAsyncPropertyValidations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property_validation = await response.parse()
-        assert_matches_type(PropertyValidationListResponse, property_validation, path=["response"])
+        assert_matches_type(
+            CollectionResponsePublicPropertyValidationRuleMapNoPaging, property_validation, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -147,7 +166,9 @@ class TestAsyncPropertyValidations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property_validation = await response.parse()
-            assert_matches_type(PropertyValidationListResponse, property_validation, path=["response"])
+            assert_matches_type(
+                CollectionResponsePublicPropertyValidationRuleMapNoPaging, property_validation, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
@@ -166,7 +187,9 @@ class TestAsyncPropertyValidations:
             property_name="propertyName",
             object_type_id="objectTypeId",
         )
-        assert_matches_type(PropertyValidationGetResponse, property_validation, path=["response"])
+        assert_matches_type(
+            CollectionResponsePublicPropertyValidationRuleNoPaging, property_validation, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -179,7 +202,9 @@ class TestAsyncPropertyValidations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property_validation = await response.parse()
-        assert_matches_type(PropertyValidationGetResponse, property_validation, path=["response"])
+        assert_matches_type(
+            CollectionResponsePublicPropertyValidationRuleNoPaging, property_validation, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -192,7 +217,9 @@ class TestAsyncPropertyValidations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property_validation = await response.parse()
-            assert_matches_type(PropertyValidationGetResponse, property_validation, path=["response"])
+            assert_matches_type(
+                CollectionResponsePublicPropertyValidationRuleNoPaging, property_validation, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 

@@ -18,12 +18,7 @@ class APIWeeklyEnrollmentScheduleParam(TypedDict, total=False):
             PropertyInfo(alias="daysOfWeek"),
         ]
     ]
-    """Which days of the week to allow enrollments."""
 
     time_of_day: Required[Annotated[APITimeOfDayParam, PropertyInfo(alias="timeOfDay")]]
 
     type: Required[Literal["WEEKLY"]]
-    """
-    The type of enrollment schedule this is, can be: "DAILY", "WEEKLY",
-    "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY"
-    """

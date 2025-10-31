@@ -11,7 +11,5 @@ __all__ = ["ChannelConnectionSettingCreateParams"]
 
 class ChannelConnectionSettingCreateParams(TypedDict, total=False):
     is_ready: Required[Annotated[bool, PropertyInfo(alias="isReady")]]
-    """If true, this app will be considered to support channel connection"""
 
     url: Required[str]
-    """The URL to fetch phone numbers available for channel connection"""

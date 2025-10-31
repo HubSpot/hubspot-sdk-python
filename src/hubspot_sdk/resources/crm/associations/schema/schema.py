@@ -54,8 +54,6 @@ class SchemaResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicAssociationDefinitionNoPaging:
         """
-        List all the valid association types available between two object types
-
         Args:
           extra_headers: Send extra headers
 
@@ -111,8 +109,6 @@ class AsyncSchemaResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicAssociationDefinitionNoPaging:
         """
-        List all the valid association types available between two object types
-
         Args:
           extra_headers: Send extra headers
 

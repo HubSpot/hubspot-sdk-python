@@ -18,9 +18,7 @@ from hubspot_sdk._response import (
     AsyncStreamedBinaryAPIResponse,
 )
 from hubspot_sdk.types.cms import (
-    SourceCodeCreateResponse,
-    SourceCodeUpsertResponse,
-    SourceCodeGetMetadataResponse,
+    AssetFileMetadata,
 )
 from hubspot_sdk.types.shared import TaskLocator, ActionResponse
 
@@ -41,7 +39,7 @@ class TestSourceCode:
                 environment="environment",
             )
 
-        assert_matches_type(SourceCodeCreateResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -53,7 +51,7 @@ class TestSourceCode:
                 file=b"raw file contents",
             )
 
-        assert_matches_type(SourceCodeCreateResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -67,7 +65,7 @@ class TestSourceCode:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         source_code = response.parse()
-        assert_matches_type(SourceCodeCreateResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -81,7 +79,7 @@ class TestSourceCode:
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
                 source_code = response.parse()
-                assert_matches_type(SourceCodeCreateResponse, source_code, path=["response"])
+                assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -294,7 +292,7 @@ class TestSourceCode:
             path="path",
             environment="environment",
         )
-        assert_matches_type(SourceCodeGetMetadataResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -304,7 +302,7 @@ class TestSourceCode:
             environment="environment",
             properties="properties",
         )
-        assert_matches_type(SourceCodeGetMetadataResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -317,7 +315,7 @@ class TestSourceCode:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         source_code = response.parse()
-        assert_matches_type(SourceCodeGetMetadataResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -330,7 +328,7 @@ class TestSourceCode:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             source_code = response.parse()
-            assert_matches_type(SourceCodeGetMetadataResponse, source_code, path=["response"])
+            assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -356,7 +354,7 @@ class TestSourceCode:
             path="path",
             environment="environment",
         )
-        assert_matches_type(SourceCodeUpsertResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -366,7 +364,7 @@ class TestSourceCode:
             environment="environment",
             file=b"raw file contents",
         )
-        assert_matches_type(SourceCodeUpsertResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -379,7 +377,7 @@ class TestSourceCode:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         source_code = response.parse()
-        assert_matches_type(SourceCodeUpsertResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -392,7 +390,7 @@ class TestSourceCode:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             source_code = response.parse()
-            assert_matches_type(SourceCodeUpsertResponse, source_code, path=["response"])
+            assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -508,7 +506,7 @@ class TestAsyncSourceCode:
                 environment="environment",
             )
 
-        assert_matches_type(SourceCodeCreateResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -520,7 +518,7 @@ class TestAsyncSourceCode:
                 file=b"raw file contents",
             )
 
-        assert_matches_type(SourceCodeCreateResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -534,7 +532,7 @@ class TestAsyncSourceCode:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         source_code = await response.parse()
-        assert_matches_type(SourceCodeCreateResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -548,7 +546,7 @@ class TestAsyncSourceCode:
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
                 source_code = await response.parse()
-                assert_matches_type(SourceCodeCreateResponse, source_code, path=["response"])
+                assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -761,7 +759,7 @@ class TestAsyncSourceCode:
             path="path",
             environment="environment",
         )
-        assert_matches_type(SourceCodeGetMetadataResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -771,7 +769,7 @@ class TestAsyncSourceCode:
             environment="environment",
             properties="properties",
         )
-        assert_matches_type(SourceCodeGetMetadataResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -784,7 +782,7 @@ class TestAsyncSourceCode:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         source_code = await response.parse()
-        assert_matches_type(SourceCodeGetMetadataResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -797,7 +795,7 @@ class TestAsyncSourceCode:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             source_code = await response.parse()
-            assert_matches_type(SourceCodeGetMetadataResponse, source_code, path=["response"])
+            assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -823,7 +821,7 @@ class TestAsyncSourceCode:
             path="path",
             environment="environment",
         )
-        assert_matches_type(SourceCodeUpsertResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -833,7 +831,7 @@ class TestAsyncSourceCode:
             environment="environment",
             file=b"raw file contents",
         )
-        assert_matches_type(SourceCodeUpsertResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -846,7 +844,7 @@ class TestAsyncSourceCode:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         source_code = await response.parse()
-        assert_matches_type(SourceCodeUpsertResponse, source_code, path=["response"])
+        assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -859,7 +857,7 @@ class TestAsyncSourceCode:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             source_code = await response.parse()
-            assert_matches_type(SourceCodeUpsertResponse, source_code, path=["response"])
+            assert_matches_type(AssetFileMetadata, source_code, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

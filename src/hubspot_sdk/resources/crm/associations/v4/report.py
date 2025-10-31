@@ -14,7 +14,7 @@ from ....._response import (
     async_to_streamed_response_wrapper,
 )
 from ....._base_client import make_request_options
-from .....types.crm.associations.report_creation_response import ReportCreationResponse
+from .....types.crm.report_creation_response import ReportCreationResponse
 
 __all__ = ["ReportResource", "AsyncReportResource"]
 

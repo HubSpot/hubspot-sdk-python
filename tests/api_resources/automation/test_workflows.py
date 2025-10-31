@@ -290,7 +290,7 @@ class TestWorkflows:
         workflow = client.automation.workflows.batch_get_id_mappings(
             inputs=[
                 {
-                    "flow_migration_statuses": "12345",
+                    "flow_migration_statuses": "flowMigrationStatuses",
                     "type": "FLOW_ID",
                 }
             ],
@@ -303,7 +303,7 @@ class TestWorkflows:
         response = client.automation.workflows.with_raw_response.batch_get_id_mappings(
             inputs=[
                 {
-                    "flow_migration_statuses": "12345",
+                    "flow_migration_statuses": "flowMigrationStatuses",
                     "type": "FLOW_ID",
                 }
             ],
@@ -320,7 +320,7 @@ class TestWorkflows:
         with client.automation.workflows.with_streaming_response.batch_get_id_mappings(
             inputs=[
                 {
-                    "flow_migration_statuses": "12345",
+                    "flow_migration_statuses": "flowMigrationStatuses",
                     "type": "FLOW_ID",
                 }
             ],
@@ -686,7 +686,7 @@ class TestAsyncWorkflows:
         workflow = await async_client.automation.workflows.batch_get_id_mappings(
             inputs=[
                 {
-                    "flow_migration_statuses": "12345",
+                    "flow_migration_statuses": "flowMigrationStatuses",
                     "type": "FLOW_ID",
                 }
             ],
@@ -699,7 +699,7 @@ class TestAsyncWorkflows:
         response = await async_client.automation.workflows.with_raw_response.batch_get_id_mappings(
             inputs=[
                 {
-                    "flow_migration_statuses": "12345",
+                    "flow_migration_statuses": "flowMigrationStatuses",
                     "type": "FLOW_ID",
                 }
             ],
@@ -716,7 +716,7 @@ class TestAsyncWorkflows:
         async with async_client.automation.workflows.with_streaming_response.batch_get_id_mappings(
             inputs=[
                 {
-                    "flow_migration_statuses": "12345",
+                    "flow_migration_statuses": "flowMigrationStatuses",
                     "type": "FLOW_ID",
                 }
             ],

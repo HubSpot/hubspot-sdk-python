@@ -24,18 +24,14 @@ from .....types.crm.associations.v4 import (
     batch_delete_labels_params,
     batch_create_default_params,
 )
-from .....types.crm.associations.batch_response_void import BatchResponseVoid
+from .....types.crm.batch_response_void import BatchResponseVoid
+from .....types.crm.public_association_multi_post_param import PublicAssociationMultiPostParam
+from .....types.crm.public_association_multi_archive_param import PublicAssociationMultiArchiveParam
+from .....types.crm.batch_response_labels_between_object_pair import BatchResponseLabelsBetweenObjectPair
 from .....types.crm.batch_response_public_default_association import BatchResponsePublicDefaultAssociation
-from .....types.crm.associations.public_association_multi_post_param import PublicAssociationMultiPostParam
-from .....types.crm.associations.public_association_multi_archive_param import PublicAssociationMultiArchiveParam
-from .....types.crm.associations.batch_response_labels_between_object_pair import BatchResponseLabelsBetweenObjectPair
-from .....types.crm.associations.public_default_association_multi_post_param import (
-    PublicDefaultAssociationMultiPostParam,
-)
-from .....types.crm.associations.public_fetch_associations_batch_request_param import (
-    PublicFetchAssociationsBatchRequestParam,
-)
-from .....types.crm.associations.batch_response_public_association_multi_with_label import (
+from .....types.crm.public_default_association_multi_post_param import PublicDefaultAssociationMultiPostParam
+from .....types.crm.public_fetch_associations_batch_request_param import PublicFetchAssociationsBatchRequestParam
+from .....types.crm.batch_response_public_association_multi_with_label import (
     BatchResponsePublicAssociationMultiWithLabel,
 )
 

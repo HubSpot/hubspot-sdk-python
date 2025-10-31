@@ -12,10 +12,5 @@ __all__ = ["APIStaticBranchParam"]
 
 class APIStaticBranchParam(TypedDict, total=False):
     branch_value: Required[Annotated[str, PropertyInfo(alias="branchValue")]]
-    """If value to check for.
-
-    If the value of the `inputValue` matches this `branchValue` than this
-    `connection` will get traversed.
-    """
 
     connection: APIConnectionParam

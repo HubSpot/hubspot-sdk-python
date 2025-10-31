@@ -9,11 +9,5 @@ __all__ = ["WorkflowListParams"]
 
 class WorkflowListParams(TypedDict, total=False):
     after: str
-    """
-    The paging cursor token of the last successfully read resource will be returned
-    as the `paging.next.after` JSON property of a paged response containing more
-    results.
-    """
 
     limit: int
-    """The maximum number of results to display per page."""

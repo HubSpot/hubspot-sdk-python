@@ -16,9 +16,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.conversations import visitor_identification_generate_token_params
-from ...types.conversations.visitor_identification_generate_token_response import (
-    VisitorIdentificationGenerateTokenResponse,
-)
+from ...types.conversations.identification_token_response import IdentificationTokenResponse
 
 __all__ = ["VisitorIdentificationResource", "AsyncVisitorIdentificationResource"]
 
@@ -55,13 +53,8 @@ class VisitorIdentificationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> VisitorIdentificationGenerateTokenResponse:
-        """Generates a new visitor identification token.
-
-        This token will be unique every
-        time this endpoint is called, even if called with the same email address. This
-        token is temporary and will expire after 12 hours
-
+    ) -> IdentificationTokenResponse:
+        """
         Args:
           email: The email of the visitor that you wish to identify
 
@@ -94,7 +87,7 @@ class VisitorIdentificationResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=VisitorIdentificationGenerateTokenResponse,
+            cast_to=IdentificationTokenResponse,
         )
 
 
@@ -130,13 +123,8 @@ class AsyncVisitorIdentificationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> VisitorIdentificationGenerateTokenResponse:
-        """Generates a new visitor identification token.
-
-        This token will be unique every
-        time this endpoint is called, even if called with the same email address. This
-        token is temporary and will expire after 12 hours
-
+    ) -> IdentificationTokenResponse:
+        """
         Args:
           email: The email of the visitor that you wish to identify
 
@@ -169,7 +157,7 @@ class AsyncVisitorIdentificationResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=VisitorIdentificationGenerateTokenResponse,
+            cast_to=IdentificationTokenResponse,
         )
 
 

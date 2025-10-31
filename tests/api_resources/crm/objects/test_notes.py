@@ -38,7 +38,7 @@ class TestNotes:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "37295"},
+                    "to": {"id": "id"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -384,7 +384,7 @@ class TestAsyncNotes:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "37295"},
+                    "to": {"id": "id"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",

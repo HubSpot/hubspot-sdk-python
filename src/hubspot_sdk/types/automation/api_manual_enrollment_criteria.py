@@ -11,10 +11,5 @@ __all__ = ["APIManualEnrollmentCriteria"]
 
 class APIManualEnrollmentCriteria(BaseModel):
     should_re_enroll: bool = FieldInfo(alias="shouldReEnroll")
-    """Whether or not the same object can enroll in this workflow twice."""
 
     type: Literal["MANUAL"]
-    """
-    The type of enrollment criteria this is, this can be "LIST_BASED",
-    "EVENT_BASED", or "MANUAL".
-    """

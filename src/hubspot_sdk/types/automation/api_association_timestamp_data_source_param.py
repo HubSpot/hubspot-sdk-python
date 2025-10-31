@@ -17,6 +17,7 @@ class APIAssociationTimestampDataSourceParam(TypedDict, total=False):
     ]
 
     association_type_id: Required[Annotated[int, PropertyInfo(alias="associationTypeId")]]
+    """The ID representing the type of association."""
 
     name: Required[str]
 

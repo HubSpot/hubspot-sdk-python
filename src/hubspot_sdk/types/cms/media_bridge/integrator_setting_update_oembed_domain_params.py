@@ -4,23 +4,15 @@ from __future__ import annotations
 
 from typing_extensions import Required, Annotated, TypedDict
 
-from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
+from ..endpoints_param import EndpointsParam
 
-__all__ = ["IntegratorSettingUpdateOembedDomainParams", "Endpoints"]
+__all__ = ["IntegratorSettingUpdateOembedDomainParams"]
 
 
 class IntegratorSettingUpdateOembedDomainParams(TypedDict, total=False):
     app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
 
-    endpoints: Required[Endpoints]
+    endpoints: Required[EndpointsParam]
 
     portal_id: Annotated[int, PropertyInfo(alias="portalId")]
-
-
-class Endpoints(TypedDict, total=False):
-    discovery: Required[bool]
-
-    schemes: Required[SequenceNotStr[str]]
-
-    url: Required[str]

@@ -66,7 +66,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of postal mail
+        Create a batch of postal mail objects.
 
         Args:
           extra_headers: Send extra headers
@@ -98,7 +98,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of postal mail by internal ID, or unique property values
+        Update multiple postal mail objects in a single request.
 
         Args:
           extra_headers: Send extra headers
@@ -130,7 +130,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a batch of postal mail by ID
+        Archive a batch of postal mail objects using their IDs.
 
         Args:
           extra_headers: Send extra headers
@@ -167,15 +167,13 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Retrieve records by record ID or include the `idProperty` parameter to retrieve
-        records by a custom unique value property.
+        Retrieve multiple postal mail objects using their internal IDs or unique
+        property values.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
 
           properties_with_history: Key-value pairs for setting properties for the new object and their histories.
-
-          archived: Whether to return only results that have been archived.
 
           id_property: When using a custom unique value property to retrieve records, the name of the
               property. Do not include this parameter if retrieving by record ID.
@@ -221,8 +219,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
         """
-        Create or update records identified by a unique property value as specified by
-        the `idProperty` query param. `idProperty` query param refers to a property
+        Create or update postal mails identified by a unique property value as specified
+        by the `idProperty` query param. `idProperty` query param refers to a property
         whose values are unique for the object.
 
         Args:
@@ -276,7 +274,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of postal mail
+        Create a batch of postal mail objects.
 
         Args:
           extra_headers: Send extra headers
@@ -308,7 +306,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of postal mail by internal ID, or unique property values
+        Update multiple postal mail objects in a single request.
 
         Args:
           extra_headers: Send extra headers
@@ -340,7 +338,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a batch of postal mail by ID
+        Archive a batch of postal mail objects using their IDs.
 
         Args:
           extra_headers: Send extra headers
@@ -377,15 +375,13 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Retrieve records by record ID or include the `idProperty` parameter to retrieve
-        records by a custom unique value property.
+        Retrieve multiple postal mail objects using their internal IDs or unique
+        property values.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
 
           properties_with_history: Key-value pairs for setting properties for the new object and their histories.
-
-          archived: Whether to return only results that have been archived.
 
           id_property: When using a custom unique value property to retrieve records, the name of the
               property. Do not include this parameter if retrieving by record ID.
@@ -431,8 +427,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
         """
-        Create or update records identified by a unique property value as specified by
-        the `idProperty` query param. `idProperty` query param refers to a property
+        Create or update postal mails identified by a unique property value as specified
+        by the `idProperty` query param. `idProperty` query param refers to a property
         whose values are unique for the object.
 
         Args:

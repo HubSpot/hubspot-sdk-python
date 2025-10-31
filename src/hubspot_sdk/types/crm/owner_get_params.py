@@ -11,7 +11,5 @@ __all__ = ["OwnerGetParams"]
 
 class OwnerGetParams(TypedDict, total=False):
     archived: bool
-    """Whether to return only results that have been archived."""
 
     id_property: Annotated[Literal["id", "userId"], PropertyInfo(alias="idProperty")]
-    """Specifies whether to use 'id' or 'userId' as the identifier for the owner."""
