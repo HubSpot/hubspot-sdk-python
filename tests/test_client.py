@@ -37,7 +37,7 @@ from hubspot_sdk._base_client import (
 from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-access_token = "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+access_token = "pat-na1-xxxxxxxx-xxxx"
 
 
 def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
@@ -83,9 +83,9 @@ class TestHubspot:
         copied = client.copy()
         assert id(copied) != id(client)
 
-        copied = client.copy(access_token="another pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-        assert copied.access_token == "another pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        assert client.access_token == "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        copied = client.copy(access_token="another pat-na1-xxxxxxxx-xxxx")
+        assert copied.access_token == "another pat-na1-xxxxxxxx-xxxx"
+        assert client.access_token == "pat-na1-xxxxxxxx-xxxx"
 
     def test_copy_default_options(self, client: Hubspot) -> None:
         # options that have a default are overridden correctly
@@ -922,9 +922,9 @@ class TestAsyncHubspot:
         copied = async_client.copy()
         assert id(copied) != id(async_client)
 
-        copied = async_client.copy(access_token="another pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-        assert copied.access_token == "another pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        assert async_client.access_token == "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        copied = async_client.copy(access_token="another pat-na1-xxxxxxxx-xxxx")
+        assert copied.access_token == "another pat-na1-xxxxxxxx-xxxx"
+        assert async_client.access_token == "pat-na1-xxxxxxxx-xxxx"
 
     def test_copy_default_options(self, async_client: AsyncHubspot) -> None:
         # options that have a default are overridden correctly
