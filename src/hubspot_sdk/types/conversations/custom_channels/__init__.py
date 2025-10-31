@@ -9,6 +9,3 @@ from .channel_account_update_params import ChannelAccountUpdateParams as Channel
 from .channel_account_staging_token_update_params import (
     ChannelAccountStagingTokenUpdateParams as ChannelAccountStagingTokenUpdateParams,
 )
-from .channel_account_staging_token_update_response import (
-    ChannelAccountStagingTokenUpdateResponse as ChannelAccountStagingTokenUpdateResponse,
-)

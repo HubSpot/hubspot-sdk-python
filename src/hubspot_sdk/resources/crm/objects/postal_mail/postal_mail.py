@@ -82,9 +82,8 @@ class PostalMailResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreatedResponseSimplePublicObject:
         """
-        Create a postal mail with the given properties and return a copy of the object,
-        including the ID. Documentation and examples for creating standard postal mail
-        is provided.
+        Create a postal mail object with the given properties and return a copy of the
+        object, including the ID.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -126,18 +125,8 @@ class PostalMailResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Perform a partial update of an Object identified by `{postalMailId}`or
-        optionally a unique property value as specified by the `idProperty` query param.
-        `{postalMailId}` refers to the internal object ID by default, and the
-        `idProperty` query param refers to a property whose values are unique for the
-        object. Provided property values will be overwritten. Read-only and non-existent
-        properties will result in an error. Properties values can be cleared by passing
-        an empty string.
-
         Args:
           properties: Key value pairs representing the properties of the object.
-
-          id_property: The name of a property whose values are unique for this object
 
           extra_headers: Send extra headers
 
@@ -178,32 +167,8 @@ class PostalMailResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
-        """Read a page of postal mail.
-
-        Control what is returned via the `properties` query
-        param.
-
+        """
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          associations: A comma separated list of object types to retrieve associated IDs for. If any of
-              the specified associations do not exist, they will be ignored.
-
-          limit: The maximum number of results to display per page.
-
-          properties: A comma separated list of the properties to be returned in the response. If any
-              of the specified properties are not present on the requested object(s), they
-              will be ignored.
-
-          properties_with_history: A comma separated list of the properties to be returned along with their history
-              of previous values. If any of the specified properties are not present on the
-              requested object(s), they will be ignored. Usage of this parameter will reduce
-              the maximum number of postal mail that can be read by a single request.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -247,7 +212,7 @@ class PostalMailResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Move an Object identified by `{postalMailId}` to the recycling bin.
+        Move the postal mail object with the ID `{postalMailId}` to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -285,29 +250,8 @@ class PostalMailResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """Read an Object identified by `{postalMailId}`.
-
-        `{postalMailId}` refers to the
-        internal object ID by default, or optionally any unique property value as
-        specified by the `idProperty` query param. Control what is returned via the
-        `properties` query param.
-
+        """
         Args:
-          archived: Whether to return only results that have been archived.
-
-          associations: A comma separated list of object types to retrieve associated IDs for. If any of
-              the specified associations do not exist, they will be ignored.
-
-          id_property: The name of a property whose values are unique for this object
-
-          properties: A comma separated list of the properties to be returned in the response. If any
-              of the specified properties are not present on the requested object(s), they
-              will be ignored.
-
-          properties_with_history: A comma separated list of the properties to be returned along with their history
-              of previous values. If any of the specified properties are not present on the
-              requested object(s), they will be ignored.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -356,6 +300,8 @@ class PostalMailResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Search for postal mail objects using specific criteria in the request.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 
@@ -434,9 +380,8 @@ class AsyncPostalMailResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreatedResponseSimplePublicObject:
         """
-        Create a postal mail with the given properties and return a copy of the object,
-        including the ID. Documentation and examples for creating standard postal mail
-        is provided.
+        Create a postal mail object with the given properties and return a copy of the
+        object, including the ID.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -478,18 +423,8 @@ class AsyncPostalMailResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Perform a partial update of an Object identified by `{postalMailId}`or
-        optionally a unique property value as specified by the `idProperty` query param.
-        `{postalMailId}` refers to the internal object ID by default, and the
-        `idProperty` query param refers to a property whose values are unique for the
-        object. Provided property values will be overwritten. Read-only and non-existent
-        properties will result in an error. Properties values can be cleared by passing
-        an empty string.
-
         Args:
           properties: Key value pairs representing the properties of the object.
-
-          id_property: The name of a property whose values are unique for this object
 
           extra_headers: Send extra headers
 
@@ -534,32 +469,8 @@ class AsyncPostalMailResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
-        """Read a page of postal mail.
-
-        Control what is returned via the `properties` query
-        param.
-
+        """
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          associations: A comma separated list of object types to retrieve associated IDs for. If any of
-              the specified associations do not exist, they will be ignored.
-
-          limit: The maximum number of results to display per page.
-
-          properties: A comma separated list of the properties to be returned in the response. If any
-              of the specified properties are not present on the requested object(s), they
-              will be ignored.
-
-          properties_with_history: A comma separated list of the properties to be returned along with their history
-              of previous values. If any of the specified properties are not present on the
-              requested object(s), they will be ignored. Usage of this parameter will reduce
-              the maximum number of postal mail that can be read by a single request.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -603,7 +514,7 @@ class AsyncPostalMailResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Move an Object identified by `{postalMailId}` to the recycling bin.
+        Move the postal mail object with the ID `{postalMailId}` to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -641,29 +552,8 @@ class AsyncPostalMailResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """Read an Object identified by `{postalMailId}`.
-
-        `{postalMailId}` refers to the
-        internal object ID by default, or optionally any unique property value as
-        specified by the `idProperty` query param. Control what is returned via the
-        `properties` query param.
-
+        """
         Args:
-          archived: Whether to return only results that have been archived.
-
-          associations: A comma separated list of object types to retrieve associated IDs for. If any of
-              the specified associations do not exist, they will be ignored.
-
-          id_property: The name of a property whose values are unique for this object
-
-          properties: A comma separated list of the properties to be returned in the response. If any
-              of the specified properties are not present on the requested object(s), they
-              will be ignored.
-
-          properties_with_history: A comma separated list of the properties to be returned along with their history
-              of previous values. If any of the specified properties are not present on the
-              requested object(s), they will be ignored.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -712,6 +602,8 @@ class AsyncPostalMailResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Search for postal mail objects using specific criteria in the request.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 

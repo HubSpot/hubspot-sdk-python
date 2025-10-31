@@ -7,4 +7,3 @@ __all__ = ["PublicObjectID"]
 
 class PublicObjectID(BaseModel):
     id: str
-    """The unique ID that identifies an object."""

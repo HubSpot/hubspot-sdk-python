@@ -18,23 +18,15 @@ AuthSettings: TypeAlias = Union[APIAuthKeyWebhookAuthSettingsParam, APISignature
 
 class APIWebhookActionParam(TypedDict, total=False):
     action_id: Required[Annotated[str, PropertyInfo(alias="actionId")]]
-    """The ID for this action."""
 
     method: Required[Literal["CONNECT", "DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT", "TRACE"]]
-    """The HTTP method to use when calling the webhook URL"""
 
     query_params: Required[Annotated[Iterable[APIInputVariableParam], PropertyInfo(alias="queryParams")]]
 
     type: Required[Literal["WEBHOOK"]]
-    """
-    The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH",
-    "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION"
-    """
 
     webhook_url: Required[Annotated[str, PropertyInfo(alias="webhookUrl")]]
-    """The URL to call each time this action is executed."""
 
     auth_settings: Annotated[AuthSettings, PropertyInfo(alias="authSettings")]
-    """The type of auth to use when calling the webhook endpoint."""
 
     connection: APIConnectionParam

@@ -14,7 +14,3 @@ class APIDailyEnrollmentScheduleParam(TypedDict, total=False):
     time_of_day: Required[Annotated[APITimeOfDayParam, PropertyInfo(alias="timeOfDay")]]
 
     type: Required[Literal["DAILY"]]
-    """
-    The type of enrollment schedule this is, can be: "DAILY", "WEEKLY",
-    "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY"
-    """

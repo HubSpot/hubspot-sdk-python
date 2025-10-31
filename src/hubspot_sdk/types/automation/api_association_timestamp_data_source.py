@@ -15,6 +15,7 @@ class APIAssociationTimestampDataSource(BaseModel):
     )
 
     association_type_id: int = FieldInfo(alias="associationTypeId")
+    """The ID representing the type of association."""
 
     name: str
 

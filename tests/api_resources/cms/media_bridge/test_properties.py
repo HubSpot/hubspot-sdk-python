@@ -9,10 +9,8 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
+from hubspot_sdk.types.cms import CollectionResponsePropertyNoPaging
 from hubspot_sdk.types.shared import Property, BatchResponseProperty
-from hubspot_sdk.types.cms.media_bridge import (
-    PropertyListResponse,
-)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -229,7 +227,7 @@ class TestProperties:
             object_type="objectType",
             app_id="appId",
         )
-        assert_matches_type(PropertyListResponse, property, path=["response"])
+        assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -242,7 +240,7 @@ class TestProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = response.parse()
-        assert_matches_type(PropertyListResponse, property, path=["response"])
+        assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -255,7 +253,7 @@ class TestProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = response.parse()
-            assert_matches_type(PropertyListResponse, property, path=["response"])
+            assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -845,7 +843,7 @@ class TestAsyncProperties:
             object_type="objectType",
             app_id="appId",
         )
-        assert_matches_type(PropertyListResponse, property, path=["response"])
+        assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -858,7 +856,7 @@ class TestAsyncProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = await response.parse()
-        assert_matches_type(PropertyListResponse, property, path=["response"])
+        assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -871,7 +869,7 @@ class TestAsyncProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = await response.parse()
-            assert_matches_type(PropertyListResponse, property, path=["response"])
+            assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

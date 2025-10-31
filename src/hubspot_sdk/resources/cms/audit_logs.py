@@ -17,7 +17,7 @@ from ..._response import (
 from ...types.cms import audit_log_list_params
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.cms.audit_log_list_response import AuditLogListResponse
+from ...types.cms.public_audit_log import PublicAuditLog
 
 __all__ = ["AuditLogsResource", "AsyncAuditLogsResource"]
 
@@ -59,7 +59,7 @@ class AuditLogsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[AuditLogListResponse]:
+    ) -> SyncPage[PublicAuditLog]:
         """
         Returns audit logs based on filters.
 
@@ -92,7 +92,7 @@ class AuditLogsResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/cms/v3/audit-logs/",
-            page=SyncPage[AuditLogListResponse],
+            page=SyncPage[PublicAuditLog],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -112,7 +112,7 @@ class AuditLogsResource(SyncAPIResource):
                     audit_log_list_params.AuditLogListParams,
                 ),
             ),
-            model=AuditLogListResponse,
+            model=PublicAuditLog,
         )
 
 
@@ -153,7 +153,7 @@ class AsyncAuditLogsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[AuditLogListResponse, AsyncPage[AuditLogListResponse]]:
+    ) -> AsyncPaginator[PublicAuditLog, AsyncPage[PublicAuditLog]]:
         """
         Returns audit logs based on filters.
 
@@ -186,7 +186,7 @@ class AsyncAuditLogsResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/cms/v3/audit-logs/",
-            page=AsyncPage[AuditLogListResponse],
+            page=AsyncPage[PublicAuditLog],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -206,7 +206,7 @@ class AsyncAuditLogsResource(AsyncAPIResource):
                     audit_log_list_params.AuditLogListParams,
                 ),
             ),
-            model=AuditLogListResponse,
+            model=PublicAuditLog,
         )
 
 

@@ -11,7 +11,5 @@ __all__ = ["APISignatureWebhookAuthSettings"]
 
 class APISignatureWebhookAuthSettings(BaseModel):
     app_id: int = FieldInfo(alias="appId")
-    """The appId that this signature will be generated for."""
 
     type: Literal["SIGNATURE"]
-    """The type of webhook auth settings this is, can be: "AUTH_KEY" or "SIGNATURE" """

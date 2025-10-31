@@ -38,7 +38,7 @@ class TestServices:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "37295"},
+                    "to": {"id": "id"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -384,7 +384,7 @@ class TestAsyncServices:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "37295"},
+                    "to": {"id": "id"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",

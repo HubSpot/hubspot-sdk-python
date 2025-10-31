@@ -14,8 +14,8 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.crm.object_library.enablement_get_response import EnablementGetResponse
-from ....types.crm.object_library.enablement_list_response import EnablementListResponse
+from ....types.crm.object_type_enablement_public_response import ObjectTypeEnablementPublicResponse
+from ....types.crm.portal_object_type_enablement_public_response import PortalObjectTypeEnablementPublicResponse
 
 __all__ = ["EnablementResource", "AsyncEnablementResource"]
 
@@ -49,14 +49,13 @@ class EnablementResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EnablementListResponse:
-        """Returns all objects in the object library and their enablement status"""
+    ) -> PortalObjectTypeEnablementPublicResponse:
         return self._get(
             "/crm/v3/object-library/enablement",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EnablementListResponse,
+            cast_to=PortalObjectTypeEnablementPublicResponse,
         )
 
     def get(
@@ -69,10 +68,8 @@ class EnablementResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EnablementGetResponse:
+    ) -> ObjectTypeEnablementPublicResponse:
         """
-        Returns an object and its enablement status
-
         Args:
           extra_headers: Send extra headers
 
@@ -89,7 +86,7 @@ class EnablementResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EnablementGetResponse,
+            cast_to=ObjectTypeEnablementPublicResponse,
         )
 
 
@@ -122,14 +119,13 @@ class AsyncEnablementResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EnablementListResponse:
-        """Returns all objects in the object library and their enablement status"""
+    ) -> PortalObjectTypeEnablementPublicResponse:
         return await self._get(
             "/crm/v3/object-library/enablement",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EnablementListResponse,
+            cast_to=PortalObjectTypeEnablementPublicResponse,
         )
 
     async def get(
@@ -142,10 +138,8 @@ class AsyncEnablementResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EnablementGetResponse:
+    ) -> ObjectTypeEnablementPublicResponse:
         """
-        Returns an object and its enablement status
-
         Args:
           extra_headers: Send extra headers
 
@@ -162,7 +156,7 @@ class AsyncEnablementResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EnablementGetResponse,
+            cast_to=ObjectTypeEnablementPublicResponse,
         )
 
 

@@ -9,12 +9,7 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm.feature_flags import (
-    AppGetResponse,
-    AppDeleteResponse,
-    AppUpdateResponse,
-    AppListPortalsResponse,
-)
+from hubspot_sdk.types.crm import FlagResponse, PortalFlagStateBatchResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -30,7 +25,7 @@ class TestApps:
             app_id=0,
             default_state="OFF",
         )
-        assert_matches_type(AppUpdateResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -41,7 +36,7 @@ class TestApps:
             default_state="OFF",
             override_state="OFF",
         )
-        assert_matches_type(AppUpdateResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -55,7 +50,7 @@ class TestApps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         app = response.parse()
-        assert_matches_type(AppUpdateResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -69,7 +64,7 @@ class TestApps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             app = response.parse()
-            assert_matches_type(AppUpdateResponse, app, path=["response"])
+            assert_matches_type(FlagResponse, app, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -90,7 +85,7 @@ class TestApps:
             flag_name="flagName",
             app_id=0,
         )
-        assert_matches_type(AppDeleteResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -103,7 +98,7 @@ class TestApps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         app = response.parse()
-        assert_matches_type(AppDeleteResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -116,7 +111,7 @@ class TestApps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             app = response.parse()
-            assert_matches_type(AppDeleteResponse, app, path=["response"])
+            assert_matches_type(FlagResponse, app, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -136,7 +131,7 @@ class TestApps:
             flag_name="flagName",
             app_id=0,
         )
-        assert_matches_type(AppGetResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -149,7 +144,7 @@ class TestApps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         app = response.parse()
-        assert_matches_type(AppGetResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -162,7 +157,7 @@ class TestApps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             app = response.parse()
-            assert_matches_type(AppGetResponse, app, path=["response"])
+            assert_matches_type(FlagResponse, app, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -182,7 +177,7 @@ class TestApps:
             flag_name="flagName",
             app_id=0,
         )
-        assert_matches_type(AppListPortalsResponse, app, path=["response"])
+        assert_matches_type(PortalFlagStateBatchResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -193,7 +188,7 @@ class TestApps:
             limit=0,
             start_portal_id=0,
         )
-        assert_matches_type(AppListPortalsResponse, app, path=["response"])
+        assert_matches_type(PortalFlagStateBatchResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -206,7 +201,7 @@ class TestApps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         app = response.parse()
-        assert_matches_type(AppListPortalsResponse, app, path=["response"])
+        assert_matches_type(PortalFlagStateBatchResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -219,7 +214,7 @@ class TestApps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             app = response.parse()
-            assert_matches_type(AppListPortalsResponse, app, path=["response"])
+            assert_matches_type(PortalFlagStateBatchResponse, app, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -246,7 +241,7 @@ class TestAsyncApps:
             app_id=0,
             default_state="OFF",
         )
-        assert_matches_type(AppUpdateResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -257,7 +252,7 @@ class TestAsyncApps:
             default_state="OFF",
             override_state="OFF",
         )
-        assert_matches_type(AppUpdateResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -271,7 +266,7 @@ class TestAsyncApps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         app = await response.parse()
-        assert_matches_type(AppUpdateResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -285,7 +280,7 @@ class TestAsyncApps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             app = await response.parse()
-            assert_matches_type(AppUpdateResponse, app, path=["response"])
+            assert_matches_type(FlagResponse, app, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -306,7 +301,7 @@ class TestAsyncApps:
             flag_name="flagName",
             app_id=0,
         )
-        assert_matches_type(AppDeleteResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -319,7 +314,7 @@ class TestAsyncApps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         app = await response.parse()
-        assert_matches_type(AppDeleteResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -332,7 +327,7 @@ class TestAsyncApps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             app = await response.parse()
-            assert_matches_type(AppDeleteResponse, app, path=["response"])
+            assert_matches_type(FlagResponse, app, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -352,7 +347,7 @@ class TestAsyncApps:
             flag_name="flagName",
             app_id=0,
         )
-        assert_matches_type(AppGetResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -365,7 +360,7 @@ class TestAsyncApps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         app = await response.parse()
-        assert_matches_type(AppGetResponse, app, path=["response"])
+        assert_matches_type(FlagResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -378,7 +373,7 @@ class TestAsyncApps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             app = await response.parse()
-            assert_matches_type(AppGetResponse, app, path=["response"])
+            assert_matches_type(FlagResponse, app, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -398,7 +393,7 @@ class TestAsyncApps:
             flag_name="flagName",
             app_id=0,
         )
-        assert_matches_type(AppListPortalsResponse, app, path=["response"])
+        assert_matches_type(PortalFlagStateBatchResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -409,7 +404,7 @@ class TestAsyncApps:
             limit=0,
             start_portal_id=0,
         )
-        assert_matches_type(AppListPortalsResponse, app, path=["response"])
+        assert_matches_type(PortalFlagStateBatchResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -422,7 +417,7 @@ class TestAsyncApps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         app = await response.parse()
-        assert_matches_type(AppListPortalsResponse, app, path=["response"])
+        assert_matches_type(PortalFlagStateBatchResponse, app, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -435,7 +430,7 @@ class TestAsyncApps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             app = await response.parse()
-            assert_matches_type(AppListPortalsResponse, app, path=["response"])
+            assert_matches_type(PortalFlagStateBatchResponse, app, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

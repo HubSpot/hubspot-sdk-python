@@ -29,11 +29,6 @@ class EventListParams(TypedDict, total=False):
     """
 
     before: str
-    """Pagination cursor for backward navigation.
-
-    Retrieves events occurring before the specified cursor position. Note: Currently
-    only forward pagination with after is supported.
-    """
 
     event_type: Annotated[str, PropertyInfo(alias="eventType")]
     """The event type name.

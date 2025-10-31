@@ -78,7 +78,7 @@ class TestCurrencies:
     @parametrize
     def test_method_batch_get(self, client: Hubspot) -> None:
         currency = client.settings.currencies.batch_get(
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         )
         assert_matches_type(BatchResponseExchangeRate, currency, path=["response"])
 
@@ -86,7 +86,7 @@ class TestCurrencies:
     @parametrize
     def test_raw_response_batch_get(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.batch_get(
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         )
 
         assert response.is_closed is True
@@ -98,7 +98,7 @@ class TestCurrencies:
     @parametrize
     def test_streaming_response_batch_get(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.batch_get(
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -547,7 +547,7 @@ class TestAsyncCurrencies:
     @parametrize
     async def test_method_batch_get(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.batch_get(
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         )
         assert_matches_type(BatchResponseExchangeRate, currency, path=["response"])
 
@@ -555,7 +555,7 @@ class TestAsyncCurrencies:
     @parametrize
     async def test_raw_response_batch_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.batch_get(
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         )
 
         assert response.is_closed is True
@@ -567,7 +567,7 @@ class TestAsyncCurrencies:
     @parametrize
     async def test_streaming_response_batch_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.batch_get(
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

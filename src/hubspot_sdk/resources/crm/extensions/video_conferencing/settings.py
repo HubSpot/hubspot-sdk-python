@@ -58,8 +58,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalSettings:
         """
-        Updates the settings for a video conference application with the specified ID.
-
         Args:
           create_meeting_url: The URL that HubSpot will send requests to create a new video conference.
 
@@ -110,8 +108,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Deletes the settings for a video conference application with the specified ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -142,8 +138,6 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalSettings:
         """
-        Return the settings for a video conference application with the specified ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -199,8 +193,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalSettings:
         """
-        Updates the settings for a video conference application with the specified ID.
-
         Args:
           create_meeting_url: The URL that HubSpot will send requests to create a new video conference.
 
@@ -251,8 +243,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Deletes the settings for a video conference application with the specified ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -283,8 +273,6 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalSettings:
         """
-        Return the settings for a video conference application with the specified ID.
-
         Args:
           extra_headers: Send extra headers
 

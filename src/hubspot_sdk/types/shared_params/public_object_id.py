@@ -9,4 +9,3 @@ __all__ = ["PublicObjectID"]
 
 class PublicObjectID(TypedDict, total=False):
     id: Required[str]
-    """The unique ID that identifies an object."""

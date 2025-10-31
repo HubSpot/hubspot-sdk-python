@@ -38,24 +38,12 @@ class APIEventBasedEnrollmentCriteria(BaseModel):
     event_filter_branches: List["PublicUnifiedEventsFilterBranch"] = FieldInfo(alias="eventFilterBranches")
 
     list_membership_filter_branches: List[ListMembershipFilterBranch] = FieldInfo(alias="listMembershipFilterBranches")
-    """
-    If you want to listen to list-membership events (an object was added to a list,
-    an object was removed from a list) you need to use this
-    `listMembershipFilterBranches` property instead of `eventFilterBranches`,
-    because list membership events work differently.
-    """
 
     should_re_enroll: bool = FieldInfo(alias="shouldReEnroll")
-    """Whether or not the same object can enroll in this workflow twice."""
 
     type: Literal["EVENT_BASED"]
-    """
-    The type of enrollment criteria this is, this can be "LIST_BASED",
-    "EVENT_BASED", or "MANUAL".
-    """
 
     refinement_criteria: Optional[RefinementCriteria] = FieldInfo(alias="refinementCriteria", default=None)
-    """List-based criteria to further refine which contacts will enroll in this flow."""
 
 
 from ..shared.public_or_filter_branch import PublicOrFilterBranch

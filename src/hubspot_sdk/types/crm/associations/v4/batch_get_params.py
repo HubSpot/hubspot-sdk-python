@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from ....._utils import PropertyInfo
-from ..public_fetch_associations_batch_request_param import PublicFetchAssociationsBatchRequestParam
+from ...public_fetch_associations_batch_request_param import PublicFetchAssociationsBatchRequestParam
 
 __all__ = ["BatchGetParams"]
 

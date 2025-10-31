@@ -13,12 +13,7 @@ __all__ = ["APIMonthlySpecificDaysEnrollmentScheduleParam"]
 
 class APIMonthlySpecificDaysEnrollmentScheduleParam(TypedDict, total=False):
     days_of_month: Required[Annotated[Iterable[int], PropertyInfo(alias="daysOfMonth")]]
-    """Which days of the month to run this workflow on."""
 
     time_of_day: Required[Annotated[APITimeOfDayParam, PropertyInfo(alias="timeOfDay")]]
 
     type: Required[Literal["MONTHLY_SPECIFIC_DAYS"]]
-    """
-    The type of enrollment schedule this is, can be: "DAILY", "WEEKLY",
-    "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY"
-    """

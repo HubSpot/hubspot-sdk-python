@@ -9,9 +9,7 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.conversations.custom_channels import (
-    ChannelAccountStagingTokenUpdateResponse,
-)
+from hubspot_sdk.types.conversations import PublicChannelAccountStagingToken
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -31,7 +29,7 @@ class TestChannelAccountStagingTokens:
                 "value": "value",
             },
         )
-        assert_matches_type(ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"])
+        assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -49,7 +47,7 @@ class TestChannelAccountStagingTokens:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account_staging_token = response.parse()
-        assert_matches_type(ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"])
+        assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -67,9 +65,7 @@ class TestChannelAccountStagingTokens:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account_staging_token = response.parse()
-            assert_matches_type(
-                ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"]
-            )
+            assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -118,7 +114,7 @@ class TestAsyncChannelAccountStagingTokens:
                 },
             )
         )
-        assert_matches_type(ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"])
+        assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -138,7 +134,7 @@ class TestAsyncChannelAccountStagingTokens:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account_staging_token = await response.parse()
-        assert_matches_type(ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"])
+        assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -158,9 +154,7 @@ class TestAsyncChannelAccountStagingTokens:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account_staging_token = await response.parse()
-            assert_matches_type(
-                ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"]
-            )
+            assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

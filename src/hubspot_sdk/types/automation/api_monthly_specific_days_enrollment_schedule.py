@@ -13,12 +13,7 @@ __all__ = ["APIMonthlySpecificDaysEnrollmentSchedule"]
 
 class APIMonthlySpecificDaysEnrollmentSchedule(BaseModel):
     days_of_month: List[int] = FieldInfo(alias="daysOfMonth")
-    """Which days of the month to run this workflow on."""
 
     time_of_day: APITimeOfDay = FieldInfo(alias="timeOfDay")
 
     type: Literal["MONTHLY_SPECIFIC_DAYS"]
-    """
-    The type of enrollment schedule this is, can be: "DAILY", "WEEKLY",
-    "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY"
-    """

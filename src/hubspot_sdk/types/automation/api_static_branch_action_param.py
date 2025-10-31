@@ -37,23 +37,13 @@ InputValue: TypeAlias = Union[
 
 class APIStaticBranchActionParam(TypedDict, total=False):
     action_id: Required[Annotated[str, PropertyInfo(alias="actionId")]]
-    """The ID for this action."""
 
     input_value: Required[Annotated[InputValue, PropertyInfo(alias="inputValue")]]
-    """The input value to branch off of."""
 
     static_branches: Required[Annotated[Iterable[APIStaticBranchParam], PropertyInfo(alias="staticBranches")]]
 
     type: Required[Literal["STATIC_BRANCH"]]
-    """
-    The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH",
-    "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION"
-    """
 
     default_branch: Annotated[APIConnectionParam, PropertyInfo(alias="defaultBranch")]
 
     default_branch_name: Annotated[str, PropertyInfo(alias="defaultBranchName")]
-    """
-    The name of the default branch, the branch that gets executed if `inputValue`
-    does not match any of the `staticBranches`.
-    """

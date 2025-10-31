@@ -101,7 +101,7 @@ class FunctionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a function for a definition
+        Archive a function for a specific definition.
 
         Args:
           extra_headers: Send extra headers
@@ -312,7 +312,7 @@ class FunctionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionFunction:
         """
-        Retrieve functions by a type for a given definition
+        Retrieve functions of a specific type for a given definition.
 
         Args:
           extra_headers: Send extra headers
@@ -407,7 +407,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a function for a definition
+        Archive a function for a specific definition.
 
         Args:
           extra_headers: Send extra headers
@@ -618,7 +618,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionFunction:
         """
-        Retrieve functions by a type for a given definition
+        Retrieve functions of a specific type for a given definition.
 
         Args:
           extra_headers: Send extra headers

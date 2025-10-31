@@ -24,15 +24,10 @@ FilterBranch: TypeAlias = Union[
 
 class APIListBranchParam(TypedDict, total=False):
     branch_name: Annotated[str, PropertyInfo(alias="branchName")]
-    """The name of this branch"""
 
     connection: APIConnectionParam
 
     filter_branch: Annotated[FilterBranch, PropertyInfo(alias="filterBranch")]
-    """The list criteria that determine when to execute this branch.
-
-    The first matching branch will execute.
-    """
 
 
 from ..shared_params.public_or_filter_branch import PublicOrFilterBranch

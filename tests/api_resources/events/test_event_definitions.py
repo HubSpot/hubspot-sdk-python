@@ -11,10 +11,7 @@ from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.events import (
-    EventDefinitionGetResponse,
-    EventDefinitionListResponse,
-    EventDefinitionCreateResponse,
-    EventDefinitionUpdateResponse,
+    ExternalBehavioralEventTypeDefinition,
 )
 from hubspot_sdk.types.shared import Property
 
@@ -36,7 +33,7 @@ class TestEventDefinitions:
                 }
             ],
         )
-        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -64,7 +61,7 @@ class TestEventDefinitions:
             name="name",
             primary_object="primaryObject",
         )
-        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -82,7 +79,7 @@ class TestEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = response.parse()
-        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -100,7 +97,7 @@ class TestEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = response.parse()
-            assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
+            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -110,7 +107,7 @@ class TestEventDefinitions:
         event_definition = client.events.event_definitions.update(
             event_name="eventName",
         )
-        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -120,7 +117,7 @@ class TestEventDefinitions:
             description="description",
             label="label",
         )
-        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -132,7 +129,7 @@ class TestEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = response.parse()
-        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -144,7 +141,7 @@ class TestEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = response.parse()
-            assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
+            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -160,7 +157,7 @@ class TestEventDefinitions:
     @parametrize
     def test_method_list(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.list()
-        assert_matches_type(SyncPage[EventDefinitionListResponse], event_definition, path=["response"])
+        assert_matches_type(SyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -172,7 +169,7 @@ class TestEventDefinitions:
             search_string="searchString",
             sort_order="sortOrder",
         )
-        assert_matches_type(SyncPage[EventDefinitionListResponse], event_definition, path=["response"])
+        assert_matches_type(SyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -182,7 +179,7 @@ class TestEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = response.parse()
-        assert_matches_type(SyncPage[EventDefinitionListResponse], event_definition, path=["response"])
+        assert_matches_type(SyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -192,7 +189,7 @@ class TestEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = response.parse()
-            assert_matches_type(SyncPage[EventDefinitionListResponse], event_definition, path=["response"])
+            assert_matches_type(SyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -367,7 +364,7 @@ class TestEventDefinitions:
         event_definition = client.events.event_definitions.get(
             "eventName",
         )
-        assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -379,7 +376,7 @@ class TestEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = response.parse()
-        assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -391,7 +388,7 @@ class TestEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = response.parse()
-            assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
+            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -493,7 +490,7 @@ class TestAsyncEventDefinitions:
                 }
             ],
         )
-        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -521,7 +518,7 @@ class TestAsyncEventDefinitions:
             name="name",
             primary_object="primaryObject",
         )
-        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -539,7 +536,7 @@ class TestAsyncEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = await response.parse()
-        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -557,7 +554,7 @@ class TestAsyncEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = await response.parse()
-            assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
+            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -567,7 +564,7 @@ class TestAsyncEventDefinitions:
         event_definition = await async_client.events.event_definitions.update(
             event_name="eventName",
         )
-        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -577,7 +574,7 @@ class TestAsyncEventDefinitions:
             description="description",
             label="label",
         )
-        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -589,7 +586,7 @@ class TestAsyncEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = await response.parse()
-        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -601,7 +598,7 @@ class TestAsyncEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = await response.parse()
-            assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
+            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -617,7 +614,7 @@ class TestAsyncEventDefinitions:
     @parametrize
     async def test_method_list(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.list()
-        assert_matches_type(AsyncPage[EventDefinitionListResponse], event_definition, path=["response"])
+        assert_matches_type(AsyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -629,7 +626,7 @@ class TestAsyncEventDefinitions:
             search_string="searchString",
             sort_order="sortOrder",
         )
-        assert_matches_type(AsyncPage[EventDefinitionListResponse], event_definition, path=["response"])
+        assert_matches_type(AsyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -639,7 +636,7 @@ class TestAsyncEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = await response.parse()
-        assert_matches_type(AsyncPage[EventDefinitionListResponse], event_definition, path=["response"])
+        assert_matches_type(AsyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -649,7 +646,7 @@ class TestAsyncEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = await response.parse()
-            assert_matches_type(AsyncPage[EventDefinitionListResponse], event_definition, path=["response"])
+            assert_matches_type(AsyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -824,7 +821,7 @@ class TestAsyncEventDefinitions:
         event_definition = await async_client.events.event_definitions.get(
             "eventName",
         )
-        assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -836,7 +833,7 @@ class TestAsyncEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = await response.parse()
-        assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
+        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -848,7 +845,7 @@ class TestAsyncEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = await response.parse()
-            assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
+            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

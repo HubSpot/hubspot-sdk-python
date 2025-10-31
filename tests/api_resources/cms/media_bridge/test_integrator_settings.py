@@ -9,17 +9,14 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.cms.media_bridge import (
-    IntegratorSettingUpdateAppNameResponse,
-    IntegratorSettingGetOembedDomainResponse,
-    IntegratorSettingRegisterAppNameResponse,
-    IntegratorSettingListOembedDomainsResponse,
-    IntegratorSettingCreateOembedDomainResponse,
-    IntegratorSettingUpdateOembedDomainResponse,
-    IntegratorSettingCreateObjectDefinitionResponse,
-    IntegratorSettingGetEventVisibilitySettingsResponse,
-    IntegratorSettingUpdateEventVisibilitySettingsResponse,
-    IntegratorSettingGetObjectDefinitionsByMediaTypeResponse,
+from hubspot_sdk.types.cms import (
+    EventVisibilityChange,
+    EventVisibilityResponse,
+    ObjectDefinitionResponse,
+    IntegratorOEmbedDomainModel,
+    OEmbedDomainsCollectionResponse,
+    BulkIntegratorObjectCreationResponse,
+    MediaBridgeProviderRegistrationResponse,
 )
 
 # pyright: reportDeprecated=false
@@ -37,7 +34,7 @@ class TestIntegratorSettings:
             app_id="appId",
             media_types=["VIDEO"],
         )
-        assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
+        assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -50,7 +47,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
+        assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -63,7 +60,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
+            assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -87,7 +84,7 @@ class TestIntegratorSettings:
                 "url": "url",
             },
         )
-        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -101,7 +98,7 @@ class TestIntegratorSettings:
             },
             portal_id=0,
         )
-        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -118,7 +115,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -135,7 +132,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -200,7 +197,7 @@ class TestIntegratorSettings:
         integrator_setting = client.cms.media_bridge.integrator_settings.get_event_visibility_settings(
             "appId",
         )
-        assert_matches_type(IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"])
+        assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -212,7 +209,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"])
+        assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -224,9 +221,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(
-                IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-            )
+            assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -245,9 +240,7 @@ class TestIntegratorSettings:
             media_type="mediaType",
             app_id="appId",
         )
-        assert_matches_type(
-            IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -260,9 +253,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(
-            IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -275,9 +266,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(
-                IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
-            )
+            assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -303,7 +292,7 @@ class TestIntegratorSettings:
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
         )
-        assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -316,7 +305,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -329,7 +318,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -354,7 +343,7 @@ class TestIntegratorSettings:
         integrator_setting = client.cms.media_bridge.integrator_settings.list_oembed_domains(
             "appId",
         )
-        assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
+        assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -366,7 +355,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
+        assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -378,7 +367,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
+            assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -399,7 +388,7 @@ class TestIntegratorSettings:
                 updated_at=0,
             )
 
-        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -411,7 +400,7 @@ class TestIntegratorSettings:
                 name="name",
             )
 
-        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -425,7 +414,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -439,7 +428,7 @@ class TestIntegratorSettings:
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
                 integrator_setting = response.parse()
-                assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
+                assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -460,7 +449,7 @@ class TestIntegratorSettings:
             app_id="appId",
             updated_at=0,
         )
-        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -470,7 +459,7 @@ class TestIntegratorSettings:
             updated_at=0,
             name="name",
         )
-        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -483,7 +472,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -496,7 +485,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
+            assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -517,9 +506,7 @@ class TestIntegratorSettings:
             event_type="ALL",
             updated_at=0,
         )
-        assert_matches_type(
-            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -532,9 +519,7 @@ class TestIntegratorSettings:
             show_in_timeline=True,
             show_in_workflows=True,
         )
-        assert_matches_type(
-            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -548,9 +533,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(
-            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -564,9 +547,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(
-                IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-            )
+            assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -592,7 +573,7 @@ class TestIntegratorSettings:
                 "url": "url",
             },
         )
-        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -607,7 +588,7 @@ class TestIntegratorSettings:
             },
             portal_id=0,
         )
-        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -625,7 +606,7 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -643,7 +624,7 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -685,7 +666,7 @@ class TestAsyncIntegratorSettings:
             app_id="appId",
             media_types=["VIDEO"],
         )
-        assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
+        assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -698,7 +679,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
+        assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -711,7 +692,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
+            assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -735,7 +716,7 @@ class TestAsyncIntegratorSettings:
                 "url": "url",
             },
         )
-        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -749,7 +730,7 @@ class TestAsyncIntegratorSettings:
             },
             portal_id=0,
         )
-        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -766,7 +747,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -783,7 +764,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -848,7 +829,7 @@ class TestAsyncIntegratorSettings:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.get_event_visibility_settings(
             "appId",
         )
-        assert_matches_type(IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"])
+        assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -862,7 +843,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"])
+        assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -876,9 +857,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(
-                IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-            )
+            assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -899,9 +878,7 @@ class TestAsyncIntegratorSettings:
                 app_id="appId",
             )
         )
-        assert_matches_type(
-            IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -914,9 +891,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(
-            IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -929,9 +904,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(
-                IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
-            )
+            assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -957,7 +930,7 @@ class TestAsyncIntegratorSettings:
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
         )
-        assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -970,7 +943,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -983,7 +956,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1008,7 +981,7 @@ class TestAsyncIntegratorSettings:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.list_oembed_domains(
             "appId",
         )
-        assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
+        assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1020,7 +993,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
+        assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1032,7 +1005,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
+            assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1053,7 +1026,7 @@ class TestAsyncIntegratorSettings:
                 updated_at=0,
             )
 
-        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1065,7 +1038,7 @@ class TestAsyncIntegratorSettings:
                 name="name",
             )
 
-        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1079,7 +1052,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1093,7 +1066,7 @@ class TestAsyncIntegratorSettings:
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
                 integrator_setting = await response.parse()
-                assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
+                assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1114,7 +1087,7 @@ class TestAsyncIntegratorSettings:
             app_id="appId",
             updated_at=0,
         )
-        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1124,7 +1097,7 @@ class TestAsyncIntegratorSettings:
             updated_at=0,
             name="name",
         )
-        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1137,7 +1110,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
+        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1150,7 +1123,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
+            assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1171,9 +1144,7 @@ class TestAsyncIntegratorSettings:
             event_type="ALL",
             updated_at=0,
         )
-        assert_matches_type(
-            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1186,9 +1157,7 @@ class TestAsyncIntegratorSettings:
             show_in_timeline=True,
             show_in_workflows=True,
         )
-        assert_matches_type(
-            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1204,9 +1173,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(
-            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-        )
+        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1222,9 +1189,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(
-                IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
-            )
+            assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1250,7 +1215,7 @@ class TestAsyncIntegratorSettings:
                 "url": "url",
             },
         )
-        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1265,7 +1230,7 @@ class TestAsyncIntegratorSettings:
             },
             portal_id=0,
         )
-        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1283,7 +1248,7 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -1301,7 +1266,7 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

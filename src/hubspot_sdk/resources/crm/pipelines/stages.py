@@ -61,9 +61,7 @@ class StagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Create a new stage associated with the pipeline identified by `{pipelineId}`.
-        The entire stage object, including its unique ID, will be returned in the
-        response.
+        Create a pipeline stage
 
         Args:
           display_order: The order for displaying this pipeline stage. If two pipeline stages have a
@@ -130,11 +128,6 @@ class StagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Perform a partial update of the pipeline stage identified by `{stageId}`
-        associated with the pipeline identified by `{pipelineId}`. Any properties not
-        included in this update will keep their existing values. The updated stage will
-        be returned in the response.
-
         Args:
           archived: Whether the pipeline is archived.
 
@@ -237,8 +230,7 @@ class StagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete the pipeline stage identified by `{stageId}` associated with the pipeline
-        identified by `{pipelineId}`.
+        Delete a pipeline stage
 
         Args:
           extra_headers: Send extra headers
@@ -278,8 +270,7 @@ class StagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Return the stage identified by `{stageId}` associated with the pipeline
-        identified by `{pipelineId}`.
+        Return a pipeline stage by ID
 
         Args:
           extra_headers: Send extra headers
@@ -450,9 +441,7 @@ class AsyncStagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Create a new stage associated with the pipeline identified by `{pipelineId}`.
-        The entire stage object, including its unique ID, will be returned in the
-        response.
+        Create a pipeline stage
 
         Args:
           display_order: The order for displaying this pipeline stage. If two pipeline stages have a
@@ -519,11 +508,6 @@ class AsyncStagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Perform a partial update of the pipeline stage identified by `{stageId}`
-        associated with the pipeline identified by `{pipelineId}`. Any properties not
-        included in this update will keep their existing values. The updated stage will
-        be returned in the response.
-
         Args:
           archived: Whether the pipeline is archived.
 
@@ -626,8 +610,7 @@ class AsyncStagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete the pipeline stage identified by `{stageId}` associated with the pipeline
-        identified by `{pipelineId}`.
+        Delete a pipeline stage
 
         Args:
           extra_headers: Send extra headers
@@ -667,8 +650,7 @@ class AsyncStagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Return the stage identified by `{stageId}` associated with the pipeline
-        identified by `{pipelineId}`.
+        Return a pipeline stage by ID
 
         Args:
           extra_headers: Send extra headers

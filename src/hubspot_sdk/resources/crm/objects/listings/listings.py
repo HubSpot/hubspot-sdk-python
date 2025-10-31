@@ -356,6 +356,9 @@ class ListingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Execute a search query to find listings based on specified filters and
+        properties.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 
@@ -710,6 +713,9 @@ class AsyncListingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Execute a search query to find listings based on specified filters and
+        properties.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 

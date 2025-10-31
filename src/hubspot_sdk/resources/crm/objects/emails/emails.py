@@ -355,6 +355,9 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Perform a search for emails based on the provided query parameters and return
+        matching results.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 
@@ -706,6 +709,9 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Perform a search for emails based on the provided query parameters and return
+        matching results.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 

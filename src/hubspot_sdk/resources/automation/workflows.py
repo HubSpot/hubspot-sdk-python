@@ -67,10 +67,7 @@ class WorkflowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIFlow:
-        """Create a new workflow."""
-        ...
-
+    ) -> APIFlow: ...
     @overload
     def create(
         self,
@@ -81,10 +78,7 @@ class WorkflowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIFlow:
-        """Create a new workflow."""
-        ...
-
+    ) -> APIFlow: ...
     def create(
         self,
         *,
@@ -119,8 +113,6 @@ class WorkflowsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIFlow:
         """
-        Update a workflow by ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -145,8 +137,6 @@ class WorkflowsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIFlow:
         """
-        Update a workflow by ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -195,15 +185,7 @@ class WorkflowsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[APIFlowListing]:
         """
-        Retrieve all workflows from an account.
-
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -242,12 +224,7 @@ class WorkflowsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Fully delete a workflow by ID.
-
-        Deleted workflows cannot be restored via the API.
-        If you need to restore an accidentally deleted flow, you'll need to contact
-        support.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -278,8 +255,6 @@ class WorkflowsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseAPIFlow:
         """
-        Retrieve a batch of workflows by ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -310,8 +285,6 @@ class WorkflowsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseFlowIDWorkflowIDMappingResponse:
         """
-        Retrieve the IDs of v3 workflows that have been migrated to the v4 API.
-
         Args:
           extra_headers: Send extra headers
 
@@ -344,8 +317,6 @@ class WorkflowsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIFlow:
         """
-        Retrieve all details for a specific workflow by ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -383,17 +354,7 @@ class WorkflowsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseAPIFlowEmailCampaign:
         """
-        Retrieve emails sent by a workflow by ID.
-
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          flow_id: The ID of the workflow.
-
-          limit: The maximum number of results to display per page.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -453,10 +414,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIFlow:
-        """Create a new workflow."""
-        ...
-
+    ) -> APIFlow: ...
     @overload
     async def create(
         self,
@@ -467,10 +425,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIFlow:
-        """Create a new workflow."""
-        ...
-
+    ) -> APIFlow: ...
     async def create(
         self,
         *,
@@ -505,8 +460,6 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIFlow:
         """
-        Update a workflow by ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -531,8 +484,6 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIFlow:
         """
-        Update a workflow by ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -581,15 +532,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[APIFlowListing, AsyncPage[APIFlowListing]]:
         """
-        Retrieve all workflows from an account.
-
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -628,12 +571,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Fully delete a workflow by ID.
-
-        Deleted workflows cannot be restored via the API.
-        If you need to restore an accidentally deleted flow, you'll need to contact
-        support.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -664,8 +602,6 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseAPIFlow:
         """
-        Retrieve a batch of workflows by ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -696,8 +632,6 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseFlowIDWorkflowIDMappingResponse:
         """
-        Retrieve the IDs of v3 workflows that have been migrated to the v4 API.
-
         Args:
           extra_headers: Send extra headers
 
@@ -730,8 +664,6 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIFlow:
         """
-        Retrieve all details for a specific workflow by ID.
-
         Args:
           extra_headers: Send extra headers
 
@@ -769,17 +701,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseAPIFlowEmailCampaign:
         """
-        Retrieve emails sent by a workflow by ID.
-
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          flow_id: The ID of the workflow.
-
-          limit: The maximum number of results to display per page.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

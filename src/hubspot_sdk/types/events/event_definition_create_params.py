@@ -6,16 +6,18 @@ from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from ..shared_params.option_input import OptionInput
+from .external_behavioral_event_property_create_param import ExternalBehavioralEventPropertyCreateParam
 
-__all__ = ["EventDefinitionCreateParams", "PropertyDefinition"]
+__all__ = ["EventDefinitionCreateParams"]
 
 
 class EventDefinitionCreateParams(TypedDict, total=False):
     label: Required[str]
     """Human readable label for the event. Used in HubSpot UI"""
 
-    property_definitions: Required[Annotated[Iterable[PropertyDefinition], PropertyInfo(alias="propertyDefinitions")]]
+    property_definitions: Required[
+        Annotated[Iterable[ExternalBehavioralEventPropertyCreateParam], PropertyInfo(alias="propertyDefinitions")]
+    ]
     """List of custom properties on event"""
 
     description: str
@@ -35,30 +37,4 @@ class EventDefinitionCreateParams(TypedDict, total=False):
 
     Can be one of CONTACT, COMPANY, DEAL, TICKET. If no primaryObject is supplied,
     we will default to associating the event to CONTACT objects.
-    """
-
-
-class PropertyDefinition(TypedDict, total=False):
-    label: Required[str]
-    """Human readable label for the property. Used in HubSpot UI"""
-
-    type: Required[str]
-    """The data type of the property.
-
-    Can be one of the following: [string, number, enumeration, datetime]
-    """
-
-    description: str
-    """A description of the property that will be shown as help text in HubSpot."""
-
-    name: str
-    """
-    Internal property name, which must be used when referencing the property from
-    the API
-    """
-
-    options: Iterable[OptionInput]
-    """A list of available options for the property if it is an enumeration.
-
-    NOTE: This field is only applicable for enumerated properties.
     """

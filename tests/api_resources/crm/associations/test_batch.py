@@ -197,7 +197,7 @@ class TestBatch:
         batch = client.crm.associations.batch.get(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         )
         assert_matches_type(BatchResponsePublicAssociationMulti, batch, path=["response"])
 
@@ -207,7 +207,7 @@ class TestBatch:
         response = client.crm.associations.batch.with_raw_response.get(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         )
 
         assert response.is_closed is True
@@ -221,7 +221,7 @@ class TestBatch:
         with client.crm.associations.batch.with_streaming_response.get(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -238,14 +238,14 @@ class TestBatch:
             client.crm.associations.batch.with_raw_response.get(
                 to_object_type="toObjectType",
                 from_object_type="",
-                inputs=[{"id": "37295"}],
+                inputs=[{"id": "id"}],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
             client.crm.associations.batch.with_raw_response.get(
                 to_object_type="",
                 from_object_type="fromObjectType",
-                inputs=[{"id": "37295"}],
+                inputs=[{"id": "id"}],
             )
 
 
@@ -434,7 +434,7 @@ class TestAsyncBatch:
         batch = await async_client.crm.associations.batch.get(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         )
         assert_matches_type(BatchResponsePublicAssociationMulti, batch, path=["response"])
 
@@ -444,7 +444,7 @@ class TestAsyncBatch:
         response = await async_client.crm.associations.batch.with_raw_response.get(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         )
 
         assert response.is_closed is True
@@ -458,7 +458,7 @@ class TestAsyncBatch:
         async with async_client.crm.associations.batch.with_streaming_response.get(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
-            inputs=[{"id": "37295"}],
+            inputs=[{"id": "id"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -475,12 +475,12 @@ class TestAsyncBatch:
             await async_client.crm.associations.batch.with_raw_response.get(
                 to_object_type="toObjectType",
                 from_object_type="",
-                inputs=[{"id": "37295"}],
+                inputs=[{"id": "id"}],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
             await async_client.crm.associations.batch.with_raw_response.get(
                 to_object_type="",
                 from_object_type="fromObjectType",
-                inputs=[{"id": "37295"}],
+                inputs=[{"id": "id"}],
             )

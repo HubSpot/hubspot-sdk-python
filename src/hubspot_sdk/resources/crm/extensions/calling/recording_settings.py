@@ -58,9 +58,6 @@ class RecordingSettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
-        Register an external URL that HubSpot will use to retrieve
-        [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
-
         Args:
           extra_headers: Send extra headers
 
@@ -95,9 +92,6 @@ class RecordingSettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
-        Update the URL that HubSpot will use to retrieve
-        [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
-
         Args:
           extra_headers: Send extra headers
 
@@ -131,9 +125,6 @@ class RecordingSettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
-        Retrieve the URL that is registered for
-        [call recording](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
-
         Args:
           extra_headers: Send extra headers
 
@@ -163,9 +154,6 @@ class RecordingSettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Mark a call recording as ready for transcription, specifying the call by its ID
-        (`engagementid`).
-
         Args:
           extra_headers: Send extra headers
 
@@ -221,9 +209,6 @@ class AsyncRecordingSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
-        Register an external URL that HubSpot will use to retrieve
-        [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
-
         Args:
           extra_headers: Send extra headers
 
@@ -258,9 +243,6 @@ class AsyncRecordingSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
-        Update the URL that HubSpot will use to retrieve
-        [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
-
         Args:
           extra_headers: Send extra headers
 
@@ -294,9 +276,6 @@ class AsyncRecordingSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
-        Retrieve the URL that is registered for
-        [call recording](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
-
         Args:
           extra_headers: Send extra headers
 
@@ -326,9 +305,6 @@ class AsyncRecordingSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Mark a call recording as ready for transcription, specifying the call by its ID
-        (`engagementid`).
-
         Args:
           extra_headers: Send extra headers
 

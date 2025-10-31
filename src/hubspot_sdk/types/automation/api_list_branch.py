@@ -26,15 +26,10 @@ FilterBranch: TypeAlias = Union[
 
 class APIListBranch(BaseModel):
     branch_name: Optional[str] = FieldInfo(alias="branchName", default=None)
-    """The name of this branch"""
 
     connection: Optional[APIConnection] = None
 
     filter_branch: Optional[FilterBranch] = FieldInfo(alias="filterBranch", default=None)
-    """The list criteria that determine when to execute this branch.
-
-    The first matching branch will execute.
-    """
 
 
 from ..shared.public_or_filter_branch import PublicOrFilterBranch

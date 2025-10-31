@@ -3,20 +3,15 @@
 from __future__ import annotations
 
 from typing import Iterable
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
+from ..batch_portal_entry_param import BatchPortalEntryParam
 
-__all__ = ["PortalBatchUpsertParams", "PortalState"]
+__all__ = ["PortalBatchUpsertParams"]
 
 
 class PortalBatchUpsertParams(TypedDict, total=False):
     app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
-    portal_states: Required[Annotated[Iterable[PortalState], PropertyInfo(alias="portalStates")]]
-
-
-class PortalState(TypedDict, total=False):
-    flag_state: Required[Annotated[Literal["OFF", "ON", "ABSENT"], PropertyInfo(alias="flagState")]]
-
-    portal_id: Required[Annotated[int, PropertyInfo(alias="portalId")]]
+    portal_states: Required[Annotated[Iterable[BatchPortalEntryParam], PropertyInfo(alias="portalStates")]]

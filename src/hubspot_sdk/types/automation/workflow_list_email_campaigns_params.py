@@ -12,16 +12,9 @@ __all__ = ["WorkflowListEmailCampaignsParams"]
 
 class WorkflowListEmailCampaignsParams(TypedDict, total=False):
     after: str
-    """
-    The paging cursor token of the last successfully read resource will be returned
-    as the `paging.next.after` JSON property of a paged response containing more
-    results.
-    """
 
     before: str
 
     flow_id: Annotated[SequenceNotStr[str], PropertyInfo(alias="flowId")]
-    """The ID of the workflow."""
 
     limit: int
-    """The maximum number of results to display per page."""

@@ -3,4 +3,6 @@
 from __future__ import annotations
 
 from .business_unit_get_by_user_id_params import BusinessUnitGetByUserIDParams as BusinessUnitGetByUserIDParams
-from .business_unit_get_by_user_id_response import BusinessUnitGetByUserIDResponse as BusinessUnitGetByUserIDResponse
+from .collection_response_public_business_unit_no_paging import (
+    CollectionResponsePublicBusinessUnitNoPaging as CollectionResponsePublicBusinessUnitNoPaging,
+)

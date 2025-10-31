@@ -14,8 +14,10 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.settings.tax_rate_get_response import TaxRateGetResponse
-from ...types.settings.tax_rate_list_response import TaxRateListResponse
+from ...types.settings.public_tax_rate_group import PublicTaxRateGroup
+from ...types.settings.collection_response_public_tax_rate_group_forward_paging import (
+    CollectionResponsePublicTaxRateGroupForwardPaging,
+)
 
 __all__ = ["TaxRatesResource", "AsyncTaxRatesResource"]
 
@@ -49,7 +51,7 @@ class TaxRatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaxRateListResponse:
+    ) -> CollectionResponsePublicTaxRateGroupForwardPaging:
         """
         Retrieve a paginated list of all tax rates set up in the account tax rate
         library
@@ -59,7 +61,7 @@ class TaxRatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TaxRateListResponse,
+            cast_to=CollectionResponsePublicTaxRateGroupForwardPaging,
         )
 
     def get(
@@ -72,7 +74,7 @@ class TaxRatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaxRateGetResponse:
+    ) -> PublicTaxRateGroup:
         """
         Retrieve a specific tax rate by its `taxRateGroupId`.
 
@@ -92,7 +94,7 @@ class TaxRatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TaxRateGetResponse,
+            cast_to=PublicTaxRateGroup,
         )
 
 
@@ -125,7 +127,7 @@ class AsyncTaxRatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaxRateListResponse:
+    ) -> CollectionResponsePublicTaxRateGroupForwardPaging:
         """
         Retrieve a paginated list of all tax rates set up in the account tax rate
         library
@@ -135,7 +137,7 @@ class AsyncTaxRatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TaxRateListResponse,
+            cast_to=CollectionResponsePublicTaxRateGroupForwardPaging,
         )
 
     async def get(
@@ -148,7 +150,7 @@ class AsyncTaxRatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaxRateGetResponse:
+    ) -> PublicTaxRateGroup:
         """
         Retrieve a specific tax rate by its `taxRateGroupId`.
 
@@ -168,7 +170,7 @@ class AsyncTaxRatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TaxRateGetResponse,
+            cast_to=PublicTaxRateGroup,
         )
 
 

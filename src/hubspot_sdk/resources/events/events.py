@@ -106,10 +106,6 @@ class EventsResource(SyncAPIResource):
               as the `paging.next.after` JSON property of a paged response containing more
               results.
 
-          before: Pagination cursor for backward navigation. Retrieves events occurring before the
-              specified cursor position. Note: Currently only forward pagination with after is
-              supported.
-
           event_type: The event type name. You can retrieve available event types using the
               [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).
 
@@ -257,10 +253,6 @@ class AsyncEventsResource(AsyncAPIResource):
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
               results.
-
-          before: Pagination cursor for backward navigation. Retrieves events occurring before the
-              specified cursor position. Note: Currently only forward pagination with after is
-              supported.
 
           event_type: The event type name. You can retrieve available event types using the
               [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).

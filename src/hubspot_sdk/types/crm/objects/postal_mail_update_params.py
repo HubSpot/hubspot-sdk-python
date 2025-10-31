@@ -15,4 +15,3 @@ class PostalMailUpdateParams(TypedDict, total=False):
     """Key value pairs representing the properties of the object."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
-    """The name of a property whose values are unique for this object"""

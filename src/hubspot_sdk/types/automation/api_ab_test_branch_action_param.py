@@ -13,12 +13,7 @@ __all__ = ["APIAbTestBranchActionParam"]
 
 class APIAbTestBranchActionParam(TypedDict, total=False):
     action_id: Required[Annotated[str, PropertyInfo(alias="actionId")]]
-    """The ID for this action."""
 
     test_branches: Required[Annotated[Iterable[APIConnectionParam], PropertyInfo(alias="testBranches")]]
 
     type: Required[Literal["AB_TEST_BRANCH"]]
-    """
-    The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH",
-    "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION"
-    """

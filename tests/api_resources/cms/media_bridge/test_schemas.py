@@ -9,11 +9,9 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
+from hubspot_sdk.types.events import AssociationDefinition
 from hubspot_sdk.types.shared import CollectionResponseObjectSchemaNoPaging
 from hubspot_sdk.types.crm.objects import ObjectSchema, ObjectTypeDefinition
-from hubspot_sdk.types.cms.media_bridge import (
-    SchemaCreateAssociationResponse,
-)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -144,7 +142,7 @@ class TestSchemas:
             from_object_type_id="fromObjectTypeId",
             to_object_type_id="toObjectTypeId",
         )
-        assert_matches_type(SchemaCreateAssociationResponse, schema, path=["response"])
+        assert_matches_type(AssociationDefinition, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -156,7 +154,7 @@ class TestSchemas:
             to_object_type_id="toObjectTypeId",
             name="name",
         )
-        assert_matches_type(SchemaCreateAssociationResponse, schema, path=["response"])
+        assert_matches_type(AssociationDefinition, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -171,7 +169,7 @@ class TestSchemas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         schema = response.parse()
-        assert_matches_type(SchemaCreateAssociationResponse, schema, path=["response"])
+        assert_matches_type(AssociationDefinition, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -186,7 +184,7 @@ class TestSchemas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             schema = response.parse()
-            assert_matches_type(SchemaCreateAssociationResponse, schema, path=["response"])
+            assert_matches_type(AssociationDefinition, schema, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -454,7 +452,7 @@ class TestAsyncSchemas:
             from_object_type_id="fromObjectTypeId",
             to_object_type_id="toObjectTypeId",
         )
-        assert_matches_type(SchemaCreateAssociationResponse, schema, path=["response"])
+        assert_matches_type(AssociationDefinition, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -466,7 +464,7 @@ class TestAsyncSchemas:
             to_object_type_id="toObjectTypeId",
             name="name",
         )
-        assert_matches_type(SchemaCreateAssociationResponse, schema, path=["response"])
+        assert_matches_type(AssociationDefinition, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -481,7 +479,7 @@ class TestAsyncSchemas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         schema = await response.parse()
-        assert_matches_type(SchemaCreateAssociationResponse, schema, path=["response"])
+        assert_matches_type(AssociationDefinition, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -496,7 +494,7 @@ class TestAsyncSchemas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             schema = await response.parse()
-            assert_matches_type(SchemaCreateAssociationResponse, schema, path=["response"])
+            assert_matches_type(AssociationDefinition, schema, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

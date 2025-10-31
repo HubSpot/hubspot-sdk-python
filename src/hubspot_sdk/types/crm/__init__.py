@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 from .pipeline import Pipeline as Pipeline
+from .date_time import DateTime as DateTime
 from .event_detail import EventDetail as EventDetail
 from .filter_param import FilterParam as FilterParam
 from .public_owner import PublicOwner as PublicOwner
 from .associated_id import AssociatedID as AssociatedID
+from .flag_response import FlagResponse as FlagResponse
 from .pipeline_stage import PipelineStage as PipelineStage
 from .property_group import PropertyGroup as PropertyGroup
 from .import_row_core import ImportRowCore as ImportRowCore
@@ -28,6 +30,7 @@ from .public_object_list import PublicObjectList as PublicObjectList
 from .user_create_params import UserCreateParams as UserCreateParams
 from .user_search_params import UserSearchParams as UserSearchParams
 from .user_update_params import UserUpdateParams as UserUpdateParams
+from .batch_response_void import BatchResponseVoid as BatchResponseVoid
 from .list_fetch_response import ListFetchResponse as ListFetchResponse
 from .property_get_params import PropertyGetParams as PropertyGetParams
 from .public_import_error import PublicImportError as PublicImportError
@@ -59,10 +62,12 @@ from .pipeline_replace_params import PipelineReplaceParams as PipelineReplacePar
 from .public_list_permissions import PublicListPermissions as PublicListPermissions
 from .timeline_event_response import TimelineEventResponse as TimelineEventResponse
 from .timeline_event_template import TimelineEventTemplate as TimelineEventTemplate
+from .batch_portal_entry_param import BatchPortalEntryParam as BatchPortalEntryParam
 from .near_limit_record_sample import NearLimitRecordSample as NearLimitRecordSample
 from .public_association_multi import PublicAssociationMulti as PublicAssociationMulti
 from .public_association_param import PublicAssociationParam as PublicAssociationParam
 from .public_migration_mapping import PublicMigrationMapping as PublicMigrationMapping
+from .report_creation_response import ReportCreationResponse as ReportCreationResponse
 from .created_response_property import CreatedResponseProperty as CreatedResponseProperty
 from .import_list_errors_params import ImportListErrorsParams as ImportListErrorsParams
 from .public_object_list_record import PublicObjectListRecord as PublicObjectListRecord
@@ -70,8 +75,10 @@ from .labels_between_object_pair import LabelsBetweenObjectPair as LabelsBetween
 from .list_folder_fetch_response import ListFolderFetchResponse as ListFolderFetchResponse
 from .list_update_filters_params import ListUpdateFiltersParams as ListUpdateFiltersParams
 from .pipeline_stage_input_param import PipelineStageInputParam as PipelineStageInputParam
+from .portal_flag_state_response import PortalFlagStateResponse as PortalFlagStateResponse
 from .public_default_association import PublicDefaultAssociation as PublicDefaultAssociation
 from .public_membership_settings import PublicMembershipSettings as PublicMembershipSettings
+from .association_spec_with_label import AssociationSpecWithLabel as AssociationSpecWithLabel
 from .list_folder_create_response import ListFolderCreateResponse as ListFolderCreateResponse
 from .memberships_update_response import MembershipsUpdateResponse as MembershipsUpdateResponse
 from .public_export_request_param import PublicExportRequestParam as PublicExportRequestParam
@@ -90,8 +97,9 @@ from .limit_and_usage_for_object_type import LimitAndUsageForObjectType as Limit
 from .list_schedule_conversion_params import ListScheduleConversionParams as ListScheduleConversionParams
 from .public_crm_search_request_param import PublicCRMSearchRequestParam as PublicCRMSearchRequestParam
 from .public_list_conversion_response import PublicListConversionResponse as PublicListConversionResponse
+from .public_property_validation_rule import PublicPropertyValidationRule as PublicPropertyValidationRule
 from .association_label_limit_response import AssociationLabelLimitResponse as AssociationLabelLimitResponse
-from .property_validation_get_response import PropertyValidationGetResponse as PropertyValidationGetResponse
+from .portal_flag_state_batch_response import PortalFlagStateBatchResponse as PortalFlagStateBatchResponse
 from .public_export_list_request_param import PublicExportListRequestParam as PublicExportListRequestParam
 from .public_export_view_request_param import PublicExportViewRequestParam as PublicExportViewRequestParam
 from .public_membership_settings_param import PublicMembershipSettingsParam as PublicMembershipSettingsParam
@@ -99,7 +107,6 @@ from .public_object_list_search_result import PublicObjectListSearchResult as Pu
 from .association_record_limit_response import AssociationRecordLimitResponse as AssociationRecordLimitResponse
 from .batch_response_public_association import BatchResponsePublicAssociation as BatchResponsePublicAssociation
 from .collection_response_associated_id import CollectionResponseAssociatedID as CollectionResponseAssociatedID
-from .property_validation_list_response import PropertyValidationListResponse as PropertyValidationListResponse
 from .public_list_conversion_date_param import PublicListConversionDateParam as PublicListConversionDateParam
 from .public_list_conversion_inactivity import PublicListConversionInactivity as PublicListConversionInactivity
 from .public_list_conversion_time_param import PublicListConversionTimeParam as PublicListConversionTimeParam
@@ -108,6 +115,9 @@ from .collection_response_property_group import CollectionResponsePropertyGroup 
 from .multi_associated_object_with_label import MultiAssociatedObjectWithLabel as MultiAssociatedObjectWithLabel
 from .batch_response_simple_public_object import BatchResponseSimplePublicObject as BatchResponseSimplePublicObject
 from .custom_object_record_limit_response import CustomObjectRecordLimitResponse as CustomObjectRecordLimitResponse
+from .public_association_multi_post_param import PublicAssociationMultiPostParam as PublicAssociationMultiPostParam
+from .public_association_multi_with_label import PublicAssociationMultiWithLabel as PublicAssociationMultiWithLabel
+from .public_property_validation_rule_map import PublicPropertyValidationRuleMap as PublicPropertyValidationRuleMap
 from .timeline_event_template_token_param import TimelineEventTemplateTokenParam as TimelineEventTemplateTokenParam
 from .public_associations_for_object_param import PublicAssociationsForObjectParam as PublicAssociationsForObjectParam
 from .timeline_event_template_token_option import TimelineEventTemplateTokenOption as TimelineEventTemplateTokenOption
@@ -119,6 +129,12 @@ from .action_response_with_single_result_uri import (
 )
 from .collection_response_pipeline_no_paging import (
     CollectionResponsePipelineNoPaging as CollectionResponsePipelineNoPaging,
+)
+from .object_type_enablement_public_response import (
+    ObjectTypeEnablementPublicResponse as ObjectTypeEnablementPublicResponse,
+)
+from .public_association_multi_archive_param import (
+    PublicAssociationMultiArchiveParam as PublicAssociationMultiArchiveParam,
 )
 from .simple_public_object_batch_input_param import (
     SimplePublicObjectBatchInputParam as SimplePublicObjectBatchInputParam,
@@ -134,6 +150,9 @@ from .public_list_conversion_inactivity_param import (
 )
 from .object_type_near_or_at_association_limit import (
     ObjectTypeNearOrAtAssociationLimit as ObjectTypeNearOrAtAssociationLimit,
+)
+from .batch_response_labels_between_object_pair import (
+    BatchResponseLabelsBetweenObjectPair as BatchResponseLabelsBetweenObjectPair,
 )
 from .batch_response_public_default_association import (
     BatchResponsePublicDefaultAssociation as BatchResponsePublicDefaultAssociation,
@@ -156,8 +175,17 @@ from .timeline_event_template_token_option_param import (
 from .created_response_labels_between_object_pair import (
     CreatedResponseLabelsBetweenObjectPair as CreatedResponseLabelsBetweenObjectPair,
 )
+from .public_default_association_multi_post_param import (
+    PublicDefaultAssociationMultiPostParam as PublicDefaultAssociationMultiPostParam,
+)
 from .collection_response_pipeline_stage_no_paging import (
     CollectionResponsePipelineStageNoPaging as CollectionResponsePipelineStageNoPaging,
+)
+from .portal_object_type_enablement_public_response import (
+    PortalObjectTypeEnablementPublicResponse as PortalObjectTypeEnablementPublicResponse,
+)
+from .public_fetch_associations_batch_request_param import (
+    PublicFetchAssociationsBatchRequestParam as PublicFetchAssociationsBatchRequestParam,
 )
 from .simple_public_object_batch_input_upsert_param import (
     SimplePublicObjectBatchInputUpsertParam as SimplePublicObjectBatchInputUpsertParam,
@@ -173,6 +201,9 @@ from .collection_response_public_owner_forward_paging import (
 )
 from .simple_public_object_batch_input_for_create_param import (
     SimplePublicObjectBatchInputForCreateParam as SimplePublicObjectBatchInputForCreateParam,
+)
+from .batch_response_public_association_multi_with_label import (
+    BatchResponsePublicAssociationMultiWithLabel as BatchResponsePublicAssociationMultiWithLabel,
 )
 from .collection_response_with_total_simple_public_object import (
     CollectionResponseWithTotalSimplePublicObject as CollectionResponseWithTotalSimplePublicObject,
@@ -192,8 +223,14 @@ from .api_collection_response_record_list_membership_no_paging import (
 from .collection_response_simple_public_object_with_associations import (
     CollectionResponseSimplePublicObjectWithAssociations as CollectionResponseSimplePublicObjectWithAssociations,
 )
+from .collection_response_public_property_validation_rule_no_paging import (
+    CollectionResponsePublicPropertyValidationRuleNoPaging as CollectionResponsePublicPropertyValidationRuleNoPaging,
+)
 from .collection_response_association_label_limit_response_no_paging import (
     CollectionResponseAssociationLabelLimitResponseNoPaging as CollectionResponseAssociationLabelLimitResponseNoPaging,
+)
+from .collection_response_public_property_validation_rule_map_no_paging import (
+    CollectionResponsePublicPropertyValidationRuleMapNoPaging as CollectionResponsePublicPropertyValidationRuleMapNoPaging,
 )
 from .collection_response_object_type_near_or_at_association_limit_no_paging import (
     CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging as CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,

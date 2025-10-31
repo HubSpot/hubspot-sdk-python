@@ -234,7 +234,7 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete the pipeline identified by `{pipelineId}`.
+        Delete a pipeline
 
         Args:
           extra_headers: Send extra headers
@@ -359,9 +359,7 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Pipeline:
         """
-        Replace all the properties of an existing pipeline with the values provided.
-        This will overwrite any existing pipeline stages. The updated pipeline will be
-        returned in the response.
+        Replace a pipeline
 
         Args:
           display_order: The order for displaying this pipeline. If two pipelines have a matching
@@ -605,7 +603,7 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete the pipeline identified by `{pipelineId}`.
+        Delete a pipeline
 
         Args:
           extra_headers: Send extra headers
@@ -730,9 +728,7 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Pipeline:
         """
-        Replace all the properties of an existing pipeline with the values provided.
-        This will overwrite any existing pipeline stages. The updated pipeline will be
-        returned in the response.
+        Replace a pipeline
 
         Args:
           display_order: The order for displaying this pipeline. If two pipelines have a matching

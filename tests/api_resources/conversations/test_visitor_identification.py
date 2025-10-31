@@ -9,9 +9,7 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.conversations import (
-    VisitorIdentificationGenerateTokenResponse,
-)
+from hubspot_sdk.types.conversations import IdentificationTokenResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,7 +23,7 @@ class TestVisitorIdentification:
         visitor_identification = client.conversations.visitor_identification.generate_token(
             email="visitor-email@example.com",
         )
-        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -35,7 +33,7 @@ class TestVisitorIdentification:
             first_name="Gob",
             last_name="Bluth",
         )
-        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -47,7 +45,7 @@ class TestVisitorIdentification:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         visitor_identification = response.parse()
-        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -59,7 +57,7 @@ class TestVisitorIdentification:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             visitor_identification = response.parse()
-            assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
+            assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -75,7 +73,7 @@ class TestAsyncVisitorIdentification:
         visitor_identification = await async_client.conversations.visitor_identification.generate_token(
             email="visitor-email@example.com",
         )
-        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -85,7 +83,7 @@ class TestAsyncVisitorIdentification:
             first_name="Gob",
             last_name="Bluth",
         )
-        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -97,7 +95,7 @@ class TestAsyncVisitorIdentification:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         visitor_identification = await response.parse()
-        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -109,6 +107,6 @@ class TestAsyncVisitorIdentification:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             visitor_identification = await response.parse()
-            assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
+            assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
 
         assert cast(Any, response.is_closed) is True

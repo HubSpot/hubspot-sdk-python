@@ -351,7 +351,7 @@ class DealsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Merge two deals with same type
+        Combine two deals of the same type into a single deal.
 
         Args:
           extra_headers: Send extra headers
@@ -394,6 +394,8 @@ class DealsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Search for deals using specified criteria and filters.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 
@@ -740,7 +742,7 @@ class AsyncDealsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Merge two deals with same type
+        Combine two deals of the same type into a single deal.
 
         Args:
           extra_headers: Send extra headers
@@ -783,6 +785,8 @@ class AsyncDealsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Search for deals using specified criteria and filters.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 

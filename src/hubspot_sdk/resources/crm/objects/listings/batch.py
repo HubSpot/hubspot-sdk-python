@@ -66,7 +66,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of listings
+        Create multiple listings in a single request.
 
         Args:
           extra_headers: Send extra headers
@@ -98,7 +98,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of listings by internal ID, or unique property values
+        Update multiple listings using their internal IDs or unique property values.
 
         Args:
           extra_headers: Send extra headers
@@ -130,7 +130,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a batch of listings by ID
+        Archive multiple listings by their IDs.
 
         Args:
           extra_headers: Send extra headers
@@ -276,7 +276,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of listings
+        Create multiple listings in a single request.
 
         Args:
           extra_headers: Send extra headers
@@ -308,7 +308,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of listings by internal ID, or unique property values
+        Update multiple listings using their internal IDs or unique property values.
 
         Args:
           extra_headers: Send extra headers
@@ -340,7 +340,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a batch of listings by ID
+        Archive multiple listings by their IDs.
 
         Args:
           extra_headers: Send extra headers

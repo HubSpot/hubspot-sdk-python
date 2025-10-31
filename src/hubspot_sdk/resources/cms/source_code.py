@@ -35,9 +35,7 @@ from ...types.cms import (
 from ..._base_client import make_request_options
 from ...types.shared.task_locator import TaskLocator
 from ...types.shared.action_response import ActionResponse
-from ...types.cms.source_code_create_response import SourceCodeCreateResponse
-from ...types.cms.source_code_upsert_response import SourceCodeUpsertResponse
-from ...types.cms.source_code_get_metadata_response import SourceCodeGetMetadataResponse
+from ...types.cms.asset_file_metadata import AssetFileMetadata
 
 __all__ = ["SourceCodeResource", "AsyncSourceCodeResource"]
 
@@ -75,7 +73,7 @@ class SourceCodeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SourceCodeCreateResponse:
+    ) -> AssetFileMetadata:
         """Creates a file at the specified path in the specified environment.
 
         Accepts
@@ -108,7 +106,7 @@ class SourceCodeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SourceCodeCreateResponse,
+            cast_to=AssetFileMetadata,
         )
 
     def delete(
@@ -264,7 +262,7 @@ class SourceCodeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SourceCodeGetMetadataResponse:
+    ) -> AssetFileMetadata:
         """
         Gets the metadata object for the file at the specified path in the specified
         environment.
@@ -293,7 +291,7 @@ class SourceCodeResource(SyncAPIResource):
                     {"properties": properties}, source_code_get_metadata_params.SourceCodeGetMetadataParams
                 ),
             ),
-            cast_to=SourceCodeGetMetadataResponse,
+            cast_to=AssetFileMetadata,
         )
 
     def upsert(
@@ -308,7 +306,7 @@ class SourceCodeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SourceCodeUpsertResponse:
+    ) -> AssetFileMetadata:
         """Upserts a file at the specified path in the specified environment.
 
         Accepts
@@ -340,7 +338,7 @@ class SourceCodeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SourceCodeUpsertResponse,
+            cast_to=AssetFileMetadata,
         )
 
     def validate(
@@ -424,7 +422,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SourceCodeCreateResponse:
+    ) -> AssetFileMetadata:
         """Creates a file at the specified path in the specified environment.
 
         Accepts
@@ -457,7 +455,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SourceCodeCreateResponse,
+            cast_to=AssetFileMetadata,
         )
 
     async def delete(
@@ -615,7 +613,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SourceCodeGetMetadataResponse:
+    ) -> AssetFileMetadata:
         """
         Gets the metadata object for the file at the specified path in the specified
         environment.
@@ -644,7 +642,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
                     {"properties": properties}, source_code_get_metadata_params.SourceCodeGetMetadataParams
                 ),
             ),
-            cast_to=SourceCodeGetMetadataResponse,
+            cast_to=AssetFileMetadata,
         )
 
     async def upsert(
@@ -659,7 +657,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SourceCodeUpsertResponse:
+    ) -> AssetFileMetadata:
         """Upserts a file at the specified path in the specified environment.
 
         Accepts
@@ -691,7 +689,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SourceCodeUpsertResponse,
+            cast_to=AssetFileMetadata,
         )
 
     async def validate(

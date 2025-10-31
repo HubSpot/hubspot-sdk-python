@@ -3,24 +3,12 @@
 from __future__ import annotations
 
 from typing import Iterable
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Required, TypedDict
 
-from ...._utils import PropertyInfo
+from .public_deal_splits_create_request_param import PublicDealSplitsCreateRequestParam
 
-__all__ = ["DealSplitBatchUpsertParams", "Input", "InputSplit"]
+__all__ = ["DealSplitBatchUpsertParams"]
 
 
 class DealSplitBatchUpsertParams(TypedDict, total=False):
-    inputs: Required[Iterable[Input]]
-
-
-class InputSplit(TypedDict, total=False):
-    owner_id: Required[Annotated[int, PropertyInfo(alias="ownerId")]]
-
-    percentage: Required[float]
-
-
-class Input(TypedDict, total=False):
-    id: Required[int]
-
-    splits: Required[Iterable[InputSplit]]
+    inputs: Required[Iterable[PublicDealSplitsCreateRequestParam]]

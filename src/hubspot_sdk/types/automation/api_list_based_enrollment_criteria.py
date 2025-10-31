@@ -36,30 +36,16 @@ ReEnrollmentTriggersFilterBranch: TypeAlias = Union[
 
 class APIListBasedEnrollmentCriteria(BaseModel):
     list_filter_branch: ListFilterBranch = FieldInfo(alias="listFilterBranch")
-    """The list filter branch that represents the enrollment trigger to this flow."""
 
     re_enrollment_triggers_filter_branches: List[ReEnrollmentTriggersFilterBranch] = FieldInfo(
         alias="reEnrollmentTriggersFilterBranches"
     )
-    """
-    A list of filter branches to listen for in order to re-enroll objects into this
-    workflow.
-    """
 
     should_re_enroll: bool = FieldInfo(alias="shouldReEnroll")
-    """Whether or not the same object can enroll in this workflow twice."""
 
     type: Literal["LIST_BASED"]
-    """
-    The type of enrollment criteria this is, this can be "LIST_BASED",
-    "EVENT_BASED", or "MANUAL".
-    """
 
     un_enroll_objects_not_meeting_criteria: bool = FieldInfo(alias="unEnrollObjectsNotMeetingCriteria")
-    """
-    Whether or not to remove objects from this workflow if they stop meeting the
-    enrollment criteria.
-    """
 
 
 from ..shared.public_or_filter_branch import PublicOrFilterBranch

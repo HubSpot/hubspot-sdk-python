@@ -11,7 +11,5 @@ __all__ = ["APISignatureWebhookAuthSettingsParam"]
 
 class APISignatureWebhookAuthSettingsParam(TypedDict, total=False):
     app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
-    """The appId that this signature will be generated for."""
 
     type: Required[Literal["SIGNATURE"]]
-    """The type of webhook auth settings this is, can be: "AUTH_KEY" or "SIGNATURE" """

@@ -2,17 +2,8 @@
 
 from __future__ import annotations
 
-from .app_get_response import AppGetResponse as AppGetResponse
 from .app_update_params import AppUpdateParams as AppUpdateParams
-from .app_delete_response import AppDeleteResponse as AppDeleteResponse
-from .app_update_response import AppUpdateResponse as AppUpdateResponse
-from .portal_get_response import PortalGetResponse as PortalGetResponse
 from .portal_update_params import PortalUpdateParams as PortalUpdateParams
-from .portal_delete_response import PortalDeleteResponse as PortalDeleteResponse
-from .portal_update_response import PortalUpdateResponse as PortalUpdateResponse
 from .app_list_portals_params import AppListPortalsParams as AppListPortalsParams
-from .app_list_portals_response import AppListPortalsResponse as AppListPortalsResponse
 from .portal_batch_delete_params import PortalBatchDeleteParams as PortalBatchDeleteParams
 from .portal_batch_upsert_params import PortalBatchUpsertParams as PortalBatchUpsertParams
-from .portal_batch_delete_response import PortalBatchDeleteResponse as PortalBatchDeleteResponse
-from .portal_batch_upsert_response import PortalBatchUpsertResponse as PortalBatchUpsertResponse

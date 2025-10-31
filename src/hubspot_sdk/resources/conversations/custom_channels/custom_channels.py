@@ -42,10 +42,10 @@ from .channel_account_staging_tokens import (
     ChannelAccountStagingTokensResourceWithStreamingResponse,
     AsyncChannelAccountStagingTokensResourceWithStreamingResponse,
 )
-from ....types.conversations.custom_channel_get_response import CustomChannelGetResponse
-from ....types.conversations.custom_channel_list_response import CustomChannelListResponse
-from ....types.conversations.custom_channel_create_response import CustomChannelCreateResponse
-from ....types.conversations.custom_channel_update_response import CustomChannelUpdateResponse
+from ....types.conversations.public_channel_integration_channel import PublicChannelIntegrationChannel
+from ....types.conversations.collection_response_with_total_public_channel_integration_channel_forward_paging import (
+    CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
+)
 
 __all__ = ["CustomChannelsResource", "AsyncCustomChannelsResource"]
 
@@ -97,7 +97,7 @@ class CustomChannelsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CustomChannelCreateResponse:
+    ) -> PublicChannelIntegrationChannel:
         """
         Register a new channel along with its capabilities and the webhook url that will
         be used to receive messages published over the channel
@@ -127,7 +127,7 @@ class CustomChannelsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomChannelCreateResponse,
+            cast_to=PublicChannelIntegrationChannel,
         )
 
     def update(
@@ -146,7 +146,7 @@ class CustomChannelsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CustomChannelUpdateResponse:
+    ) -> PublicChannelIntegrationChannel:
         """Update the capabilities for an existing.
 
         You can also use it to update the
@@ -179,7 +179,7 @@ class CustomChannelsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomChannelUpdateResponse,
+            cast_to=PublicChannelIntegrationChannel,
         )
 
     def list(
@@ -191,14 +191,14 @@ class CustomChannelsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CustomChannelListResponse:
+    ) -> CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging:
         """Retrieve all custom channels associated with the app."""
         return self._get(
             "/conversations/v3/custom-channels/",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomChannelListResponse,
+            cast_to=CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
         )
 
     def delete(
@@ -245,7 +245,7 @@ class CustomChannelsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CustomChannelGetResponse:
+    ) -> PublicChannelIntegrationChannel:
         """Retrieve the details about a custom channel.
 
         This API allows you to see a custom
@@ -267,7 +267,7 @@ class CustomChannelsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomChannelGetResponse,
+            cast_to=PublicChannelIntegrationChannel,
         )
 
 
@@ -318,7 +318,7 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CustomChannelCreateResponse:
+    ) -> PublicChannelIntegrationChannel:
         """
         Register a new channel along with its capabilities and the webhook url that will
         be used to receive messages published over the channel
@@ -348,7 +348,7 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomChannelCreateResponse,
+            cast_to=PublicChannelIntegrationChannel,
         )
 
     async def update(
@@ -367,7 +367,7 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CustomChannelUpdateResponse:
+    ) -> PublicChannelIntegrationChannel:
         """Update the capabilities for an existing.
 
         You can also use it to update the
@@ -400,7 +400,7 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomChannelUpdateResponse,
+            cast_to=PublicChannelIntegrationChannel,
         )
 
     async def list(
@@ -412,14 +412,14 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CustomChannelListResponse:
+    ) -> CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging:
         """Retrieve all custom channels associated with the app."""
         return await self._get(
             "/conversations/v3/custom-channels/",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomChannelListResponse,
+            cast_to=CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
         )
 
     async def delete(
@@ -466,7 +466,7 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CustomChannelGetResponse:
+    ) -> PublicChannelIntegrationChannel:
         """Retrieve the details about a custom channel.
 
         This API allows you to see a custom
@@ -488,7 +488,7 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomChannelGetResponse,
+            cast_to=PublicChannelIntegrationChannel,
         )
 
 
