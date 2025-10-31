@@ -31,7 +31,7 @@ The full API of this library can be found in [api.md](api.md).
 from hubspot_sdk import Hubspot
 
 client = Hubspot(
-    access_token="pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    access_token="pat-na1-xxxxxxxx-xxxx",
 )
 
 result = client.crm.objects.contacts.create(
@@ -49,7 +49,7 @@ import asyncio
 from hubspot_sdk import AsyncHubspot
 
 client = AsyncHubspot(
-    access_token="pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    access_token="pat-na1-xxxxxxxx-xxxx",
 )
 
 
@@ -86,7 +86,7 @@ from hubspot_sdk import AsyncHubspot
 
 async def main() -> None:
     async with AsyncHubspot(
-        access_token="pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        access_token="pat-na1-xxxxxxxx-xxxx",
         http_client=DefaultAioHttpClient(),
     ) as client:
         result = await client.crm.objects.contacts.create(
