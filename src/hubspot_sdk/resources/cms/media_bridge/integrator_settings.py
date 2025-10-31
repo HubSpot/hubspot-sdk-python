@@ -27,14 +27,36 @@ from ....types.cms.media_bridge import (
     integrator_setting_create_object_definition_params,
     integrator_setting_update_event_visibility_settings_params,
 )
-from ....types.cms.endpoints_param import EndpointsParam
-from ....types.cms.event_visibility_change import EventVisibilityChange
-from ....types.cms.event_visibility_response import EventVisibilityResponse
-from ....types.cms.object_definition_response import ObjectDefinitionResponse
-from ....types.cms.integrator_o_embed_domain_model import IntegratorOEmbedDomainModel
-from ....types.cms.o_embed_domains_collection_response import OEmbedDomainsCollectionResponse
-from ....types.cms.bulk_integrator_object_creation_response import BulkIntegratorObjectCreationResponse
-from ....types.cms.media_bridge_provider_registration_response import MediaBridgeProviderRegistrationResponse
+from ....types.cms.media_bridge.integrator_setting_update_app_name_response import (
+    IntegratorSettingUpdateAppNameResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_get_oembed_domain_response import (
+    IntegratorSettingGetOembedDomainResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_register_app_name_response import (
+    IntegratorSettingRegisterAppNameResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_list_oembed_domains_response import (
+    IntegratorSettingListOembedDomainsResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_create_oembed_domain_response import (
+    IntegratorSettingCreateOembedDomainResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_update_oembed_domain_response import (
+    IntegratorSettingUpdateOembedDomainResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_create_object_definition_response import (
+    IntegratorSettingCreateObjectDefinitionResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_get_event_visibility_settings_response import (
+    IntegratorSettingGetEventVisibilitySettingsResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_update_event_visibility_settings_response import (
+    IntegratorSettingUpdateEventVisibilitySettingsResponse,
+)
+from ....types.cms.media_bridge.integrator_setting_get_object_definitions_by_media_type_response import (
+    IntegratorSettingGetObjectDefinitionsByMediaTypeResponse,
+)
 
 __all__ = ["IntegratorSettingsResource", "AsyncIntegratorSettingsResource"]
 
@@ -70,7 +92,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BulkIntegratorObjectCreationResponse:
+    ) -> IntegratorSettingCreateObjectDefinitionResponse:
         """
         Create a new media object type
 
@@ -94,14 +116,14 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BulkIntegratorObjectCreationResponse,
+            cast_to=IntegratorSettingCreateObjectDefinitionResponse,
         )
 
     def create_oembed_domain(
         self,
         app_id: str,
         *,
-        endpoints: EndpointsParam,
+        endpoints: integrator_setting_create_oembed_domain_params.Endpoints,
         portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -109,7 +131,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegratorOEmbedDomainModel:
+    ) -> IntegratorSettingCreateOembedDomainResponse:
         """
         Set up a new oEmbed domain for your media bridge app.
 
@@ -136,7 +158,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegratorOEmbedDomainModel,
+            cast_to=IntegratorSettingCreateOembedDomainResponse,
         )
 
     def delete_oembed_domain(
@@ -183,7 +205,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EventVisibilityResponse:
+    ) -> IntegratorSettingGetEventVisibilitySettingsResponse:
         """
         Get the visibility settings for media bridge events for your apps.
 
@@ -203,7 +225,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EventVisibilityResponse,
+            cast_to=IntegratorSettingGetEventVisibilitySettingsResponse,
         )
 
     def get_object_definitions_by_media_type(
@@ -217,7 +239,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ObjectDefinitionResponse:
+    ) -> IntegratorSettingGetObjectDefinitionsByMediaTypeResponse:
         """
         Get the existing objects types that belong to the specified media type.
 
@@ -239,7 +261,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ObjectDefinitionResponse,
+            cast_to=IntegratorSettingGetObjectDefinitionsByMediaTypeResponse,
         )
 
     def get_oembed_domain(
@@ -253,7 +275,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegratorOEmbedDomainModel:
+    ) -> IntegratorSettingGetOembedDomainResponse:
         """
         Get the details for an existing oEmbed domain.
 
@@ -275,7 +297,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegratorOEmbedDomainModel,
+            cast_to=IntegratorSettingGetOembedDomainResponse,
         )
 
     def list_oembed_domains(
@@ -288,7 +310,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> OEmbedDomainsCollectionResponse:
+    ) -> IntegratorSettingListOembedDomainsResponse:
         """
         Get the details for existing oEmbed domains for your app
 
@@ -308,7 +330,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=OEmbedDomainsCollectionResponse,
+            cast_to=IntegratorSettingListOembedDomainsResponse,
         )
 
     @typing_extensions.deprecated("deprecated")
@@ -324,7 +346,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeProviderRegistrationResponse:
+    ) -> IntegratorSettingRegisterAppNameResponse:
         """
         Register the name that your app will display when a user is selecting media
         bridge items.
@@ -352,7 +374,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MediaBridgeProviderRegistrationResponse,
+            cast_to=IntegratorSettingRegisterAppNameResponse,
         )
 
     def update_app_name(
@@ -367,7 +389,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeProviderRegistrationResponse:
+    ) -> IntegratorSettingUpdateAppNameResponse:
         """
         Update the name that your app will display when a user is selecting media bridge
         items.
@@ -395,7 +417,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MediaBridgeProviderRegistrationResponse,
+            cast_to=IntegratorSettingUpdateAppNameResponse,
         )
 
     def update_event_visibility_settings(
@@ -413,7 +435,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EventVisibilityChange:
+    ) -> IntegratorSettingUpdateEventVisibilitySettingsResponse:
         """
         Set the visibility settings for media bridge events created by your app.
 
@@ -443,7 +465,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EventVisibilityChange,
+            cast_to=IntegratorSettingUpdateEventVisibilitySettingsResponse,
         )
 
     def update_oembed_domain(
@@ -451,7 +473,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         o_embed_domain_id: str,
         *,
         app_id: str,
-        endpoints: EndpointsParam,
+        endpoints: integrator_setting_update_oembed_domain_params.Endpoints,
         portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -459,7 +481,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegratorOEmbedDomainModel:
+    ) -> IntegratorSettingUpdateOembedDomainResponse:
         """
         Update an existing oEmbed domain.
 
@@ -488,7 +510,7 @@ class IntegratorSettingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegratorOEmbedDomainModel,
+            cast_to=IntegratorSettingUpdateOembedDomainResponse,
         )
 
 
@@ -523,7 +545,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BulkIntegratorObjectCreationResponse:
+    ) -> IntegratorSettingCreateObjectDefinitionResponse:
         """
         Create a new media object type
 
@@ -547,14 +569,14 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BulkIntegratorObjectCreationResponse,
+            cast_to=IntegratorSettingCreateObjectDefinitionResponse,
         )
 
     async def create_oembed_domain(
         self,
         app_id: str,
         *,
-        endpoints: EndpointsParam,
+        endpoints: integrator_setting_create_oembed_domain_params.Endpoints,
         portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -562,7 +584,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegratorOEmbedDomainModel:
+    ) -> IntegratorSettingCreateOembedDomainResponse:
         """
         Set up a new oEmbed domain for your media bridge app.
 
@@ -589,7 +611,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegratorOEmbedDomainModel,
+            cast_to=IntegratorSettingCreateOembedDomainResponse,
         )
 
     async def delete_oembed_domain(
@@ -636,7 +658,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EventVisibilityResponse:
+    ) -> IntegratorSettingGetEventVisibilitySettingsResponse:
         """
         Get the visibility settings for media bridge events for your apps.
 
@@ -656,7 +678,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EventVisibilityResponse,
+            cast_to=IntegratorSettingGetEventVisibilitySettingsResponse,
         )
 
     async def get_object_definitions_by_media_type(
@@ -670,7 +692,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ObjectDefinitionResponse:
+    ) -> IntegratorSettingGetObjectDefinitionsByMediaTypeResponse:
         """
         Get the existing objects types that belong to the specified media type.
 
@@ -692,7 +714,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ObjectDefinitionResponse,
+            cast_to=IntegratorSettingGetObjectDefinitionsByMediaTypeResponse,
         )
 
     async def get_oembed_domain(
@@ -706,7 +728,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegratorOEmbedDomainModel:
+    ) -> IntegratorSettingGetOembedDomainResponse:
         """
         Get the details for an existing oEmbed domain.
 
@@ -728,7 +750,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegratorOEmbedDomainModel,
+            cast_to=IntegratorSettingGetOembedDomainResponse,
         )
 
     async def list_oembed_domains(
@@ -741,7 +763,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> OEmbedDomainsCollectionResponse:
+    ) -> IntegratorSettingListOembedDomainsResponse:
         """
         Get the details for existing oEmbed domains for your app
 
@@ -761,7 +783,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=OEmbedDomainsCollectionResponse,
+            cast_to=IntegratorSettingListOembedDomainsResponse,
         )
 
     @typing_extensions.deprecated("deprecated")
@@ -777,7 +799,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeProviderRegistrationResponse:
+    ) -> IntegratorSettingRegisterAppNameResponse:
         """
         Register the name that your app will display when a user is selecting media
         bridge items.
@@ -805,7 +827,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MediaBridgeProviderRegistrationResponse,
+            cast_to=IntegratorSettingRegisterAppNameResponse,
         )
 
     async def update_app_name(
@@ -820,7 +842,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeProviderRegistrationResponse:
+    ) -> IntegratorSettingUpdateAppNameResponse:
         """
         Update the name that your app will display when a user is selecting media bridge
         items.
@@ -848,7 +870,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MediaBridgeProviderRegistrationResponse,
+            cast_to=IntegratorSettingUpdateAppNameResponse,
         )
 
     async def update_event_visibility_settings(
@@ -866,7 +888,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EventVisibilityChange:
+    ) -> IntegratorSettingUpdateEventVisibilitySettingsResponse:
         """
         Set the visibility settings for media bridge events created by your app.
 
@@ -896,7 +918,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EventVisibilityChange,
+            cast_to=IntegratorSettingUpdateEventVisibilitySettingsResponse,
         )
 
     async def update_oembed_domain(
@@ -904,7 +926,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         o_embed_domain_id: str,
         *,
         app_id: str,
-        endpoints: EndpointsParam,
+        endpoints: integrator_setting_update_oembed_domain_params.Endpoints,
         portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -912,7 +934,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegratorOEmbedDomainModel:
+    ) -> IntegratorSettingUpdateOembedDomainResponse:
         """
         Update an existing oEmbed domain.
 
@@ -941,7 +963,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegratorOEmbedDomainModel,
+            cast_to=IntegratorSettingUpdateOembedDomainResponse,
         )
 
 

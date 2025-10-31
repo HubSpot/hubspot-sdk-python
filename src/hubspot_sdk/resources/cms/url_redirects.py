@@ -20,7 +20,10 @@ from ..._response import (
 from ...types.cms import url_redirect_list_params, url_redirect_create_params, url_redirect_update_params
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.cms.url_mapping import URLMapping
+from ...types.cms.url_redirect_get_response import URLRedirectGetResponse
+from ...types.cms.url_redirect_list_response import URLRedirectListResponse
+from ...types.cms.url_redirect_create_response import URLRedirectCreateResponse
+from ...types.cms.url_redirect_update_response import URLRedirectUpdateResponse
 
 __all__ = ["URLRedirectsResource", "AsyncURLRedirectsResource"]
 
@@ -64,7 +67,7 @@ class URLRedirectsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> URLMapping:
+    ) -> URLRedirectCreateResponse:
         """
         Creates and configures a new URL redirect.
 
@@ -97,7 +100,7 @@ class URLRedirectsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=URLMapping,
+            cast_to=URLRedirectCreateResponse,
         )
 
     def update(
@@ -123,7 +126,7 @@ class URLRedirectsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> URLMapping:
+    ) -> URLRedirectUpdateResponse:
         """
         Updates the settings for an existing URL redirect.
 
@@ -190,7 +193,7 @@ class URLRedirectsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=URLMapping,
+            cast_to=URLRedirectUpdateResponse,
         )
 
     def list(
@@ -212,7 +215,7 @@ class URLRedirectsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[URLMapping]:
+    ) -> SyncPage[URLRedirectListResponse]:
         """Returns all existing URL redirects.
 
         Results can be limited and filtered by
@@ -249,7 +252,7 @@ class URLRedirectsResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/cms/v3/url-redirects/",
-            page=SyncPage[URLMapping],
+            page=SyncPage[URLRedirectListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -271,7 +274,7 @@ class URLRedirectsResource(SyncAPIResource):
                     url_redirect_list_params.URLRedirectListParams,
                 ),
             ),
-            model=URLMapping,
+            model=URLRedirectListResponse,
         )
 
     def delete(
@@ -318,7 +321,7 @@ class URLRedirectsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> URLMapping:
+    ) -> URLRedirectGetResponse:
         """
         Returns the details for a single existing URL redirect by ID.
 
@@ -338,7 +341,7 @@ class URLRedirectsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=URLMapping,
+            cast_to=URLRedirectGetResponse,
         )
 
 
@@ -381,7 +384,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> URLMapping:
+    ) -> URLRedirectCreateResponse:
         """
         Creates and configures a new URL redirect.
 
@@ -414,7 +417,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=URLMapping,
+            cast_to=URLRedirectCreateResponse,
         )
 
     async def update(
@@ -440,7 +443,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> URLMapping:
+    ) -> URLRedirectUpdateResponse:
         """
         Updates the settings for an existing URL redirect.
 
@@ -507,7 +510,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=URLMapping,
+            cast_to=URLRedirectUpdateResponse,
         )
 
     def list(
@@ -529,7 +532,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[URLMapping, AsyncPage[URLMapping]]:
+    ) -> AsyncPaginator[URLRedirectListResponse, AsyncPage[URLRedirectListResponse]]:
         """Returns all existing URL redirects.
 
         Results can be limited and filtered by
@@ -566,7 +569,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/cms/v3/url-redirects/",
-            page=AsyncPage[URLMapping],
+            page=AsyncPage[URLRedirectListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -588,7 +591,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
                     url_redirect_list_params.URLRedirectListParams,
                 ),
             ),
-            model=URLMapping,
+            model=URLRedirectListResponse,
         )
 
     async def delete(
@@ -635,7 +638,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> URLMapping:
+    ) -> URLRedirectGetResponse:
         """
         Returns the details for a single existing URL redirect by ID.
 
@@ -655,7 +658,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=URLMapping,
+            cast_to=URLRedirectGetResponse,
         )
 
 

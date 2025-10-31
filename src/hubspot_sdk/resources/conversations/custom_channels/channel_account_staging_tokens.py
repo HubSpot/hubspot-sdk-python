@@ -17,7 +17,9 @@ from ...._response import (
 from ...._base_client import make_request_options
 from ....types.conversations.custom_channels import channel_account_staging_token_update_params
 from ....types.conversations.public_delivery_identifier_param import PublicDeliveryIdentifierParam
-from ....types.conversations.public_channel_account_staging_token import PublicChannelAccountStagingToken
+from ....types.conversations.custom_channels.channel_account_staging_token_update_response import (
+    ChannelAccountStagingTokenUpdateResponse,
+)
 
 __all__ = ["ChannelAccountStagingTokensResource", "AsyncChannelAccountStagingTokensResource"]
 
@@ -55,7 +57,7 @@ class ChannelAccountStagingTokensResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccountStagingToken:
+    ) -> ChannelAccountStagingTokenUpdateResponse:
         """
         Update a channel account staging token's account name and delivery identifier.
         This information will be applied to the channel account created from this
@@ -86,7 +88,7 @@ class ChannelAccountStagingTokensResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccountStagingToken,
+            cast_to=ChannelAccountStagingTokenUpdateResponse,
         )
 
 
@@ -123,7 +125,7 @@ class AsyncChannelAccountStagingTokensResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccountStagingToken:
+    ) -> ChannelAccountStagingTokenUpdateResponse:
         """
         Update a channel account staging token's account name and delivery identifier.
         This information will be applied to the channel account created from this
@@ -154,7 +156,7 @@ class AsyncChannelAccountStagingTokensResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccountStagingToken,
+            cast_to=ChannelAccountStagingTokenUpdateResponse,
         )
 
 

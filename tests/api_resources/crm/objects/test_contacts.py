@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     SimplePublicObject,
@@ -25,7 +25,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.create(
             properties={"foo": "string"},
         )
@@ -33,7 +33,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.create(
             properties={"foo": "string"},
             associations=[
@@ -52,7 +52,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.create(
             properties={"foo": "string"},
         )
@@ -64,7 +64,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.create(
             properties={"foo": "string"},
         ) as response:
@@ -78,7 +78,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.update(
             contact_id="contactId",
             properties={
@@ -95,7 +95,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.update(
             contact_id="contactId",
             properties={
@@ -116,7 +116,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.update(
             contact_id="contactId",
             properties={
@@ -139,7 +139,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             client.crm.objects.contacts.with_raw_response.update(
                 contact_id="",
@@ -156,13 +156,13 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.list()
         assert_matches_type(SyncPage[SimplePublicObjectWithAssociations], contact, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.list(
             after="after",
             archived=True,
@@ -175,7 +175,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.list()
 
         assert response.is_closed is True
@@ -185,7 +185,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -197,7 +197,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.delete(
             "contactId",
         )
@@ -205,7 +205,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.delete(
             "contactId",
         )
@@ -217,7 +217,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.delete(
             "contactId",
         ) as response:
@@ -231,7 +231,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             client.crm.objects.contacts.with_raw_response.delete(
                 "",
@@ -239,7 +239,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_gdpr_delete(self, client: HubSpot) -> None:
+    def test_method_gdpr_delete(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.gdpr_delete(
             object_id="objectId",
         )
@@ -247,7 +247,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_gdpr_delete_with_all_params(self, client: HubSpot) -> None:
+    def test_method_gdpr_delete_with_all_params(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.gdpr_delete(
             object_id="objectId",
             id_property="idProperty",
@@ -256,7 +256,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_gdpr_delete(self, client: HubSpot) -> None:
+    def test_raw_response_gdpr_delete(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.gdpr_delete(
             object_id="objectId",
         )
@@ -268,7 +268,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_gdpr_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_gdpr_delete(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.gdpr_delete(
             object_id="objectId",
         ) as response:
@@ -282,7 +282,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.get(
             contact_id="contactId",
         )
@@ -290,7 +290,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.get(
             contact_id="contactId",
             archived=True,
@@ -302,7 +302,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.get(
             contact_id="contactId",
         )
@@ -314,7 +314,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.get(
             contact_id="contactId",
         ) as response:
@@ -328,7 +328,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             client.crm.objects.contacts.with_raw_response.get(
                 contact_id="",
@@ -336,7 +336,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_merge(self, client: HubSpot) -> None:
+    def test_method_merge(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.merge(
             object_id_to_merge="objectIdToMerge",
             primary_object_id="primaryObjectId",
@@ -345,7 +345,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_merge(self, client: HubSpot) -> None:
+    def test_raw_response_merge(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.merge(
             object_id_to_merge="objectIdToMerge",
             primary_object_id="primaryObjectId",
@@ -358,7 +358,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_merge(self, client: HubSpot) -> None:
+    def test_streaming_response_merge(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.merge(
             object_id_to_merge="objectIdToMerge",
             primary_object_id="primaryObjectId",
@@ -373,13 +373,13 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_search(self, client: HubSpot) -> None:
+    def test_method_search(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.search()
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, contact, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: HubSpot) -> None:
+    def test_method_search_with_all_params(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.search(
             after="after",
             filter_groups=[
@@ -404,7 +404,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: HubSpot) -> None:
+    def test_raw_response_search(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.search()
 
         assert response.is_closed is True
@@ -414,7 +414,7 @@ class TestContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: HubSpot) -> None:
+    def test_streaming_response_search(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -432,7 +432,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.create(
             properties={"foo": "string"},
         )
@@ -440,7 +440,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.create(
             properties={"foo": "string"},
             associations=[
@@ -459,7 +459,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.create(
             properties={"foo": "string"},
         )
@@ -471,7 +471,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.create(
             properties={"foo": "string"},
         ) as response:
@@ -485,7 +485,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.update(
             contact_id="contactId",
             properties={
@@ -502,7 +502,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.update(
             contact_id="contactId",
             properties={
@@ -523,7 +523,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.update(
             contact_id="contactId",
             properties={
@@ -546,7 +546,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             await async_client.crm.objects.contacts.with_raw_response.update(
                 contact_id="",
@@ -563,13 +563,13 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.list()
         assert_matches_type(AsyncPage[SimplePublicObjectWithAssociations], contact, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.list(
             after="after",
             archived=True,
@@ -582,7 +582,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.list()
 
         assert response.is_closed is True
@@ -592,7 +592,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -604,7 +604,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.delete(
             "contactId",
         )
@@ -612,7 +612,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.delete(
             "contactId",
         )
@@ -624,7 +624,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.delete(
             "contactId",
         ) as response:
@@ -638,7 +638,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             await async_client.crm.objects.contacts.with_raw_response.delete(
                 "",
@@ -646,7 +646,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_gdpr_delete(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.gdpr_delete(
             object_id="objectId",
         )
@@ -654,7 +654,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_gdpr_delete_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_gdpr_delete_with_all_params(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.gdpr_delete(
             object_id="objectId",
             id_property="idProperty",
@@ -663,7 +663,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.gdpr_delete(
             object_id="objectId",
         )
@@ -675,7 +675,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.gdpr_delete(
             object_id="objectId",
         ) as response:
@@ -689,7 +689,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.get(
             contact_id="contactId",
         )
@@ -697,7 +697,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.get(
             contact_id="contactId",
             archived=True,
@@ -709,7 +709,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.get(
             contact_id="contactId",
         )
@@ -721,7 +721,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.get(
             contact_id="contactId",
         ) as response:
@@ -735,7 +735,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             await async_client.crm.objects.contacts.with_raw_response.get(
                 contact_id="",
@@ -743,7 +743,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_merge(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_merge(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.merge(
             object_id_to_merge="objectIdToMerge",
             primary_object_id="primaryObjectId",
@@ -752,7 +752,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_merge(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_merge(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.merge(
             object_id_to_merge="objectIdToMerge",
             primary_object_id="primaryObjectId",
@@ -765,7 +765,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_merge(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_merge(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.merge(
             object_id_to_merge="objectIdToMerge",
             primary_object_id="primaryObjectId",
@@ -780,13 +780,13 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_search(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.search()
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, contact, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.search(
             after="after",
             filter_groups=[
@@ -811,7 +811,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.search()
 
         assert response.is_closed is True
@@ -821,7 +821,7 @@ class TestAsyncContacts:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

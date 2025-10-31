@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -24,7 +24,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.create(
             id="id",
             avatar="avatar",
@@ -48,7 +48,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.create(
             id="id",
             avatar="avatar",
@@ -76,7 +76,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.create(
             id="id",
             avatar="avatar",
@@ -106,7 +106,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.update(
             object_id="objectId",
             id="id",
@@ -131,7 +131,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.update(
             object_id="objectId",
             id="id",
@@ -157,7 +157,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.update(
             object_id="objectId",
             id="id",
@@ -186,7 +186,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.update(
             object_id="objectId",
             id="id",
@@ -217,7 +217,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.authors.with_raw_response.update(
                 object_id="",
@@ -242,13 +242,13 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.list()
         assert_matches_type(SyncPage[BlogAuthor], author, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.list(
             after="after",
             archived=True,
@@ -266,7 +266,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.list()
 
         assert response.is_closed is True
@@ -276,7 +276,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -288,7 +288,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.delete(
             object_id="objectId",
         )
@@ -296,7 +296,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_with_all_params(self, client: HubSpot) -> None:
+    def test_method_delete_with_all_params(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.delete(
             object_id="objectId",
             archived=True,
@@ -305,7 +305,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.delete(
             object_id="objectId",
         )
@@ -317,7 +317,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.delete(
             object_id="objectId",
         ) as response:
@@ -331,7 +331,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.authors.with_raw_response.delete(
                 object_id="",
@@ -339,7 +339,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_attach_to_lang_group(self, client: HubSpot) -> None:
+    def test_method_attach_to_lang_group(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.attach_to_lang_group(
             id="id",
             language="language",
@@ -349,7 +349,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_attach_to_lang_group_with_all_params(self, client: HubSpot) -> None:
+    def test_method_attach_to_lang_group_with_all_params(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.attach_to_lang_group(
             id="id",
             language="language",
@@ -360,7 +360,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_attach_to_lang_group(self, client: HubSpot) -> None:
+    def test_raw_response_attach_to_lang_group(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.attach_to_lang_group(
             id="id",
             language="language",
@@ -374,7 +374,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_attach_to_lang_group(self, client: HubSpot) -> None:
+    def test_streaming_response_attach_to_lang_group(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.attach_to_lang_group(
             id="id",
             language="language",
@@ -390,7 +390,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_batch(self, client: HubSpot) -> None:
+    def test_method_create_batch(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.create_batch(
             inputs=[
                 {
@@ -418,7 +418,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_batch(self, client: HubSpot) -> None:
+    def test_raw_response_create_batch(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.create_batch(
             inputs=[
                 {
@@ -450,7 +450,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_create_batch(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.create_batch(
             inputs=[
                 {
@@ -484,7 +484,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_language_variation(self, client: HubSpot) -> None:
+    def test_method_create_language_variation(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.create_language_variation(
             id="id",
             blog_author={
@@ -511,7 +511,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_language_variation_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_language_variation_with_all_params(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.create_language_variation(
             id="id",
             blog_author={
@@ -540,7 +540,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_language_variation(self, client: HubSpot) -> None:
+    def test_raw_response_create_language_variation(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.create_language_variation(
             id="id",
             blog_author={
@@ -571,7 +571,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_language_variation(self, client: HubSpot) -> None:
+    def test_streaming_response_create_language_variation(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.create_language_variation(
             id="id",
             blog_author={
@@ -604,7 +604,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_batch(self, client: HubSpot) -> None:
+    def test_method_delete_batch(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.delete_batch(
             inputs=["string"],
         )
@@ -612,7 +612,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete_batch(self, client: HubSpot) -> None:
+    def test_raw_response_delete_batch(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.delete_batch(
             inputs=["string"],
         )
@@ -624,7 +624,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_delete_batch(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.delete_batch(
             inputs=["string"],
         ) as response:
@@ -638,7 +638,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_detach_from_lang_group(self, client: HubSpot) -> None:
+    def test_method_detach_from_lang_group(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.detach_from_lang_group(
             id="id",
         )
@@ -646,7 +646,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_detach_from_lang_group(self, client: HubSpot) -> None:
+    def test_raw_response_detach_from_lang_group(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.detach_from_lang_group(
             id="id",
         )
@@ -658,7 +658,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_detach_from_lang_group(self, client: HubSpot) -> None:
+    def test_streaming_response_detach_from_lang_group(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.detach_from_lang_group(
             id="id",
         ) as response:
@@ -672,7 +672,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.get(
             object_id="objectId",
         )
@@ -680,7 +680,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.get(
             object_id="objectId",
             archived=True,
@@ -690,7 +690,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.get(
             object_id="objectId",
         )
@@ -702,7 +702,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.get(
             object_id="objectId",
         ) as response:
@@ -716,7 +716,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.authors.with_raw_response.get(
                 object_id="",
@@ -724,7 +724,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_batch(self, client: HubSpot) -> None:
+    def test_method_get_batch(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.get_batch(
             inputs=["string"],
         )
@@ -732,7 +732,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_batch_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_batch_with_all_params(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.get_batch(
             inputs=["string"],
             archived=True,
@@ -741,7 +741,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_batch(self, client: HubSpot) -> None:
+    def test_raw_response_get_batch(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.get_batch(
             inputs=["string"],
         )
@@ -753,7 +753,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_get_batch(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.get_batch(
             inputs=["string"],
         ) as response:
@@ -767,7 +767,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_set_new_lang_primary(self, client: HubSpot) -> None:
+    def test_method_set_new_lang_primary(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.set_new_lang_primary(
             id="id",
         )
@@ -775,7 +775,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_set_new_lang_primary(self, client: HubSpot) -> None:
+    def test_raw_response_set_new_lang_primary(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.set_new_lang_primary(
             id="id",
         )
@@ -787,7 +787,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_set_new_lang_primary(self, client: HubSpot) -> None:
+    def test_streaming_response_set_new_lang_primary(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.set_new_lang_primary(
             id="id",
         ) as response:
@@ -801,7 +801,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_batch(self, client: HubSpot) -> None:
+    def test_method_update_batch(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.update_batch(
             inputs=[{}],
         )
@@ -809,7 +809,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_batch_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_batch_with_all_params(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.update_batch(
             inputs=[{}],
             archived=True,
@@ -818,7 +818,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_batch(self, client: HubSpot) -> None:
+    def test_raw_response_update_batch(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.update_batch(
             inputs=[{}],
         )
@@ -830,7 +830,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_update_batch(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.update_batch(
             inputs=[{}],
         ) as response:
@@ -844,7 +844,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_languages(self, client: HubSpot) -> None:
+    def test_method_update_languages(self, client: Hubspot) -> None:
         author = client.cms.blogs.authors.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -853,7 +853,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_languages(self, client: HubSpot) -> None:
+    def test_raw_response_update_languages(self, client: Hubspot) -> None:
         response = client.cms.blogs.authors.with_raw_response.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -866,7 +866,7 @@ class TestAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_languages(self, client: HubSpot) -> None:
+    def test_streaming_response_update_languages(self, client: Hubspot) -> None:
         with client.cms.blogs.authors.with_streaming_response.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -887,7 +887,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.create(
             id="id",
             avatar="avatar",
@@ -911,7 +911,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.create(
             id="id",
             avatar="avatar",
@@ -939,7 +939,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.create(
             id="id",
             avatar="avatar",
@@ -969,7 +969,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.update(
             object_id="objectId",
             id="id",
@@ -994,7 +994,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.update(
             object_id="objectId",
             id="id",
@@ -1020,7 +1020,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.update(
             object_id="objectId",
             id="id",
@@ -1049,7 +1049,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.update(
             object_id="objectId",
             id="id",
@@ -1080,7 +1080,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.authors.with_raw_response.update(
                 object_id="",
@@ -1105,13 +1105,13 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.list()
         assert_matches_type(AsyncPage[BlogAuthor], author, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.list(
             after="after",
             archived=True,
@@ -1129,7 +1129,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.list()
 
         assert response.is_closed is True
@@ -1139,7 +1139,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1151,7 +1151,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.delete(
             object_id="objectId",
         )
@@ -1159,7 +1159,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.delete(
             object_id="objectId",
             archived=True,
@@ -1168,7 +1168,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.delete(
             object_id="objectId",
         )
@@ -1180,7 +1180,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.delete(
             object_id="objectId",
         ) as response:
@@ -1194,7 +1194,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.authors.with_raw_response.delete(
                 object_id="",
@@ -1202,7 +1202,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_attach_to_lang_group(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.attach_to_lang_group(
             id="id",
             language="language",
@@ -1212,7 +1212,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_attach_to_lang_group_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_attach_to_lang_group_with_all_params(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.attach_to_lang_group(
             id="id",
             language="language",
@@ -1223,7 +1223,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.attach_to_lang_group(
             id="id",
             language="language",
@@ -1237,7 +1237,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_attach_to_lang_group(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.attach_to_lang_group(
             id="id",
             language="language",
@@ -1253,7 +1253,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_batch(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.create_batch(
             inputs=[
                 {
@@ -1281,7 +1281,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.create_batch(
             inputs=[
                 {
@@ -1313,7 +1313,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.create_batch(
             inputs=[
                 {
@@ -1347,7 +1347,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_language_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_language_variation(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.create_language_variation(
             id="id",
             blog_author={
@@ -1374,7 +1374,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_language_variation_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_language_variation_with_all_params(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.create_language_variation(
             id="id",
             blog_author={
@@ -1403,7 +1403,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_language_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_language_variation(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.create_language_variation(
             id="id",
             blog_author={
@@ -1434,7 +1434,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_language_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_language_variation(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.create_language_variation(
             id="id",
             blog_author={
@@ -1467,7 +1467,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_batch(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.delete_batch(
             inputs=["string"],
         )
@@ -1475,7 +1475,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.delete_batch(
             inputs=["string"],
         )
@@ -1487,7 +1487,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.delete_batch(
             inputs=["string"],
         ) as response:
@@ -1501,7 +1501,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_detach_from_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_detach_from_lang_group(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.detach_from_lang_group(
             id="id",
         )
@@ -1509,7 +1509,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_detach_from_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_detach_from_lang_group(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.detach_from_lang_group(
             id="id",
         )
@@ -1521,7 +1521,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_detach_from_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_detach_from_lang_group(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.detach_from_lang_group(
             id="id",
         ) as response:
@@ -1535,7 +1535,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.get(
             object_id="objectId",
         )
@@ -1543,7 +1543,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.get(
             object_id="objectId",
             archived=True,
@@ -1553,7 +1553,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.get(
             object_id="objectId",
         )
@@ -1565,7 +1565,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.get(
             object_id="objectId",
         ) as response:
@@ -1579,7 +1579,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.authors.with_raw_response.get(
                 object_id="",
@@ -1587,7 +1587,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_batch(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.get_batch(
             inputs=["string"],
         )
@@ -1595,7 +1595,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_batch_with_all_params(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.get_batch(
             inputs=["string"],
             archived=True,
@@ -1604,7 +1604,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.get_batch(
             inputs=["string"],
         )
@@ -1616,7 +1616,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.get_batch(
             inputs=["string"],
         ) as response:
@@ -1630,7 +1630,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.set_new_lang_primary(
             id="id",
         )
@@ -1638,7 +1638,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.set_new_lang_primary(
             id="id",
         )
@@ -1650,7 +1650,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.set_new_lang_primary(
             id="id",
         ) as response:
@@ -1664,7 +1664,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_batch(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.update_batch(
             inputs=[{}],
         )
@@ -1672,7 +1672,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_batch_with_all_params(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.update_batch(
             inputs=[{}],
             archived=True,
@@ -1681,7 +1681,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.update_batch(
             inputs=[{}],
         )
@@ -1693,7 +1693,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.update_batch(
             inputs=[{}],
         ) as response:
@@ -1707,7 +1707,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_languages(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_languages(self, async_client: AsyncHubspot) -> None:
         author = await async_client.cms.blogs.authors.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -1716,7 +1716,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_languages(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_languages(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.authors.with_raw_response.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -1729,7 +1729,7 @@ class TestAsyncAuthors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_languages(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_languages(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.authors.with_streaming_response.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",

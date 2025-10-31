@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.marketing import BatchResponseSubscriberVidResponse, BatchResponseSubscriberEmailResponse
 
@@ -19,7 +19,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_by_event_id_and_contact_id(self, client: HubSpot) -> None:
+    def test_method_create_by_event_id_and_contact_id(self, client: Hubspot) -> None:
         attendance = client.marketing.events.attendance.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -29,7 +29,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_by_event_id_and_contact_id(self, client: HubSpot) -> None:
+    def test_raw_response_create_by_event_id_and_contact_id(self, client: Hubspot) -> None:
         response = client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -43,7 +43,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_by_event_id_and_contact_id(self, client: HubSpot) -> None:
+    def test_streaming_response_create_by_event_id_and_contact_id(self, client: Hubspot) -> None:
         with client.marketing.events.attendance.with_streaming_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -59,7 +59,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_by_event_id_and_contact_id(self, client: HubSpot) -> None:
+    def test_path_params_create_by_event_id_and_contact_id(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -76,7 +76,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_by_event_id_and_email(self, client: HubSpot) -> None:
+    def test_method_create_by_event_id_and_email(self, client: Hubspot) -> None:
         attendance = client.marketing.events.attendance.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -91,7 +91,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_by_event_id_and_email(self, client: HubSpot) -> None:
+    def test_raw_response_create_by_event_id_and_email(self, client: Hubspot) -> None:
         response = client.marketing.events.attendance.with_raw_response.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -110,7 +110,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_by_event_id_and_email(self, client: HubSpot) -> None:
+    def test_streaming_response_create_by_event_id_and_email(self, client: Hubspot) -> None:
         with client.marketing.events.attendance.with_streaming_response.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -131,7 +131,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_by_event_id_and_email(self, client: HubSpot) -> None:
+    def test_path_params_create_by_event_id_and_email(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.marketing.events.attendance.with_raw_response.create_by_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -158,7 +158,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_by_external_event_id_and_contact_id(self, client: HubSpot) -> None:
+    def test_method_create_by_external_event_id_and_contact_id(self, client: Hubspot) -> None:
         attendance = client.marketing.events.attendance.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -168,7 +168,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_by_external_event_id_and_contact_id_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_by_external_event_id_and_contact_id_with_all_params(self, client: Hubspot) -> None:
         attendance = client.marketing.events.attendance.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -185,7 +185,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_by_external_event_id_and_contact_id(self, client: HubSpot) -> None:
+    def test_raw_response_create_by_external_event_id_and_contact_id(self, client: Hubspot) -> None:
         response = client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -199,7 +199,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_by_external_event_id_and_contact_id(self, client: HubSpot) -> None:
+    def test_streaming_response_create_by_external_event_id_and_contact_id(self, client: Hubspot) -> None:
         with client.marketing.events.attendance.with_streaming_response.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -215,7 +215,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_by_external_event_id_and_contact_id(self, client: HubSpot) -> None:
+    def test_path_params_create_by_external_event_id_and_contact_id(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -232,7 +232,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_by_external_event_id_and_email(self, client: HubSpot) -> None:
+    def test_method_create_by_external_event_id_and_email(self, client: Hubspot) -> None:
         attendance = client.marketing.events.attendance.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -247,7 +247,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_by_external_event_id_and_email_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_by_external_event_id_and_email_with_all_params(self, client: Hubspot) -> None:
         attendance = client.marketing.events.attendance.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -265,7 +265,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_by_external_event_id_and_email(self, client: HubSpot) -> None:
+    def test_raw_response_create_by_external_event_id_and_email(self, client: Hubspot) -> None:
         response = client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -284,7 +284,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_by_external_event_id_and_email(self, client: HubSpot) -> None:
+    def test_streaming_response_create_by_external_event_id_and_email(self, client: Hubspot) -> None:
         with client.marketing.events.attendance.with_streaming_response.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -305,7 +305,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_by_external_event_id_and_email(self, client: HubSpot) -> None:
+    def test_path_params_create_by_external_event_id_and_email(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -338,7 +338,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_by_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_by_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
         attendance = await async_client.marketing.events.attendance.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -348,7 +348,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_by_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_by_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -362,7 +362,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_by_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_by_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.events.attendance.with_streaming_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -378,7 +378,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_by_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_by_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -395,7 +395,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_by_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_by_event_id_and_email(self, async_client: AsyncHubspot) -> None:
         attendance = await async_client.marketing.events.attendance.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -410,7 +410,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_by_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_by_event_id_and_email(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.events.attendance.with_raw_response.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -429,7 +429,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_by_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_by_event_id_and_email(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.events.attendance.with_streaming_response.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -450,7 +450,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_by_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_by_event_id_and_email(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.marketing.events.attendance.with_raw_response.create_by_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -477,7 +477,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
         attendance = await async_client.marketing.events.attendance.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -488,7 +488,7 @@ class TestAsyncAttendance:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_by_external_event_id_and_contact_id_with_all_params(
-        self, async_client: AsyncHubSpot
+        self, async_client: AsyncHubspot
     ) -> None:
         attendance = await async_client.marketing.events.attendance.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
@@ -506,7 +506,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
         response = (
             await async_client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -523,7 +523,7 @@ class TestAsyncAttendance:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create_by_external_event_id_and_contact_id(
-        self, async_client: AsyncHubSpot
+        self, async_client: AsyncHubspot
     ) -> None:
         async with (
             async_client.marketing.events.attendance.with_streaming_response.create_by_external_event_id_and_contact_id(
@@ -542,7 +542,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             await async_client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -559,7 +559,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_by_external_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_by_external_event_id_and_email(self, async_client: AsyncHubspot) -> None:
         attendance = await async_client.marketing.events.attendance.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -575,7 +575,7 @@ class TestAsyncAttendance:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_by_external_event_id_and_email_with_all_params(
-        self, async_client: AsyncHubSpot
+        self, async_client: AsyncHubspot
     ) -> None:
         attendance = await async_client.marketing.events.attendance.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
@@ -594,7 +594,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_by_external_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_by_external_event_id_and_email(self, async_client: AsyncHubspot) -> None:
         response = (
             await async_client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -615,7 +615,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_by_external_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_by_external_event_id_and_email(self, async_client: AsyncHubspot) -> None:
         async with (
             async_client.marketing.events.attendance.with_streaming_response.create_by_external_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -638,7 +638,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_by_external_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_by_external_event_id_and_email(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             await async_client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_email(
                 subscriber_state="subscriberState",

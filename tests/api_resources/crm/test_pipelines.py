@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     Pipeline,
@@ -23,7 +23,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.create(
             object_type="objectType",
             display_order=0,
@@ -43,7 +43,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.pipelines.with_raw_response.create(
             object_type="objectType",
             display_order=0,
@@ -67,7 +67,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.pipelines.with_streaming_response.create(
             object_type="objectType",
             display_order=0,
@@ -93,7 +93,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create(self, client: HubSpot) -> None:
+    def test_path_params_create(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.pipelines.with_raw_response.create(
                 object_type="",
@@ -113,7 +113,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.update(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -122,7 +122,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.update(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -136,7 +136,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.crm.pipelines.with_raw_response.update(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -149,7 +149,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.crm.pipelines.with_streaming_response.update(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -164,7 +164,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.pipelines.with_raw_response.update(
                 pipeline_id="pipelineId",
@@ -179,7 +179,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.list(
             "objectType",
         )
@@ -187,7 +187,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.crm.pipelines.with_raw_response.list(
             "objectType",
         )
@@ -199,7 +199,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.crm.pipelines.with_streaming_response.list(
             "objectType",
         ) as response:
@@ -213,7 +213,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: HubSpot) -> None:
+    def test_path_params_list(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.pipelines.with_raw_response.list(
                 "",
@@ -221,7 +221,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.delete(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -230,7 +230,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_with_all_params(self, client: HubSpot) -> None:
+    def test_method_delete_with_all_params(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.delete(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -241,7 +241,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.crm.pipelines.with_raw_response.delete(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -254,7 +254,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.crm.pipelines.with_streaming_response.delete(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -269,7 +269,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.pipelines.with_raw_response.delete(
                 pipeline_id="pipelineId",
@@ -284,7 +284,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.get(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -293,7 +293,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.pipelines.with_raw_response.get(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -306,7 +306,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.pipelines.with_streaming_response.get(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -321,7 +321,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.pipelines.with_raw_response.get(
                 pipeline_id="pipelineId",
@@ -336,7 +336,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_audit(self, client: HubSpot) -> None:
+    def test_method_get_audit(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.get_audit(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -345,7 +345,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_audit(self, client: HubSpot) -> None:
+    def test_raw_response_get_audit(self, client: Hubspot) -> None:
         response = client.crm.pipelines.with_raw_response.get_audit(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -358,7 +358,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_audit(self, client: HubSpot) -> None:
+    def test_streaming_response_get_audit(self, client: Hubspot) -> None:
         with client.crm.pipelines.with_streaming_response.get_audit(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -373,7 +373,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_audit(self, client: HubSpot) -> None:
+    def test_path_params_get_audit(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.pipelines.with_raw_response.get_audit(
                 pipeline_id="pipelineId",
@@ -388,7 +388,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_replace(self, client: HubSpot) -> None:
+    def test_method_replace(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.replace(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -409,7 +409,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_replace_with_all_params(self, client: HubSpot) -> None:
+    def test_method_replace_with_all_params(self, client: Hubspot) -> None:
         pipeline = client.crm.pipelines.replace(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -434,7 +434,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_replace(self, client: HubSpot) -> None:
+    def test_raw_response_replace(self, client: Hubspot) -> None:
         response = client.crm.pipelines.with_raw_response.replace(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -459,7 +459,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_replace(self, client: HubSpot) -> None:
+    def test_streaming_response_replace(self, client: Hubspot) -> None:
         with client.crm.pipelines.with_streaming_response.replace(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -486,7 +486,7 @@ class TestPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_replace(self, client: HubSpot) -> None:
+    def test_path_params_replace(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.pipelines.with_raw_response.replace(
                 pipeline_id="pipelineId",
@@ -531,7 +531,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.create(
             object_type="objectType",
             display_order=0,
@@ -551,7 +551,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.pipelines.with_raw_response.create(
             object_type="objectType",
             display_order=0,
@@ -575,7 +575,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.pipelines.with_streaming_response.create(
             object_type="objectType",
             display_order=0,
@@ -601,7 +601,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.pipelines.with_raw_response.create(
                 object_type="",
@@ -621,7 +621,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.update(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -630,7 +630,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.update(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -644,7 +644,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.pipelines.with_raw_response.update(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -657,7 +657,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.pipelines.with_streaming_response.update(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -672,7 +672,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.pipelines.with_raw_response.update(
                 pipeline_id="pipelineId",
@@ -687,7 +687,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.list(
             "objectType",
         )
@@ -695,7 +695,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.pipelines.with_raw_response.list(
             "objectType",
         )
@@ -707,7 +707,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.pipelines.with_streaming_response.list(
             "objectType",
         ) as response:
@@ -721,7 +721,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.pipelines.with_raw_response.list(
                 "",
@@ -729,7 +729,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.delete(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -738,7 +738,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.delete(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -749,7 +749,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.pipelines.with_raw_response.delete(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -762,7 +762,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.pipelines.with_streaming_response.delete(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -777,7 +777,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.pipelines.with_raw_response.delete(
                 pipeline_id="pipelineId",
@@ -792,7 +792,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.get(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -801,7 +801,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.pipelines.with_raw_response.get(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -814,7 +814,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.pipelines.with_streaming_response.get(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -829,7 +829,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.pipelines.with_raw_response.get(
                 pipeline_id="pipelineId",
@@ -844,7 +844,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_audit(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_audit(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.get_audit(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -853,7 +853,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_audit(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_audit(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.pipelines.with_raw_response.get_audit(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -866,7 +866,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_audit(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_audit(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.pipelines.with_streaming_response.get_audit(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -881,7 +881,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_audit(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_audit(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.pipelines.with_raw_response.get_audit(
                 pipeline_id="pipelineId",
@@ -896,7 +896,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_replace(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.replace(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -917,7 +917,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_replace_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_replace_with_all_params(self, async_client: AsyncHubspot) -> None:
         pipeline = await async_client.crm.pipelines.replace(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -942,7 +942,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_replace(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.pipelines.with_raw_response.replace(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -967,7 +967,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_replace(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.pipelines.with_streaming_response.replace(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -994,7 +994,7 @@ class TestAsyncPipelines:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_replace(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.pipelines.with_raw_response.replace(
                 pipeline_id="pipelineId",

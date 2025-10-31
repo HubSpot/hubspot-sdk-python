@@ -7,10 +7,11 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm.objects import (
-    BatchResponseDealToDealSplits,
+    DealSplitBatchReadResponse,
+    DealSplitBatchUpsertResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -21,15 +22,15 @@ class TestDealSplits:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_read(self, client: HubSpot) -> None:
+    def test_method_batch_read(self, client: Hubspot) -> None:
         deal_split = client.crm.objects.deal_splits.batch_read(
             inputs=[{"id": "37295"}],
         )
-        assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+        assert_matches_type(DealSplitBatchReadResponse, deal_split, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_read(self, client: HubSpot) -> None:
+    def test_raw_response_batch_read(self, client: Hubspot) -> None:
         response = client.crm.objects.deal_splits.with_raw_response.batch_read(
             inputs=[{"id": "37295"}],
         )
@@ -37,11 +38,11 @@ class TestDealSplits:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         deal_split = response.parse()
-        assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+        assert_matches_type(DealSplitBatchReadResponse, deal_split, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_read(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_read(self, client: Hubspot) -> None:
         with client.crm.objects.deal_splits.with_streaming_response.batch_read(
             inputs=[{"id": "37295"}],
         ) as response:
@@ -49,13 +50,13 @@ class TestDealSplits:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             deal_split = response.parse()
-            assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+            assert_matches_type(DealSplitBatchReadResponse, deal_split, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_upsert(self, client: HubSpot) -> None:
+    def test_method_batch_upsert(self, client: Hubspot) -> None:
         deal_split = client.crm.objects.deal_splits.batch_upsert(
             inputs=[
                 {
@@ -69,11 +70,11 @@ class TestDealSplits:
                 }
             ],
         )
-        assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+        assert_matches_type(DealSplitBatchUpsertResponse, deal_split, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_upsert(self, client: HubSpot) -> None:
+    def test_raw_response_batch_upsert(self, client: Hubspot) -> None:
         response = client.crm.objects.deal_splits.with_raw_response.batch_upsert(
             inputs=[
                 {
@@ -91,11 +92,11 @@ class TestDealSplits:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         deal_split = response.parse()
-        assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+        assert_matches_type(DealSplitBatchUpsertResponse, deal_split, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_upsert(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_upsert(self, client: Hubspot) -> None:
         with client.crm.objects.deal_splits.with_streaming_response.batch_upsert(
             inputs=[
                 {
@@ -113,7 +114,7 @@ class TestDealSplits:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             deal_split = response.parse()
-            assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+            assert_matches_type(DealSplitBatchUpsertResponse, deal_split, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -125,15 +126,15 @@ class TestAsyncDealSplits:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_read(self, async_client: AsyncHubspot) -> None:
         deal_split = await async_client.crm.objects.deal_splits.batch_read(
             inputs=[{"id": "37295"}],
         )
-        assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+        assert_matches_type(DealSplitBatchReadResponse, deal_split, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_read(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.deal_splits.with_raw_response.batch_read(
             inputs=[{"id": "37295"}],
         )
@@ -141,11 +142,11 @@ class TestAsyncDealSplits:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         deal_split = await response.parse()
-        assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+        assert_matches_type(DealSplitBatchReadResponse, deal_split, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_read(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.deal_splits.with_streaming_response.batch_read(
             inputs=[{"id": "37295"}],
         ) as response:
@@ -153,13 +154,13 @@ class TestAsyncDealSplits:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             deal_split = await response.parse()
-            assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+            assert_matches_type(DealSplitBatchReadResponse, deal_split, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_upsert(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_upsert(self, async_client: AsyncHubspot) -> None:
         deal_split = await async_client.crm.objects.deal_splits.batch_upsert(
             inputs=[
                 {
@@ -173,11 +174,11 @@ class TestAsyncDealSplits:
                 }
             ],
         )
-        assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+        assert_matches_type(DealSplitBatchUpsertResponse, deal_split, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_upsert(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_upsert(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.deal_splits.with_raw_response.batch_upsert(
             inputs=[
                 {
@@ -195,11 +196,11 @@ class TestAsyncDealSplits:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         deal_split = await response.parse()
-        assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+        assert_matches_type(DealSplitBatchUpsertResponse, deal_split, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_upsert(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_upsert(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.deal_splits.with_streaming_response.batch_upsert(
             inputs=[
                 {
@@ -217,6 +218,6 @@ class TestAsyncDealSplits:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             deal_split = await response.parse()
-            assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
+            assert_matches_type(DealSplitBatchUpsertResponse, deal_split, path=["response"])
 
         assert cast(Any, response.is_closed) is True

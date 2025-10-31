@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.settings import (
     ExchangeRate,
@@ -23,7 +23,7 @@ class TestCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_currency(self, client: HubSpot) -> None:
+    def test_method_create_currency(self, client: Hubspot) -> None:
         central_fx_rate = client.settings.currencies.central_fx_rates.create_currency(
             currency_code="AED",
         )
@@ -31,7 +31,7 @@ class TestCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_currency(self, client: HubSpot) -> None:
+    def test_raw_response_create_currency(self, client: Hubspot) -> None:
         response = client.settings.currencies.central_fx_rates.with_raw_response.create_currency(
             currency_code="AED",
         )
@@ -43,7 +43,7 @@ class TestCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_currency(self, client: HubSpot) -> None:
+    def test_streaming_response_create_currency(self, client: Hubspot) -> None:
         with client.settings.currencies.central_fx_rates.with_streaming_response.create_currency(
             currency_code="AED",
         ) as response:
@@ -57,13 +57,13 @@ class TestCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_information(self, client: HubSpot) -> None:
+    def test_method_get_information(self, client: Hubspot) -> None:
         central_fx_rate = client.settings.currencies.central_fx_rates.get_information()
         assert_matches_type(CentralExchangeRatesInformation, central_fx_rate, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_information(self, client: HubSpot) -> None:
+    def test_raw_response_get_information(self, client: Hubspot) -> None:
         response = client.settings.currencies.central_fx_rates.with_raw_response.get_information()
 
         assert response.is_closed is True
@@ -73,7 +73,7 @@ class TestCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_information(self, client: HubSpot) -> None:
+    def test_streaming_response_get_information(self, client: Hubspot) -> None:
         with client.settings.currencies.central_fx_rates.with_streaming_response.get_information() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -85,13 +85,13 @@ class TestCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_unsupported_currencies(self, client: HubSpot) -> None:
+    def test_method_get_unsupported_currencies(self, client: Hubspot) -> None:
         central_fx_rate = client.settings.currencies.central_fx_rates.get_unsupported_currencies()
         assert_matches_type(CollectionResponseCurrencyCodeInfoNoPaging, central_fx_rate, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_unsupported_currencies(self, client: HubSpot) -> None:
+    def test_raw_response_get_unsupported_currencies(self, client: Hubspot) -> None:
         response = client.settings.currencies.central_fx_rates.with_raw_response.get_unsupported_currencies()
 
         assert response.is_closed is True
@@ -101,7 +101,7 @@ class TestCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_unsupported_currencies(self, client: HubSpot) -> None:
+    def test_streaming_response_get_unsupported_currencies(self, client: Hubspot) -> None:
         with (
             client.settings.currencies.central_fx_rates.with_streaming_response.get_unsupported_currencies()
         ) as response:
@@ -121,7 +121,7 @@ class TestAsyncCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_currency(self, async_client: AsyncHubspot) -> None:
         central_fx_rate = await async_client.settings.currencies.central_fx_rates.create_currency(
             currency_code="AED",
         )
@@ -129,7 +129,7 @@ class TestAsyncCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_currency(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.central_fx_rates.with_raw_response.create_currency(
             currency_code="AED",
         )
@@ -141,7 +141,7 @@ class TestAsyncCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_currency(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.central_fx_rates.with_streaming_response.create_currency(
             currency_code="AED",
         ) as response:
@@ -155,13 +155,13 @@ class TestAsyncCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_information(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_information(self, async_client: AsyncHubspot) -> None:
         central_fx_rate = await async_client.settings.currencies.central_fx_rates.get_information()
         assert_matches_type(CentralExchangeRatesInformation, central_fx_rate, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_information(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_information(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.central_fx_rates.with_raw_response.get_information()
 
         assert response.is_closed is True
@@ -171,7 +171,7 @@ class TestAsyncCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_information(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_information(self, async_client: AsyncHubspot) -> None:
         async with (
             async_client.settings.currencies.central_fx_rates.with_streaming_response.get_information()
         ) as response:
@@ -185,13 +185,13 @@ class TestAsyncCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_unsupported_currencies(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_unsupported_currencies(self, async_client: AsyncHubspot) -> None:
         central_fx_rate = await async_client.settings.currencies.central_fx_rates.get_unsupported_currencies()
         assert_matches_type(CollectionResponseCurrencyCodeInfoNoPaging, central_fx_rate, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_unsupported_currencies(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_unsupported_currencies(self, async_client: AsyncHubspot) -> None:
         response = (
             await async_client.settings.currencies.central_fx_rates.with_raw_response.get_unsupported_currencies()
         )
@@ -203,7 +203,7 @@ class TestAsyncCentralFxRates:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_unsupported_currencies(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_unsupported_currencies(self, async_client: AsyncHubspot) -> None:
         async with (
             async_client.settings.currencies.central_fx_rates.with_streaming_response.get_unsupported_currencies()
         ) as response:

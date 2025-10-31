@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.webhooks import (
     SubscriptionResponse,
@@ -23,7 +23,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         subscription = client.webhooks.subscriptions.create(
             app_id=0,
             event_type="contact.propertyChange",
@@ -32,7 +32,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         subscription = client.webhooks.subscriptions.create(
             app_id=0,
             event_type="contact.propertyChange",
@@ -44,7 +44,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.webhooks.subscriptions.with_raw_response.create(
             app_id=0,
             event_type="contact.propertyChange",
@@ -57,7 +57,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.webhooks.subscriptions.with_streaming_response.create(
             app_id=0,
             event_type="contact.propertyChange",
@@ -72,7 +72,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         subscription = client.webhooks.subscriptions.update(
             subscription_id=0,
             app_id=0,
@@ -81,7 +81,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         subscription = client.webhooks.subscriptions.update(
             subscription_id=0,
             app_id=0,
@@ -91,7 +91,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.webhooks.subscriptions.with_raw_response.update(
             subscription_id=0,
             app_id=0,
@@ -104,7 +104,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.webhooks.subscriptions.with_streaming_response.update(
             subscription_id=0,
             app_id=0,
@@ -119,7 +119,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         subscription = client.webhooks.subscriptions.list(
             0,
         )
@@ -127,7 +127,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.webhooks.subscriptions.with_raw_response.list(
             0,
         )
@@ -139,7 +139,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.webhooks.subscriptions.with_streaming_response.list(
             0,
         ) as response:
@@ -153,7 +153,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         subscription = client.webhooks.subscriptions.delete(
             subscription_id=0,
             app_id=0,
@@ -162,7 +162,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.webhooks.subscriptions.with_raw_response.delete(
             subscription_id=0,
             app_id=0,
@@ -175,7 +175,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.webhooks.subscriptions.with_streaming_response.delete(
             subscription_id=0,
             app_id=0,
@@ -190,7 +190,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         subscription = client.webhooks.subscriptions.get(
             subscription_id=0,
             app_id=0,
@@ -199,7 +199,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.webhooks.subscriptions.with_raw_response.get(
             subscription_id=0,
             app_id=0,
@@ -212,7 +212,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.webhooks.subscriptions.with_streaming_response.get(
             subscription_id=0,
             app_id=0,
@@ -227,7 +227,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_batch(self, client: HubSpot) -> None:
+    def test_method_update_batch(self, client: Hubspot) -> None:
         subscription = client.webhooks.subscriptions.update_batch(
             app_id=0,
             inputs=[
@@ -241,7 +241,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_batch(self, client: HubSpot) -> None:
+    def test_raw_response_update_batch(self, client: Hubspot) -> None:
         response = client.webhooks.subscriptions.with_raw_response.update_batch(
             app_id=0,
             inputs=[
@@ -259,7 +259,7 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_update_batch(self, client: Hubspot) -> None:
         with client.webhooks.subscriptions.with_streaming_response.update_batch(
             app_id=0,
             inputs=[
@@ -285,7 +285,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         subscription = await async_client.webhooks.subscriptions.create(
             app_id=0,
             event_type="contact.propertyChange",
@@ -294,7 +294,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         subscription = await async_client.webhooks.subscriptions.create(
             app_id=0,
             event_type="contact.propertyChange",
@@ -306,7 +306,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.subscriptions.with_raw_response.create(
             app_id=0,
             event_type="contact.propertyChange",
@@ -319,7 +319,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.subscriptions.with_streaming_response.create(
             app_id=0,
             event_type="contact.propertyChange",
@@ -334,7 +334,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         subscription = await async_client.webhooks.subscriptions.update(
             subscription_id=0,
             app_id=0,
@@ -343,7 +343,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         subscription = await async_client.webhooks.subscriptions.update(
             subscription_id=0,
             app_id=0,
@@ -353,7 +353,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.subscriptions.with_raw_response.update(
             subscription_id=0,
             app_id=0,
@@ -366,7 +366,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.subscriptions.with_streaming_response.update(
             subscription_id=0,
             app_id=0,
@@ -381,7 +381,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         subscription = await async_client.webhooks.subscriptions.list(
             0,
         )
@@ -389,7 +389,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.subscriptions.with_raw_response.list(
             0,
         )
@@ -401,7 +401,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.subscriptions.with_streaming_response.list(
             0,
         ) as response:
@@ -415,7 +415,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         subscription = await async_client.webhooks.subscriptions.delete(
             subscription_id=0,
             app_id=0,
@@ -424,7 +424,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.subscriptions.with_raw_response.delete(
             subscription_id=0,
             app_id=0,
@@ -437,7 +437,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.subscriptions.with_streaming_response.delete(
             subscription_id=0,
             app_id=0,
@@ -452,7 +452,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         subscription = await async_client.webhooks.subscriptions.get(
             subscription_id=0,
             app_id=0,
@@ -461,7 +461,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.subscriptions.with_raw_response.get(
             subscription_id=0,
             app_id=0,
@@ -474,7 +474,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.subscriptions.with_streaming_response.get(
             subscription_id=0,
             app_id=0,
@@ -489,7 +489,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_batch(self, async_client: AsyncHubspot) -> None:
         subscription = await async_client.webhooks.subscriptions.update_batch(
             app_id=0,
             inputs=[
@@ -503,7 +503,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.subscriptions.with_raw_response.update_batch(
             app_id=0,
             inputs=[
@@ -521,7 +521,7 @@ class TestAsyncSubscriptions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.subscriptions.with_streaming_response.update_batch(
             app_id=0,
             inputs=[

@@ -19,8 +19,8 @@ from ..._response import (
 )
 from ...types.cms import site_search_search_params, site_search_get_indexed_data_params
 from ..._base_client import make_request_options
-from ...types.cms.indexed_data import IndexedData
-from ...types.cms.public_search_results import PublicSearchResults
+from ...types.cms.site_search_search_response import SiteSearchSearchResponse
+from ...types.cms.site_search_get_indexed_data_response import SiteSearchGetIndexedDataResponse
 
 __all__ = ["SiteSearchResource", "AsyncSiteSearchResource"]
 
@@ -56,7 +56,7 @@ class SiteSearchResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IndexedData:
+    ) -> SiteSearchGetIndexedDataResponse:
         """
         For a given account and document ID (page ID, blog post ID, HubDB row ID, etc.),
         return all indexed data for that document. This is useful when debugging why a
@@ -87,7 +87,7 @@ class SiteSearchResource(SyncAPIResource):
                     {"type": type}, site_search_get_indexed_data_params.SiteSearchGetIndexedDataParams
                 ),
             ),
-            cast_to=IndexedData,
+            cast_to=SiteSearchGetIndexedDataResponse,
         )
 
     def search(
@@ -873,7 +873,7 @@ class SiteSearchResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicSearchResults:
+    ) -> SiteSearchSearchResponse:
         """
         Returns any website content matching the given search criteria for a given
         HubSpot account. Searches can be filtered by content type, domain, or URL path.
@@ -975,7 +975,7 @@ class SiteSearchResource(SyncAPIResource):
                     site_search_search_params.SiteSearchSearchParams,
                 ),
             ),
-            cast_to=PublicSearchResults,
+            cast_to=SiteSearchSearchResponse,
         )
 
 
@@ -1010,7 +1010,7 @@ class AsyncSiteSearchResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IndexedData:
+    ) -> SiteSearchGetIndexedDataResponse:
         """
         For a given account and document ID (page ID, blog post ID, HubDB row ID, etc.),
         return all indexed data for that document. This is useful when debugging why a
@@ -1041,7 +1041,7 @@ class AsyncSiteSearchResource(AsyncAPIResource):
                     {"type": type}, site_search_get_indexed_data_params.SiteSearchGetIndexedDataParams
                 ),
             ),
-            cast_to=IndexedData,
+            cast_to=SiteSearchGetIndexedDataResponse,
         )
 
     async def search(
@@ -1827,7 +1827,7 @@ class AsyncSiteSearchResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicSearchResults:
+    ) -> SiteSearchSearchResponse:
         """
         Returns any website content matching the given search criteria for a given
         HubSpot account. Searches can be filtered by content type, domain, or URL path.
@@ -1929,7 +1929,7 @@ class AsyncSiteSearchResource(AsyncAPIResource):
                     site_search_search_params.SiteSearchSearchParams,
                 ),
             ),
-            cast_to=PublicSearchResults,
+            cast_to=SiteSearchSearchResponse,
         )
 
 

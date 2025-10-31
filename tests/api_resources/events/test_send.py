@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from hubspot_sdk._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -18,7 +18,7 @@ class TestSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_send(self, client: HubSpot) -> None:
+    def test_method_send(self, client: Hubspot) -> None:
         send = client.events.send.send(
             event_name="pe123456_account_login",
         )
@@ -26,7 +26,7 @@ class TestSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_send_with_all_params(self, client: HubSpot) -> None:
+    def test_method_send_with_all_params(self, client: Hubspot) -> None:
         send = client.events.send.send(
             event_name="pe123456_account_login",
             email="mark.s@lumon.industries",
@@ -126,7 +126,7 @@ class TestSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_send(self, client: HubSpot) -> None:
+    def test_raw_response_send(self, client: Hubspot) -> None:
         response = client.events.send.with_raw_response.send(
             event_name="pe123456_account_login",
         )
@@ -138,7 +138,7 @@ class TestSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_send(self, client: HubSpot) -> None:
+    def test_streaming_response_send(self, client: Hubspot) -> None:
         with client.events.send.with_streaming_response.send(
             event_name="pe123456_account_login",
         ) as response:
@@ -152,7 +152,7 @@ class TestSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_send_batch(self, client: HubSpot) -> None:
+    def test_method_send_batch(self, client: Hubspot) -> None:
         send = client.events.send.send_batch(
             inputs=[{"event_name": "pe123456_account_login"}],
         )
@@ -160,7 +160,7 @@ class TestSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_send_batch(self, client: HubSpot) -> None:
+    def test_raw_response_send_batch(self, client: Hubspot) -> None:
         response = client.events.send.with_raw_response.send_batch(
             inputs=[{"event_name": "pe123456_account_login"}],
         )
@@ -172,7 +172,7 @@ class TestSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_send_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_send_batch(self, client: Hubspot) -> None:
         with client.events.send.with_streaming_response.send_batch(
             inputs=[{"event_name": "pe123456_account_login"}],
         ) as response:
@@ -192,7 +192,7 @@ class TestAsyncSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_send(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_send(self, async_client: AsyncHubspot) -> None:
         send = await async_client.events.send.send(
             event_name="pe123456_account_login",
         )
@@ -200,7 +200,7 @@ class TestAsyncSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_send_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_send_with_all_params(self, async_client: AsyncHubspot) -> None:
         send = await async_client.events.send.send(
             event_name="pe123456_account_login",
             email="mark.s@lumon.industries",
@@ -300,7 +300,7 @@ class TestAsyncSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_send(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_send(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.send.with_raw_response.send(
             event_name="pe123456_account_login",
         )
@@ -312,7 +312,7 @@ class TestAsyncSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_send(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_send(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.send.with_streaming_response.send(
             event_name="pe123456_account_login",
         ) as response:
@@ -326,7 +326,7 @@ class TestAsyncSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_send_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_send_batch(self, async_client: AsyncHubspot) -> None:
         send = await async_client.events.send.send_batch(
             inputs=[{"event_name": "pe123456_account_login"}],
         )
@@ -334,7 +334,7 @@ class TestAsyncSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_send_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_send_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.send.with_raw_response.send_batch(
             inputs=[{"event_name": "pe123456_account_login"}],
         )
@@ -346,7 +346,7 @@ class TestAsyncSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_send_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_send_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.send.with_streaming_response.send_batch(
             inputs=[{"event_name": "pe123456_account_login"}],
         ) as response:

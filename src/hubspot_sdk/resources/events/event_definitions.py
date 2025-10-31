@@ -27,8 +27,10 @@ from ...types.events import (
 )
 from ...types.shared.property import Property
 from ...types.shared_params.option_input import OptionInput
-from ...types.events.external_behavioral_event_type_definition import ExternalBehavioralEventTypeDefinition
-from ...types.events.external_behavioral_event_property_create_param import ExternalBehavioralEventPropertyCreateParam
+from ...types.events.event_definition_get_response import EventDefinitionGetResponse
+from ...types.events.event_definition_list_response import EventDefinitionListResponse
+from ...types.events.event_definition_create_response import EventDefinitionCreateResponse
+from ...types.events.event_definition_update_response import EventDefinitionUpdateResponse
 
 __all__ = ["EventDefinitionsResource", "AsyncEventDefinitionsResource"]
 
@@ -57,7 +59,7 @@ class EventDefinitionsResource(SyncAPIResource):
         self,
         *,
         label: str,
-        property_definitions: Iterable[ExternalBehavioralEventPropertyCreateParam],
+        property_definitions: Iterable[event_definition_create_params.PropertyDefinition],
         description: str | Omit = omit,
         name: str | Omit = omit,
         primary_object: str | Omit = omit,
@@ -67,7 +69,7 @@ class EventDefinitionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExternalBehavioralEventTypeDefinition:
+    ) -> EventDefinitionCreateResponse:
         """
         Create a custom event definition.
 
@@ -111,7 +113,7 @@ class EventDefinitionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalBehavioralEventTypeDefinition,
+            cast_to=EventDefinitionCreateResponse,
         )
 
     def update(
@@ -126,7 +128,7 @@ class EventDefinitionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExternalBehavioralEventTypeDefinition:
+    ) -> EventDefinitionUpdateResponse:
         """
         Update a specific custom event definition by name.
 
@@ -157,7 +159,7 @@ class EventDefinitionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalBehavioralEventTypeDefinition,
+            cast_to=EventDefinitionUpdateResponse,
         )
 
     def list(
@@ -174,7 +176,7 @@ class EventDefinitionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[ExternalBehavioralEventTypeDefinition]:
+    ) -> SyncPage[EventDefinitionListResponse]:
         """
         Retrieve existing custom event definitions.
 
@@ -198,7 +200,7 @@ class EventDefinitionsResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/events/v3/event-definitions",
-            page=SyncPage[ExternalBehavioralEventTypeDefinition],
+            page=SyncPage[EventDefinitionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -215,7 +217,7 @@ class EventDefinitionsResource(SyncAPIResource):
                     event_definition_list_params.EventDefinitionListParams,
                 ),
             ),
-            model=ExternalBehavioralEventTypeDefinition,
+            model=EventDefinitionListResponse,
         )
 
     def delete(
@@ -360,7 +362,7 @@ class EventDefinitionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExternalBehavioralEventTypeDefinition:
+    ) -> EventDefinitionGetResponse:
         """
         Fetch a single custom event definition by name.
 
@@ -380,7 +382,7 @@ class EventDefinitionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalBehavioralEventTypeDefinition,
+            cast_to=EventDefinitionGetResponse,
         )
 
     def update_property(
@@ -462,7 +464,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
         self,
         *,
         label: str,
-        property_definitions: Iterable[ExternalBehavioralEventPropertyCreateParam],
+        property_definitions: Iterable[event_definition_create_params.PropertyDefinition],
         description: str | Omit = omit,
         name: str | Omit = omit,
         primary_object: str | Omit = omit,
@@ -472,7 +474,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExternalBehavioralEventTypeDefinition:
+    ) -> EventDefinitionCreateResponse:
         """
         Create a custom event definition.
 
@@ -516,7 +518,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalBehavioralEventTypeDefinition,
+            cast_to=EventDefinitionCreateResponse,
         )
 
     async def update(
@@ -531,7 +533,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExternalBehavioralEventTypeDefinition:
+    ) -> EventDefinitionUpdateResponse:
         """
         Update a specific custom event definition by name.
 
@@ -562,7 +564,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalBehavioralEventTypeDefinition,
+            cast_to=EventDefinitionUpdateResponse,
         )
 
     def list(
@@ -579,7 +581,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[ExternalBehavioralEventTypeDefinition, AsyncPage[ExternalBehavioralEventTypeDefinition]]:
+    ) -> AsyncPaginator[EventDefinitionListResponse, AsyncPage[EventDefinitionListResponse]]:
         """
         Retrieve existing custom event definitions.
 
@@ -603,7 +605,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/events/v3/event-definitions",
-            page=AsyncPage[ExternalBehavioralEventTypeDefinition],
+            page=AsyncPage[EventDefinitionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -620,7 +622,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
                     event_definition_list_params.EventDefinitionListParams,
                 ),
             ),
-            model=ExternalBehavioralEventTypeDefinition,
+            model=EventDefinitionListResponse,
         )
 
     async def delete(
@@ -765,7 +767,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExternalBehavioralEventTypeDefinition:
+    ) -> EventDefinitionGetResponse:
         """
         Fetch a single custom event definition by name.
 
@@ -785,7 +787,7 @@ class AsyncEventDefinitionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalBehavioralEventTypeDefinition,
+            cast_to=EventDefinitionGetResponse,
         )
 
     async def update_property(

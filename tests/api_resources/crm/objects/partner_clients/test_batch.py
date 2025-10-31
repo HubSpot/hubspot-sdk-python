@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import BatchResponseSimplePublicObject
 
@@ -19,7 +19,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_get(self, client: HubSpot) -> None:
+    def test_method_batch_get(self, client: Hubspot) -> None:
         batch = client.crm.objects.partner_clients.batch.batch_get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -29,7 +29,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_batch_get_with_all_params(self, client: Hubspot) -> None:
         batch = client.crm.objects.partner_clients.batch.batch_get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -41,7 +41,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_get(self, client: HubSpot) -> None:
+    def test_raw_response_batch_get(self, client: Hubspot) -> None:
         response = client.crm.objects.partner_clients.batch.with_raw_response.batch_get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -55,7 +55,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_get(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_get(self, client: Hubspot) -> None:
         with client.crm.objects.partner_clients.batch.with_streaming_response.batch_get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -71,7 +71,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_update(self, client: HubSpot) -> None:
+    def test_method_batch_update(self, client: Hubspot) -> None:
         batch = client.crm.objects.partner_clients.batch.batch_update(
             inputs=[
                 {
@@ -84,7 +84,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_update(self, client: HubSpot) -> None:
+    def test_raw_response_batch_update(self, client: Hubspot) -> None:
         response = client.crm.objects.partner_clients.batch.with_raw_response.batch_update(
             inputs=[
                 {
@@ -101,7 +101,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_update(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_update(self, client: Hubspot) -> None:
         with client.crm.objects.partner_clients.batch.with_streaming_response.batch_update(
             inputs=[
                 {
@@ -126,7 +126,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_get(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.partner_clients.batch.batch_get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -136,7 +136,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.partner_clients.batch.batch_get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -148,7 +148,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.partner_clients.batch.with_raw_response.batch_get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -162,7 +162,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.partner_clients.batch.with_streaming_response.batch_get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -178,7 +178,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_update(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.partner_clients.batch.batch_update(
             inputs=[
                 {
@@ -191,7 +191,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.partner_clients.batch.with_raw_response.batch_update(
             inputs=[
                 {
@@ -208,7 +208,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.partner_clients.batch.with_streaming_response.batch_update(
             inputs=[
                 {

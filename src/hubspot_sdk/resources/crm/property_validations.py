@@ -14,12 +14,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.crm.collection_response_public_property_validation_rule_no_paging import (
-    CollectionResponsePublicPropertyValidationRuleNoPaging,
-)
-from ...types.crm.collection_response_public_property_validation_rule_map_no_paging import (
-    CollectionResponsePublicPropertyValidationRuleMapNoPaging,
-)
+from ...types.crm.property_validation_get_response import PropertyValidationGetResponse
+from ...types.crm.property_validation_list_response import PropertyValidationListResponse
 
 __all__ = ["PropertyValidationsResource", "AsyncPropertyValidationsResource"]
 
@@ -54,7 +50,7 @@ class PropertyValidationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicPropertyValidationRuleMapNoPaging:
+    ) -> PropertyValidationListResponse:
         """
         Read all properties with validation rules for a given object.
 
@@ -74,7 +70,7 @@ class PropertyValidationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponsePublicPropertyValidationRuleMapNoPaging,
+            cast_to=PropertyValidationListResponse,
         )
 
     def get(
@@ -88,7 +84,7 @@ class PropertyValidationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicPropertyValidationRuleNoPaging:
+    ) -> PropertyValidationGetResponse:
         """
         Read a property's validation rules identified by {propertyName}.
 
@@ -110,7 +106,7 @@ class PropertyValidationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponsePublicPropertyValidationRuleNoPaging,
+            cast_to=PropertyValidationGetResponse,
         )
 
 
@@ -144,7 +140,7 @@ class AsyncPropertyValidationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicPropertyValidationRuleMapNoPaging:
+    ) -> PropertyValidationListResponse:
         """
         Read all properties with validation rules for a given object.
 
@@ -164,7 +160,7 @@ class AsyncPropertyValidationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponsePublicPropertyValidationRuleMapNoPaging,
+            cast_to=PropertyValidationListResponse,
         )
 
     async def get(
@@ -178,7 +174,7 @@ class AsyncPropertyValidationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicPropertyValidationRuleNoPaging:
+    ) -> PropertyValidationGetResponse:
         """
         Read a property's validation rules identified by {propertyName}.
 
@@ -200,7 +196,7 @@ class AsyncPropertyValidationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponsePublicPropertyValidationRuleNoPaging,
+            cast_to=PropertyValidationGetResponse,
         )
 
 

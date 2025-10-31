@@ -6,9 +6,8 @@ from typing import Dict
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
-from ..attention_span_calculated_values_param import AttentionSpanCalculatedValuesParam
 
-__all__ = ["EventCreateAttentionSpanEventParams"]
+__all__ = ["EventCreateAttentionSpanEventParams", "DerivedValues"]
 
 
 class EventCreateAttentionSpanEventParams(TypedDict, total=False):
@@ -28,7 +27,7 @@ class EventCreateAttentionSpanEventParams(TypedDict, total=False):
 
     contact_utk: Annotated[str, PropertyInfo(alias="contactUtk")]
 
-    derived_values: Annotated[AttentionSpanCalculatedValuesParam, PropertyInfo(alias="derivedValues")]
+    derived_values: Annotated[DerivedValues, PropertyInfo(alias="derivedValues")]
 
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
 
@@ -45,3 +44,9 @@ class EventCreateAttentionSpanEventParams(TypedDict, total=False):
     page_url: Annotated[str, PropertyInfo(alias="pageUrl")]
 
     raw_data_string: Annotated[str, PropertyInfo(alias="rawDataString")]
+
+
+class DerivedValues(TypedDict, total=False):
+    total_percent_played: Required[Annotated[float, PropertyInfo(alias="totalPercentPlayed")]]
+
+    total_seconds_played: Required[Annotated[int, PropertyInfo(alias="totalSecondsPlayed")]]

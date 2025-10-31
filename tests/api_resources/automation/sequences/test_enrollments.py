@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.automation import PublicSequenceEnrollmentResponse, PublicSequenceEnrollmentLiteResponse
 
@@ -19,7 +19,7 @@ class TestEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_enroll(self, client: HubSpot) -> None:
+    def test_method_enroll(self, client: Hubspot) -> None:
         enrollment = client.automation.sequences.enrollments.enroll(
             contact_id="contactId",
             sender_email="senderEmail",
@@ -29,7 +29,7 @@ class TestEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_enroll_with_all_params(self, client: HubSpot) -> None:
+    def test_method_enroll_with_all_params(self, client: Hubspot) -> None:
         enrollment = client.automation.sequences.enrollments.enroll(
             contact_id="contactId",
             sender_email="senderEmail",
@@ -40,7 +40,7 @@ class TestEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_enroll(self, client: HubSpot) -> None:
+    def test_raw_response_enroll(self, client: Hubspot) -> None:
         response = client.automation.sequences.enrollments.with_raw_response.enroll(
             contact_id="contactId",
             sender_email="senderEmail",
@@ -54,7 +54,7 @@ class TestEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_enroll(self, client: HubSpot) -> None:
+    def test_streaming_response_enroll(self, client: Hubspot) -> None:
         with client.automation.sequences.enrollments.with_streaming_response.enroll(
             contact_id="contactId",
             sender_email="senderEmail",
@@ -70,7 +70,7 @@ class TestEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_contact_id(self, client: HubSpot) -> None:
+    def test_method_get_by_contact_id(self, client: Hubspot) -> None:
         enrollment = client.automation.sequences.enrollments.get_by_contact_id(
             "contactId",
         )
@@ -78,7 +78,7 @@ class TestEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_by_contact_id(self, client: HubSpot) -> None:
+    def test_raw_response_get_by_contact_id(self, client: Hubspot) -> None:
         response = client.automation.sequences.enrollments.with_raw_response.get_by_contact_id(
             "contactId",
         )
@@ -90,7 +90,7 @@ class TestEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_contact_id(self, client: HubSpot) -> None:
+    def test_streaming_response_get_by_contact_id(self, client: Hubspot) -> None:
         with client.automation.sequences.enrollments.with_streaming_response.get_by_contact_id(
             "contactId",
         ) as response:
@@ -104,7 +104,7 @@ class TestEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_by_contact_id(self, client: HubSpot) -> None:
+    def test_path_params_get_by_contact_id(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             client.automation.sequences.enrollments.with_raw_response.get_by_contact_id(
                 "",
@@ -118,7 +118,7 @@ class TestAsyncEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_enroll(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_enroll(self, async_client: AsyncHubspot) -> None:
         enrollment = await async_client.automation.sequences.enrollments.enroll(
             contact_id="contactId",
             sender_email="senderEmail",
@@ -128,7 +128,7 @@ class TestAsyncEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_enroll_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_enroll_with_all_params(self, async_client: AsyncHubspot) -> None:
         enrollment = await async_client.automation.sequences.enrollments.enroll(
             contact_id="contactId",
             sender_email="senderEmail",
@@ -139,7 +139,7 @@ class TestAsyncEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_enroll(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_enroll(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.sequences.enrollments.with_raw_response.enroll(
             contact_id="contactId",
             sender_email="senderEmail",
@@ -153,7 +153,7 @@ class TestAsyncEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_enroll(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_enroll(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.sequences.enrollments.with_streaming_response.enroll(
             contact_id="contactId",
             sender_email="senderEmail",
@@ -169,7 +169,7 @@ class TestAsyncEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_by_contact_id(self, async_client: AsyncHubspot) -> None:
         enrollment = await async_client.automation.sequences.enrollments.get_by_contact_id(
             "contactId",
         )
@@ -177,7 +177,7 @@ class TestAsyncEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_by_contact_id(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.sequences.enrollments.with_raw_response.get_by_contact_id(
             "contactId",
         )
@@ -189,7 +189,7 @@ class TestAsyncEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_by_contact_id(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.sequences.enrollments.with_streaming_response.get_by_contact_id(
             "contactId",
         ) as response:
@@ -203,7 +203,7 @@ class TestAsyncEnrollments:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_by_contact_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_by_contact_id(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             await async_client.automation.sequences.enrollments.with_raw_response.get_by_contact_id(
                 "",

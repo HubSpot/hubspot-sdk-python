@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import ActionResponseWithSingleResultUri
 from hubspot_sdk.types.shared import TaskLocator
@@ -20,13 +20,13 @@ class TestExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_overload_1(self, client: HubSpot) -> None:
+    def test_method_create_overload_1(self, client: Hubspot) -> None:
         export = client.crm.exports.create()
         assert_matches_type(TaskLocator, export, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_overload_1(self, client: HubSpot) -> None:
+    def test_raw_response_create_overload_1(self, client: Hubspot) -> None:
         response = client.crm.exports.with_raw_response.create()
 
         assert response.is_closed is True
@@ -36,7 +36,7 @@ class TestExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_overload_1(self, client: HubSpot) -> None:
+    def test_streaming_response_create_overload_1(self, client: Hubspot) -> None:
         with client.crm.exports.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -48,13 +48,13 @@ class TestExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_overload_2(self, client: HubSpot) -> None:
+    def test_method_create_overload_2(self, client: Hubspot) -> None:
         export = client.crm.exports.create()
         assert_matches_type(TaskLocator, export, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_overload_2(self, client: HubSpot) -> None:
+    def test_raw_response_create_overload_2(self, client: Hubspot) -> None:
         response = client.crm.exports.with_raw_response.create()
 
         assert response.is_closed is True
@@ -64,7 +64,7 @@ class TestExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_overload_2(self, client: HubSpot) -> None:
+    def test_streaming_response_create_overload_2(self, client: Hubspot) -> None:
         with client.crm.exports.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -76,7 +76,7 @@ class TestExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_status(self, client: HubSpot) -> None:
+    def test_method_get_status(self, client: Hubspot) -> None:
         export = client.crm.exports.get_status(
             0,
         )
@@ -84,7 +84,7 @@ class TestExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_status(self, client: HubSpot) -> None:
+    def test_raw_response_get_status(self, client: Hubspot) -> None:
         response = client.crm.exports.with_raw_response.get_status(
             0,
         )
@@ -96,7 +96,7 @@ class TestExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_status(self, client: HubSpot) -> None:
+    def test_streaming_response_get_status(self, client: Hubspot) -> None:
         with client.crm.exports.with_streaming_response.get_status(
             0,
         ) as response:
@@ -116,13 +116,13 @@ class TestAsyncExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_overload_1(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_overload_1(self, async_client: AsyncHubspot) -> None:
         export = await async_client.crm.exports.create()
         assert_matches_type(TaskLocator, export, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_overload_1(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_overload_1(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.exports.with_raw_response.create()
 
         assert response.is_closed is True
@@ -132,7 +132,7 @@ class TestAsyncExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_overload_1(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_overload_1(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.exports.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -144,13 +144,13 @@ class TestAsyncExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_overload_2(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_overload_2(self, async_client: AsyncHubspot) -> None:
         export = await async_client.crm.exports.create()
         assert_matches_type(TaskLocator, export, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_overload_2(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_overload_2(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.exports.with_raw_response.create()
 
         assert response.is_closed is True
@@ -160,7 +160,7 @@ class TestAsyncExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_overload_2(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_overload_2(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.exports.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -172,7 +172,7 @@ class TestAsyncExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_status(self, async_client: AsyncHubspot) -> None:
         export = await async_client.crm.exports.get_status(
             0,
         )
@@ -180,7 +180,7 @@ class TestAsyncExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_status(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.exports.with_raw_response.get_status(
             0,
         )
@@ -192,7 +192,7 @@ class TestAsyncExports:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_status(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.exports.with_streaming_response.get_status(
             0,
         ) as response:

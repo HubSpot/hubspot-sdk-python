@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm.associations import CollectionResponsePublicAssociationDefinitionNoPaging
 
@@ -19,7 +19,7 @@ class TestSchema:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         schema = client.crm.associations.schema.list(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
@@ -28,7 +28,7 @@ class TestSchema:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.crm.associations.schema.with_raw_response.list(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
@@ -41,7 +41,7 @@ class TestSchema:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.crm.associations.schema.with_streaming_response.list(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
@@ -56,7 +56,7 @@ class TestSchema:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: HubSpot) -> None:
+    def test_path_params_list(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `from_object_type` but received ''"):
             client.crm.associations.schema.with_raw_response.list(
                 to_object_type="toObjectType",
@@ -77,7 +77,7 @@ class TestAsyncSchema:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         schema = await async_client.crm.associations.schema.list(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
@@ -86,7 +86,7 @@ class TestAsyncSchema:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.associations.schema.with_raw_response.list(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
@@ -99,7 +99,7 @@ class TestAsyncSchema:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.associations.schema.with_streaming_response.list(
             to_object_type="toObjectType",
             from_object_type="fromObjectType",
@@ -114,7 +114,7 @@ class TestAsyncSchema:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `from_object_type` but received ''"):
             await async_client.crm.associations.schema.with_raw_response.list(
                 to_object_type="toObjectType",

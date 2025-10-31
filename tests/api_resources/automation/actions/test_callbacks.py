@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -17,7 +17,7 @@ class TestCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_complete(self, client: HubSpot) -> None:
+    def test_method_complete(self, client: Hubspot) -> None:
         callback = client.automation.actions.callbacks.complete(
             callback_id="callbackId",
             output_fields={"foo": "string"},
@@ -26,7 +26,7 @@ class TestCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_complete(self, client: HubSpot) -> None:
+    def test_raw_response_complete(self, client: Hubspot) -> None:
         response = client.automation.actions.callbacks.with_raw_response.complete(
             callback_id="callbackId",
             output_fields={"foo": "string"},
@@ -39,7 +39,7 @@ class TestCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_complete(self, client: HubSpot) -> None:
+    def test_streaming_response_complete(self, client: Hubspot) -> None:
         with client.automation.actions.callbacks.with_streaming_response.complete(
             callback_id="callbackId",
             output_fields={"foo": "string"},
@@ -54,7 +54,7 @@ class TestCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_complete(self, client: HubSpot) -> None:
+    def test_path_params_complete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `callback_id` but received ''"):
             client.automation.actions.callbacks.with_raw_response.complete(
                 callback_id="",
@@ -63,7 +63,7 @@ class TestCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_complete_batch(self, client: HubSpot) -> None:
+    def test_method_complete_batch(self, client: Hubspot) -> None:
         callback = client.automation.actions.callbacks.complete_batch(
             inputs=[
                 {
@@ -76,7 +76,7 @@ class TestCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_complete_batch(self, client: HubSpot) -> None:
+    def test_raw_response_complete_batch(self, client: Hubspot) -> None:
         response = client.automation.actions.callbacks.with_raw_response.complete_batch(
             inputs=[
                 {
@@ -93,7 +93,7 @@ class TestCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_complete_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_complete_batch(self, client: Hubspot) -> None:
         with client.automation.actions.callbacks.with_streaming_response.complete_batch(
             inputs=[
                 {
@@ -118,7 +118,7 @@ class TestAsyncCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_complete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_complete(self, async_client: AsyncHubspot) -> None:
         callback = await async_client.automation.actions.callbacks.complete(
             callback_id="callbackId",
             output_fields={"foo": "string"},
@@ -127,7 +127,7 @@ class TestAsyncCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_complete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_complete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.callbacks.with_raw_response.complete(
             callback_id="callbackId",
             output_fields={"foo": "string"},
@@ -140,7 +140,7 @@ class TestAsyncCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_complete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_complete(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.callbacks.with_streaming_response.complete(
             callback_id="callbackId",
             output_fields={"foo": "string"},
@@ -155,7 +155,7 @@ class TestAsyncCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_complete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_complete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `callback_id` but received ''"):
             await async_client.automation.actions.callbacks.with_raw_response.complete(
                 callback_id="",
@@ -164,7 +164,7 @@ class TestAsyncCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_complete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_complete_batch(self, async_client: AsyncHubspot) -> None:
         callback = await async_client.automation.actions.callbacks.complete_batch(
             inputs=[
                 {
@@ -177,7 +177,7 @@ class TestAsyncCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_complete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_complete_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.callbacks.with_raw_response.complete_batch(
             inputs=[
                 {
@@ -194,7 +194,7 @@ class TestAsyncCallbacks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_complete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_complete_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.callbacks.with_streaming_response.complete_batch(
             inputs=[
                 {

@@ -17,7 +17,7 @@ from ...._response import (
 from ...._base_client import make_request_options
 from ....types.cms.media_bridge import group_create_params, group_update_by_name_params
 from ....types.crm.property_group import PropertyGroup
-from ....types.cms.collection_response_property_group_no_paging import CollectionResponsePropertyGroupNoPaging
+from ....types.cms.media_bridge.group_list_response import GroupListResponse
 
 __all__ = ["GroupsResource", "AsyncGroupsResource"]
 
@@ -100,7 +100,7 @@ class GroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePropertyGroupNoPaging:
+    ) -> GroupListResponse:
         """
         Get the property groups for a specified object type.
 
@@ -122,7 +122,7 @@ class GroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponsePropertyGroupNoPaging,
+            cast_to=GroupListResponse,
         )
 
     def delete_by_name(
@@ -331,7 +331,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePropertyGroupNoPaging:
+    ) -> GroupListResponse:
         """
         Get the property groups for a specified object type.
 
@@ -353,7 +353,7 @@ class AsyncGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponsePropertyGroupNoPaging,
+            cast_to=GroupListResponse,
         )
 
     async def delete_by_name(

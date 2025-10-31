@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.marketing.subscriptions import (
     BatchResponsePublicStatus,
@@ -26,7 +26,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -37,7 +37,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -50,7 +50,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -65,7 +65,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -82,7 +82,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             client.marketing.subscriptions.v4.statuses.with_raw_response.update(
                 subscriber_id_string="",
@@ -93,7 +93,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_get(self, client: HubSpot) -> None:
+    def test_method_batch_get(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.batch_get(
             channel="EMAIL",
             inputs=["string"],
@@ -102,7 +102,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_batch_get_with_all_params(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.batch_get(
             channel="EMAIL",
             inputs=["string"],
@@ -112,7 +112,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_get(self, client: HubSpot) -> None:
+    def test_raw_response_batch_get(self, client: Hubspot) -> None:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.batch_get(
             channel="EMAIL",
             inputs=["string"],
@@ -125,7 +125,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_get(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_get(self, client: Hubspot) -> None:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.batch_get(
             channel="EMAIL",
             inputs=["string"],
@@ -140,7 +140,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_get_unsubscribe_all_status(self, client: HubSpot) -> None:
+    def test_method_batch_get_unsubscribe_all_status(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.batch_get_unsubscribe_all_status(
             channel="EMAIL",
             inputs=["string"],
@@ -149,7 +149,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_get_unsubscribe_all_status_with_all_params(self, client: HubSpot) -> None:
+    def test_method_batch_get_unsubscribe_all_status_with_all_params(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.batch_get_unsubscribe_all_status(
             channel="EMAIL",
             inputs=["string"],
@@ -159,7 +159,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_get_unsubscribe_all_status(self, client: HubSpot) -> None:
+    def test_raw_response_batch_get_unsubscribe_all_status(self, client: Hubspot) -> None:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.batch_get_unsubscribe_all_status(
             channel="EMAIL",
             inputs=["string"],
@@ -172,7 +172,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_get_unsubscribe_all_status(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_get_unsubscribe_all_status(self, client: Hubspot) -> None:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.batch_get_unsubscribe_all_status(
             channel="EMAIL",
             inputs=["string"],
@@ -187,7 +187,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_unsubscribe_all(self, client: HubSpot) -> None:
+    def test_method_batch_unsubscribe_all(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.batch_unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -196,7 +196,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_unsubscribe_all_with_all_params(self, client: HubSpot) -> None:
+    def test_method_batch_unsubscribe_all_with_all_params(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.batch_unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -207,7 +207,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_unsubscribe_all(self, client: HubSpot) -> None:
+    def test_raw_response_batch_unsubscribe_all(self, client: Hubspot) -> None:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.batch_unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -220,7 +220,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_unsubscribe_all(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_unsubscribe_all(self, client: Hubspot) -> None:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.batch_unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -235,7 +235,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_update(self, client: HubSpot) -> None:
+    def test_method_batch_update(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.batch_update(
             inputs=[
                 {
@@ -250,7 +250,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_update(self, client: HubSpot) -> None:
+    def test_raw_response_batch_update(self, client: Hubspot) -> None:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.batch_update(
             inputs=[
                 {
@@ -269,7 +269,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_update(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_update(self, client: Hubspot) -> None:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.batch_update(
             inputs=[
                 {
@@ -290,7 +290,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.get(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -299,7 +299,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.get(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -309,7 +309,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.get(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -322,7 +322,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.get(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -337,7 +337,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             client.marketing.subscriptions.v4.statuses.with_raw_response.get(
                 subscriber_id_string="",
@@ -346,7 +346,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_unsubscribe_all_status(self, client: HubSpot) -> None:
+    def test_method_get_unsubscribe_all_status(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -355,7 +355,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_unsubscribe_all_status_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_unsubscribe_all_status_with_all_params(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -366,7 +366,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_unsubscribe_all_status(self, client: HubSpot) -> None:
+    def test_raw_response_get_unsubscribe_all_status(self, client: Hubspot) -> None:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -379,7 +379,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_unsubscribe_all_status(self, client: HubSpot) -> None:
+    def test_streaming_response_get_unsubscribe_all_status(self, client: Hubspot) -> None:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -394,7 +394,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_unsubscribe_all_status(self, client: HubSpot) -> None:
+    def test_path_params_get_unsubscribe_all_status(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             client.marketing.subscriptions.v4.statuses.with_raw_response.get_unsubscribe_all_status(
                 subscriber_id_string="",
@@ -403,7 +403,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_unsubscribe_all(self, client: HubSpot) -> None:
+    def test_method_unsubscribe_all(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -412,7 +412,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_unsubscribe_all_with_all_params(self, client: HubSpot) -> None:
+    def test_method_unsubscribe_all_with_all_params(self, client: Hubspot) -> None:
         status = client.marketing.subscriptions.v4.statuses.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -423,7 +423,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_unsubscribe_all(self, client: HubSpot) -> None:
+    def test_raw_response_unsubscribe_all(self, client: Hubspot) -> None:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -436,7 +436,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_unsubscribe_all(self, client: HubSpot) -> None:
+    def test_streaming_response_unsubscribe_all(self, client: Hubspot) -> None:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -451,7 +451,7 @@ class TestStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_unsubscribe_all(self, client: HubSpot) -> None:
+    def test_path_params_unsubscribe_all(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             client.marketing.subscriptions.v4.statuses.with_raw_response.unsubscribe_all(
                 subscriber_id_string="",
@@ -466,7 +466,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -477,7 +477,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -490,7 +490,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.subscriptions.v4.statuses.with_raw_response.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -505,7 +505,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.subscriptions.v4.statuses.with_streaming_response.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -522,7 +522,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             await async_client.marketing.subscriptions.v4.statuses.with_raw_response.update(
                 subscriber_id_string="",
@@ -533,7 +533,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_get(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.batch_get(
             channel="EMAIL",
             inputs=["string"],
@@ -542,7 +542,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.batch_get(
             channel="EMAIL",
             inputs=["string"],
@@ -552,7 +552,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.subscriptions.v4.statuses.with_raw_response.batch_get(
             channel="EMAIL",
             inputs=["string"],
@@ -565,7 +565,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.subscriptions.v4.statuses.with_streaming_response.batch_get(
             channel="EMAIL",
             inputs=["string"],
@@ -580,7 +580,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.batch_get_unsubscribe_all_status(
             channel="EMAIL",
             inputs=["string"],
@@ -589,7 +589,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_get_unsubscribe_all_status_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_get_unsubscribe_all_status_with_all_params(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.batch_get_unsubscribe_all_status(
             channel="EMAIL",
             inputs=["string"],
@@ -599,7 +599,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
         response = (
             await async_client.marketing.subscriptions.v4.statuses.with_raw_response.batch_get_unsubscribe_all_status(
                 channel="EMAIL",
@@ -614,7 +614,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
         async with (
             async_client.marketing.subscriptions.v4.statuses.with_streaming_response.batch_get_unsubscribe_all_status(
                 channel="EMAIL",
@@ -631,7 +631,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.batch_unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -640,7 +640,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_unsubscribe_all_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_unsubscribe_all_with_all_params(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.batch_unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -651,7 +651,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.subscriptions.v4.statuses.with_raw_response.batch_unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -664,7 +664,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.subscriptions.v4.statuses.with_streaming_response.batch_unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -679,7 +679,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_update(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.batch_update(
             inputs=[
                 {
@@ -694,7 +694,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.subscriptions.v4.statuses.with_raw_response.batch_update(
             inputs=[
                 {
@@ -713,7 +713,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.subscriptions.v4.statuses.with_streaming_response.batch_update(
             inputs=[
                 {
@@ -734,7 +734,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.get(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -743,7 +743,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.get(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -753,7 +753,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.subscriptions.v4.statuses.with_raw_response.get(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -766,7 +766,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.subscriptions.v4.statuses.with_streaming_response.get(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -781,7 +781,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             await async_client.marketing.subscriptions.v4.statuses.with_raw_response.get(
                 subscriber_id_string="",
@@ -790,7 +790,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -799,7 +799,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_unsubscribe_all_status_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_unsubscribe_all_status_with_all_params(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -810,7 +810,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.subscriptions.v4.statuses.with_raw_response.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -823,7 +823,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.subscriptions.v4.statuses.with_streaming_response.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -838,7 +838,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             await async_client.marketing.subscriptions.v4.statuses.with_raw_response.get_unsubscribe_all_status(
                 subscriber_id_string="",
@@ -847,7 +847,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -856,7 +856,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_unsubscribe_all_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_unsubscribe_all_with_all_params(self, async_client: AsyncHubspot) -> None:
         status = await async_client.marketing.subscriptions.v4.statuses.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -867,7 +867,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.subscriptions.v4.statuses.with_raw_response.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -880,7 +880,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.subscriptions.v4.statuses.with_streaming_response.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -895,7 +895,7 @@ class TestAsyncStatuses:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             await async_client.marketing.subscriptions.v4.statuses.with_raw_response.unsubscribe_all(
                 subscriber_id_string="",

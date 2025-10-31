@@ -8,13 +8,13 @@ from typing import TYPE_CHECKING
 import anyio
 
 if TYPE_CHECKING:
-    from ._client import HubSpot, AsyncHubSpot
+    from ._client import Hubspot, AsyncHubspot
 
 
 class SyncAPIResource:
-    _client: HubSpot
+    _client: Hubspot
 
-    def __init__(self, client: HubSpot) -> None:
+    def __init__(self, client: Hubspot) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post
@@ -28,9 +28,9 @@ class SyncAPIResource:
 
 
 class AsyncAPIResource:
-    _client: AsyncHubSpot
+    _client: AsyncHubspot
 
-    def __init__(self, client: AsyncHubSpot) -> None:
+    def __init__(self, client: AsyncHubspot) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post

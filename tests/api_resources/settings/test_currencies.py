@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.settings import (
@@ -27,7 +27,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_create(self, client: HubSpot) -> None:
+    def test_method_batch_create(self, client: Hubspot) -> None:
         currency = client.settings.currencies.batch_create(
             inputs=[
                 {
@@ -40,7 +40,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_create(self, client: HubSpot) -> None:
+    def test_raw_response_batch_create(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.batch_create(
             inputs=[
                 {
@@ -57,7 +57,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_create(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_create(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.batch_create(
             inputs=[
                 {
@@ -76,7 +76,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_get(self, client: HubSpot) -> None:
+    def test_method_batch_get(self, client: Hubspot) -> None:
         currency = client.settings.currencies.batch_get(
             inputs=[{"id": "37295"}],
         )
@@ -84,7 +84,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_get(self, client: HubSpot) -> None:
+    def test_raw_response_batch_get(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.batch_get(
             inputs=[{"id": "37295"}],
         )
@@ -96,7 +96,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_get(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_get(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.batch_get(
             inputs=[{"id": "37295"}],
         ) as response:
@@ -110,7 +110,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_update(self, client: HubSpot) -> None:
+    def test_method_batch_update(self, client: Hubspot) -> None:
         currency = client.settings.currencies.batch_update(
             inputs=[
                 {
@@ -123,7 +123,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_update(self, client: HubSpot) -> None:
+    def test_raw_response_batch_update(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.batch_update(
             inputs=[
                 {
@@ -140,7 +140,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_update(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_update(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.batch_update(
             inputs=[
                 {
@@ -159,7 +159,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_exchange_rate(self, client: HubSpot) -> None:
+    def test_method_create_exchange_rate(self, client: Hubspot) -> None:
         currency = client.settings.currencies.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -168,7 +168,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_exchange_rate_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_exchange_rate_with_all_params(self, client: Hubspot) -> None:
         currency = client.settings.currencies.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -178,7 +178,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_exchange_rate(self, client: HubSpot) -> None:
+    def test_raw_response_create_exchange_rate(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -191,7 +191,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_exchange_rate(self, client: HubSpot) -> None:
+    def test_streaming_response_create_exchange_rate(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -206,13 +206,13 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_company_currency(self, client: HubSpot) -> None:
+    def test_method_get_company_currency(self, client: Hubspot) -> None:
         currency = client.settings.currencies.get_company_currency()
         assert_matches_type(CompanyCurrency, currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_company_currency(self, client: HubSpot) -> None:
+    def test_raw_response_get_company_currency(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.get_company_currency()
 
         assert response.is_closed is True
@@ -222,7 +222,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_company_currency(self, client: HubSpot) -> None:
+    def test_streaming_response_get_company_currency(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.get_company_currency() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -234,7 +234,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_exchange_rate_by_id(self, client: HubSpot) -> None:
+    def test_method_get_exchange_rate_by_id(self, client: Hubspot) -> None:
         currency = client.settings.currencies.get_exchange_rate_by_id(
             "exchangeRateId",
         )
@@ -242,7 +242,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_exchange_rate_by_id(self, client: HubSpot) -> None:
+    def test_raw_response_get_exchange_rate_by_id(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.get_exchange_rate_by_id(
             "exchangeRateId",
         )
@@ -254,7 +254,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_exchange_rate_by_id(self, client: HubSpot) -> None:
+    def test_streaming_response_get_exchange_rate_by_id(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.get_exchange_rate_by_id(
             "exchangeRateId",
         ) as response:
@@ -268,7 +268,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_exchange_rate_by_id(self, client: HubSpot) -> None:
+    def test_path_params_get_exchange_rate_by_id(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `exchange_rate_id` but received ''"):
             client.settings.currencies.with_raw_response.get_exchange_rate_by_id(
                 "",
@@ -276,13 +276,13 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_codes(self, client: HubSpot) -> None:
+    def test_method_list_codes(self, client: Hubspot) -> None:
         currency = client.settings.currencies.list_codes()
         assert_matches_type(CollectionResponseCurrencyCodeInfoNoPaging, currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_codes(self, client: HubSpot) -> None:
+    def test_raw_response_list_codes(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.list_codes()
 
         assert response.is_closed is True
@@ -292,7 +292,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_codes(self, client: HubSpot) -> None:
+    def test_streaming_response_list_codes(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.list_codes() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -304,13 +304,13 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_current_exchange_rates(self, client: HubSpot) -> None:
+    def test_method_list_current_exchange_rates(self, client: Hubspot) -> None:
         currency = client.settings.currencies.list_current_exchange_rates()
         assert_matches_type(CollectionResponseExchangeRateNoPaging, currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_current_exchange_rates(self, client: HubSpot) -> None:
+    def test_raw_response_list_current_exchange_rates(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.list_current_exchange_rates()
 
         assert response.is_closed is True
@@ -320,7 +320,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_current_exchange_rates(self, client: HubSpot) -> None:
+    def test_streaming_response_list_current_exchange_rates(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.list_current_exchange_rates() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -332,13 +332,13 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_exchange_rates(self, client: HubSpot) -> None:
+    def test_method_list_exchange_rates(self, client: Hubspot) -> None:
         currency = client.settings.currencies.list_exchange_rates()
         assert_matches_type(CollectionResponseExchangeRateForwardPaging, currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_exchange_rates(self, client: HubSpot) -> None:
+    def test_raw_response_list_exchange_rates(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.list_exchange_rates()
 
         assert response.is_closed is True
@@ -348,7 +348,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_exchange_rates(self, client: HubSpot) -> None:
+    def test_streaming_response_list_exchange_rates(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.list_exchange_rates() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -360,7 +360,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_company_currency(self, client: HubSpot) -> None:
+    def test_method_update_company_currency(self, client: Hubspot) -> None:
         currency = client.settings.currencies.update_company_currency(
             currency_code="AED",
         )
@@ -368,7 +368,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_company_currency(self, client: HubSpot) -> None:
+    def test_raw_response_update_company_currency(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.update_company_currency(
             currency_code="AED",
         )
@@ -380,7 +380,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_company_currency(self, client: HubSpot) -> None:
+    def test_streaming_response_update_company_currency(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.update_company_currency(
             currency_code="AED",
         ) as response:
@@ -394,7 +394,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_exchange_rate(self, client: HubSpot) -> None:
+    def test_method_update_exchange_rate(self, client: Hubspot) -> None:
         currency = client.settings.currencies.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -403,7 +403,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_exchange_rate_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_exchange_rate_with_all_params(self, client: Hubspot) -> None:
         currency = client.settings.currencies.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -413,7 +413,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_exchange_rate(self, client: HubSpot) -> None:
+    def test_raw_response_update_exchange_rate(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -426,7 +426,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_exchange_rate(self, client: HubSpot) -> None:
+    def test_streaming_response_update_exchange_rate(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -441,7 +441,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_exchange_rate(self, client: HubSpot) -> None:
+    def test_path_params_update_exchange_rate(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `exchange_rate_id` but received ''"):
             client.settings.currencies.with_raw_response.update_exchange_rate(
                 exchange_rate_id="",
@@ -450,7 +450,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_visibility(self, client: HubSpot) -> None:
+    def test_method_update_visibility(self, client: Hubspot) -> None:
         currency = client.settings.currencies.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -460,7 +460,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_visibility(self, client: HubSpot) -> None:
+    def test_raw_response_update_visibility(self, client: Hubspot) -> None:
         response = client.settings.currencies.with_raw_response.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -474,7 +474,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_visibility(self, client: HubSpot) -> None:
+    def test_streaming_response_update_visibility(self, client: Hubspot) -> None:
         with client.settings.currencies.with_streaming_response.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -496,7 +496,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_create(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.batch_create(
             inputs=[
                 {
@@ -509,7 +509,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.batch_create(
             inputs=[
                 {
@@ -526,7 +526,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.batch_create(
             inputs=[
                 {
@@ -545,7 +545,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_get(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.batch_get(
             inputs=[{"id": "37295"}],
         )
@@ -553,7 +553,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.batch_get(
             inputs=[{"id": "37295"}],
         )
@@ -565,7 +565,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.batch_get(
             inputs=[{"id": "37295"}],
         ) as response:
@@ -579,7 +579,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_update(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.batch_update(
             inputs=[
                 {
@@ -592,7 +592,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.batch_update(
             inputs=[
                 {
@@ -609,7 +609,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.batch_update(
             inputs=[
                 {
@@ -628,7 +628,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_exchange_rate(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_exchange_rate(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -637,7 +637,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_exchange_rate_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_exchange_rate_with_all_params(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -647,7 +647,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_exchange_rate(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_exchange_rate(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -660,7 +660,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_exchange_rate(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_exchange_rate(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -675,13 +675,13 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_company_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_company_currency(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.get_company_currency()
         assert_matches_type(CompanyCurrency, currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_company_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_company_currency(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.get_company_currency()
 
         assert response.is_closed is True
@@ -691,7 +691,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_company_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_company_currency(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.get_company_currency() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -703,7 +703,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_exchange_rate_by_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_exchange_rate_by_id(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.get_exchange_rate_by_id(
             "exchangeRateId",
         )
@@ -711,7 +711,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_exchange_rate_by_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_exchange_rate_by_id(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.get_exchange_rate_by_id(
             "exchangeRateId",
         )
@@ -723,7 +723,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_exchange_rate_by_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_exchange_rate_by_id(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.get_exchange_rate_by_id(
             "exchangeRateId",
         ) as response:
@@ -737,7 +737,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_exchange_rate_by_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_exchange_rate_by_id(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `exchange_rate_id` but received ''"):
             await async_client.settings.currencies.with_raw_response.get_exchange_rate_by_id(
                 "",
@@ -745,13 +745,13 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_codes(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_codes(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.list_codes()
         assert_matches_type(CollectionResponseCurrencyCodeInfoNoPaging, currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_codes(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list_codes(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.list_codes()
 
         assert response.is_closed is True
@@ -761,7 +761,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_codes(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list_codes(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.list_codes() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -773,13 +773,13 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_current_exchange_rates(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_current_exchange_rates(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.list_current_exchange_rates()
         assert_matches_type(CollectionResponseExchangeRateNoPaging, currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_current_exchange_rates(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list_current_exchange_rates(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.list_current_exchange_rates()
 
         assert response.is_closed is True
@@ -789,7 +789,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_current_exchange_rates(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list_current_exchange_rates(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.list_current_exchange_rates() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -801,13 +801,13 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_exchange_rates(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_exchange_rates(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.list_exchange_rates()
         assert_matches_type(CollectionResponseExchangeRateForwardPaging, currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_exchange_rates(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list_exchange_rates(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.list_exchange_rates()
 
         assert response.is_closed is True
@@ -817,7 +817,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_exchange_rates(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list_exchange_rates(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.list_exchange_rates() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -829,7 +829,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_company_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_company_currency(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.update_company_currency(
             currency_code="AED",
         )
@@ -837,7 +837,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_company_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_company_currency(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.update_company_currency(
             currency_code="AED",
         )
@@ -849,7 +849,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_company_currency(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_company_currency(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.update_company_currency(
             currency_code="AED",
         ) as response:
@@ -863,7 +863,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_exchange_rate(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_exchange_rate(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -872,7 +872,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_exchange_rate_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_exchange_rate_with_all_params(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -882,7 +882,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_exchange_rate(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_exchange_rate(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -895,7 +895,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_exchange_rate(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_exchange_rate(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -910,7 +910,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_exchange_rate(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_exchange_rate(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `exchange_rate_id` but received ''"):
             await async_client.settings.currencies.with_raw_response.update_exchange_rate(
                 exchange_rate_id="",
@@ -919,7 +919,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_visibility(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_visibility(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -929,7 +929,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_visibility(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_visibility(self, async_client: AsyncHubspot) -> None:
         response = await async_client.settings.currencies.with_raw_response.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -943,7 +943,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_visibility(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_visibility(self, async_client: AsyncHubspot) -> None:
         async with async_client.settings.currencies.with_streaming_response.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",

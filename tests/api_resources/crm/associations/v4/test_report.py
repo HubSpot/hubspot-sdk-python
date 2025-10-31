@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm.associations import ReportCreationResponse
 
@@ -19,7 +19,7 @@ class TestReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_high_usage_report(self, client: HubSpot) -> None:
+    def test_method_get_high_usage_report(self, client: Hubspot) -> None:
         report = client.crm.associations.v4.report.get_high_usage_report(
             0,
         )
@@ -27,7 +27,7 @@ class TestReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_high_usage_report(self, client: HubSpot) -> None:
+    def test_raw_response_get_high_usage_report(self, client: Hubspot) -> None:
         response = client.crm.associations.v4.report.with_raw_response.get_high_usage_report(
             0,
         )
@@ -39,7 +39,7 @@ class TestReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_high_usage_report(self, client: HubSpot) -> None:
+    def test_streaming_response_get_high_usage_report(self, client: Hubspot) -> None:
         with client.crm.associations.v4.report.with_streaming_response.get_high_usage_report(
             0,
         ) as response:
@@ -59,7 +59,7 @@ class TestAsyncReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_high_usage_report(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_high_usage_report(self, async_client: AsyncHubspot) -> None:
         report = await async_client.crm.associations.v4.report.get_high_usage_report(
             0,
         )
@@ -67,7 +67,7 @@ class TestAsyncReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_high_usage_report(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_high_usage_report(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.associations.v4.report.with_raw_response.get_high_usage_report(
             0,
         )
@@ -79,7 +79,7 @@ class TestAsyncReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_high_usage_report(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_high_usage_report(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.associations.v4.report.with_streaming_response.get_high_usage_report(
             0,
         ) as response:

@@ -7,9 +7,11 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.conversations import IdentificationTokenResponse
+from hubspot_sdk.types.conversations import (
+    VisitorIdentificationGenerateTokenResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,25 +21,25 @@ class TestVisitorIdentification:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_generate_token(self, client: HubSpot) -> None:
+    def test_method_generate_token(self, client: Hubspot) -> None:
         visitor_identification = client.conversations.visitor_identification.generate_token(
             email="visitor-email@example.com",
         )
-        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_generate_token_with_all_params(self, client: HubSpot) -> None:
+    def test_method_generate_token_with_all_params(self, client: Hubspot) -> None:
         visitor_identification = client.conversations.visitor_identification.generate_token(
             email="visitor-email@example.com",
             first_name="Gob",
             last_name="Bluth",
         )
-        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_generate_token(self, client: HubSpot) -> None:
+    def test_raw_response_generate_token(self, client: Hubspot) -> None:
         response = client.conversations.visitor_identification.with_raw_response.generate_token(
             email="visitor-email@example.com",
         )
@@ -45,11 +47,11 @@ class TestVisitorIdentification:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         visitor_identification = response.parse()
-        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_generate_token(self, client: HubSpot) -> None:
+    def test_streaming_response_generate_token(self, client: Hubspot) -> None:
         with client.conversations.visitor_identification.with_streaming_response.generate_token(
             email="visitor-email@example.com",
         ) as response:
@@ -57,7 +59,7 @@ class TestVisitorIdentification:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             visitor_identification = response.parse()
-            assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
+            assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -69,25 +71,25 @@ class TestAsyncVisitorIdentification:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_generate_token(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_generate_token(self, async_client: AsyncHubspot) -> None:
         visitor_identification = await async_client.conversations.visitor_identification.generate_token(
             email="visitor-email@example.com",
         )
-        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_generate_token_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_generate_token_with_all_params(self, async_client: AsyncHubspot) -> None:
         visitor_identification = await async_client.conversations.visitor_identification.generate_token(
             email="visitor-email@example.com",
             first_name="Gob",
             last_name="Bluth",
         )
-        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_generate_token(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_generate_token(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.visitor_identification.with_raw_response.generate_token(
             email="visitor-email@example.com",
         )
@@ -95,11 +97,11 @@ class TestAsyncVisitorIdentification:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         visitor_identification = await response.parse()
-        assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
+        assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_generate_token(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_generate_token(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.visitor_identification.with_streaming_response.generate_token(
             email="visitor-email@example.com",
         ) as response:
@@ -107,6 +109,6 @@ class TestAsyncVisitorIdentification:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             visitor_identification = await response.parse()
-            assert_matches_type(IdentificationTokenResponse, visitor_identification, path=["response"])
+            assert_matches_type(VisitorIdentificationGenerateTokenResponse, visitor_identification, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import ListFolderFetchResponse, ListFolderCreateResponse
 
@@ -19,7 +19,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.create(
             name="name",
         )
@@ -27,7 +27,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.create(
             name="name",
             parent_folder_id="parentFolderId",
@@ -36,7 +36,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.lists.folders.with_raw_response.create(
             name="name",
         )
@@ -48,7 +48,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.lists.folders.with_streaming_response.create(
             name="name",
         ) as response:
@@ -62,7 +62,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.delete(
             "folderId",
         )
@@ -70,7 +70,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.crm.lists.folders.with_raw_response.delete(
             "folderId",
         )
@@ -82,7 +82,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.crm.lists.folders.with_streaming_response.delete(
             "folderId",
         ) as response:
@@ -96,7 +96,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             client.crm.lists.folders.with_raw_response.delete(
                 "",
@@ -104,13 +104,13 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.get()
         assert_matches_type(ListFolderFetchResponse, folder, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.get(
             folder_id="folderId",
         )
@@ -118,7 +118,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.lists.folders.with_raw_response.get()
 
         assert response.is_closed is True
@@ -128,7 +128,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.lists.folders.with_streaming_response.get() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -140,7 +140,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_move(self, client: HubSpot) -> None:
+    def test_method_move(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.move(
             new_parent_folder_id="newParentFolderId",
             folder_id="folderId",
@@ -149,7 +149,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_move(self, client: HubSpot) -> None:
+    def test_raw_response_move(self, client: Hubspot) -> None:
         response = client.crm.lists.folders.with_raw_response.move(
             new_parent_folder_id="newParentFolderId",
             folder_id="folderId",
@@ -162,7 +162,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_move(self, client: HubSpot) -> None:
+    def test_streaming_response_move(self, client: Hubspot) -> None:
         with client.crm.lists.folders.with_streaming_response.move(
             new_parent_folder_id="newParentFolderId",
             folder_id="folderId",
@@ -177,7 +177,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_move(self, client: HubSpot) -> None:
+    def test_path_params_move(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             client.crm.lists.folders.with_raw_response.move(
                 new_parent_folder_id="newParentFolderId",
@@ -192,7 +192,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_move_list(self, client: HubSpot) -> None:
+    def test_method_move_list(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.move_list(
             list_id="listId",
             new_folder_id="newFolderId",
@@ -201,7 +201,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_move_list(self, client: HubSpot) -> None:
+    def test_raw_response_move_list(self, client: Hubspot) -> None:
         response = client.crm.lists.folders.with_raw_response.move_list(
             list_id="listId",
             new_folder_id="newFolderId",
@@ -214,7 +214,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_move_list(self, client: HubSpot) -> None:
+    def test_streaming_response_move_list(self, client: Hubspot) -> None:
         with client.crm.lists.folders.with_streaming_response.move_list(
             list_id="listId",
             new_folder_id="newFolderId",
@@ -229,7 +229,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_rename(self, client: HubSpot) -> None:
+    def test_method_rename(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.rename(
             folder_id="folderId",
         )
@@ -237,7 +237,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_rename_with_all_params(self, client: HubSpot) -> None:
+    def test_method_rename_with_all_params(self, client: Hubspot) -> None:
         folder = client.crm.lists.folders.rename(
             folder_id="folderId",
             new_folder_name="newFolderName",
@@ -246,7 +246,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_rename(self, client: HubSpot) -> None:
+    def test_raw_response_rename(self, client: Hubspot) -> None:
         response = client.crm.lists.folders.with_raw_response.rename(
             folder_id="folderId",
         )
@@ -258,7 +258,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_rename(self, client: HubSpot) -> None:
+    def test_streaming_response_rename(self, client: Hubspot) -> None:
         with client.crm.lists.folders.with_streaming_response.rename(
             folder_id="folderId",
         ) as response:
@@ -272,7 +272,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_rename(self, client: HubSpot) -> None:
+    def test_path_params_rename(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             client.crm.lists.folders.with_raw_response.rename(
                 folder_id="",
@@ -286,7 +286,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.create(
             name="name",
         )
@@ -294,7 +294,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.create(
             name="name",
             parent_folder_id="parentFolderId",
@@ -303,7 +303,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.folders.with_raw_response.create(
             name="name",
         )
@@ -315,7 +315,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.folders.with_streaming_response.create(
             name="name",
         ) as response:
@@ -329,7 +329,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.delete(
             "folderId",
         )
@@ -337,7 +337,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.folders.with_raw_response.delete(
             "folderId",
         )
@@ -349,7 +349,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.folders.with_streaming_response.delete(
             "folderId",
         ) as response:
@@ -363,7 +363,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             await async_client.crm.lists.folders.with_raw_response.delete(
                 "",
@@ -371,13 +371,13 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.get()
         assert_matches_type(ListFolderFetchResponse, folder, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.get(
             folder_id="folderId",
         )
@@ -385,7 +385,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.folders.with_raw_response.get()
 
         assert response.is_closed is True
@@ -395,7 +395,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.folders.with_streaming_response.get() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -407,7 +407,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_move(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_move(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.move(
             new_parent_folder_id="newParentFolderId",
             folder_id="folderId",
@@ -416,7 +416,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_move(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_move(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.folders.with_raw_response.move(
             new_parent_folder_id="newParentFolderId",
             folder_id="folderId",
@@ -429,7 +429,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_move(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_move(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.folders.with_streaming_response.move(
             new_parent_folder_id="newParentFolderId",
             folder_id="folderId",
@@ -444,7 +444,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_move(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_move(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             await async_client.crm.lists.folders.with_raw_response.move(
                 new_parent_folder_id="newParentFolderId",
@@ -459,7 +459,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_move_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_move_list(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.move_list(
             list_id="listId",
             new_folder_id="newFolderId",
@@ -468,7 +468,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_move_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_move_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.folders.with_raw_response.move_list(
             list_id="listId",
             new_folder_id="newFolderId",
@@ -481,7 +481,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_move_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_move_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.folders.with_streaming_response.move_list(
             list_id="listId",
             new_folder_id="newFolderId",
@@ -496,7 +496,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_rename(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_rename(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.rename(
             folder_id="folderId",
         )
@@ -504,7 +504,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_rename_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_rename_with_all_params(self, async_client: AsyncHubspot) -> None:
         folder = await async_client.crm.lists.folders.rename(
             folder_id="folderId",
             new_folder_name="newFolderName",
@@ -513,7 +513,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_rename(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_rename(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.folders.with_raw_response.rename(
             folder_id="folderId",
         )
@@ -525,7 +525,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_rename(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_rename(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.folders.with_streaming_response.rename(
             folder_id="folderId",
         ) as response:
@@ -539,7 +539,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_rename(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_rename(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             await async_client.crm.lists.folders.with_raw_response.rename(
                 folder_id="",

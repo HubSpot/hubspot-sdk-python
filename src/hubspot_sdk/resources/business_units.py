@@ -16,9 +16,7 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.business_units import business_unit_get_by_user_id_params
-from ..types.business_units.collection_response_public_business_unit_no_paging import (
-    CollectionResponsePublicBusinessUnitNoPaging,
-)
+from ..types.business_units.business_unit_get_by_user_id_response import BusinessUnitGetByUserIDResponse
 
 __all__ = ["BusinessUnitsResource", "AsyncBusinessUnitsResource"]
 
@@ -55,7 +53,7 @@ class BusinessUnitsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicBusinessUnitNoPaging:
+    ) -> BusinessUnitGetByUserIDResponse:
         """Get Business Units identified by `userId`.
 
         The `userId` refers to the user’s ID.
@@ -92,7 +90,7 @@ class BusinessUnitsResource(SyncAPIResource):
                     business_unit_get_by_user_id_params.BusinessUnitGetByUserIDParams,
                 ),
             ),
-            cast_to=CollectionResponsePublicBusinessUnitNoPaging,
+            cast_to=BusinessUnitGetByUserIDResponse,
         )
 
 
@@ -128,7 +126,7 @@ class AsyncBusinessUnitsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicBusinessUnitNoPaging:
+    ) -> BusinessUnitGetByUserIDResponse:
         """Get Business Units identified by `userId`.
 
         The `userId` refers to the user’s ID.
@@ -165,7 +163,7 @@ class AsyncBusinessUnitsResource(AsyncAPIResource):
                     business_unit_get_by_user_id_params.BusinessUnitGetByUserIDParams,
                 ),
             ),
-            cast_to=CollectionResponsePublicBusinessUnitNoPaging,
+            cast_to=BusinessUnitGetByUserIDResponse,
         )
 
 

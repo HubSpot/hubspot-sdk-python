@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.cms import BatchResponseHubDBTableRowV3
 
@@ -19,7 +19,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_clone_batch(self, client: HubSpot) -> None:
+    def test_method_clone_batch(self, client: Hubspot) -> None:
         batch = client.cms.hubdb.rows.batch.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -28,7 +28,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_clone_batch(self, client: HubSpot) -> None:
+    def test_raw_response_clone_batch(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.batch.with_raw_response.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -41,7 +41,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_clone_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_clone_batch(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.batch.with_streaming_response.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -56,7 +56,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_clone_batch(self, client: HubSpot) -> None:
+    def test_path_params_clone_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.batch.with_raw_response.clone_batch(
                 table_id_or_name="",
@@ -65,7 +65,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_batch(self, client: HubSpot) -> None:
+    def test_method_create_batch(self, client: Hubspot) -> None:
         batch = client.cms.hubdb.rows.batch.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"values": {"foo": {}}}],
@@ -74,7 +74,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_batch(self, client: HubSpot) -> None:
+    def test_raw_response_create_batch(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.batch.with_raw_response.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"values": {"foo": {}}}],
@@ -87,7 +87,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_create_batch(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.batch.with_streaming_response.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"values": {"foo": {}}}],
@@ -102,7 +102,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_batch(self, client: HubSpot) -> None:
+    def test_path_params_create_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.batch.with_raw_response.create_batch(
                 table_id_or_name="",
@@ -111,7 +111,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_batch(self, client: HubSpot) -> None:
+    def test_method_get_batch(self, client: Hubspot) -> None:
         batch = client.cms.hubdb.rows.batch.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -120,7 +120,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_batch(self, client: HubSpot) -> None:
+    def test_raw_response_get_batch(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.batch.with_raw_response.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -133,7 +133,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_get_batch(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.batch.with_streaming_response.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -148,7 +148,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_batch(self, client: HubSpot) -> None:
+    def test_path_params_get_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.batch.with_raw_response.get_batch(
                 table_id_or_name="",
@@ -157,7 +157,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_draft_batch(self, client: HubSpot) -> None:
+    def test_method_get_draft_batch(self, client: Hubspot) -> None:
         batch = client.cms.hubdb.rows.batch.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -166,7 +166,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_draft_batch(self, client: HubSpot) -> None:
+    def test_raw_response_get_draft_batch(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.batch.with_raw_response.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -179,7 +179,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_draft_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_get_draft_batch(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.batch.with_streaming_response.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -194,7 +194,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_draft_batch(self, client: HubSpot) -> None:
+    def test_path_params_get_draft_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.batch.with_raw_response.get_draft_batch(
                 table_id_or_name="",
@@ -203,7 +203,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_purge_batch(self, client: HubSpot) -> None:
+    def test_method_purge_batch(self, client: Hubspot) -> None:
         batch = client.cms.hubdb.rows.batch.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -212,7 +212,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_purge_batch(self, client: HubSpot) -> None:
+    def test_raw_response_purge_batch(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.batch.with_raw_response.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -225,7 +225,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_purge_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_purge_batch(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.batch.with_streaming_response.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -240,7 +240,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_purge_batch(self, client: HubSpot) -> None:
+    def test_path_params_purge_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.batch.with_raw_response.purge_batch(
                 table_id_or_name="",
@@ -249,7 +249,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_replace_batch(self, client: HubSpot) -> None:
+    def test_method_replace_batch(self, client: Hubspot) -> None:
         batch = client.cms.hubdb.rows.batch.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -263,7 +263,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_replace_batch(self, client: HubSpot) -> None:
+    def test_raw_response_replace_batch(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.batch.with_raw_response.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -281,7 +281,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_replace_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_replace_batch(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.batch.with_streaming_response.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -301,7 +301,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_replace_batch(self, client: HubSpot) -> None:
+    def test_path_params_replace_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.batch.with_raw_response.replace_batch(
                 table_id_or_name="",
@@ -315,7 +315,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_batch(self, client: HubSpot) -> None:
+    def test_method_update_batch(self, client: Hubspot) -> None:
         batch = client.cms.hubdb.rows.batch.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -329,7 +329,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_batch(self, client: HubSpot) -> None:
+    def test_raw_response_update_batch(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.batch.with_raw_response.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -347,7 +347,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_update_batch(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.batch.with_streaming_response.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -367,7 +367,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_batch(self, client: HubSpot) -> None:
+    def test_path_params_update_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.batch.with_raw_response.update_batch(
                 table_id_or_name="",
@@ -387,7 +387,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_clone_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_clone_batch(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.hubdb.rows.batch.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -396,7 +396,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_clone_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_clone_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.batch.with_raw_response.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -409,7 +409,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_clone_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_clone_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.batch.with_streaming_response.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -424,7 +424,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_clone_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_clone_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.batch.with_raw_response.clone_batch(
                 table_id_or_name="",
@@ -433,7 +433,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_batch(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.hubdb.rows.batch.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"values": {"foo": {}}}],
@@ -442,7 +442,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.batch.with_raw_response.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"values": {"foo": {}}}],
@@ -455,7 +455,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.batch.with_streaming_response.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"values": {"foo": {}}}],
@@ -470,7 +470,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.batch.with_raw_response.create_batch(
                 table_id_or_name="",
@@ -479,7 +479,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_batch(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.hubdb.rows.batch.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -488,7 +488,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.batch.with_raw_response.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -501,7 +501,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.batch.with_streaming_response.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -516,7 +516,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.batch.with_raw_response.get_batch(
                 table_id_or_name="",
@@ -525,7 +525,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_draft_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_draft_batch(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.hubdb.rows.batch.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -534,7 +534,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_draft_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_draft_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.batch.with_raw_response.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -547,7 +547,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_draft_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_draft_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.batch.with_streaming_response.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -562,7 +562,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_draft_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_draft_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.batch.with_raw_response.get_draft_batch(
                 table_id_or_name="",
@@ -571,7 +571,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_purge_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_purge_batch(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.hubdb.rows.batch.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -580,7 +580,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_purge_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_purge_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.batch.with_raw_response.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -593,7 +593,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_purge_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_purge_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.batch.with_streaming_response.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -608,7 +608,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_purge_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_purge_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.batch.with_raw_response.purge_batch(
                 table_id_or_name="",
@@ -617,7 +617,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_replace_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_replace_batch(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.hubdb.rows.batch.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -631,7 +631,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_replace_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_replace_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.batch.with_raw_response.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -649,7 +649,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_replace_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_replace_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.batch.with_streaming_response.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -669,7 +669,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_replace_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_replace_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.batch.with_raw_response.replace_batch(
                 table_id_or_name="",
@@ -683,7 +683,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_batch(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.hubdb.rows.batch.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -697,7 +697,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.batch.with_raw_response.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -715,7 +715,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.batch.with_streaming_response.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -735,7 +735,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.batch.with_raw_response.update_batch(
                 table_id_or_name="",

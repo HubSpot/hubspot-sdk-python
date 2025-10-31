@@ -42,10 +42,10 @@ from .resources.scheduler import scheduler
 from .resources.automation import automation
 from .resources.conversations import conversations
 
-__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "HubSpot", "AsyncHubSpot", "Client", "AsyncClient"]
+__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Hubspot", "AsyncHubspot", "Client", "AsyncClient"]
 
 
-class HubSpot(SyncAPIClient):
+class Hubspot(SyncAPIClient):
     account: account.AccountResource
     auth: auth.AuthResource
     automation: automation.AutomationResource
@@ -59,8 +59,8 @@ class HubSpot(SyncAPIClient):
     scheduler: scheduler.SchedulerResource
     settings: settings.SettingsResource
     webhooks: webhooks.WebhooksResource
-    with_raw_response: HubSpotWithRawResponse
-    with_streaming_response: HubSpotWithStreamedResponse
+    with_raw_response: HubspotWithRawResponse
+    with_streaming_response: HubspotWithStreamedResponse
 
     # client options
     access_token: str | None
@@ -90,13 +90,13 @@ class HubSpot(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous HubSpot client instance."""
+        """Construct a new synchronous Hubspot client instance."""
         self.access_token = access_token
 
         self.developer_api_key = developer_api_key
 
         if base_url is None:
-            base_url = os.environ.get("HUB_SPOT_BASE_URL")
+            base_url = os.environ.get("HUBSPOT_BASE_URL")
         if base_url is None:
             base_url = f"https://api.hubapi.com"
 
@@ -124,8 +124,8 @@ class HubSpot(SyncAPIClient):
         self.scheduler = scheduler.SchedulerResource(self)
         self.settings = settings.SettingsResource(self)
         self.webhooks = webhooks.WebhooksResource(self)
-        self.with_raw_response = HubSpotWithRawResponse(self)
-        self.with_streaming_response = HubSpotWithStreamedResponse(self)
+        self.with_raw_response = HubspotWithRawResponse(self)
+        self.with_streaming_response = HubspotWithStreamedResponse(self)
 
     @property
     @override
@@ -245,7 +245,7 @@ class HubSpot(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncHubSpot(AsyncAPIClient):
+class AsyncHubspot(AsyncAPIClient):
     account: account.AsyncAccountResource
     auth: auth.AsyncAuthResource
     automation: automation.AsyncAutomationResource
@@ -259,8 +259,8 @@ class AsyncHubSpot(AsyncAPIClient):
     scheduler: scheduler.AsyncSchedulerResource
     settings: settings.AsyncSettingsResource
     webhooks: webhooks.AsyncWebhooksResource
-    with_raw_response: AsyncHubSpotWithRawResponse
-    with_streaming_response: AsyncHubSpotWithStreamedResponse
+    with_raw_response: AsyncHubspotWithRawResponse
+    with_streaming_response: AsyncHubspotWithStreamedResponse
 
     # client options
     access_token: str | None
@@ -290,13 +290,13 @@ class AsyncHubSpot(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async AsyncHubSpot client instance."""
+        """Construct a new async AsyncHubspot client instance."""
         self.access_token = access_token
 
         self.developer_api_key = developer_api_key
 
         if base_url is None:
-            base_url = os.environ.get("HUB_SPOT_BASE_URL")
+            base_url = os.environ.get("HUBSPOT_BASE_URL")
         if base_url is None:
             base_url = f"https://api.hubapi.com"
 
@@ -324,8 +324,8 @@ class AsyncHubSpot(AsyncAPIClient):
         self.scheduler = scheduler.AsyncSchedulerResource(self)
         self.settings = settings.AsyncSettingsResource(self)
         self.webhooks = webhooks.AsyncWebhooksResource(self)
-        self.with_raw_response = AsyncHubSpotWithRawResponse(self)
-        self.with_streaming_response = AsyncHubSpotWithStreamedResponse(self)
+        self.with_raw_response = AsyncHubspotWithRawResponse(self)
+        self.with_streaming_response = AsyncHubspotWithStreamedResponse(self)
 
     @property
     @override
@@ -445,8 +445,8 @@ class AsyncHubSpot(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class HubSpotWithRawResponse:
-    def __init__(self, client: HubSpot) -> None:
+class HubspotWithRawResponse:
+    def __init__(self, client: Hubspot) -> None:
         self.account = account.AccountResourceWithRawResponse(client.account)
         self.auth = auth.AuthResourceWithRawResponse(client.auth)
         self.automation = automation.AutomationResourceWithRawResponse(client.automation)
@@ -462,8 +462,8 @@ class HubSpotWithRawResponse:
         self.webhooks = webhooks.WebhooksResourceWithRawResponse(client.webhooks)
 
 
-class AsyncHubSpotWithRawResponse:
-    def __init__(self, client: AsyncHubSpot) -> None:
+class AsyncHubspotWithRawResponse:
+    def __init__(self, client: AsyncHubspot) -> None:
         self.account = account.AsyncAccountResourceWithRawResponse(client.account)
         self.auth = auth.AsyncAuthResourceWithRawResponse(client.auth)
         self.automation = automation.AsyncAutomationResourceWithRawResponse(client.automation)
@@ -479,8 +479,8 @@ class AsyncHubSpotWithRawResponse:
         self.webhooks = webhooks.AsyncWebhooksResourceWithRawResponse(client.webhooks)
 
 
-class HubSpotWithStreamedResponse:
-    def __init__(self, client: HubSpot) -> None:
+class HubspotWithStreamedResponse:
+    def __init__(self, client: Hubspot) -> None:
         self.account = account.AccountResourceWithStreamingResponse(client.account)
         self.auth = auth.AuthResourceWithStreamingResponse(client.auth)
         self.automation = automation.AutomationResourceWithStreamingResponse(client.automation)
@@ -496,8 +496,8 @@ class HubSpotWithStreamedResponse:
         self.webhooks = webhooks.WebhooksResourceWithStreamingResponse(client.webhooks)
 
 
-class AsyncHubSpotWithStreamedResponse:
-    def __init__(self, client: AsyncHubSpot) -> None:
+class AsyncHubspotWithStreamedResponse:
+    def __init__(self, client: AsyncHubspot) -> None:
         self.account = account.AsyncAccountResourceWithStreamingResponse(client.account)
         self.auth = auth.AsyncAuthResourceWithStreamingResponse(client.auth)
         self.automation = automation.AsyncAutomationResourceWithStreamingResponse(client.automation)
@@ -513,6 +513,6 @@ class AsyncHubSpotWithStreamedResponse:
         self.webhooks = webhooks.AsyncWebhooksResourceWithStreamingResponse(client.webhooks)
 
 
-Client = HubSpot
+Client = Hubspot
 
-AsyncClient = AsyncHubSpot
+AsyncClient = AsyncHubspot
