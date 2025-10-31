@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.scheduler import (
@@ -22,7 +22,7 @@ class TestCalendar:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         calendar = client.scheduler.meetings.calendar.create(
             associations=[
                 {
@@ -57,7 +57,7 @@ class TestCalendar:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         calendar = client.scheduler.meetings.calendar.create(
             associations=[
                 {
@@ -100,7 +100,7 @@ class TestCalendar:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.scheduler.meetings.calendar.with_raw_response.create(
             associations=[
                 {
@@ -139,7 +139,7 @@ class TestCalendar:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.scheduler.meetings.calendar.with_streaming_response.create(
             associations=[
                 {
@@ -186,7 +186,7 @@ class TestAsyncCalendar:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         calendar = await async_client.scheduler.meetings.calendar.create(
             associations=[
                 {
@@ -221,7 +221,7 @@ class TestAsyncCalendar:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         calendar = await async_client.scheduler.meetings.calendar.create(
             associations=[
                 {
@@ -264,7 +264,7 @@ class TestAsyncCalendar:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.scheduler.meetings.calendar.with_raw_response.create(
             associations=[
                 {
@@ -303,7 +303,7 @@ class TestAsyncCalendar:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.scheduler.meetings.calendar.with_streaming_response.create(
             associations=[
                 {

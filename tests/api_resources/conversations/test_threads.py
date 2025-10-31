@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.conversations import (
     PublicThread,
@@ -22,7 +22,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         thread = client.conversations.threads.update(
             thread_id="threadId",
         )
@@ -30,7 +30,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         thread = client.conversations.threads.update(
             thread_id="threadId",
             archived=True,
@@ -40,7 +40,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.conversations.threads.with_raw_response.update(
             thread_id="threadId",
         )
@@ -52,7 +52,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.conversations.threads.with_streaming_response.update(
             thread_id="threadId",
         ) as response:
@@ -66,7 +66,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `thread_id` but received ''"):
             client.conversations.threads.with_raw_response.update(
                 thread_id="",
@@ -74,13 +74,13 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         thread = client.conversations.threads.list()
         assert_matches_type(CollectionResponsePublicThreadForwardPaging, thread, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.conversations.threads.with_raw_response.list()
 
         assert response.is_closed is True
@@ -90,7 +90,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.conversations.threads.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -102,7 +102,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         thread = client.conversations.threads.delete(
             "threadId",
         )
@@ -110,7 +110,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.conversations.threads.with_raw_response.delete(
             "threadId",
         )
@@ -122,7 +122,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.conversations.threads.with_streaming_response.delete(
             "threadId",
         ) as response:
@@ -136,7 +136,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `thread_id` but received ''"):
             client.conversations.threads.with_raw_response.delete(
                 "",
@@ -144,7 +144,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         thread = client.conversations.threads.get(
             "threadId",
         )
@@ -152,7 +152,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.conversations.threads.with_raw_response.get(
             "threadId",
         )
@@ -164,7 +164,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.conversations.threads.with_streaming_response.get(
             "threadId",
         ) as response:
@@ -178,7 +178,7 @@ class TestThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `thread_id` but received ''"):
             client.conversations.threads.with_raw_response.get(
                 "",
@@ -192,7 +192,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         thread = await async_client.conversations.threads.update(
             thread_id="threadId",
         )
@@ -200,7 +200,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         thread = await async_client.conversations.threads.update(
             thread_id="threadId",
             archived=True,
@@ -210,7 +210,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.threads.with_raw_response.update(
             thread_id="threadId",
         )
@@ -222,7 +222,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.threads.with_streaming_response.update(
             thread_id="threadId",
         ) as response:
@@ -236,7 +236,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `thread_id` but received ''"):
             await async_client.conversations.threads.with_raw_response.update(
                 thread_id="",
@@ -244,13 +244,13 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         thread = await async_client.conversations.threads.list()
         assert_matches_type(CollectionResponsePublicThreadForwardPaging, thread, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.threads.with_raw_response.list()
 
         assert response.is_closed is True
@@ -260,7 +260,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.threads.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -272,7 +272,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         thread = await async_client.conversations.threads.delete(
             "threadId",
         )
@@ -280,7 +280,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.threads.with_raw_response.delete(
             "threadId",
         )
@@ -292,7 +292,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.threads.with_streaming_response.delete(
             "threadId",
         ) as response:
@@ -306,7 +306,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `thread_id` but received ''"):
             await async_client.conversations.threads.with_raw_response.delete(
                 "",
@@ -314,7 +314,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         thread = await async_client.conversations.threads.get(
             "threadId",
         )
@@ -322,7 +322,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.threads.with_raw_response.get(
             "threadId",
         )
@@ -334,7 +334,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.threads.with_streaming_response.get(
             "threadId",
         ) as response:
@@ -348,7 +348,7 @@ class TestAsyncThreads:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `thread_id` but received ''"):
             await async_client.conversations.threads.with_raw_response.get(
                 "",

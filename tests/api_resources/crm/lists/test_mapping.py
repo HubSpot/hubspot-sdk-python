@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import PublicMigrationMapping, PublicBatchMigrationMapping
 
@@ -19,7 +19,7 @@ class TestMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_create_id_mapping(self, client: HubSpot) -> None:
+    def test_method_batch_create_id_mapping(self, client: Hubspot) -> None:
         mapping = client.crm.lists.mapping.batch_create_id_mapping(
             body=["string"],
         )
@@ -27,7 +27,7 @@ class TestMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_create_id_mapping(self, client: HubSpot) -> None:
+    def test_raw_response_batch_create_id_mapping(self, client: Hubspot) -> None:
         response = client.crm.lists.mapping.with_raw_response.batch_create_id_mapping(
             body=["string"],
         )
@@ -39,7 +39,7 @@ class TestMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_create_id_mapping(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_create_id_mapping(self, client: Hubspot) -> None:
         with client.crm.lists.mapping.with_streaming_response.batch_create_id_mapping(
             body=["string"],
         ) as response:
@@ -53,13 +53,13 @@ class TestMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_id_mapping(self, client: HubSpot) -> None:
+    def test_method_get_id_mapping(self, client: Hubspot) -> None:
         mapping = client.crm.lists.mapping.get_id_mapping()
         assert_matches_type(PublicMigrationMapping, mapping, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_id_mapping_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_id_mapping_with_all_params(self, client: Hubspot) -> None:
         mapping = client.crm.lists.mapping.get_id_mapping(
             legacy_list_id="legacyListId",
         )
@@ -67,7 +67,7 @@ class TestMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_id_mapping(self, client: HubSpot) -> None:
+    def test_raw_response_get_id_mapping(self, client: Hubspot) -> None:
         response = client.crm.lists.mapping.with_raw_response.get_id_mapping()
 
         assert response.is_closed is True
@@ -77,7 +77,7 @@ class TestMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_id_mapping(self, client: HubSpot) -> None:
+    def test_streaming_response_get_id_mapping(self, client: Hubspot) -> None:
         with client.crm.lists.mapping.with_streaming_response.get_id_mapping() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -95,7 +95,7 @@ class TestAsyncMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_create_id_mapping(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_create_id_mapping(self, async_client: AsyncHubspot) -> None:
         mapping = await async_client.crm.lists.mapping.batch_create_id_mapping(
             body=["string"],
         )
@@ -103,7 +103,7 @@ class TestAsyncMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_create_id_mapping(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_create_id_mapping(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.mapping.with_raw_response.batch_create_id_mapping(
             body=["string"],
         )
@@ -115,7 +115,7 @@ class TestAsyncMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_create_id_mapping(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_create_id_mapping(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.mapping.with_streaming_response.batch_create_id_mapping(
             body=["string"],
         ) as response:
@@ -129,13 +129,13 @@ class TestAsyncMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_id_mapping(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_id_mapping(self, async_client: AsyncHubspot) -> None:
         mapping = await async_client.crm.lists.mapping.get_id_mapping()
         assert_matches_type(PublicMigrationMapping, mapping, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_id_mapping_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_id_mapping_with_all_params(self, async_client: AsyncHubspot) -> None:
         mapping = await async_client.crm.lists.mapping.get_id_mapping(
             legacy_list_id="legacyListId",
         )
@@ -143,7 +143,7 @@ class TestAsyncMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_id_mapping(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_id_mapping(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.mapping.with_raw_response.get_id_mapping()
 
         assert response.is_closed is True
@@ -153,7 +153,7 @@ class TestAsyncMapping:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_id_mapping(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_id_mapping(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.mapping.with_streaming_response.get_id_mapping() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

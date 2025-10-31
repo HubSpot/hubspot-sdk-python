@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.cms import (
@@ -31,7 +31,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.create(
             id="id",
             ab_status="master",
@@ -204,7 +204,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.create(
             id="id",
             ab_status="master",
@@ -381,7 +381,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.create(
             id="id",
             ab_status="master",
@@ -560,7 +560,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update(
             object_id="objectId",
             id="id",
@@ -734,7 +734,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update(
             object_id="objectId",
             id="id",
@@ -924,7 +924,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.update(
             object_id="objectId",
             id="id",
@@ -1102,7 +1102,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.update(
             object_id="objectId",
             id="id",
@@ -1282,7 +1282,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.update(
                 object_id="",
@@ -1456,13 +1456,13 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list()
         assert_matches_type(SyncPage[Page], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list(
             after="after",
             archived=True,
@@ -1480,7 +1480,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.list()
 
         assert response.is_closed is True
@@ -1490,7 +1490,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1502,7 +1502,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.delete(
             object_id="objectId",
         )
@@ -1510,7 +1510,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_with_all_params(self, client: HubSpot) -> None:
+    def test_method_delete_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.delete(
             object_id="objectId",
             archived=True,
@@ -1519,7 +1519,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.delete(
             object_id="objectId",
         )
@@ -1531,7 +1531,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.delete(
             object_id="objectId",
         ) as response:
@@ -1545,7 +1545,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.delete(
                 object_id="",
@@ -1553,7 +1553,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_attach_to_lang_group(self, client: HubSpot) -> None:
+    def test_method_attach_to_lang_group(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.attach_to_lang_group(
             id="id",
             language="language",
@@ -1563,7 +1563,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_attach_to_lang_group_with_all_params(self, client: HubSpot) -> None:
+    def test_method_attach_to_lang_group_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.attach_to_lang_group(
             id="id",
             language="language",
@@ -1574,7 +1574,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_attach_to_lang_group(self, client: HubSpot) -> None:
+    def test_raw_response_attach_to_lang_group(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.attach_to_lang_group(
             id="id",
             language="language",
@@ -1588,7 +1588,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_attach_to_lang_group(self, client: HubSpot) -> None:
+    def test_streaming_response_attach_to_lang_group(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.attach_to_lang_group(
             id="id",
             language="language",
@@ -1604,7 +1604,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_clone(self, client: HubSpot) -> None:
+    def test_method_clone(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.clone(
             id="id",
         )
@@ -1612,7 +1612,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_clone_with_all_params(self, client: HubSpot) -> None:
+    def test_method_clone_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.clone(
             id="id",
             clone_name="cloneName",
@@ -1621,7 +1621,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_clone(self, client: HubSpot) -> None:
+    def test_raw_response_clone(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.clone(
             id="id",
         )
@@ -1633,7 +1633,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_clone(self, client: HubSpot) -> None:
+    def test_streaming_response_clone(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.clone(
             id="id",
         ) as response:
@@ -1647,7 +1647,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_ab_test_variation(self, client: HubSpot) -> None:
+    def test_method_create_ab_test_variation(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -1656,7 +1656,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_ab_test_variation(self, client: HubSpot) -> None:
+    def test_raw_response_create_ab_test_variation(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -1669,7 +1669,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_ab_test_variation(self, client: HubSpot) -> None:
+    def test_streaming_response_create_ab_test_variation(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -1684,7 +1684,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_batch(self, client: HubSpot) -> None:
+    def test_method_create_batch(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.create_batch(
             inputs=[
                 {
@@ -1861,7 +1861,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_batch(self, client: HubSpot) -> None:
+    def test_raw_response_create_batch(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.create_batch(
             inputs=[
                 {
@@ -2042,7 +2042,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_create_batch(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.create_batch(
             inputs=[
                 {
@@ -2225,7 +2225,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_folder(self, client: HubSpot) -> None:
+    def test_method_create_folder(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.create_folder(
             id="id",
             category=0,
@@ -2239,7 +2239,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_folder(self, client: HubSpot) -> None:
+    def test_raw_response_create_folder(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.create_folder(
             id="id",
             category=0,
@@ -2257,7 +2257,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_folder(self, client: HubSpot) -> None:
+    def test_streaming_response_create_folder(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.create_folder(
             id="id",
             category=0,
@@ -2277,7 +2277,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_folders_batch(self, client: HubSpot) -> None:
+    def test_method_create_folders_batch(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.create_folders_batch(
             inputs=[
                 {
@@ -2295,7 +2295,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_folders_batch(self, client: HubSpot) -> None:
+    def test_raw_response_create_folders_batch(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.create_folders_batch(
             inputs=[
                 {
@@ -2317,7 +2317,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_folders_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_create_folders_batch(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.create_folders_batch(
             inputs=[
                 {
@@ -2341,7 +2341,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_language_variation(self, client: HubSpot) -> None:
+    def test_method_create_language_variation(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.create_language_variation(
             id="id",
         )
@@ -2349,7 +2349,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_language_variation_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_language_variation_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.create_language_variation(
             id="id",
             language="language",
@@ -2359,7 +2359,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_language_variation(self, client: HubSpot) -> None:
+    def test_raw_response_create_language_variation(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.create_language_variation(
             id="id",
         )
@@ -2371,7 +2371,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_language_variation(self, client: HubSpot) -> None:
+    def test_streaming_response_create_language_variation(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.create_language_variation(
             id="id",
         ) as response:
@@ -2385,7 +2385,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_batch(self, client: HubSpot) -> None:
+    def test_method_delete_batch(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.delete_batch(
             inputs=["string"],
         )
@@ -2393,7 +2393,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete_batch(self, client: HubSpot) -> None:
+    def test_raw_response_delete_batch(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.delete_batch(
             inputs=["string"],
         )
@@ -2405,7 +2405,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_delete_batch(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.delete_batch(
             inputs=["string"],
         ) as response:
@@ -2419,7 +2419,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_folder(self, client: HubSpot) -> None:
+    def test_method_delete_folder(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.delete_folder(
             object_id="objectId",
         )
@@ -2427,7 +2427,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_folder_with_all_params(self, client: HubSpot) -> None:
+    def test_method_delete_folder_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.delete_folder(
             object_id="objectId",
             archived=True,
@@ -2436,7 +2436,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete_folder(self, client: HubSpot) -> None:
+    def test_raw_response_delete_folder(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.delete_folder(
             object_id="objectId",
         )
@@ -2448,7 +2448,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete_folder(self, client: HubSpot) -> None:
+    def test_streaming_response_delete_folder(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.delete_folder(
             object_id="objectId",
         ) as response:
@@ -2462,7 +2462,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete_folder(self, client: HubSpot) -> None:
+    def test_path_params_delete_folder(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.delete_folder(
                 object_id="",
@@ -2470,7 +2470,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_folders_batch(self, client: HubSpot) -> None:
+    def test_method_delete_folders_batch(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.delete_folders_batch(
             inputs=["string"],
         )
@@ -2478,7 +2478,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete_folders_batch(self, client: HubSpot) -> None:
+    def test_raw_response_delete_folders_batch(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.delete_folders_batch(
             inputs=["string"],
         )
@@ -2490,7 +2490,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete_folders_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_delete_folders_batch(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.delete_folders_batch(
             inputs=["string"],
         ) as response:
@@ -2504,7 +2504,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_detach_from_lang_group(self, client: HubSpot) -> None:
+    def test_method_detach_from_lang_group(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.detach_from_lang_group(
             id="id",
         )
@@ -2512,7 +2512,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_detach_from_lang_group(self, client: HubSpot) -> None:
+    def test_raw_response_detach_from_lang_group(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.detach_from_lang_group(
             id="id",
         )
@@ -2524,7 +2524,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_detach_from_lang_group(self, client: HubSpot) -> None:
+    def test_streaming_response_detach_from_lang_group(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.detach_from_lang_group(
             id="id",
         ) as response:
@@ -2538,7 +2538,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_end_ab_test(self, client: HubSpot) -> None:
+    def test_method_end_ab_test(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.end_ab_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -2547,7 +2547,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_end_ab_test(self, client: HubSpot) -> None:
+    def test_raw_response_end_ab_test(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.end_ab_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -2560,7 +2560,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_end_ab_test(self, client: HubSpot) -> None:
+    def test_streaming_response_end_ab_test(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.end_ab_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -2575,7 +2575,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get(
             object_id="objectId",
         )
@@ -2583,7 +2583,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get(
             object_id="objectId",
             archived=True,
@@ -2593,7 +2593,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.get(
             object_id="objectId",
         )
@@ -2605,7 +2605,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.get(
             object_id="objectId",
         ) as response:
@@ -2619,7 +2619,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.get(
                 object_id="",
@@ -2627,7 +2627,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_batch(self, client: HubSpot) -> None:
+    def test_method_get_batch(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_batch(
             inputs=["string"],
         )
@@ -2635,7 +2635,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_batch_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_batch_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_batch(
             inputs=["string"],
             archived=True,
@@ -2644,7 +2644,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_batch(self, client: HubSpot) -> None:
+    def test_raw_response_get_batch(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.get_batch(
             inputs=["string"],
         )
@@ -2656,7 +2656,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_get_batch(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.get_batch(
             inputs=["string"],
         ) as response:
@@ -2670,7 +2670,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_draft(self, client: HubSpot) -> None:
+    def test_method_get_draft(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_draft(
             "objectId",
         )
@@ -2678,7 +2678,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_draft(self, client: HubSpot) -> None:
+    def test_raw_response_get_draft(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.get_draft(
             "objectId",
         )
@@ -2690,7 +2690,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_draft(self, client: HubSpot) -> None:
+    def test_streaming_response_get_draft(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.get_draft(
             "objectId",
         ) as response:
@@ -2704,7 +2704,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_draft(self, client: HubSpot) -> None:
+    def test_path_params_get_draft(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.get_draft(
                 "",
@@ -2712,7 +2712,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_folder(self, client: HubSpot) -> None:
+    def test_method_get_folder(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_folder(
             object_id="objectId",
         )
@@ -2720,7 +2720,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_folder_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_folder_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_folder(
             object_id="objectId",
             archived=True,
@@ -2730,7 +2730,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_folder(self, client: HubSpot) -> None:
+    def test_raw_response_get_folder(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.get_folder(
             object_id="objectId",
         )
@@ -2742,7 +2742,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_folder(self, client: HubSpot) -> None:
+    def test_streaming_response_get_folder(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.get_folder(
             object_id="objectId",
         ) as response:
@@ -2756,7 +2756,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_folder(self, client: HubSpot) -> None:
+    def test_path_params_get_folder(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.get_folder(
                 object_id="",
@@ -2764,7 +2764,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_folder_revision(self, client: HubSpot) -> None:
+    def test_method_get_folder_revision(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -2773,7 +2773,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_folder_revision(self, client: HubSpot) -> None:
+    def test_raw_response_get_folder_revision(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.get_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -2786,7 +2786,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_folder_revision(self, client: HubSpot) -> None:
+    def test_streaming_response_get_folder_revision(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.get_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -2801,7 +2801,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_folder_revision(self, client: HubSpot) -> None:
+    def test_path_params_get_folder_revision(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.get_folder_revision(
                 revision_id="revisionId",
@@ -2816,7 +2816,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_folders_batch(self, client: HubSpot) -> None:
+    def test_method_get_folders_batch(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_folders_batch(
             inputs=["string"],
         )
@@ -2824,7 +2824,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_folders_batch_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_folders_batch_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_folders_batch(
             inputs=["string"],
             archived=True,
@@ -2833,7 +2833,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_folders_batch(self, client: HubSpot) -> None:
+    def test_raw_response_get_folders_batch(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.get_folders_batch(
             inputs=["string"],
         )
@@ -2845,7 +2845,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_folders_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_get_folders_batch(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.get_folders_batch(
             inputs=["string"],
         ) as response:
@@ -2859,7 +2859,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_revision(self, client: HubSpot) -> None:
+    def test_method_get_revision(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.get_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -2868,7 +2868,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_revision(self, client: HubSpot) -> None:
+    def test_raw_response_get_revision(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.get_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -2881,7 +2881,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_revision(self, client: HubSpot) -> None:
+    def test_streaming_response_get_revision(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.get_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -2896,7 +2896,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_revision(self, client: HubSpot) -> None:
+    def test_path_params_get_revision(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.get_revision(
                 revision_id="revisionId",
@@ -2911,7 +2911,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_folder_revisions(self, client: HubSpot) -> None:
+    def test_method_list_folder_revisions(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list_folder_revisions(
             object_id="objectId",
         )
@@ -2919,7 +2919,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_folder_revisions_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_folder_revisions_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list_folder_revisions(
             object_id="objectId",
             after="after",
@@ -2930,7 +2930,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_folder_revisions(self, client: HubSpot) -> None:
+    def test_raw_response_list_folder_revisions(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.list_folder_revisions(
             object_id="objectId",
         )
@@ -2942,7 +2942,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_folder_revisions(self, client: HubSpot) -> None:
+    def test_streaming_response_list_folder_revisions(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.list_folder_revisions(
             object_id="objectId",
         ) as response:
@@ -2956,7 +2956,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list_folder_revisions(self, client: HubSpot) -> None:
+    def test_path_params_list_folder_revisions(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.list_folder_revisions(
                 object_id="",
@@ -2964,13 +2964,13 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_folders(self, client: HubSpot) -> None:
+    def test_method_list_folders(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list_folders()
         assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_folders_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_folders_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list_folders(
             after="after",
             archived=True,
@@ -2988,7 +2988,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_folders(self, client: HubSpot) -> None:
+    def test_raw_response_list_folders(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.list_folders()
 
         assert response.is_closed is True
@@ -2998,7 +2998,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_folders(self, client: HubSpot) -> None:
+    def test_streaming_response_list_folders(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.list_folders() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -3010,7 +3010,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_revisions(self, client: HubSpot) -> None:
+    def test_method_list_revisions(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list_revisions(
             object_id="objectId",
         )
@@ -3018,7 +3018,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_revisions_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_revisions_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list_revisions(
             object_id="objectId",
             after="after",
@@ -3029,7 +3029,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_revisions(self, client: HubSpot) -> None:
+    def test_raw_response_list_revisions(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.list_revisions(
             object_id="objectId",
         )
@@ -3041,7 +3041,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_revisions(self, client: HubSpot) -> None:
+    def test_streaming_response_list_revisions(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.list_revisions(
             object_id="objectId",
         ) as response:
@@ -3055,7 +3055,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list_revisions(self, client: HubSpot) -> None:
+    def test_path_params_list_revisions(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.list_revisions(
                 object_id="",
@@ -3063,7 +3063,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_publish_draft(self, client: HubSpot) -> None:
+    def test_method_publish_draft(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.publish_draft(
             "objectId",
         )
@@ -3071,7 +3071,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_publish_draft(self, client: HubSpot) -> None:
+    def test_raw_response_publish_draft(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.publish_draft(
             "objectId",
         )
@@ -3083,7 +3083,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_publish_draft(self, client: HubSpot) -> None:
+    def test_streaming_response_publish_draft(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.publish_draft(
             "objectId",
         ) as response:
@@ -3097,7 +3097,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_publish_draft(self, client: HubSpot) -> None:
+    def test_path_params_publish_draft(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.publish_draft(
                 "",
@@ -3105,7 +3105,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_rerun_ab_test(self, client: HubSpot) -> None:
+    def test_method_rerun_ab_test(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.rerun_ab_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -3114,7 +3114,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_rerun_ab_test(self, client: HubSpot) -> None:
+    def test_raw_response_rerun_ab_test(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.rerun_ab_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -3127,7 +3127,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_rerun_ab_test(self, client: HubSpot) -> None:
+    def test_streaming_response_rerun_ab_test(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.rerun_ab_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -3142,7 +3142,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_reset_draft(self, client: HubSpot) -> None:
+    def test_method_reset_draft(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.reset_draft(
             "objectId",
         )
@@ -3150,7 +3150,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_reset_draft(self, client: HubSpot) -> None:
+    def test_raw_response_reset_draft(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.reset_draft(
             "objectId",
         )
@@ -3162,7 +3162,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_reset_draft(self, client: HubSpot) -> None:
+    def test_streaming_response_reset_draft(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.reset_draft(
             "objectId",
         ) as response:
@@ -3176,7 +3176,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_reset_draft(self, client: HubSpot) -> None:
+    def test_path_params_reset_draft(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.reset_draft(
                 "",
@@ -3184,7 +3184,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_restore_folder_revision(self, client: HubSpot) -> None:
+    def test_method_restore_folder_revision(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.restore_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -3193,7 +3193,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_restore_folder_revision(self, client: HubSpot) -> None:
+    def test_raw_response_restore_folder_revision(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.restore_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -3206,7 +3206,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_restore_folder_revision(self, client: HubSpot) -> None:
+    def test_streaming_response_restore_folder_revision(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.restore_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -3221,7 +3221,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_restore_folder_revision(self, client: HubSpot) -> None:
+    def test_path_params_restore_folder_revision(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.restore_folder_revision(
                 revision_id="revisionId",
@@ -3236,7 +3236,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_restore_revision(self, client: HubSpot) -> None:
+    def test_method_restore_revision(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.restore_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -3245,7 +3245,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_restore_revision(self, client: HubSpot) -> None:
+    def test_raw_response_restore_revision(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.restore_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -3258,7 +3258,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_restore_revision(self, client: HubSpot) -> None:
+    def test_streaming_response_restore_revision(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.restore_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -3273,7 +3273,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_restore_revision(self, client: HubSpot) -> None:
+    def test_path_params_restore_revision(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.restore_revision(
                 revision_id="revisionId",
@@ -3288,7 +3288,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_restore_revision_to_draft(self, client: HubSpot) -> None:
+    def test_method_restore_revision_to_draft(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.restore_revision_to_draft(
             revision_id=0,
             object_id="objectId",
@@ -3297,7 +3297,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_restore_revision_to_draft(self, client: HubSpot) -> None:
+    def test_raw_response_restore_revision_to_draft(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.restore_revision_to_draft(
             revision_id=0,
             object_id="objectId",
@@ -3310,7 +3310,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_restore_revision_to_draft(self, client: HubSpot) -> None:
+    def test_streaming_response_restore_revision_to_draft(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.restore_revision_to_draft(
             revision_id=0,
             object_id="objectId",
@@ -3325,7 +3325,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_restore_revision_to_draft(self, client: HubSpot) -> None:
+    def test_path_params_restore_revision_to_draft(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.restore_revision_to_draft(
                 revision_id=0,
@@ -3334,7 +3334,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_schedule(self, client: HubSpot) -> None:
+    def test_method_schedule(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -3343,7 +3343,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_schedule(self, client: HubSpot) -> None:
+    def test_raw_response_schedule(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -3356,7 +3356,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_schedule(self, client: HubSpot) -> None:
+    def test_streaming_response_schedule(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -3371,7 +3371,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_set_new_lang_primary(self, client: HubSpot) -> None:
+    def test_method_set_new_lang_primary(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.set_new_lang_primary(
             id="id",
         )
@@ -3379,7 +3379,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_set_new_lang_primary(self, client: HubSpot) -> None:
+    def test_raw_response_set_new_lang_primary(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.set_new_lang_primary(
             id="id",
         )
@@ -3391,7 +3391,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_set_new_lang_primary(self, client: HubSpot) -> None:
+    def test_streaming_response_set_new_lang_primary(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.set_new_lang_primary(
             id="id",
         ) as response:
@@ -3405,7 +3405,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_batch(self, client: HubSpot) -> None:
+    def test_method_update_batch(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update_batch(
             inputs=[{}],
         )
@@ -3413,7 +3413,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_batch_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_batch_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update_batch(
             inputs=[{}],
             archived=True,
@@ -3422,7 +3422,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_batch(self, client: HubSpot) -> None:
+    def test_raw_response_update_batch(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.update_batch(
             inputs=[{}],
         )
@@ -3434,7 +3434,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_update_batch(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.update_batch(
             inputs=[{}],
         ) as response:
@@ -3448,7 +3448,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_draft(self, client: HubSpot) -> None:
+    def test_method_update_draft(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update_draft(
             object_id="objectId",
             id="id",
@@ -3622,7 +3622,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_draft(self, client: HubSpot) -> None:
+    def test_raw_response_update_draft(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.update_draft(
             object_id="objectId",
             id="id",
@@ -3800,7 +3800,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_draft(self, client: HubSpot) -> None:
+    def test_streaming_response_update_draft(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.update_draft(
             object_id="objectId",
             id="id",
@@ -3980,7 +3980,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_draft(self, client: HubSpot) -> None:
+    def test_path_params_update_draft(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.update_draft(
                 object_id="",
@@ -4154,7 +4154,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_folder(self, client: HubSpot) -> None:
+    def test_method_update_folder(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update_folder(
             object_id="objectId",
             id="id",
@@ -4169,7 +4169,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_folder_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_folder_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update_folder(
             object_id="objectId",
             id="id",
@@ -4185,7 +4185,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_folder(self, client: HubSpot) -> None:
+    def test_raw_response_update_folder(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.update_folder(
             object_id="objectId",
             id="id",
@@ -4204,7 +4204,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_folder(self, client: HubSpot) -> None:
+    def test_streaming_response_update_folder(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.update_folder(
             object_id="objectId",
             id="id",
@@ -4225,7 +4225,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_folder(self, client: HubSpot) -> None:
+    def test_path_params_update_folder(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.landing_pages.with_raw_response.update_folder(
                 object_id="",
@@ -4240,7 +4240,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_folders_batch(self, client: HubSpot) -> None:
+    def test_method_update_folders_batch(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update_folders_batch(
             inputs=[{}],
         )
@@ -4248,7 +4248,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_folders_batch_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_folders_batch_with_all_params(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update_folders_batch(
             inputs=[{}],
             archived=True,
@@ -4257,7 +4257,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_folders_batch(self, client: HubSpot) -> None:
+    def test_raw_response_update_folders_batch(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.update_folders_batch(
             inputs=[{}],
         )
@@ -4269,7 +4269,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_folders_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_update_folders_batch(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.update_folders_batch(
             inputs=[{}],
         ) as response:
@@ -4283,7 +4283,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_languages(self, client: HubSpot) -> None:
+    def test_method_update_languages(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -4292,7 +4292,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_languages(self, client: HubSpot) -> None:
+    def test_raw_response_update_languages(self, client: Hubspot) -> None:
         response = client.cms.pages.landing_pages.with_raw_response.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -4305,7 +4305,7 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_languages(self, client: HubSpot) -> None:
+    def test_streaming_response_update_languages(self, client: Hubspot) -> None:
         with client.cms.pages.landing_pages.with_streaming_response.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -4326,7 +4326,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.create(
             id="id",
             ab_status="master",
@@ -4499,7 +4499,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.create(
             id="id",
             ab_status="master",
@@ -4676,7 +4676,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.create(
             id="id",
             ab_status="master",
@@ -4855,7 +4855,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update(
             object_id="objectId",
             id="id",
@@ -5029,7 +5029,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update(
             object_id="objectId",
             id="id",
@@ -5219,7 +5219,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.update(
             object_id="objectId",
             id="id",
@@ -5397,7 +5397,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.update(
             object_id="objectId",
             id="id",
@@ -5577,7 +5577,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.update(
                 object_id="",
@@ -5751,13 +5751,13 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list()
         assert_matches_type(AsyncPage[Page], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list(
             after="after",
             archived=True,
@@ -5775,7 +5775,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.list()
 
         assert response.is_closed is True
@@ -5785,7 +5785,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -5797,7 +5797,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.delete(
             object_id="objectId",
         )
@@ -5805,7 +5805,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.delete(
             object_id="objectId",
             archived=True,
@@ -5814,7 +5814,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.delete(
             object_id="objectId",
         )
@@ -5826,7 +5826,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.delete(
             object_id="objectId",
         ) as response:
@@ -5840,7 +5840,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.delete(
                 object_id="",
@@ -5848,7 +5848,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_attach_to_lang_group(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.attach_to_lang_group(
             id="id",
             language="language",
@@ -5858,7 +5858,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_attach_to_lang_group_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_attach_to_lang_group_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.attach_to_lang_group(
             id="id",
             language="language",
@@ -5869,7 +5869,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.attach_to_lang_group(
             id="id",
             language="language",
@@ -5883,7 +5883,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_attach_to_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_attach_to_lang_group(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.attach_to_lang_group(
             id="id",
             language="language",
@@ -5899,7 +5899,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_clone(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_clone(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.clone(
             id="id",
         )
@@ -5907,7 +5907,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_clone_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_clone_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.clone(
             id="id",
             clone_name="cloneName",
@@ -5916,7 +5916,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_clone(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_clone(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.clone(
             id="id",
         )
@@ -5928,7 +5928,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_clone(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_clone(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.clone(
             id="id",
         ) as response:
@@ -5942,7 +5942,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_ab_test_variation(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -5951,7 +5951,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_ab_test_variation(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -5964,7 +5964,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_ab_test_variation(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -5979,7 +5979,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_batch(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.create_batch(
             inputs=[
                 {
@@ -6156,7 +6156,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.create_batch(
             inputs=[
                 {
@@ -6337,7 +6337,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.create_batch(
             inputs=[
                 {
@@ -6520,7 +6520,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_folder(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.create_folder(
             id="id",
             category=0,
@@ -6534,7 +6534,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_folder(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.create_folder(
             id="id",
             category=0,
@@ -6552,7 +6552,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_folder(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.create_folder(
             id="id",
             category=0,
@@ -6572,7 +6572,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_folders_batch(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.create_folders_batch(
             inputs=[
                 {
@@ -6590,7 +6590,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_folders_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.create_folders_batch(
             inputs=[
                 {
@@ -6612,7 +6612,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_folders_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.create_folders_batch(
             inputs=[
                 {
@@ -6636,7 +6636,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_language_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_language_variation(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.create_language_variation(
             id="id",
         )
@@ -6644,7 +6644,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_language_variation_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_language_variation_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.create_language_variation(
             id="id",
             language="language",
@@ -6654,7 +6654,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_language_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_language_variation(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.create_language_variation(
             id="id",
         )
@@ -6666,7 +6666,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_language_variation(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_language_variation(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.create_language_variation(
             id="id",
         ) as response:
@@ -6680,7 +6680,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_batch(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.delete_batch(
             inputs=["string"],
         )
@@ -6688,7 +6688,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.delete_batch(
             inputs=["string"],
         )
@@ -6700,7 +6700,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.delete_batch(
             inputs=["string"],
         ) as response:
@@ -6714,7 +6714,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_folder(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.delete_folder(
             object_id="objectId",
         )
@@ -6722,7 +6722,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_folder_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_folder_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.delete_folder(
             object_id="objectId",
             archived=True,
@@ -6731,7 +6731,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete_folder(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.delete_folder(
             object_id="objectId",
         )
@@ -6743,7 +6743,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete_folder(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.delete_folder(
             object_id="objectId",
         ) as response:
@@ -6757,7 +6757,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete_folder(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.delete_folder(
                 object_id="",
@@ -6765,7 +6765,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_folders_batch(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.delete_folders_batch(
             inputs=["string"],
         )
@@ -6773,7 +6773,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete_folders_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.delete_folders_batch(
             inputs=["string"],
         )
@@ -6785,7 +6785,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete_folders_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.delete_folders_batch(
             inputs=["string"],
         ) as response:
@@ -6799,7 +6799,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_detach_from_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_detach_from_lang_group(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.detach_from_lang_group(
             id="id",
         )
@@ -6807,7 +6807,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_detach_from_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_detach_from_lang_group(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.detach_from_lang_group(
             id="id",
         )
@@ -6819,7 +6819,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_detach_from_lang_group(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_detach_from_lang_group(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.detach_from_lang_group(
             id="id",
         ) as response:
@@ -6833,7 +6833,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_end_ab_test(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_end_ab_test(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.end_ab_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -6842,7 +6842,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_end_ab_test(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_end_ab_test(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.end_ab_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -6855,7 +6855,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_end_ab_test(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_end_ab_test(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.end_ab_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -6870,7 +6870,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get(
             object_id="objectId",
         )
@@ -6878,7 +6878,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get(
             object_id="objectId",
             archived=True,
@@ -6888,7 +6888,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.get(
             object_id="objectId",
         )
@@ -6900,7 +6900,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.get(
             object_id="objectId",
         ) as response:
@@ -6914,7 +6914,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.get(
                 object_id="",
@@ -6922,7 +6922,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_batch(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_batch(
             inputs=["string"],
         )
@@ -6930,7 +6930,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_batch_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_batch(
             inputs=["string"],
             archived=True,
@@ -6939,7 +6939,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.get_batch(
             inputs=["string"],
         )
@@ -6951,7 +6951,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.get_batch(
             inputs=["string"],
         ) as response:
@@ -6965,7 +6965,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_draft(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_draft(
             "objectId",
         )
@@ -6973,7 +6973,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_draft(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.get_draft(
             "objectId",
         )
@@ -6985,7 +6985,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_draft(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.get_draft(
             "objectId",
         ) as response:
@@ -6999,7 +6999,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_draft(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.get_draft(
                 "",
@@ -7007,7 +7007,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_folder(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_folder(
             object_id="objectId",
         )
@@ -7015,7 +7015,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_folder_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_folder_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_folder(
             object_id="objectId",
             archived=True,
@@ -7025,7 +7025,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_folder(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.get_folder(
             object_id="objectId",
         )
@@ -7037,7 +7037,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_folder(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.get_folder(
             object_id="objectId",
         ) as response:
@@ -7051,7 +7051,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_folder(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.get_folder(
                 object_id="",
@@ -7059,7 +7059,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_folder_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_folder_revision(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7068,7 +7068,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_folder_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_folder_revision(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.get_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7081,7 +7081,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_folder_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_folder_revision(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.get_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7096,7 +7096,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_folder_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_folder_revision(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.get_folder_revision(
                 revision_id="revisionId",
@@ -7111,7 +7111,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_folders_batch(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_folders_batch(
             inputs=["string"],
         )
@@ -7119,7 +7119,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_folders_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_folders_batch_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_folders_batch(
             inputs=["string"],
             archived=True,
@@ -7128,7 +7128,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_folders_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.get_folders_batch(
             inputs=["string"],
         )
@@ -7140,7 +7140,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_folders_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.get_folders_batch(
             inputs=["string"],
         ) as response:
@@ -7154,7 +7154,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_revision(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.get_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7163,7 +7163,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_revision(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.get_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7176,7 +7176,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_revision(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.get_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7191,7 +7191,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_revision(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.get_revision(
                 revision_id="revisionId",
@@ -7206,7 +7206,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_folder_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_folder_revisions(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list_folder_revisions(
             object_id="objectId",
         )
@@ -7214,7 +7214,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_folder_revisions_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_folder_revisions_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list_folder_revisions(
             object_id="objectId",
             after="after",
@@ -7225,7 +7225,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_folder_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list_folder_revisions(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.list_folder_revisions(
             object_id="objectId",
         )
@@ -7237,7 +7237,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_folder_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list_folder_revisions(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.list_folder_revisions(
             object_id="objectId",
         ) as response:
@@ -7251,7 +7251,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list_folder_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list_folder_revisions(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.list_folder_revisions(
                 object_id="",
@@ -7259,13 +7259,13 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_folders(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_folders(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list_folders()
         assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_folders_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_folders_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list_folders(
             after="after",
             archived=True,
@@ -7283,7 +7283,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_folders(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list_folders(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.list_folders()
 
         assert response.is_closed is True
@@ -7293,7 +7293,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_folders(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list_folders(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.list_folders() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -7305,7 +7305,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_revisions(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list_revisions(
             object_id="objectId",
         )
@@ -7313,7 +7313,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_revisions_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_revisions_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list_revisions(
             object_id="objectId",
             after="after",
@@ -7324,7 +7324,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list_revisions(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.list_revisions(
             object_id="objectId",
         )
@@ -7336,7 +7336,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list_revisions(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.list_revisions(
             object_id="objectId",
         ) as response:
@@ -7350,7 +7350,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list_revisions(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list_revisions(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.list_revisions(
                 object_id="",
@@ -7358,7 +7358,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_publish_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_publish_draft(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.publish_draft(
             "objectId",
         )
@@ -7366,7 +7366,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_publish_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_publish_draft(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.publish_draft(
             "objectId",
         )
@@ -7378,7 +7378,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_publish_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_publish_draft(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.publish_draft(
             "objectId",
         ) as response:
@@ -7392,7 +7392,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_publish_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_publish_draft(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.publish_draft(
                 "",
@@ -7400,7 +7400,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_rerun_ab_test(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_rerun_ab_test(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.rerun_ab_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -7409,7 +7409,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_rerun_ab_test(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_rerun_ab_test(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.rerun_ab_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -7422,7 +7422,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_rerun_ab_test(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_rerun_ab_test(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.rerun_ab_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -7437,7 +7437,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_reset_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_reset_draft(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.reset_draft(
             "objectId",
         )
@@ -7445,7 +7445,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_reset_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_reset_draft(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.reset_draft(
             "objectId",
         )
@@ -7457,7 +7457,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_reset_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_reset_draft(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.reset_draft(
             "objectId",
         ) as response:
@@ -7471,7 +7471,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_reset_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_reset_draft(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.reset_draft(
                 "",
@@ -7479,7 +7479,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_restore_folder_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_restore_folder_revision(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.restore_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7488,7 +7488,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_restore_folder_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_restore_folder_revision(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.restore_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7501,7 +7501,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_restore_folder_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_restore_folder_revision(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.restore_folder_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7516,7 +7516,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_restore_folder_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_restore_folder_revision(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.restore_folder_revision(
                 revision_id="revisionId",
@@ -7531,7 +7531,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_restore_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_restore_revision(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.restore_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7540,7 +7540,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_restore_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_restore_revision(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.restore_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7553,7 +7553,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_restore_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_restore_revision(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.restore_revision(
             revision_id="revisionId",
             object_id="objectId",
@@ -7568,7 +7568,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_restore_revision(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_restore_revision(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.restore_revision(
                 revision_id="revisionId",
@@ -7583,7 +7583,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_restore_revision_to_draft(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.restore_revision_to_draft(
             revision_id=0,
             object_id="objectId",
@@ -7592,7 +7592,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_restore_revision_to_draft(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.restore_revision_to_draft(
             revision_id=0,
             object_id="objectId",
@@ -7605,7 +7605,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_restore_revision_to_draft(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.restore_revision_to_draft(
             revision_id=0,
             object_id="objectId",
@@ -7620,7 +7620,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_restore_revision_to_draft(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.restore_revision_to_draft(
                 revision_id=0,
@@ -7629,7 +7629,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_schedule(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_schedule(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -7638,7 +7638,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_schedule(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_schedule(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -7651,7 +7651,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_schedule(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_schedule(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -7666,7 +7666,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.set_new_lang_primary(
             id="id",
         )
@@ -7674,7 +7674,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.set_new_lang_primary(
             id="id",
         )
@@ -7686,7 +7686,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.set_new_lang_primary(
             id="id",
         ) as response:
@@ -7700,7 +7700,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_batch(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update_batch(
             inputs=[{}],
         )
@@ -7708,7 +7708,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_batch_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update_batch(
             inputs=[{}],
             archived=True,
@@ -7717,7 +7717,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.update_batch(
             inputs=[{}],
         )
@@ -7729,7 +7729,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.update_batch(
             inputs=[{}],
         ) as response:
@@ -7743,7 +7743,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_draft(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update_draft(
             object_id="objectId",
             id="id",
@@ -7917,7 +7917,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_draft(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.update_draft(
             object_id="objectId",
             id="id",
@@ -8095,7 +8095,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_draft(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.update_draft(
             object_id="objectId",
             id="id",
@@ -8275,7 +8275,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_draft(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_draft(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.update_draft(
                 object_id="",
@@ -8449,7 +8449,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_folder(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update_folder(
             object_id="objectId",
             id="id",
@@ -8464,7 +8464,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_folder_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_folder_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update_folder(
             object_id="objectId",
             id="id",
@@ -8480,7 +8480,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_folder(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.update_folder(
             object_id="objectId",
             id="id",
@@ -8499,7 +8499,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_folder(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.update_folder(
             object_id="objectId",
             id="id",
@@ -8520,7 +8520,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_folder(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_folder(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.landing_pages.with_raw_response.update_folder(
                 object_id="",
@@ -8535,7 +8535,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_folders_batch(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update_folders_batch(
             inputs=[{}],
         )
@@ -8543,7 +8543,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_folders_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_folders_batch_with_all_params(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update_folders_batch(
             inputs=[{}],
             archived=True,
@@ -8552,7 +8552,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_folders_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.update_folders_batch(
             inputs=[{}],
         )
@@ -8564,7 +8564,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_folders_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_folders_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.update_folders_batch(
             inputs=[{}],
         ) as response:
@@ -8578,7 +8578,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_languages(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_languages(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -8587,7 +8587,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_languages(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_languages(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.landing_pages.with_raw_response.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",
@@ -8600,7 +8600,7 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_languages(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_languages(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.landing_pages.with_streaming_response.update_languages(
             languages={"foo": "string"},
             primary_id="primaryId",

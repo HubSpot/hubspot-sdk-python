@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.crm import EventDetail, TimelineEventResponse
@@ -20,7 +20,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         event = client.crm.timeline.events.create(
             event_template_id="1001298",
             tokens={
@@ -33,7 +33,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         event = client.crm.timeline.events.create(
             event_template_id="1001298",
             tokens={
@@ -71,7 +71,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.timeline.events.with_raw_response.create(
             event_template_id="1001298",
             tokens={
@@ -88,7 +88,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.timeline.events.with_streaming_response.create(
             event_template_id="1001298",
             tokens={
@@ -107,7 +107,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_create(self, client: HubSpot) -> None:
+    def test_method_batch_create(self, client: Hubspot) -> None:
         event = client.crm.timeline.events.batch_create(
             inputs=[
                 {
@@ -132,7 +132,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_create(self, client: HubSpot) -> None:
+    def test_raw_response_batch_create(self, client: Hubspot) -> None:
         response = client.crm.timeline.events.with_raw_response.batch_create(
             inputs=[
                 {
@@ -161,7 +161,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_create(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_create(self, client: Hubspot) -> None:
         with client.crm.timeline.events.with_streaming_response.batch_create(
             inputs=[
                 {
@@ -192,7 +192,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         event = client.crm.timeline.events.get(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -201,7 +201,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.timeline.events.with_raw_response.get(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -214,7 +214,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.timeline.events.with_streaming_response.get(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -229,7 +229,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_template_id` but received ''"):
             client.crm.timeline.events.with_raw_response.get(
                 event_id="eventId",
@@ -244,7 +244,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_detail(self, client: HubSpot) -> None:
+    def test_method_get_detail(self, client: Hubspot) -> None:
         event = client.crm.timeline.events.get_detail(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -253,7 +253,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_detail(self, client: HubSpot) -> None:
+    def test_raw_response_get_detail(self, client: Hubspot) -> None:
         response = client.crm.timeline.events.with_raw_response.get_detail(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -266,7 +266,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_detail(self, client: HubSpot) -> None:
+    def test_streaming_response_get_detail(self, client: Hubspot) -> None:
         with client.crm.timeline.events.with_streaming_response.get_detail(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -281,7 +281,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_detail(self, client: HubSpot) -> None:
+    def test_path_params_get_detail(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_template_id` but received ''"):
             client.crm.timeline.events.with_raw_response.get_detail(
                 event_id="eventId",
@@ -302,7 +302,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         event = await async_client.crm.timeline.events.create(
             event_template_id="1001298",
             tokens={
@@ -315,7 +315,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         event = await async_client.crm.timeline.events.create(
             event_template_id="1001298",
             tokens={
@@ -353,7 +353,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.timeline.events.with_raw_response.create(
             event_template_id="1001298",
             tokens={
@@ -370,7 +370,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.timeline.events.with_streaming_response.create(
             event_template_id="1001298",
             tokens={
@@ -389,7 +389,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_create(self, async_client: AsyncHubspot) -> None:
         event = await async_client.crm.timeline.events.batch_create(
             inputs=[
                 {
@@ -414,7 +414,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.timeline.events.with_raw_response.batch_create(
             inputs=[
                 {
@@ -443,7 +443,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.timeline.events.with_streaming_response.batch_create(
             inputs=[
                 {
@@ -474,7 +474,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         event = await async_client.crm.timeline.events.get(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -483,7 +483,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.timeline.events.with_raw_response.get(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -496,7 +496,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.timeline.events.with_streaming_response.get(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -511,7 +511,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_template_id` but received ''"):
             await async_client.crm.timeline.events.with_raw_response.get(
                 event_id="eventId",
@@ -526,7 +526,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_detail(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_detail(self, async_client: AsyncHubspot) -> None:
         event = await async_client.crm.timeline.events.get_detail(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -535,7 +535,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_detail(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_detail(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.timeline.events.with_raw_response.get_detail(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -548,7 +548,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_detail(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_detail(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.timeline.events.with_streaming_response.get_detail(
             event_id="eventId",
             event_template_id="eventTemplateId",
@@ -563,7 +563,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_detail(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_detail(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_template_id` but received ''"):
             await async_client.crm.timeline.events.with_raw_response.get_detail(
                 event_id="eventId",

@@ -7,9 +7,11 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.conversations import PublicChannelAccountStagingToken
+from hubspot_sdk.types.conversations.custom_channels import (
+    ChannelAccountStagingTokenUpdateResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +21,7 @@ class TestChannelAccountStagingTokens:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         channel_account_staging_token = client.conversations.custom_channels.channel_account_staging_tokens.update(
             account_token="accountToken",
             channel_id="channelId",
@@ -29,11 +31,11 @@ class TestChannelAccountStagingTokens:
                 "value": "value",
             },
         )
-        assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
+        assert_matches_type(ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
             account_token="accountToken",
             channel_id="channelId",
@@ -47,11 +49,11 @@ class TestChannelAccountStagingTokens:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account_staging_token = response.parse()
-        assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
+        assert_matches_type(ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.channel_account_staging_tokens.with_streaming_response.update(
             account_token="accountToken",
             channel_id="channelId",
@@ -65,13 +67,15 @@ class TestChannelAccountStagingTokens:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account_staging_token = response.parse()
-            assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
+            assert_matches_type(
+                ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
             client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
                 account_token="accountToken",
@@ -102,7 +106,7 @@ class TestAsyncChannelAccountStagingTokens:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         channel_account_staging_token = (
             await async_client.conversations.custom_channels.channel_account_staging_tokens.update(
                 account_token="accountToken",
@@ -114,11 +118,11 @@ class TestAsyncChannelAccountStagingTokens:
                 },
             )
         )
-        assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
+        assert_matches_type(ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = (
             await async_client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
                 account_token="accountToken",
@@ -134,11 +138,11 @@ class TestAsyncChannelAccountStagingTokens:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account_staging_token = await response.parse()
-        assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
+        assert_matches_type(ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with (
             async_client.conversations.custom_channels.channel_account_staging_tokens.with_streaming_response.update(
                 account_token="accountToken",
@@ -154,13 +158,15 @@ class TestAsyncChannelAccountStagingTokens:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account_staging_token = await response.parse()
-            assert_matches_type(PublicChannelAccountStagingToken, channel_account_staging_token, path=["response"])
+            assert_matches_type(
+                ChannelAccountStagingTokenUpdateResponse, channel_account_staging_token, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
             await async_client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
                 account_token="accountToken",

@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -21,13 +21,13 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         event = client.events.list()
         assert_matches_type(SyncPage[ExternalUnifiedEvent], event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
         event = client.events.list(
             id=["string"],
             after="after",
@@ -46,7 +46,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.events.with_raw_response.list()
 
         assert response.is_closed is True
@@ -56,7 +56,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.events.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -68,13 +68,13 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_event_types(self, client: HubSpot) -> None:
+    def test_method_list_event_types(self, client: Hubspot) -> None:
         event = client.events.list_event_types()
         assert_matches_type(VisibleExternalEventTypeNames, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_event_types(self, client: HubSpot) -> None:
+    def test_raw_response_list_event_types(self, client: Hubspot) -> None:
         response = client.events.with_raw_response.list_event_types()
 
         assert response.is_closed is True
@@ -84,7 +84,7 @@ class TestEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_event_types(self, client: HubSpot) -> None:
+    def test_streaming_response_list_event_types(self, client: Hubspot) -> None:
         with client.events.with_streaming_response.list_event_types() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -102,13 +102,13 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         event = await async_client.events.list()
         assert_matches_type(AsyncPage[ExternalUnifiedEvent], event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
         event = await async_client.events.list(
             id=["string"],
             after="after",
@@ -127,7 +127,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.with_raw_response.list()
 
         assert response.is_closed is True
@@ -137,7 +137,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -149,13 +149,13 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_event_types(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_event_types(self, async_client: AsyncHubspot) -> None:
         event = await async_client.events.list_event_types()
         assert_matches_type(VisibleExternalEventTypeNames, event, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_event_types(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list_event_types(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.with_raw_response.list_event_types()
 
         assert response.is_closed is True
@@ -165,7 +165,7 @@ class TestAsyncEvents:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_event_types(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list_event_types(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.with_streaming_response.list_event_types() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

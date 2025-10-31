@@ -224,14 +224,6 @@ from .postal_mail import (
     PostalMailResourceWithStreamingResponse,
     AsyncPostalMailResourceWithStreamingResponse,
 )
-from .appointments import (
-    AppointmentsResource,
-    AsyncAppointmentsResource,
-    AppointmentsResourceWithRawResponse,
-    AsyncAppointmentsResourceWithRawResponse,
-    AppointmentsResourceWithStreamingResponse,
-    AsyncAppointmentsResourceWithStreamingResponse,
-)
 from .goal_targets import (
     GoalTargetsResource,
     AsyncGoalTargetsResource,
@@ -282,12 +274,6 @@ from .feedback_submissions import (
 )
 
 __all__ = [
-    "AppointmentsResource",
-    "AsyncAppointmentsResource",
-    "AppointmentsResourceWithRawResponse",
-    "AsyncAppointmentsResourceWithRawResponse",
-    "AppointmentsResourceWithStreamingResponse",
-    "AsyncAppointmentsResourceWithStreamingResponse",
     "CallsResource",
     "AsyncCallsResource",
     "CallsResourceWithRawResponse",

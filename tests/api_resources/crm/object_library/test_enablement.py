@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm import ObjectTypeEnablementPublicResponse, PortalObjectTypeEnablementPublicResponse
+from hubspot_sdk.types.crm.object_library import EnablementGetResponse, EnablementListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,43 +19,43 @@ class TestEnablement:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         enablement = client.crm.object_library.enablement.list()
-        assert_matches_type(PortalObjectTypeEnablementPublicResponse, enablement, path=["response"])
+        assert_matches_type(EnablementListResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.crm.object_library.enablement.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         enablement = response.parse()
-        assert_matches_type(PortalObjectTypeEnablementPublicResponse, enablement, path=["response"])
+        assert_matches_type(EnablementListResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.crm.object_library.enablement.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             enablement = response.parse()
-            assert_matches_type(PortalObjectTypeEnablementPublicResponse, enablement, path=["response"])
+            assert_matches_type(EnablementListResponse, enablement, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         enablement = client.crm.object_library.enablement.get(
             "objectTypeId",
         )
-        assert_matches_type(ObjectTypeEnablementPublicResponse, enablement, path=["response"])
+        assert_matches_type(EnablementGetResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.object_library.enablement.with_raw_response.get(
             "objectTypeId",
         )
@@ -63,11 +63,11 @@ class TestEnablement:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         enablement = response.parse()
-        assert_matches_type(ObjectTypeEnablementPublicResponse, enablement, path=["response"])
+        assert_matches_type(EnablementGetResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.object_library.enablement.with_streaming_response.get(
             "objectTypeId",
         ) as response:
@@ -75,13 +75,13 @@ class TestEnablement:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             enablement = response.parse()
-            assert_matches_type(ObjectTypeEnablementPublicResponse, enablement, path=["response"])
+            assert_matches_type(EnablementGetResponse, enablement, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             client.crm.object_library.enablement.with_raw_response.get(
                 "",
@@ -95,43 +95,43 @@ class TestAsyncEnablement:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         enablement = await async_client.crm.object_library.enablement.list()
-        assert_matches_type(PortalObjectTypeEnablementPublicResponse, enablement, path=["response"])
+        assert_matches_type(EnablementListResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.object_library.enablement.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         enablement = await response.parse()
-        assert_matches_type(PortalObjectTypeEnablementPublicResponse, enablement, path=["response"])
+        assert_matches_type(EnablementListResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.object_library.enablement.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             enablement = await response.parse()
-            assert_matches_type(PortalObjectTypeEnablementPublicResponse, enablement, path=["response"])
+            assert_matches_type(EnablementListResponse, enablement, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         enablement = await async_client.crm.object_library.enablement.get(
             "objectTypeId",
         )
-        assert_matches_type(ObjectTypeEnablementPublicResponse, enablement, path=["response"])
+        assert_matches_type(EnablementGetResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.object_library.enablement.with_raw_response.get(
             "objectTypeId",
         )
@@ -139,11 +139,11 @@ class TestAsyncEnablement:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         enablement = await response.parse()
-        assert_matches_type(ObjectTypeEnablementPublicResponse, enablement, path=["response"])
+        assert_matches_type(EnablementGetResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.object_library.enablement.with_streaming_response.get(
             "objectTypeId",
         ) as response:
@@ -151,13 +151,13 @@ class TestAsyncEnablement:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             enablement = await response.parse()
-            assert_matches_type(ObjectTypeEnablementPublicResponse, enablement, path=["response"])
+            assert_matches_type(EnablementGetResponse, enablement, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.object_library.enablement.with_raw_response.get(
                 "",

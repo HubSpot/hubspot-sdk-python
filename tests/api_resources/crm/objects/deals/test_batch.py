@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import BatchResponseSimplePublicObject, BatchResponseSimplePublicUpsertObject
 
@@ -19,7 +19,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         batch = client.crm.objects.deals.batch.create(
             inputs=[{"properties": {"foo": "string"}}],
         )
@@ -27,7 +27,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.objects.deals.batch.with_raw_response.create(
             inputs=[{"properties": {"foo": "string"}}],
         )
@@ -39,7 +39,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.objects.deals.batch.with_streaming_response.create(
             inputs=[{"properties": {"foo": "string"}}],
         ) as response:
@@ -53,7 +53,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         batch = client.crm.objects.deals.batch.update(
             inputs=[
                 {
@@ -66,7 +66,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.crm.objects.deals.batch.with_raw_response.update(
             inputs=[
                 {
@@ -83,7 +83,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.crm.objects.deals.batch.with_streaming_response.update(
             inputs=[
                 {
@@ -102,7 +102,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         batch = client.crm.objects.deals.batch.delete(
             inputs=[{"id": "id"}],
         )
@@ -110,7 +110,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.crm.objects.deals.batch.with_raw_response.delete(
             inputs=[{"id": "id"}],
         )
@@ -122,7 +122,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.crm.objects.deals.batch.with_streaming_response.delete(
             inputs=[{"id": "id"}],
         ) as response:
@@ -136,7 +136,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         batch = client.crm.objects.deals.batch.get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -146,7 +146,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
         batch = client.crm.objects.deals.batch.get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -158,7 +158,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.objects.deals.batch.with_raw_response.get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -172,7 +172,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.objects.deals.batch.with_streaming_response.get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -188,7 +188,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_upsert(self, client: HubSpot) -> None:
+    def test_method_upsert(self, client: Hubspot) -> None:
         batch = client.crm.objects.deals.batch.upsert(
             inputs=[
                 {
@@ -201,7 +201,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_upsert(self, client: HubSpot) -> None:
+    def test_raw_response_upsert(self, client: Hubspot) -> None:
         response = client.crm.objects.deals.batch.with_raw_response.upsert(
             inputs=[
                 {
@@ -218,7 +218,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_upsert(self, client: HubSpot) -> None:
+    def test_streaming_response_upsert(self, client: Hubspot) -> None:
         with client.crm.objects.deals.batch.with_streaming_response.upsert(
             inputs=[
                 {
@@ -243,7 +243,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.deals.batch.create(
             inputs=[{"properties": {"foo": "string"}}],
         )
@@ -251,7 +251,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.deals.batch.with_raw_response.create(
             inputs=[{"properties": {"foo": "string"}}],
         )
@@ -263,7 +263,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.deals.batch.with_streaming_response.create(
             inputs=[{"properties": {"foo": "string"}}],
         ) as response:
@@ -277,7 +277,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.deals.batch.update(
             inputs=[
                 {
@@ -290,7 +290,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.deals.batch.with_raw_response.update(
             inputs=[
                 {
@@ -307,7 +307,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.deals.batch.with_streaming_response.update(
             inputs=[
                 {
@@ -326,7 +326,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.deals.batch.delete(
             inputs=[{"id": "id"}],
         )
@@ -334,7 +334,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.deals.batch.with_raw_response.delete(
             inputs=[{"id": "id"}],
         )
@@ -346,7 +346,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.deals.batch.with_streaming_response.delete(
             inputs=[{"id": "id"}],
         ) as response:
@@ -360,7 +360,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.deals.batch.get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -370,7 +370,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.deals.batch.get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -382,7 +382,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.deals.batch.with_raw_response.get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -396,7 +396,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.deals.batch.with_streaming_response.get(
             inputs=[{"id": "id"}],
             properties=["string"],
@@ -412,7 +412,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_upsert(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_upsert(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.deals.batch.upsert(
             inputs=[
                 {
@@ -425,7 +425,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_upsert(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_upsert(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.deals.batch.with_raw_response.upsert(
             inputs=[
                 {
@@ -442,7 +442,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_upsert(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_upsert(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.deals.batch.with_streaming_response.upsert(
             inputs=[
                 {

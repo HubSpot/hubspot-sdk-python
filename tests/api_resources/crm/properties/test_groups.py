@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import PropertyGroup, CreatedResponsePropertyGroup, CollectionResponsePropertyGroup
 
@@ -19,7 +19,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         group = client.crm.properties.groups.create(
             object_type="objectType",
             label="label",
@@ -29,7 +29,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         group = client.crm.properties.groups.create(
             object_type="objectType",
             label="label",
@@ -40,7 +40,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.properties.groups.with_raw_response.create(
             object_type="objectType",
             label="label",
@@ -54,7 +54,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.properties.groups.with_streaming_response.create(
             object_type="objectType",
             label="label",
@@ -70,7 +70,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create(self, client: HubSpot) -> None:
+    def test_path_params_create(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.groups.with_raw_response.create(
                 object_type="",
@@ -80,7 +80,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         group = client.crm.properties.groups.update(
             group_name="groupName",
             object_type="objectType",
@@ -89,7 +89,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         group = client.crm.properties.groups.update(
             group_name="groupName",
             object_type="objectType",
@@ -100,7 +100,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.crm.properties.groups.with_raw_response.update(
             group_name="groupName",
             object_type="objectType",
@@ -113,7 +113,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.crm.properties.groups.with_streaming_response.update(
             group_name="groupName",
             object_type="objectType",
@@ -128,7 +128,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.groups.with_raw_response.update(
                 group_name="groupName",
@@ -143,7 +143,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         group = client.crm.properties.groups.list(
             "objectType",
         )
@@ -151,7 +151,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.crm.properties.groups.with_raw_response.list(
             "objectType",
         )
@@ -163,7 +163,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.crm.properties.groups.with_streaming_response.list(
             "objectType",
         ) as response:
@@ -177,7 +177,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: HubSpot) -> None:
+    def test_path_params_list(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.groups.with_raw_response.list(
                 "",
@@ -185,7 +185,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         group = client.crm.properties.groups.delete(
             group_name="groupName",
             object_type="objectType",
@@ -194,7 +194,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.crm.properties.groups.with_raw_response.delete(
             group_name="groupName",
             object_type="objectType",
@@ -207,7 +207,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.crm.properties.groups.with_streaming_response.delete(
             group_name="groupName",
             object_type="objectType",
@@ -222,7 +222,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.groups.with_raw_response.delete(
                 group_name="groupName",
@@ -237,7 +237,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         group = client.crm.properties.groups.get(
             group_name="groupName",
             object_type="objectType",
@@ -246,7 +246,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.properties.groups.with_raw_response.get(
             group_name="groupName",
             object_type="objectType",
@@ -259,7 +259,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.properties.groups.with_streaming_response.get(
             group_name="groupName",
             object_type="objectType",
@@ -274,7 +274,7 @@ class TestGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.groups.with_raw_response.get(
                 group_name="groupName",
@@ -295,7 +295,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         group = await async_client.crm.properties.groups.create(
             object_type="objectType",
             label="label",
@@ -305,7 +305,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         group = await async_client.crm.properties.groups.create(
             object_type="objectType",
             label="label",
@@ -316,7 +316,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.properties.groups.with_raw_response.create(
             object_type="objectType",
             label="label",
@@ -330,7 +330,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.properties.groups.with_streaming_response.create(
             object_type="objectType",
             label="label",
@@ -346,7 +346,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.groups.with_raw_response.create(
                 object_type="",
@@ -356,7 +356,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         group = await async_client.crm.properties.groups.update(
             group_name="groupName",
             object_type="objectType",
@@ -365,7 +365,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         group = await async_client.crm.properties.groups.update(
             group_name="groupName",
             object_type="objectType",
@@ -376,7 +376,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.properties.groups.with_raw_response.update(
             group_name="groupName",
             object_type="objectType",
@@ -389,7 +389,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.properties.groups.with_streaming_response.update(
             group_name="groupName",
             object_type="objectType",
@@ -404,7 +404,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.groups.with_raw_response.update(
                 group_name="groupName",
@@ -419,7 +419,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         group = await async_client.crm.properties.groups.list(
             "objectType",
         )
@@ -427,7 +427,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.properties.groups.with_raw_response.list(
             "objectType",
         )
@@ -439,7 +439,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.properties.groups.with_streaming_response.list(
             "objectType",
         ) as response:
@@ -453,7 +453,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.groups.with_raw_response.list(
                 "",
@@ -461,7 +461,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         group = await async_client.crm.properties.groups.delete(
             group_name="groupName",
             object_type="objectType",
@@ -470,7 +470,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.properties.groups.with_raw_response.delete(
             group_name="groupName",
             object_type="objectType",
@@ -483,7 +483,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.properties.groups.with_streaming_response.delete(
             group_name="groupName",
             object_type="objectType",
@@ -498,7 +498,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.groups.with_raw_response.delete(
                 group_name="groupName",
@@ -513,7 +513,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         group = await async_client.crm.properties.groups.get(
             group_name="groupName",
             object_type="objectType",
@@ -522,7 +522,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.properties.groups.with_raw_response.get(
             group_name="groupName",
             object_type="objectType",
@@ -535,7 +535,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.properties.groups.with_streaming_response.get(
             group_name="groupName",
             object_type="objectType",
@@ -550,7 +550,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.groups.with_raw_response.get(
                 group_name="groupName",

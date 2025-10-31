@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.marketing import EventDetailSettings
 
@@ -19,7 +19,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_or_update(self, client: HubSpot) -> None:
+    def test_method_create_or_update(self, client: Hubspot) -> None:
         setting = client.marketing.events.settings.create_or_update(
             app_id=0,
             event_details_url="eventDetailsUrl",
@@ -28,7 +28,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_or_update(self, client: HubSpot) -> None:
+    def test_raw_response_create_or_update(self, client: Hubspot) -> None:
         response = client.marketing.events.settings.with_raw_response.create_or_update(
             app_id=0,
             event_details_url="eventDetailsUrl",
@@ -41,7 +41,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_or_update(self, client: HubSpot) -> None:
+    def test_streaming_response_create_or_update(self, client: Hubspot) -> None:
         with client.marketing.events.settings.with_streaming_response.create_or_update(
             app_id=0,
             event_details_url="eventDetailsUrl",
@@ -56,7 +56,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         setting = client.marketing.events.settings.get(
             0,
         )
@@ -64,7 +64,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.marketing.events.settings.with_raw_response.get(
             0,
         )
@@ -76,7 +76,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.marketing.events.settings.with_streaming_response.get(
             0,
         ) as response:
@@ -96,7 +96,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_or_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_or_update(self, async_client: AsyncHubspot) -> None:
         setting = await async_client.marketing.events.settings.create_or_update(
             app_id=0,
             event_details_url="eventDetailsUrl",
@@ -105,7 +105,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_or_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_or_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.events.settings.with_raw_response.create_or_update(
             app_id=0,
             event_details_url="eventDetailsUrl",
@@ -118,7 +118,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_or_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_or_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.events.settings.with_streaming_response.create_or_update(
             app_id=0,
             event_details_url="eventDetailsUrl",
@@ -133,7 +133,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         setting = await async_client.marketing.events.settings.get(
             0,
         )
@@ -141,7 +141,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.events.settings.with_raw_response.get(
             0,
         )
@@ -153,7 +153,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.events.settings.with_streaming_response.get(
             0,
         ) as response:

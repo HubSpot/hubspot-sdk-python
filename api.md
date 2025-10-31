@@ -370,16 +370,12 @@ Methods:
 Types:
 
 ```python
-from hubspot_sdk.types.business_units import (
-    CollectionResponsePublicBusinessUnitNoPaging,
-    PublicBusinessUnit,
-    PublicBusinessUnitLogoMetadata,
-)
+from hubspot_sdk.types.business_units import BusinessUnitGetByUserIDResponse
 ```
 
 Methods:
 
-- <code title="get /business-units/v3/business-units/user/{userId}">client.business_units.<a href="./src/hubspot_sdk/resources/business_units.py">get_by_user_id</a>(user_id, \*\*<a href="src/hubspot_sdk/types/business_units/business_unit_get_by_user_id_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/business_units/collection_response_public_business_unit_no_paging.py">CollectionResponsePublicBusinessUnitNoPaging</a></code>
+- <code title="get /business-units/v3/business-units/user/{userId}">client.business_units.<a href="./src/hubspot_sdk/resources/business_units.py">get_by_user_id</a>(user_id, \*\*<a href="src/hubspot_sdk/types/business_units/business_unit_get_by_user_id_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/business_units/business_unit_get_by_user_id_response.py">BusinessUnitGetByUserIDResponse</a></code>
 
 # Cms
 
@@ -412,12 +408,12 @@ from hubspot_sdk.types.cms import (
 Types:
 
 ```python
-from hubspot_sdk.types.cms import CollectionResponsePublicAuditLog, PublicAuditLog
+from hubspot_sdk.types.cms import AuditLogListResponse
 ```
 
 Methods:
 
-- <code title="get /cms/v3/audit-logs/">client.cms.audit_logs.<a href="./src/hubspot_sdk/resources/cms/audit_logs.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/audit_log_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/public_audit_log.py">SyncPage[PublicAuditLog]</a></code>
+- <code title="get /cms/v3/audit-logs/">client.cms.audit_logs.<a href="./src/hubspot_sdk/resources/cms/audit_logs.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/audit_log_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/audit_log_list_response.py">SyncPage[AuditLogListResponse]</a></code>
 
 ## Blogs
 
@@ -660,174 +656,86 @@ Methods:
 
 ## MediaBridge
 
+### Events
+
 Types:
 
 ```python
-from hubspot_sdk.types.cms import (
-    AbsoluteValue,
-    AddNumbers,
-    AddTime,
-    And,
-    AttentionSpanCalculatedValues,
-    AttentionSpanEvent,
-    AttentionSpanEventRequest,
-    BatchReadInputPropertyName,
-    BatchResponsePropertyWithErrors,
-    BeginsWith,
-    BooleanPropertyVariable,
-    BooleanTargetPropertyVariable,
-    BulkIntegratorObjectCreationResponse,
-    CaseChangeTestExtensionData,
-    CollectionResponsePropertyGroupNoPaging,
-    CollectionResponsePropertyNoPaging,
-    ConcatStrings,
-    ConstantBoolean,
-    ConstantNumber,
-    ConstantString,
-    Contains,
-    Date,
-    DatedExchangeRate,
-    DefaultRequirements,
-    DefinitionSource,
-    DivideNumbers,
-    Endpoints,
-    Euler,
-    EventVisibilityChange,
-    EventVisibilityResponse,
-    ExtensionData,
-    ExternalOptionsMetaData,
-    ExtractMostRecentEmailReplyHTML,
-    ExtractMostRecentEmailReplyText,
-    ExtractMostRecentPlainTextEmailReply,
-    FetchCurrencyDecimalPlaces,
-    FetchExchangeRate,
-    FetchSingleCurrencyPortalCurrency,
-    FieldLevelPermission,
-    FilteringMetaData,
-    FormatFullName,
-    Group,
-    GroupView,
-    HasEmailReply,
-    HasPlainTextEmailReply,
-    IfBoolean,
-    IfNumber,
-    IfString,
-    InboundDBObjectType,
-    IntegratorObjectCreationRequest,
-    IntegratorObjectCreationResponse,
-    IntegratorOEmbedDomainModel,
-    IntegratorOEmbedDomainRequest,
-    IsEngagementType,
-    IsPipelineStageClosed,
-    IsPresent,
-    LessThan,
-    LessThanOrEqual,
-    LowerCase,
-    MaxNumbers,
-    MediaBridgePropertyUpdate,
-    MediaBridgeProviderPartial,
-    MediaBridgeProviderRegistrationResponse,
-    MediaPlayedEvent,
-    MediaPlayedEventRequest,
-    MediaPlayedPercentageEvent,
-    MediaPlayedPercentageEventRequest,
-    MinNumbers,
-    Month,
-    MoreThan,
-    MoreThanOrEqual,
-    MultiplyNumbers,
-    Not,
-    Now,
-    NumberEquals,
-    NumberPropertyVariable,
-    NumberTargetPropertyVariable,
-    NumberToString,
-    ObjectDefinitionResponse,
-    ObjectSchema,
-    ObjectTypeDefinition,
-    ObjectTypeDefinitionPatch,
-    ObjectTypeIDProto,
-    OEmbedDomainsCollectionResponse,
-    Option1,
-    OptionDecorations,
-    OptionDecoratorsExtensionData,
-    Or,
-    ParseNumber,
-    PeriodToMonths,
-    PeriodToWeeks,
-    PipelineProbability,
-    Power,
-    Property,
-    Property1,
-    PropertyDefinition,
-    PropertyDefinitionSource,
-    PropertyGroup,
-    RequiredPropertiesExtensionData,
-    RollupExpression,
-    RoundDownNumbers,
-    RoundNearestNumbers,
-    RoundUpNumbers,
-    ScopeMapping,
-    SetContainsString,
-    SoftRequiredPropertiesExtensionData,
-    SquareRoot,
-    StringEquals,
-    StringLength,
-    StringPropertyVariable,
-    StringTargetPropertyVariable,
-    Substring,
-    SubtractNumbers,
-    SubtractTime,
-    TimeBetween,
-    TimestampOfPropertyVariable,
-    TimestampOfTargetPropertyVariable,
-    UpperCase,
-    Xor,
-    Year,
+from hubspot_sdk.types.cms.media_bridge import (
+    EventCreateAttentionSpanEventResponse,
+    EventCreateMediaPlayedEventResponse,
+    EventCreateMediaPlayedPercentEventResponse,
 )
 ```
 
-### Events
-
 Methods:
 
-- <code title="post /media-bridge/v1/events/attention-span">client.cms.media_bridge.events.<a href="./src/hubspot_sdk/resources/cms/media_bridge/events.py">create_attention_span_event</a>(\*\*<a href="src/hubspot_sdk/types/cms/media_bridge/event_create_attention_span_event_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/attention_span_event.py">AttentionSpanEvent</a></code>
-- <code title="post /media-bridge/v1/events/media-played">client.cms.media_bridge.events.<a href="./src/hubspot_sdk/resources/cms/media_bridge/events.py">create_media_played_event</a>(\*\*<a href="src/hubspot_sdk/types/cms/media_bridge/event_create_media_played_event_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_played_event.py">MediaPlayedEvent</a></code>
-- <code title="post /media-bridge/v1/events/media-played-percent">client.cms.media_bridge.events.<a href="./src/hubspot_sdk/resources/cms/media_bridge/events.py">create_media_played_percent_event</a>(\*\*<a href="src/hubspot_sdk/types/cms/media_bridge/event_create_media_played_percent_event_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_played_percentage_event.py">MediaPlayedPercentageEvent</a></code>
+- <code title="post /media-bridge/v1/events/attention-span">client.cms.media_bridge.events.<a href="./src/hubspot_sdk/resources/cms/media_bridge/events.py">create_attention_span_event</a>(\*\*<a href="src/hubspot_sdk/types/cms/media_bridge/event_create_attention_span_event_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/event_create_attention_span_event_response.py">EventCreateAttentionSpanEventResponse</a></code>
+- <code title="post /media-bridge/v1/events/media-played">client.cms.media_bridge.events.<a href="./src/hubspot_sdk/resources/cms/media_bridge/events.py">create_media_played_event</a>(\*\*<a href="src/hubspot_sdk/types/cms/media_bridge/event_create_media_played_event_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/event_create_media_played_event_response.py">EventCreateMediaPlayedEventResponse</a></code>
+- <code title="post /media-bridge/v1/events/media-played-percent">client.cms.media_bridge.events.<a href="./src/hubspot_sdk/resources/cms/media_bridge/events.py">create_media_played_percent_event</a>(\*\*<a href="src/hubspot_sdk/types/cms/media_bridge/event_create_media_played_percent_event_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/event_create_media_played_percent_event_response.py">EventCreateMediaPlayedPercentEventResponse</a></code>
 
 ### Groups
+
+Types:
+
+```python
+from hubspot_sdk.types.cms.media_bridge import GroupListResponse
+```
 
 Methods:
 
 - <code title="post /media-bridge/v1/{appId}/properties/{objectType}/groups">client.cms.media_bridge.groups.<a href="./src/hubspot_sdk/resources/cms/media_bridge/groups.py">create</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/group_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/property_group.py">PropertyGroup</a></code>
-- <code title="get /media-bridge/v1/{appId}/properties/{objectType}/groups">client.cms.media_bridge.groups.<a href="./src/hubspot_sdk/resources/cms/media_bridge/groups.py">list</a>(object_type, \*, app_id) -> <a href="./src/hubspot_sdk/types/cms/collection_response_property_group_no_paging.py">CollectionResponsePropertyGroupNoPaging</a></code>
+- <code title="get /media-bridge/v1/{appId}/properties/{objectType}/groups">client.cms.media_bridge.groups.<a href="./src/hubspot_sdk/resources/cms/media_bridge/groups.py">list</a>(object_type, \*, app_id) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/group_list_response.py">GroupListResponse</a></code>
 - <code title="delete /media-bridge/v1/{appId}/properties/{objectType}/groups/{groupName}">client.cms.media_bridge.groups.<a href="./src/hubspot_sdk/resources/cms/media_bridge/groups.py">delete_by_name</a>(group_name, \*, app_id, object_type) -> None</code>
 - <code title="get /media-bridge/v1/{appId}/properties/{objectType}/groups/{groupName}">client.cms.media_bridge.groups.<a href="./src/hubspot_sdk/resources/cms/media_bridge/groups.py">get_by_name</a>(group_name, \*, app_id, object_type) -> <a href="./src/hubspot_sdk/types/crm/property_group.py">PropertyGroup</a></code>
 - <code title="patch /media-bridge/v1/{appId}/properties/{objectType}/groups/{groupName}">client.cms.media_bridge.groups.<a href="./src/hubspot_sdk/resources/cms/media_bridge/groups.py">update_by_name</a>(group_name, \*, app_id, object_type, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/group_update_by_name_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/property_group.py">PropertyGroup</a></code>
 
 ### IntegratorSettings
 
+Types:
+
+```python
+from hubspot_sdk.types.cms.media_bridge import (
+    IntegratorSettingCreateObjectDefinitionResponse,
+    IntegratorSettingCreateOembedDomainResponse,
+    IntegratorSettingGetEventVisibilitySettingsResponse,
+    IntegratorSettingGetObjectDefinitionsByMediaTypeResponse,
+    IntegratorSettingGetOembedDomainResponse,
+    IntegratorSettingListOembedDomainsResponse,
+    IntegratorSettingRegisterAppNameResponse,
+    IntegratorSettingUpdateAppNameResponse,
+    IntegratorSettingUpdateEventVisibilitySettingsResponse,
+    IntegratorSettingUpdateOembedDomainResponse,
+)
+```
+
 Methods:
 
-- <code title="post /media-bridge/v1/{appId}/settings/object-definitions">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">create_object_definition</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_create_object_definition_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/bulk_integrator_object_creation_response.py">BulkIntegratorObjectCreationResponse</a></code>
-- <code title="post /media-bridge/v1/{appId}/settings/oembed-domains">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">create_oembed_domain</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_create_oembed_domain_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/integrator_o_embed_domain_model.py">IntegratorOEmbedDomainModel</a></code>
+- <code title="post /media-bridge/v1/{appId}/settings/object-definitions">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">create_object_definition</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_create_object_definition_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_create_object_definition_response.py">IntegratorSettingCreateObjectDefinitionResponse</a></code>
+- <code title="post /media-bridge/v1/{appId}/settings/oembed-domains">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">create_oembed_domain</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_create_oembed_domain_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_create_oembed_domain_response.py">IntegratorSettingCreateOembedDomainResponse</a></code>
 - <code title="delete /media-bridge/v1/{appId}/settings/oembed-domains">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">delete_oembed_domain</a>(app_id) -> None</code>
-- <code title="get /media-bridge/v1/{appId}/settings/event-visibility">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">get_event_visibility_settings</a>(app_id) -> <a href="./src/hubspot_sdk/types/cms/event_visibility_response.py">EventVisibilityResponse</a></code>
-- <code title="get /media-bridge/v1/{appId}/settings/object-definitions/{mediaType}">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">get_object_definitions_by_media_type</a>(media_type, \*, app_id) -> <a href="./src/hubspot_sdk/types/cms/object_definition_response.py">ObjectDefinitionResponse</a></code>
-- <code title="get /media-bridge/v1/{appId}/settings/oembed-domains/{oEmbedDomainId}">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">get_oembed_domain</a>(o_embed_domain_id, \*, app_id) -> <a href="./src/hubspot_sdk/types/cms/integrator_o_embed_domain_model.py">IntegratorOEmbedDomainModel</a></code>
-- <code title="get /media-bridge/v1/{appId}/settings/oembed-domains">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">list_oembed_domains</a>(app_id) -> <a href="./src/hubspot_sdk/types/cms/o_embed_domains_collection_response.py">OEmbedDomainsCollectionResponse</a></code>
-- <code title="post /media-bridge/v1/{appId}/settings/register">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">register_app_name</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_register_app_name_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge_provider_registration_response.py">MediaBridgeProviderRegistrationResponse</a></code>
-- <code title="put /media-bridge/v1/{appId}/settings">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">update_app_name</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_app_name_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge_provider_registration_response.py">MediaBridgeProviderRegistrationResponse</a></code>
-- <code title="patch /media-bridge/v1/{appId}/settings/event-visibility">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">update_event_visibility_settings</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_event_visibility_settings_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/event_visibility_change.py">EventVisibilityChange</a></code>
-- <code title="patch /media-bridge/v1/{appId}/settings/oembed-domains/{oEmbedDomainId}">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">update_oembed_domain</a>(o_embed_domain_id, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_oembed_domain_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/integrator_o_embed_domain_model.py">IntegratorOEmbedDomainModel</a></code>
+- <code title="get /media-bridge/v1/{appId}/settings/event-visibility">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">get_event_visibility_settings</a>(app_id) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_get_event_visibility_settings_response.py">IntegratorSettingGetEventVisibilitySettingsResponse</a></code>
+- <code title="get /media-bridge/v1/{appId}/settings/object-definitions/{mediaType}">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">get_object_definitions_by_media_type</a>(media_type, \*, app_id) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_get_object_definitions_by_media_type_response.py">IntegratorSettingGetObjectDefinitionsByMediaTypeResponse</a></code>
+- <code title="get /media-bridge/v1/{appId}/settings/oembed-domains/{oEmbedDomainId}">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">get_oembed_domain</a>(o_embed_domain_id, \*, app_id) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_get_oembed_domain_response.py">IntegratorSettingGetOembedDomainResponse</a></code>
+- <code title="get /media-bridge/v1/{appId}/settings/oembed-domains">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">list_oembed_domains</a>(app_id) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_list_oembed_domains_response.py">IntegratorSettingListOembedDomainsResponse</a></code>
+- <code title="post /media-bridge/v1/{appId}/settings/register">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">register_app_name</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_register_app_name_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_register_app_name_response.py">IntegratorSettingRegisterAppNameResponse</a></code>
+- <code title="put /media-bridge/v1/{appId}/settings">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">update_app_name</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_app_name_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_app_name_response.py">IntegratorSettingUpdateAppNameResponse</a></code>
+- <code title="patch /media-bridge/v1/{appId}/settings/event-visibility">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">update_event_visibility_settings</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_event_visibility_settings_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_event_visibility_settings_response.py">IntegratorSettingUpdateEventVisibilitySettingsResponse</a></code>
+- <code title="patch /media-bridge/v1/{appId}/settings/oembed-domains/{oEmbedDomainId}">client.cms.media_bridge.integrator_settings.<a href="./src/hubspot_sdk/resources/cms/media_bridge/integrator_settings.py">update_oembed_domain</a>(o_embed_domain_id, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_oembed_domain_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/integrator_setting_update_oembed_domain_response.py">IntegratorSettingUpdateOembedDomainResponse</a></code>
 
 ### Properties
+
+Types:
+
+```python
+from hubspot_sdk.types.cms.media_bridge import PropertyListResponse
+```
 
 Methods:
 
 - <code title="post /media-bridge/v1/{appId}/properties/{objectType}">client.cms.media_bridge.properties.<a href="./src/hubspot_sdk/resources/cms/media_bridge/properties.py">create</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/property_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 - <code title="patch /media-bridge/v1/{appId}/properties/{objectType}/{propertyName}">client.cms.media_bridge.properties.<a href="./src/hubspot_sdk/resources/cms/media_bridge/properties.py">update</a>(property_name, \*, app_id, object_type, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/property_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
-- <code title="get /media-bridge/v1/{appId}/properties/{objectType}">client.cms.media_bridge.properties.<a href="./src/hubspot_sdk/resources/cms/media_bridge/properties.py">list</a>(object_type, \*, app_id) -> <a href="./src/hubspot_sdk/types/cms/collection_response_property_no_paging.py">CollectionResponsePropertyNoPaging</a></code>
+- <code title="get /media-bridge/v1/{appId}/properties/{objectType}">client.cms.media_bridge.properties.<a href="./src/hubspot_sdk/resources/cms/media_bridge/properties.py">list</a>(object_type, \*, app_id) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/property_list_response.py">PropertyListResponse</a></code>
 - <code title="delete /media-bridge/v1/{appId}/properties/{objectType}/{propertyName}">client.cms.media_bridge.properties.<a href="./src/hubspot_sdk/resources/cms/media_bridge/properties.py">delete</a>(property_name, \*, app_id, object_type) -> None</code>
 - <code title="post /media-bridge/v1/{appId}/properties/{objectType}/batch/archive">client.cms.media_bridge.properties.<a href="./src/hubspot_sdk/resources/cms/media_bridge/properties.py">archive_batch</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/property_archive_batch_params.py">params</a>) -> None</code>
 - <code title="post /media-bridge/v1/{appId}/properties/{objectType}/batch/create">client.cms.media_bridge.properties.<a href="./src/hubspot_sdk/resources/cms/media_bridge/properties.py">create_batch</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/property_create_batch_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/batch_response_property.py">BatchResponseProperty</a></code>
@@ -836,11 +744,17 @@ Methods:
 
 ### Schemas
 
+Types:
+
+```python
+from hubspot_sdk.types.cms.media_bridge import SchemaCreateAssociationResponse
+```
+
 Methods:
 
 - <code title="patch /media-bridge/v1/{appId}/schemas/{objectType}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">update</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/object_type_definition.py">ObjectTypeDefinition</a></code>
 - <code title="get /media-bridge/v1/{appId}/schemas">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">list</a>(app_id) -> <a href="./src/hubspot_sdk/types/shared/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
-- <code title="post /media-bridge/v1/{appId}/schemas/{objectType}/associations">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">create_association</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/association_definition.py">AssociationDefinition</a></code>
+- <code title="post /media-bridge/v1/{appId}/schemas/{objectType}/associations">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">create_association</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/schema_create_association_response.py">SchemaCreateAssociationResponse</a></code>
 - <code title="delete /media-bridge/v1/{appId}/schemas/{objectType}/associations/{associationId}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">delete_association</a>(association_id, \*, app_id, object_type) -> None</code>
 - <code title="get /media-bridge/v1/{appId}/schemas/{objectType}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">get</a>(object_type, \*, app_id) -> <a href="./src/hubspot_sdk/types/crm/objects/object_schema.py">ObjectSchema</a></code>
 
@@ -952,36 +866,35 @@ Methods:
 Types:
 
 ```python
-from hubspot_sdk.types.cms import (
-    ContentSearchResult,
-    IndexedData,
-    IndexedField,
-    PublicSearchResults,
-)
+from hubspot_sdk.types.cms import SiteSearchGetIndexedDataResponse, SiteSearchSearchResponse
 ```
 
 Methods:
 
-- <code title="get /cms/v3/site-search/indexed-data/{contentId}">client.cms.site_search.<a href="./src/hubspot_sdk/resources/cms/site_search.py">get_indexed_data</a>(content_id, \*\*<a href="src/hubspot_sdk/types/cms/site_search_get_indexed_data_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/indexed_data.py">IndexedData</a></code>
-- <code title="get /cms/v3/site-search/search">client.cms.site_search.<a href="./src/hubspot_sdk/resources/cms/site_search.py">search</a>(\*\*<a href="src/hubspot_sdk/types/cms/site_search_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/public_search_results.py">PublicSearchResults</a></code>
+- <code title="get /cms/v3/site-search/indexed-data/{contentId}">client.cms.site_search.<a href="./src/hubspot_sdk/resources/cms/site_search.py">get_indexed_data</a>(content_id, \*\*<a href="src/hubspot_sdk/types/cms/site_search_get_indexed_data_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/site_search_get_indexed_data_response.py">SiteSearchGetIndexedDataResponse</a></code>
+- <code title="get /cms/v3/site-search/search">client.cms.site_search.<a href="./src/hubspot_sdk/resources/cms/site_search.py">search</a>(\*\*<a href="src/hubspot_sdk/types/cms/site_search_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/site_search_search_response.py">SiteSearchSearchResponse</a></code>
 
 ## SourceCode
 
 Types:
 
 ```python
-from hubspot_sdk.types.cms import AssetFileMetadata, FileExtractRequest
+from hubspot_sdk.types.cms import (
+    SourceCodeCreateResponse,
+    SourceCodeGetMetadataResponse,
+    SourceCodeUpsertResponse,
+)
 ```
 
 Methods:
 
-- <code title="post /cms/v3/source-code/{environment}/content/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">create</a>(path, \*, environment, \*\*<a href="src/hubspot_sdk/types/cms/source_code_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/asset_file_metadata.py">AssetFileMetadata</a></code>
+- <code title="post /cms/v3/source-code/{environment}/content/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">create</a>(path, \*, environment, \*\*<a href="src/hubspot_sdk/types/cms/source_code_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/source_code_create_response.py">SourceCodeCreateResponse</a></code>
 - <code title="delete /cms/v3/source-code/{environment}/content/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">delete</a>(path, \*, environment) -> None</code>
 - <code title="post /cms/v3/source-code/extract/async">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">extract_async</a>(\*\*<a href="src/hubspot_sdk/types/cms/source_code_extract_async_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/task_locator.py">TaskLocator</a></code>
 - <code title="get /cms/v3/source-code/{environment}/content/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">get</a>(path, \*, environment) -> BinaryAPIResponse</code>
 - <code title="get /cms/v3/source-code/extract/async/tasks/{taskId}/status">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">get_extraction_status</a>(task_id) -> <a href="./src/hubspot_sdk/types/shared/action_response.py">ActionResponse</a></code>
-- <code title="get /cms/v3/source-code/{environment}/metadata/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">get_metadata</a>(path, \*, environment, \*\*<a href="src/hubspot_sdk/types/cms/source_code_get_metadata_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/asset_file_metadata.py">AssetFileMetadata</a></code>
-- <code title="put /cms/v3/source-code/{environment}/content/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">upsert</a>(path, \*, environment, \*\*<a href="src/hubspot_sdk/types/cms/source_code_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/asset_file_metadata.py">AssetFileMetadata</a></code>
+- <code title="get /cms/v3/source-code/{environment}/metadata/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">get_metadata</a>(path, \*, environment, \*\*<a href="src/hubspot_sdk/types/cms/source_code_get_metadata_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/source_code_get_metadata_response.py">SourceCodeGetMetadataResponse</a></code>
+- <code title="put /cms/v3/source-code/{environment}/content/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">upsert</a>(path, \*, environment, \*\*<a href="src/hubspot_sdk/types/cms/source_code_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/source_code_upsert_response.py">SourceCodeUpsertResponse</a></code>
 - <code title="post /cms/v3/source-code/{environment}/validate/{path}">client.cms.source_code.<a href="./src/hubspot_sdk/resources/cms/source_code.py">validate</a>(path, \*, environment, \*\*<a href="src/hubspot_sdk/types/cms/source_code_validate_params.py">params</a>) -> BinaryAPIResponse</code>
 
 ## URLRedirects
@@ -990,19 +903,20 @@ Types:
 
 ```python
 from hubspot_sdk.types.cms import (
-    CollectionResponseWithTotalURLMappingForwardPaging,
-    URLMapping,
-    URLMappingCreateRequestBody,
+    URLRedirectCreateResponse,
+    URLRedirectUpdateResponse,
+    URLRedirectListResponse,
+    URLRedirectGetResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /cms/v3/url-redirects/">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">create</a>(\*\*<a href="src/hubspot_sdk/types/cms/url_redirect_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/url_mapping.py">URLMapping</a></code>
-- <code title="patch /cms/v3/url-redirects/{urlRedirectId}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">update</a>(url_redirect_id, \*\*<a href="src/hubspot_sdk/types/cms/url_redirect_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/url_mapping.py">URLMapping</a></code>
-- <code title="get /cms/v3/url-redirects/">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/url_redirect_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/url_mapping.py">SyncPage[URLMapping]</a></code>
+- <code title="post /cms/v3/url-redirects/">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">create</a>(\*\*<a href="src/hubspot_sdk/types/cms/url_redirect_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/url_redirect_create_response.py">URLRedirectCreateResponse</a></code>
+- <code title="patch /cms/v3/url-redirects/{urlRedirectId}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">update</a>(url_redirect_id, \*\*<a href="src/hubspot_sdk/types/cms/url_redirect_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/url_redirect_update_response.py">URLRedirectUpdateResponse</a></code>
+- <code title="get /cms/v3/url-redirects/">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/url_redirect_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/url_redirect_list_response.py">SyncPage[URLRedirectListResponse]</a></code>
 - <code title="delete /cms/v3/url-redirects/{urlRedirectId}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">delete</a>(url_redirect_id) -> None</code>
-- <code title="get /cms/v3/url-redirects/{urlRedirectId}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">get</a>(url_redirect_id) -> <a href="./src/hubspot_sdk/types/cms/url_mapping.py">URLMapping</a></code>
+- <code title="get /cms/v3/url-redirects/{urlRedirectId}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">get</a>(url_redirect_id) -> <a href="./src/hubspot_sdk/types/cms/url_redirect_get_response.py">URLRedirectGetResponse</a></code>
 
 # Conversations
 
@@ -1099,46 +1013,32 @@ Types:
 
 ```python
 from hubspot_sdk.types.conversations import (
-    ChannelIntegrationMessageEgg,
-    ChannelIntegrationParticipant,
-    CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
-    ContactAttachment,
-    FileAttachment,
-    LocationAttachment,
-    MessageHeaderAttachment,
-    PreResolvedContact,
-    PreResolvedContacts,
-    PublicChannelAccount,
-    PublicChannelAccountEgg,
-    PublicChannelAccountStagingToken,
-    PublicChannelAccountStagingTokenUpdateRequest,
-    PublicChannelAccountUpdateRequest,
-    PublicChannelIntegrationChannel,
-    PublicChannelIntegrationChannelCreate,
-    PublicChannelIntegrationChannelPatch,
-    PublicChannelIntegrationMessageUpdateRequest,
-    PublicClient,
-    PublicConversationsMessage,
-    PublicFile,
-    QuickRepliesAttachment,
-    SocialMetadataIntegrationAttachment,
-    UnsupportedContentAttachment,
+    CustomChannelCreateResponse,
+    CustomChannelUpdateResponse,
+    CustomChannelListResponse,
+    CustomChannelGetResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /conversations/v3/custom-channels/">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">create</a>(\*\*<a href="src/hubspot_sdk/types/conversations/custom_channel_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_integration_channel.py">PublicChannelIntegrationChannel</a></code>
-- <code title="patch /conversations/v3/custom-channels/{channelId}">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">update</a>(channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channel_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_integration_channel.py">PublicChannelIntegrationChannel</a></code>
-- <code title="get /conversations/v3/custom-channels/">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">list</a>() -> <a href="./src/hubspot_sdk/types/conversations/collection_response_with_total_public_channel_integration_channel_forward_paging.py">CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging</a></code>
+- <code title="post /conversations/v3/custom-channels/">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">create</a>(\*\*<a href="src/hubspot_sdk/types/conversations/custom_channel_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/custom_channel_create_response.py">CustomChannelCreateResponse</a></code>
+- <code title="patch /conversations/v3/custom-channels/{channelId}">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">update</a>(channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channel_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/custom_channel_update_response.py">CustomChannelUpdateResponse</a></code>
+- <code title="get /conversations/v3/custom-channels/">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">list</a>() -> <a href="./src/hubspot_sdk/types/conversations/custom_channel_list_response.py">CustomChannelListResponse</a></code>
 - <code title="delete /conversations/v3/custom-channels/{channelId}">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">delete</a>(channel_id) -> None</code>
-- <code title="get /conversations/v3/custom-channels/{channelId}">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">get</a>(channel_id) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_integration_channel.py">PublicChannelIntegrationChannel</a></code>
+- <code title="get /conversations/v3/custom-channels/{channelId}">client.conversations.custom_channels.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/custom_channels.py">get</a>(channel_id) -> <a href="./src/hubspot_sdk/types/conversations/custom_channel_get_response.py">CustomChannelGetResponse</a></code>
 
 ### ChannelAccountStagingTokens
 
+Types:
+
+```python
+from hubspot_sdk.types.conversations.custom_channels import ChannelAccountStagingTokenUpdateResponse
+```
+
 Methods:
 
-- <code title="patch /conversations/v3/custom-channels/{channelId}/channel-account-staging-tokens/{accountToken}">client.conversations.custom_channels.channel_account_staging_tokens.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_account_staging_tokens.py">update</a>(account_token, \*, channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/channel_account_staging_token_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_account_staging_token.py">PublicChannelAccountStagingToken</a></code>
+- <code title="patch /conversations/v3/custom-channels/{channelId}/channel-account-staging-tokens/{accountToken}">client.conversations.custom_channels.channel_account_staging_tokens.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_account_staging_tokens.py">update</a>(account_token, \*, channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/channel_account_staging_token_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/custom_channels/channel_account_staging_token_update_response.py">ChannelAccountStagingTokenUpdateResponse</a></code>
 
 ### ChannelAccounts
 
@@ -1187,15 +1087,12 @@ Methods:
 Types:
 
 ```python
-from hubspot_sdk.types.conversations import (
-    IdentificationTokenGenerationRequest,
-    IdentificationTokenResponse,
-)
+from hubspot_sdk.types.conversations import VisitorIdentificationGenerateTokenResponse
 ```
 
 Methods:
 
-- <code title="post /visitor-identification/v3/tokens/create">client.conversations.visitor_identification.<a href="./src/hubspot_sdk/resources/conversations/visitor_identification.py">generate_token</a>(\*\*<a href="src/hubspot_sdk/types/conversations/visitor_identification_generate_token_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/identification_token_response.py">IdentificationTokenResponse</a></code>
+- <code title="post /visitor-identification/v3/tokens/create">client.conversations.visitor_identification.<a href="./src/hubspot_sdk/resources/conversations/visitor_identification.py">generate_token</a>(\*\*<a href="src/hubspot_sdk/types/conversations/visitor_identification_generate_token_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/visitor_identification_generate_token_response.py">VisitorIdentificationGenerateTokenResponse</a></code>
 
 # CRM
 
@@ -1308,25 +1205,6 @@ from hubspot_sdk.types.crm.associations.schema import (
     PublicAssociationSpec,
 )
 ```
-
-##### Configurations
-
-Methods:
-
-- <code title="get /crm/v4/associations/definitions/configurations/all">client.crm.associations.schema.v4.configurations.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/configurations.py">list</a>() -> <a href="./src/hubspot_sdk/types/crm/associations/schema/collection_response_public_association_definition_user_configuration_no_paging.py">CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging</a></code>
-- <code title="post /crm/v4/associations/definitions/configurations/{fromObjectType}/{toObjectType}/batch/create">client.crm.associations.schema.v4.configurations.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/configurations.py">batch_create_by_object_types</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/schema/v4/configuration_batch_create_by_object_types_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/associations/schema/batch_response_public_association_definition_user_configuration.py">BatchResponsePublicAssociationDefinitionUserConfiguration</a></code>
-- <code title="post /crm/v4/associations/definitions/configurations/{fromObjectType}/{toObjectType}/batch/purge">client.crm.associations.schema.v4.configurations.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/configurations.py">batch_delete_by_object_types</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/schema/v4/configuration_batch_delete_by_object_types_params.py">params</a>) -> None</code>
-- <code title="post /crm/v4/associations/definitions/configurations/{fromObjectType}/{toObjectType}/batch/update">client.crm.associations.schema.v4.configurations.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/configurations.py">batch_update_by_object_types</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/schema/v4/configuration_batch_update_by_object_types_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/associations/schema/batch_response_public_association_definition_configuration_update_result.py">BatchResponsePublicAssociationDefinitionConfigurationUpdateResult</a></code>
-- <code title="get /crm/v4/associations/definitions/configurations/{fromObjectType}/{toObjectType}">client.crm.associations.schema.v4.configurations.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/configurations.py">get_by_object_types</a>(to_object_type, \*, from_object_type) -> <a href="./src/hubspot_sdk/types/crm/associations/schema/collection_response_public_association_definition_user_configuration_no_paging.py">CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging</a></code>
-
-##### Definitions
-
-Methods:
-
-- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/labels">client.crm.associations.schema.v4.definitions.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/definitions.py">create</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/schema/v4/definition_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/associations/schema/collection_response_association_spec_with_label_no_paging.py">CollectionResponseAssociationSpecWithLabelNoPaging</a></code>
-- <code title="put /crm/v4/associations/{fromObjectType}/{toObjectType}/labels">client.crm.associations.schema.v4.definitions.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/definitions.py">update</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/schema/v4/definition_update_params.py">params</a>) -> None</code>
-- <code title="get /crm/v4/associations/{fromObjectType}/{toObjectType}/labels">client.crm.associations.schema.v4.definitions.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/definitions.py">list</a>(to_object_type, \*, from_object_type) -> <a href="./src/hubspot_sdk/types/crm/associations/schema/collection_response_association_spec_with_label_no_paging.py">CollectionResponseAssociationSpecWithLabelNoPaging</a></code>
-- <code title="delete /crm/v4/associations/{fromObjectType}/{toObjectType}/labels/{associationTypeId}">client.crm.associations.schema.v4.definitions.<a href="./src/hubspot_sdk/resources/crm/associations/schema/v4/definitions.py">delete</a>(association_type_id, \*, from_object_type, to_object_type) -> None</code>
 
 ### V4
 
@@ -1525,39 +1403,47 @@ from hubspot_sdk.types.crm.extensions import ExternalSettings
 
 ## FeatureFlags
 
+### Apps
+
 Types:
 
 ```python
-from hubspot_sdk.types.crm import (
-    BatchPortalEntry,
-    FlagPutRequest,
-    FlagResponse,
-    PortalFlagStateBatchDeleteRequest,
-    PortalFlagStateBatchPutRequest,
-    PortalFlagStateBatchResponse,
-    PortalFlagStatePutRequest,
-    PortalFlagStateResponse,
+from hubspot_sdk.types.crm.feature_flags import (
+    AppUpdateResponse,
+    AppDeleteResponse,
+    AppGetResponse,
+    AppListPortalsResponse,
 )
 ```
 
-### Apps
-
 Methods:
 
-- <code title="put /feature-flags/v3/{appId}/flags/{flagName}">client.crm.feature_flags.apps.<a href="./src/hubspot_sdk/resources/crm/feature_flags/apps.py">update</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/app_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/flag_response.py">FlagResponse</a></code>
-- <code title="delete /feature-flags/v3/{appId}/flags/{flagName}">client.crm.feature_flags.apps.<a href="./src/hubspot_sdk/resources/crm/feature_flags/apps.py">delete</a>(flag_name, \*, app_id) -> <a href="./src/hubspot_sdk/types/crm/flag_response.py">FlagResponse</a></code>
-- <code title="get /feature-flags/v3/{appId}/flags/{flagName}">client.crm.feature_flags.apps.<a href="./src/hubspot_sdk/resources/crm/feature_flags/apps.py">get</a>(flag_name, \*, app_id) -> <a href="./src/hubspot_sdk/types/crm/flag_response.py">FlagResponse</a></code>
-- <code title="get /feature-flags/v3/{appId}/flags/{flagName}/portals">client.crm.feature_flags.apps.<a href="./src/hubspot_sdk/resources/crm/feature_flags/apps.py">list_portals</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/app_list_portals_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_batch_response.py">PortalFlagStateBatchResponse</a></code>
+- <code title="put /feature-flags/v3/{appId}/flags/{flagName}">client.crm.feature_flags.apps.<a href="./src/hubspot_sdk/resources/crm/feature_flags/apps.py">update</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/app_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/app_update_response.py">AppUpdateResponse</a></code>
+- <code title="delete /feature-flags/v3/{appId}/flags/{flagName}">client.crm.feature_flags.apps.<a href="./src/hubspot_sdk/resources/crm/feature_flags/apps.py">delete</a>(flag_name, \*, app_id) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/app_delete_response.py">AppDeleteResponse</a></code>
+- <code title="get /feature-flags/v3/{appId}/flags/{flagName}">client.crm.feature_flags.apps.<a href="./src/hubspot_sdk/resources/crm/feature_flags/apps.py">get</a>(flag_name, \*, app_id) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/app_get_response.py">AppGetResponse</a></code>
+- <code title="get /feature-flags/v3/{appId}/flags/{flagName}/portals">client.crm.feature_flags.apps.<a href="./src/hubspot_sdk/resources/crm/feature_flags/apps.py">list_portals</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/app_list_portals_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/app_list_portals_response.py">AppListPortalsResponse</a></code>
 
 ### Portals
 
+Types:
+
+```python
+from hubspot_sdk.types.crm.feature_flags import (
+    PortalUpdateResponse,
+    PortalDeleteResponse,
+    PortalBatchDeleteResponse,
+    PortalBatchUpsertResponse,
+    PortalGetResponse,
+)
+```
+
 Methods:
 
-- <code title="put /feature-flags/v3/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">update</a>(portal_id, \*, app_id, flag_name, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/portal_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_response.py">PortalFlagStateResponse</a></code>
-- <code title="delete /feature-flags/v3/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">delete</a>(portal_id, \*, app_id, flag_name) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_response.py">PortalFlagStateResponse</a></code>
-- <code title="post /feature-flags/v3/{appId}/flags/{flagName}/portals/batch/delete">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">batch_delete</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/portal_batch_delete_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_batch_response.py">PortalFlagStateBatchResponse</a></code>
-- <code title="post /feature-flags/v3/{appId}/flags/{flagName}/portals/batch/upsert">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">batch_upsert</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/portal_batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_batch_response.py">PortalFlagStateBatchResponse</a></code>
-- <code title="get /feature-flags/v3/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">get</a>(portal_id, \*, app_id, flag_name) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_response.py">PortalFlagStateResponse</a></code>
+- <code title="put /feature-flags/v3/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">update</a>(portal_id, \*, app_id, flag_name, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/portal_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/portal_update_response.py">PortalUpdateResponse</a></code>
+- <code title="delete /feature-flags/v3/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">delete</a>(portal_id, \*, app_id, flag_name) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/portal_delete_response.py">PortalDeleteResponse</a></code>
+- <code title="post /feature-flags/v3/{appId}/flags/{flagName}/portals/batch/delete">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">batch_delete</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/portal_batch_delete_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/portal_batch_delete_response.py">PortalBatchDeleteResponse</a></code>
+- <code title="post /feature-flags/v3/{appId}/flags/{flagName}/portals/batch/upsert">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">batch_upsert</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/portal_batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/portal_batch_upsert_response.py">PortalBatchUpsertResponse</a></code>
+- <code title="get /feature-flags/v3/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.portals.<a href="./src/hubspot_sdk/resources/crm/feature_flags/portals.py">get</a>(portal_id, \*, app_id, flag_name) -> <a href="./src/hubspot_sdk/types/crm/feature_flags/portal_get_response.py">PortalGetResponse</a></code>
 
 ## Imports
 
@@ -1708,44 +1594,20 @@ Methods:
 
 ## ObjectLibrary
 
+### Enablement
+
 Types:
 
 ```python
-from hubspot_sdk.types.crm import (
-    ObjectTypeEnablementPublicResponse,
-    PortalObjectTypeEnablementPublicResponse,
-)
+from hubspot_sdk.types.crm.object_library import EnablementListResponse, EnablementGetResponse
 ```
 
-### Enablement
-
 Methods:
 
-- <code title="get /crm/v3/object-library/enablement">client.crm.object_library.enablement.<a href="./src/hubspot_sdk/resources/crm/object_library/enablement.py">list</a>() -> <a href="./src/hubspot_sdk/types/crm/portal_object_type_enablement_public_response.py">PortalObjectTypeEnablementPublicResponse</a></code>
-- <code title="get /crm/v3/object-library/enablement/{objectTypeId}">client.crm.object_library.enablement.<a href="./src/hubspot_sdk/resources/crm/object_library/enablement.py">get</a>(object_type_id) -> <a href="./src/hubspot_sdk/types/crm/object_type_enablement_public_response.py">ObjectTypeEnablementPublicResponse</a></code>
+- <code title="get /crm/v3/object-library/enablement">client.crm.object_library.enablement.<a href="./src/hubspot_sdk/resources/crm/object_library/enablement.py">list</a>() -> <a href="./src/hubspot_sdk/types/crm/object_library/enablement_list_response.py">EnablementListResponse</a></code>
+- <code title="get /crm/v3/object-library/enablement/{objectTypeId}">client.crm.object_library.enablement.<a href="./src/hubspot_sdk/resources/crm/object_library/enablement.py">get</a>(object_type_id) -> <a href="./src/hubspot_sdk/types/crm/object_library/enablement_get_response.py">EnablementGetResponse</a></code>
 
 ## Objects
-
-### Appointments
-
-Methods:
-
-- <code title="post /crm/v3/objects/0-421">client.crm.objects.appointments.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/appointments.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/appointment_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/created_response_simple_public_object.py">CreatedResponseSimplePublicObject</a></code>
-- <code title="patch /crm/v3/objects/0-421/{appointmentId}">client.crm.objects.appointments.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/appointments.py">update</a>(appointment_id, \*\*<a href="src/hubspot_sdk/types/crm/objects/appointment_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
-- <code title="get /crm/v3/objects/0-421">client.crm.objects.appointments.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/appointments.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/appointment_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SyncPage[SimplePublicObjectWithAssociations]</a></code>
-- <code title="delete /crm/v3/objects/0-421/{appointmentId}">client.crm.objects.appointments.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/appointments.py">delete</a>(appointment_id) -> None</code>
-- <code title="get /crm/v3/objects/0-421/{appointmentId}">client.crm.objects.appointments.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/appointments.py">get</a>(appointment_id, \*\*<a href="src/hubspot_sdk/types/crm/objects/appointment_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SimplePublicObjectWithAssociations</a></code>
-- <code title="post /crm/v3/objects/0-421/search">client.crm.objects.appointments.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/appointments.py">search</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/appointment_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_with_total_simple_public_object.py">CollectionResponseWithTotalSimplePublicObject</a></code>
-
-#### Batch
-
-Methods:
-
-- <code title="post /crm/v3/objects/0-421/batch/create">client.crm.objects.appointments.batch.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/batch.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/appointments/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
-- <code title="post /crm/v3/objects/0-421/batch/update">client.crm.objects.appointments.batch.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/batch.py">update</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/appointments/batch_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
-- <code title="post /crm/v3/objects/0-421/batch/archive">client.crm.objects.appointments.batch.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/batch.py">delete</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/appointments/batch_delete_params.py">params</a>) -> None</code>
-- <code title="post /crm/v3/objects/0-421/batch/read">client.crm.objects.appointments.batch.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/batch.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/appointments/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
-- <code title="post /crm/v3/objects/0-421/batch/upsert">client.crm.objects.appointments.batch.<a href="./src/hubspot_sdk/resources/crm/objects/appointments/batch.py">upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/appointments/batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
 
 ### Calls
 
@@ -1945,20 +1807,13 @@ Methods:
 Types:
 
 ```python
-from hubspot_sdk.types.crm.objects import (
-    BatchResponseDealToDealSplits,
-    BatchResponseDealToDealSplitsWithErrors,
-    DealToDealSplits,
-    PublicDealSplitInput,
-    PublicDealSplitsBatchCreateRequest,
-    PublicDealSplitsCreateRequest,
-)
+from hubspot_sdk.types.crm.objects import DealSplitBatchReadResponse, DealSplitBatchUpsertResponse
 ```
 
 Methods:
 
-- <code title="post /crm/v3/objects/deals/splits/batch/read">client.crm.objects.deal_splits.<a href="./src/hubspot_sdk/resources/crm/objects/deal_splits.py">batch_read</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/deal_split_batch_read_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/batch_response_deal_to_deal_splits.py">BatchResponseDealToDealSplits</a></code>
-- <code title="post /crm/v3/objects/deals/splits/batch/upsert">client.crm.objects.deal_splits.<a href="./src/hubspot_sdk/resources/crm/objects/deal_splits.py">batch_upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/deal_split_batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/batch_response_deal_to_deal_splits.py">BatchResponseDealToDealSplits</a></code>
+- <code title="post /crm/v3/objects/deals/splits/batch/read">client.crm.objects.deal_splits.<a href="./src/hubspot_sdk/resources/crm/objects/deal_splits.py">batch_read</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/deal_split_batch_read_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/deal_split_batch_read_response.py">DealSplitBatchReadResponse</a></code>
+- <code title="post /crm/v3/objects/deals/splits/batch/upsert">client.crm.objects.deal_splits.<a href="./src/hubspot_sdk/resources/crm/objects/deal_splits.py">batch_upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/deal_split_batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/deal_split_batch_upsert_response.py">DealSplitBatchUpsertResponse</a></code>
 
 ### Deals
 
@@ -2369,6 +2224,7 @@ from hubspot_sdk.types.crm.objects import (
     ObjectTypeDefinition,
     ObjectTypeDefinitionPatch,
     ObjectTypePropertyCreate,
+    SchemaCreateAssociationResponse,
 )
 ```
 
@@ -2378,7 +2234,7 @@ Methods:
 - <code title="patch /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">update</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/object_type_definition.py">ObjectTypeDefinition</a></code>
 - <code title="get /crm-object-schemas/v3/schemas">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
 - <code title="delete /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">delete</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_delete_params.py">params</a>) -> None</code>
-- <code title="post /crm-object-schemas/v3/schemas/{objectType}/associations">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">create_association</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/association_definition.py">AssociationDefinition</a></code>
+- <code title="post /crm-object-schemas/v3/schemas/{objectType}/associations">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">create_association</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/schema_create_association_response.py">SchemaCreateAssociationResponse</a></code>
 - <code title="delete /crm-object-schemas/v3/schemas/{objectType}/associations/{associationIdentifier}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">delete_association</a>(association_identifier, \*, object_type) -> None</code>
 - <code title="get /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">get</a>(object_type) -> <a href="./src/hubspot_sdk/types/crm/objects/object_schema.py">ObjectSchema</a></code>
 
@@ -2573,18 +2429,13 @@ Methods:
 Types:
 
 ```python
-from hubspot_sdk.types.crm import (
-    CollectionResponsePublicPropertyValidationRuleMapNoPaging,
-    CollectionResponsePublicPropertyValidationRuleNoPaging,
-    PublicPropertyValidationRule,
-    PublicPropertyValidationRuleMap,
-)
+from hubspot_sdk.types.crm import PropertyValidationListResponse, PropertyValidationGetResponse
 ```
 
 Methods:
 
-- <code title="get /crm/v3/property-validations/{objectTypeId}">client.crm.property_validations.<a href="./src/hubspot_sdk/resources/crm/property_validations.py">list</a>(object_type_id) -> <a href="./src/hubspot_sdk/types/crm/collection_response_public_property_validation_rule_map_no_paging.py">CollectionResponsePublicPropertyValidationRuleMapNoPaging</a></code>
-- <code title="get /crm/v3/property-validations/{objectTypeId}/{propertyName}">client.crm.property_validations.<a href="./src/hubspot_sdk/resources/crm/property_validations.py">get</a>(property_name, \*, object_type_id) -> <a href="./src/hubspot_sdk/types/crm/collection_response_public_property_validation_rule_no_paging.py">CollectionResponsePublicPropertyValidationRuleNoPaging</a></code>
+- <code title="get /crm/v3/property-validations/{objectTypeId}">client.crm.property_validations.<a href="./src/hubspot_sdk/resources/crm/property_validations.py">list</a>(object_type_id) -> <a href="./src/hubspot_sdk/types/crm/property_validation_list_response.py">PropertyValidationListResponse</a></code>
+- <code title="get /crm/v3/property-validations/{objectTypeId}/{propertyName}">client.crm.property_validations.<a href="./src/hubspot_sdk/resources/crm/property_validations.py">get</a>(property_name, \*, object_type_id) -> <a href="./src/hubspot_sdk/types/crm/property_validation_get_response.py">PropertyValidationGetResponse</a></code>
 
 ## Timeline
 
@@ -2680,66 +2531,22 @@ Types:
 
 ```python
 from hubspot_sdk.types.events import (
-    AbsoluteComparativeTimestampRefineBy,
-    AbsoluteRangedTimestampRefineBy,
-    AllHistoryRefineBy,
-    AllPropertyTypesOperation,
-    AssociationDefinition,
-    BehavioralEventTypeDefinitionLabels,
-    BoolPropertyOperation,
-    CalendarDatePropertyOperation,
-    CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPaging,
-    ComboEventRule,
-    ComboEventRuleBranch,
-    ComparativeDatePropertyOperation,
-    ComparativePropertyUpdatedOperation,
-    DatePoint,
-    DatePropertyOperation,
-    DateTimePropertyOperation,
-    EnumerationPropertyOperation,
-    ExternalBehavioralEventPropertyCreate,
-    ExternalBehavioralEventPropertyDefinitionPatch,
-    ExternalBehavioralEventTypeDefinition,
-    ExternalBehavioralEventTypeDefinitionEgg,
-    ExternalBehavioralEventTypeDefinitionPatch,
-    FiscalQuarter,
-    FiscalYear,
-    IndexedTimePoint,
-    IndexOffset,
-    MonthReference,
-    MultiStringPropertyOperation,
-    NowReference,
-    NumberPropertyOperation,
-    NumOccurrencesRefineBy,
-    PropertyFilter,
-    PropertyReferencedTime,
-    QuarterReference,
-    RangedDatePropertyOperation,
-    RangedNumberPropertyOperation,
-    RangedTimeOperation,
-    RelativeComparativeTimestampRefineBy,
-    RelativeRangedTimestampRefineBy,
-    RollingDateRangePropertyOperation,
-    RollingPropertyUpdatedOperation,
-    SetOccurrencesRefineBy,
-    StringPropertyOperation,
-    TimeOffset,
-    TimePointOperation,
-    TodayReference,
-    WeekReference,
-    YearReference,
+    EventDefinitionCreateResponse,
+    EventDefinitionUpdateResponse,
+    EventDefinitionListResponse,
+    EventDefinitionGetResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /events/v3/event-definitions">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">create</a>(\*\*<a href="src/hubspot_sdk/types/events/event_definition_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/external_behavioral_event_type_definition.py">ExternalBehavioralEventTypeDefinition</a></code>
-- <code title="patch /events/v3/event-definitions/{eventName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">update</a>(event_name, \*\*<a href="src/hubspot_sdk/types/events/event_definition_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/external_behavioral_event_type_definition.py">ExternalBehavioralEventTypeDefinition</a></code>
-- <code title="get /events/v3/event-definitions">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">list</a>(\*\*<a href="src/hubspot_sdk/types/events/event_definition_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/external_behavioral_event_type_definition.py">SyncPage[ExternalBehavioralEventTypeDefinition]</a></code>
+- <code title="post /events/v3/event-definitions">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">create</a>(\*\*<a href="src/hubspot_sdk/types/events/event_definition_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/event_definition_create_response.py">EventDefinitionCreateResponse</a></code>
+- <code title="patch /events/v3/event-definitions/{eventName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">update</a>(event_name, \*\*<a href="src/hubspot_sdk/types/events/event_definition_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/event_definition_update_response.py">EventDefinitionUpdateResponse</a></code>
+- <code title="get /events/v3/event-definitions">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">list</a>(\*\*<a href="src/hubspot_sdk/types/events/event_definition_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/event_definition_list_response.py">SyncPage[EventDefinitionListResponse]</a></code>
 - <code title="delete /events/v3/event-definitions/{eventName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">delete</a>(event_name) -> None</code>
 - <code title="post /events/v3/event-definitions/{eventName}/property">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">create_property</a>(event_name, \*\*<a href="src/hubspot_sdk/types/events/event_definition_create_property_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 - <code title="delete /events/v3/event-definitions/{eventName}/property/{propertyName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">delete_property</a>(property_name, \*, event_name) -> None</code>
-- <code title="get /events/v3/event-definitions/{eventName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">get</a>(event_name) -> <a href="./src/hubspot_sdk/types/events/external_behavioral_event_type_definition.py">ExternalBehavioralEventTypeDefinition</a></code>
+- <code title="get /events/v3/event-definitions/{eventName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">get</a>(event_name) -> <a href="./src/hubspot_sdk/types/events/event_definition_get_response.py">EventDefinitionGetResponse</a></code>
 - <code title="patch /events/v3/event-definitions/{eventName}/property/{propertyName}">client.events.event_definitions.<a href="./src/hubspot_sdk/resources/events/event_definitions.py">update_property</a>(property_name, \*, event_name, \*\*<a href="src/hubspot_sdk/types/events/event_definition_update_property_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 
 ## Send
@@ -3368,16 +3175,13 @@ Methods:
 Types:
 
 ```python
-from hubspot_sdk.types.settings import (
-    CollectionResponsePublicTaxRateGroupForwardPaging,
-    PublicTaxRateGroup,
-)
+from hubspot_sdk.types.settings import TaxRateListResponse, TaxRateGetResponse
 ```
 
 Methods:
 
-- <code title="get /tax-rates/v1/tax-rates">client.settings.tax_rates.<a href="./src/hubspot_sdk/resources/settings/tax_rates.py">list</a>() -> <a href="./src/hubspot_sdk/types/settings/collection_response_public_tax_rate_group_forward_paging.py">CollectionResponsePublicTaxRateGroupForwardPaging</a></code>
-- <code title="get /tax-rates/v1/tax-rates/{taxRateGroupId}">client.settings.tax_rates.<a href="./src/hubspot_sdk/resources/settings/tax_rates.py">get</a>(tax_rate_group_id) -> <a href="./src/hubspot_sdk/types/settings/public_tax_rate_group.py">PublicTaxRateGroup</a></code>
+- <code title="get /tax-rates/v1/tax-rates">client.settings.tax_rates.<a href="./src/hubspot_sdk/resources/settings/tax_rates.py">list</a>() -> <a href="./src/hubspot_sdk/types/settings/tax_rate_list_response.py">TaxRateListResponse</a></code>
+- <code title="get /tax-rates/v1/tax-rates/{taxRateGroupId}">client.settings.tax_rates.<a href="./src/hubspot_sdk/resources/settings/tax_rates.py">get</a>(tax_rate_group_id) -> <a href="./src/hubspot_sdk/types/settings/tax_rate_get_response.py">TaxRateGetResponse</a></code>
 
 ## Users
 

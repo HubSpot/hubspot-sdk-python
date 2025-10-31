@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.conversations import PublicActor, BatchResponsePublicActor
 
@@ -19,7 +19,7 @@ class TestActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_batch_read(self, client: HubSpot) -> None:
+    def test_method_batch_read(self, client: Hubspot) -> None:
         actor = client.conversations.actors.batch_read(
             inputs=["string"],
         )
@@ -27,7 +27,7 @@ class TestActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_batch_read(self, client: HubSpot) -> None:
+    def test_raw_response_batch_read(self, client: Hubspot) -> None:
         response = client.conversations.actors.with_raw_response.batch_read(
             inputs=["string"],
         )
@@ -39,7 +39,7 @@ class TestActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_batch_read(self, client: HubSpot) -> None:
+    def test_streaming_response_batch_read(self, client: Hubspot) -> None:
         with client.conversations.actors.with_streaming_response.batch_read(
             inputs=["string"],
         ) as response:
@@ -53,7 +53,7 @@ class TestActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         actor = client.conversations.actors.get(
             "actorId",
         )
@@ -61,7 +61,7 @@ class TestActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.conversations.actors.with_raw_response.get(
             "actorId",
         )
@@ -73,7 +73,7 @@ class TestActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.conversations.actors.with_streaming_response.get(
             "actorId",
         ) as response:
@@ -87,7 +87,7 @@ class TestActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `actor_id` but received ''"):
             client.conversations.actors.with_raw_response.get(
                 "",
@@ -101,7 +101,7 @@ class TestAsyncActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_batch_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_batch_read(self, async_client: AsyncHubspot) -> None:
         actor = await async_client.conversations.actors.batch_read(
             inputs=["string"],
         )
@@ -109,7 +109,7 @@ class TestAsyncActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_batch_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_batch_read(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.actors.with_raw_response.batch_read(
             inputs=["string"],
         )
@@ -121,7 +121,7 @@ class TestAsyncActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_batch_read(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_batch_read(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.actors.with_streaming_response.batch_read(
             inputs=["string"],
         ) as response:
@@ -135,7 +135,7 @@ class TestAsyncActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         actor = await async_client.conversations.actors.get(
             "actorId",
         )
@@ -143,7 +143,7 @@ class TestAsyncActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.actors.with_raw_response.get(
             "actorId",
         )
@@ -155,7 +155,7 @@ class TestAsyncActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.actors.with_streaming_response.get(
             "actorId",
         ) as response:
@@ -169,7 +169,7 @@ class TestAsyncActors:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `actor_id` but received ''"):
             await async_client.conversations.actors.with_raw_response.get(
                 "",

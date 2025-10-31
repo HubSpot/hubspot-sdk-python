@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.marketing import EmailSendStatusView
 
@@ -19,7 +19,7 @@ class TestSingleSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_send(self, client: HubSpot) -> None:
+    def test_method_send(self, client: Hubspot) -> None:
         single_send = client.marketing.single_send.send(
             email_id=0,
             message={"to": "to"},
@@ -28,7 +28,7 @@ class TestSingleSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_send_with_all_params(self, client: HubSpot) -> None:
+    def test_method_send_with_all_params(self, client: Hubspot) -> None:
         single_send = client.marketing.single_send.send(
             email_id=0,
             message={
@@ -140,7 +140,7 @@ class TestSingleSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_send(self, client: HubSpot) -> None:
+    def test_raw_response_send(self, client: Hubspot) -> None:
         response = client.marketing.single_send.with_raw_response.send(
             email_id=0,
             message={"to": "to"},
@@ -153,7 +153,7 @@ class TestSingleSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_send(self, client: HubSpot) -> None:
+    def test_streaming_response_send(self, client: Hubspot) -> None:
         with client.marketing.single_send.with_streaming_response.send(
             email_id=0,
             message={"to": "to"},
@@ -174,7 +174,7 @@ class TestAsyncSingleSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_send(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_send(self, async_client: AsyncHubspot) -> None:
         single_send = await async_client.marketing.single_send.send(
             email_id=0,
             message={"to": "to"},
@@ -183,7 +183,7 @@ class TestAsyncSingleSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_send_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_send_with_all_params(self, async_client: AsyncHubspot) -> None:
         single_send = await async_client.marketing.single_send.send(
             email_id=0,
             message={
@@ -295,7 +295,7 @@ class TestAsyncSingleSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_send(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_send(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.single_send.with_raw_response.send(
             email_id=0,
             message={"to": "to"},
@@ -308,7 +308,7 @@ class TestAsyncSingleSend:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_send(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_send(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.single_send.with_streaming_response.send(
             email_id=0,
             message={"to": "to"},

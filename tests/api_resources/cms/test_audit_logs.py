@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.cms import PublicAuditLog
+from hubspot_sdk.types.cms import AuditLogListResponse
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,13 +20,13 @@ class TestAuditLogs:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         audit_log = client.cms.audit_logs.list()
-        assert_matches_type(SyncPage[PublicAuditLog], audit_log, path=["response"])
+        assert_matches_type(SyncPage[AuditLogListResponse], audit_log, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
         audit_log = client.cms.audit_logs.list(
             after="after",
             before="before",
@@ -37,27 +37,27 @@ class TestAuditLogs:
             sort=["string"],
             user_id=["string"],
         )
-        assert_matches_type(SyncPage[PublicAuditLog], audit_log, path=["response"])
+        assert_matches_type(SyncPage[AuditLogListResponse], audit_log, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.cms.audit_logs.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         audit_log = response.parse()
-        assert_matches_type(SyncPage[PublicAuditLog], audit_log, path=["response"])
+        assert_matches_type(SyncPage[AuditLogListResponse], audit_log, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.cms.audit_logs.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             audit_log = response.parse()
-            assert_matches_type(SyncPage[PublicAuditLog], audit_log, path=["response"])
+            assert_matches_type(SyncPage[AuditLogListResponse], audit_log, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -69,13 +69,13 @@ class TestAsyncAuditLogs:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         audit_log = await async_client.cms.audit_logs.list()
-        assert_matches_type(AsyncPage[PublicAuditLog], audit_log, path=["response"])
+        assert_matches_type(AsyncPage[AuditLogListResponse], audit_log, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
         audit_log = await async_client.cms.audit_logs.list(
             after="after",
             before="before",
@@ -86,26 +86,26 @@ class TestAsyncAuditLogs:
             sort=["string"],
             user_id=["string"],
         )
-        assert_matches_type(AsyncPage[PublicAuditLog], audit_log, path=["response"])
+        assert_matches_type(AsyncPage[AuditLogListResponse], audit_log, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.audit_logs.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         audit_log = await response.parse()
-        assert_matches_type(AsyncPage[PublicAuditLog], audit_log, path=["response"])
+        assert_matches_type(AsyncPage[AuditLogListResponse], audit_log, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.audit_logs.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             audit_log = await response.parse()
-            assert_matches_type(AsyncPage[PublicAuditLog], audit_log, path=["response"])
+            assert_matches_type(AsyncPage[AuditLogListResponse], audit_log, path=["response"])
 
         assert cast(Any, response.is_closed) is True

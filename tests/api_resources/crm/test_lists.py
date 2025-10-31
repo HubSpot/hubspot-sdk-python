@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     ListFetchResponse,
@@ -26,7 +26,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         list_ = client.crm.lists.create(
             name="Dynamic Association List Example",
             object_type_id="0-1",
@@ -36,7 +36,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.create(
             name="Dynamic Association List Example",
             object_type_id="0-1",
@@ -231,7 +231,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.create(
             name="Dynamic Association List Example",
             object_type_id="0-1",
@@ -245,7 +245,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.create(
             name="Dynamic Association List Example",
             object_type_id="0-1",
@@ -261,13 +261,13 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         list_ = client.crm.lists.list()
         assert_matches_type(ListsByIDResponse, list_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.list(
             include_filters=True,
             list_ids=["string"],
@@ -276,7 +276,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.list()
 
         assert response.is_closed is True
@@ -286,7 +286,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -298,7 +298,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         list_ = client.crm.lists.delete(
             "listId",
         )
@@ -306,7 +306,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.delete(
             "listId",
         )
@@ -318,7 +318,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.delete(
             "listId",
         ) as response:
@@ -332,7 +332,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.delete(
                 "",
@@ -340,7 +340,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_schedule_conversion(self, client: HubSpot) -> None:
+    def test_method_delete_schedule_conversion(self, client: Hubspot) -> None:
         list_ = client.crm.lists.delete_schedule_conversion(
             "listId",
         )
@@ -348,7 +348,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete_schedule_conversion(self, client: HubSpot) -> None:
+    def test_raw_response_delete_schedule_conversion(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.delete_schedule_conversion(
             "listId",
         )
@@ -360,7 +360,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete_schedule_conversion(self, client: HubSpot) -> None:
+    def test_streaming_response_delete_schedule_conversion(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.delete_schedule_conversion(
             "listId",
         ) as response:
@@ -374,7 +374,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete_schedule_conversion(self, client: HubSpot) -> None:
+    def test_path_params_delete_schedule_conversion(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.delete_schedule_conversion(
                 "",
@@ -382,7 +382,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         list_ = client.crm.lists.get(
             list_id="listId",
         )
@@ -390,7 +390,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.get(
             list_id="listId",
             include_filters=True,
@@ -399,7 +399,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.get(
             list_id="listId",
         )
@@ -411,7 +411,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.get(
             list_id="listId",
         ) as response:
@@ -425,7 +425,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.get(
                 list_id="",
@@ -433,7 +433,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_object_type_id_and_name(self, client: HubSpot) -> None:
+    def test_method_get_by_object_type_id_and_name(self, client: Hubspot) -> None:
         list_ = client.crm.lists.get_by_object_type_id_and_name(
             list_name="listName",
             object_type_id="objectTypeId",
@@ -442,7 +442,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_object_type_id_and_name_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_by_object_type_id_and_name_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.get_by_object_type_id_and_name(
             list_name="listName",
             object_type_id="objectTypeId",
@@ -452,7 +452,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_by_object_type_id_and_name(self, client: HubSpot) -> None:
+    def test_raw_response_get_by_object_type_id_and_name(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.get_by_object_type_id_and_name(
             list_name="listName",
             object_type_id="objectTypeId",
@@ -465,7 +465,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_object_type_id_and_name(self, client: HubSpot) -> None:
+    def test_streaming_response_get_by_object_type_id_and_name(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.get_by_object_type_id_and_name(
             list_name="listName",
             object_type_id="objectTypeId",
@@ -480,7 +480,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_by_object_type_id_and_name(self, client: HubSpot) -> None:
+    def test_path_params_get_by_object_type_id_and_name(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             client.crm.lists.with_raw_response.get_by_object_type_id_and_name(
                 list_name="listName",
@@ -495,7 +495,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_schedule_conversion(self, client: HubSpot) -> None:
+    def test_method_get_schedule_conversion(self, client: Hubspot) -> None:
         list_ = client.crm.lists.get_schedule_conversion(
             "listId",
         )
@@ -503,7 +503,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_schedule_conversion(self, client: HubSpot) -> None:
+    def test_raw_response_get_schedule_conversion(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.get_schedule_conversion(
             "listId",
         )
@@ -515,7 +515,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_schedule_conversion(self, client: HubSpot) -> None:
+    def test_streaming_response_get_schedule_conversion(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.get_schedule_conversion(
             "listId",
         ) as response:
@@ -529,7 +529,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_schedule_conversion(self, client: HubSpot) -> None:
+    def test_path_params_get_schedule_conversion(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.get_schedule_conversion(
                 "",
@@ -537,7 +537,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_restore(self, client: HubSpot) -> None:
+    def test_method_restore(self, client: Hubspot) -> None:
         list_ = client.crm.lists.restore(
             "listId",
         )
@@ -545,7 +545,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_restore(self, client: HubSpot) -> None:
+    def test_raw_response_restore(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.restore(
             "listId",
         )
@@ -557,7 +557,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_restore(self, client: HubSpot) -> None:
+    def test_streaming_response_restore(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.restore(
             "listId",
         ) as response:
@@ -571,7 +571,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_restore(self, client: HubSpot) -> None:
+    def test_path_params_restore(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.restore(
                 "",
@@ -579,7 +579,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_schedule_conversion_overload_1(self, client: HubSpot) -> None:
+    def test_method_schedule_conversion_overload_1(self, client: Hubspot) -> None:
         list_ = client.crm.lists.schedule_conversion(
             list_id="listId",
             conversion_type="CONVERSION_DATE",
@@ -591,7 +591,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_schedule_conversion_overload_1(self, client: HubSpot) -> None:
+    def test_raw_response_schedule_conversion_overload_1(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.schedule_conversion(
             list_id="listId",
             conversion_type="CONVERSION_DATE",
@@ -607,7 +607,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_schedule_conversion_overload_1(self, client: HubSpot) -> None:
+    def test_streaming_response_schedule_conversion_overload_1(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.schedule_conversion(
             list_id="listId",
             conversion_type="CONVERSION_DATE",
@@ -625,7 +625,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_schedule_conversion_overload_1(self, client: HubSpot) -> None:
+    def test_path_params_schedule_conversion_overload_1(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.schedule_conversion(
                 list_id="",
@@ -637,7 +637,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_schedule_conversion_overload_2(self, client: HubSpot) -> None:
+    def test_method_schedule_conversion_overload_2(self, client: Hubspot) -> None:
         list_ = client.crm.lists.schedule_conversion(
             list_id="listId",
             conversion_type="INACTIVITY",
@@ -648,7 +648,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_schedule_conversion_overload_2(self, client: HubSpot) -> None:
+    def test_raw_response_schedule_conversion_overload_2(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.schedule_conversion(
             list_id="listId",
             conversion_type="INACTIVITY",
@@ -663,7 +663,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_schedule_conversion_overload_2(self, client: HubSpot) -> None:
+    def test_streaming_response_schedule_conversion_overload_2(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.schedule_conversion(
             list_id="listId",
             conversion_type="INACTIVITY",
@@ -680,7 +680,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_schedule_conversion_overload_2(self, client: HubSpot) -> None:
+    def test_path_params_schedule_conversion_overload_2(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.schedule_conversion(
                 list_id="",
@@ -691,13 +691,13 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_search(self, client: HubSpot) -> None:
+    def test_method_search(self, client: Hubspot) -> None:
         list_ = client.crm.lists.search()
         assert_matches_type(ListSearchResponse, list_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: HubSpot) -> None:
+    def test_method_search_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.search(
             additional_properties=["hs_list_size_week_delta"],
             count=100,
@@ -711,7 +711,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: HubSpot) -> None:
+    def test_raw_response_search(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.search()
 
         assert response.is_closed is True
@@ -721,7 +721,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: HubSpot) -> None:
+    def test_streaming_response_search(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -733,7 +733,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_filters(self, client: HubSpot) -> None:
+    def test_method_update_filters(self, client: Hubspot) -> None:
         list_ = client.crm.lists.update_filters(
             list_id="listId",
             filter_branch={
@@ -926,7 +926,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_filters_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_filters_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.update_filters(
             list_id="listId",
             filter_branch={
@@ -1126,7 +1126,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_filters(self, client: HubSpot) -> None:
+    def test_raw_response_update_filters(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.update_filters(
             list_id="listId",
             filter_branch={
@@ -1323,7 +1323,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_filters(self, client: HubSpot) -> None:
+    def test_streaming_response_update_filters(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.update_filters(
             list_id="listId",
             filter_branch={
@@ -1522,7 +1522,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_filters(self, client: HubSpot) -> None:
+    def test_path_params_update_filters(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.update_filters(
                 list_id="",
@@ -1715,7 +1715,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_name(self, client: HubSpot) -> None:
+    def test_method_update_name(self, client: Hubspot) -> None:
         list_ = client.crm.lists.update_name(
             list_id="listId",
         )
@@ -1723,7 +1723,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_name_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_name_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.update_name(
             list_id="listId",
             include_filters=True,
@@ -1733,7 +1733,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_name(self, client: HubSpot) -> None:
+    def test_raw_response_update_name(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.update_name(
             list_id="listId",
         )
@@ -1745,7 +1745,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_name(self, client: HubSpot) -> None:
+    def test_streaming_response_update_name(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.update_name(
             list_id="listId",
         ) as response:
@@ -1759,7 +1759,7 @@ class TestLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_name(self, client: HubSpot) -> None:
+    def test_path_params_update_name(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             client.crm.lists.with_raw_response.update_name(
                 list_id="",
@@ -1773,7 +1773,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.create(
             name="Dynamic Association List Example",
             object_type_id="0-1",
@@ -1783,7 +1783,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.create(
             name="Dynamic Association List Example",
             object_type_id="0-1",
@@ -1978,7 +1978,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.create(
             name="Dynamic Association List Example",
             object_type_id="0-1",
@@ -1992,7 +1992,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.create(
             name="Dynamic Association List Example",
             object_type_id="0-1",
@@ -2008,13 +2008,13 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.list()
         assert_matches_type(ListsByIDResponse, list_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.list(
             include_filters=True,
             list_ids=["string"],
@@ -2023,7 +2023,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.list()
 
         assert response.is_closed is True
@@ -2033,7 +2033,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2045,7 +2045,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.delete(
             "listId",
         )
@@ -2053,7 +2053,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.delete(
             "listId",
         )
@@ -2065,7 +2065,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.delete(
             "listId",
         ) as response:
@@ -2079,7 +2079,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.delete(
                 "",
@@ -2087,7 +2087,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_schedule_conversion(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_schedule_conversion(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.delete_schedule_conversion(
             "listId",
         )
@@ -2095,7 +2095,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete_schedule_conversion(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete_schedule_conversion(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.delete_schedule_conversion(
             "listId",
         )
@@ -2107,7 +2107,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_schedule_conversion(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete_schedule_conversion(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.delete_schedule_conversion(
             "listId",
         ) as response:
@@ -2121,7 +2121,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete_schedule_conversion(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete_schedule_conversion(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.delete_schedule_conversion(
                 "",
@@ -2129,7 +2129,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.get(
             list_id="listId",
         )
@@ -2137,7 +2137,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.get(
             list_id="listId",
             include_filters=True,
@@ -2146,7 +2146,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.get(
             list_id="listId",
         )
@@ -2158,7 +2158,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.get(
             list_id="listId",
         ) as response:
@@ -2172,7 +2172,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.get(
                 list_id="",
@@ -2180,7 +2180,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_object_type_id_and_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_by_object_type_id_and_name(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.get_by_object_type_id_and_name(
             list_name="listName",
             object_type_id="objectTypeId",
@@ -2189,7 +2189,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_object_type_id_and_name_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_by_object_type_id_and_name_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.get_by_object_type_id_and_name(
             list_name="listName",
             object_type_id="objectTypeId",
@@ -2199,7 +2199,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_object_type_id_and_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_by_object_type_id_and_name(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.get_by_object_type_id_and_name(
             list_name="listName",
             object_type_id="objectTypeId",
@@ -2212,7 +2212,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_object_type_id_and_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_by_object_type_id_and_name(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.get_by_object_type_id_and_name(
             list_name="listName",
             object_type_id="objectTypeId",
@@ -2227,7 +2227,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_by_object_type_id_and_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_by_object_type_id_and_name(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.lists.with_raw_response.get_by_object_type_id_and_name(
                 list_name="listName",
@@ -2242,7 +2242,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_schedule_conversion(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_schedule_conversion(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.get_schedule_conversion(
             "listId",
         )
@@ -2250,7 +2250,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_schedule_conversion(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_schedule_conversion(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.get_schedule_conversion(
             "listId",
         )
@@ -2262,7 +2262,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_schedule_conversion(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_schedule_conversion(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.get_schedule_conversion(
             "listId",
         ) as response:
@@ -2276,7 +2276,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_schedule_conversion(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_schedule_conversion(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.get_schedule_conversion(
                 "",
@@ -2284,7 +2284,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_restore(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_restore(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.restore(
             "listId",
         )
@@ -2292,7 +2292,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_restore(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_restore(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.restore(
             "listId",
         )
@@ -2304,7 +2304,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_restore(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_restore(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.restore(
             "listId",
         ) as response:
@@ -2318,7 +2318,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_restore(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_restore(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.restore(
                 "",
@@ -2326,7 +2326,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_schedule_conversion_overload_1(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_schedule_conversion_overload_1(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.schedule_conversion(
             list_id="listId",
             conversion_type="CONVERSION_DATE",
@@ -2338,7 +2338,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_schedule_conversion_overload_1(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_schedule_conversion_overload_1(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.schedule_conversion(
             list_id="listId",
             conversion_type="CONVERSION_DATE",
@@ -2354,7 +2354,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_schedule_conversion_overload_1(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_schedule_conversion_overload_1(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.schedule_conversion(
             list_id="listId",
             conversion_type="CONVERSION_DATE",
@@ -2372,7 +2372,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_schedule_conversion_overload_1(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_schedule_conversion_overload_1(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.schedule_conversion(
                 list_id="",
@@ -2384,7 +2384,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_schedule_conversion_overload_2(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_schedule_conversion_overload_2(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.schedule_conversion(
             list_id="listId",
             conversion_type="INACTIVITY",
@@ -2395,7 +2395,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_schedule_conversion_overload_2(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_schedule_conversion_overload_2(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.schedule_conversion(
             list_id="listId",
             conversion_type="INACTIVITY",
@@ -2410,7 +2410,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_schedule_conversion_overload_2(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_schedule_conversion_overload_2(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.schedule_conversion(
             list_id="listId",
             conversion_type="INACTIVITY",
@@ -2427,7 +2427,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_schedule_conversion_overload_2(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_schedule_conversion_overload_2(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.schedule_conversion(
                 list_id="",
@@ -2438,13 +2438,13 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_search(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.search()
         assert_matches_type(ListSearchResponse, list_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.search(
             additional_properties=["hs_list_size_week_delta"],
             count=100,
@@ -2458,7 +2458,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.search()
 
         assert response.is_closed is True
@@ -2468,7 +2468,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2480,7 +2480,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_filters(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_filters(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.update_filters(
             list_id="listId",
             filter_branch={
@@ -2673,7 +2673,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_filters_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_filters_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.update_filters(
             list_id="listId",
             filter_branch={
@@ -2873,7 +2873,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_filters(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_filters(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.update_filters(
             list_id="listId",
             filter_branch={
@@ -3070,7 +3070,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_filters(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_filters(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.update_filters(
             list_id="listId",
             filter_branch={
@@ -3269,7 +3269,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_filters(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_filters(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.update_filters(
                 list_id="",
@@ -3462,7 +3462,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_name(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.update_name(
             list_id="listId",
         )
@@ -3470,7 +3470,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_name_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_name_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.update_name(
             list_id="listId",
             include_filters=True,
@@ -3480,7 +3480,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_name(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.update_name(
             list_id="listId",
         )
@@ -3492,7 +3492,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_name(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.update_name(
             list_id="listId",
         ) as response:
@@ -3506,7 +3506,7 @@ class TestAsyncLists:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_name(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `list_id` but received ''"):
             await async_client.crm.lists.with_raw_response.update_name(
                 list_id="",

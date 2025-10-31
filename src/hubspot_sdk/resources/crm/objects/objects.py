@@ -221,14 +221,6 @@ from .postal_mail.postal_mail import (
     PostalMailResourceWithStreamingResponse,
     AsyncPostalMailResourceWithStreamingResponse,
 )
-from .appointments.appointments import (
-    AppointmentsResource,
-    AsyncAppointmentsResource,
-    AppointmentsResourceWithRawResponse,
-    AsyncAppointmentsResourceWithRawResponse,
-    AppointmentsResourceWithStreamingResponse,
-    AsyncAppointmentsResourceWithStreamingResponse,
-)
 from .goal_targets.goal_targets import (
     GoalTargetsResource,
     AsyncGoalTargetsResource,
@@ -282,10 +274,6 @@ __all__ = ["ObjectsResource", "AsyncObjectsResource"]
 
 
 class ObjectsResource(SyncAPIResource):
-    @cached_property
-    def appointments(self) -> AppointmentsResource:
-        return AppointmentsResource(self._client)
-
     @cached_property
     def calls(self) -> CallsResource:
         return CallsResource(self._client)
@@ -443,10 +431,6 @@ class ObjectsResource(SyncAPIResource):
 
 
 class AsyncObjectsResource(AsyncAPIResource):
-    @cached_property
-    def appointments(self) -> AsyncAppointmentsResource:
-        return AsyncAppointmentsResource(self._client)
-
     @cached_property
     def calls(self) -> AsyncCallsResource:
         return AsyncCallsResource(self._client)
@@ -608,10 +592,6 @@ class ObjectsResourceWithRawResponse:
         self._objects = objects
 
     @cached_property
-    def appointments(self) -> AppointmentsResourceWithRawResponse:
-        return AppointmentsResourceWithRawResponse(self._objects.appointments)
-
-    @cached_property
     def calls(self) -> CallsResourceWithRawResponse:
         return CallsResourceWithRawResponse(self._objects.calls)
 
@@ -751,10 +731,6 @@ class ObjectsResourceWithRawResponse:
 class AsyncObjectsResourceWithRawResponse:
     def __init__(self, objects: AsyncObjectsResource) -> None:
         self._objects = objects
-
-    @cached_property
-    def appointments(self) -> AsyncAppointmentsResourceWithRawResponse:
-        return AsyncAppointmentsResourceWithRawResponse(self._objects.appointments)
 
     @cached_property
     def calls(self) -> AsyncCallsResourceWithRawResponse:
@@ -898,10 +874,6 @@ class ObjectsResourceWithStreamingResponse:
         self._objects = objects
 
     @cached_property
-    def appointments(self) -> AppointmentsResourceWithStreamingResponse:
-        return AppointmentsResourceWithStreamingResponse(self._objects.appointments)
-
-    @cached_property
     def calls(self) -> CallsResourceWithStreamingResponse:
         return CallsResourceWithStreamingResponse(self._objects.calls)
 
@@ -1041,10 +1013,6 @@ class ObjectsResourceWithStreamingResponse:
 class AsyncObjectsResourceWithStreamingResponse:
     def __init__(self, objects: AsyncObjectsResource) -> None:
         self._objects = objects
-
-    @cached_property
-    def appointments(self) -> AsyncAppointmentsResourceWithStreamingResponse:
-        return AsyncAppointmentsResourceWithStreamingResponse(self._objects.appointments)
 
     @cached_property
     def calls(self) -> AsyncCallsResourceWithStreamingResponse:

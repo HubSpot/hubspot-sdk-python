@@ -13,7 +13,8 @@ from .user_create_params import UserCreateParams as UserCreateParams
 from .user_delete_params import UserDeleteParams as UserDeleteParams
 from .user_update_params import UserUpdateParams as UserUpdateParams
 from .public_permission_set import PublicPermissionSet as PublicPermissionSet
-from .public_tax_rate_group import PublicTaxRateGroup as PublicTaxRateGroup
+from .tax_rate_get_response import TaxRateGetResponse as TaxRateGetResponse
+from .tax_rate_list_response import TaxRateListResponse as TaxRateListResponse
 from .currency_batch_get_params import CurrencyBatchGetParams as CurrencyBatchGetParams
 from .batch_response_exchange_rate import BatchResponseExchangeRate as BatchResponseExchangeRate
 from .currency_batch_create_params import CurrencyBatchCreateParams as CurrencyBatchCreateParams
@@ -44,7 +45,4 @@ from .collection_response_exchange_rate_forward_paging import (
 )
 from .collection_response_public_permission_set_no_paging import (
     CollectionResponsePublicPermissionSetNoPaging as CollectionResponsePublicPermissionSetNoPaging,
-)
-from .collection_response_public_tax_rate_group_forward_paging import (
-    CollectionResponsePublicTaxRateGroupForwardPaging as CollectionResponsePublicTaxRateGroupForwardPaging,
 )

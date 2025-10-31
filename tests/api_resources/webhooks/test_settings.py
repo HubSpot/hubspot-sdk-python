@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.webhooks import SettingsResponse
 
@@ -19,7 +19,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         setting = client.webhooks.settings.update(
             app_id=0,
             target_url="https://www.example.com/hubspot/target",
@@ -29,7 +29,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.webhooks.settings.with_raw_response.update(
             app_id=0,
             target_url="https://www.example.com/hubspot/target",
@@ -43,7 +43,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.webhooks.settings.with_streaming_response.update(
             app_id=0,
             target_url="https://www.example.com/hubspot/target",
@@ -59,7 +59,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         setting = client.webhooks.settings.list(
             0,
         )
@@ -67,7 +67,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.webhooks.settings.with_raw_response.list(
             0,
         )
@@ -79,7 +79,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.webhooks.settings.with_streaming_response.list(
             0,
         ) as response:
@@ -93,7 +93,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         setting = client.webhooks.settings.delete(
             0,
         )
@@ -101,7 +101,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.webhooks.settings.with_raw_response.delete(
             0,
         )
@@ -113,7 +113,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.webhooks.settings.with_streaming_response.delete(
             0,
         ) as response:
@@ -133,7 +133,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         setting = await async_client.webhooks.settings.update(
             app_id=0,
             target_url="https://www.example.com/hubspot/target",
@@ -143,7 +143,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.settings.with_raw_response.update(
             app_id=0,
             target_url="https://www.example.com/hubspot/target",
@@ -157,7 +157,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.settings.with_streaming_response.update(
             app_id=0,
             target_url="https://www.example.com/hubspot/target",
@@ -173,7 +173,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         setting = await async_client.webhooks.settings.list(
             0,
         )
@@ -181,7 +181,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.settings.with_raw_response.list(
             0,
         )
@@ -193,7 +193,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.settings.with_streaming_response.list(
             0,
         ) as response:
@@ -207,7 +207,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         setting = await async_client.webhooks.settings.delete(
             0,
         )
@@ -215,7 +215,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.webhooks.settings.with_raw_response.delete(
             0,
         )
@@ -227,7 +227,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.webhooks.settings.with_streaming_response.delete(
             0,
         ) as response:

@@ -7,10 +7,12 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.cms import CollectionResponsePropertyNoPaging
 from hubspot_sdk.types.shared import Property, BatchResponseProperty
+from hubspot_sdk.types.cms.media_bridge import (
+    PropertyListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +22,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.create(
             object_type="objectType",
             app_id="appId",
@@ -34,7 +36,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.create(
             object_type="objectType",
             app_id="appId",
@@ -66,7 +68,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.properties.with_raw_response.create(
             object_type="objectType",
             app_id="appId",
@@ -84,7 +86,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.media_bridge.properties.with_streaming_response.create(
             object_type="objectType",
             app_id="appId",
@@ -104,7 +106,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create(self, client: HubSpot) -> None:
+    def test_path_params_create(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.properties.with_raw_response.create(
                 object_type="objectType",
@@ -129,7 +131,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.update(
             property_name="propertyName",
             app_id="appId",
@@ -139,7 +141,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.update(
             property_name="propertyName",
             app_id="appId",
@@ -168,7 +170,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.properties.with_raw_response.update(
             property_name="propertyName",
             app_id="appId",
@@ -182,7 +184,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.cms.media_bridge.properties.with_streaming_response.update(
             property_name="propertyName",
             app_id="appId",
@@ -198,7 +200,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.properties.with_raw_response.update(
                 property_name="propertyName",
@@ -222,16 +224,16 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.list(
             object_type="objectType",
             app_id="appId",
         )
-        assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
+        assert_matches_type(PropertyListResponse, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.properties.with_raw_response.list(
             object_type="objectType",
             app_id="appId",
@@ -240,11 +242,11 @@ class TestProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = response.parse()
-        assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
+        assert_matches_type(PropertyListResponse, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.cms.media_bridge.properties.with_streaming_response.list(
             object_type="objectType",
             app_id="appId",
@@ -253,13 +255,13 @@ class TestProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = response.parse()
-            assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
+            assert_matches_type(PropertyListResponse, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: HubSpot) -> None:
+    def test_path_params_list(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.properties.with_raw_response.list(
                 object_type="objectType",
@@ -274,7 +276,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.delete(
             property_name="propertyName",
             app_id="appId",
@@ -284,7 +286,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.properties.with_raw_response.delete(
             property_name="propertyName",
             app_id="appId",
@@ -298,7 +300,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.cms.media_bridge.properties.with_streaming_response.delete(
             property_name="propertyName",
             app_id="appId",
@@ -314,7 +316,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.properties.with_raw_response.delete(
                 property_name="propertyName",
@@ -338,7 +340,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_archive_batch(self, client: HubSpot) -> None:
+    def test_method_archive_batch(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.archive_batch(
             object_type="objectType",
             app_id="appId",
@@ -348,7 +350,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_archive_batch(self, client: HubSpot) -> None:
+    def test_raw_response_archive_batch(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.properties.with_raw_response.archive_batch(
             object_type="objectType",
             app_id="appId",
@@ -362,7 +364,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_archive_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_archive_batch(self, client: Hubspot) -> None:
         with client.cms.media_bridge.properties.with_streaming_response.archive_batch(
             object_type="objectType",
             app_id="appId",
@@ -378,7 +380,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_archive_batch(self, client: HubSpot) -> None:
+    def test_path_params_archive_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.properties.with_raw_response.archive_batch(
                 object_type="objectType",
@@ -395,7 +397,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_batch(self, client: HubSpot) -> None:
+    def test_method_create_batch(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.create_batch(
             object_type="objectType",
             app_id="appId",
@@ -413,7 +415,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_batch(self, client: HubSpot) -> None:
+    def test_raw_response_create_batch(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.properties.with_raw_response.create_batch(
             object_type="objectType",
             app_id="appId",
@@ -435,7 +437,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_create_batch(self, client: Hubspot) -> None:
         with client.cms.media_bridge.properties.with_streaming_response.create_batch(
             object_type="objectType",
             app_id="appId",
@@ -459,7 +461,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_batch(self, client: HubSpot) -> None:
+    def test_path_params_create_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.properties.with_raw_response.create_batch(
                 object_type="objectType",
@@ -492,7 +494,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.get(
             property_name="propertyName",
             app_id="appId",
@@ -502,7 +504,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.properties.with_raw_response.get(
             property_name="propertyName",
             app_id="appId",
@@ -516,7 +518,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.cms.media_bridge.properties.with_streaming_response.get(
             property_name="propertyName",
             app_id="appId",
@@ -532,7 +534,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.properties.with_raw_response.get(
                 property_name="propertyName",
@@ -556,7 +558,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_batch(self, client: HubSpot) -> None:
+    def test_method_get_batch(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.get_batch(
             object_type="objectType",
             app_id="appId",
@@ -567,7 +569,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_batch_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_batch_with_all_params(self, client: Hubspot) -> None:
         property = client.cms.media_bridge.properties.get_batch(
             object_type="objectType",
             app_id="appId",
@@ -579,7 +581,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_batch(self, client: HubSpot) -> None:
+    def test_raw_response_get_batch(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.properties.with_raw_response.get_batch(
             object_type="objectType",
             app_id="appId",
@@ -594,7 +596,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_batch(self, client: HubSpot) -> None:
+    def test_streaming_response_get_batch(self, client: Hubspot) -> None:
         with client.cms.media_bridge.properties.with_streaming_response.get_batch(
             object_type="objectType",
             app_id="appId",
@@ -611,7 +613,7 @@ class TestProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_batch(self, client: HubSpot) -> None:
+    def test_path_params_get_batch(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.properties.with_raw_response.get_batch(
                 object_type="objectType",
@@ -636,7 +638,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.create(
             object_type="objectType",
             app_id="appId",
@@ -650,7 +652,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.create(
             object_type="objectType",
             app_id="appId",
@@ -682,7 +684,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.properties.with_raw_response.create(
             object_type="objectType",
             app_id="appId",
@@ -700,7 +702,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.properties.with_streaming_response.create(
             object_type="objectType",
             app_id="appId",
@@ -720,7 +722,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.properties.with_raw_response.create(
                 object_type="objectType",
@@ -745,7 +747,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.update(
             property_name="propertyName",
             app_id="appId",
@@ -755,7 +757,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.update(
             property_name="propertyName",
             app_id="appId",
@@ -784,7 +786,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.properties.with_raw_response.update(
             property_name="propertyName",
             app_id="appId",
@@ -798,7 +800,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.properties.with_streaming_response.update(
             property_name="propertyName",
             app_id="appId",
@@ -814,7 +816,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.properties.with_raw_response.update(
                 property_name="propertyName",
@@ -838,16 +840,16 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.list(
             object_type="objectType",
             app_id="appId",
         )
-        assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
+        assert_matches_type(PropertyListResponse, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.properties.with_raw_response.list(
             object_type="objectType",
             app_id="appId",
@@ -856,11 +858,11 @@ class TestAsyncProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = await response.parse()
-        assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
+        assert_matches_type(PropertyListResponse, property, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.properties.with_streaming_response.list(
             object_type="objectType",
             app_id="appId",
@@ -869,13 +871,13 @@ class TestAsyncProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = await response.parse()
-            assert_matches_type(CollectionResponsePropertyNoPaging, property, path=["response"])
+            assert_matches_type(PropertyListResponse, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.properties.with_raw_response.list(
                 object_type="objectType",
@@ -890,7 +892,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.delete(
             property_name="propertyName",
             app_id="appId",
@@ -900,7 +902,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.properties.with_raw_response.delete(
             property_name="propertyName",
             app_id="appId",
@@ -914,7 +916,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.properties.with_streaming_response.delete(
             property_name="propertyName",
             app_id="appId",
@@ -930,7 +932,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.properties.with_raw_response.delete(
                 property_name="propertyName",
@@ -954,7 +956,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_archive_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_archive_batch(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.archive_batch(
             object_type="objectType",
             app_id="appId",
@@ -964,7 +966,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_archive_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_archive_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.properties.with_raw_response.archive_batch(
             object_type="objectType",
             app_id="appId",
@@ -978,7 +980,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_archive_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_archive_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.properties.with_streaming_response.archive_batch(
             object_type="objectType",
             app_id="appId",
@@ -994,7 +996,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_archive_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_archive_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.properties.with_raw_response.archive_batch(
                 object_type="objectType",
@@ -1011,7 +1013,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_batch(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.create_batch(
             object_type="objectType",
             app_id="appId",
@@ -1029,7 +1031,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.properties.with_raw_response.create_batch(
             object_type="objectType",
             app_id="appId",
@@ -1051,7 +1053,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.properties.with_streaming_response.create_batch(
             object_type="objectType",
             app_id="appId",
@@ -1075,7 +1077,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.properties.with_raw_response.create_batch(
                 object_type="objectType",
@@ -1108,7 +1110,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.get(
             property_name="propertyName",
             app_id="appId",
@@ -1118,7 +1120,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.properties.with_raw_response.get(
             property_name="propertyName",
             app_id="appId",
@@ -1132,7 +1134,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.properties.with_streaming_response.get(
             property_name="propertyName",
             app_id="appId",
@@ -1148,7 +1150,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.properties.with_raw_response.get(
                 property_name="propertyName",
@@ -1172,7 +1174,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_batch(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.get_batch(
             object_type="objectType",
             app_id="appId",
@@ -1183,7 +1185,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_batch_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_batch_with_all_params(self, async_client: AsyncHubspot) -> None:
         property = await async_client.cms.media_bridge.properties.get_batch(
             object_type="objectType",
             app_id="appId",
@@ -1195,7 +1197,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.properties.with_raw_response.get_batch(
             object_type="objectType",
             app_id="appId",
@@ -1210,7 +1212,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.properties.with_streaming_response.get_batch(
             object_type="objectType",
             app_id="appId",
@@ -1227,7 +1229,7 @@ class TestAsyncProperties:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_batch(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_batch(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.properties.with_raw_response.get_batch(
                 object_type="objectType",

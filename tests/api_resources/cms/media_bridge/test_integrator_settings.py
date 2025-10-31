@@ -7,16 +7,19 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.cms import (
-    EventVisibilityChange,
-    EventVisibilityResponse,
-    ObjectDefinitionResponse,
-    IntegratorOEmbedDomainModel,
-    OEmbedDomainsCollectionResponse,
-    BulkIntegratorObjectCreationResponse,
-    MediaBridgeProviderRegistrationResponse,
+from hubspot_sdk.types.cms.media_bridge import (
+    IntegratorSettingUpdateAppNameResponse,
+    IntegratorSettingGetOembedDomainResponse,
+    IntegratorSettingRegisterAppNameResponse,
+    IntegratorSettingListOembedDomainsResponse,
+    IntegratorSettingCreateOembedDomainResponse,
+    IntegratorSettingUpdateOembedDomainResponse,
+    IntegratorSettingCreateObjectDefinitionResponse,
+    IntegratorSettingGetEventVisibilitySettingsResponse,
+    IntegratorSettingUpdateEventVisibilitySettingsResponse,
+    IntegratorSettingGetObjectDefinitionsByMediaTypeResponse,
 )
 
 # pyright: reportDeprecated=false
@@ -29,16 +32,16 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_object_definition(self, client: HubSpot) -> None:
+    def test_method_create_object_definition(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.create_object_definition(
             app_id="appId",
             media_types=["VIDEO"],
         )
-        assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_object_definition(self, client: HubSpot) -> None:
+    def test_raw_response_create_object_definition(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.create_object_definition(
             app_id="appId",
             media_types=["VIDEO"],
@@ -47,11 +50,11 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_object_definition(self, client: HubSpot) -> None:
+    def test_streaming_response_create_object_definition(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.create_object_definition(
             app_id="appId",
             media_types=["VIDEO"],
@@ -60,13 +63,13 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_object_definition(self, client: HubSpot) -> None:
+    def test_path_params_create_object_definition(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.create_object_definition(
                 app_id="",
@@ -75,7 +78,7 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_oembed_domain(self, client: HubSpot) -> None:
+    def test_method_create_oembed_domain(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.create_oembed_domain(
             app_id="appId",
             endpoints={
@@ -84,11 +87,11 @@ class TestIntegratorSettings:
                 "url": "url",
             },
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_oembed_domain_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_oembed_domain_with_all_params(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.create_oembed_domain(
             app_id="appId",
             endpoints={
@@ -98,11 +101,11 @@ class TestIntegratorSettings:
             },
             portal_id=0,
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_oembed_domain(self, client: HubSpot) -> None:
+    def test_raw_response_create_oembed_domain(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.create_oembed_domain(
             app_id="appId",
             endpoints={
@@ -115,11 +118,11 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_oembed_domain(self, client: HubSpot) -> None:
+    def test_streaming_response_create_oembed_domain(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.create_oembed_domain(
             app_id="appId",
             endpoints={
@@ -132,13 +135,13 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_oembed_domain(self, client: HubSpot) -> None:
+    def test_path_params_create_oembed_domain(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.create_oembed_domain(
                 app_id="",
@@ -151,7 +154,7 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_oembed_domain(self, client: HubSpot) -> None:
+    def test_method_delete_oembed_domain(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.delete_oembed_domain(
             "appId",
         )
@@ -159,7 +162,7 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete_oembed_domain(self, client: HubSpot) -> None:
+    def test_raw_response_delete_oembed_domain(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.delete_oembed_domain(
             "appId",
         )
@@ -171,7 +174,7 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete_oembed_domain(self, client: HubSpot) -> None:
+    def test_streaming_response_delete_oembed_domain(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.delete_oembed_domain(
             "appId",
         ) as response:
@@ -185,7 +188,7 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete_oembed_domain(self, client: HubSpot) -> None:
+    def test_path_params_delete_oembed_domain(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.delete_oembed_domain(
                 "",
@@ -193,15 +196,15 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_event_visibility_settings(self, client: HubSpot) -> None:
+    def test_method_get_event_visibility_settings(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.get_event_visibility_settings(
             "appId",
         )
-        assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_event_visibility_settings(self, client: HubSpot) -> None:
+    def test_raw_response_get_event_visibility_settings(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.get_event_visibility_settings(
             "appId",
         )
@@ -209,11 +212,11 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_event_visibility_settings(self, client: HubSpot) -> None:
+    def test_streaming_response_get_event_visibility_settings(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.get_event_visibility_settings(
             "appId",
         ) as response:
@@ -221,13 +224,15 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
+            assert_matches_type(
+                IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_event_visibility_settings(self, client: HubSpot) -> None:
+    def test_path_params_get_event_visibility_settings(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.get_event_visibility_settings(
                 "",
@@ -235,16 +240,18 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_object_definitions_by_media_type(self, client: HubSpot) -> None:
+    def test_method_get_object_definitions_by_media_type(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.get_object_definitions_by_media_type(
             media_type="mediaType",
             app_id="appId",
         )
-        assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_object_definitions_by_media_type(self, client: HubSpot) -> None:
+    def test_raw_response_get_object_definitions_by_media_type(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.get_object_definitions_by_media_type(
             media_type="mediaType",
             app_id="appId",
@@ -253,11 +260,13 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_object_definitions_by_media_type(self, client: HubSpot) -> None:
+    def test_streaming_response_get_object_definitions_by_media_type(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.get_object_definitions_by_media_type(
             media_type="mediaType",
             app_id="appId",
@@ -266,13 +275,15 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
+            assert_matches_type(
+                IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_object_definitions_by_media_type(self, client: HubSpot) -> None:
+    def test_path_params_get_object_definitions_by_media_type(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.get_object_definitions_by_media_type(
                 media_type="mediaType",
@@ -287,16 +298,16 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_oembed_domain(self, client: HubSpot) -> None:
+    def test_method_get_oembed_domain(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_oembed_domain(self, client: HubSpot) -> None:
+    def test_raw_response_get_oembed_domain(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -305,11 +316,11 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_oembed_domain(self, client: HubSpot) -> None:
+    def test_streaming_response_get_oembed_domain(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -318,13 +329,13 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_oembed_domain(self, client: HubSpot) -> None:
+    def test_path_params_get_oembed_domain(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.get_oembed_domain(
                 o_embed_domain_id="oEmbedDomainId",
@@ -339,15 +350,15 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_oembed_domains(self, client: HubSpot) -> None:
+    def test_method_list_oembed_domains(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.list_oembed_domains(
             "appId",
         )
-        assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list_oembed_domains(self, client: HubSpot) -> None:
+    def test_raw_response_list_oembed_domains(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.list_oembed_domains(
             "appId",
         )
@@ -355,11 +366,11 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list_oembed_domains(self, client: HubSpot) -> None:
+    def test_streaming_response_list_oembed_domains(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.list_oembed_domains(
             "appId",
         ) as response:
@@ -367,13 +378,13 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list_oembed_domains(self, client: HubSpot) -> None:
+    def test_path_params_list_oembed_domains(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.list_oembed_domains(
                 "",
@@ -381,18 +392,18 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_register_app_name(self, client: HubSpot) -> None:
+    def test_method_register_app_name(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             integrator_setting = client.cms.media_bridge.integrator_settings.register_app_name(
                 app_id="appId",
                 updated_at=0,
             )
 
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_register_app_name_with_all_params(self, client: HubSpot) -> None:
+    def test_method_register_app_name_with_all_params(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             integrator_setting = client.cms.media_bridge.integrator_settings.register_app_name(
                 app_id="appId",
@@ -400,11 +411,11 @@ class TestIntegratorSettings:
                 name="name",
             )
 
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_register_app_name(self, client: HubSpot) -> None:
+    def test_raw_response_register_app_name(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             response = client.cms.media_bridge.integrator_settings.with_raw_response.register_app_name(
                 app_id="appId",
@@ -414,11 +425,11 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_register_app_name(self, client: HubSpot) -> None:
+    def test_streaming_response_register_app_name(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             with client.cms.media_bridge.integrator_settings.with_streaming_response.register_app_name(
                 app_id="appId",
@@ -428,13 +439,13 @@ class TestIntegratorSettings:
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
                 integrator_setting = response.parse()
-                assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+                assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_register_app_name(self, client: HubSpot) -> None:
+    def test_path_params_register_app_name(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
                 client.cms.media_bridge.integrator_settings.with_raw_response.register_app_name(
@@ -444,26 +455,26 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_app_name(self, client: HubSpot) -> None:
+    def test_method_update_app_name(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.update_app_name(
             app_id="appId",
             updated_at=0,
         )
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_app_name_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_app_name_with_all_params(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.update_app_name(
             app_id="appId",
             updated_at=0,
             name="name",
         )
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_app_name(self, client: HubSpot) -> None:
+    def test_raw_response_update_app_name(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.update_app_name(
             app_id="appId",
             updated_at=0,
@@ -472,11 +483,11 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_app_name(self, client: HubSpot) -> None:
+    def test_streaming_response_update_app_name(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.update_app_name(
             app_id="appId",
             updated_at=0,
@@ -485,13 +496,13 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_app_name(self, client: HubSpot) -> None:
+    def test_path_params_update_app_name(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.update_app_name(
                 app_id="",
@@ -500,17 +511,19 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_event_visibility_settings(self, client: HubSpot) -> None:
+    def test_method_update_event_visibility_settings(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.update_event_visibility_settings(
             app_id="appId",
             event_type="ALL",
             updated_at=0,
         )
-        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_event_visibility_settings_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_event_visibility_settings_with_all_params(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.update_event_visibility_settings(
             app_id="appId",
             event_type="ALL",
@@ -519,11 +532,13 @@ class TestIntegratorSettings:
             show_in_timeline=True,
             show_in_workflows=True,
         )
-        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_event_visibility_settings(self, client: HubSpot) -> None:
+    def test_raw_response_update_event_visibility_settings(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.update_event_visibility_settings(
             app_id="appId",
             event_type="ALL",
@@ -533,11 +548,13 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_event_visibility_settings(self, client: HubSpot) -> None:
+    def test_streaming_response_update_event_visibility_settings(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.update_event_visibility_settings(
             app_id="appId",
             event_type="ALL",
@@ -547,13 +564,15 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
+            assert_matches_type(
+                IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_event_visibility_settings(self, client: HubSpot) -> None:
+    def test_path_params_update_event_visibility_settings(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.update_event_visibility_settings(
                 app_id="",
@@ -563,7 +582,7 @@ class TestIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_oembed_domain(self, client: HubSpot) -> None:
+    def test_method_update_oembed_domain(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -573,11 +592,11 @@ class TestIntegratorSettings:
                 "url": "url",
             },
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_oembed_domain_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_oembed_domain_with_all_params(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -588,11 +607,11 @@ class TestIntegratorSettings:
             },
             portal_id=0,
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_oembed_domain(self, client: HubSpot) -> None:
+    def test_raw_response_update_oembed_domain(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -606,11 +625,11 @@ class TestIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = response.parse()
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_oembed_domain(self, client: HubSpot) -> None:
+    def test_streaming_response_update_oembed_domain(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -624,13 +643,13 @@ class TestIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = response.parse()
-            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_oembed_domain(self, client: HubSpot) -> None:
+    def test_path_params_update_oembed_domain(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.cms.media_bridge.integrator_settings.with_raw_response.update_oembed_domain(
                 o_embed_domain_id="oEmbedDomainId",
@@ -661,16 +680,16 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_object_definition(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_object_definition(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.create_object_definition(
             app_id="appId",
             media_types=["VIDEO"],
         )
-        assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_object_definition(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_object_definition(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.create_object_definition(
             app_id="appId",
             media_types=["VIDEO"],
@@ -679,11 +698,11 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_object_definition(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_object_definition(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.create_object_definition(
             app_id="appId",
             media_types=["VIDEO"],
@@ -692,13 +711,13 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(BulkIntegratorObjectCreationResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingCreateObjectDefinitionResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_object_definition(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_object_definition(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.create_object_definition(
                 app_id="",
@@ -707,7 +726,7 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_oembed_domain(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.create_oembed_domain(
             app_id="appId",
             endpoints={
@@ -716,11 +735,11 @@ class TestAsyncIntegratorSettings:
                 "url": "url",
             },
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_oembed_domain_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_oembed_domain_with_all_params(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.create_oembed_domain(
             app_id="appId",
             endpoints={
@@ -730,11 +749,11 @@ class TestAsyncIntegratorSettings:
             },
             portal_id=0,
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_oembed_domain(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.create_oembed_domain(
             app_id="appId",
             endpoints={
@@ -747,11 +766,11 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_oembed_domain(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.create_oembed_domain(
             app_id="appId",
             endpoints={
@@ -764,13 +783,13 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingCreateOembedDomainResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_oembed_domain(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.create_oembed_domain(
                 app_id="",
@@ -783,7 +802,7 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_oembed_domain(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.delete_oembed_domain(
             "appId",
         )
@@ -791,7 +810,7 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete_oembed_domain(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.delete_oembed_domain(
             "appId",
         )
@@ -803,7 +822,7 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete_oembed_domain(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.delete_oembed_domain(
             "appId",
         ) as response:
@@ -817,7 +836,7 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete_oembed_domain(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.delete_oembed_domain(
                 "",
@@ -825,15 +844,15 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.get_event_visibility_settings(
             "appId",
         )
-        assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
         response = (
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.get_event_visibility_settings(
                 "appId",
@@ -843,11 +862,11 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
         async with (
             async_client.cms.media_bridge.integrator_settings.with_streaming_response.get_event_visibility_settings(
                 "appId",
@@ -857,13 +876,15 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(EventVisibilityResponse, integrator_setting, path=["response"])
+            assert_matches_type(
+                IntegratorSettingGetEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.get_event_visibility_settings(
                 "",
@@ -871,18 +892,20 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_object_definitions_by_media_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_object_definitions_by_media_type(self, async_client: AsyncHubspot) -> None:
         integrator_setting = (
             await async_client.cms.media_bridge.integrator_settings.get_object_definitions_by_media_type(
                 media_type="mediaType",
                 app_id="appId",
             )
         )
-        assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_object_definitions_by_media_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_object_definitions_by_media_type(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.get_object_definitions_by_media_type(
             media_type="mediaType",
             app_id="appId",
@@ -891,11 +914,13 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_object_definitions_by_media_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_object_definitions_by_media_type(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.get_object_definitions_by_media_type(
             media_type="mediaType",
             app_id="appId",
@@ -904,13 +929,15 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
+            assert_matches_type(
+                IntegratorSettingGetObjectDefinitionsByMediaTypeResponse, integrator_setting, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_object_definitions_by_media_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_object_definitions_by_media_type(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.get_object_definitions_by_media_type(
                 media_type="mediaType",
@@ -925,16 +952,16 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_oembed_domain(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_oembed_domain(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -943,11 +970,11 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_oembed_domain(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -956,13 +983,13 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingGetOembedDomainResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_oembed_domain(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.get_oembed_domain(
                 o_embed_domain_id="oEmbedDomainId",
@@ -977,15 +1004,15 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_oembed_domains(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_oembed_domains(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.list_oembed_domains(
             "appId",
         )
-        assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list_oembed_domains(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list_oembed_domains(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.list_oembed_domains(
             "appId",
         )
@@ -993,11 +1020,11 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list_oembed_domains(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list_oembed_domains(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.list_oembed_domains(
             "appId",
         ) as response:
@@ -1005,13 +1032,13 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(OEmbedDomainsCollectionResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingListOembedDomainsResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list_oembed_domains(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list_oembed_domains(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.list_oembed_domains(
                 "",
@@ -1019,18 +1046,18 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_register_app_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_register_app_name(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             integrator_setting = await async_client.cms.media_bridge.integrator_settings.register_app_name(
                 app_id="appId",
                 updated_at=0,
             )
 
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_register_app_name_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_register_app_name_with_all_params(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             integrator_setting = await async_client.cms.media_bridge.integrator_settings.register_app_name(
                 app_id="appId",
@@ -1038,11 +1065,11 @@ class TestAsyncIntegratorSettings:
                 name="name",
             )
 
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_register_app_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_register_app_name(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.register_app_name(
                 app_id="appId",
@@ -1052,11 +1079,11 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_register_app_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_register_app_name(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.register_app_name(
                 app_id="appId",
@@ -1066,13 +1093,13 @@ class TestAsyncIntegratorSettings:
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
                 integrator_setting = await response.parse()
-                assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+                assert_matches_type(IntegratorSettingRegisterAppNameResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_register_app_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_register_app_name(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
                 await async_client.cms.media_bridge.integrator_settings.with_raw_response.register_app_name(
@@ -1082,26 +1109,26 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_app_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_app_name(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.update_app_name(
             app_id="appId",
             updated_at=0,
         )
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_app_name_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_app_name_with_all_params(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.update_app_name(
             app_id="appId",
             updated_at=0,
             name="name",
         )
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_app_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_app_name(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.update_app_name(
             app_id="appId",
             updated_at=0,
@@ -1110,11 +1137,11 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_app_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_app_name(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.update_app_name(
             app_id="appId",
             updated_at=0,
@@ -1123,13 +1150,13 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(MediaBridgeProviderRegistrationResponse, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingUpdateAppNameResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_app_name(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_app_name(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.update_app_name(
                 app_id="",
@@ -1138,17 +1165,19 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.update_event_visibility_settings(
             app_id="appId",
             event_type="ALL",
             updated_at=0,
         )
-        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_event_visibility_settings_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_event_visibility_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.update_event_visibility_settings(
             app_id="appId",
             event_type="ALL",
@@ -1157,11 +1186,13 @@ class TestAsyncIntegratorSettings:
             show_in_timeline=True,
             show_in_workflows=True,
         )
-        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
         response = (
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.update_event_visibility_settings(
                 app_id="appId",
@@ -1173,11 +1204,13 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
+        assert_matches_type(
+            IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+        )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
         async with (
             async_client.cms.media_bridge.integrator_settings.with_streaming_response.update_event_visibility_settings(
                 app_id="appId",
@@ -1189,13 +1222,15 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(EventVisibilityChange, integrator_setting, path=["response"])
+            assert_matches_type(
+                IntegratorSettingUpdateEventVisibilitySettingsResponse, integrator_setting, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.update_event_visibility_settings(
                 app_id="",
@@ -1205,7 +1240,7 @@ class TestAsyncIntegratorSettings:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_oembed_domain(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -1215,11 +1250,11 @@ class TestAsyncIntegratorSettings:
                 "url": "url",
             },
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_oembed_domain_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_oembed_domain_with_all_params(self, async_client: AsyncHubspot) -> None:
         integrator_setting = await async_client.cms.media_bridge.integrator_settings.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -1230,11 +1265,11 @@ class TestAsyncIntegratorSettings:
             },
             portal_id=0,
         )
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_oembed_domain(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -1248,11 +1283,11 @@ class TestAsyncIntegratorSettings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integrator_setting = await response.parse()
-        assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+        assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_oembed_domain(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id="appId",
@@ -1266,13 +1301,13 @@ class TestAsyncIntegratorSettings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integrator_setting = await response.parse()
-            assert_matches_type(IntegratorOEmbedDomainModel, integrator_setting, path=["response"])
+            assert_matches_type(IntegratorSettingUpdateOembedDomainResponse, integrator_setting, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_oembed_domain(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_oembed_domain(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.cms.media_bridge.integrator_settings.with_raw_response.update_oembed_domain(
                 o_embed_domain_id="oEmbedDomainId",

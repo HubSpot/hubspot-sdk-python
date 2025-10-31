@@ -7,11 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.business_units import (
-    CollectionResponsePublicBusinessUnitNoPaging,
-)
+from hubspot_sdk.types.business_units import BusinessUnitGetByUserIDResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -21,25 +19,25 @@ class TestBusinessUnits:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_user_id(self, client: HubSpot) -> None:
+    def test_method_get_by_user_id(self, client: Hubspot) -> None:
         business_unit = client.business_units.get_by_user_id(
             user_id="userId",
         )
-        assert_matches_type(CollectionResponsePublicBusinessUnitNoPaging, business_unit, path=["response"])
+        assert_matches_type(BusinessUnitGetByUserIDResponse, business_unit, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_user_id_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_by_user_id_with_all_params(self, client: Hubspot) -> None:
         business_unit = client.business_units.get_by_user_id(
             user_id="userId",
             name=["string"],
             properties=["string"],
         )
-        assert_matches_type(CollectionResponsePublicBusinessUnitNoPaging, business_unit, path=["response"])
+        assert_matches_type(BusinessUnitGetByUserIDResponse, business_unit, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_by_user_id(self, client: HubSpot) -> None:
+    def test_raw_response_get_by_user_id(self, client: Hubspot) -> None:
         response = client.business_units.with_raw_response.get_by_user_id(
             user_id="userId",
         )
@@ -47,11 +45,11 @@ class TestBusinessUnits:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         business_unit = response.parse()
-        assert_matches_type(CollectionResponsePublicBusinessUnitNoPaging, business_unit, path=["response"])
+        assert_matches_type(BusinessUnitGetByUserIDResponse, business_unit, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_user_id(self, client: HubSpot) -> None:
+    def test_streaming_response_get_by_user_id(self, client: Hubspot) -> None:
         with client.business_units.with_streaming_response.get_by_user_id(
             user_id="userId",
         ) as response:
@@ -59,13 +57,13 @@ class TestBusinessUnits:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             business_unit = response.parse()
-            assert_matches_type(CollectionResponsePublicBusinessUnitNoPaging, business_unit, path=["response"])
+            assert_matches_type(BusinessUnitGetByUserIDResponse, business_unit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_by_user_id(self, client: HubSpot) -> None:
+    def test_path_params_get_by_user_id(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
             client.business_units.with_raw_response.get_by_user_id(
                 user_id="",
@@ -79,25 +77,25 @@ class TestAsyncBusinessUnits:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_user_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_by_user_id(self, async_client: AsyncHubspot) -> None:
         business_unit = await async_client.business_units.get_by_user_id(
             user_id="userId",
         )
-        assert_matches_type(CollectionResponsePublicBusinessUnitNoPaging, business_unit, path=["response"])
+        assert_matches_type(BusinessUnitGetByUserIDResponse, business_unit, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_user_id_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_by_user_id_with_all_params(self, async_client: AsyncHubspot) -> None:
         business_unit = await async_client.business_units.get_by_user_id(
             user_id="userId",
             name=["string"],
             properties=["string"],
         )
-        assert_matches_type(CollectionResponsePublicBusinessUnitNoPaging, business_unit, path=["response"])
+        assert_matches_type(BusinessUnitGetByUserIDResponse, business_unit, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_user_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_by_user_id(self, async_client: AsyncHubspot) -> None:
         response = await async_client.business_units.with_raw_response.get_by_user_id(
             user_id="userId",
         )
@@ -105,11 +103,11 @@ class TestAsyncBusinessUnits:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         business_unit = await response.parse()
-        assert_matches_type(CollectionResponsePublicBusinessUnitNoPaging, business_unit, path=["response"])
+        assert_matches_type(BusinessUnitGetByUserIDResponse, business_unit, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_user_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_by_user_id(self, async_client: AsyncHubspot) -> None:
         async with async_client.business_units.with_streaming_response.get_by_user_id(
             user_id="userId",
         ) as response:
@@ -117,13 +115,13 @@ class TestAsyncBusinessUnits:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             business_unit = await response.parse()
-            assert_matches_type(CollectionResponsePublicBusinessUnitNoPaging, business_unit, path=["response"])
+            assert_matches_type(BusinessUnitGetByUserIDResponse, business_unit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_by_user_id(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_by_user_id(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
             await async_client.business_units.with_raw_response.get_by_user_id(
                 user_id="",

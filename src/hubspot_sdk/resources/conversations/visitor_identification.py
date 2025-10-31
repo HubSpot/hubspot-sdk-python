@@ -16,7 +16,9 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.conversations import visitor_identification_generate_token_params
-from ...types.conversations.identification_token_response import IdentificationTokenResponse
+from ...types.conversations.visitor_identification_generate_token_response import (
+    VisitorIdentificationGenerateTokenResponse,
+)
 
 __all__ = ["VisitorIdentificationResource", "AsyncVisitorIdentificationResource"]
 
@@ -53,7 +55,7 @@ class VisitorIdentificationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IdentificationTokenResponse:
+    ) -> VisitorIdentificationGenerateTokenResponse:
         """Generates a new visitor identification token.
 
         This token will be unique every
@@ -92,7 +94,7 @@ class VisitorIdentificationResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IdentificationTokenResponse,
+            cast_to=VisitorIdentificationGenerateTokenResponse,
         )
 
 
@@ -128,7 +130,7 @@ class AsyncVisitorIdentificationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IdentificationTokenResponse:
+    ) -> VisitorIdentificationGenerateTokenResponse:
         """Generates a new visitor identification token.
 
         This token will be unique every
@@ -167,7 +169,7 @@ class AsyncVisitorIdentificationResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IdentificationTokenResponse,
+            cast_to=VisitorIdentificationGenerateTokenResponse,
         )
 
 

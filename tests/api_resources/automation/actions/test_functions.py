@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.automation import (
     PublicActionFunction,
@@ -23,7 +23,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.list(
             definition_id="definitionId",
             app_id=0,
@@ -32,7 +32,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.list(
             definition_id="definitionId",
             app_id=0,
@@ -45,7 +45,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.list(
             definition_id="definitionId",
             app_id=0,
@@ -60,7 +60,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: HubSpot) -> None:
+    def test_path_params_list(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.list(
                 definition_id="",
@@ -69,7 +69,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.delete(
             function_id="functionId",
             app_id=0,
@@ -80,7 +80,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.delete(
             function_id="functionId",
             app_id=0,
@@ -95,7 +95,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.delete(
             function_id="functionId",
             app_id=0,
@@ -112,7 +112,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.delete(
                 function_id="functionId",
@@ -131,7 +131,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_or_replace(self, client: HubSpot) -> None:
+    def test_method_create_or_replace(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.create_or_replace(
             function_id="functionId",
             app_id=0,
@@ -143,7 +143,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_or_replace(self, client: HubSpot) -> None:
+    def test_raw_response_create_or_replace(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.create_or_replace(
             function_id="functionId",
             app_id=0,
@@ -159,7 +159,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_or_replace(self, client: HubSpot) -> None:
+    def test_streaming_response_create_or_replace(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.create_or_replace(
             function_id="functionId",
             app_id=0,
@@ -177,7 +177,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_or_replace(self, client: HubSpot) -> None:
+    def test_path_params_create_or_replace(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.create_or_replace(
                 function_id="functionId",
@@ -198,7 +198,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_or_replace_by_function_type(self, client: HubSpot) -> None:
+    def test_method_create_or_replace_by_function_type(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.create_or_replace_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -209,7 +209,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_or_replace_by_function_type(self, client: HubSpot) -> None:
+    def test_raw_response_create_or_replace_by_function_type(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.create_or_replace_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -224,7 +224,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_or_replace_by_function_type(self, client: HubSpot) -> None:
+    def test_streaming_response_create_or_replace_by_function_type(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.create_or_replace_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -241,7 +241,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_or_replace_by_function_type(self, client: HubSpot) -> None:
+    def test_path_params_create_or_replace_by_function_type(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.create_or_replace_by_function_type(
                 function_type="PRE_ACTION_EXECUTION",
@@ -252,7 +252,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_by_function_type(self, client: HubSpot) -> None:
+    def test_method_delete_by_function_type(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.delete_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -262,7 +262,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete_by_function_type(self, client: HubSpot) -> None:
+    def test_raw_response_delete_by_function_type(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.delete_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -276,7 +276,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete_by_function_type(self, client: HubSpot) -> None:
+    def test_streaming_response_delete_by_function_type(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.delete_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -292,7 +292,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete_by_function_type(self, client: HubSpot) -> None:
+    def test_path_params_delete_by_function_type(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.delete_by_function_type(
                 function_type="PRE_ACTION_EXECUTION",
@@ -302,7 +302,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.get(
             function_id="functionId",
             app_id=0,
@@ -313,7 +313,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.get(
             function_id="functionId",
             app_id=0,
@@ -328,7 +328,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.get(
             function_id="functionId",
             app_id=0,
@@ -345,7 +345,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.get(
                 function_id="functionId",
@@ -364,7 +364,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_function_type(self, client: HubSpot) -> None:
+    def test_method_get_by_function_type(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.get_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -374,7 +374,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_by_function_type(self, client: HubSpot) -> None:
+    def test_raw_response_get_by_function_type(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.get_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -388,7 +388,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_function_type(self, client: HubSpot) -> None:
+    def test_streaming_response_get_by_function_type(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.get_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -404,7 +404,7 @@ class TestFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_by_function_type(self, client: HubSpot) -> None:
+    def test_path_params_get_by_function_type(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.get_by_function_type(
                 function_type="PRE_ACTION_EXECUTION",
@@ -420,7 +420,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.list(
             definition_id="definitionId",
             app_id=0,
@@ -429,7 +429,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.list(
             definition_id="definitionId",
             app_id=0,
@@ -442,7 +442,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.list(
             definition_id="definitionId",
             app_id=0,
@@ -457,7 +457,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.list(
                 definition_id="",
@@ -466,7 +466,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.delete(
             function_id="functionId",
             app_id=0,
@@ -477,7 +477,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.delete(
             function_id="functionId",
             app_id=0,
@@ -492,7 +492,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.delete(
             function_id="functionId",
             app_id=0,
@@ -509,7 +509,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.delete(
                 function_id="functionId",
@@ -528,7 +528,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_or_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_or_replace(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.create_or_replace(
             function_id="functionId",
             app_id=0,
@@ -540,7 +540,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_or_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_or_replace(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.create_or_replace(
             function_id="functionId",
             app_id=0,
@@ -556,7 +556,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_or_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_or_replace(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.create_or_replace(
             function_id="functionId",
             app_id=0,
@@ -574,7 +574,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_or_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_or_replace(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.create_or_replace(
                 function_id="functionId",
@@ -595,7 +595,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_or_replace_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_or_replace_by_function_type(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.create_or_replace_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -606,7 +606,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_or_replace_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_or_replace_by_function_type(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.create_or_replace_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -621,7 +621,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_or_replace_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_or_replace_by_function_type(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.create_or_replace_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -638,7 +638,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_or_replace_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_or_replace_by_function_type(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.create_or_replace_by_function_type(
                 function_type="PRE_ACTION_EXECUTION",
@@ -649,7 +649,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_by_function_type(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.delete_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -659,7 +659,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete_by_function_type(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.delete_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -673,7 +673,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete_by_function_type(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.delete_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -689,7 +689,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete_by_function_type(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.delete_by_function_type(
                 function_type="PRE_ACTION_EXECUTION",
@@ -699,7 +699,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.get(
             function_id="functionId",
             app_id=0,
@@ -710,7 +710,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.get(
             function_id="functionId",
             app_id=0,
@@ -725,7 +725,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.get(
             function_id="functionId",
             app_id=0,
@@ -742,7 +742,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.get(
                 function_id="functionId",
@@ -761,7 +761,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_by_function_type(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.get_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -771,7 +771,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_by_function_type(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.get_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -785,7 +785,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_by_function_type(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.get_by_function_type(
             function_type="PRE_ACTION_EXECUTION",
             app_id=0,
@@ -801,7 +801,7 @@ class TestAsyncFunctions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_by_function_type(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_by_function_type(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.get_by_function_type(
                 function_type="PRE_ACTION_EXECUTION",

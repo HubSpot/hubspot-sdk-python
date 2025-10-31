@@ -19,8 +19,8 @@ from ...._response import (
 from ...._base_client import make_request_options
 from ....types.crm.objects import deal_split_batch_read_params, deal_split_batch_upsert_params
 from ....types.shared_params.public_object_id import PublicObjectID
-from ....types.crm.objects.batch_response_deal_to_deal_splits import BatchResponseDealToDealSplits
-from ....types.crm.objects.public_deal_splits_create_request_param import PublicDealSplitsCreateRequestParam
+from ....types.crm.objects.deal_split_batch_read_response import DealSplitBatchReadResponse
+from ....types.crm.objects.deal_split_batch_upsert_response import DealSplitBatchUpsertResponse
 
 __all__ = ["DealSplitsResource", "AsyncDealSplitsResource"]
 
@@ -55,7 +55,7 @@ class DealSplitsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseDealToDealSplits:
+    ) -> DealSplitBatchReadResponse:
         """
         Read a batch of deal split objects by their associated deal object internal ID
 
@@ -74,20 +74,20 @@ class DealSplitsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseDealToDealSplits,
+            cast_to=DealSplitBatchReadResponse,
         )
 
     def batch_upsert(
         self,
         *,
-        inputs: Iterable[PublicDealSplitsCreateRequestParam],
+        inputs: Iterable[deal_split_batch_upsert_params.Input],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseDealToDealSplits:
+    ) -> DealSplitBatchUpsertResponse:
         """Create or replace deal splits for deals with the provided IDs.
 
         Deal split
@@ -109,7 +109,7 @@ class DealSplitsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseDealToDealSplits,
+            cast_to=DealSplitBatchUpsertResponse,
         )
 
 
@@ -143,7 +143,7 @@ class AsyncDealSplitsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseDealToDealSplits:
+    ) -> DealSplitBatchReadResponse:
         """
         Read a batch of deal split objects by their associated deal object internal ID
 
@@ -162,20 +162,20 @@ class AsyncDealSplitsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseDealToDealSplits,
+            cast_to=DealSplitBatchReadResponse,
         )
 
     async def batch_upsert(
         self,
         *,
-        inputs: Iterable[PublicDealSplitsCreateRequestParam],
+        inputs: Iterable[deal_split_batch_upsert_params.Input],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseDealToDealSplits:
+    ) -> DealSplitBatchUpsertResponse:
         """Create or replace deal splits for deals with the provided IDs.
 
         Deal split
@@ -199,7 +199,7 @@ class AsyncDealSplitsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseDealToDealSplits,
+            cast_to=DealSplitBatchUpsertResponse,
         )
 
 

@@ -7,11 +7,14 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.events import (
-    ExternalBehavioralEventTypeDefinition,
+    EventDefinitionGetResponse,
+    EventDefinitionListResponse,
+    EventDefinitionCreateResponse,
+    EventDefinitionUpdateResponse,
 )
 from hubspot_sdk.types.shared import Property
 
@@ -23,7 +26,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: HubSpot) -> None:
+    def test_method_create(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.create(
             label="label",
             property_definitions=[
@@ -33,11 +36,11 @@ class TestEventDefinitions:
                 }
             ],
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.create(
             label="label",
             property_definitions=[
@@ -61,11 +64,11 @@ class TestEventDefinitions:
             name="name",
             primary_object="primaryObject",
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: HubSpot) -> None:
+    def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.events.event_definitions.with_raw_response.create(
             label="label",
             property_definitions=[
@@ -79,11 +82,11 @@ class TestEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = response.parse()
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: HubSpot) -> None:
+    def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.events.event_definitions.with_streaming_response.create(
             label="label",
             property_definitions=[
@@ -97,31 +100,31 @@ class TestEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = response.parse()
-            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+            assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.update(
             event_name="eventName",
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.update(
             event_name="eventName",
             description="description",
             label="label",
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.events.event_definitions.with_raw_response.update(
             event_name="eventName",
         )
@@ -129,11 +132,11 @@ class TestEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = response.parse()
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.events.event_definitions.with_streaming_response.update(
             event_name="eventName",
         ) as response:
@@ -141,13 +144,13 @@ class TestEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = response.parse()
-            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+            assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             client.events.event_definitions.with_raw_response.update(
                 event_name="",
@@ -155,13 +158,13 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.list()
-        assert_matches_type(SyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
+        assert_matches_type(SyncPage[EventDefinitionListResponse], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: HubSpot) -> None:
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.list(
             after="after",
             include_properties=True,
@@ -169,33 +172,33 @@ class TestEventDefinitions:
             search_string="searchString",
             sort_order="sortOrder",
         )
-        assert_matches_type(SyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
+        assert_matches_type(SyncPage[EventDefinitionListResponse], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.events.event_definitions.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = response.parse()
-        assert_matches_type(SyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
+        assert_matches_type(SyncPage[EventDefinitionListResponse], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.events.event_definitions.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = response.parse()
-            assert_matches_type(SyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
+            assert_matches_type(SyncPage[EventDefinitionListResponse], event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.delete(
             "eventName",
         )
@@ -203,7 +206,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.events.event_definitions.with_raw_response.delete(
             "eventName",
         )
@@ -215,7 +218,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.events.event_definitions.with_streaming_response.delete(
             "eventName",
         ) as response:
@@ -229,7 +232,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             client.events.event_definitions.with_raw_response.delete(
                 "",
@@ -237,7 +240,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_property(self, client: HubSpot) -> None:
+    def test_method_create_property(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.create_property(
             event_name="eventName",
             label="label",
@@ -247,7 +250,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_property_with_all_params(self, client: HubSpot) -> None:
+    def test_method_create_property_with_all_params(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.create_property(
             event_name="eventName",
             label="label",
@@ -268,7 +271,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create_property(self, client: HubSpot) -> None:
+    def test_raw_response_create_property(self, client: Hubspot) -> None:
         response = client.events.event_definitions.with_raw_response.create_property(
             event_name="eventName",
             label="label",
@@ -282,7 +285,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create_property(self, client: HubSpot) -> None:
+    def test_streaming_response_create_property(self, client: Hubspot) -> None:
         with client.events.event_definitions.with_streaming_response.create_property(
             event_name="eventName",
             label="label",
@@ -298,7 +301,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create_property(self, client: HubSpot) -> None:
+    def test_path_params_create_property(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             client.events.event_definitions.with_raw_response.create_property(
                 event_name="",
@@ -308,7 +311,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete_property(self, client: HubSpot) -> None:
+    def test_method_delete_property(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.delete_property(
             property_name="propertyName",
             event_name="eventName",
@@ -317,7 +320,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete_property(self, client: HubSpot) -> None:
+    def test_raw_response_delete_property(self, client: Hubspot) -> None:
         response = client.events.event_definitions.with_raw_response.delete_property(
             property_name="propertyName",
             event_name="eventName",
@@ -330,7 +333,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete_property(self, client: HubSpot) -> None:
+    def test_streaming_response_delete_property(self, client: Hubspot) -> None:
         with client.events.event_definitions.with_streaming_response.delete_property(
             property_name="propertyName",
             event_name="eventName",
@@ -345,7 +348,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete_property(self, client: HubSpot) -> None:
+    def test_path_params_delete_property(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             client.events.event_definitions.with_raw_response.delete_property(
                 property_name="propertyName",
@@ -360,15 +363,15 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.get(
             "eventName",
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.events.event_definitions.with_raw_response.get(
             "eventName",
         )
@@ -376,11 +379,11 @@ class TestEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = response.parse()
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.events.event_definitions.with_streaming_response.get(
             "eventName",
         ) as response:
@@ -388,13 +391,13 @@ class TestEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = response.parse()
-            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+            assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             client.events.event_definitions.with_raw_response.get(
                 "",
@@ -402,7 +405,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_property(self, client: HubSpot) -> None:
+    def test_method_update_property(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.update_property(
             property_name="propertyName",
             event_name="eventName",
@@ -411,7 +414,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_property_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_property_with_all_params(self, client: Hubspot) -> None:
         event_definition = client.events.event_definitions.update_property(
             property_name="propertyName",
             event_name="eventName",
@@ -431,7 +434,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update_property(self, client: HubSpot) -> None:
+    def test_raw_response_update_property(self, client: Hubspot) -> None:
         response = client.events.event_definitions.with_raw_response.update_property(
             property_name="propertyName",
             event_name="eventName",
@@ -444,7 +447,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update_property(self, client: HubSpot) -> None:
+    def test_streaming_response_update_property(self, client: Hubspot) -> None:
         with client.events.event_definitions.with_streaming_response.update_property(
             property_name="propertyName",
             event_name="eventName",
@@ -459,7 +462,7 @@ class TestEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update_property(self, client: HubSpot) -> None:
+    def test_path_params_update_property(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             client.events.event_definitions.with_raw_response.update_property(
                 property_name="propertyName",
@@ -480,7 +483,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.create(
             label="label",
             property_definitions=[
@@ -490,11 +493,11 @@ class TestAsyncEventDefinitions:
                 }
             ],
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.create(
             label="label",
             property_definitions=[
@@ -518,11 +521,11 @@ class TestAsyncEventDefinitions:
             name="name",
             primary_object="primaryObject",
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.event_definitions.with_raw_response.create(
             label="label",
             property_definitions=[
@@ -536,11 +539,11 @@ class TestAsyncEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = await response.parse()
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.event_definitions.with_streaming_response.create(
             label="label",
             property_definitions=[
@@ -554,31 +557,31 @@ class TestAsyncEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = await response.parse()
-            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+            assert_matches_type(EventDefinitionCreateResponse, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.update(
             event_name="eventName",
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.update(
             event_name="eventName",
             description="description",
             label="label",
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.event_definitions.with_raw_response.update(
             event_name="eventName",
         )
@@ -586,11 +589,11 @@ class TestAsyncEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = await response.parse()
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.event_definitions.with_streaming_response.update(
             event_name="eventName",
         ) as response:
@@ -598,13 +601,13 @@ class TestAsyncEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = await response.parse()
-            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+            assert_matches_type(EventDefinitionUpdateResponse, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             await async_client.events.event_definitions.with_raw_response.update(
                 event_name="",
@@ -612,13 +615,13 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.list()
-        assert_matches_type(AsyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
+        assert_matches_type(AsyncPage[EventDefinitionListResponse], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.list(
             after="after",
             include_properties=True,
@@ -626,33 +629,33 @@ class TestAsyncEventDefinitions:
             search_string="searchString",
             sort_order="sortOrder",
         )
-        assert_matches_type(AsyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
+        assert_matches_type(AsyncPage[EventDefinitionListResponse], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.event_definitions.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = await response.parse()
-        assert_matches_type(AsyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
+        assert_matches_type(AsyncPage[EventDefinitionListResponse], event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.event_definitions.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = await response.parse()
-            assert_matches_type(AsyncPage[ExternalBehavioralEventTypeDefinition], event_definition, path=["response"])
+            assert_matches_type(AsyncPage[EventDefinitionListResponse], event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.delete(
             "eventName",
         )
@@ -660,7 +663,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.event_definitions.with_raw_response.delete(
             "eventName",
         )
@@ -672,7 +675,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.event_definitions.with_streaming_response.delete(
             "eventName",
         ) as response:
@@ -686,7 +689,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             await async_client.events.event_definitions.with_raw_response.delete(
                 "",
@@ -694,7 +697,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_property(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.create_property(
             event_name="eventName",
             label="label",
@@ -704,7 +707,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_property_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_create_property_with_all_params(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.create_property(
             event_name="eventName",
             label="label",
@@ -725,7 +728,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_create_property(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.event_definitions.with_raw_response.create_property(
             event_name="eventName",
             label="label",
@@ -739,7 +742,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_create_property(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.event_definitions.with_streaming_response.create_property(
             event_name="eventName",
             label="label",
@@ -755,7 +758,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_create_property(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             await async_client.events.event_definitions.with_raw_response.create_property(
                 event_name="",
@@ -765,7 +768,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete_property(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.delete_property(
             property_name="propertyName",
             event_name="eventName",
@@ -774,7 +777,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete_property(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.event_definitions.with_raw_response.delete_property(
             property_name="propertyName",
             event_name="eventName",
@@ -787,7 +790,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete_property(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.event_definitions.with_streaming_response.delete_property(
             property_name="propertyName",
             event_name="eventName",
@@ -802,7 +805,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete_property(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             await async_client.events.event_definitions.with_raw_response.delete_property(
                 property_name="propertyName",
@@ -817,15 +820,15 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.get(
             "eventName",
         )
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.event_definitions.with_raw_response.get(
             "eventName",
         )
@@ -833,11 +836,11 @@ class TestAsyncEventDefinitions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_definition = await response.parse()
-        assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+        assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.event_definitions.with_streaming_response.get(
             "eventName",
         ) as response:
@@ -845,13 +848,13 @@ class TestAsyncEventDefinitions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_definition = await response.parse()
-            assert_matches_type(ExternalBehavioralEventTypeDefinition, event_definition, path=["response"])
+            assert_matches_type(EventDefinitionGetResponse, event_definition, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             await async_client.events.event_definitions.with_raw_response.get(
                 "",
@@ -859,7 +862,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_property(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.update_property(
             property_name="propertyName",
             event_name="eventName",
@@ -868,7 +871,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_property_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_property_with_all_params(self, async_client: AsyncHubspot) -> None:
         event_definition = await async_client.events.event_definitions.update_property(
             property_name="propertyName",
             event_name="eventName",
@@ -888,7 +891,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update_property(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.event_definitions.with_raw_response.update_property(
             property_name="propertyName",
             event_name="eventName",
@@ -901,7 +904,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update_property(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.event_definitions.with_streaming_response.update_property(
             property_name="propertyName",
             event_name="eventName",
@@ -916,7 +919,7 @@ class TestAsyncEventDefinitions:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update_property(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update_property(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_name` but received ''"):
             await async_client.events.event_definitions.with_raw_response.update_property(
                 property_name="propertyName",

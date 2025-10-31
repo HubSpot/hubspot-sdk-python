@@ -18,7 +18,7 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from hubspot_sdk import HubSpot, AsyncHubSpot, APIResponseValidationError
+from hubspot_sdk import Hubspot, AsyncHubspot, APIResponseValidationError
 from hubspot_sdk._types import Omit
 from hubspot_sdk._utils import asyncify
 from hubspot_sdk._models import BaseModel, FinalRequestOptions
@@ -50,7 +50,7 @@ def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
     return 0.1
 
 
-def _get_open_connections(client: HubSpot | AsyncHubSpot) -> int:
+def _get_open_connections(client: Hubspot | AsyncHubspot) -> int:
     transport = client._client._transport
     assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
 
@@ -58,9 +58,9 @@ def _get_open_connections(client: HubSpot | AsyncHubSpot) -> int:
     return len(pool._requests)
 
 
-class TestHubSpot:
+class TestHubspot:
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_raw_response(self, respx_mock: MockRouter, client: Hubspot) -> None:
         respx_mock.post("/foo").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         response = client.post("/foo", cast_to=httpx.Response)
@@ -69,7 +69,7 @@ class TestHubSpot:
         assert response.json() == {"foo": "bar"}
 
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_for_binary(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_raw_response_for_binary(self, respx_mock: MockRouter, client: Hubspot) -> None:
         respx_mock.post("/foo").mock(
             return_value=httpx.Response(200, headers={"Content-Type": "application/binary"}, content='{"foo": "bar"}')
         )
@@ -79,7 +79,7 @@ class TestHubSpot:
         assert isinstance(response, httpx.Response)
         assert response.json() == {"foo": "bar"}
 
-    def test_copy(self, client: HubSpot) -> None:
+    def test_copy(self, client: Hubspot) -> None:
         copied = client.copy()
         assert id(copied) != id(client)
 
@@ -87,7 +87,7 @@ class TestHubSpot:
         assert copied.access_token == "another pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         assert client.access_token == "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-    def test_copy_default_options(self, client: HubSpot) -> None:
+    def test_copy_default_options(self, client: Hubspot) -> None:
         # options that have a default are overridden correctly
         copied = client.copy(max_retries=7)
         assert copied.max_retries == 7
@@ -104,7 +104,7 @@ class TestHubSpot:
         assert isinstance(client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = HubSpot(
+        client = Hubspot(
             base_url=base_url,
             access_token=access_token,
             _strict_response_validation=True,
@@ -142,7 +142,7 @@ class TestHubSpot:
         client.close()
 
     def test_copy_default_query(self) -> None:
-        client = HubSpot(
+        client = Hubspot(
             base_url=base_url, access_token=access_token, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -179,7 +179,7 @@ class TestHubSpot:
 
         client.close()
 
-    def test_copy_signature(self, client: HubSpot) -> None:
+    def test_copy_signature(self, client: Hubspot) -> None:
         # ensure the same parameters that can be passed to the client are defined in the `.copy()` method
         init_signature = inspect.signature(
             # mypy doesn't like that we access the `__init__` property.
@@ -196,7 +196,7 @@ class TestHubSpot:
             assert copy_param is not None, f"copy() signature is missing the {name} param"
 
     @pytest.mark.skipif(sys.version_info >= (3, 10), reason="fails because of a memory leak that started from 3.12")
-    def test_copy_build_request(self, client: HubSpot) -> None:
+    def test_copy_build_request(self, client: Hubspot) -> None:
         options = FinalRequestOptions(method="get", url="/foo")
 
         def build_request(options: FinalRequestOptions) -> None:
@@ -258,7 +258,7 @@ class TestHubSpot:
                     print(frame)
             raise AssertionError()
 
-    def test_request_timeout(self, client: HubSpot) -> None:
+    def test_request_timeout(self, client: Hubspot) -> None:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
         assert timeout == DEFAULT_TIMEOUT
@@ -268,7 +268,7 @@ class TestHubSpot:
         assert timeout == httpx.Timeout(100.0)
 
     def test_client_timeout_option(self) -> None:
-        client = HubSpot(
+        client = Hubspot(
             base_url=base_url, access_token=access_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -281,7 +281,7 @@ class TestHubSpot:
     def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         with httpx.Client(timeout=None) as http_client:
-            client = HubSpot(
+            client = Hubspot(
                 base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -293,7 +293,7 @@ class TestHubSpot:
 
         # no timeout given to the httpx client should not use the httpx default
         with httpx.Client() as http_client:
-            client = HubSpot(
+            client = Hubspot(
                 base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -305,7 +305,7 @@ class TestHubSpot:
 
         # explicitly passing the default timeout currently results in it being ignored
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = HubSpot(
+            client = Hubspot(
                 base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -318,7 +318,7 @@ class TestHubSpot:
     async def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             async with httpx.AsyncClient() as http_client:
-                HubSpot(
+                Hubspot(
                     base_url=base_url,
                     access_token=access_token,
                     _strict_response_validation=True,
@@ -326,7 +326,7 @@ class TestHubSpot:
                 )
 
     def test_default_headers_option(self) -> None:
-        test_client = HubSpot(
+        test_client = Hubspot(
             base_url=base_url,
             access_token=access_token,
             _strict_response_validation=True,
@@ -336,7 +336,7 @@ class TestHubSpot:
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        test_client2 = HubSpot(
+        test_client2 = Hubspot(
             base_url=base_url,
             access_token=access_token,
             _strict_response_validation=True,
@@ -353,7 +353,7 @@ class TestHubSpot:
         test_client2.close()
 
     def test_default_query_option(self) -> None:
-        client = HubSpot(
+        client = Hubspot(
             base_url=base_url,
             access_token=access_token,
             _strict_response_validation=True,
@@ -375,7 +375,7 @@ class TestHubSpot:
 
         client.close()
 
-    def test_request_extra_json(self, client: HubSpot) -> None:
+    def test_request_extra_json(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -409,7 +409,7 @@ class TestHubSpot:
         data = json.loads(request.content.decode("utf-8"))
         assert data == {"foo": "bar", "baz": None}
 
-    def test_request_extra_headers(self, client: HubSpot) -> None:
+    def test_request_extra_headers(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -431,7 +431,7 @@ class TestHubSpot:
         )
         assert request.headers.get("X-Bar") == "false"
 
-    def test_request_extra_query(self, client: HubSpot) -> None:
+    def test_request_extra_query(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -472,7 +472,7 @@ class TestHubSpot:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, client: HubSpot) -> None:
+    def test_multipart_repeating_array(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions.construct(
                 method="post",
@@ -502,7 +502,7 @@ class TestHubSpot:
         ]
 
     @pytest.mark.respx(base_url=base_url)
-    def test_basic_union_response(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_basic_union_response(self, respx_mock: MockRouter, client: Hubspot) -> None:
         class Model1(BaseModel):
             name: str
 
@@ -516,7 +516,7 @@ class TestHubSpot:
         assert response.foo == "bar"
 
     @pytest.mark.respx(base_url=base_url)
-    def test_union_response_different_types(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_union_response_different_types(self, respx_mock: MockRouter, client: Hubspot) -> None:
         """Union of objects with the same field name using a different type"""
 
         class Model1(BaseModel):
@@ -538,7 +538,7 @@ class TestHubSpot:
         assert response.foo == 1
 
     @pytest.mark.respx(base_url=base_url)
-    def test_non_application_json_content_type_for_json_data(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_non_application_json_content_type_for_json_data(self, respx_mock: MockRouter, client: Hubspot) -> None:
         """
         Response that sets Content-Type to something other than application/json but returns json data
         """
@@ -559,7 +559,7 @@ class TestHubSpot:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = HubSpot(
+        client = Hubspot(
             base_url="https://example.com/from_init", access_token=access_token, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -571,19 +571,19 @@ class TestHubSpot:
         client.close()
 
     def test_base_url_env(self) -> None:
-        with update_env(HUB_SPOT_BASE_URL="http://localhost:5000/from/env"):
-            client = HubSpot(access_token=access_token, _strict_response_validation=True)
+        with update_env(HUBSPOT_BASE_URL="http://localhost:5000/from/env"):
+            client = Hubspot(access_token=access_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            HubSpot(
+            Hubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
             ),
-            HubSpot(
+            Hubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
@@ -592,7 +592,7 @@ class TestHubSpot:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: HubSpot) -> None:
+    def test_base_url_trailing_slash(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -606,12 +606,12 @@ class TestHubSpot:
     @pytest.mark.parametrize(
         "client",
         [
-            HubSpot(
+            Hubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
             ),
-            HubSpot(
+            Hubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
@@ -620,7 +620,7 @@ class TestHubSpot:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: HubSpot) -> None:
+    def test_base_url_no_trailing_slash(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -634,12 +634,12 @@ class TestHubSpot:
     @pytest.mark.parametrize(
         "client",
         [
-            HubSpot(
+            Hubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
             ),
-            HubSpot(
+            Hubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
@@ -648,7 +648,7 @@ class TestHubSpot:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: HubSpot) -> None:
+    def test_absolute_request_url(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -660,7 +660,7 @@ class TestHubSpot:
         client.close()
 
     def test_copied_client_does_not_close_http(self) -> None:
-        test_client = HubSpot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        test_client = Hubspot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
         assert not test_client.is_closed()
 
         copied = test_client.copy()
@@ -671,7 +671,7 @@ class TestHubSpot:
         assert not test_client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        test_client = HubSpot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        test_client = Hubspot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
         with test_client as c2:
             assert c2 is test_client
             assert not c2.is_closed()
@@ -679,7 +679,7 @@ class TestHubSpot:
         assert test_client.is_closed()
 
     @pytest.mark.respx(base_url=base_url)
-    def test_client_response_validation_error(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_client_response_validation_error(self, respx_mock: MockRouter, client: Hubspot) -> None:
         class Model(BaseModel):
             foo: str
 
@@ -692,7 +692,7 @@ class TestHubSpot:
 
     def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            HubSpot(
+            Hubspot(
                 base_url=base_url,
                 access_token=access_token,
                 _strict_response_validation=True,
@@ -706,12 +706,12 @@ class TestHubSpot:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = HubSpot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        strict_client = Hubspot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        non_strict_client = HubSpot(base_url=base_url, access_token=access_token, _strict_response_validation=False)
+        non_strict_client = Hubspot(base_url=base_url, access_token=access_token, _strict_response_validation=False)
 
         response = non_strict_client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -742,7 +742,7 @@ class TestHubSpot:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(
-        self, remaining_retries: int, retry_after: str, timeout: float, client: HubSpot
+        self, remaining_retries: int, retry_after: str, timeout: float, client: Hubspot
     ) -> None:
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -751,7 +751,7 @@ class TestHubSpot:
 
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Hubspot) -> None:
         respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
@@ -761,7 +761,7 @@ class TestHubSpot:
 
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Hubspot) -> None:
         respx_mock.post("/crm/v3/objects/contacts").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
@@ -774,7 +774,7 @@ class TestHubSpot:
     @pytest.mark.parametrize("failure_mode", ["status", "exception"])
     def test_retries_taken(
         self,
-        client: HubSpot,
+        client: Hubspot,
         failures_before_success: int,
         failure_mode: Literal["status", "exception"],
         respx_mock: MockRouter,
@@ -803,7 +803,7 @@ class TestHubSpot:
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_omit_retry_count_header(
-        self, client: HubSpot, failures_before_success: int, respx_mock: MockRouter
+        self, client: Hubspot, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = client.with_options(max_retries=4)
 
@@ -828,7 +828,7 @@ class TestHubSpot:
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_overwrite_retry_count_header(
-        self, client: HubSpot, failures_before_success: int, respx_mock: MockRouter
+        self, client: Hubspot, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = client.with_options(max_retries=4)
 
@@ -872,7 +872,7 @@ class TestHubSpot:
         )
 
     @pytest.mark.respx(base_url=base_url)
-    def test_follow_redirects(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_follow_redirects(self, respx_mock: MockRouter, client: Hubspot) -> None:
         # Test that the default follow_redirects=True allows following redirects
         respx_mock.post("/redirect").mock(
             return_value=httpx.Response(302, headers={"Location": f"{base_url}/redirected"})
@@ -884,7 +884,7 @@ class TestHubSpot:
         assert response.json() == {"status": "ok"}
 
     @pytest.mark.respx(base_url=base_url)
-    def test_follow_redirects_disabled(self, respx_mock: MockRouter, client: HubSpot) -> None:
+    def test_follow_redirects_disabled(self, respx_mock: MockRouter, client: Hubspot) -> None:
         # Test that follow_redirects=False prevents following redirects
         respx_mock.post("/redirect").mock(
             return_value=httpx.Response(302, headers={"Location": f"{base_url}/redirected"})
@@ -897,9 +897,9 @@ class TestHubSpot:
         assert exc_info.value.response.headers["Location"] == f"{base_url}/redirected"
 
 
-class TestAsyncHubSpot:
+class TestAsyncHubspot:
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response(self, respx_mock: MockRouter, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
         respx_mock.post("/foo").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         response = await async_client.post("/foo", cast_to=httpx.Response)
@@ -908,7 +908,7 @@ class TestAsyncHubSpot:
         assert response.json() == {"foo": "bar"}
 
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_for_binary(self, respx_mock: MockRouter, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_for_binary(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
         respx_mock.post("/foo").mock(
             return_value=httpx.Response(200, headers={"Content-Type": "application/binary"}, content='{"foo": "bar"}')
         )
@@ -918,7 +918,7 @@ class TestAsyncHubSpot:
         assert isinstance(response, httpx.Response)
         assert response.json() == {"foo": "bar"}
 
-    def test_copy(self, async_client: AsyncHubSpot) -> None:
+    def test_copy(self, async_client: AsyncHubspot) -> None:
         copied = async_client.copy()
         assert id(copied) != id(async_client)
 
@@ -926,7 +926,7 @@ class TestAsyncHubSpot:
         assert copied.access_token == "another pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         assert async_client.access_token == "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-    def test_copy_default_options(self, async_client: AsyncHubSpot) -> None:
+    def test_copy_default_options(self, async_client: AsyncHubspot) -> None:
         # options that have a default are overridden correctly
         copied = async_client.copy(max_retries=7)
         assert copied.max_retries == 7
@@ -943,7 +943,7 @@ class TestAsyncHubSpot:
         assert isinstance(async_client.timeout, httpx.Timeout)
 
     async def test_copy_default_headers(self) -> None:
-        client = AsyncHubSpot(
+        client = AsyncHubspot(
             base_url=base_url,
             access_token=access_token,
             _strict_response_validation=True,
@@ -981,7 +981,7 @@ class TestAsyncHubSpot:
         await client.close()
 
     async def test_copy_default_query(self) -> None:
-        client = AsyncHubSpot(
+        client = AsyncHubspot(
             base_url=base_url, access_token=access_token, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -1018,7 +1018,7 @@ class TestAsyncHubSpot:
 
         await client.close()
 
-    def test_copy_signature(self, async_client: AsyncHubSpot) -> None:
+    def test_copy_signature(self, async_client: AsyncHubspot) -> None:
         # ensure the same parameters that can be passed to the client are defined in the `.copy()` method
         init_signature = inspect.signature(
             # mypy doesn't like that we access the `__init__` property.
@@ -1035,7 +1035,7 @@ class TestAsyncHubSpot:
             assert copy_param is not None, f"copy() signature is missing the {name} param"
 
     @pytest.mark.skipif(sys.version_info >= (3, 10), reason="fails because of a memory leak that started from 3.12")
-    def test_copy_build_request(self, async_client: AsyncHubSpot) -> None:
+    def test_copy_build_request(self, async_client: AsyncHubspot) -> None:
         options = FinalRequestOptions(method="get", url="/foo")
 
         def build_request(options: FinalRequestOptions) -> None:
@@ -1097,7 +1097,7 @@ class TestAsyncHubSpot:
                     print(frame)
             raise AssertionError()
 
-    async def test_request_timeout(self, async_client: AsyncHubSpot) -> None:
+    async def test_request_timeout(self, async_client: AsyncHubspot) -> None:
         request = async_client._build_request(FinalRequestOptions(method="get", url="/foo"))
         timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
         assert timeout == DEFAULT_TIMEOUT
@@ -1109,7 +1109,7 @@ class TestAsyncHubSpot:
         assert timeout == httpx.Timeout(100.0)
 
     async def test_client_timeout_option(self) -> None:
-        client = AsyncHubSpot(
+        client = AsyncHubspot(
             base_url=base_url, access_token=access_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -1122,7 +1122,7 @@ class TestAsyncHubSpot:
     async def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         async with httpx.AsyncClient(timeout=None) as http_client:
-            client = AsyncHubSpot(
+            client = AsyncHubspot(
                 base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1134,7 +1134,7 @@ class TestAsyncHubSpot:
 
         # no timeout given to the httpx client should not use the httpx default
         async with httpx.AsyncClient() as http_client:
-            client = AsyncHubSpot(
+            client = AsyncHubspot(
                 base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1146,7 +1146,7 @@ class TestAsyncHubSpot:
 
         # explicitly passing the default timeout currently results in it being ignored
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = AsyncHubSpot(
+            client = AsyncHubspot(
                 base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1159,7 +1159,7 @@ class TestAsyncHubSpot:
     def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             with httpx.Client() as http_client:
-                AsyncHubSpot(
+                AsyncHubspot(
                     base_url=base_url,
                     access_token=access_token,
                     _strict_response_validation=True,
@@ -1167,7 +1167,7 @@ class TestAsyncHubSpot:
                 )
 
     async def test_default_headers_option(self) -> None:
-        test_client = AsyncHubSpot(
+        test_client = AsyncHubspot(
             base_url=base_url,
             access_token=access_token,
             _strict_response_validation=True,
@@ -1177,7 +1177,7 @@ class TestAsyncHubSpot:
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        test_client2 = AsyncHubSpot(
+        test_client2 = AsyncHubspot(
             base_url=base_url,
             access_token=access_token,
             _strict_response_validation=True,
@@ -1194,7 +1194,7 @@ class TestAsyncHubSpot:
         await test_client2.close()
 
     async def test_default_query_option(self) -> None:
-        client = AsyncHubSpot(
+        client = AsyncHubspot(
             base_url=base_url,
             access_token=access_token,
             _strict_response_validation=True,
@@ -1216,7 +1216,7 @@ class TestAsyncHubSpot:
 
         await client.close()
 
-    def test_request_extra_json(self, client: HubSpot) -> None:
+    def test_request_extra_json(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1250,7 +1250,7 @@ class TestAsyncHubSpot:
         data = json.loads(request.content.decode("utf-8"))
         assert data == {"foo": "bar", "baz": None}
 
-    def test_request_extra_headers(self, client: HubSpot) -> None:
+    def test_request_extra_headers(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1272,7 +1272,7 @@ class TestAsyncHubSpot:
         )
         assert request.headers.get("X-Bar") == "false"
 
-    def test_request_extra_query(self, client: HubSpot) -> None:
+    def test_request_extra_query(self, client: Hubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1313,7 +1313,7 @@ class TestAsyncHubSpot:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, async_client: AsyncHubSpot) -> None:
+    def test_multipart_repeating_array(self, async_client: AsyncHubspot) -> None:
         request = async_client._build_request(
             FinalRequestOptions.construct(
                 method="post",
@@ -1343,7 +1343,7 @@ class TestAsyncHubSpot:
         ]
 
     @pytest.mark.respx(base_url=base_url)
-    async def test_basic_union_response(self, respx_mock: MockRouter, async_client: AsyncHubSpot) -> None:
+    async def test_basic_union_response(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
         class Model1(BaseModel):
             name: str
 
@@ -1357,7 +1357,7 @@ class TestAsyncHubSpot:
         assert response.foo == "bar"
 
     @pytest.mark.respx(base_url=base_url)
-    async def test_union_response_different_types(self, respx_mock: MockRouter, async_client: AsyncHubSpot) -> None:
+    async def test_union_response_different_types(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
         """Union of objects with the same field name using a different type"""
 
         class Model1(BaseModel):
@@ -1380,7 +1380,7 @@ class TestAsyncHubSpot:
 
     @pytest.mark.respx(base_url=base_url)
     async def test_non_application_json_content_type_for_json_data(
-        self, respx_mock: MockRouter, async_client: AsyncHubSpot
+        self, respx_mock: MockRouter, async_client: AsyncHubspot
     ) -> None:
         """
         Response that sets Content-Type to something other than application/json but returns json data
@@ -1402,7 +1402,7 @@ class TestAsyncHubSpot:
         assert response.foo == 2
 
     async def test_base_url_setter(self) -> None:
-        client = AsyncHubSpot(
+        client = AsyncHubspot(
             base_url="https://example.com/from_init", access_token=access_token, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -1414,19 +1414,19 @@ class TestAsyncHubSpot:
         await client.close()
 
     async def test_base_url_env(self) -> None:
-        with update_env(HUB_SPOT_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncHubSpot(access_token=access_token, _strict_response_validation=True)
+        with update_env(HUBSPOT_BASE_URL="http://localhost:5000/from/env"):
+            client = AsyncHubspot(access_token=access_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncHubSpot(
+            AsyncHubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
             ),
-            AsyncHubSpot(
+            AsyncHubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
@@ -1435,7 +1435,7 @@ class TestAsyncHubSpot:
         ],
         ids=["standard", "custom http client"],
     )
-    async def test_base_url_trailing_slash(self, client: AsyncHubSpot) -> None:
+    async def test_base_url_trailing_slash(self, client: AsyncHubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1449,12 +1449,12 @@ class TestAsyncHubSpot:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncHubSpot(
+            AsyncHubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
             ),
-            AsyncHubSpot(
+            AsyncHubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
@@ -1463,7 +1463,7 @@ class TestAsyncHubSpot:
         ],
         ids=["standard", "custom http client"],
     )
-    async def test_base_url_no_trailing_slash(self, client: AsyncHubSpot) -> None:
+    async def test_base_url_no_trailing_slash(self, client: AsyncHubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1477,12 +1477,12 @@ class TestAsyncHubSpot:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncHubSpot(
+            AsyncHubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
             ),
-            AsyncHubSpot(
+            AsyncHubspot(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
                 _strict_response_validation=True,
@@ -1491,7 +1491,7 @@ class TestAsyncHubSpot:
         ],
         ids=["standard", "custom http client"],
     )
-    async def test_absolute_request_url(self, client: AsyncHubSpot) -> None:
+    async def test_absolute_request_url(self, client: AsyncHubspot) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1503,7 +1503,7 @@ class TestAsyncHubSpot:
         await client.close()
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        test_client = AsyncHubSpot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        test_client = AsyncHubspot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
         assert not test_client.is_closed()
 
         copied = test_client.copy()
@@ -1515,7 +1515,7 @@ class TestAsyncHubSpot:
         assert not test_client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        test_client = AsyncHubSpot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        test_client = AsyncHubspot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
         async with test_client as c2:
             assert c2 is test_client
             assert not c2.is_closed()
@@ -1523,7 +1523,7 @@ class TestAsyncHubSpot:
         assert test_client.is_closed()
 
     @pytest.mark.respx(base_url=base_url)
-    async def test_client_response_validation_error(self, respx_mock: MockRouter, async_client: AsyncHubSpot) -> None:
+    async def test_client_response_validation_error(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
         class Model(BaseModel):
             foo: str
 
@@ -1536,7 +1536,7 @@ class TestAsyncHubSpot:
 
     async def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            AsyncHubSpot(
+            AsyncHubspot(
                 base_url=base_url,
                 access_token=access_token,
                 _strict_response_validation=True,
@@ -1550,12 +1550,12 @@ class TestAsyncHubSpot:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncHubSpot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        strict_client = AsyncHubspot(base_url=base_url, access_token=access_token, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        non_strict_client = AsyncHubSpot(
+        non_strict_client = AsyncHubspot(
             base_url=base_url, access_token=access_token, _strict_response_validation=False
         )
 
@@ -1588,7 +1588,7 @@ class TestAsyncHubSpot:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     async def test_parse_retry_after_header(
-        self, remaining_retries: int, retry_after: str, timeout: float, async_client: AsyncHubSpot
+        self, remaining_retries: int, retry_after: str, timeout: float, async_client: AsyncHubspot
     ) -> None:
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -1598,7 +1598,7 @@ class TestAsyncHubSpot:
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(
-        self, respx_mock: MockRouter, async_client: AsyncHubSpot
+        self, respx_mock: MockRouter, async_client: AsyncHubspot
     ) -> None:
         respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
@@ -1611,7 +1611,7 @@ class TestAsyncHubSpot:
 
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncHubSpot) -> None:
+    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
         respx_mock.post("/crm/v3/objects/contacts").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
@@ -1626,7 +1626,7 @@ class TestAsyncHubSpot:
     @pytest.mark.parametrize("failure_mode", ["status", "exception"])
     async def test_retries_taken(
         self,
-        async_client: AsyncHubSpot,
+        async_client: AsyncHubspot,
         failures_before_success: int,
         failure_mode: Literal["status", "exception"],
         respx_mock: MockRouter,
@@ -1655,7 +1655,7 @@ class TestAsyncHubSpot:
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_omit_retry_count_header(
-        self, async_client: AsyncHubSpot, failures_before_success: int, respx_mock: MockRouter
+        self, async_client: AsyncHubspot, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = async_client.with_options(max_retries=4)
 
@@ -1680,7 +1680,7 @@ class TestAsyncHubSpot:
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_overwrite_retry_count_header(
-        self, async_client: AsyncHubSpot, failures_before_success: int, respx_mock: MockRouter
+        self, async_client: AsyncHubspot, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = async_client.with_options(max_retries=4)
 
@@ -1728,7 +1728,7 @@ class TestAsyncHubSpot:
         )
 
     @pytest.mark.respx(base_url=base_url)
-    async def test_follow_redirects(self, respx_mock: MockRouter, async_client: AsyncHubSpot) -> None:
+    async def test_follow_redirects(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
         # Test that the default follow_redirects=True allows following redirects
         respx_mock.post("/redirect").mock(
             return_value=httpx.Response(302, headers={"Location": f"{base_url}/redirected"})
@@ -1740,7 +1740,7 @@ class TestAsyncHubSpot:
         assert response.json() == {"status": "ok"}
 
     @pytest.mark.respx(base_url=base_url)
-    async def test_follow_redirects_disabled(self, respx_mock: MockRouter, async_client: AsyncHubSpot) -> None:
+    async def test_follow_redirects_disabled(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
         # Test that follow_redirects=False prevents following redirects
         respx_mock.post("/redirect").mock(
             return_value=httpx.Response(302, headers={"Location": f"{base_url}/redirected"})

@@ -23,10 +23,11 @@ from ....types.cms.media_bridge import (
     event_create_attention_span_event_params,
     event_create_media_played_percent_event_params,
 )
-from ....types.cms.media_played_event import MediaPlayedEvent
-from ....types.cms.attention_span_event import AttentionSpanEvent
-from ....types.cms.media_played_percentage_event import MediaPlayedPercentageEvent
-from ....types.cms.attention_span_calculated_values_param import AttentionSpanCalculatedValuesParam
+from ....types.cms.media_bridge.event_create_media_played_event_response import EventCreateMediaPlayedEventResponse
+from ....types.cms.media_bridge.event_create_attention_span_event_response import EventCreateAttentionSpanEventResponse
+from ....types.cms.media_bridge.event_create_media_played_percent_event_response import (
+    EventCreateMediaPlayedPercentEventResponse,
+)
 
 __all__ = ["EventsResource", "AsyncEventsResource"]
 
@@ -61,7 +62,7 @@ class EventsResource(SyncAPIResource):
         _hsenc: str | Omit = omit,
         contact_id: int | Omit = omit,
         contact_utk: str | Omit = omit,
-        derived_values: AttentionSpanCalculatedValuesParam | Omit = omit,
+        derived_values: event_create_attention_span_event_params.DerivedValues | Omit = omit,
         external_id: str | Omit = omit,
         media_bridge_id: int | Omit = omit,
         media_name: str | Omit = omit,
@@ -76,7 +77,7 @@ class EventsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AttentionSpanEvent:
+    ) -> EventCreateAttentionSpanEventResponse:
         """
         Create an event containing the viewers attention span details for the media.
 
@@ -115,7 +116,7 @@ class EventsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AttentionSpanEvent,
+            cast_to=EventCreateAttentionSpanEventResponse,
         )
 
     def create_media_played_event(
@@ -142,7 +143,7 @@ class EventsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaPlayedEvent:
+    ) -> EventCreateMediaPlayedEventResponse:
         """
         Create an event for when a user begins playing a piece of media.
 
@@ -180,7 +181,7 @@ class EventsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MediaPlayedEvent,
+            cast_to=EventCreateMediaPlayedEventResponse,
         )
 
     def create_media_played_percent_event(
@@ -206,7 +207,7 @@ class EventsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaPlayedPercentageEvent:
+    ) -> EventCreateMediaPlayedPercentEventResponse:
         """
         Create an event representing a user reaching quarterly milestones in a piece of
         media they're viewing.
@@ -244,7 +245,7 @@ class EventsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MediaPlayedPercentageEvent,
+            cast_to=EventCreateMediaPlayedPercentEventResponse,
         )
 
 
@@ -278,7 +279,7 @@ class AsyncEventsResource(AsyncAPIResource):
         _hsenc: str | Omit = omit,
         contact_id: int | Omit = omit,
         contact_utk: str | Omit = omit,
-        derived_values: AttentionSpanCalculatedValuesParam | Omit = omit,
+        derived_values: event_create_attention_span_event_params.DerivedValues | Omit = omit,
         external_id: str | Omit = omit,
         media_bridge_id: int | Omit = omit,
         media_name: str | Omit = omit,
@@ -293,7 +294,7 @@ class AsyncEventsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AttentionSpanEvent:
+    ) -> EventCreateAttentionSpanEventResponse:
         """
         Create an event containing the viewers attention span details for the media.
 
@@ -332,7 +333,7 @@ class AsyncEventsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AttentionSpanEvent,
+            cast_to=EventCreateAttentionSpanEventResponse,
         )
 
     async def create_media_played_event(
@@ -359,7 +360,7 @@ class AsyncEventsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaPlayedEvent:
+    ) -> EventCreateMediaPlayedEventResponse:
         """
         Create an event for when a user begins playing a piece of media.
 
@@ -397,7 +398,7 @@ class AsyncEventsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MediaPlayedEvent,
+            cast_to=EventCreateMediaPlayedEventResponse,
         )
 
     async def create_media_played_percent_event(
@@ -423,7 +424,7 @@ class AsyncEventsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaPlayedPercentageEvent:
+    ) -> EventCreateMediaPlayedPercentEventResponse:
         """
         Create an event representing a user reaching quarterly milestones in a piece of
         media they're viewing.
@@ -461,7 +462,7 @@ class AsyncEventsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MediaPlayedPercentageEvent,
+            cast_to=EventCreateMediaPlayedPercentEventResponse,
         )
 
 

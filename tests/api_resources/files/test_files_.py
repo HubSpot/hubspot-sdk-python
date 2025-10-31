@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -27,7 +27,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update(self, client: HubSpot) -> None:
+    def test_method_update(self, client: Hubspot) -> None:
         file = client.files.files.update(
             file_id="321669910225",
         )
@@ -35,7 +35,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: HubSpot) -> None:
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.update(
             file_id="321669910225",
             access="PUBLIC_INDEXABLE",
@@ -50,7 +50,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: HubSpot) -> None:
+    def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.update(
             file_id="321669910225",
         )
@@ -62,7 +62,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: HubSpot) -> None:
+    def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.update(
             file_id="321669910225",
         ) as response:
@@ -76,7 +76,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: HubSpot) -> None:
+    def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.files.with_raw_response.update(
                 file_id="",
@@ -84,7 +84,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_delete(self, client: HubSpot) -> None:
+    def test_method_delete(self, client: Hubspot) -> None:
         file = client.files.files.delete(
             "321669910225",
         )
@@ -92,7 +92,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: HubSpot) -> None:
+    def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.delete(
             "321669910225",
         )
@@ -104,7 +104,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.delete(
             "321669910225",
         ) as response:
@@ -118,7 +118,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: HubSpot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.files.with_raw_response.delete(
                 "",
@@ -126,7 +126,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_gdpr_delete(self, client: HubSpot) -> None:
+    def test_method_gdpr_delete(self, client: Hubspot) -> None:
         file = client.files.files.gdpr_delete(
             "321669910225",
         )
@@ -134,7 +134,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_gdpr_delete(self, client: HubSpot) -> None:
+    def test_raw_response_gdpr_delete(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.gdpr_delete(
             "321669910225",
         )
@@ -146,7 +146,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_gdpr_delete(self, client: HubSpot) -> None:
+    def test_streaming_response_gdpr_delete(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.gdpr_delete(
             "321669910225",
         ) as response:
@@ -160,7 +160,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_gdpr_delete(self, client: HubSpot) -> None:
+    def test_path_params_gdpr_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.files.with_raw_response.gdpr_delete(
                 "",
@@ -168,7 +168,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get(self, client: HubSpot) -> None:
+    def test_method_get(self, client: Hubspot) -> None:
         file = client.files.files.get(
             file_id="321669910225",
         )
@@ -176,7 +176,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.get(
             file_id="321669910225",
             properties=["string"],
@@ -185,7 +185,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: HubSpot) -> None:
+    def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.get(
             file_id="321669910225",
         )
@@ -197,7 +197,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: HubSpot) -> None:
+    def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.get(
             file_id="321669910225",
         ) as response:
@@ -211,7 +211,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: HubSpot) -> None:
+    def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.files.with_raw_response.get(
                 file_id="",
@@ -219,7 +219,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_path(self, client: HubSpot) -> None:
+    def test_method_get_by_path(self, client: Hubspot) -> None:
         file = client.files.files.get_by_path(
             path="path",
         )
@@ -227,7 +227,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_by_path_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_by_path_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.get_by_path(
             path="path",
             properties=["string"],
@@ -236,7 +236,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_by_path(self, client: HubSpot) -> None:
+    def test_raw_response_get_by_path(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.get_by_path(
             path="path",
         )
@@ -248,7 +248,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_path(self, client: HubSpot) -> None:
+    def test_streaming_response_get_by_path(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.get_by_path(
             path="path",
         ) as response:
@@ -262,7 +262,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_by_path(self, client: HubSpot) -> None:
+    def test_path_params_get_by_path(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
             client.files.files.with_raw_response.get_by_path(
                 path="",
@@ -270,7 +270,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_import_task_status(self, client: HubSpot) -> None:
+    def test_method_get_import_task_status(self, client: Hubspot) -> None:
         file = client.files.files.get_import_task_status(
             "taskId",
         )
@@ -278,7 +278,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_import_task_status(self, client: HubSpot) -> None:
+    def test_raw_response_get_import_task_status(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.get_import_task_status(
             "taskId",
         )
@@ -290,7 +290,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_import_task_status(self, client: HubSpot) -> None:
+    def test_streaming_response_get_import_task_status(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.get_import_task_status(
             "taskId",
         ) as response:
@@ -304,7 +304,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_import_task_status(self, client: HubSpot) -> None:
+    def test_path_params_get_import_task_status(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
             client.files.files.with_raw_response.get_import_task_status(
                 "",
@@ -312,7 +312,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_signed_url(self, client: HubSpot) -> None:
+    def test_method_get_signed_url(self, client: Hubspot) -> None:
         file = client.files.files.get_signed_url(
             file_id="321669910225",
         )
@@ -320,7 +320,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_signed_url_with_all_params(self, client: HubSpot) -> None:
+    def test_method_get_signed_url_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.get_signed_url(
             file_id="321669910225",
             expiration_seconds=0,
@@ -331,7 +331,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_signed_url(self, client: HubSpot) -> None:
+    def test_raw_response_get_signed_url(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.get_signed_url(
             file_id="321669910225",
         )
@@ -343,7 +343,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_signed_url(self, client: HubSpot) -> None:
+    def test_streaming_response_get_signed_url(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.get_signed_url(
             file_id="321669910225",
         ) as response:
@@ -357,7 +357,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_signed_url(self, client: HubSpot) -> None:
+    def test_path_params_get_signed_url(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.files.with_raw_response.get_signed_url(
                 file_id="",
@@ -365,7 +365,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_import_from_url_async(self, client: HubSpot) -> None:
+    def test_method_import_from_url_async(self, client: Hubspot) -> None:
         file = client.files.files.import_from_url_async(
             access="PUBLIC_INDEXABLE",
             url="url",
@@ -374,7 +374,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_import_from_url_async_with_all_params(self, client: HubSpot) -> None:
+    def test_method_import_from_url_async_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.import_from_url_async(
             access="PUBLIC_INDEXABLE",
             url="url",
@@ -391,7 +391,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_import_from_url_async(self, client: HubSpot) -> None:
+    def test_raw_response_import_from_url_async(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.import_from_url_async(
             access="PUBLIC_INDEXABLE",
             url="url",
@@ -404,7 +404,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_import_from_url_async(self, client: HubSpot) -> None:
+    def test_streaming_response_import_from_url_async(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.import_from_url_async(
             access="PUBLIC_INDEXABLE",
             url="url",
@@ -419,7 +419,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_replace(self, client: HubSpot) -> None:
+    def test_method_replace(self, client: Hubspot) -> None:
         file = client.files.files.replace(
             file_id="321669910225",
         )
@@ -427,7 +427,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_replace_with_all_params(self, client: HubSpot) -> None:
+    def test_method_replace_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.replace(
             file_id="321669910225",
             charset_hunch="charsetHunch",
@@ -438,7 +438,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_replace(self, client: HubSpot) -> None:
+    def test_raw_response_replace(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.replace(
             file_id="321669910225",
         )
@@ -450,7 +450,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_replace(self, client: HubSpot) -> None:
+    def test_streaming_response_replace(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.replace(
             file_id="321669910225",
         ) as response:
@@ -464,7 +464,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_replace(self, client: HubSpot) -> None:
+    def test_path_params_replace(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.files.with_raw_response.replace(
                 file_id="",
@@ -472,13 +472,13 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_search(self, client: HubSpot) -> None:
+    def test_method_search(self, client: Hubspot) -> None:
         file = client.files.files.search()
         assert_matches_type(SyncPage[File], file, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: HubSpot) -> None:
+    def test_method_search_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.search(
             after="after",
             allows_anonymous_access=True,
@@ -521,7 +521,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: HubSpot) -> None:
+    def test_raw_response_search(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.search()
 
         assert response.is_closed is True
@@ -531,7 +531,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: HubSpot) -> None:
+    def test_streaming_response_search(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -543,13 +543,13 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_upload(self, client: HubSpot) -> None:
+    def test_method_upload(self, client: Hubspot) -> None:
         file = client.files.files.upload()
         assert_matches_type(File, file, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_upload_with_all_params(self, client: HubSpot) -> None:
+    def test_method_upload_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.upload(
             charset_hunch="charsetHunch",
             file=b"raw file contents",
@@ -562,7 +562,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_upload(self, client: HubSpot) -> None:
+    def test_raw_response_upload(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.upload()
 
         assert response.is_closed is True
@@ -572,7 +572,7 @@ class TestFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_upload(self, client: HubSpot) -> None:
+    def test_streaming_response_upload(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.upload() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -590,7 +590,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.update(
             file_id="321669910225",
         )
@@ -598,7 +598,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.update(
             file_id="321669910225",
             access="PUBLIC_INDEXABLE",
@@ -613,7 +613,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.update(
             file_id="321669910225",
         )
@@ -625,7 +625,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.update(
             file_id="321669910225",
         ) as response:
@@ -639,7 +639,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.files.with_raw_response.update(
                 file_id="",
@@ -647,7 +647,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.delete(
             "321669910225",
         )
@@ -655,7 +655,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.delete(
             "321669910225",
         )
@@ -667,7 +667,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.delete(
             "321669910225",
         ) as response:
@@ -681,7 +681,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.files.with_raw_response.delete(
                 "",
@@ -689,7 +689,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_gdpr_delete(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.gdpr_delete(
             "321669910225",
         )
@@ -697,7 +697,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.gdpr_delete(
             "321669910225",
         )
@@ -709,7 +709,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.gdpr_delete(
             "321669910225",
         ) as response:
@@ -723,7 +723,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_gdpr_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.files.with_raw_response.gdpr_delete(
                 "",
@@ -731,7 +731,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.get(
             file_id="321669910225",
         )
@@ -739,7 +739,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.get(
             file_id="321669910225",
             properties=["string"],
@@ -748,7 +748,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.get(
             file_id="321669910225",
         )
@@ -760,7 +760,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.get(
             file_id="321669910225",
         ) as response:
@@ -774,7 +774,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.files.with_raw_response.get(
                 file_id="",
@@ -782,7 +782,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_path(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_by_path(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.get_by_path(
             path="path",
         )
@@ -790,7 +790,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.get_by_path(
             path="path",
             properties=["string"],
@@ -799,7 +799,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_path(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_by_path(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.get_by_path(
             path="path",
         )
@@ -811,7 +811,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_path(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_by_path(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.get_by_path(
             path="path",
         ) as response:
@@ -825,7 +825,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_by_path(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_by_path(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
             await async_client.files.files.with_raw_response.get_by_path(
                 path="",
@@ -833,7 +833,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_import_task_status(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.get_import_task_status(
             "taskId",
         )
@@ -841,7 +841,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_import_task_status(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.get_import_task_status(
             "taskId",
         )
@@ -853,7 +853,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_import_task_status(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.get_import_task_status(
             "taskId",
         ) as response:
@@ -867,7 +867,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_import_task_status(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
             await async_client.files.files.with_raw_response.get_import_task_status(
                 "",
@@ -875,7 +875,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_signed_url(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_signed_url(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.get_signed_url(
             file_id="321669910225",
         )
@@ -883,7 +883,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_signed_url_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_signed_url_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.get_signed_url(
             file_id="321669910225",
             expiration_seconds=0,
@@ -894,7 +894,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_signed_url(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_signed_url(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.get_signed_url(
             file_id="321669910225",
         )
@@ -906,7 +906,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_signed_url(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_signed_url(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.get_signed_url(
             file_id="321669910225",
         ) as response:
@@ -920,7 +920,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_signed_url(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_signed_url(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.files.with_raw_response.get_signed_url(
                 file_id="",
@@ -928,7 +928,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_import_from_url_async(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_import_from_url_async(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.import_from_url_async(
             access="PUBLIC_INDEXABLE",
             url="url",
@@ -937,7 +937,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_import_from_url_async_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_import_from_url_async_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.import_from_url_async(
             access="PUBLIC_INDEXABLE",
             url="url",
@@ -954,7 +954,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_import_from_url_async(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_import_from_url_async(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.import_from_url_async(
             access="PUBLIC_INDEXABLE",
             url="url",
@@ -967,7 +967,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_import_from_url_async(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_import_from_url_async(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.import_from_url_async(
             access="PUBLIC_INDEXABLE",
             url="url",
@@ -982,7 +982,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_replace(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.replace(
             file_id="321669910225",
         )
@@ -990,7 +990,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_replace_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_replace_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.replace(
             file_id="321669910225",
             charset_hunch="charsetHunch",
@@ -1001,7 +1001,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_replace(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.replace(
             file_id="321669910225",
         )
@@ -1013,7 +1013,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_replace(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.replace(
             file_id="321669910225",
         ) as response:
@@ -1027,7 +1027,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_replace(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_replace(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.files.with_raw_response.replace(
                 file_id="",
@@ -1035,13 +1035,13 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_search(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.search()
         assert_matches_type(AsyncPage[File], file, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.search(
             after="after",
             allows_anonymous_access=True,
@@ -1084,7 +1084,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.search()
 
         assert response.is_closed is True
@@ -1094,7 +1094,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1106,13 +1106,13 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_upload(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_upload(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.upload()
         assert_matches_type(File, file, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_upload_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_upload_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.upload(
             charset_hunch="charsetHunch",
             file=b"raw file contents",
@@ -1125,7 +1125,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_upload(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_upload(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.upload()
 
         assert response.is_closed is True
@@ -1135,7 +1135,7 @@ class TestAsyncFiles:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_upload(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_upload(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.upload() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

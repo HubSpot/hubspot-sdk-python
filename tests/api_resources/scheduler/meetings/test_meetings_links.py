@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import HubSpot, AsyncHubSpot
+from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.scheduler import (
@@ -25,7 +25,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: HubSpot) -> None:
+    def test_method_list(self, client: Hubspot) -> None:
         meetings_link = client.scheduler.meetings.meetings_links.list()
         assert_matches_type(
             CollectionResponseWithTotalExternalLinkMetadataForwardPaging, meetings_link, path=["response"]
@@ -33,7 +33,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: HubSpot) -> None:
+    def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.scheduler.meetings.meetings_links.with_raw_response.list()
 
         assert response.is_closed is True
@@ -45,7 +45,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: HubSpot) -> None:
+    def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.scheduler.meetings.meetings_links.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -59,7 +59,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_book(self, client: HubSpot) -> None:
+    def test_method_book(self, client: Hubspot) -> None:
         meetings_link = client.scheduler.meetings.meetings_links.book(
             duration=0,
             email="email",
@@ -85,7 +85,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_book_with_all_params(self, client: HubSpot) -> None:
+    def test_method_book_with_all_params(self, client: Hubspot) -> None:
         meetings_link = client.scheduler.meetings.meetings_links.book(
             duration=0,
             email="email",
@@ -113,7 +113,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_book(self, client: HubSpot) -> None:
+    def test_raw_response_book(self, client: Hubspot) -> None:
         response = client.scheduler.meetings.meetings_links.with_raw_response.book(
             duration=0,
             email="email",
@@ -143,7 +143,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_book(self, client: HubSpot) -> None:
+    def test_streaming_response_book(self, client: Hubspot) -> None:
         with client.scheduler.meetings.meetings_links.with_streaming_response.book(
             duration=0,
             email="email",
@@ -175,7 +175,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_availability_by_slug(self, client: HubSpot) -> None:
+    def test_method_get_availability_by_slug(self, client: Hubspot) -> None:
         meetings_link = client.scheduler.meetings.meetings_links.get_availability_by_slug(
             "slug",
         )
@@ -183,7 +183,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_availability_by_slug(self, client: HubSpot) -> None:
+    def test_raw_response_get_availability_by_slug(self, client: Hubspot) -> None:
         response = client.scheduler.meetings.meetings_links.with_raw_response.get_availability_by_slug(
             "slug",
         )
@@ -195,7 +195,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_availability_by_slug(self, client: HubSpot) -> None:
+    def test_streaming_response_get_availability_by_slug(self, client: Hubspot) -> None:
         with client.scheduler.meetings.meetings_links.with_streaming_response.get_availability_by_slug(
             "slug",
         ) as response:
@@ -209,7 +209,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_availability_by_slug(self, client: HubSpot) -> None:
+    def test_path_params_get_availability_by_slug(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.scheduler.meetings.meetings_links.with_raw_response.get_availability_by_slug(
                 "",
@@ -217,7 +217,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_booking_info_by_slug(self, client: HubSpot) -> None:
+    def test_method_get_booking_info_by_slug(self, client: Hubspot) -> None:
         meetings_link = client.scheduler.meetings.meetings_links.get_booking_info_by_slug(
             "slug",
         )
@@ -225,7 +225,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_booking_info_by_slug(self, client: HubSpot) -> None:
+    def test_raw_response_get_booking_info_by_slug(self, client: Hubspot) -> None:
         response = client.scheduler.meetings.meetings_links.with_raw_response.get_booking_info_by_slug(
             "slug",
         )
@@ -237,7 +237,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_booking_info_by_slug(self, client: HubSpot) -> None:
+    def test_streaming_response_get_booking_info_by_slug(self, client: Hubspot) -> None:
         with client.scheduler.meetings.meetings_links.with_streaming_response.get_booking_info_by_slug(
             "slug",
         ) as response:
@@ -251,7 +251,7 @@ class TestMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_get_booking_info_by_slug(self, client: HubSpot) -> None:
+    def test_path_params_get_booking_info_by_slug(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.scheduler.meetings.meetings_links.with_raw_response.get_booking_info_by_slug(
                 "",
@@ -265,7 +265,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
         meetings_link = await async_client.scheduler.meetings.meetings_links.list()
         assert_matches_type(
             CollectionResponseWithTotalExternalLinkMetadataForwardPaging, meetings_link, path=["response"]
@@ -273,7 +273,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.scheduler.meetings.meetings_links.with_raw_response.list()
 
         assert response.is_closed is True
@@ -285,7 +285,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.scheduler.meetings.meetings_links.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -299,7 +299,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_book(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_book(self, async_client: AsyncHubspot) -> None:
         meetings_link = await async_client.scheduler.meetings.meetings_links.book(
             duration=0,
             email="email",
@@ -325,7 +325,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_book_with_all_params(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_book_with_all_params(self, async_client: AsyncHubspot) -> None:
         meetings_link = await async_client.scheduler.meetings.meetings_links.book(
             duration=0,
             email="email",
@@ -353,7 +353,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_book(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_book(self, async_client: AsyncHubspot) -> None:
         response = await async_client.scheduler.meetings.meetings_links.with_raw_response.book(
             duration=0,
             email="email",
@@ -383,7 +383,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_book(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_book(self, async_client: AsyncHubspot) -> None:
         async with async_client.scheduler.meetings.meetings_links.with_streaming_response.book(
             duration=0,
             email="email",
@@ -415,7 +415,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_availability_by_slug(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
         meetings_link = await async_client.scheduler.meetings.meetings_links.get_availability_by_slug(
             "slug",
         )
@@ -423,7 +423,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_availability_by_slug(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
         response = await async_client.scheduler.meetings.meetings_links.with_raw_response.get_availability_by_slug(
             "slug",
         )
@@ -435,7 +435,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_availability_by_slug(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
         async with async_client.scheduler.meetings.meetings_links.with_streaming_response.get_availability_by_slug(
             "slug",
         ) as response:
@@ -449,7 +449,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_availability_by_slug(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.scheduler.meetings.meetings_links.with_raw_response.get_availability_by_slug(
                 "",
@@ -457,7 +457,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_booking_info_by_slug(self, async_client: AsyncHubSpot) -> None:
+    async def test_method_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
         meetings_link = await async_client.scheduler.meetings.meetings_links.get_booking_info_by_slug(
             "slug",
         )
@@ -465,7 +465,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_booking_info_by_slug(self, async_client: AsyncHubSpot) -> None:
+    async def test_raw_response_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
         response = await async_client.scheduler.meetings.meetings_links.with_raw_response.get_booking_info_by_slug(
             "slug",
         )
@@ -477,7 +477,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_booking_info_by_slug(self, async_client: AsyncHubSpot) -> None:
+    async def test_streaming_response_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
         async with async_client.scheduler.meetings.meetings_links.with_streaming_response.get_booking_info_by_slug(
             "slug",
         ) as response:
@@ -491,7 +491,7 @@ class TestAsyncMeetingsLinks:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_get_booking_info_by_slug(self, async_client: AsyncHubSpot) -> None:
+    async def test_path_params_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.scheduler.meetings.meetings_links.with_raw_response.get_booking_info_by_slug(
                 "",
