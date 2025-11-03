@@ -3,7 +3,7 @@
 from typing import List, Optional
 
 from ..._models import BaseModel
-from ..marketing.paging import Paging
+from ..marketing.emails_paging import EmailsPaging
 from .simple_public_object_with_associations import SimplePublicObjectWithAssociations
 
 __all__ = ["CollectionResponseSimplePublicObjectWithAssociations"]
@@ -12,5 +12,5 @@ __all__ = ["CollectionResponseSimplePublicObjectWithAssociations"]
 class CollectionResponseSimplePublicObjectWithAssociations(BaseModel):
     results: List[SimplePublicObjectWithAssociations]
 
-    paging: Optional[Paging] = None
+    paging: Optional[EmailsPaging] = None
     """Contains information pagination of results."""

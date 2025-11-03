@@ -10,12 +10,12 @@ from .public_welcome_message import PublicWelcomeMessage
 from .public_assignment_message import PublicAssignmentMessage
 from .public_thread_inbox_change import PublicThreadInboxChange
 from .public_thread_status_change import PublicThreadStatusChange
-from .public_conversations_message import PublicConversationsMessage
+from .conversations_public_conversations_message import ConversationsPublicConversationsMessage
 
 __all__ = ["CollectionResponsePublicMessageForwardPaging", "Result"]
 
 Result: TypeAlias = Union[
-    PublicConversationsMessage,
+    ConversationsPublicConversationsMessage,
     PublicComment,
     PublicWelcomeMessage,
     PublicAssignmentMessage,

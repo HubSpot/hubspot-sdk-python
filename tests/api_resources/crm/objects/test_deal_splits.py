@@ -23,7 +23,7 @@ class TestDealSplits:
     @parametrize
     def test_method_batch_read(self, client: Hubspot) -> None:
         deal_split = client.crm.objects.deal_splits.batch_read(
-            inputs=[{"id": "id"}],
+            inputs=[{"id": "37295"}],
         )
         assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
 
@@ -31,7 +31,7 @@ class TestDealSplits:
     @parametrize
     def test_raw_response_batch_read(self, client: Hubspot) -> None:
         response = client.crm.objects.deal_splits.with_raw_response.batch_read(
-            inputs=[{"id": "id"}],
+            inputs=[{"id": "37295"}],
         )
 
         assert response.is_closed is True
@@ -43,7 +43,7 @@ class TestDealSplits:
     @parametrize
     def test_streaming_response_batch_read(self, client: Hubspot) -> None:
         with client.crm.objects.deal_splits.with_streaming_response.batch_read(
-            inputs=[{"id": "id"}],
+            inputs=[{"id": "37295"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -127,7 +127,7 @@ class TestAsyncDealSplits:
     @parametrize
     async def test_method_batch_read(self, async_client: AsyncHubspot) -> None:
         deal_split = await async_client.crm.objects.deal_splits.batch_read(
-            inputs=[{"id": "id"}],
+            inputs=[{"id": "37295"}],
         )
         assert_matches_type(BatchResponseDealToDealSplits, deal_split, path=["response"])
 
@@ -135,7 +135,7 @@ class TestAsyncDealSplits:
     @parametrize
     async def test_raw_response_batch_read(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.deal_splits.with_raw_response.batch_read(
-            inputs=[{"id": "id"}],
+            inputs=[{"id": "37295"}],
         )
 
         assert response.is_closed is True
@@ -147,7 +147,7 @@ class TestAsyncDealSplits:
     @parametrize
     async def test_streaming_response_batch_read(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.deal_splits.with_streaming_response.batch_read(
-            inputs=[{"id": "id"}],
+            inputs=[{"id": "37295"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -14,7 +14,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.conversations.public_channel_account import PublicChannelAccount
+from ...types.conversations.conversations_public_channel_account import ConversationsPublicChannelAccount
 from ...types.conversations.collection_response_with_total_public_channel_account_forward_paging import (
     CollectionResponseWithTotalPublicChannelAccountForwardPaging,
 )
@@ -71,7 +71,7 @@ class ChannelAccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccount:
+    ) -> ConversationsPublicChannelAccount:
         """
         Retrieve details of a single channel account using the channel account ID.
 
@@ -91,7 +91,7 @@ class ChannelAccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccount,
+            cast_to=ConversationsPublicChannelAccount,
         )
 
 
@@ -144,7 +144,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccount:
+    ) -> ConversationsPublicChannelAccount:
         """
         Retrieve details of a single channel account using the channel account ID.
 
@@ -164,7 +164,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccount,
+            cast_to=ConversationsPublicChannelAccount,
         )
 
 

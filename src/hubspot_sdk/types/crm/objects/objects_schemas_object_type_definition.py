@@ -8,10 +8,10 @@ from pydantic import Field as FieldInfo
 from ...._models import BaseModel
 from ...shared.object_type_definition_labels import ObjectTypeDefinitionLabels
 
-__all__ = ["ObjectTypeDefinition"]
+__all__ = ["ObjectsSchemasObjectTypeDefinition"]
 
 
-class ObjectTypeDefinition(BaseModel):
+class ObjectsSchemasObjectTypeDefinition(BaseModel):
     id: str
     """A unique ID for this object type. Will be defined as {meta-type}-{unique ID}."""
 

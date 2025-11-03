@@ -136,7 +136,6 @@ from .discount_create_params import DiscountCreateParams as DiscountCreateParams
 from .discount_search_params import DiscountSearchParams as DiscountSearchParams
 from .discount_update_params import DiscountUpdateParams as DiscountUpdateParams
 from .goal_target_get_params import GoalTargetGetParams as GoalTargetGetParams
-from .object_type_definition import ObjectTypeDefinition as ObjectTypeDefinition
 from .postal_mail_get_params import PostalMailGetParams as PostalMailGetParams
 from .goal_target_list_params import GoalTargetListParams as GoalTargetListParams
 from .line_item_create_params import LineItemCreateParams as LineItemCreateParams
@@ -177,6 +176,9 @@ from .schema_create_association_params import SchemaCreateAssociationParams as S
 from .feedback_submission_search_params import FeedbackSubmissionSearchParams as FeedbackSubmissionSearchParams
 from .object_type_property_create_param import ObjectTypePropertyCreateParam as ObjectTypePropertyCreateParam
 from .batch_response_deal_to_deal_splits import BatchResponseDealToDealSplits as BatchResponseDealToDealSplits
+from .objects_schemas_object_type_definition import (
+    ObjectsSchemasObjectTypeDefinition as ObjectsSchemasObjectTypeDefinition,
+)
 from .public_deal_splits_create_request_param import (
     PublicDealSplitsCreateRequestParam as PublicDealSplitsCreateRequestParam,
 )

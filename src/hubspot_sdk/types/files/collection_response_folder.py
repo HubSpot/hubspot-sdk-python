@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from .folder import Folder
 from ..._models import BaseModel
-from ..marketing.paging import Paging
+from ..marketing.emails_paging import EmailsPaging
 
 __all__ = ["CollectionResponseFolder"]
 
@@ -12,5 +12,5 @@ __all__ = ["CollectionResponseFolder"]
 class CollectionResponseFolder(BaseModel):
     results: List[Folder]
 
-    paging: Optional[Paging] = None
+    paging: Optional[EmailsPaging] = None
     """Contains information pagination of results."""

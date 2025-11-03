@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from ....._utils import PropertyInfo
-from ...public_association_multi_post_param import PublicAssociationMultiPostParam
+from ..public_association_multi_post_param import PublicAssociationMultiPostParam
 
 __all__ = ["BatchCreateParams"]
 

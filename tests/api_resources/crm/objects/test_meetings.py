@@ -38,7 +38,7 @@ class TestMeetings:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -384,7 +384,7 @@ class TestAsyncMeetings:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",

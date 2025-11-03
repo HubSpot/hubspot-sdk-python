@@ -9,10 +9,10 @@ from typing_extensions import Required, Annotated, TypedDict
 from ..._utils import PropertyInfo
 from .public_access_rule_param import PublicAccessRuleParam
 
-__all__ = ["ContentLanguageVariationParam"]
+__all__ = ["PagesContentLanguageVariationParam"]
 
 
-class ContentLanguageVariationParam(TypedDict, total=False):
+class PagesContentLanguageVariationParam(TypedDict, total=False):
     id: Required[int]
 
     archived_in_dashboard: Required[Annotated[bool, PropertyInfo(alias="archivedInDashboard")]]

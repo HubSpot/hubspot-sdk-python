@@ -5,7 +5,7 @@ from typing import List
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from .objects.object_type_definition import ObjectTypeDefinition
+from .objects.objects_schemas_object_type_definition import ObjectsSchemasObjectTypeDefinition
 
 __all__ = ["AssociationLabelLimitResponse"]
 
@@ -13,14 +13,14 @@ __all__ = ["AssociationLabelLimitResponse"]
 class AssociationLabelLimitResponse(BaseModel):
     all_labels: List[str] = FieldInfo(alias="allLabels")
 
-    from_object_type: ObjectTypeDefinition = FieldInfo(alias="fromObjectType")
+    from_object_type: ObjectsSchemasObjectTypeDefinition = FieldInfo(alias="fromObjectType")
     """Defines an object type."""
 
     limit: int
 
     percentage: float
 
-    to_object_type: ObjectTypeDefinition = FieldInfo(alias="toObjectType")
+    to_object_type: ObjectsSchemasObjectTypeDefinition = FieldInfo(alias="toObjectType")
     """Defines an object type."""
 
     usage: int

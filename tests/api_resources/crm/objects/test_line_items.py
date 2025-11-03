@@ -38,7 +38,7 @@ class TestLineItems:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -384,7 +384,7 @@ class TestAsyncLineItems:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",

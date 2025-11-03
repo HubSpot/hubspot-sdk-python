@@ -9,7 +9,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from ..content_language_variation import ContentLanguageVariation
+from ..pages_content_language_variation import PagesContentLanguageVariation
 
 __all__ = ["BlogPost"]
 
@@ -1003,7 +1003,7 @@ class BlogPost(BaseModel):
     translated_from_id: str = FieldInfo(alias="translatedFromId")
     """ID of the primary blog post that this post was translated from."""
 
-    translations: Dict[str, ContentLanguageVariation]
+    translations: Dict[str, PagesContentLanguageVariation]
 
     updated: datetime
 

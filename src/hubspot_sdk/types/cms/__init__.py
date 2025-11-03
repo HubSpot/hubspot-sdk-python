@@ -131,7 +131,6 @@ from .event_visibility_response import EventVisibilityResponse as EventVisibilit
 from .site_search_search_params import SiteSearchSearchParams as SiteSearchSearchParams
 from .source_code_create_params import SourceCodeCreateParams as SourceCodeCreateParams
 from .source_code_upsert_params import SourceCodeUpsertParams as SourceCodeUpsertParams
-from .content_language_variation import ContentLanguageVariation as ContentLanguageVariation
 from .external_options_meta_data import ExternalOptionsMetaData as ExternalOptionsMetaData
 from .has_plain_text_email_reply import HasPlainTextEmailReply as HasPlainTextEmailReply
 from .object_definition_response import ObjectDefinitionResponse as ObjectDefinitionResponse
@@ -149,8 +148,8 @@ from .number_target_property_variable import NumberTargetPropertyVariable as Num
 from .source_code_get_metadata_params import SourceCodeGetMetadataParams as SourceCodeGetMetadataParams
 from .string_target_property_variable import StringTargetPropertyVariable as StringTargetPropertyVariable
 from .boolean_target_property_variable import BooleanTargetPropertyVariable as BooleanTargetPropertyVariable
-from .content_language_variation_param import ContentLanguageVariationParam as ContentLanguageVariationParam
 from .option_decorators_extension_data import OptionDecoratorsExtensionData as OptionDecoratorsExtensionData
+from .pages_content_language_variation import PagesContentLanguageVariation as PagesContentLanguageVariation
 from .source_code_extract_async_params import SourceCodeExtractAsyncParams as SourceCodeExtractAsyncParams
 from .hub_db_table_row_v3_request_param import HubDBTableRowV3RequestParam as HubDBTableRowV3RequestParam
 from .batch_response_hub_db_table_row_v3 import BatchResponseHubDBTableRowV3 as BatchResponseHubDBTableRowV3
@@ -172,6 +171,9 @@ from .attention_span_calculated_values_param import (
 )
 from .collection_response_property_no_paging import (
     CollectionResponsePropertyNoPaging as CollectionResponsePropertyNoPaging,
+)
+from .pages_content_language_variation_param import (
+    PagesContentLanguageVariationParam as PagesContentLanguageVariationParam,
 )
 from .soft_required_properties_extension_data import (
     SoftRequiredPropertiesExtensionData as SoftRequiredPropertiesExtensionData,

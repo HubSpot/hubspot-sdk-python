@@ -3,14 +3,14 @@
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.association_spec import AssociationSpec
 from ..shared.public_object_id import PublicObjectID
+from .associations.association_spec_1 import AssociationSpec1
 
 __all__ = ["PublicDefaultAssociation"]
 
 
 class PublicDefaultAssociation(BaseModel):
-    association_spec: AssociationSpec = FieldInfo(alias="associationSpec")
+    association_spec: AssociationSpec1 = FieldInfo(alias="associationSpec")
     """
     Defines the type, direction, and details of the relationship between two CRM
     objects.

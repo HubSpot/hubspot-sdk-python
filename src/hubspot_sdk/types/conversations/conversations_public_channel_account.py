@@ -8,10 +8,10 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 from .public_delivery_identifier import PublicDeliveryIdentifier
 
-__all__ = ["PublicChannelAccount"]
+__all__ = ["ConversationsPublicChannelAccount"]
 
 
-class PublicChannelAccount(BaseModel):
+class ConversationsPublicChannelAccount(BaseModel):
     archived: bool
 
     id: Optional[str] = None

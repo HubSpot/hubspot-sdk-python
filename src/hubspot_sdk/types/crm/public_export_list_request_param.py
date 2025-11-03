@@ -12,6 +12,8 @@ __all__ = ["PublicExportListRequestParam"]
 
 
 class PublicExportListRequestParam(TypedDict, total=False):
+    associated_object_type: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="associatedObjectType")]]
+
     export_internal_values_options: Required[
         Annotated[List[Literal["NAMES", "VALUES"]], PropertyInfo(alias="exportInternalValuesOptions")]
     ]
@@ -21,6 +23,12 @@ class PublicExportListRequestParam(TypedDict, total=False):
     export_type: Required[Annotated[Literal["LIST"], PropertyInfo(alias="exportType")]]
 
     format: Required[Literal["XLS", "XLSX", "CSV"]]
+
+    include_labeled_associations: Required[Annotated[bool, PropertyInfo(alias="includeLabeledAssociations")]]
+
+    include_primary_display_property_for_associated_objects: Required[
+        Annotated[bool, PropertyInfo(alias="includePrimaryDisplayPropertyForAssociatedObjects")]
+    ]
 
     language: Required[
         Literal["EN", "DE", "ES", "FR", "JA", "NL", "PT_BR", "IT", "PL", "SV", "FI", "ZH_TW", "DA_DK", "NO"]
@@ -35,5 +43,3 @@ class PublicExportListRequestParam(TypedDict, total=False):
     override_associated_objects_per_definition_per_row_limit: Required[
         Annotated[bool, PropertyInfo(alias="overrideAssociatedObjectsPerDefinitionPerRowLimit")]
     ]
-
-    associated_object_type: Annotated[str, PropertyInfo(alias="associatedObjectType")]

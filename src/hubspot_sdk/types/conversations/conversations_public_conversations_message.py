@@ -20,7 +20,7 @@ from .public_unsupported_content import PublicUnsupportedContent
 from .public_social_metadata_attachment import PublicSocialMetadataAttachment
 from .public_whats_app_template_metadata import PublicWhatsAppTemplateMetadata
 
-__all__ = ["PublicConversationsMessage", "Attachment"]
+__all__ = ["ConversationsPublicConversationsMessage", "Attachment"]
 
 Attachment: TypeAlias = Union[
     PublicFile,
@@ -34,7 +34,7 @@ Attachment: TypeAlias = Union[
 ]
 
 
-class PublicConversationsMessage(BaseModel):
+class ConversationsPublicConversationsMessage(BaseModel):
     id: str
 
     archived: bool

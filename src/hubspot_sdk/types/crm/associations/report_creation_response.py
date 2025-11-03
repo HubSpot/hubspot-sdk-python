@@ -2,8 +2,8 @@
 
 from pydantic import Field as FieldInfo
 
-from ..._models import BaseModel
 from .date_time import DateTime
+from ...._models import BaseModel
 
 __all__ = ["ReportCreationResponse"]
 

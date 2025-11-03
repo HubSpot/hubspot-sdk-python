@@ -49,7 +49,7 @@ from ....types.cms.version_page import VersionPage
 from ....types.cms.batch_response_page import BatchResponsePage
 from ....types.cms.layout_section_param import LayoutSectionParam
 from ....types.cms.public_access_rule_param import PublicAccessRuleParam
-from ....types.cms.content_language_variation_param import ContentLanguageVariationParam
+from ....types.cms.pages_content_language_variation_param import PagesContentLanguageVariationParam
 from ....types.cms.collection_response_with_total_version_page import CollectionResponseWithTotalVersionPage
 
 __all__ = ["SitePagesResource", "AsyncSitePagesResource"]
@@ -924,7 +924,7 @@ class SitePagesResource(SyncAPIResource):
         template_path: str,
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -1987,7 +1987,7 @@ class SitePagesResource(SyncAPIResource):
         template_path: str,
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -4038,7 +4038,7 @@ class SitePagesResource(SyncAPIResource):
         template_path: str,
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -5168,7 +5168,7 @@ class AsyncSitePagesResource(AsyncAPIResource):
         template_path: str,
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -6231,7 +6231,7 @@ class AsyncSitePagesResource(AsyncAPIResource):
         template_path: str,
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -8296,7 +8296,7 @@ class AsyncSitePagesResource(AsyncAPIResource):
         template_path: str,
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,

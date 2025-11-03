@@ -18,8 +18,8 @@ from ...._base_client import make_request_options
 from ....types.cms.media_bridge import schema_update_params, schema_create_association_params
 from ....types.crm.objects.object_schema import ObjectSchema
 from ....types.events.association_definition import AssociationDefinition
-from ....types.crm.objects.object_type_definition import ObjectTypeDefinition
 from ....types.shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
+from ....types.crm.objects.objects_schemas_object_type_definition import ObjectsSchemasObjectTypeDefinition
 from ....types.shared.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
 
 __all__ = ["SchemasResource", "AsyncSchemasResource"]
@@ -64,7 +64,7 @@ class SchemasResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ObjectTypeDefinition:
+    ) -> ObjectsSchemasObjectTypeDefinition:
         """
         Update the schema for an existing object type
 
@@ -111,7 +111,7 @@ class SchemasResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ObjectTypeDefinition,
+            cast_to=ObjectsSchemasObjectTypeDefinition,
         )
 
     def list(
@@ -310,7 +310,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ObjectTypeDefinition:
+    ) -> ObjectsSchemasObjectTypeDefinition:
         """
         Update the schema for an existing object type
 
@@ -357,7 +357,7 @@ class AsyncSchemasResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ObjectTypeDefinition,
+            cast_to=ObjectsSchemasObjectTypeDefinition,
         )
 
     async def list(

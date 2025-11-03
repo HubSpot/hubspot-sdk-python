@@ -3,8 +3,8 @@
 from typing import List, Optional
 
 from ..._models import BaseModel
-from ..marketing.paging import Paging
 from .version_content_folder import VersionContentFolder
+from ..marketing.emails_paging import EmailsPaging
 
 __all__ = ["CollectionResponseWithTotalVersionContentFolder"]
 
@@ -16,5 +16,5 @@ class CollectionResponseWithTotalVersionContentFolder(BaseModel):
     total: int
     """Total number of content folder versions."""
 
-    paging: Optional[Paging] = None
+    paging: Optional[EmailsPaging] = None
     """Contains information pagination of results."""

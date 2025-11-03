@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import Optional
+
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
@@ -8,22 +10,23 @@ __all__ = ["Option"]
 
 
 class Option(BaseModel):
-    description: str
-    """A description of the option."""
-
-    display_order: int = FieldInfo(alias="displayOrder")
-    """The position of the item relative to others in the list."""
-
-    double_data: float = FieldInfo(alias="doubleData")
-
     hidden: bool
-    """Whether the option is displayed in HubSpot's UI."""
+    """Hidden options will not be displayed in HubSpot."""
 
     label: str
-    """A user-friendly label that identifies the option."""
-
-    read_only: bool = FieldInfo(alias="readOnly")
-    """Whether the option is read-only."""
+    """A human-readable option label that will be shown in HubSpot."""
 
     value: str
-    """The actual value of the option."""
+    """
+    The internal value of the option, which must be used when setting the property
+    value through the API.
+    """
+
+    description: Optional[str] = None
+    """A description of the option."""
+
+    display_order: Optional[int] = FieldInfo(alias="displayOrder", default=None)
+    """Options are displayed in order starting with the lowest positive integer value.
+
+    Values of -1 will cause the option to be displayed after any positive values.
+    """

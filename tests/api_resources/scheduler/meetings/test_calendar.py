@@ -26,7 +26,7 @@ class TestCalendar:
         calendar = client.scheduler.meetings.calendar.create(
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -61,7 +61,7 @@ class TestCalendar:
         calendar = client.scheduler.meetings.calendar.create(
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -104,7 +104,7 @@ class TestCalendar:
         response = client.scheduler.meetings.calendar.with_raw_response.create(
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -143,7 +143,7 @@ class TestCalendar:
         with client.scheduler.meetings.calendar.with_streaming_response.create(
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -190,7 +190,7 @@ class TestAsyncCalendar:
         calendar = await async_client.scheduler.meetings.calendar.create(
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -225,7 +225,7 @@ class TestAsyncCalendar:
         calendar = await async_client.scheduler.meetings.calendar.create(
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -268,7 +268,7 @@ class TestAsyncCalendar:
         response = await async_client.scheduler.meetings.calendar.with_raw_response.create(
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -307,7 +307,7 @@ class TestAsyncCalendar:
         async with async_client.scheduler.meetings.calendar.with_streaming_response.create(
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",

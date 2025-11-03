@@ -51,13 +51,11 @@ class TestTables:
                     "name": "name",
                     "options": [
                         {
-                            "description": "",
-                            "display_order": 0,
-                            "double_data": 0,
                             "hidden": False,
-                            "label": "",
-                            "read_only": False,
-                            "value": "",
+                            "label": "Option A",
+                            "value": "A",
+                            "description": "Choice number one",
+                            "display_order": 1,
                         }
                     ],
                     "type": "NULL",
@@ -827,13 +825,11 @@ class TestTables:
                     "name": "name",
                     "options": [
                         {
-                            "description": "",
-                            "display_order": 0,
-                            "double_data": 0,
                             "hidden": False,
-                            "label": "",
-                            "read_only": False,
-                            "value": "",
+                            "label": "Option A",
+                            "value": "A",
+                            "description": "Choice number one",
+                            "display_order": 1,
                         }
                     ],
                     "type": "NULL",
@@ -919,13 +915,11 @@ class TestAsyncTables:
                     "name": "name",
                     "options": [
                         {
-                            "description": "",
-                            "display_order": 0,
-                            "double_data": 0,
                             "hidden": False,
-                            "label": "",
-                            "read_only": False,
-                            "value": "",
+                            "label": "Option A",
+                            "value": "A",
+                            "description": "Choice number one",
+                            "display_order": 1,
                         }
                     ],
                     "type": "NULL",
@@ -1697,13 +1691,11 @@ class TestAsyncTables:
                     "name": "name",
                     "options": [
                         {
-                            "description": "",
-                            "display_order": 0,
-                            "double_data": 0,
                             "hidden": False,
-                            "label": "",
-                            "read_only": False,
-                            "value": "",
+                            "label": "Option A",
+                            "value": "A",
+                            "description": "Choice number one",
+                            "display_order": 1,
                         }
                     ],
                     "type": "NULL",

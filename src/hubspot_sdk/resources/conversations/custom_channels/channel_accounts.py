@@ -16,8 +16,8 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.conversations.custom_channels import channel_account_create_params, channel_account_update_params
-from ....types.conversations.public_channel_account import PublicChannelAccount
 from ....types.conversations.public_delivery_identifier_param import PublicDeliveryIdentifierParam
+from ....types.conversations.conversations_public_channel_account import ConversationsPublicChannelAccount
 from ....types.conversations.collection_response_with_total_public_channel_account_forward_paging import (
     CollectionResponseWithTotalPublicChannelAccountForwardPaging,
 )
@@ -59,7 +59,7 @@ class ChannelAccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccount:
+    ) -> ConversationsPublicChannelAccount:
         """Create a new account for a channel.
 
         Multiple accounts can communicate over a
@@ -90,7 +90,7 @@ class ChannelAccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccount,
+            cast_to=ConversationsPublicChannelAccount,
         )
 
     def update(
@@ -106,7 +106,7 @@ class ChannelAccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccount:
+    ) -> ConversationsPublicChannelAccount:
         """
         This API is used to update the name of the channel account and it's isAuthorized
         status. Setting to isAuthorized flag to False disables the channel account.
@@ -136,7 +136,7 @@ class ChannelAccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccount,
+            cast_to=ConversationsPublicChannelAccount,
         )
 
     def list(
@@ -183,7 +183,7 @@ class ChannelAccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccount:
+    ) -> ConversationsPublicChannelAccount:
         """Retrieve the details for a specific channel account.
 
         This contains all the
@@ -208,7 +208,7 @@ class ChannelAccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccount,
+            cast_to=ConversationsPublicChannelAccount,
         )
 
 
@@ -246,7 +246,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccount:
+    ) -> ConversationsPublicChannelAccount:
         """Create a new account for a channel.
 
         Multiple accounts can communicate over a
@@ -277,7 +277,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccount,
+            cast_to=ConversationsPublicChannelAccount,
         )
 
     async def update(
@@ -293,7 +293,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccount:
+    ) -> ConversationsPublicChannelAccount:
         """
         This API is used to update the name of the channel account and it's isAuthorized
         status. Setting to isAuthorized flag to False disables the channel account.
@@ -323,7 +323,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccount,
+            cast_to=ConversationsPublicChannelAccount,
         )
 
     async def list(
@@ -370,7 +370,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicChannelAccount:
+    ) -> ConversationsPublicChannelAccount:
         """Retrieve the details for a specific channel account.
 
         This contains all the
@@ -395,7 +395,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicChannelAccount,
+            cast_to=ConversationsPublicChannelAccount,
         )
 
 

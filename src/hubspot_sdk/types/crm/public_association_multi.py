@@ -6,7 +6,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .associated_id import AssociatedID
-from ..marketing.paging import Paging
+from ..marketing.emails_paging import EmailsPaging
 from ..shared.public_object_id import PublicObjectID
 
 __all__ = ["PublicAssociationMulti"]
@@ -21,5 +21,5 @@ class PublicAssociationMulti(BaseModel):
     'from'.
     """
 
-    paging: Optional[Paging] = None
+    paging: Optional[EmailsPaging] = None
     """Contains information pagination of results."""

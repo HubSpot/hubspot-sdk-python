@@ -8,7 +8,7 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
 from ..public_access_rule_param import PublicAccessRuleParam
-from ..content_language_variation_param import ContentLanguageVariationParam
+from ..pages_content_language_variation_param import PagesContentLanguageVariationParam
 
 __all__ = ["SitePageUpdateDraftParams"]
 
@@ -1029,7 +1029,7 @@ class SitePageUpdateDraftParams(TypedDict, total=False):
     translated_from_id: Required[Annotated[str, PropertyInfo(alias="translatedFromId")]]
     """ID of the primary page this object was translated from."""
 
-    translations: Required[Dict[str, ContentLanguageVariationParam]]
+    translations: Required[Dict[str, PagesContentLanguageVariationParam]]
 
     updated: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
 

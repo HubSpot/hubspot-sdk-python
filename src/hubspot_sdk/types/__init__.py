@@ -48,6 +48,7 @@ from .shared import (
     PublicEmailEventFilter as PublicEmailEventFilter,
     PublicIndexedTimePoint as PublicIndexedTimePoint,
     PublicQuarterReference as PublicQuarterReference,
+    AutomationActionsOption as AutomationActionsOption,
     AbTestCreateRequestVNext as AbTestCreateRequestVNext,
     AssociationDefinitionEgg as AssociationDefinitionEgg,
     BatchInputPropertyCreate as BatchInputPropertyCreate,
