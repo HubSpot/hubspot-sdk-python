@@ -6,10 +6,10 @@ from ..._models import BaseModel
 from ..shared.next_page import NextPage
 from ..shared.previous_page import PreviousPage
 
-__all__ = ["Paging"]
+__all__ = ["EmailsPaging"]
 
 
-class Paging(BaseModel):
+class EmailsPaging(BaseModel):
     next: NextPage
     """
     Specifies the paging information needed to retrieve the next set of results in a

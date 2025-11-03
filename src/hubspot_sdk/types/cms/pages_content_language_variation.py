@@ -7,10 +7,10 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["ContentLanguageVariation"]
+__all__ = ["PagesContentLanguageVariation"]
 
 
-class ContentLanguageVariation(BaseModel):
+class PagesContentLanguageVariation(BaseModel):
     id: int
 
     archived_in_dashboard: bool = FieldInfo(alias="archivedInDashboard")

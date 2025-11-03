@@ -7,6 +7,7 @@ from hubspot_sdk.types import (
     AssociationDefinition,
     AssociationDefinitionEgg,
     AssociationSpec,
+    AutomationActionsOption,
     BatchInputPropertyCreate,
     BatchInputPropertyName,
     BatchInputPublicObjectID,
@@ -594,6 +595,7 @@ from hubspot_sdk.types.cms import (
     Column,
     ColumnRequest,
     ForeignID,
+    HubdbStandardError,
     HubDBTableCloneRequest,
     HubDBTableRowBatchCloneRequest,
     HubDBTableRowV3,
@@ -605,7 +607,6 @@ from hubspot_sdk.types.cms import (
     Option,
     RandomAccessCollectionResponseWithTotalHubDBTableRowV3,
     SimpleUser,
-    StandardError,
     StreamingCollectionResponseWithTotalHubDBTableRowV3,
     UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
     Variant,
@@ -838,7 +839,7 @@ Methods:
 
 Methods:
 
-- <code title="patch /media-bridge/v1/{appId}/schemas/{objectType}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">update</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/object_type_definition.py">ObjectTypeDefinition</a></code>
+- <code title="patch /media-bridge/v1/{appId}/schemas/{objectType}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">update</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/objects_schemas_object_type_definition.py">ObjectsSchemasObjectTypeDefinition</a></code>
 - <code title="get /media-bridge/v1/{appId}/schemas">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">list</a>(app_id) -> <a href="./src/hubspot_sdk/types/shared/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
 - <code title="post /media-bridge/v1/{appId}/schemas/{objectType}/associations">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">create_association</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/association_definition.py">AssociationDefinition</a></code>
 - <code title="delete /media-bridge/v1/{appId}/schemas/{objectType}/associations/{associationId}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">delete_association</a>(association_id, \*, app_id, object_type) -> None</code>
@@ -864,8 +865,8 @@ from hubspot_sdk.types.cms import (
     CollectionResponseWithTotalVersionPage,
     ContentFolder,
     ContentLanguageCloneRequestVNext,
-    ContentLanguageVariation,
     Page,
+    PagesContentLanguageVariation,
     VersionContentFolder,
     VersionPage,
 )
@@ -1026,18 +1027,18 @@ from hubspot_sdk.types.conversations import (
     ContactPhone,
     ContactProfile,
     ContactURL,
+    ConversationsPublicChannelAccount,
+    ConversationsPublicConversationsMessage,
     EmailActor,
     IntegratorActor,
     LlmActor,
     PublicActor,
     PublicAssignmentMessage,
     PublicChannel,
-    PublicChannelAccount,
     PublicClient,
     PublicComment,
     PublicCommentEgg,
     PublicContact,
-    PublicConversationsMessage,
     PublicConversationsMessageEgg,
     PublicDeliveryIdentifier,
     PublicFile,
@@ -1084,7 +1085,7 @@ Methods:
 Methods:
 
 - <code title="get /conversations/v3/conversations/channel-accounts">client.conversations.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/channel_accounts.py">list</a>() -> <a href="./src/hubspot_sdk/types/conversations/collection_response_with_total_public_channel_account_forward_paging.py">CollectionResponseWithTotalPublicChannelAccountForwardPaging</a></code>
-- <code title="get /conversations/v3/conversations/channel-accounts/{channelAccountId}">client.conversations.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/channel_accounts.py">get</a>(channel_account_id) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_account.py">PublicChannelAccount</a></code>
+- <code title="get /conversations/v3/conversations/channel-accounts/{channelAccountId}">client.conversations.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/channel_accounts.py">get</a>(channel_account_id) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_channel_account.py">ConversationsPublicChannelAccount</a></code>
 
 ## Channels
 
@@ -1103,6 +1104,8 @@ from hubspot_sdk.types.conversations import (
     ChannelIntegrationParticipant,
     CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
     ContactAttachment,
+    CustomChannelsPublicClient,
+    CustomChannelsPublicFile,
     FileAttachment,
     LocationAttachment,
     MessageHeaderAttachment,
@@ -1117,9 +1120,7 @@ from hubspot_sdk.types.conversations import (
     PublicChannelIntegrationChannelCreate,
     PublicChannelIntegrationChannelPatch,
     PublicChannelIntegrationMessageUpdateRequest,
-    PublicClient,
     PublicConversationsMessage,
-    PublicFile,
     QuickRepliesAttachment,
     SocialMetadataIntegrationAttachment,
     UnsupportedContentAttachment,
@@ -1144,18 +1145,18 @@ Methods:
 
 Methods:
 
-- <code title="post /conversations/v3/custom-channels/{channelId}/channel-accounts">client.conversations.custom_channels.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_accounts.py">create</a>(channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/channel_account_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_account.py">PublicChannelAccount</a></code>
-- <code title="patch /conversations/v3/custom-channels/{channelId}/channel-accounts/{channelAccountId}">client.conversations.custom_channels.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_accounts.py">update</a>(channel_account_id, \*, channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/channel_account_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_account.py">PublicChannelAccount</a></code>
+- <code title="post /conversations/v3/custom-channels/{channelId}/channel-accounts">client.conversations.custom_channels.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_accounts.py">create</a>(channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/channel_account_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_channel_account.py">ConversationsPublicChannelAccount</a></code>
+- <code title="patch /conversations/v3/custom-channels/{channelId}/channel-accounts/{channelAccountId}">client.conversations.custom_channels.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_accounts.py">update</a>(channel_account_id, \*, channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/channel_account_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_channel_account.py">ConversationsPublicChannelAccount</a></code>
 - <code title="get /conversations/v3/custom-channels/{channelId}/channel-accounts">client.conversations.custom_channels.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_accounts.py">list</a>(channel_id) -> <a href="./src/hubspot_sdk/types/conversations/collection_response_with_total_public_channel_account_forward_paging.py">CollectionResponseWithTotalPublicChannelAccountForwardPaging</a></code>
-- <code title="get /conversations/v3/custom-channels/{channelId}/channel-accounts/{channelAccountId}">client.conversations.custom_channels.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_accounts.py">get</a>(channel_account_id, \*, channel_id) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_account.py">PublicChannelAccount</a></code>
+- <code title="get /conversations/v3/custom-channels/{channelId}/channel-accounts/{channelAccountId}">client.conversations.custom_channels.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/channel_accounts.py">get</a>(channel_account_id, \*, channel_id) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_channel_account.py">ConversationsPublicChannelAccount</a></code>
 
 ### Messages
 
 Methods:
 
-- <code title="post /conversations/v3/custom-channels/{channelId}/messages">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">create</a>(channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/message_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_conversations_message.py">PublicConversationsMessage</a></code>
-- <code title="patch /conversations/v3/custom-channels/{channelId}/messages/{messageId}">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">update</a>(message_id, \*, channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/message_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_conversations_message.py">PublicConversationsMessage</a></code>
-- <code title="get /conversations/v3/custom-channels/{channelId}/messages/{messageId}">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">get</a>(message_id, \*, channel_id) -> <a href="./src/hubspot_sdk/types/conversations/public_conversations_message.py">PublicConversationsMessage</a></code>
+- <code title="post /conversations/v3/custom-channels/{channelId}/messages">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">create</a>(channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/message_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_conversations_message.py">ConversationsPublicConversationsMessage</a></code>
+- <code title="patch /conversations/v3/custom-channels/{channelId}/messages/{messageId}">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">update</a>(message_id, \*, channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/message_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_conversations_message.py">ConversationsPublicConversationsMessage</a></code>
+- <code title="get /conversations/v3/custom-channels/{channelId}/messages/{messageId}">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">get</a>(message_id, \*, channel_id) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_conversations_message.py">ConversationsPublicConversationsMessage</a></code>
 
 ## Inboxes
 
@@ -1254,24 +1255,10 @@ Types:
 ```python
 from hubspot_sdk.types.crm import (
     BatchInputPublicAssociation,
-    BatchInputPublicAssociationMultiArchive,
-    BatchInputPublicAssociationMultiPost,
-    BatchInputPublicDefaultAssociationMultiPost,
-    BatchInputPublicFetchAssociationsBatchRequest,
-    BatchResponseLabelsBetweenObjectPair,
     BatchResponsePublicAssociation,
     BatchResponsePublicAssociationMulti,
-    BatchResponsePublicAssociationMultiWithLabel,
-    BatchResponseVoid,
-    DateTime,
     PublicAssociation,
     PublicAssociationMulti,
-    PublicAssociationMultiArchive,
-    PublicAssociationMultiPost,
-    PublicAssociationMultiWithLabel,
-    PublicDefaultAssociationMultiPost,
-    PublicFetchAssociationsBatchRequest,
-    ReportCreationResponse,
 )
 ```
 
@@ -1296,30 +1283,7 @@ from hubspot_sdk.types.crm.associations import (
 
 Methods:
 
-- <code title="get /crm/v3/associations/{fromObjectType}/{toObjectType}/types">client.crm.associations.schema.<a href="./src/hubspot_sdk/resources/crm/associations/schema/schema.py">list</a>(to_object_type, \*, from_object_type) -> <a href="./src/hubspot_sdk/types/crm/associations/collection_response_public_association_definition_no_paging.py">CollectionResponsePublicAssociationDefinitionNoPaging</a></code>
-
-#### V4
-
-Types:
-
-```python
-from hubspot_sdk.types.crm.associations.schema import (
-    BatchInputPublicAssociationDefinitionConfigurationCreateRequest,
-    BatchInputPublicAssociationDefinitionConfigurationUpdateRequest,
-    BatchInputPublicAssociationSpec,
-    BatchResponsePublicAssociationDefinitionConfigurationUpdateResult,
-    BatchResponsePublicAssociationDefinitionUserConfiguration,
-    CollectionResponseAssociationSpecWithLabel,
-    CollectionResponsePublicAssociationDefinitionUserConfiguration,
-    PublicAssociationDefinitionConfigurationCreateRequest,
-    PublicAssociationDefinitionConfigurationUpdateRequest,
-    PublicAssociationDefinitionConfigurationUpdateResult,
-    PublicAssociationDefinitionCreateRequest,
-    PublicAssociationDefinitionUpdateRequest,
-    PublicAssociationDefinitionUserConfiguration,
-    PublicAssociationSpec,
-)
-```
+- <code title="get /crm/v3/associations/{fromObjectType}/{toObjectType}/types">client.crm.associations.schema.<a href="./src/hubspot_sdk/resources/crm/associations/schema.py">list</a>(to_object_type, \*, from_object_type) -> <a href="./src/hubspot_sdk/types/crm/associations/collection_response_public_association_definition_no_paging.py">CollectionResponsePublicAssociationDefinitionNoPaging</a></code>
 
 ### V4
 
@@ -1328,8 +1292,22 @@ Types:
 ```python
 from hubspot_sdk.types.crm.associations import (
     AssociationSpec1,
+    BatchInputPublicAssociationMultiArchive,
+    BatchInputPublicAssociationMultiPost,
+    BatchInputPublicDefaultAssociationMultiPost,
+    BatchInputPublicFetchAssociationsBatchRequest,
+    BatchResponseLabelsBetweenObjectPair,
+    BatchResponsePublicAssociationMultiWithLabel,
+    BatchResponseVoid,
+    DateTime,
     NextPage1,
     PreviousPage1,
+    PublicAssociationMultiArchive,
+    PublicAssociationMultiPost,
+    PublicAssociationMultiWithLabel,
+    PublicDefaultAssociationMultiPost,
+    PublicFetchAssociationsBatchRequest,
+    ReportCreationResponse,
     StandardError1,
 )
 ```
@@ -1345,17 +1323,17 @@ Methods:
 
 Methods:
 
-- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/create">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">create</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_labels_between_object_pair.py">BatchResponseLabelsBetweenObjectPair</a></code>
-- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/archive">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">delete</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_delete_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_void.py">BatchResponseVoid</a></code>
+- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/create">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">create</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/associations/batch_response_labels_between_object_pair.py">BatchResponseLabelsBetweenObjectPair</a></code>
+- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/archive">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">delete</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_delete_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/associations/batch_response_void.py">BatchResponseVoid</a></code>
 - <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/associate/default">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">create_default</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_create_default_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_public_default_association.py">BatchResponsePublicDefaultAssociation</a></code>
-- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/labels/archive">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">delete_labels</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_delete_labels_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_void.py">BatchResponseVoid</a></code>
-- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/read">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">get</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_public_association_multi_with_label.py">BatchResponsePublicAssociationMultiWithLabel</a></code>
+- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/labels/archive">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">delete_labels</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_delete_labels_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/associations/batch_response_void.py">BatchResponseVoid</a></code>
+- <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/read">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">get</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/associations/batch_response_public_association_multi_with_label.py">BatchResponsePublicAssociationMultiWithLabel</a></code>
 
 #### Report
 
 Methods:
 
-- <code title="post /crm/v4/associations/usage/high-usage-report/{userId}">client.crm.associations.v4.report.<a href="./src/hubspot_sdk/resources/crm/associations/v4/report.py">get_high_usage_report</a>(user_id) -> <a href="./src/hubspot_sdk/types/crm/report_creation_response.py">ReportCreationResponse</a></code>
+- <code title="post /crm/v4/associations/usage/high-usage-report/{userId}">client.crm.associations.v4.report.<a href="./src/hubspot_sdk/resources/crm/associations/v4/report.py">get_high_usage_report</a>(user_id) -> <a href="./src/hubspot_sdk/types/crm/associations/report_creation_response.py">ReportCreationResponse</a></code>
 
 ## Exports
 
@@ -1367,6 +1345,7 @@ from hubspot_sdk.types.crm import (
     PublicCrmSearchRequest,
     PublicExportListRequest,
     PublicExportRequest,
+    PublicExportResponse,
     PublicExportViewRequest,
 )
 ```
@@ -1485,6 +1464,12 @@ Methods:
 
 ### VideoConferencing
 
+Types:
+
+```python
+from hubspot_sdk.types.crm.extensions import ExternalSettings
+```
+
 #### Settings
 
 Methods:
@@ -1492,14 +1477,6 @@ Methods:
 - <code title="put /crm/v3/extensions/videoconferencing/settings/{appId}">client.crm.extensions.video_conferencing.settings.<a href="./src/hubspot_sdk/resources/crm/extensions/video_conferencing/settings.py">update</a>(app_id, \*\*<a href="src/hubspot_sdk/types/crm/extensions/video_conferencing/setting_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/extensions/external_settings.py">ExternalSettings</a></code>
 - <code title="delete /crm/v3/extensions/videoconferencing/settings/{appId}">client.crm.extensions.video_conferencing.settings.<a href="./src/hubspot_sdk/resources/crm/extensions/video_conferencing/settings.py">delete</a>(app_id) -> None</code>
 - <code title="get /crm/v3/extensions/videoconferencing/settings/{appId}">client.crm.extensions.video_conferencing.settings.<a href="./src/hubspot_sdk/resources/crm/extensions/video_conferencing/settings.py">get</a>(app_id) -> <a href="./src/hubspot_sdk/types/crm/extensions/external_settings.py">ExternalSettings</a></code>
-
-### Videoconferencing
-
-Types:
-
-```python
-from hubspot_sdk.types.crm.extensions import ExternalSettings
-```
 
 ## FeatureFlags
 
@@ -1703,21 +1680,6 @@ Methods:
 - <code title="get /crm/v3/object-library/enablement/{objectTypeId}">client.crm.object_library.enablement.<a href="./src/hubspot_sdk/resources/crm/object_library/enablement.py">get</a>(object_type_id) -> <a href="./src/hubspot_sdk/types/crm/object_type_enablement_public_response.py">ObjectTypeEnablementPublicResponse</a></code>
 
 ## Objects
-
-### Appointments
-
-Types:
-
-```python
-from hubspot_sdk.types.crm.objects import (
-    PublicObjectSearchRequest,
-    SimplePublicObject,
-    SimplePublicObjectBatchInputForCreate,
-    SimplePublicObjectInputForCreate,
-    SimplePublicObjectWithAssociations,
-    SimplePublicUpsertObject,
-)
-```
 
 ### Calls
 
@@ -2338,7 +2300,7 @@ Types:
 from hubspot_sdk.types.crm.objects import (
     ObjectSchema,
     ObjectSchemaEgg,
-    ObjectTypeDefinition,
+    ObjectsSchemasObjectTypeDefinition,
     ObjectTypeDefinitionPatch,
     ObjectTypePropertyCreate,
 )
@@ -2347,7 +2309,7 @@ from hubspot_sdk.types.crm.objects import (
 Methods:
 
 - <code title="post /crm-object-schemas/v3/schemas">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/schema_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/object_schema.py">ObjectSchema</a></code>
-- <code title="patch /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">update</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/object_type_definition.py">ObjectTypeDefinition</a></code>
+- <code title="patch /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">update</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/objects_schemas_object_type_definition.py">ObjectsSchemasObjectTypeDefinition</a></code>
 - <code title="get /crm-object-schemas/v3/schemas">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
 - <code title="delete /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">delete</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_delete_params.py">params</a>) -> None</code>
 - <code title="post /crm-object-schemas/v3/schemas/{objectType}/associations">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">create_association</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/association_definition.py">AssociationDefinition</a></code>
@@ -2508,7 +2470,7 @@ from hubspot_sdk.types.crm import (
     CollectionResponsePropertyGroup,
     CreatedResponseProperty,
     CreatedResponsePropertyGroup,
-    OptionInput,
+    PropertiesOptionInput,
     PropertyGroup,
     PropertyUpdate,
 )
@@ -2898,11 +2860,11 @@ from hubspot_sdk.types.marketing import (
     CollectionResponseWithTotalVersionPublicEmail,
     EmailCloneRequestVNext,
     EmailCreateRequest,
+    EmailsPaging,
     EmailStatisticInterval,
     EmailStatisticsData,
     EmailUpdateRequest,
     Interval,
-    Paging,
     PublicButtonStyleSettings,
     PublicDividerStyleSettings,
     PublicEmail,

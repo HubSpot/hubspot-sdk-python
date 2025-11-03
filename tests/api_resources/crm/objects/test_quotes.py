@@ -38,7 +38,7 @@ class TestQuotes:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -384,7 +384,7 @@ class TestAsyncQuotes:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from .paging import Paging as Paging
 from .app_info import AppInfo as AppInfo
 from .interval import Interval as Interval
 from .file_field import FileField as FileField
@@ -14,6 +13,7 @@ from .public_list import PublicList as PublicList
 from .radio_field import RadioField as RadioField
 from .number_field import NumberField as NumberField
 from .public_email import PublicEmail as PublicEmail
+from .emails_paging import EmailsPaging as EmailsPaging
 from .event_id_view import EventIDView as EventIDView
 from .dropdown_field import DropdownField as DropdownField
 from .property_value import PropertyValue as PropertyValue

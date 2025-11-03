@@ -38,7 +38,7 @@ class TestPostalMail:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",
@@ -384,7 +384,7 @@ class TestAsyncPostalMail:
             properties={"foo": "string"},
             associations=[
                 {
-                    "to": {"id": "id"},
+                    "to": {"id": "37295"},
                     "types": [
                         {
                             "association_category": "HUBSPOT_DEFINED",

@@ -204,13 +204,9 @@ public_action_definition = client.automation.actions.definitions.create(
                 "name": "name",
                 "options": [
                     {
-                        "description": "",
-                        "display_order": 0,
-                        "double_data": 0,
                         "hidden": False,
-                        "label": "",
-                        "read_only": False,
-                        "value": "",
+                        "label": "Option A",
+                        "value": "A",
                     }
                 ],
                 "type": "string",

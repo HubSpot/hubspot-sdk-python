@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-from ..shared_params.public_object_id import PublicObjectID
+from ...shared_params.public_object_id import PublicObjectID
 
 __all__ = ["PublicDefaultAssociationMultiPostParam"]
 

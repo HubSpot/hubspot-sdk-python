@@ -39,6 +39,7 @@ from .public_or_filter_branch import PublicOrFilterBranch as PublicOrFilterBranc
 from .public_ads_search_filter import PublicAdsSearchFilter as PublicAdsSearchFilter
 from .public_and_filter_branch import PublicAndFilterBranch as PublicAndFilterBranch
 from .public_quarter_reference import PublicQuarterReference as PublicQuarterReference
+from .automation_actions_option import AutomationActionsOption as AutomationActionsOption
 from .batch_input_property_name import BatchInputPropertyName as BatchInputPropertyName
 from .public_email_event_filter import PublicEmailEventFilter as PublicEmailEventFilter
 from .public_indexed_time_point import PublicIndexedTimePoint as PublicIndexedTimePoint

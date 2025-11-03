@@ -18,9 +18,7 @@ from .v4.v4 import (
     V4ResourceWithStreamingResponse,
     AsyncV4ResourceWithStreamingResponse,
 )
-from ...._compat import cached_property
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from .schema.schema import (
+from .schema import (
     SchemaResource,
     AsyncSchemaResource,
     SchemaResourceWithRawResponse,
@@ -28,6 +26,8 @@ from .schema.schema import (
     SchemaResourceWithStreamingResponse,
     AsyncSchemaResourceWithStreamingResponse,
 )
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
 
 __all__ = ["AssociationsResource", "AsyncAssociationsResource"]
 

@@ -12,7 +12,21 @@ __all__ = ["FilterParam"]
 
 class FilterParam(TypedDict, total=False):
     operator: Required[
-        Literal["EQ", "NEQ", "LT", "LTE", "GT", "GTE", "BETWEEN", "IN", "NOT_IN", "HAS_PROPERTY", "NOT_HAS_PROPERTY"]
+        Literal[
+            "EQ",
+            "NEQ",
+            "LT",
+            "LTE",
+            "GT",
+            "GTE",
+            "BETWEEN",
+            "IN",
+            "NOT_IN",
+            "HAS_PROPERTY",
+            "NOT_HAS_PROPERTY",
+            "CONTAINS_TOKEN",
+            "NOT_CONTAINS_TOKEN",
+        ]
     ]
     """The comparison operator used in the filter, such as "EQ" or "GT"."""
 

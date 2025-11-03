@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from ..._models import BaseModel
 from .associated_id import AssociatedID
-from ..marketing.paging import Paging
+from ..marketing.emails_paging import EmailsPaging
 
 __all__ = ["CollectionResponseAssociatedID"]
 
@@ -12,5 +12,5 @@ __all__ = ["CollectionResponseAssociatedID"]
 class CollectionResponseAssociatedID(BaseModel):
     results: List[AssociatedID]
 
-    paging: Optional[Paging] = None
+    paging: Optional[EmailsPaging] = None
     """Contains information pagination of results."""

@@ -3,7 +3,7 @@
 from typing import List, Optional
 
 from ..._models import BaseModel
-from ..marketing.paging import Paging
+from ..marketing.emails_paging import EmailsPaging
 from .multi_associated_object_with_label import MultiAssociatedObjectWithLabel
 
 __all__ = ["CollectionResponseMultiAssociatedObjectWithLabel"]
@@ -12,5 +12,5 @@ __all__ = ["CollectionResponseMultiAssociatedObjectWithLabel"]
 class CollectionResponseMultiAssociatedObjectWithLabel(BaseModel):
     results: List[MultiAssociatedObjectWithLabel]
 
-    paging: Optional[Paging] = None
+    paging: Optional[EmailsPaging] = None
     """Contains information pagination of results."""

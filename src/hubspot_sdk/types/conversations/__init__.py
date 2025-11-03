@@ -45,7 +45,6 @@ from .public_file_egg_param import PublicFileEggParam as PublicFileEggParam
 from .public_message_header import PublicMessageHeader as PublicMessageHeader
 from .public_message_status import PublicMessageStatus as PublicMessageStatus
 from .social_metadata_param import SocialMetadataParam as SocialMetadataParam
-from .public_channel_account import PublicChannelAccount as PublicChannelAccount
 from .public_message_content import PublicMessageContent as PublicMessageContent
 from .public_welcome_message import PublicWelcomeMessage as PublicWelcomeMessage
 from .actor_batch_read_params import ActorBatchReadParams as ActorBatchReadParams
@@ -65,7 +64,6 @@ from .pre_resolved_contacts_param import PreResolvedContactsParam as PreResolved
 from .public_thread_status_change import PublicThreadStatusChange as PublicThreadStatusChange
 from .custom_channel_create_params import CustomChannelCreateParams as CustomChannelCreateParams
 from .custom_channel_update_params import CustomChannelUpdateParams as CustomChannelUpdateParams
-from .public_conversations_message import PublicConversationsMessage as PublicConversationsMessage
 from .identification_token_response import IdentificationTokenResponse as IdentificationTokenResponse
 from .public_social_media_egg_param import PublicSocialMediaEggParam as PublicSocialMediaEggParam
 from .public_message_failure_details import PublicMessageFailureDetails as PublicMessageFailureDetails
@@ -76,6 +74,7 @@ from .public_delivery_identifier_param import PublicDeliveryIdentifierParam as P
 from .public_social_metadata_attachment import PublicSocialMetadataAttachment as PublicSocialMetadataAttachment
 from .public_channel_integration_channel import PublicChannelIntegrationChannel as PublicChannelIntegrationChannel
 from .public_whats_app_template_metadata import PublicWhatsAppTemplateMetadata as PublicWhatsAppTemplateMetadata
+from .conversations_public_channel_account import ConversationsPublicChannelAccount as ConversationsPublicChannelAccount
 from .public_channel_account_staging_token import PublicChannelAccountStagingToken as PublicChannelAccountStagingToken
 from .unsupported_content_attachment_param import UnsupportedContentAttachmentParam as UnsupportedContentAttachmentParam
 from .channel_integration_participant_param import (
@@ -83,6 +82,9 @@ from .channel_integration_participant_param import (
 )
 from .public_conversations_message_egg_param import (
     PublicConversationsMessageEggParam as PublicConversationsMessageEggParam,
+)
+from .conversations_public_conversations_message import (
+    ConversationsPublicConversationsMessage as ConversationsPublicConversationsMessage,
 )
 from .social_metadata_integration_attachment_param import (
     SocialMetadataIntegrationAttachmentParam as SocialMetadataIntegrationAttachmentParam,

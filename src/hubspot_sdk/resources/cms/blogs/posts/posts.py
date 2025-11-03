@@ -48,7 +48,7 @@ from .....types.cms.blogs.blog_post import BlogPost
 from .....types.cms.layout_section_param import LayoutSectionParam
 from .....types.cms.blogs.version_blog_post import VersionBlogPost
 from .....types.cms.public_access_rule_param import PublicAccessRuleParam
-from .....types.cms.content_language_variation_param import ContentLanguageVariationParam
+from .....types.cms.pages_content_language_variation_param import PagesContentLanguageVariationParam
 
 __all__ = ["PostsResource", "AsyncPostsResource"]
 
@@ -934,7 +934,7 @@ class PostsResource(SyncAPIResource):
         tag_ids: Iterable[int],
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -1996,7 +1996,7 @@ class PostsResource(SyncAPIResource):
         tag_ids: Iterable[int],
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -3763,7 +3763,7 @@ class PostsResource(SyncAPIResource):
         tag_ids: Iterable[int],
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -4898,7 +4898,7 @@ class AsyncPostsResource(AsyncAPIResource):
         tag_ids: Iterable[int],
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -5960,7 +5960,7 @@ class AsyncPostsResource(AsyncAPIResource):
         tag_ids: Iterable[int],
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
@@ -7729,7 +7729,7 @@ class AsyncPostsResource(AsyncAPIResource):
         tag_ids: Iterable[int],
         theme_settings_values: Dict[str, object],
         translated_from_id: str,
-        translations: Dict[str, ContentLanguageVariationParam],
+        translations: Dict[str, PagesContentLanguageVariationParam],
         updated: Union[str, datetime],
         updated_by_id: str,
         url: str,
