@@ -7,7 +7,7 @@ from pydantic import Field as FieldInfo
 
 from .app_info import AppInfo
 from ..._models import BaseModel
-from .crm_property_wrapper import CRMPropertyWrapper
+from .crm_property_wrapper import CrmPropertyWrapper
 
 __all__ = ["MarketingEventPublicReadResponseV2"]
 
@@ -15,7 +15,7 @@ __all__ = ["MarketingEventPublicReadResponseV2"]
 class MarketingEventPublicReadResponseV2(BaseModel):
     created_at: datetime = FieldInfo(alias="createdAt")
 
-    custom_properties: List[CRMPropertyWrapper] = FieldInfo(alias="customProperties")
+    custom_properties: List[CrmPropertyWrapper] = FieldInfo(alias="customProperties")
 
     event_name: str = FieldInfo(alias="eventName")
 

@@ -133,10 +133,10 @@ from .object_library.object_library import (
     AsyncObjectLibraryResourceWithStreamingResponse,
 )
 
-__all__ = ["CRMResource", "AsyncCRMResource"]
+__all__ = ["CrmResource", "AsyncCrmResource"]
 
 
-class CRMResource(SyncAPIResource):
+class CrmResource(SyncAPIResource):
     @cached_property
     def app_uninstalls(self) -> AppUninstallsResource:
         return AppUninstallsResource(self._client)
@@ -202,26 +202,26 @@ class CRMResource(SyncAPIResource):
         return UsersResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> CRMResourceWithRawResponse:
+    def with_raw_response(self) -> CrmResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
-        return CRMResourceWithRawResponse(self)
+        return CrmResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CRMResourceWithStreamingResponse:
+    def with_streaming_response(self) -> CrmResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
-        return CRMResourceWithStreamingResponse(self)
+        return CrmResourceWithStreamingResponse(self)
 
 
-class AsyncCRMResource(AsyncAPIResource):
+class AsyncCrmResource(AsyncAPIResource):
     @cached_property
     def app_uninstalls(self) -> AsyncAppUninstallsResource:
         return AsyncAppUninstallsResource(self._client)
@@ -287,27 +287,27 @@ class AsyncCRMResource(AsyncAPIResource):
         return AsyncUsersResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncCRMResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncCrmResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncCRMResourceWithRawResponse(self)
+        return AsyncCrmResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCRMResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncCrmResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
-        return AsyncCRMResourceWithStreamingResponse(self)
+        return AsyncCrmResourceWithStreamingResponse(self)
 
 
-class CRMResourceWithRawResponse:
-    def __init__(self, crm: CRMResource) -> None:
+class CrmResourceWithRawResponse:
+    def __init__(self, crm: CrmResource) -> None:
         self._crm = crm
 
     @cached_property
@@ -375,8 +375,8 @@ class CRMResourceWithRawResponse:
         return UsersResourceWithRawResponse(self._crm.users)
 
 
-class AsyncCRMResourceWithRawResponse:
-    def __init__(self, crm: AsyncCRMResource) -> None:
+class AsyncCrmResourceWithRawResponse:
+    def __init__(self, crm: AsyncCrmResource) -> None:
         self._crm = crm
 
     @cached_property
@@ -444,8 +444,8 @@ class AsyncCRMResourceWithRawResponse:
         return AsyncUsersResourceWithRawResponse(self._crm.users)
 
 
-class CRMResourceWithStreamingResponse:
-    def __init__(self, crm: CRMResource) -> None:
+class CrmResourceWithStreamingResponse:
+    def __init__(self, crm: CrmResource) -> None:
         self._crm = crm
 
     @cached_property
@@ -513,8 +513,8 @@ class CRMResourceWithStreamingResponse:
         return UsersResourceWithStreamingResponse(self._crm.users)
 
 
-class AsyncCRMResourceWithStreamingResponse:
-    def __init__(self, crm: AsyncCRMResource) -> None:
+class AsyncCrmResourceWithStreamingResponse:
+    def __init__(self, crm: AsyncCrmResource) -> None:
         self._crm = crm
 
     @cached_property

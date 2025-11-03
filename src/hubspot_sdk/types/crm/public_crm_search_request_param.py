@@ -8,10 +8,10 @@ from typing_extensions import Required, TypedDict
 from ..._types import SequenceNotStr
 from .filter_param import FilterParam
 
-__all__ = ["PublicCRMSearchRequestParam"]
+__all__ = ["PublicCrmSearchRequestParam"]
 
 
-class PublicCRMSearchRequestParam(TypedDict, total=False):
+class PublicCrmSearchRequestParam(TypedDict, total=False):
     filters: Required[Iterable[FilterParam]]
 
     query: Required[str]
