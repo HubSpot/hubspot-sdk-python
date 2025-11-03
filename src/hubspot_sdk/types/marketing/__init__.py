@@ -51,7 +51,7 @@ from .event_create_params import EventCreateParams as EventCreateParams
 from .event_update_params import EventUpdateParams as EventUpdateParams
 from .smtp_api_token_view import SmtpAPITokenView as SmtpAPITokenView
 from .campaign_list_params import CampaignListParams as CampaignListParams
-from .crm_property_wrapper import CRMPropertyWrapper as CRMPropertyWrapper
+from .crm_property_wrapper import CrmPropertyWrapper as CrmPropertyWrapper
 from .dropdown_field_param import DropdownFieldParam as DropdownFieldParam
 from .form_definition_base import FormDefinitionBase as FormDefinitionBase
 from .form_display_options import FormDisplayOptions as FormDisplayOptions

@@ -1,12 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from .crm import (
-    CRMResource,
-    AsyncCRMResource,
-    CRMResourceWithRawResponse,
-    AsyncCRMResourceWithRawResponse,
-    CRMResourceWithStreamingResponse,
-    AsyncCRMResourceWithStreamingResponse,
+    CrmResource,
+    AsyncCrmResource,
+    CrmResourceWithRawResponse,
+    AsyncCrmResourceWithRawResponse,
+    CrmResourceWithStreamingResponse,
+    AsyncCrmResourceWithStreamingResponse,
 )
 from .lists import (
     ListsResource,
@@ -234,10 +234,10 @@ __all__ = [
     "AsyncUsersResourceWithRawResponse",
     "UsersResourceWithStreamingResponse",
     "AsyncUsersResourceWithStreamingResponse",
-    "CRMResource",
-    "AsyncCRMResource",
-    "CRMResourceWithRawResponse",
-    "AsyncCRMResourceWithRawResponse",
-    "CRMResourceWithStreamingResponse",
-    "AsyncCRMResourceWithStreamingResponse",
+    "CrmResource",
+    "AsyncCrmResource",
+    "CrmResourceWithRawResponse",
+    "AsyncCrmResourceWithRawResponse",
+    "CrmResourceWithStreamingResponse",
+    "AsyncCrmResourceWithStreamingResponse",
 ]

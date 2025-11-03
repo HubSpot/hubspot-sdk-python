@@ -1197,7 +1197,7 @@ Methods:
 
 - <code title="post /visitor-identification/v3/tokens/create">client.conversations.visitor_identification.<a href="./src/hubspot_sdk/resources/conversations/visitor_identification.py">generate_token</a>(\*\*<a href="src/hubspot_sdk/types/conversations/visitor_identification_generate_token_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/identification_token_response.py">IdentificationTokenResponse</a></code>
 
-# CRM
+# Crm
 
 Types:
 
@@ -1364,7 +1364,7 @@ Types:
 ```python
 from hubspot_sdk.types.crm import (
     ActionResponseWithSingleResultUri,
-    PublicCRMSearchRequest,
+    PublicCrmSearchRequest,
     PublicExportListRequest,
     PublicExportRequest,
     PublicExportViewRequest,
@@ -2973,7 +2973,7 @@ from hubspot_sdk.types.marketing import (
     CollectionResponseWithTotalParticipationBreakdownForwardPaging,
     CollectionResponseWithTotalPublicListNoPaging,
     ContactAssociation,
-    CRMPropertyWrapper,
+    CrmPropertyWrapper,
     EventDetailSettings,
     EventDetailSettingsURL,
     MarketingEventAssociation,

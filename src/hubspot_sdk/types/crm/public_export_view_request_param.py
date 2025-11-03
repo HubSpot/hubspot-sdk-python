@@ -7,7 +7,7 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
-from .public_crm_search_request_param import PublicCRMSearchRequestParam
+from .public_crm_search_request_param import PublicCrmSearchRequestParam
 
 __all__ = ["PublicExportViewRequestParam"]
 
@@ -37,4 +37,4 @@ class PublicExportViewRequestParam(TypedDict, total=False):
 
     associated_object_type: Annotated[str, PropertyInfo(alias="associatedObjectType")]
 
-    public_crm_search_request: Annotated[PublicCRMSearchRequestParam, PropertyInfo(alias="publicCrmSearchRequest")]
+    public_crm_search_request: Annotated[PublicCrmSearchRequestParam, PropertyInfo(alias="publicCrmSearchRequest")]

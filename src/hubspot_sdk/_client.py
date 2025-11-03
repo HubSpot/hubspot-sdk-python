@@ -52,7 +52,7 @@ class Hubspot(SyncAPIClient):
     business_units: business_units.BusinessUnitsResource
     cms: cms.CmsResource
     conversations: conversations.ConversationsResource
-    crm: crm.CRMResource
+    crm: crm.CrmResource
     events: events.EventsResource
     files: files.FilesResource
     marketing: marketing.MarketingResource
@@ -117,7 +117,7 @@ class Hubspot(SyncAPIClient):
         self.business_units = business_units.BusinessUnitsResource(self)
         self.cms = cms.CmsResource(self)
         self.conversations = conversations.ConversationsResource(self)
-        self.crm = crm.CRMResource(self)
+        self.crm = crm.CrmResource(self)
         self.events = events.EventsResource(self)
         self.files = files.FilesResource(self)
         self.marketing = marketing.MarketingResource(self)
@@ -252,7 +252,7 @@ class AsyncHubspot(AsyncAPIClient):
     business_units: business_units.AsyncBusinessUnitsResource
     cms: cms.AsyncCmsResource
     conversations: conversations.AsyncConversationsResource
-    crm: crm.AsyncCRMResource
+    crm: crm.AsyncCrmResource
     events: events.AsyncEventsResource
     files: files.AsyncFilesResource
     marketing: marketing.AsyncMarketingResource
@@ -317,7 +317,7 @@ class AsyncHubspot(AsyncAPIClient):
         self.business_units = business_units.AsyncBusinessUnitsResource(self)
         self.cms = cms.AsyncCmsResource(self)
         self.conversations = conversations.AsyncConversationsResource(self)
-        self.crm = crm.AsyncCRMResource(self)
+        self.crm = crm.AsyncCrmResource(self)
         self.events = events.AsyncEventsResource(self)
         self.files = files.AsyncFilesResource(self)
         self.marketing = marketing.AsyncMarketingResource(self)
@@ -453,7 +453,7 @@ class HubspotWithRawResponse:
         self.business_units = business_units.BusinessUnitsResourceWithRawResponse(client.business_units)
         self.cms = cms.CmsResourceWithRawResponse(client.cms)
         self.conversations = conversations.ConversationsResourceWithRawResponse(client.conversations)
-        self.crm = crm.CRMResourceWithRawResponse(client.crm)
+        self.crm = crm.CrmResourceWithRawResponse(client.crm)
         self.events = events.EventsResourceWithRawResponse(client.events)
         self.files = files.FilesResourceWithRawResponse(client.files)
         self.marketing = marketing.MarketingResourceWithRawResponse(client.marketing)
@@ -470,7 +470,7 @@ class AsyncHubspotWithRawResponse:
         self.business_units = business_units.AsyncBusinessUnitsResourceWithRawResponse(client.business_units)
         self.cms = cms.AsyncCmsResourceWithRawResponse(client.cms)
         self.conversations = conversations.AsyncConversationsResourceWithRawResponse(client.conversations)
-        self.crm = crm.AsyncCRMResourceWithRawResponse(client.crm)
+        self.crm = crm.AsyncCrmResourceWithRawResponse(client.crm)
         self.events = events.AsyncEventsResourceWithRawResponse(client.events)
         self.files = files.AsyncFilesResourceWithRawResponse(client.files)
         self.marketing = marketing.AsyncMarketingResourceWithRawResponse(client.marketing)
@@ -487,7 +487,7 @@ class HubspotWithStreamedResponse:
         self.business_units = business_units.BusinessUnitsResourceWithStreamingResponse(client.business_units)
         self.cms = cms.CmsResourceWithStreamingResponse(client.cms)
         self.conversations = conversations.ConversationsResourceWithStreamingResponse(client.conversations)
-        self.crm = crm.CRMResourceWithStreamingResponse(client.crm)
+        self.crm = crm.CrmResourceWithStreamingResponse(client.crm)
         self.events = events.EventsResourceWithStreamingResponse(client.events)
         self.files = files.FilesResourceWithStreamingResponse(client.files)
         self.marketing = marketing.MarketingResourceWithStreamingResponse(client.marketing)
@@ -504,7 +504,7 @@ class AsyncHubspotWithStreamedResponse:
         self.business_units = business_units.AsyncBusinessUnitsResourceWithStreamingResponse(client.business_units)
         self.cms = cms.AsyncCmsResourceWithStreamingResponse(client.cms)
         self.conversations = conversations.AsyncConversationsResourceWithStreamingResponse(client.conversations)
-        self.crm = crm.AsyncCRMResourceWithStreamingResponse(client.crm)
+        self.crm = crm.AsyncCrmResourceWithStreamingResponse(client.crm)
         self.events = events.AsyncEventsResourceWithStreamingResponse(client.events)
         self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
         self.marketing = marketing.AsyncMarketingResourceWithStreamingResponse(client.marketing)

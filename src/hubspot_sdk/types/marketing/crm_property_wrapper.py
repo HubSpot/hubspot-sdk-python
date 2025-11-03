@@ -2,10 +2,10 @@
 
 from ..._models import BaseModel
 
-__all__ = ["CRMPropertyWrapper"]
+__all__ = ["CrmPropertyWrapper"]
 
 
-class CRMPropertyWrapper(BaseModel):
+class CrmPropertyWrapper(BaseModel):
     name: str
 
     value: str
