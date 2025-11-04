@@ -10,8 +10,8 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
+    PublicImportError,
     PublicImportResponse,
-    CollectionResponsePublicImportErrorForwardPaging,
 )
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.shared import ActionResponse
@@ -171,7 +171,7 @@ class TestImports:
         import_ = client.crm.imports.list_errors(
             import_id=0,
         )
-        assert_matches_type(CollectionResponsePublicImportErrorForwardPaging, import_, path=["response"])
+        assert_matches_type(SyncPage[PublicImportError], import_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -183,7 +183,7 @@ class TestImports:
             include_row_data=True,
             limit=0,
         )
-        assert_matches_type(CollectionResponsePublicImportErrorForwardPaging, import_, path=["response"])
+        assert_matches_type(SyncPage[PublicImportError], import_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -195,7 +195,7 @@ class TestImports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         import_ = response.parse()
-        assert_matches_type(CollectionResponsePublicImportErrorForwardPaging, import_, path=["response"])
+        assert_matches_type(SyncPage[PublicImportError], import_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -207,7 +207,7 @@ class TestImports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             import_ = response.parse()
-            assert_matches_type(CollectionResponsePublicImportErrorForwardPaging, import_, path=["response"])
+            assert_matches_type(SyncPage[PublicImportError], import_, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -366,7 +366,7 @@ class TestAsyncImports:
         import_ = await async_client.crm.imports.list_errors(
             import_id=0,
         )
-        assert_matches_type(CollectionResponsePublicImportErrorForwardPaging, import_, path=["response"])
+        assert_matches_type(AsyncPage[PublicImportError], import_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -378,7 +378,7 @@ class TestAsyncImports:
             include_row_data=True,
             limit=0,
         )
-        assert_matches_type(CollectionResponsePublicImportErrorForwardPaging, import_, path=["response"])
+        assert_matches_type(AsyncPage[PublicImportError], import_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -390,7 +390,7 @@ class TestAsyncImports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         import_ = await response.parse()
-        assert_matches_type(CollectionResponsePublicImportErrorForwardPaging, import_, path=["response"])
+        assert_matches_type(AsyncPage[PublicImportError], import_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -402,6 +402,6 @@ class TestAsyncImports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             import_ = await response.parse()
-            assert_matches_type(CollectionResponsePublicImportErrorForwardPaging, import_, path=["response"])
+            assert_matches_type(AsyncPage[PublicImportError], import_, path=["response"])
 
         assert cast(Any, response.is_closed) is True

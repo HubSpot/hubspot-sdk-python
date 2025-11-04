@@ -56,9 +56,6 @@ from ....types.cms.hubdb import (
 from ....types.cms.import_result import ImportResult
 from ....types.cms.hub_db_table_v3 import HubDBTableV3
 from ....types.cms.column_request_param import ColumnRequestParam
-from ....types.cms.collection_response_with_total_hub_db_table_v3_forward_paging import (
-    CollectionResponseWithTotalHubDBTableV3ForwardPaging,
-)
 
 __all__ = ["TablesResource", "AsyncTablesResource"]
 
@@ -639,7 +636,7 @@ class TablesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalHubDBTableV3ForwardPaging:
+    ) -> SyncPage[HubDBTableV3]:
         """
         Returns the details for each draft table defined in the specified account,
         including column definitions.
@@ -676,8 +673,9 @@ class TablesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/cms/v3/hubdb/tables/draft",
+            page=SyncPage[HubDBTableV3],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -701,7 +699,7 @@ class TablesResource(SyncAPIResource):
                     table_list_draft_params.TableListDraftParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalHubDBTableV3ForwardPaging,
+            model=HubDBTableV3,
         )
 
     def publish_draft(
@@ -1489,7 +1487,7 @@ class AsyncTablesResource(AsyncAPIResource):
             cast_to=ImportResult,
         )
 
-    async def list_draft(
+    def list_draft(
         self,
         *,
         after: str | Omit = omit,
@@ -1510,7 +1508,7 @@ class AsyncTablesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalHubDBTableV3ForwardPaging:
+    ) -> AsyncPaginator[HubDBTableV3, AsyncPage[HubDBTableV3]]:
         """
         Returns the details for each draft table defined in the specified account,
         including column definitions.
@@ -1547,14 +1545,15 @@ class AsyncTablesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/cms/v3/hubdb/tables/draft",
+            page=AsyncPage[HubDBTableV3],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "archived": archived,
@@ -1572,7 +1571,7 @@ class AsyncTablesResource(AsyncAPIResource):
                     table_list_draft_params.TableListDraftParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalHubDBTableV3ForwardPaging,
+            model=HubDBTableV3,
         )
 
     async def publish_draft(

@@ -17,9 +17,6 @@ from hubspot_sdk.types.cms import (
     BatchResponsePage,
     VersionContentFolder,
     BatchResponseContentFolder,
-    CollectionResponseWithTotalVersionPage,
-    CollectionResponseWithTotalVersionContentFolder,
-    CollectionResponseWithTotalContentFolderForwardPaging,
 )
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 
@@ -2915,7 +2912,7 @@ class TestLandingPages:
         landing_page = client.cms.pages.landing_pages.list_folder_revisions(
             object_id="objectId",
         )
-        assert_matches_type(CollectionResponseWithTotalVersionContentFolder, landing_page, path=["response"])
+        assert_matches_type(SyncPage[VersionContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -2926,7 +2923,7 @@ class TestLandingPages:
             before="before",
             limit=0,
         )
-        assert_matches_type(CollectionResponseWithTotalVersionContentFolder, landing_page, path=["response"])
+        assert_matches_type(SyncPage[VersionContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -2938,7 +2935,7 @@ class TestLandingPages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         landing_page = response.parse()
-        assert_matches_type(CollectionResponseWithTotalVersionContentFolder, landing_page, path=["response"])
+        assert_matches_type(SyncPage[VersionContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -2950,7 +2947,7 @@ class TestLandingPages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             landing_page = response.parse()
-            assert_matches_type(CollectionResponseWithTotalVersionContentFolder, landing_page, path=["response"])
+            assert_matches_type(SyncPage[VersionContentFolder], landing_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2966,7 +2963,7 @@ class TestLandingPages:
     @parametrize
     def test_method_list_folders(self, client: Hubspot) -> None:
         landing_page = client.cms.pages.landing_pages.list_folders()
-        assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
+        assert_matches_type(SyncPage[ContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -2984,7 +2981,7 @@ class TestLandingPages:
             updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
+        assert_matches_type(SyncPage[ContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -2994,7 +2991,7 @@ class TestLandingPages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         landing_page = response.parse()
-        assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
+        assert_matches_type(SyncPage[ContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -3004,7 +3001,7 @@ class TestLandingPages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             landing_page = response.parse()
-            assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
+            assert_matches_type(SyncPage[ContentFolder], landing_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3014,7 +3011,7 @@ class TestLandingPages:
         landing_page = client.cms.pages.landing_pages.list_revisions(
             object_id="objectId",
         )
-        assert_matches_type(CollectionResponseWithTotalVersionPage, landing_page, path=["response"])
+        assert_matches_type(SyncPage[VersionPage], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -3025,7 +3022,7 @@ class TestLandingPages:
             before="before",
             limit=0,
         )
-        assert_matches_type(CollectionResponseWithTotalVersionPage, landing_page, path=["response"])
+        assert_matches_type(SyncPage[VersionPage], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -3037,7 +3034,7 @@ class TestLandingPages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         landing_page = response.parse()
-        assert_matches_type(CollectionResponseWithTotalVersionPage, landing_page, path=["response"])
+        assert_matches_type(SyncPage[VersionPage], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -3049,7 +3046,7 @@ class TestLandingPages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             landing_page = response.parse()
-            assert_matches_type(CollectionResponseWithTotalVersionPage, landing_page, path=["response"])
+            assert_matches_type(SyncPage[VersionPage], landing_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -7210,7 +7207,7 @@ class TestAsyncLandingPages:
         landing_page = await async_client.cms.pages.landing_pages.list_folder_revisions(
             object_id="objectId",
         )
-        assert_matches_type(CollectionResponseWithTotalVersionContentFolder, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[VersionContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7221,7 +7218,7 @@ class TestAsyncLandingPages:
             before="before",
             limit=0,
         )
-        assert_matches_type(CollectionResponseWithTotalVersionContentFolder, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[VersionContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7233,7 +7230,7 @@ class TestAsyncLandingPages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         landing_page = await response.parse()
-        assert_matches_type(CollectionResponseWithTotalVersionContentFolder, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[VersionContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7245,7 +7242,7 @@ class TestAsyncLandingPages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             landing_page = await response.parse()
-            assert_matches_type(CollectionResponseWithTotalVersionContentFolder, landing_page, path=["response"])
+            assert_matches_type(AsyncPage[VersionContentFolder], landing_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -7261,7 +7258,7 @@ class TestAsyncLandingPages:
     @parametrize
     async def test_method_list_folders(self, async_client: AsyncHubspot) -> None:
         landing_page = await async_client.cms.pages.landing_pages.list_folders()
-        assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[ContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7279,7 +7276,7 @@ class TestAsyncLandingPages:
             updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[ContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7289,7 +7286,7 @@ class TestAsyncLandingPages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         landing_page = await response.parse()
-        assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[ContentFolder], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7299,7 +7296,7 @@ class TestAsyncLandingPages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             landing_page = await response.parse()
-            assert_matches_type(CollectionResponseWithTotalContentFolderForwardPaging, landing_page, path=["response"])
+            assert_matches_type(AsyncPage[ContentFolder], landing_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -7309,7 +7306,7 @@ class TestAsyncLandingPages:
         landing_page = await async_client.cms.pages.landing_pages.list_revisions(
             object_id="objectId",
         )
-        assert_matches_type(CollectionResponseWithTotalVersionPage, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[VersionPage], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7320,7 +7317,7 @@ class TestAsyncLandingPages:
             before="before",
             limit=0,
         )
-        assert_matches_type(CollectionResponseWithTotalVersionPage, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[VersionPage], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7332,7 +7329,7 @@ class TestAsyncLandingPages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         landing_page = await response.parse()
-        assert_matches_type(CollectionResponseWithTotalVersionPage, landing_page, path=["response"])
+        assert_matches_type(AsyncPage[VersionPage], landing_page, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -7344,7 +7341,7 @@ class TestAsyncLandingPages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             landing_page = await response.parse()
-            assert_matches_type(CollectionResponseWithTotalVersionPage, landing_page, path=["response"])
+            assert_matches_type(AsyncPage[VersionPage], landing_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

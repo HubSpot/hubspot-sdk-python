@@ -9,11 +9,8 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.marketing import (
-    MetricsCounters,
-    RevenueAttributionAggregate,
-    CollectionResponseContactReferenceForwardPaging,
-)
+from hubspot_sdk.pagination import SyncPage, AsyncPage
+from hubspot_sdk.types.marketing import MetricsCounters, ContactReference, RevenueAttributionAggregate
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -133,7 +130,7 @@ class TestReports:
             contact_type="contactType",
             campaign_guid="campaignGuid",
         )
-        assert_matches_type(CollectionResponseContactReferenceForwardPaging, report, path=["response"])
+        assert_matches_type(SyncPage[ContactReference], report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -146,7 +143,7 @@ class TestReports:
             limit=0,
             start_date="startDate",
         )
-        assert_matches_type(CollectionResponseContactReferenceForwardPaging, report, path=["response"])
+        assert_matches_type(SyncPage[ContactReference], report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -159,7 +156,7 @@ class TestReports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         report = response.parse()
-        assert_matches_type(CollectionResponseContactReferenceForwardPaging, report, path=["response"])
+        assert_matches_type(SyncPage[ContactReference], report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -172,7 +169,7 @@ class TestReports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             report = response.parse()
-            assert_matches_type(CollectionResponseContactReferenceForwardPaging, report, path=["response"])
+            assert_matches_type(SyncPage[ContactReference], report, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -309,7 +306,7 @@ class TestAsyncReports:
             contact_type="contactType",
             campaign_guid="campaignGuid",
         )
-        assert_matches_type(CollectionResponseContactReferenceForwardPaging, report, path=["response"])
+        assert_matches_type(AsyncPage[ContactReference], report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -322,7 +319,7 @@ class TestAsyncReports:
             limit=0,
             start_date="startDate",
         )
-        assert_matches_type(CollectionResponseContactReferenceForwardPaging, report, path=["response"])
+        assert_matches_type(AsyncPage[ContactReference], report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -335,7 +332,7 @@ class TestAsyncReports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         report = await response.parse()
-        assert_matches_type(CollectionResponseContactReferenceForwardPaging, report, path=["response"])
+        assert_matches_type(AsyncPage[ContactReference], report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -348,7 +345,7 @@ class TestAsyncReports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             report = await response.parse()
-            assert_matches_type(CollectionResponseContactReferenceForwardPaging, report, path=["response"])
+            assert_matches_type(AsyncPage[ContactReference], report, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

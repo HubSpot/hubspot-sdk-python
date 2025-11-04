@@ -9,10 +9,8 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.marketing import (
-    AttendanceCounters,
-    CollectionResponseWithTotalParticipationBreakdownForwardPaging,
-)
+from hubspot_sdk.pagination import SyncPage, AsyncPage
+from hubspot_sdk.types.marketing import AttendanceCounters, ParticipationBreakdown
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -112,9 +110,7 @@ class TestParticipations:
         participation = client.marketing.events.participations.list_breakdown_by_contact(
             contact_identifier="contactIdentifier",
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -125,9 +121,7 @@ class TestParticipations:
             limit=0,
             state="state",
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -139,9 +133,7 @@ class TestParticipations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         participation = response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -153,9 +145,7 @@ class TestParticipations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             participation = response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-            )
+            assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -174,9 +164,7 @@ class TestParticipations:
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -189,9 +177,7 @@ class TestParticipations:
             limit=0,
             state="state",
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -206,9 +192,7 @@ class TestParticipations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         participation = response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -221,9 +205,7 @@ class TestParticipations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             participation = response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-            )
+            assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -248,9 +230,7 @@ class TestParticipations:
         participation = client.marketing.events.participations.list_breakdown_by_id(
             marketing_event_id=0,
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -262,9 +242,7 @@ class TestParticipations:
             limit=0,
             state="state",
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -276,9 +254,7 @@ class TestParticipations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         participation = response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -290,9 +266,7 @@ class TestParticipations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             participation = response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-            )
+            assert_matches_type(SyncPage[ParticipationBreakdown], participation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -398,9 +372,7 @@ class TestAsyncParticipations:
         participation = await async_client.marketing.events.participations.list_breakdown_by_contact(
             contact_identifier="contactIdentifier",
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -411,9 +383,7 @@ class TestAsyncParticipations:
             limit=0,
             state="state",
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -425,9 +395,7 @@ class TestAsyncParticipations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         participation = await response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -439,9 +407,7 @@ class TestAsyncParticipations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             participation = await response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-            )
+            assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -462,9 +428,7 @@ class TestAsyncParticipations:
                 external_account_id="externalAccountId",
             )
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -481,9 +445,7 @@ class TestAsyncParticipations:
                 state="state",
             )
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -498,9 +460,7 @@ class TestAsyncParticipations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         participation = await response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -515,9 +475,7 @@ class TestAsyncParticipations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             participation = await response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-            )
+            assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -544,9 +502,7 @@ class TestAsyncParticipations:
         participation = await async_client.marketing.events.participations.list_breakdown_by_id(
             marketing_event_id=0,
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -558,9 +514,7 @@ class TestAsyncParticipations:
             limit=0,
             state="state",
         )
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -572,9 +526,7 @@ class TestAsyncParticipations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         participation = await response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -586,8 +538,6 @@ class TestAsyncParticipations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             participation = await response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalParticipationBreakdownForwardPaging, participation, path=["response"]
-            )
+            assert_matches_type(AsyncPage[ParticipationBreakdown], participation, path=["response"])
 
         assert cast(Any, response.is_closed) is True

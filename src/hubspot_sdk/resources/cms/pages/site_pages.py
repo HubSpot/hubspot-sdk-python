@@ -50,7 +50,6 @@ from ....types.cms.batch_response_page import BatchResponsePage
 from ....types.cms.layout_section_param import LayoutSectionParam
 from ....types.cms.public_access_rule_param import PublicAccessRuleParam
 from ....types.cms.pages_content_language_variation_param import PagesContentLanguageVariationParam
-from ....types.cms.collection_response_with_total_version_page import CollectionResponseWithTotalVersionPage
 
 __all__ = ["SitePagesResource", "AsyncSitePagesResource"]
 
@@ -2845,7 +2844,7 @@ class SitePagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalVersionPage:
+    ) -> SyncPage[VersionPage]:
         """
         Retrieves all the previous versions of a Site Page.
 
@@ -2865,8 +2864,9 @@ class SitePagesResource(SyncAPIResource):
         """
         if not object_id:
             raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/cms/v3/pages/site-pages/{object_id}/revisions",
+            page=SyncPage[VersionPage],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2881,7 +2881,7 @@ class SitePagesResource(SyncAPIResource):
                     site_page_list_revisions_params.SitePageListRevisionsParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalVersionPage,
+            model=VersionPage,
         )
 
     def publish_draft(
@@ -7084,7 +7084,7 @@ class AsyncSitePagesResource(AsyncAPIResource):
             cast_to=VersionPage,
         )
 
-    async def list_revisions(
+    def list_revisions(
         self,
         object_id: str,
         *,
@@ -7097,7 +7097,7 @@ class AsyncSitePagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalVersionPage:
+    ) -> AsyncPaginator[VersionPage, AsyncPage[VersionPage]]:
         """
         Retrieves all the previous versions of a Site Page.
 
@@ -7117,14 +7117,15 @@ class AsyncSitePagesResource(AsyncAPIResource):
         """
         if not object_id:
             raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/cms/v3/pages/site-pages/{object_id}/revisions",
+            page=AsyncPage[VersionPage],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "before": before,
@@ -7133,7 +7134,7 @@ class AsyncSitePagesResource(AsyncAPIResource):
                     site_page_list_revisions_params.SitePageListRevisionsParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalVersionPage,
+            model=VersionPage,
         )
 
     async def publish_draft(

@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -17,21 +17,16 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncPage, AsyncPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.account import (
     activity_list_audit_logs_params,
     activity_list_login_activities_params,
     activity_list_security_activities_params,
 )
-from ...types.account.collection_response_public_login_audit_forward_paging import (
-    CollectionResponsePublicLoginAuditForwardPaging,
-)
-from ...types.account.collection_response_hydrated_critical_action_forward_paging import (
-    CollectionResponseHydratedCriticalActionForwardPaging,
-)
-from ...types.account.collection_response_public_api_user_action_event_forward_paging import (
-    CollectionResponsePublicAPIUserActionEventForwardPaging,
-)
+from ...types.account.public_login_audit import PublicLoginAudit
+from ...types.account.hydrated_critical_action import HydratedCriticalAction
+from ...types.account.public_api_user_action_event import PublicAPIUserActionEvent
 
 __all__ = ["ActivityResource", "AsyncActivityResource"]
 
@@ -71,7 +66,7 @@ class ActivityResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicAPIUserActionEventForwardPaging:
+    ) -> SyncPage[PublicAPIUserActionEvent]:
         """
         Retrieve activity history for user actions related to approvals, content
         updates, CRM object updates, security activity, and more (Enterprise only).
@@ -102,8 +97,9 @@ class ActivityResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/account-info/v3/activity/audit-logs",
+            page=SyncPage[PublicAPIUserActionEvent],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -121,7 +117,7 @@ class ActivityResource(SyncAPIResource):
                     activity_list_audit_logs_params.ActivityListAuditLogsParams,
                 ),
             ),
-            cast_to=CollectionResponsePublicAPIUserActionEventForwardPaging,
+            model=PublicAPIUserActionEvent,
         )
 
     def list_login_activities(
@@ -136,7 +132,7 @@ class ActivityResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicLoginAuditForwardPaging:
+    ) -> SyncPage[PublicLoginAudit]:
         """
         Retrieve logs of user actions related to
         [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
@@ -157,8 +153,9 @@ class ActivityResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/account-info/v3/activity/login",
+            page=SyncPage[PublicLoginAudit],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -173,7 +170,7 @@ class ActivityResource(SyncAPIResource):
                     activity_list_login_activities_params.ActivityListLoginActivitiesParams,
                 ),
             ),
-            cast_to=CollectionResponsePublicLoginAuditForwardPaging,
+            model=PublicLoginAudit,
         )
 
     def list_security_activities(
@@ -190,7 +187,7 @@ class ActivityResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseHydratedCriticalActionForwardPaging:
+    ) -> SyncPage[HydratedCriticalAction]:
         """
         Retrieve logs of user actions related to
         [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
@@ -215,8 +212,9 @@ class ActivityResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/account-info/v3/activity/security",
+            page=SyncPage[HydratedCriticalAction],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -233,7 +231,7 @@ class ActivityResource(SyncAPIResource):
                     activity_list_security_activities_params.ActivityListSecurityActivitiesParams,
                 ),
             ),
-            cast_to=CollectionResponseHydratedCriticalActionForwardPaging,
+            model=HydratedCriticalAction,
         )
 
 
@@ -257,7 +255,7 @@ class AsyncActivityResource(AsyncAPIResource):
         """
         return AsyncActivityResourceWithStreamingResponse(self)
 
-    async def list_audit_logs(
+    def list_audit_logs(
         self,
         *,
         acting_user_id: Iterable[int] | Omit = omit,
@@ -272,7 +270,7 @@ class AsyncActivityResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicAPIUserActionEventForwardPaging:
+    ) -> AsyncPaginator[PublicAPIUserActionEvent, AsyncPage[PublicAPIUserActionEvent]]:
         """
         Retrieve activity history for user actions related to approvals, content
         updates, CRM object updates, security activity, and more (Enterprise only).
@@ -303,14 +301,15 @@ class AsyncActivityResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/account-info/v3/activity/audit-logs",
+            page=AsyncPage[PublicAPIUserActionEvent],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "acting_user_id": acting_user_id,
                         "after": after,
@@ -322,10 +321,10 @@ class AsyncActivityResource(AsyncAPIResource):
                     activity_list_audit_logs_params.ActivityListAuditLogsParams,
                 ),
             ),
-            cast_to=CollectionResponsePublicAPIUserActionEventForwardPaging,
+            model=PublicAPIUserActionEvent,
         )
 
-    async def list_login_activities(
+    def list_login_activities(
         self,
         *,
         after: str | Omit = omit,
@@ -337,7 +336,7 @@ class AsyncActivityResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicLoginAuditForwardPaging:
+    ) -> AsyncPaginator[PublicLoginAudit, AsyncPage[PublicLoginAudit]]:
         """
         Retrieve logs of user actions related to
         [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
@@ -358,14 +357,15 @@ class AsyncActivityResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/account-info/v3/activity/login",
+            page=AsyncPage[PublicLoginAudit],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "limit": limit,
@@ -374,10 +374,10 @@ class AsyncActivityResource(AsyncAPIResource):
                     activity_list_login_activities_params.ActivityListLoginActivitiesParams,
                 ),
             ),
-            cast_to=CollectionResponsePublicLoginAuditForwardPaging,
+            model=PublicLoginAudit,
         )
 
-    async def list_security_activities(
+    def list_security_activities(
         self,
         *,
         after: str | Omit = omit,
@@ -391,7 +391,7 @@ class AsyncActivityResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseHydratedCriticalActionForwardPaging:
+    ) -> AsyncPaginator[HydratedCriticalAction, AsyncPage[HydratedCriticalAction]]:
         """
         Retrieve logs of user actions related to
         [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
@@ -416,14 +416,15 @@ class AsyncActivityResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/account-info/v3/activity/security",
+            page=AsyncPage[HydratedCriticalAction],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "from_timestamp": from_timestamp,
@@ -434,7 +435,7 @@ class AsyncActivityResource(AsyncAPIResource):
                     activity_list_security_activities_params.ActivityListSecurityActivitiesParams,
                 ),
             ),
-            cast_to=CollectionResponseHydratedCriticalActionForwardPaging,
+            model=HydratedCriticalAction,
         )
 
 

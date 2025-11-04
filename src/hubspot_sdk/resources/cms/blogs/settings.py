@@ -30,7 +30,6 @@ from ....types.cms.blogs import (
 )
 from ....types.cms.blogs.blog import Blog
 from ....types.cms.blogs.version_blog import VersionBlog
-from ....types.cms.blogs.collection_response_with_total_version_blog import CollectionResponseWithTotalVersionBlog
 
 __all__ = ["SettingsResource", "AsyncSettingsResource"]
 
@@ -322,7 +321,7 @@ class SettingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalVersionBlog:
+    ) -> SyncPage[VersionBlog]:
         """
         Args:
           extra_headers: Send extra headers
@@ -335,8 +334,9 @@ class SettingsResource(SyncAPIResource):
         """
         if not blog_id:
             raise ValueError(f"Expected a non-empty value for `blog_id` but received {blog_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/cms/v3/blog-settings/settings/{blog_id}/revisions",
+            page=SyncPage[VersionBlog],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -351,7 +351,7 @@ class SettingsResource(SyncAPIResource):
                     setting_list_revisions_params.SettingListRevisionsParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalVersionBlog,
+            model=VersionBlog,
         )
 
     def set_new_lang_primary(
@@ -706,7 +706,7 @@ class AsyncSettingsResource(AsyncAPIResource):
             cast_to=VersionBlog,
         )
 
-    async def list_revisions(
+    def list_revisions(
         self,
         blog_id: str,
         *,
@@ -719,7 +719,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalVersionBlog:
+    ) -> AsyncPaginator[VersionBlog, AsyncPage[VersionBlog]]:
         """
         Args:
           extra_headers: Send extra headers
@@ -732,14 +732,15 @@ class AsyncSettingsResource(AsyncAPIResource):
         """
         if not blog_id:
             raise ValueError(f"Expected a non-empty value for `blog_id` but received {blog_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/cms/v3/blog-settings/settings/{blog_id}/revisions",
+            page=AsyncPage[VersionBlog],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "before": before,
@@ -748,7 +749,7 @@ class AsyncSettingsResource(AsyncAPIResource):
                     setting_list_revisions_params.SettingListRevisionsParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalVersionBlog,
+            model=VersionBlog,
         )
 
     async def set_new_lang_primary(
