@@ -14,17 +14,16 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.marketing.campaigns import (
     report_get_attribution_metrics_params,
     report_get_revenue_attribution_params,
     report_list_contact_ids_by_type_params,
 )
 from ....types.marketing.metrics_counters import MetricsCounters
+from ....types.marketing.contact_reference import ContactReference
 from ....types.marketing.revenue_attribution_aggregate import RevenueAttributionAggregate
-from ....types.marketing.collection_response_contact_reference_forward_paging import (
-    CollectionResponseContactReferenceForwardPaging,
-)
 
 __all__ = ["ReportsResource", "AsyncReportsResource"]
 
@@ -174,7 +173,7 @@ class ReportsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseContactReferenceForwardPaging:
+    ) -> SyncPage[ContactReference]:
         """
         Fetch the list of contact IDs for the specified campaign and contact type
 
@@ -203,8 +202,9 @@ class ReportsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `campaign_guid` but received {campaign_guid!r}")
         if not contact_type:
             raise ValueError(f"Expected a non-empty value for `contact_type` but received {contact_type!r}")
-        return self._get(
+        return self._get_api_list(
             f"/marketing/v3/campaigns/{campaign_guid}/reports/contacts/{contact_type}",
+            page=SyncPage[ContactReference],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -220,7 +220,7 @@ class ReportsResource(SyncAPIResource):
                     report_list_contact_ids_by_type_params.ReportListContactIDsByTypeParams,
                 ),
             ),
-            cast_to=CollectionResponseContactReferenceForwardPaging,
+            model=ContactReference,
         )
 
 
@@ -354,7 +354,7 @@ class AsyncReportsResource(AsyncAPIResource):
             cast_to=RevenueAttributionAggregate,
         )
 
-    async def list_contact_ids_by_type(
+    def list_contact_ids_by_type(
         self,
         contact_type: str,
         *,
@@ -369,7 +369,7 @@ class AsyncReportsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseContactReferenceForwardPaging:
+    ) -> AsyncPaginator[ContactReference, AsyncPage[ContactReference]]:
         """
         Fetch the list of contact IDs for the specified campaign and contact type
 
@@ -398,14 +398,15 @@ class AsyncReportsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `campaign_guid` but received {campaign_guid!r}")
         if not contact_type:
             raise ValueError(f"Expected a non-empty value for `contact_type` but received {contact_type!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/marketing/v3/campaigns/{campaign_guid}/reports/contacts/{contact_type}",
+            page=AsyncPage[ContactReference],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "end_date": end_date,
@@ -415,7 +416,7 @@ class AsyncReportsResource(AsyncAPIResource):
                     report_list_contact_ids_by_type_params.ReportListContactIDsByTypeParams,
                 ),
             ),
-            cast_to=CollectionResponseContactReferenceForwardPaging,
+            model=ContactReference,
         )
 
 

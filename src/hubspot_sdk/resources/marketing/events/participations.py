@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -14,16 +14,15 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.marketing.events import (
     participation_list_breakdown_by_id_params,
     participation_list_breakdown_by_contact_params,
     participation_list_breakdown_by_external_account_and_event_id_params,
 )
 from ....types.marketing.attendance_counters import AttendanceCounters
-from ....types.marketing.collection_response_with_total_participation_breakdown_forward_paging import (
-    CollectionResponseWithTotalParticipationBreakdownForwardPaging,
-)
+from ....types.marketing.participation_breakdown import ParticipationBreakdown
 
 __all__ = ["ParticipationsResource", "AsyncParticipationsResource"]
 
@@ -132,7 +131,7 @@ class ParticipationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalParticipationBreakdownForwardPaging:
+    ) -> SyncPage[ParticipationBreakdown]:
         """
         Read Contact's participations by identifier - email or internal id.
 
@@ -154,8 +153,9 @@ class ParticipationsResource(SyncAPIResource):
         """
         if not contact_identifier:
             raise ValueError(f"Expected a non-empty value for `contact_identifier` but received {contact_identifier!r}")
-        return self._get(
+        return self._get_api_list(
             f"/marketing/v3/marketing-events/participations/contacts/{contact_identifier}/breakdown",
+            page=SyncPage[ParticipationBreakdown],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -170,7 +170,7 @@ class ParticipationsResource(SyncAPIResource):
                     participation_list_breakdown_by_contact_params.ParticipationListBreakdownByContactParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalParticipationBreakdownForwardPaging,
+            model=ParticipationBreakdown,
         )
 
     def list_breakdown_by_external_account_and_event_id(
@@ -188,7 +188,7 @@ class ParticipationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalParticipationBreakdownForwardPaging:
+    ) -> SyncPage[ParticipationBreakdown]:
         """
         Read Marketing event's participations breakdown with optional filters by
         externalAccountId and externalEventId pair.
@@ -217,8 +217,9 @@ class ParticipationsResource(SyncAPIResource):
             )
         if not external_event_id:
             raise ValueError(f"Expected a non-empty value for `external_event_id` but received {external_event_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/marketing/v3/marketing-events/participations/{external_account_id}/{external_event_id}/breakdown",
+            page=SyncPage[ParticipationBreakdown],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -234,7 +235,7 @@ class ParticipationsResource(SyncAPIResource):
                     participation_list_breakdown_by_external_account_and_event_id_params.ParticipationListBreakdownByExternalAccountAndEventIDParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalParticipationBreakdownForwardPaging,
+            model=ParticipationBreakdown,
         )
 
     def list_breakdown_by_id(
@@ -251,7 +252,7 @@ class ParticipationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalParticipationBreakdownForwardPaging:
+    ) -> SyncPage[ParticipationBreakdown]:
         """
         Read Marketing event's participations breakdown with optional filters by
         internal identifier marketingEventId.
@@ -274,8 +275,9 @@ class ParticipationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             f"/marketing/v3/marketing-events/participations/{marketing_event_id}/breakdown",
+            page=SyncPage[ParticipationBreakdown],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -291,7 +293,7 @@ class ParticipationsResource(SyncAPIResource):
                     participation_list_breakdown_by_id_params.ParticipationListBreakdownByIDParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalParticipationBreakdownForwardPaging,
+            model=ParticipationBreakdown,
         )
 
 
@@ -386,7 +388,7 @@ class AsyncParticipationsResource(AsyncAPIResource):
             cast_to=AttendanceCounters,
         )
 
-    async def list_breakdown_by_contact(
+    def list_breakdown_by_contact(
         self,
         contact_identifier: str,
         *,
@@ -399,7 +401,7 @@ class AsyncParticipationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalParticipationBreakdownForwardPaging:
+    ) -> AsyncPaginator[ParticipationBreakdown, AsyncPage[ParticipationBreakdown]]:
         """
         Read Contact's participations by identifier - email or internal id.
 
@@ -421,14 +423,15 @@ class AsyncParticipationsResource(AsyncAPIResource):
         """
         if not contact_identifier:
             raise ValueError(f"Expected a non-empty value for `contact_identifier` but received {contact_identifier!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/marketing/v3/marketing-events/participations/contacts/{contact_identifier}/breakdown",
+            page=AsyncPage[ParticipationBreakdown],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "limit": limit,
@@ -437,10 +440,10 @@ class AsyncParticipationsResource(AsyncAPIResource):
                     participation_list_breakdown_by_contact_params.ParticipationListBreakdownByContactParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalParticipationBreakdownForwardPaging,
+            model=ParticipationBreakdown,
         )
 
-    async def list_breakdown_by_external_account_and_event_id(
+    def list_breakdown_by_external_account_and_event_id(
         self,
         external_event_id: str,
         *,
@@ -455,7 +458,7 @@ class AsyncParticipationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalParticipationBreakdownForwardPaging:
+    ) -> AsyncPaginator[ParticipationBreakdown, AsyncPage[ParticipationBreakdown]]:
         """
         Read Marketing event's participations breakdown with optional filters by
         externalAccountId and externalEventId pair.
@@ -484,14 +487,15 @@ class AsyncParticipationsResource(AsyncAPIResource):
             )
         if not external_event_id:
             raise ValueError(f"Expected a non-empty value for `external_event_id` but received {external_event_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/marketing/v3/marketing-events/participations/{external_account_id}/{external_event_id}/breakdown",
+            page=AsyncPage[ParticipationBreakdown],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "contact_identifier": contact_identifier,
@@ -501,10 +505,10 @@ class AsyncParticipationsResource(AsyncAPIResource):
                     participation_list_breakdown_by_external_account_and_event_id_params.ParticipationListBreakdownByExternalAccountAndEventIDParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalParticipationBreakdownForwardPaging,
+            model=ParticipationBreakdown,
         )
 
-    async def list_breakdown_by_id(
+    def list_breakdown_by_id(
         self,
         marketing_event_id: int,
         *,
@@ -518,7 +522,7 @@ class AsyncParticipationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalParticipationBreakdownForwardPaging:
+    ) -> AsyncPaginator[ParticipationBreakdown, AsyncPage[ParticipationBreakdown]]:
         """
         Read Marketing event's participations breakdown with optional filters by
         internal identifier marketingEventId.
@@ -541,14 +545,15 @@ class AsyncParticipationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             f"/marketing/v3/marketing-events/participations/{marketing_event_id}/breakdown",
+            page=AsyncPage[ParticipationBreakdown],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "contact_identifier": contact_identifier,
@@ -558,7 +563,7 @@ class AsyncParticipationsResource(AsyncAPIResource):
                     participation_list_breakdown_by_id_params.ParticipationListBreakdownByIDParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalParticipationBreakdownForwardPaging,
+            model=ParticipationBreakdown,
         )
 
 

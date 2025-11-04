@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, cast
+from typing import Dict
 
 import httpx
 
@@ -38,9 +38,6 @@ from .....types.cms.hubdb import (
 )
 from .....types.cms.variant_param import VariantParam
 from .....types.cms.hub_db_table_row_v3 import HubDBTableRowV3
-from .....types.cms.unified_collection_response_with_total_base_hub_db_table_row_v3 import (
-    UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
-)
 
 __all__ = ["RowsResource", "AsyncRowsResource"]
 
@@ -384,7 +381,7 @@ class RowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3:
+    ) -> SyncPage[object]:
         """Returns rows in the draft version of the specified table.
 
         Row results can be
@@ -418,31 +415,27 @@ class RowsResource(SyncAPIResource):
         """
         if not table_id_or_name:
             raise ValueError(f"Expected a non-empty value for `table_id_or_name` but received {table_id_or_name!r}")
-        return cast(
-            UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
-            self._get(
-                f"/cms/v3/hubdb/tables/{table_id_or_name}/rows/draft",
-                options=make_request_options(
-                    extra_headers=extra_headers,
-                    extra_query=extra_query,
-                    extra_body=extra_body,
-                    timeout=timeout,
-                    query=maybe_transform(
-                        {
-                            "after": after,
-                            "archived": archived,
-                            "limit": limit,
-                            "offset": offset,
-                            "properties": properties,
-                            "sort": sort,
-                        },
-                        row_list_draft_params.RowListDraftParams,
-                    ),
+        return self._get_api_list(
+            f"/cms/v3/hubdb/tables/{table_id_or_name}/rows/draft",
+            page=SyncPage[object],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "limit": limit,
+                        "offset": offset,
+                        "properties": properties,
+                        "sort": sort,
+                    },
+                    row_list_draft_params.RowListDraftParams,
                 ),
-                cast_to=cast(
-                    Any, UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3
-                ),  # Union types cannot be passed in as arguments in the type system
             ),
+            model=object,
         )
 
     def replace_draft(
@@ -899,7 +892,7 @@ class AsyncRowsResource(AsyncAPIResource):
             cast_to=HubDBTableRowV3,
         )
 
-    async def list_draft(
+    def list_draft(
         self,
         table_id_or_name: str,
         *,
@@ -915,7 +908,7 @@ class AsyncRowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3:
+    ) -> AsyncPaginator[object, AsyncPage[object]]:
         """Returns rows in the draft version of the specified table.
 
         Row results can be
@@ -949,31 +942,27 @@ class AsyncRowsResource(AsyncAPIResource):
         """
         if not table_id_or_name:
             raise ValueError(f"Expected a non-empty value for `table_id_or_name` but received {table_id_or_name!r}")
-        return cast(
-            UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
-            await self._get(
-                f"/cms/v3/hubdb/tables/{table_id_or_name}/rows/draft",
-                options=make_request_options(
-                    extra_headers=extra_headers,
-                    extra_query=extra_query,
-                    extra_body=extra_body,
-                    timeout=timeout,
-                    query=await async_maybe_transform(
-                        {
-                            "after": after,
-                            "archived": archived,
-                            "limit": limit,
-                            "offset": offset,
-                            "properties": properties,
-                            "sort": sort,
-                        },
-                        row_list_draft_params.RowListDraftParams,
-                    ),
+        return self._get_api_list(
+            f"/cms/v3/hubdb/tables/{table_id_or_name}/rows/draft",
+            page=AsyncPage[object],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "limit": limit,
+                        "offset": offset,
+                        "properties": properties,
+                        "sort": sort,
+                    },
+                    row_list_draft_params.RowListDraftParams,
                 ),
-                cast_to=cast(
-                    Any, UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3
-                ),  # Union types cannot be passed in as arguments in the type system
             ),
+            model=object,
         )
 
     async def replace_draft(

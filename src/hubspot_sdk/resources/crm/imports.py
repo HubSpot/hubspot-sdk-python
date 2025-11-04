@@ -20,10 +20,8 @@ from ...types.crm import import_list_params, import_create_params, import_list_e
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.shared.action_response import ActionResponse
+from ...types.crm.public_import_error import PublicImportError
 from ...types.crm.public_import_response import PublicImportResponse
-from ...types.crm.collection_response_public_import_error_forward_paging import (
-    CollectionResponsePublicImportErrorForwardPaging,
-)
 
 __all__ = ["ImportsResource", "AsyncImportsResource"]
 
@@ -223,7 +221,7 @@ class ImportsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicImportErrorForwardPaging:
+    ) -> SyncPage[PublicImportError]:
         """
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -244,8 +242,9 @@ class ImportsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             f"/crm/v3/imports/{import_id}/errors",
+            page=SyncPage[PublicImportError],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -261,7 +260,7 @@ class ImportsResource(SyncAPIResource):
                     import_list_errors_params.ImportListErrorsParams,
                 ),
             ),
-            cast_to=CollectionResponsePublicImportErrorForwardPaging,
+            model=PublicImportError,
         )
 
 
@@ -446,7 +445,7 @@ class AsyncImportsResource(AsyncAPIResource):
             cast_to=PublicImportResponse,
         )
 
-    async def list_errors(
+    def list_errors(
         self,
         import_id: int,
         *,
@@ -460,7 +459,7 @@ class AsyncImportsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicImportErrorForwardPaging:
+    ) -> AsyncPaginator[PublicImportError, AsyncPage[PublicImportError]]:
         """
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -481,14 +480,15 @@ class AsyncImportsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             f"/crm/v3/imports/{import_id}/errors",
+            page=AsyncPage[PublicImportError],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "include_error_message": include_error_message,
@@ -498,7 +498,7 @@ class AsyncImportsResource(AsyncAPIResource):
                     import_list_errors_params.ImportListErrorsParams,
                 ),
             ),
-            cast_to=CollectionResponsePublicImportErrorForwardPaging,
+            model=PublicImportError,
         )
 
 

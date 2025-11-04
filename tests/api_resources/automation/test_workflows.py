@@ -13,8 +13,8 @@ from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.automation import (
     APIFlow,
     APIFlowListing,
+    APIFlowEmailCampaign,
     BatchResponseAPIFlow,
-    CollectionResponseAPIFlowEmailCampaign,
     BatchResponseFlowIDWorkflowIDMappingResponse,
 )
 
@@ -379,7 +379,7 @@ class TestWorkflows:
     @parametrize
     def test_method_list_email_campaigns(self, client: Hubspot) -> None:
         workflow = client.automation.workflows.list_email_campaigns()
-        assert_matches_type(CollectionResponseAPIFlowEmailCampaign, workflow, path=["response"])
+        assert_matches_type(SyncPage[APIFlowEmailCampaign], workflow, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -390,7 +390,7 @@ class TestWorkflows:
             flow_id=["string"],
             limit=0,
         )
-        assert_matches_type(CollectionResponseAPIFlowEmailCampaign, workflow, path=["response"])
+        assert_matches_type(SyncPage[APIFlowEmailCampaign], workflow, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -400,7 +400,7 @@ class TestWorkflows:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         workflow = response.parse()
-        assert_matches_type(CollectionResponseAPIFlowEmailCampaign, workflow, path=["response"])
+        assert_matches_type(SyncPage[APIFlowEmailCampaign], workflow, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -410,7 +410,7 @@ class TestWorkflows:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             workflow = response.parse()
-            assert_matches_type(CollectionResponseAPIFlowEmailCampaign, workflow, path=["response"])
+            assert_matches_type(SyncPage[APIFlowEmailCampaign], workflow, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -775,7 +775,7 @@ class TestAsyncWorkflows:
     @parametrize
     async def test_method_list_email_campaigns(self, async_client: AsyncHubspot) -> None:
         workflow = await async_client.automation.workflows.list_email_campaigns()
-        assert_matches_type(CollectionResponseAPIFlowEmailCampaign, workflow, path=["response"])
+        assert_matches_type(AsyncPage[APIFlowEmailCampaign], workflow, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -786,7 +786,7 @@ class TestAsyncWorkflows:
             flow_id=["string"],
             limit=0,
         )
-        assert_matches_type(CollectionResponseAPIFlowEmailCampaign, workflow, path=["response"])
+        assert_matches_type(AsyncPage[APIFlowEmailCampaign], workflow, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -796,7 +796,7 @@ class TestAsyncWorkflows:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         workflow = await response.parse()
-        assert_matches_type(CollectionResponseAPIFlowEmailCampaign, workflow, path=["response"])
+        assert_matches_type(AsyncPage[APIFlowEmailCampaign], workflow, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -806,6 +806,6 @@ class TestAsyncWorkflows:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             workflow = await response.parse()
-            assert_matches_type(CollectionResponseAPIFlowEmailCampaign, workflow, path=["response"])
+            assert_matches_type(AsyncPage[APIFlowEmailCampaign], workflow, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -64,13 +64,6 @@ from ....types.cms.version_content_folder import VersionContentFolder
 from ....types.cms.public_access_rule_param import PublicAccessRuleParam
 from ....types.cms.batch_response_content_folder import BatchResponseContentFolder
 from ....types.cms.pages_content_language_variation_param import PagesContentLanguageVariationParam
-from ....types.cms.collection_response_with_total_version_page import CollectionResponseWithTotalVersionPage
-from ....types.cms.collection_response_with_total_version_content_folder import (
-    CollectionResponseWithTotalVersionContentFolder,
-)
-from ....types.cms.collection_response_with_total_content_folder_forward_paging import (
-    CollectionResponseWithTotalContentFolderForwardPaging,
-)
 
 __all__ = ["LandingPagesResource", "AsyncLandingPagesResource"]
 
@@ -3170,7 +3163,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalVersionContentFolder:
+    ) -> SyncPage[VersionContentFolder]:
         """
         Retrieves all the previous versions of a Folder.
 
@@ -3190,8 +3183,9 @@ class LandingPagesResource(SyncAPIResource):
         """
         if not object_id:
             raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/cms/v3/pages/landing-pages/folders/{object_id}/revisions",
+            page=SyncPage[VersionContentFolder],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -3206,7 +3200,7 @@ class LandingPagesResource(SyncAPIResource):
                     landing_page_list_folder_revisions_params.LandingPageListFolderRevisionsParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalVersionContentFolder,
+            model=VersionContentFolder,
         )
 
     def list_folders(
@@ -3229,7 +3223,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalContentFolderForwardPaging:
+    ) -> SyncPage[ContentFolder]:
         """Get the list of Landing Page Folders.
 
         Supports paging and filtering. This method
@@ -3268,8 +3262,9 @@ class LandingPagesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/cms/v3/pages/landing-pages/folders",
+            page=SyncPage[ContentFolder],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -3292,7 +3287,7 @@ class LandingPagesResource(SyncAPIResource):
                     landing_page_list_folders_params.LandingPageListFoldersParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalContentFolderForwardPaging,
+            model=ContentFolder,
         )
 
     def list_revisions(
@@ -3308,7 +3303,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalVersionPage:
+    ) -> SyncPage[VersionPage]:
         """
         Retrieves all the previous versions of a Landing Page.
 
@@ -3328,8 +3323,9 @@ class LandingPagesResource(SyncAPIResource):
         """
         if not object_id:
             raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/cms/v3/pages/landing-pages/{object_id}/revisions",
+            page=SyncPage[VersionPage],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -3344,7 +3340,7 @@ class LandingPagesResource(SyncAPIResource):
                     landing_page_list_revisions_params.LandingPageListRevisionsParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalVersionPage,
+            model=VersionPage,
         )
 
     def publish_draft(
@@ -8014,7 +8010,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
             cast_to=VersionPage,
         )
 
-    async def list_folder_revisions(
+    def list_folder_revisions(
         self,
         object_id: str,
         *,
@@ -8027,7 +8023,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalVersionContentFolder:
+    ) -> AsyncPaginator[VersionContentFolder, AsyncPage[VersionContentFolder]]:
         """
         Retrieves all the previous versions of a Folder.
 
@@ -8047,14 +8043,15 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         """
         if not object_id:
             raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/cms/v3/pages/landing-pages/folders/{object_id}/revisions",
+            page=AsyncPage[VersionContentFolder],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "before": before,
@@ -8063,10 +8060,10 @@ class AsyncLandingPagesResource(AsyncAPIResource):
                     landing_page_list_folder_revisions_params.LandingPageListFolderRevisionsParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalVersionContentFolder,
+            model=VersionContentFolder,
         )
 
-    async def list_folders(
+    def list_folders(
         self,
         *,
         after: str | Omit = omit,
@@ -8086,7 +8083,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalContentFolderForwardPaging:
+    ) -> AsyncPaginator[ContentFolder, AsyncPage[ContentFolder]]:
         """Get the list of Landing Page Folders.
 
         Supports paging and filtering. This method
@@ -8125,14 +8122,15 @@ class AsyncLandingPagesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/cms/v3/pages/landing-pages/folders",
+            page=AsyncPage[ContentFolder],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "archived": archived,
@@ -8149,10 +8147,10 @@ class AsyncLandingPagesResource(AsyncAPIResource):
                     landing_page_list_folders_params.LandingPageListFoldersParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalContentFolderForwardPaging,
+            model=ContentFolder,
         )
 
-    async def list_revisions(
+    def list_revisions(
         self,
         object_id: str,
         *,
@@ -8165,7 +8163,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalVersionPage:
+    ) -> AsyncPaginator[VersionPage, AsyncPage[VersionPage]]:
         """
         Retrieves all the previous versions of a Landing Page.
 
@@ -8185,14 +8183,15 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         """
         if not object_id:
             raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/cms/v3/pages/landing-pages/{object_id}/revisions",
+            page=AsyncPage[VersionPage],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "before": before,
@@ -8201,7 +8200,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
                     landing_page_list_revisions_params.LandingPageListRevisionsParams,
                 ),
             ),
-            cast_to=CollectionResponseWithTotalVersionPage,
+            model=VersionPage,
         )
 
     async def publish_draft(

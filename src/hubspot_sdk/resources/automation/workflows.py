@@ -27,8 +27,8 @@ from ...types.automation import (
 )
 from ...types.automation.api_flow import APIFlow
 from ...types.automation.api_flow_listing import APIFlowListing
+from ...types.automation.api_flow_email_campaign import APIFlowEmailCampaign
 from ...types.automation.batch_response_api_flow import BatchResponseAPIFlow
-from ...types.automation.collection_response_api_flow_email_campaign import CollectionResponseAPIFlowEmailCampaign
 from ...types.automation.api_flow_batch_fetch_flow_id_coordinate_param import APIFlowBatchFetchFlowIDCoordinateParam
 from ...types.automation.batch_response_flow_id_workflow_id_mapping_response import (
     BatchResponseFlowIDWorkflowIDMappingResponse,
@@ -352,7 +352,7 @@ class WorkflowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseAPIFlowEmailCampaign:
+    ) -> SyncPage[APIFlowEmailCampaign]:
         """
         Args:
           extra_headers: Send extra headers
@@ -363,8 +363,9 @@ class WorkflowsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/automation/v4/flows/email-campaigns",
+            page=SyncPage[APIFlowEmailCampaign],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -380,7 +381,7 @@ class WorkflowsResource(SyncAPIResource):
                     workflow_list_email_campaigns_params.WorkflowListEmailCampaignsParams,
                 ),
             ),
-            cast_to=CollectionResponseAPIFlowEmailCampaign,
+            model=APIFlowEmailCampaign,
         )
 
 
@@ -686,7 +687,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
             ),
         )
 
-    async def list_email_campaigns(
+    def list_email_campaigns(
         self,
         *,
         after: str | Omit = omit,
@@ -699,7 +700,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseAPIFlowEmailCampaign:
+    ) -> AsyncPaginator[APIFlowEmailCampaign, AsyncPage[APIFlowEmailCampaign]]:
         """
         Args:
           extra_headers: Send extra headers
@@ -710,14 +711,15 @@ class AsyncWorkflowsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/automation/v4/flows/email-campaigns",
+            page=AsyncPage[APIFlowEmailCampaign],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "after": after,
                         "before": before,
@@ -727,7 +729,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
                     workflow_list_email_campaigns_params.WorkflowListEmailCampaignsParams,
                 ),
             ),
-            cast_to=CollectionResponseAPIFlowEmailCampaign,
+            model=APIFlowEmailCampaign,
         )
 
 

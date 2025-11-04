@@ -10,10 +10,11 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
+from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.account import (
-    CollectionResponsePublicLoginAuditForwardPaging,
-    CollectionResponseHydratedCriticalActionForwardPaging,
-    CollectionResponsePublicAPIUserActionEventForwardPaging,
+    PublicLoginAudit,
+    HydratedCriticalAction,
+    PublicAPIUserActionEvent,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -26,7 +27,7 @@ class TestActivity:
     @parametrize
     def test_method_list_audit_logs(self, client: Hubspot) -> None:
         activity = client.account.activity.list_audit_logs()
-        assert_matches_type(CollectionResponsePublicAPIUserActionEventForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -39,7 +40,7 @@ class TestActivity:
             occurred_before=parse_datetime("2019-12-27T18:11:19.117Z"),
             sort=["string"],
         )
-        assert_matches_type(CollectionResponsePublicAPIUserActionEventForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -49,7 +50,7 @@ class TestActivity:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         activity = response.parse()
-        assert_matches_type(CollectionResponsePublicAPIUserActionEventForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -59,7 +60,7 @@ class TestActivity:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             activity = response.parse()
-            assert_matches_type(CollectionResponsePublicAPIUserActionEventForwardPaging, activity, path=["response"])
+            assert_matches_type(SyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -67,7 +68,7 @@ class TestActivity:
     @parametrize
     def test_method_list_login_activities(self, client: Hubspot) -> None:
         activity = client.account.activity.list_login_activities()
-        assert_matches_type(CollectionResponsePublicLoginAuditForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[PublicLoginAudit], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -77,7 +78,7 @@ class TestActivity:
             limit=0,
             user_id=0,
         )
-        assert_matches_type(CollectionResponsePublicLoginAuditForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[PublicLoginAudit], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -87,7 +88,7 @@ class TestActivity:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         activity = response.parse()
-        assert_matches_type(CollectionResponsePublicLoginAuditForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[PublicLoginAudit], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -97,7 +98,7 @@ class TestActivity:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             activity = response.parse()
-            assert_matches_type(CollectionResponsePublicLoginAuditForwardPaging, activity, path=["response"])
+            assert_matches_type(SyncPage[PublicLoginAudit], activity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -105,7 +106,7 @@ class TestActivity:
     @parametrize
     def test_method_list_security_activities(self, client: Hubspot) -> None:
         activity = client.account.activity.list_security_activities()
-        assert_matches_type(CollectionResponseHydratedCriticalActionForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[HydratedCriticalAction], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -117,7 +118,7 @@ class TestActivity:
             to_timestamp=0,
             user_id=0,
         )
-        assert_matches_type(CollectionResponseHydratedCriticalActionForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[HydratedCriticalAction], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -127,7 +128,7 @@ class TestActivity:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         activity = response.parse()
-        assert_matches_type(CollectionResponseHydratedCriticalActionForwardPaging, activity, path=["response"])
+        assert_matches_type(SyncPage[HydratedCriticalAction], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -137,7 +138,7 @@ class TestActivity:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             activity = response.parse()
-            assert_matches_type(CollectionResponseHydratedCriticalActionForwardPaging, activity, path=["response"])
+            assert_matches_type(SyncPage[HydratedCriticalAction], activity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -151,7 +152,7 @@ class TestAsyncActivity:
     @parametrize
     async def test_method_list_audit_logs(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_audit_logs()
-        assert_matches_type(CollectionResponsePublicAPIUserActionEventForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -164,7 +165,7 @@ class TestAsyncActivity:
             occurred_before=parse_datetime("2019-12-27T18:11:19.117Z"),
             sort=["string"],
         )
-        assert_matches_type(CollectionResponsePublicAPIUserActionEventForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -174,7 +175,7 @@ class TestAsyncActivity:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         activity = await response.parse()
-        assert_matches_type(CollectionResponsePublicAPIUserActionEventForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -184,7 +185,7 @@ class TestAsyncActivity:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             activity = await response.parse()
-            assert_matches_type(CollectionResponsePublicAPIUserActionEventForwardPaging, activity, path=["response"])
+            assert_matches_type(AsyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -192,7 +193,7 @@ class TestAsyncActivity:
     @parametrize
     async def test_method_list_login_activities(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_login_activities()
-        assert_matches_type(CollectionResponsePublicLoginAuditForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[PublicLoginAudit], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -202,7 +203,7 @@ class TestAsyncActivity:
             limit=0,
             user_id=0,
         )
-        assert_matches_type(CollectionResponsePublicLoginAuditForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[PublicLoginAudit], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -212,7 +213,7 @@ class TestAsyncActivity:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         activity = await response.parse()
-        assert_matches_type(CollectionResponsePublicLoginAuditForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[PublicLoginAudit], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -222,7 +223,7 @@ class TestAsyncActivity:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             activity = await response.parse()
-            assert_matches_type(CollectionResponsePublicLoginAuditForwardPaging, activity, path=["response"])
+            assert_matches_type(AsyncPage[PublicLoginAudit], activity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -230,7 +231,7 @@ class TestAsyncActivity:
     @parametrize
     async def test_method_list_security_activities(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_security_activities()
-        assert_matches_type(CollectionResponseHydratedCriticalActionForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[HydratedCriticalAction], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -242,7 +243,7 @@ class TestAsyncActivity:
             to_timestamp=0,
             user_id=0,
         )
-        assert_matches_type(CollectionResponseHydratedCriticalActionForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[HydratedCriticalAction], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -252,7 +253,7 @@ class TestAsyncActivity:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         activity = await response.parse()
-        assert_matches_type(CollectionResponseHydratedCriticalActionForwardPaging, activity, path=["response"])
+        assert_matches_type(AsyncPage[HydratedCriticalAction], activity, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -262,6 +263,6 @@ class TestAsyncActivity:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             activity = await response.parse()
-            assert_matches_type(CollectionResponseHydratedCriticalActionForwardPaging, activity, path=["response"])
+            assert_matches_type(AsyncPage[HydratedCriticalAction], activity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
