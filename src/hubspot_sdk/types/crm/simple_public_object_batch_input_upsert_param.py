@@ -18,7 +18,10 @@ class SimplePublicObjectBatchInputUpsertParam(TypedDict, total=False):
     """Key value pairs representing the properties of the object."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
-    """The name of a property whose values are unique for this object"""
+    """
+    The name of a unique identifier property, which can be used for identifying
+    objects instead of the object ID.
+    """
 
     object_write_trace_id: Annotated[str, PropertyInfo(alias="objectWriteTraceId")]
     """An identifier for tracing the creation request."""

@@ -185,9 +185,6 @@ class BatchResource(SyncAPIResource):
 
           archived: Whether to return only results that have been archived.
 
-          id_property: When using a custom unique value property to retrieve records, the name of the
-              property. Do not include this parameter if retrieving by record ID.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -402,9 +399,6 @@ class AsyncBatchResource(AsyncAPIResource):
           properties_with_history: Key-value pairs for setting properties for the new object and their histories.
 
           archived: Whether to return only results that have been archived.
-
-          id_property: When using a custom unique value property to retrieve records, the name of the
-              property. Do not include this parameter if retrieving by record ID.
 
           extra_headers: Send extra headers
 

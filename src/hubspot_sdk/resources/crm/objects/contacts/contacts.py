@@ -293,8 +293,6 @@ class ContactsResource(SyncAPIResource):
         [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
 
         Args:
-          id_property: The name of a property whose values are unique for this object
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -732,8 +730,6 @@ class AsyncContactsResource(AsyncAPIResource):
         [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
 
         Args:
-          id_property: The name of a property whose values are unique for this object
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

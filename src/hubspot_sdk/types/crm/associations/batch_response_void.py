@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from .standard_error_1 import StandardError1
+from ...shared.standard_error import StandardError
 
 __all__ = ["BatchResponseVoid"]
 
@@ -21,7 +21,7 @@ class BatchResponseVoid(BaseModel):
 
     status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
 
-    errors: Optional[List[StandardError1]] = None
+    errors: Optional[List[StandardError]] = None
 
     links: Optional[Dict[str, str]] = None
 

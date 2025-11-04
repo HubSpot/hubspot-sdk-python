@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from .standard_error_1 import StandardError1
+from ...shared.standard_error import StandardError
 from .public_association_multi_with_label import PublicAssociationMultiWithLabel
 
 __all__ = ["BatchResponsePublicAssociationMultiWithLabel"]
@@ -22,7 +22,7 @@ class BatchResponsePublicAssociationMultiWithLabel(BaseModel):
 
     status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
 
-    errors: Optional[List[StandardError1]] = None
+    errors: Optional[List[StandardError]] = None
 
     links: Optional[Dict[str, str]] = None
 
