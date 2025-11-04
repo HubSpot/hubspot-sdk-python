@@ -132,9 +132,9 @@ class TestFeedbackSubmissions:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "",
-                            "high_value": "",
-                            "value": "",
+                            "property_name": "propertyName",
+                            "high_value": "highValue",
+                            "value": "value",
                             "values": ["string"],
                         }
                     ]
@@ -289,9 +289,9 @@ class TestAsyncFeedbackSubmissions:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "",
-                            "high_value": "",
-                            "value": "",
+                            "property_name": "propertyName",
+                            "high_value": "highValue",
+                            "value": "value",
                             "values": ["string"],
                         }
                     ]

@@ -70,6 +70,76 @@ class TestPropertyValidations:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+        self, client: Hubspot
+    ) -> None:
+        property_validation = client.crm.property_validations.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+            rule_type="FORMAT",
+            object_type_id="objectTypeId",
+            property_name="propertyName",
+            rule_arguments=["string"],
+        )
+        assert property_validation is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+        self, client: Hubspot
+    ) -> None:
+        response = client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+            rule_type="FORMAT",
+            object_type_id="objectTypeId",
+            property_name="propertyName",
+            rule_arguments=["string"],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        property_validation = response.parse()
+        assert property_validation is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+        self, client: Hubspot
+    ) -> None:
+        with client.crm.property_validations.with_streaming_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+            rule_type="FORMAT",
+            object_type_id="objectTypeId",
+            property_name="propertyName",
+            rule_arguments=["string"],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            property_validation = response.parse()
+            assert property_validation is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+        self, client: Hubspot
+    ) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
+            client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+                rule_type="FORMAT",
+                object_type_id="",
+                property_name="propertyName",
+                rule_arguments=["string"],
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `property_name` but received ''"):
+            client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+                rule_type="FORMAT",
+                object_type_id="objectTypeId",
+                property_name="",
+                rule_arguments=["string"],
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_method_get(self, client: Hubspot) -> None:
         property_validation = client.crm.property_validations.get(
             property_name="propertyName",
@@ -178,6 +248,76 @@ class TestAsyncPropertyValidations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.property_validations.with_raw_response.list(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+        self, async_client: AsyncHubspot
+    ) -> None:
+        property_validation = await async_client.crm.property_validations.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+            rule_type="FORMAT",
+            object_type_id="objectTypeId",
+            property_name="propertyName",
+            rule_arguments=["string"],
+        )
+        assert property_validation is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+        self, async_client: AsyncHubspot
+    ) -> None:
+        response = await async_client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+            rule_type="FORMAT",
+            object_type_id="objectTypeId",
+            property_name="propertyName",
+            rule_arguments=["string"],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        property_validation = await response.parse()
+        assert property_validation is None
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+        self, async_client: AsyncHubspot
+    ) -> None:
+        async with async_client.crm.property_validations.with_streaming_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+            rule_type="FORMAT",
+            object_type_id="objectTypeId",
+            property_name="propertyName",
+            rule_arguments=["string"],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            property_validation = await response.parse()
+            assert property_validation is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+        self, async_client: AsyncHubspot
+    ) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
+            await async_client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+                rule_type="FORMAT",
+                object_type_id="",
+                property_name="propertyName",
+                rule_arguments=["string"],
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `property_name` but received ''"):
+            await async_client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
+                rule_type="FORMAT",
+                object_type_id="objectTypeId",
+                property_name="",
+                rule_arguments=["string"],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")

@@ -13,7 +13,6 @@ class CollectionResponseWithTotalSimplePublicObject(BaseModel):
     results: List[SimplePublicObject]
 
     total: int
-    """The number of available results"""
 
     paging: Optional[EmailsPaging] = None
     """Contains information pagination of results."""

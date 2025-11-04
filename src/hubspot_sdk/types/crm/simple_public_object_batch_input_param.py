@@ -12,17 +12,16 @@ __all__ = ["SimplePublicObjectBatchInputParam"]
 
 class SimplePublicObjectBatchInputParam(TypedDict, total=False):
     id: Required[str]
-    """The id to be updated.
-
-    This can be the object id, or the unique property value of the idProperty
-    property
-    """
+    """The unique ID of the object."""
 
     properties: Required[Dict[str, str]]
     """Key-value pairs representing the properties of the object."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
-    """The name of a property whose values are unique for this object"""
+    """
+    The name of a unique identifier property, which can be used for identifying
+    objects instead of the object ID.
+    """
 
     object_write_trace_id: Annotated[str, PropertyInfo(alias="objectWriteTraceId")]
     """A unique identifier for tracing the request."""

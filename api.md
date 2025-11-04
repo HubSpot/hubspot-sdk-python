@@ -1292,6 +1292,12 @@ Types:
 ```python
 from hubspot_sdk.types.crm.associations import (
     AssociationSpec1,
+    AssociationsV4PublicObjectSearchRequest,
+    AssociationsV4SimplePublicObject,
+    AssociationsV4SimplePublicObjectBatchInputForCreate,
+    AssociationsV4SimplePublicObjectInputForCreate,
+    AssociationsV4SimplePublicObjectWithAssociations,
+    AssociationsV4SimplePublicUpsertObject,
     BatchInputPublicAssociationMultiArchive,
     BatchInputPublicAssociationMultiPost,
     BatchInputPublicDefaultAssociationMultiPost,
@@ -1311,13 +1317,6 @@ from hubspot_sdk.types.crm.associations import (
     StandardError1,
 )
 ```
-
-Methods:
-
-- <code title="put /crm/v4/objects/{fromObjectType}/{fromObjectId}/associations/default/{toObjectType}/{toObjectId}">client.crm.associations.v4.<a href="./src/hubspot_sdk/resources/crm/associations/v4/v4.py">create</a>(to_object_id, \*, from_object_type, from_object_id, to_object_type) -> <a href="./src/hubspot_sdk/types/crm/batch_response_public_default_association.py">BatchResponsePublicDefaultAssociation</a></code>
-- <code title="put /crm/v4/objects/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}">client.crm.associations.v4.<a href="./src/hubspot_sdk/resources/crm/associations/v4/v4.py">update</a>(to_object_id, \*, object_type, object_id, to_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/created_response_labels_between_object_pair.py">CreatedResponseLabelsBetweenObjectPair</a></code>
-- <code title="get /crm/v4/objects/{objectType}/{objectId}/associations/{toObjectType}">client.crm.associations.v4.<a href="./src/hubspot_sdk/resources/crm/associations/v4/v4.py">list</a>(to_object_type, \*, object_type, object_id, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/multi_associated_object_with_label.py">SyncPage[MultiAssociatedObjectWithLabel]</a></code>
-- <code title="delete /crm/v4/objects/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}">client.crm.associations.v4.<a href="./src/hubspot_sdk/resources/crm/associations/v4/v4.py">delete</a>(to_object_id, \*, object_type, object_id, to_object_type) -> None</code>
 
 #### Batch
 
@@ -1352,7 +1351,8 @@ from hubspot_sdk.types.crm import (
 
 Methods:
 
-- <code title="post /crm/v3/exports/export/async">client.crm.exports.<a href="./src/hubspot_sdk/resources/crm/exports.py">create</a>() -> <a href="./src/hubspot_sdk/types/shared/task_locator.py">TaskLocator</a></code>
+- <code title="post /crm/v3/exports/export/async">client.crm.exports.<a href="./src/hubspot_sdk/resources/crm/exports.py">create_async</a>() -> <a href="./src/hubspot_sdk/types/shared/task_locator.py">TaskLocator</a></code>
+- <code title="get /crm/v3/exports/export/{exportId}">client.crm.exports.<a href="./src/hubspot_sdk/resources/crm/exports.py">get</a>(export_id) -> <a href="./src/hubspot_sdk/types/crm/public_export_response.py">PublicExportResponse</a></code>
 - <code title="get /crm/v3/exports/export/async/tasks/{taskId}/status">client.crm.exports.<a href="./src/hubspot_sdk/resources/crm/exports.py">get_status</a>(task_id) -> <a href="./src/hubspot_sdk/types/crm/action_response_with_single_result_uri.py">ActionResponseWithSingleResultUri</a></code>
 
 ## Extensions
@@ -2512,12 +2512,14 @@ from hubspot_sdk.types.crm import (
     CollectionResponsePublicPropertyValidationRuleNoPaging,
     PublicPropertyValidationRule,
     PublicPropertyValidationRuleMap,
+    PublicPropertyValidationRuleUpdate,
 )
 ```
 
 Methods:
 
 - <code title="get /crm/v3/property-validations/{objectTypeId}">client.crm.property_validations.<a href="./src/hubspot_sdk/resources/crm/property_validations.py">list</a>(object_type_id) -> <a href="./src/hubspot_sdk/types/crm/collection_response_public_property_validation_rule_map_no_paging.py">CollectionResponsePublicPropertyValidationRuleMapNoPaging</a></code>
+- <code title="put /crm/v3/property-validations/{objectTypeId}/{propertyName}/rule-type/{ruleType}">client.crm.property_validations.<a href="./src/hubspot_sdk/resources/crm/property_validations.py">crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type</a>(rule_type, \*, object_type_id, property_name, \*\*<a href="src/hubspot_sdk/types/crm/property_validation_crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type_params.py">params</a>) -> None</code>
 - <code title="get /crm/v3/property-validations/{objectTypeId}/{propertyName}">client.crm.property_validations.<a href="./src/hubspot_sdk/resources/crm/property_validations.py">get</a>(property_name, \*, object_type_id) -> <a href="./src/hubspot_sdk/types/crm/collection_response_public_property_validation_rule_no_paging.py">CollectionResponsePublicPropertyValidationRuleNoPaging</a></code>
 
 ## Timeline

@@ -81,15 +81,7 @@ class TestCommercePayments:
     def test_method_update(self, client: Hubspot) -> None:
         commerce_payment = client.crm.objects.commerce_payments.update(
             commerce_payment_id="commercePaymentId",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         )
         assert_matches_type(SimplePublicObject, commerce_payment, path=["response"])
 
@@ -98,15 +90,7 @@ class TestCommercePayments:
     def test_method_update_with_all_params(self, client: Hubspot) -> None:
         commerce_payment = client.crm.objects.commerce_payments.update(
             commerce_payment_id="commercePaymentId",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
             id_property="idProperty",
         )
         assert_matches_type(SimplePublicObject, commerce_payment, path=["response"])
@@ -116,15 +100,7 @@ class TestCommercePayments:
     def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.crm.objects.commerce_payments.with_raw_response.update(
             commerce_payment_id="commercePaymentId",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
@@ -137,15 +113,7 @@ class TestCommercePayments:
     def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.crm.objects.commerce_payments.with_streaming_response.update(
             commerce_payment_id="commercePaymentId",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -161,15 +129,7 @@ class TestCommercePayments:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `commerce_payment_id` but received ''"):
             client.crm.objects.commerce_payments.with_raw_response.update(
                 commerce_payment_id="",
-                properties={
-                    "property_checkbox": "false",
-                    "property_date": "1572480000000",
-                    "property_dropdown": "choice_b",
-                    "property_multiple_checkboxes": "chocolate;strawberry",
-                    "property_number": "17",
-                    "property_radio": "option_1",
-                    "property_string": "value",
-                },
+                properties={"foo": "string"},
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -326,9 +286,9 @@ class TestCommercePayments:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "",
-                            "high_value": "",
-                            "value": "",
+                            "property_name": "propertyName",
+                            "high_value": "highValue",
+                            "value": "value",
                             "values": ["string"],
                         }
                     ]
@@ -427,15 +387,7 @@ class TestAsyncCommercePayments:
     async def test_method_update(self, async_client: AsyncHubspot) -> None:
         commerce_payment = await async_client.crm.objects.commerce_payments.update(
             commerce_payment_id="commercePaymentId",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         )
         assert_matches_type(SimplePublicObject, commerce_payment, path=["response"])
 
@@ -444,15 +396,7 @@ class TestAsyncCommercePayments:
     async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         commerce_payment = await async_client.crm.objects.commerce_payments.update(
             commerce_payment_id="commercePaymentId",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
             id_property="idProperty",
         )
         assert_matches_type(SimplePublicObject, commerce_payment, path=["response"])
@@ -462,15 +406,7 @@ class TestAsyncCommercePayments:
     async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.commerce_payments.with_raw_response.update(
             commerce_payment_id="commercePaymentId",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
@@ -483,15 +419,7 @@ class TestAsyncCommercePayments:
     async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.commerce_payments.with_streaming_response.update(
             commerce_payment_id="commercePaymentId",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -507,15 +435,7 @@ class TestAsyncCommercePayments:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `commerce_payment_id` but received ''"):
             await async_client.crm.objects.commerce_payments.with_raw_response.update(
                 commerce_payment_id="",
-                properties={
-                    "property_checkbox": "false",
-                    "property_date": "1572480000000",
-                    "property_dropdown": "choice_b",
-                    "property_multiple_checkboxes": "chocolate;strawberry",
-                    "property_number": "17",
-                    "property_radio": "option_1",
-                    "property_string": "value",
-                },
+                properties={"foo": "string"},
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -672,9 +592,9 @@ class TestAsyncCommercePayments:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "",
-                            "high_value": "",
-                            "value": "",
+                            "property_name": "propertyName",
+                            "high_value": "highValue",
+                            "value": "value",
                             "values": ["string"],
                         }
                     ]

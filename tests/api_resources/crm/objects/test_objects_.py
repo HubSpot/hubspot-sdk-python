@@ -95,15 +95,7 @@ class TestObjects:
         object_ = client.crm.objects.objects.update(
             object_id="objectId",
             object_type="objectType",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         )
         assert_matches_type(SimplePublicObject, object_, path=["response"])
 
@@ -113,15 +105,7 @@ class TestObjects:
         object_ = client.crm.objects.objects.update(
             object_id="objectId",
             object_type="objectType",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
             id_property="idProperty",
         )
         assert_matches_type(SimplePublicObject, object_, path=["response"])
@@ -132,15 +116,7 @@ class TestObjects:
         response = client.crm.objects.objects.with_raw_response.update(
             object_id="objectId",
             object_type="objectType",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
@@ -154,15 +130,7 @@ class TestObjects:
         with client.crm.objects.objects.with_streaming_response.update(
             object_id="objectId",
             object_type="objectType",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -179,30 +147,14 @@ class TestObjects:
             client.crm.objects.objects.with_raw_response.update(
                 object_id="objectId",
                 object_type="",
-                properties={
-                    "property_checkbox": "false",
-                    "property_date": "1572480000000",
-                    "property_dropdown": "choice_b",
-                    "property_multiple_checkboxes": "chocolate;strawberry",
-                    "property_number": "17",
-                    "property_radio": "option_1",
-                    "property_string": "value",
-                },
+                properties={"foo": "string"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.crm.objects.objects.with_raw_response.update(
                 object_id="",
                 object_type="objectType",
-                properties={
-                    "property_checkbox": "false",
-                    "property_date": "1572480000000",
-                    "property_dropdown": "choice_b",
-                    "property_multiple_checkboxes": "chocolate;strawberry",
-                    "property_number": "17",
-                    "property_radio": "option_1",
-                    "property_string": "value",
-                },
+                properties={"foo": "string"},
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -398,9 +350,9 @@ class TestObjects:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "",
-                            "high_value": "",
-                            "value": "",
+                            "property_name": "propertyName",
+                            "high_value": "highValue",
+                            "value": "value",
                             "values": ["string"],
                         }
                     ]
@@ -525,15 +477,7 @@ class TestAsyncObjects:
         object_ = await async_client.crm.objects.objects.update(
             object_id="objectId",
             object_type="objectType",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         )
         assert_matches_type(SimplePublicObject, object_, path=["response"])
 
@@ -543,15 +487,7 @@ class TestAsyncObjects:
         object_ = await async_client.crm.objects.objects.update(
             object_id="objectId",
             object_type="objectType",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
             id_property="idProperty",
         )
         assert_matches_type(SimplePublicObject, object_, path=["response"])
@@ -562,15 +498,7 @@ class TestAsyncObjects:
         response = await async_client.crm.objects.objects.with_raw_response.update(
             object_id="objectId",
             object_type="objectType",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
@@ -584,15 +512,7 @@ class TestAsyncObjects:
         async with async_client.crm.objects.objects.with_streaming_response.update(
             object_id="objectId",
             object_type="objectType",
-            properties={
-                "property_checkbox": "false",
-                "property_date": "1572480000000",
-                "property_dropdown": "choice_b",
-                "property_multiple_checkboxes": "chocolate;strawberry",
-                "property_number": "17",
-                "property_radio": "option_1",
-                "property_string": "value",
-            },
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -609,30 +529,14 @@ class TestAsyncObjects:
             await async_client.crm.objects.objects.with_raw_response.update(
                 object_id="objectId",
                 object_type="",
-                properties={
-                    "property_checkbox": "false",
-                    "property_date": "1572480000000",
-                    "property_dropdown": "choice_b",
-                    "property_multiple_checkboxes": "chocolate;strawberry",
-                    "property_number": "17",
-                    "property_radio": "option_1",
-                    "property_string": "value",
-                },
+                properties={"foo": "string"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.crm.objects.objects.with_raw_response.update(
                 object_id="",
                 object_type="objectType",
-                properties={
-                    "property_checkbox": "false",
-                    "property_date": "1572480000000",
-                    "property_dropdown": "choice_b",
-                    "property_multiple_checkboxes": "chocolate;strawberry",
-                    "property_number": "17",
-                    "property_radio": "option_1",
-                    "property_string": "value",
-                },
+                properties={"foo": "string"},
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -828,9 +732,9 @@ class TestAsyncObjects:
                     "filters": [
                         {
                             "operator": "EQ",
-                            "property_name": "",
-                            "high_value": "",
-                            "value": "",
+                            "property_name": "propertyName",
+                            "high_value": "highValue",
+                            "value": "value",
                             "values": ["string"],
                         }
                     ]
