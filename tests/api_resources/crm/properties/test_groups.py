@@ -145,7 +145,16 @@ class TestGroups:
     @parametrize
     def test_method_list(self, client: Hubspot) -> None:
         group = client.crm.properties.groups.list(
-            "objectType",
+            object_type="objectType",
+        )
+        assert_matches_type(CollectionResponsePropertyGroup, group, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+        group = client.crm.properties.groups.list(
+            object_type="objectType",
+            locale="locale",
         )
         assert_matches_type(CollectionResponsePropertyGroup, group, path=["response"])
 
@@ -153,7 +162,7 @@ class TestGroups:
     @parametrize
     def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.crm.properties.groups.with_raw_response.list(
-            "objectType",
+            object_type="objectType",
         )
 
         assert response.is_closed is True
@@ -165,7 +174,7 @@ class TestGroups:
     @parametrize
     def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.crm.properties.groups.with_streaming_response.list(
-            "objectType",
+            object_type="objectType",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -180,7 +189,7 @@ class TestGroups:
     def test_path_params_list(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.properties.groups.with_raw_response.list(
-                "",
+                object_type="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -241,6 +250,16 @@ class TestGroups:
         group = client.crm.properties.groups.get(
             group_name="groupName",
             object_type="objectType",
+        )
+        assert_matches_type(PropertyGroup, group, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+        group = client.crm.properties.groups.get(
+            group_name="groupName",
+            object_type="objectType",
+            locale="locale",
         )
         assert_matches_type(PropertyGroup, group, path=["response"])
 
@@ -421,7 +440,16 @@ class TestAsyncGroups:
     @parametrize
     async def test_method_list(self, async_client: AsyncHubspot) -> None:
         group = await async_client.crm.properties.groups.list(
-            "objectType",
+            object_type="objectType",
+        )
+        assert_matches_type(CollectionResponsePropertyGroup, group, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+        group = await async_client.crm.properties.groups.list(
+            object_type="objectType",
+            locale="locale",
         )
         assert_matches_type(CollectionResponsePropertyGroup, group, path=["response"])
 
@@ -429,7 +457,7 @@ class TestAsyncGroups:
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.properties.groups.with_raw_response.list(
-            "objectType",
+            object_type="objectType",
         )
 
         assert response.is_closed is True
@@ -441,7 +469,7 @@ class TestAsyncGroups:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.properties.groups.with_streaming_response.list(
-            "objectType",
+            object_type="objectType",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -456,7 +484,7 @@ class TestAsyncGroups:
     async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.properties.groups.with_raw_response.list(
-                "",
+                object_type="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -517,6 +545,16 @@ class TestAsyncGroups:
         group = await async_client.crm.properties.groups.get(
             group_name="groupName",
             object_type="objectType",
+        )
+        assert_matches_type(PropertyGroup, group, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+        group = await async_client.crm.properties.groups.get(
+            group_name="groupName",
+            object_type="objectType",
+            locale="locale",
         )
         assert_matches_type(PropertyGroup, group, path=["response"])
 

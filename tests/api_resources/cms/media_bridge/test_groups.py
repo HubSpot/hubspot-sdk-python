@@ -23,7 +23,7 @@ class TestGroups:
     def test_method_create(self, client: Hubspot) -> None:
         group = client.cms.media_bridge.groups.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             label="label",
             name="name",
         )
@@ -34,7 +34,7 @@ class TestGroups:
     def test_method_create_with_all_params(self, client: Hubspot) -> None:
         group = client.cms.media_bridge.groups.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             label="label",
             name="name",
             display_order=0,
@@ -46,7 +46,7 @@ class TestGroups:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.groups.with_raw_response.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             label="label",
             name="name",
         )
@@ -61,7 +61,7 @@ class TestGroups:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.media_bridge.groups.with_streaming_response.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             label="label",
             name="name",
         ) as response:
@@ -76,18 +76,10 @@ class TestGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_create(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            client.cms.media_bridge.groups.with_raw_response.create(
-                object_type="objectType",
-                app_id="",
-                label="label",
-                name="name",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.groups.with_raw_response.create(
                 object_type="",
-                app_id="appId",
+                app_id=0,
                 label="label",
                 name="name",
             )
@@ -97,7 +89,7 @@ class TestGroups:
     def test_method_list(self, client: Hubspot) -> None:
         group = client.cms.media_bridge.groups.list(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
         )
         assert_matches_type(CollectionResponsePropertyGroupNoPaging, group, path=["response"])
 
@@ -106,7 +98,7 @@ class TestGroups:
     def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.groups.with_raw_response.list(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
         )
 
         assert response.is_closed is True
@@ -119,7 +111,7 @@ class TestGroups:
     def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.cms.media_bridge.groups.with_streaming_response.list(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -132,16 +124,10 @@ class TestGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_list(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            client.cms.media_bridge.groups.with_raw_response.list(
-                object_type="objectType",
-                app_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.groups.with_raw_response.list(
                 object_type="",
-                app_id="appId",
+                app_id=0,
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -149,7 +135,7 @@ class TestGroups:
     def test_method_delete_by_name(self, client: Hubspot) -> None:
         group = client.cms.media_bridge.groups.delete_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
         assert group is None
@@ -159,7 +145,7 @@ class TestGroups:
     def test_raw_response_delete_by_name(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.groups.with_raw_response.delete_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
 
@@ -173,7 +159,7 @@ class TestGroups:
     def test_streaming_response_delete_by_name(self, client: Hubspot) -> None:
         with client.cms.media_bridge.groups.with_streaming_response.delete_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         ) as response:
             assert not response.is_closed
@@ -187,24 +173,17 @@ class TestGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete_by_name(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            client.cms.media_bridge.groups.with_raw_response.delete_by_name(
-                group_name="groupName",
-                app_id="",
-                object_type="objectType",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.groups.with_raw_response.delete_by_name(
                 group_name="groupName",
-                app_id="appId",
+                app_id=0,
                 object_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group_name` but received ''"):
             client.cms.media_bridge.groups.with_raw_response.delete_by_name(
                 group_name="",
-                app_id="appId",
+                app_id=0,
                 object_type="objectType",
             )
 
@@ -213,7 +192,7 @@ class TestGroups:
     def test_method_get_by_name(self, client: Hubspot) -> None:
         group = client.cms.media_bridge.groups.get_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
         assert_matches_type(PropertyGroup, group, path=["response"])
@@ -223,7 +202,7 @@ class TestGroups:
     def test_raw_response_get_by_name(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.groups.with_raw_response.get_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
 
@@ -237,7 +216,7 @@ class TestGroups:
     def test_streaming_response_get_by_name(self, client: Hubspot) -> None:
         with client.cms.media_bridge.groups.with_streaming_response.get_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         ) as response:
             assert not response.is_closed
@@ -251,24 +230,17 @@ class TestGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_get_by_name(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            client.cms.media_bridge.groups.with_raw_response.get_by_name(
-                group_name="groupName",
-                app_id="",
-                object_type="objectType",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.groups.with_raw_response.get_by_name(
                 group_name="groupName",
-                app_id="appId",
+                app_id=0,
                 object_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group_name` but received ''"):
             client.cms.media_bridge.groups.with_raw_response.get_by_name(
                 group_name="",
-                app_id="appId",
+                app_id=0,
                 object_type="objectType",
             )
 
@@ -277,7 +249,7 @@ class TestGroups:
     def test_method_update_by_name(self, client: Hubspot) -> None:
         group = client.cms.media_bridge.groups.update_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
         assert_matches_type(PropertyGroup, group, path=["response"])
@@ -287,7 +259,7 @@ class TestGroups:
     def test_method_update_by_name_with_all_params(self, client: Hubspot) -> None:
         group = client.cms.media_bridge.groups.update_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
             display_order=0,
             label="label",
@@ -299,7 +271,7 @@ class TestGroups:
     def test_raw_response_update_by_name(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.groups.with_raw_response.update_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
 
@@ -313,7 +285,7 @@ class TestGroups:
     def test_streaming_response_update_by_name(self, client: Hubspot) -> None:
         with client.cms.media_bridge.groups.with_streaming_response.update_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         ) as response:
             assert not response.is_closed
@@ -327,24 +299,17 @@ class TestGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update_by_name(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            client.cms.media_bridge.groups.with_raw_response.update_by_name(
-                group_name="groupName",
-                app_id="",
-                object_type="objectType",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.groups.with_raw_response.update_by_name(
                 group_name="groupName",
-                app_id="appId",
+                app_id=0,
                 object_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group_name` but received ''"):
             client.cms.media_bridge.groups.with_raw_response.update_by_name(
                 group_name="",
-                app_id="appId",
+                app_id=0,
                 object_type="objectType",
             )
 
@@ -359,7 +324,7 @@ class TestAsyncGroups:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         group = await async_client.cms.media_bridge.groups.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             label="label",
             name="name",
         )
@@ -370,7 +335,7 @@ class TestAsyncGroups:
     async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         group = await async_client.cms.media_bridge.groups.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             label="label",
             name="name",
             display_order=0,
@@ -382,7 +347,7 @@ class TestAsyncGroups:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.groups.with_raw_response.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             label="label",
             name="name",
         )
@@ -397,7 +362,7 @@ class TestAsyncGroups:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.groups.with_streaming_response.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             label="label",
             name="name",
         ) as response:
@@ -412,18 +377,10 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            await async_client.cms.media_bridge.groups.with_raw_response.create(
-                object_type="objectType",
-                app_id="",
-                label="label",
-                name="name",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.groups.with_raw_response.create(
                 object_type="",
-                app_id="appId",
+                app_id=0,
                 label="label",
                 name="name",
             )
@@ -433,7 +390,7 @@ class TestAsyncGroups:
     async def test_method_list(self, async_client: AsyncHubspot) -> None:
         group = await async_client.cms.media_bridge.groups.list(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
         )
         assert_matches_type(CollectionResponsePropertyGroupNoPaging, group, path=["response"])
 
@@ -442,7 +399,7 @@ class TestAsyncGroups:
     async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.groups.with_raw_response.list(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
         )
 
         assert response.is_closed is True
@@ -455,7 +412,7 @@ class TestAsyncGroups:
     async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.groups.with_streaming_response.list(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -468,16 +425,10 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            await async_client.cms.media_bridge.groups.with_raw_response.list(
-                object_type="objectType",
-                app_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.groups.with_raw_response.list(
                 object_type="",
-                app_id="appId",
+                app_id=0,
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -485,7 +436,7 @@ class TestAsyncGroups:
     async def test_method_delete_by_name(self, async_client: AsyncHubspot) -> None:
         group = await async_client.cms.media_bridge.groups.delete_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
         assert group is None
@@ -495,7 +446,7 @@ class TestAsyncGroups:
     async def test_raw_response_delete_by_name(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.groups.with_raw_response.delete_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
 
@@ -509,7 +460,7 @@ class TestAsyncGroups:
     async def test_streaming_response_delete_by_name(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.groups.with_streaming_response.delete_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         ) as response:
             assert not response.is_closed
@@ -523,24 +474,17 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete_by_name(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            await async_client.cms.media_bridge.groups.with_raw_response.delete_by_name(
-                group_name="groupName",
-                app_id="",
-                object_type="objectType",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.groups.with_raw_response.delete_by_name(
                 group_name="groupName",
-                app_id="appId",
+                app_id=0,
                 object_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group_name` but received ''"):
             await async_client.cms.media_bridge.groups.with_raw_response.delete_by_name(
                 group_name="",
-                app_id="appId",
+                app_id=0,
                 object_type="objectType",
             )
 
@@ -549,7 +493,7 @@ class TestAsyncGroups:
     async def test_method_get_by_name(self, async_client: AsyncHubspot) -> None:
         group = await async_client.cms.media_bridge.groups.get_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
         assert_matches_type(PropertyGroup, group, path=["response"])
@@ -559,7 +503,7 @@ class TestAsyncGroups:
     async def test_raw_response_get_by_name(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.groups.with_raw_response.get_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
 
@@ -573,7 +517,7 @@ class TestAsyncGroups:
     async def test_streaming_response_get_by_name(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.groups.with_streaming_response.get_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         ) as response:
             assert not response.is_closed
@@ -587,24 +531,17 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_get_by_name(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            await async_client.cms.media_bridge.groups.with_raw_response.get_by_name(
-                group_name="groupName",
-                app_id="",
-                object_type="objectType",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.groups.with_raw_response.get_by_name(
                 group_name="groupName",
-                app_id="appId",
+                app_id=0,
                 object_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group_name` but received ''"):
             await async_client.cms.media_bridge.groups.with_raw_response.get_by_name(
                 group_name="",
-                app_id="appId",
+                app_id=0,
                 object_type="objectType",
             )
 
@@ -613,7 +550,7 @@ class TestAsyncGroups:
     async def test_method_update_by_name(self, async_client: AsyncHubspot) -> None:
         group = await async_client.cms.media_bridge.groups.update_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
         assert_matches_type(PropertyGroup, group, path=["response"])
@@ -623,7 +560,7 @@ class TestAsyncGroups:
     async def test_method_update_by_name_with_all_params(self, async_client: AsyncHubspot) -> None:
         group = await async_client.cms.media_bridge.groups.update_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
             display_order=0,
             label="label",
@@ -635,7 +572,7 @@ class TestAsyncGroups:
     async def test_raw_response_update_by_name(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.groups.with_raw_response.update_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         )
 
@@ -649,7 +586,7 @@ class TestAsyncGroups:
     async def test_streaming_response_update_by_name(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.groups.with_streaming_response.update_by_name(
             group_name="groupName",
-            app_id="appId",
+            app_id=0,
             object_type="objectType",
         ) as response:
             assert not response.is_closed
@@ -663,23 +600,16 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update_by_name(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            await async_client.cms.media_bridge.groups.with_raw_response.update_by_name(
-                group_name="groupName",
-                app_id="",
-                object_type="objectType",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.groups.with_raw_response.update_by_name(
                 group_name="groupName",
-                app_id="appId",
+                app_id=0,
                 object_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group_name` but received ''"):
             await async_client.cms.media_bridge.groups.with_raw_response.update_by_name(
                 group_name="",
-                app_id="appId",
+                app_id=0,
                 object_type="objectType",
             )

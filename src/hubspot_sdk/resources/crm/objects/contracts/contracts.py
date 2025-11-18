@@ -72,8 +72,8 @@ class ContractsResource(SyncAPIResource):
     def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -101,8 +101,8 @@ class ContractsResource(SyncAPIResource):
             "/crm/v3/objects/contracts",
             body=maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 contract_create_params.ContractCreateParams,
             ),
@@ -342,12 +342,12 @@ class ContractsResource(SyncAPIResource):
     def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -365,9 +365,9 @@ class ContractsResource(SyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -385,8 +385,8 @@ class ContractsResource(SyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 contract_search_params.ContractSearchParams,
             ),
@@ -424,8 +424,8 @@ class AsyncContractsResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -453,8 +453,8 @@ class AsyncContractsResource(AsyncAPIResource):
             "/crm/v3/objects/contracts",
             body=await async_maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 contract_create_params.ContractCreateParams,
             ),
@@ -696,12 +696,12 @@ class AsyncContractsResource(AsyncAPIResource):
     async def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -719,9 +719,9 @@ class AsyncContractsResource(AsyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -739,8 +739,8 @@ class AsyncContractsResource(AsyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 contract_search_params.ContractSearchParams,
             ),

@@ -22,7 +22,7 @@ class TestMessages:
     @parametrize
     def test_method_create(self, client: Hubspot) -> None:
         message = client.conversations.custom_channels.messages.create(
-            channel_id="channelId",
+            channel_id=0,
             attachments=[
                 {
                     "file_id": "fileId",
@@ -30,7 +30,6 @@ class TestMessages:
                 }
             ],
             channel_account_id="channelAccountId",
-            integration_thread_id="integrationThreadId",
             message_direction="INCOMING",
             recipients=[
                 {
@@ -57,7 +56,7 @@ class TestMessages:
     @parametrize
     def test_method_create_with_all_params(self, client: Hubspot) -> None:
         message = client.conversations.custom_channels.messages.create(
-            channel_id="channelId",
+            channel_id=0,
             attachments=[
                 {
                     "file_id": "fileId",
@@ -66,7 +65,6 @@ class TestMessages:
                 }
             ],
             channel_account_id="channelAccountId",
-            integration_thread_id="integrationThreadId",
             message_direction="INCOMING",
             recipients=[
                 {
@@ -90,6 +88,7 @@ class TestMessages:
             timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
             in_reply_to_id="inReplyToId",
             integration_idempotency_id="integrationIdempotencyId",
+            integration_thread_id="integrationThreadId",
             pre_resolved_contacts={
                 "contacts": [
                     {
@@ -106,7 +105,7 @@ class TestMessages:
     @parametrize
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.messages.with_raw_response.create(
-            channel_id="channelId",
+            channel_id=0,
             attachments=[
                 {
                     "file_id": "fileId",
@@ -114,7 +113,6 @@ class TestMessages:
                 }
             ],
             channel_account_id="channelAccountId",
-            integration_thread_id="integrationThreadId",
             message_direction="INCOMING",
             recipients=[
                 {
@@ -145,7 +143,7 @@ class TestMessages:
     @parametrize
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.messages.with_streaming_response.create(
-            channel_id="channelId",
+            channel_id=0,
             attachments=[
                 {
                     "file_id": "fileId",
@@ -153,7 +151,6 @@ class TestMessages:
                 }
             ],
             channel_account_id="channelAccountId",
-            integration_thread_id="integrationThreadId",
             message_direction="INCOMING",
             recipients=[
                 {
@@ -184,45 +181,10 @@ class TestMessages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_create(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            client.conversations.custom_channels.messages.with_raw_response.create(
-                channel_id="",
-                attachments=[
-                    {
-                        "file_id": "fileId",
-                        "type": "FILE",
-                    }
-                ],
-                channel_account_id="channelAccountId",
-                integration_thread_id="integrationThreadId",
-                message_direction="INCOMING",
-                recipients=[
-                    {
-                        "delivery_identifier": {
-                            "type": "type",
-                            "value": "value",
-                        }
-                    }
-                ],
-                senders=[
-                    {
-                        "delivery_identifier": {
-                            "type": "type",
-                            "value": "value",
-                        }
-                    }
-                ],
-                text="text",
-                timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
     def test_method_update(self, client: Hubspot) -> None:
         message = client.conversations.custom_channels.messages.update(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
             status_type="SENT",
         )
         assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
@@ -232,7 +194,7 @@ class TestMessages:
     def test_method_update_with_all_params(self, client: Hubspot) -> None:
         message = client.conversations.custom_channels.messages.update(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
             status_type="SENT",
             error_message="errorMessage",
         )
@@ -243,7 +205,7 @@ class TestMessages:
     def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.messages.with_raw_response.update(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
             status_type="SENT",
         )
 
@@ -257,7 +219,7 @@ class TestMessages:
     def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.messages.with_streaming_response.update(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
             status_type="SENT",
         ) as response:
             assert not response.is_closed
@@ -271,17 +233,10 @@ class TestMessages:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            client.conversations.custom_channels.messages.with_raw_response.update(
-                message_id="messageId",
-                channel_id="",
-                status_type="SENT",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `message_id` but received ''"):
             client.conversations.custom_channels.messages.with_raw_response.update(
                 message_id="",
-                channel_id="channelId",
+                channel_id=0,
                 status_type="SENT",
             )
 
@@ -290,7 +245,7 @@ class TestMessages:
     def test_method_get(self, client: Hubspot) -> None:
         message = client.conversations.custom_channels.messages.get(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
         )
         assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
 
@@ -299,7 +254,7 @@ class TestMessages:
     def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.messages.with_raw_response.get(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
         )
 
         assert response.is_closed is True
@@ -312,7 +267,7 @@ class TestMessages:
     def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.messages.with_streaming_response.get(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -325,16 +280,10 @@ class TestMessages:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_get(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            client.conversations.custom_channels.messages.with_raw_response.get(
-                message_id="messageId",
-                channel_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `message_id` but received ''"):
             client.conversations.custom_channels.messages.with_raw_response.get(
                 message_id="",
-                channel_id="channelId",
+                channel_id=0,
             )
 
 
@@ -347,7 +296,7 @@ class TestAsyncMessages:
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         message = await async_client.conversations.custom_channels.messages.create(
-            channel_id="channelId",
+            channel_id=0,
             attachments=[
                 {
                     "file_id": "fileId",
@@ -355,7 +304,6 @@ class TestAsyncMessages:
                 }
             ],
             channel_account_id="channelAccountId",
-            integration_thread_id="integrationThreadId",
             message_direction="INCOMING",
             recipients=[
                 {
@@ -382,7 +330,7 @@ class TestAsyncMessages:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         message = await async_client.conversations.custom_channels.messages.create(
-            channel_id="channelId",
+            channel_id=0,
             attachments=[
                 {
                     "file_id": "fileId",
@@ -391,7 +339,6 @@ class TestAsyncMessages:
                 }
             ],
             channel_account_id="channelAccountId",
-            integration_thread_id="integrationThreadId",
             message_direction="INCOMING",
             recipients=[
                 {
@@ -415,6 +362,7 @@ class TestAsyncMessages:
             timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
             in_reply_to_id="inReplyToId",
             integration_idempotency_id="integrationIdempotencyId",
+            integration_thread_id="integrationThreadId",
             pre_resolved_contacts={
                 "contacts": [
                     {
@@ -431,7 +379,7 @@ class TestAsyncMessages:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.custom_channels.messages.with_raw_response.create(
-            channel_id="channelId",
+            channel_id=0,
             attachments=[
                 {
                     "file_id": "fileId",
@@ -439,7 +387,6 @@ class TestAsyncMessages:
                 }
             ],
             channel_account_id="channelAccountId",
-            integration_thread_id="integrationThreadId",
             message_direction="INCOMING",
             recipients=[
                 {
@@ -470,7 +417,7 @@ class TestAsyncMessages:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.custom_channels.messages.with_streaming_response.create(
-            channel_id="channelId",
+            channel_id=0,
             attachments=[
                 {
                     "file_id": "fileId",
@@ -478,7 +425,6 @@ class TestAsyncMessages:
                 }
             ],
             channel_account_id="channelAccountId",
-            integration_thread_id="integrationThreadId",
             message_direction="INCOMING",
             recipients=[
                 {
@@ -509,45 +455,10 @@ class TestAsyncMessages:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            await async_client.conversations.custom_channels.messages.with_raw_response.create(
-                channel_id="",
-                attachments=[
-                    {
-                        "file_id": "fileId",
-                        "type": "FILE",
-                    }
-                ],
-                channel_account_id="channelAccountId",
-                integration_thread_id="integrationThreadId",
-                message_direction="INCOMING",
-                recipients=[
-                    {
-                        "delivery_identifier": {
-                            "type": "type",
-                            "value": "value",
-                        }
-                    }
-                ],
-                senders=[
-                    {
-                        "delivery_identifier": {
-                            "type": "type",
-                            "value": "value",
-                        }
-                    }
-                ],
-                text="text",
-                timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
     async def test_method_update(self, async_client: AsyncHubspot) -> None:
         message = await async_client.conversations.custom_channels.messages.update(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
             status_type="SENT",
         )
         assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
@@ -557,7 +468,7 @@ class TestAsyncMessages:
     async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         message = await async_client.conversations.custom_channels.messages.update(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
             status_type="SENT",
             error_message="errorMessage",
         )
@@ -568,7 +479,7 @@ class TestAsyncMessages:
     async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.custom_channels.messages.with_raw_response.update(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
             status_type="SENT",
         )
 
@@ -582,7 +493,7 @@ class TestAsyncMessages:
     async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.custom_channels.messages.with_streaming_response.update(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
             status_type="SENT",
         ) as response:
             assert not response.is_closed
@@ -596,17 +507,10 @@ class TestAsyncMessages:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            await async_client.conversations.custom_channels.messages.with_raw_response.update(
-                message_id="messageId",
-                channel_id="",
-                status_type="SENT",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `message_id` but received ''"):
             await async_client.conversations.custom_channels.messages.with_raw_response.update(
                 message_id="",
-                channel_id="channelId",
+                channel_id=0,
                 status_type="SENT",
             )
 
@@ -615,7 +519,7 @@ class TestAsyncMessages:
     async def test_method_get(self, async_client: AsyncHubspot) -> None:
         message = await async_client.conversations.custom_channels.messages.get(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
         )
         assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
 
@@ -624,7 +528,7 @@ class TestAsyncMessages:
     async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.custom_channels.messages.with_raw_response.get(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
         )
 
         assert response.is_closed is True
@@ -637,7 +541,7 @@ class TestAsyncMessages:
     async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.custom_channels.messages.with_streaming_response.get(
             message_id="messageId",
-            channel_id="channelId",
+            channel_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -650,14 +554,8 @@ class TestAsyncMessages:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            await async_client.conversations.custom_channels.messages.with_raw_response.get(
-                message_id="messageId",
-                channel_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `message_id` but received ''"):
             await async_client.conversations.custom_channels.messages.with_raw_response.get(
                 message_id="",
-                channel_id="channelId",
+                channel_id=0,
             )

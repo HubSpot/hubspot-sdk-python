@@ -16,6 +16,9 @@ class PublicThread(BaseModel):
     id: str
     """The unique ID of the thread."""
 
+    archived: bool
+    """Whether this thread is archived."""
+
     associated_contact_id: str = FieldInfo(alias="associatedContactId")
     """The ID of the associated Contact in the CRM.
 
@@ -39,9 +42,6 @@ class PublicThread(BaseModel):
 
     status: Literal["OPEN", "CLOSED"]
     """The thread's status: `OPEN` or `CLOSED`."""
-
-    archived: Optional[bool] = None
-    """Whether this thread is archived."""
 
     assigned_to: Optional[str] = FieldInfo(alias="assignedTo", default=None)
 

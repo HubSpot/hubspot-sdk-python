@@ -25,8 +25,6 @@ class MessageCreateParams(TypedDict, total=False):
 
     channel_account_id: Required[Annotated[str, PropertyInfo(alias="channelAccountId")]]
 
-    integration_thread_id: Required[Annotated[str, PropertyInfo(alias="integrationThreadId")]]
-
     message_direction: Required[Annotated[Literal["INCOMING", "OUTGOING"], PropertyInfo(alias="messageDirection")]]
 
     recipients: Required[Iterable[ChannelIntegrationParticipantParam]]
@@ -40,6 +38,8 @@ class MessageCreateParams(TypedDict, total=False):
     in_reply_to_id: Annotated[str, PropertyInfo(alias="inReplyToId")]
 
     integration_idempotency_id: Annotated[str, PropertyInfo(alias="integrationIdempotencyId")]
+
+    integration_thread_id: Annotated[str, PropertyInfo(alias="integrationThreadId")]
 
     pre_resolved_contacts: Annotated[PreResolvedContactsParam, PropertyInfo(alias="preResolvedContacts")]
 

@@ -10,7 +10,7 @@ __all__ = ["ChannelAccountUpdateParams"]
 
 
 class ChannelAccountUpdateParams(TypedDict, total=False):
-    channel_id: Required[Annotated[str, PropertyInfo(alias="channelId")]]
+    channel_id: Required[Annotated[int, PropertyInfo(alias="channelId")]]
 
     authorized: bool
 

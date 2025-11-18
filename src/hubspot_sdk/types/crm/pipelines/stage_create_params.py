@@ -26,7 +26,7 @@ class StageCreateParams(TypedDict, total=False):
     Each pipeline stage's label must be unique within that pipeline.
     """
 
-    metadata: Dict[str, str]
+    metadata: Required[Dict[str, str]]
     """
     A JSON object containing properties that are not present on all object
     pipelines.

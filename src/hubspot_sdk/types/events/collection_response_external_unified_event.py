@@ -3,8 +3,8 @@
 from typing import List, Optional
 
 from ..._models import BaseModel
+from ..shared.paging import Paging
 from .external_unified_event import ExternalUnifiedEvent
-from ..marketing.emails_paging import EmailsPaging
 
 __all__ = ["CollectionResponseExternalUnifiedEvent"]
 
@@ -12,5 +12,4 @@ __all__ = ["CollectionResponseExternalUnifiedEvent"]
 class CollectionResponseExternalUnifiedEvent(BaseModel):
     results: List[ExternalUnifiedEvent]
 
-    paging: Optional[EmailsPaging] = None
-    """Contains information pagination of results."""
+    paging: Optional[Paging] = None

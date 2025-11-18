@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import httpx
 
-from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from .enrollments import (
     EnrollmentsResource,
@@ -21,11 +22,11 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.automation import sequence_get_params, sequence_list_params
 from ....types.automation.public_sequence_response import PublicSequenceResponse
-from ....types.automation.collection_response_with_total_public_sequence_lite_response_forward_paging import (
-    CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging,
-)
+from ....types.automation.public_sequence_lite_response import PublicSequenceLiteResponse
 
 __all__ = ["SequencesResource", "AsyncSequencesResource"]
 
@@ -57,26 +58,55 @@ class SequencesResource(SyncAPIResource):
     def list(
         self,
         *,
+        user_id: str,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging:
-        """Retrieve a list of sequences that belong to a specific user."""
-        return self._get(
+    ) -> SyncPage[PublicSequenceLiteResponse]:
+        """
+        Retrieve a list of sequences that belong to a specific user.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
             "/automation/v4/sequences/",
+            page=SyncPage[PublicSequenceLiteResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "user_id": user_id,
+                        "after": after,
+                        "limit": limit,
+                        "name": name,
+                    },
+                    sequence_list_params.SequenceListParams,
+                ),
             ),
-            cast_to=CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging,
+            model=PublicSequenceLiteResponse,
         )
 
     def get(
         self,
         sequence_id: str,
         *,
+        user_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -101,7 +131,11 @@ class SequencesResource(SyncAPIResource):
         return self._get(
             f"/automation/v4/sequences/{sequence_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"user_id": user_id}, sequence_get_params.SequenceGetParams),
             ),
             cast_to=PublicSequenceResponse,
         )
@@ -131,29 +165,58 @@ class AsyncSequencesResource(AsyncAPIResource):
         """
         return AsyncSequencesResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
+        user_id: str,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging:
-        """Retrieve a list of sequences that belong to a specific user."""
-        return await self._get(
+    ) -> AsyncPaginator[PublicSequenceLiteResponse, AsyncPage[PublicSequenceLiteResponse]]:
+        """
+        Retrieve a list of sequences that belong to a specific user.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
             "/automation/v4/sequences/",
+            page=AsyncPage[PublicSequenceLiteResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "user_id": user_id,
+                        "after": after,
+                        "limit": limit,
+                        "name": name,
+                    },
+                    sequence_list_params.SequenceListParams,
+                ),
             ),
-            cast_to=CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging,
+            model=PublicSequenceLiteResponse,
         )
 
     async def get(
         self,
         sequence_id: str,
         *,
+        user_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -178,7 +241,11 @@ class AsyncSequencesResource(AsyncAPIResource):
         return await self._get(
             f"/automation/v4/sequences/{sequence_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"user_id": user_id}, sequence_get_params.SequenceGetParams),
             ),
             cast_to=PublicSequenceResponse,
         )

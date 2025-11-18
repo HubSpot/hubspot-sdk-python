@@ -23,7 +23,13 @@ class TestAttendance:
         attendance = client.marketing.events.attendance.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
         assert_matches_type(BatchResponseSubscriberVidResponse, attendance, path=["response"])
 
@@ -33,7 +39,13 @@ class TestAttendance:
         response = client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -47,7 +59,13 @@ class TestAttendance:
         with client.marketing.events.attendance.with_streaming_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,14 +82,26 @@ class TestAttendance:
             client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
                 subscriber_state="subscriberState",
                 object_id="",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
             client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
                 subscriber_state="",
                 object_id="objectId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -82,8 +112,10 @@ class TestAttendance:
             object_id="objectId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -97,8 +129,10 @@ class TestAttendance:
             object_id="objectId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -116,8 +150,10 @@ class TestAttendance:
             object_id="objectId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         ) as response:
@@ -138,8 +174,10 @@ class TestAttendance:
                 object_id="",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -150,8 +188,10 @@ class TestAttendance:
                 object_id="objectId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -162,7 +202,13 @@ class TestAttendance:
         attendance = client.marketing.events.attendance.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
         assert_matches_type(BatchResponseSubscriberVidResponse, attendance, path=["response"])
 
@@ -189,7 +235,13 @@ class TestAttendance:
         response = client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -203,7 +255,13 @@ class TestAttendance:
         with client.marketing.events.attendance.with_streaming_response.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -220,14 +278,26 @@ class TestAttendance:
             client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
                 external_event_id="",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
             client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="",
                 external_event_id="externalEventId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -238,8 +308,10 @@ class TestAttendance:
             external_event_id="externalEventId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -253,9 +325,9 @@ class TestAttendance:
             external_event_id="externalEventId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
-                    "contact_properties": {"foo": "string"},
                     "properties": {"foo": "string"},
                 }
             ],
@@ -271,8 +343,10 @@ class TestAttendance:
             external_event_id="externalEventId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -290,8 +364,10 @@ class TestAttendance:
             external_event_id="externalEventId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         ) as response:
@@ -312,8 +388,10 @@ class TestAttendance:
                 external_event_id="",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -324,8 +402,10 @@ class TestAttendance:
                 external_event_id="externalEventId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -342,7 +422,13 @@ class TestAsyncAttendance:
         attendance = await async_client.marketing.events.attendance.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
         assert_matches_type(BatchResponseSubscriberVidResponse, attendance, path=["response"])
 
@@ -352,7 +438,13 @@ class TestAsyncAttendance:
         response = await async_client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -366,7 +458,13 @@ class TestAsyncAttendance:
         async with async_client.marketing.events.attendance.with_streaming_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -383,14 +481,26 @@ class TestAsyncAttendance:
             await async_client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
                 subscriber_state="subscriberState",
                 object_id="",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
             await async_client.marketing.events.attendance.with_raw_response.create_by_event_id_and_contact_id(
                 subscriber_state="",
                 object_id="objectId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -401,8 +511,10 @@ class TestAsyncAttendance:
             object_id="objectId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -416,8 +528,10 @@ class TestAsyncAttendance:
             object_id="objectId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -435,8 +549,10 @@ class TestAsyncAttendance:
             object_id="objectId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         ) as response:
@@ -457,8 +573,10 @@ class TestAsyncAttendance:
                 object_id="",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -469,8 +587,10 @@ class TestAsyncAttendance:
                 object_id="objectId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -481,7 +601,13 @@ class TestAsyncAttendance:
         attendance = await async_client.marketing.events.attendance.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
         assert_matches_type(BatchResponseSubscriberVidResponse, attendance, path=["response"])
 
@@ -511,7 +637,13 @@ class TestAsyncAttendance:
             await async_client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
                 external_event_id="externalEventId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
         )
 
@@ -529,7 +661,13 @@ class TestAsyncAttendance:
             async_client.marketing.events.attendance.with_streaming_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
                 external_event_id="externalEventId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
         ) as response:
             assert not response.is_closed
@@ -547,14 +685,26 @@ class TestAsyncAttendance:
             await async_client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
                 external_event_id="",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
             await async_client.marketing.events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="",
                 external_event_id="externalEventId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -565,8 +715,10 @@ class TestAsyncAttendance:
             external_event_id="externalEventId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -582,9 +734,9 @@ class TestAsyncAttendance:
             external_event_id="externalEventId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
-                    "contact_properties": {"foo": "string"},
                     "properties": {"foo": "string"},
                 }
             ],
@@ -601,8 +753,10 @@ class TestAsyncAttendance:
                 external_event_id="externalEventId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -622,8 +776,10 @@ class TestAsyncAttendance:
                 external_event_id="externalEventId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -645,8 +801,10 @@ class TestAsyncAttendance:
                 external_event_id="",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -657,8 +815,10 @@ class TestAsyncAttendance:
                 external_event_id="externalEventId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )

@@ -10,3 +10,8 @@ __all__ = ["CollectionResponsePublicPropertyValidationRuleNoPaging"]
 
 class CollectionResponsePublicPropertyValidationRuleNoPaging(BaseModel):
     results: List[PublicPropertyValidationRule]
+    """Collection of validation rules configured for the specified property.
+
+    Each rule defines a constraint that property values must satisfy (e.g., format
+    requirements, length limits, allowed values).
+    """

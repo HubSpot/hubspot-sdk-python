@@ -41,6 +41,29 @@ class TestEvents:
     @parametrize
     def test_method_create(self, client: Hubspot) -> None:
         event = client.marketing.events.create(
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -52,33 +75,33 @@ class TestEvents:
     @parametrize
     def test_method_create_with_all_params(self, client: Hubspot) -> None:
         event = client.marketing.events.create(
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
             external_event_id="externalEventId",
-            custom_properties=[
-                {
-                    "name": "",
-                    "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
-                    "data_sensitivity": "none",
-                    "is_encrypted": False,
-                    "is_large_value": True,
-                    "persistence_timestamp": 0,
-                    "request_id": "",
-                    "selected_by_user": False,
-                    "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
-                    "source_id": "",
-                    "source_label": "",
-                    "source_metadata": "",
-                    "source_vid": [0],
-                    "timestamp": 0,
-                    "unit": "",
-                    "updated_by_user_id": 0,
-                    "use_timestamp_as_persistence_timestamp": True,
-                }
-            ],
             end_date_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             event_cancelled=True,
             event_completed=True,
@@ -93,6 +116,29 @@ class TestEvents:
     @parametrize
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.marketing.events.with_raw_response.create(
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -108,6 +154,29 @@ class TestEvents:
     @parametrize
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.marketing.events.with_streaming_response.create(
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -128,9 +197,25 @@ class TestEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "name": "",
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
                     "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
         )
@@ -143,25 +228,25 @@ class TestEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "name": "",
-                    "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
                     "data_sensitivity": "none",
-                    "is_encrypted": False,
+                    "is_encrypted": True,
                     "is_large_value": True,
+                    "name": "name",
                     "persistence_timestamp": 0,
-                    "request_id": "",
-                    "selected_by_user": False,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
                     "source": "UNKNOWN",
-                    "source_id": "",
-                    "source_label": "",
-                    "source_metadata": "",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
                     "source_vid": [0],
                     "timestamp": 0,
-                    "unit": "",
+                    "unit": "unit",
                     "updated_by_user_id": 0,
                     "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
             end_date_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -182,9 +267,25 @@ class TestEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "name": "",
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
                     "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
         )
@@ -201,9 +302,25 @@ class TestEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "name": "",
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
                     "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
         ) as response:
@@ -223,9 +340,25 @@ class TestEvents:
                 object_id="",
                 custom_properties=[
                     {
-                        "name": "",
+                        "data_sensitivity": "none",
+                        "is_encrypted": True,
+                        "is_large_value": True,
+                        "name": "name",
+                        "persistence_timestamp": 0,
+                        "request_id": "requestId",
+                        "selected_by_user": True,
+                        "selected_by_user_timestamp": 0,
+                        "source": "UNKNOWN",
+                        "source_id": "sourceId",
+                        "source_label": "sourceLabel",
+                        "source_metadata": "sourceMetadata",
                         "source_upstream_deployable": "sourceUpstreamDeployable",
-                        "value": "",
+                        "source_vid": [0],
+                        "timestamp": 0,
+                        "unit": "unit",
+                        "updated_by_user_id": 0,
+                        "use_timestamp_as_persistence_timestamp": True,
+                        "value": "value",
                     }
                 ],
             )
@@ -735,9 +868,25 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "name": "",
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
                             "source_upstream_deployable": "sourceUpstreamDeployable",
-                            "value": "",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
                         }
                     ],
                     "object_id": "objectId",
@@ -754,9 +903,25 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "name": "",
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
                             "source_upstream_deployable": "sourceUpstreamDeployable",
-                            "value": "",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
                         }
                     ],
                     "object_id": "objectId",
@@ -777,9 +942,25 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "name": "",
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
                             "source_upstream_deployable": "sourceUpstreamDeployable",
-                            "value": "",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
                         }
                     ],
                     "object_id": "objectId",
@@ -800,6 +981,29 @@ class TestEvents:
         event = client.marketing.events.update_by_external_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
         )
         assert_matches_type(MarketingEventPublicDefaultResponse, event, path=["response"])
 
@@ -811,25 +1015,25 @@ class TestEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "name": "",
-                    "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
                     "data_sensitivity": "none",
-                    "is_encrypted": False,
+                    "is_encrypted": True,
                     "is_large_value": True,
+                    "name": "name",
                     "persistence_timestamp": 0,
-                    "request_id": "",
-                    "selected_by_user": False,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
                     "source": "UNKNOWN",
-                    "source_id": "",
-                    "source_label": "",
-                    "source_metadata": "",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
                     "source_vid": [0],
                     "timestamp": 0,
-                    "unit": "",
+                    "unit": "unit",
                     "updated_by_user_id": 0,
                     "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
             end_date_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -850,6 +1054,29 @@ class TestEvents:
         response = client.marketing.events.with_raw_response.update_by_external_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -863,6 +1090,29 @@ class TestEvents:
         with client.marketing.events.with_streaming_response.update_by_external_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -879,6 +1129,29 @@ class TestEvents:
             client.marketing.events.with_raw_response.update_by_external_event_id(
                 external_event_id="",
                 external_account_id="externalAccountId",
+                custom_properties=[
+                    {
+                        "data_sensitivity": "none",
+                        "is_encrypted": True,
+                        "is_large_value": True,
+                        "name": "name",
+                        "persistence_timestamp": 0,
+                        "request_id": "requestId",
+                        "selected_by_user": True,
+                        "selected_by_user_timestamp": 0,
+                        "source": "UNKNOWN",
+                        "source_id": "sourceId",
+                        "source_label": "sourceLabel",
+                        "source_metadata": "sourceMetadata",
+                        "source_upstream_deployable": "sourceUpstreamDeployable",
+                        "source_vid": [0],
+                        "timestamp": 0,
+                        "unit": "unit",
+                        "updated_by_user_id": 0,
+                        "use_timestamp_as_persistence_timestamp": True,
+                        "value": "value",
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -887,6 +1160,29 @@ class TestEvents:
         event = client.marketing.events.upsert_batch(
             inputs=[
                 {
+                    "custom_properties": [
+                        {
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
+                            "source_upstream_deployable": "sourceUpstreamDeployable",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
+                        }
+                    ],
                     "event_name": "eventName",
                     "event_organizer": "eventOrganizer",
                     "external_account_id": "externalAccountId",
@@ -902,6 +1198,29 @@ class TestEvents:
         response = client.marketing.events.with_raw_response.upsert_batch(
             inputs=[
                 {
+                    "custom_properties": [
+                        {
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
+                            "source_upstream_deployable": "sourceUpstreamDeployable",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
+                        }
+                    ],
                     "event_name": "eventName",
                     "event_organizer": "eventOrganizer",
                     "external_account_id": "externalAccountId",
@@ -921,6 +1240,29 @@ class TestEvents:
         with client.marketing.events.with_streaming_response.upsert_batch(
             inputs=[
                 {
+                    "custom_properties": [
+                        {
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
+                            "source_upstream_deployable": "sourceUpstreamDeployable",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
+                        }
+                    ],
                     "event_name": "eventName",
                     "event_organizer": "eventOrganizer",
                     "external_account_id": "externalAccountId",
@@ -941,6 +1283,29 @@ class TestEvents:
     def test_method_upsert_by_external_event_id(self, client: Hubspot) -> None:
         event = client.marketing.events.upsert_by_external_event_id(
             path_external_event_id="externalEventId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -953,33 +1318,33 @@ class TestEvents:
     def test_method_upsert_by_external_event_id_with_all_params(self, client: Hubspot) -> None:
         event = client.marketing.events.upsert_by_external_event_id(
             path_external_event_id="externalEventId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
             body_external_event_id="externalEventId",
-            custom_properties=[
-                {
-                    "name": "",
-                    "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
-                    "data_sensitivity": "none",
-                    "is_encrypted": False,
-                    "is_large_value": True,
-                    "persistence_timestamp": 0,
-                    "request_id": "",
-                    "selected_by_user": False,
-                    "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
-                    "source_id": "",
-                    "source_label": "",
-                    "source_metadata": "",
-                    "source_vid": [0],
-                    "timestamp": 0,
-                    "unit": "",
-                    "updated_by_user_id": 0,
-                    "use_timestamp_as_persistence_timestamp": True,
-                }
-            ],
             end_date_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             event_cancelled=True,
             event_completed=True,
@@ -995,6 +1360,29 @@ class TestEvents:
     def test_raw_response_upsert_by_external_event_id(self, client: Hubspot) -> None:
         response = client.marketing.events.with_raw_response.upsert_by_external_event_id(
             path_external_event_id="externalEventId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -1011,6 +1399,29 @@ class TestEvents:
     def test_streaming_response_upsert_by_external_event_id(self, client: Hubspot) -> None:
         with client.marketing.events.with_streaming_response.upsert_by_external_event_id(
             path_external_event_id="externalEventId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -1032,6 +1443,29 @@ class TestEvents:
         ):
             client.marketing.events.with_raw_response.upsert_by_external_event_id(
                 path_external_event_id="",
+                custom_properties=[
+                    {
+                        "data_sensitivity": "none",
+                        "is_encrypted": True,
+                        "is_large_value": True,
+                        "name": "name",
+                        "persistence_timestamp": 0,
+                        "request_id": "requestId",
+                        "selected_by_user": True,
+                        "selected_by_user_timestamp": 0,
+                        "source": "UNKNOWN",
+                        "source_id": "sourceId",
+                        "source_label": "sourceLabel",
+                        "source_metadata": "sourceMetadata",
+                        "source_upstream_deployable": "sourceUpstreamDeployable",
+                        "source_vid": [0],
+                        "timestamp": 0,
+                        "unit": "unit",
+                        "updated_by_user_id": 0,
+                        "use_timestamp_as_persistence_timestamp": True,
+                        "value": "value",
+                    }
+                ],
                 event_name="eventName",
                 event_organizer="eventOrganizer",
                 external_account_id="externalAccountId",
@@ -1050,8 +1484,10 @@ class TestEvents:
             external_account_id="externalAccountId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -1073,8 +1509,10 @@ class TestEvents:
             external_account_id="externalAccountId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -1096,8 +1534,10 @@ class TestEvents:
             external_account_id="externalAccountId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         ) as event:
@@ -1120,8 +1560,10 @@ class TestEvents:
                 external_account_id="externalAccountId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -1133,8 +1575,10 @@ class TestEvents:
                 external_account_id="externalAccountId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -1149,7 +1593,13 @@ class TestEvents:
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
         assert event.is_closed
         assert event.json() == {"foo": "bar"}
@@ -1167,7 +1617,13 @@ class TestEvents:
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
 
         assert event.is_closed is True
@@ -1185,7 +1641,13 @@ class TestEvents:
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         ) as event:
             assert not event.is_closed
             assert event.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1204,7 +1666,13 @@ class TestEvents:
                 subscriber_state="subscriberState",
                 external_event_id="",
                 external_account_id="externalAccountId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
@@ -1212,7 +1680,13 @@ class TestEvents:
                 subscriber_state="",
                 external_event_id="externalEventId",
                 external_account_id="externalAccountId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
 
@@ -1225,6 +1699,29 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         event = await async_client.marketing.events.create(
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -1236,33 +1733,33 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         event = await async_client.marketing.events.create(
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
             external_event_id="externalEventId",
-            custom_properties=[
-                {
-                    "name": "",
-                    "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
-                    "data_sensitivity": "none",
-                    "is_encrypted": False,
-                    "is_large_value": True,
-                    "persistence_timestamp": 0,
-                    "request_id": "",
-                    "selected_by_user": False,
-                    "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
-                    "source_id": "",
-                    "source_label": "",
-                    "source_metadata": "",
-                    "source_vid": [0],
-                    "timestamp": 0,
-                    "unit": "",
-                    "updated_by_user_id": 0,
-                    "use_timestamp_as_persistence_timestamp": True,
-                }
-            ],
             end_date_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             event_cancelled=True,
             event_completed=True,
@@ -1277,6 +1774,29 @@ class TestAsyncEvents:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.events.with_raw_response.create(
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -1292,6 +1812,29 @@ class TestAsyncEvents:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.events.with_streaming_response.create(
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -1312,9 +1855,25 @@ class TestAsyncEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "name": "",
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
                     "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
         )
@@ -1327,25 +1886,25 @@ class TestAsyncEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "name": "",
-                    "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
                     "data_sensitivity": "none",
-                    "is_encrypted": False,
+                    "is_encrypted": True,
                     "is_large_value": True,
+                    "name": "name",
                     "persistence_timestamp": 0,
-                    "request_id": "",
-                    "selected_by_user": False,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
                     "source": "UNKNOWN",
-                    "source_id": "",
-                    "source_label": "",
-                    "source_metadata": "",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
                     "source_vid": [0],
                     "timestamp": 0,
-                    "unit": "",
+                    "unit": "unit",
                     "updated_by_user_id": 0,
                     "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
             end_date_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1366,9 +1925,25 @@ class TestAsyncEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "name": "",
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
                     "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
         )
@@ -1385,9 +1960,25 @@ class TestAsyncEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "name": "",
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
                     "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
         ) as response:
@@ -1407,9 +1998,25 @@ class TestAsyncEvents:
                 object_id="",
                 custom_properties=[
                     {
-                        "name": "",
+                        "data_sensitivity": "none",
+                        "is_encrypted": True,
+                        "is_large_value": True,
+                        "name": "name",
+                        "persistence_timestamp": 0,
+                        "request_id": "requestId",
+                        "selected_by_user": True,
+                        "selected_by_user_timestamp": 0,
+                        "source": "UNKNOWN",
+                        "source_id": "sourceId",
+                        "source_label": "sourceLabel",
+                        "source_metadata": "sourceMetadata",
                         "source_upstream_deployable": "sourceUpstreamDeployable",
-                        "value": "",
+                        "source_vid": [0],
+                        "timestamp": 0,
+                        "unit": "unit",
+                        "updated_by_user_id": 0,
+                        "use_timestamp_as_persistence_timestamp": True,
+                        "value": "value",
                     }
                 ],
             )
@@ -1923,9 +2530,25 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "name": "",
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
                             "source_upstream_deployable": "sourceUpstreamDeployable",
-                            "value": "",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
                         }
                     ],
                     "object_id": "objectId",
@@ -1942,9 +2565,25 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "name": "",
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
                             "source_upstream_deployable": "sourceUpstreamDeployable",
-                            "value": "",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
                         }
                     ],
                     "object_id": "objectId",
@@ -1965,9 +2604,25 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "name": "",
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
                             "source_upstream_deployable": "sourceUpstreamDeployable",
-                            "value": "",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
                         }
                     ],
                     "object_id": "objectId",
@@ -1988,6 +2643,29 @@ class TestAsyncEvents:
         event = await async_client.marketing.events.update_by_external_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
         )
         assert_matches_type(MarketingEventPublicDefaultResponse, event, path=["response"])
 
@@ -1999,25 +2677,25 @@ class TestAsyncEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "name": "",
-                    "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
                     "data_sensitivity": "none",
-                    "is_encrypted": False,
+                    "is_encrypted": True,
                     "is_large_value": True,
+                    "name": "name",
                     "persistence_timestamp": 0,
-                    "request_id": "",
-                    "selected_by_user": False,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
                     "source": "UNKNOWN",
-                    "source_id": "",
-                    "source_label": "",
-                    "source_metadata": "",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
                     "source_vid": [0],
                     "timestamp": 0,
-                    "unit": "",
+                    "unit": "unit",
                     "updated_by_user_id": 0,
                     "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
                 }
             ],
             end_date_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -2038,6 +2716,29 @@ class TestAsyncEvents:
         response = await async_client.marketing.events.with_raw_response.update_by_external_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -2051,6 +2752,29 @@ class TestAsyncEvents:
         async with async_client.marketing.events.with_streaming_response.update_by_external_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2067,6 +2791,29 @@ class TestAsyncEvents:
             await async_client.marketing.events.with_raw_response.update_by_external_event_id(
                 external_event_id="",
                 external_account_id="externalAccountId",
+                custom_properties=[
+                    {
+                        "data_sensitivity": "none",
+                        "is_encrypted": True,
+                        "is_large_value": True,
+                        "name": "name",
+                        "persistence_timestamp": 0,
+                        "request_id": "requestId",
+                        "selected_by_user": True,
+                        "selected_by_user_timestamp": 0,
+                        "source": "UNKNOWN",
+                        "source_id": "sourceId",
+                        "source_label": "sourceLabel",
+                        "source_metadata": "sourceMetadata",
+                        "source_upstream_deployable": "sourceUpstreamDeployable",
+                        "source_vid": [0],
+                        "timestamp": 0,
+                        "unit": "unit",
+                        "updated_by_user_id": 0,
+                        "use_timestamp_as_persistence_timestamp": True,
+                        "value": "value",
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -2075,6 +2822,29 @@ class TestAsyncEvents:
         event = await async_client.marketing.events.upsert_batch(
             inputs=[
                 {
+                    "custom_properties": [
+                        {
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
+                            "source_upstream_deployable": "sourceUpstreamDeployable",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
+                        }
+                    ],
                     "event_name": "eventName",
                     "event_organizer": "eventOrganizer",
                     "external_account_id": "externalAccountId",
@@ -2090,6 +2860,29 @@ class TestAsyncEvents:
         response = await async_client.marketing.events.with_raw_response.upsert_batch(
             inputs=[
                 {
+                    "custom_properties": [
+                        {
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
+                            "source_upstream_deployable": "sourceUpstreamDeployable",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
+                        }
+                    ],
                     "event_name": "eventName",
                     "event_organizer": "eventOrganizer",
                     "external_account_id": "externalAccountId",
@@ -2109,6 +2902,29 @@ class TestAsyncEvents:
         async with async_client.marketing.events.with_streaming_response.upsert_batch(
             inputs=[
                 {
+                    "custom_properties": [
+                        {
+                            "data_sensitivity": "none",
+                            "is_encrypted": True,
+                            "is_large_value": True,
+                            "name": "name",
+                            "persistence_timestamp": 0,
+                            "request_id": "requestId",
+                            "selected_by_user": True,
+                            "selected_by_user_timestamp": 0,
+                            "source": "UNKNOWN",
+                            "source_id": "sourceId",
+                            "source_label": "sourceLabel",
+                            "source_metadata": "sourceMetadata",
+                            "source_upstream_deployable": "sourceUpstreamDeployable",
+                            "source_vid": [0],
+                            "timestamp": 0,
+                            "unit": "unit",
+                            "updated_by_user_id": 0,
+                            "use_timestamp_as_persistence_timestamp": True,
+                            "value": "value",
+                        }
+                    ],
                     "event_name": "eventName",
                     "event_organizer": "eventOrganizer",
                     "external_account_id": "externalAccountId",
@@ -2129,6 +2945,29 @@ class TestAsyncEvents:
     async def test_method_upsert_by_external_event_id(self, async_client: AsyncHubspot) -> None:
         event = await async_client.marketing.events.upsert_by_external_event_id(
             path_external_event_id="externalEventId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -2141,33 +2980,33 @@ class TestAsyncEvents:
     async def test_method_upsert_by_external_event_id_with_all_params(self, async_client: AsyncHubspot) -> None:
         event = await async_client.marketing.events.upsert_by_external_event_id(
             path_external_event_id="externalEventId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
             body_external_event_id="externalEventId",
-            custom_properties=[
-                {
-                    "name": "",
-                    "source_upstream_deployable": "sourceUpstreamDeployable",
-                    "value": "",
-                    "data_sensitivity": "none",
-                    "is_encrypted": False,
-                    "is_large_value": True,
-                    "persistence_timestamp": 0,
-                    "request_id": "",
-                    "selected_by_user": False,
-                    "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
-                    "source_id": "",
-                    "source_label": "",
-                    "source_metadata": "",
-                    "source_vid": [0],
-                    "timestamp": 0,
-                    "unit": "",
-                    "updated_by_user_id": 0,
-                    "use_timestamp_as_persistence_timestamp": True,
-                }
-            ],
             end_date_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             event_cancelled=True,
             event_completed=True,
@@ -2183,6 +3022,29 @@ class TestAsyncEvents:
     async def test_raw_response_upsert_by_external_event_id(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.events.with_raw_response.upsert_by_external_event_id(
             path_external_event_id="externalEventId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -2199,6 +3061,29 @@ class TestAsyncEvents:
     async def test_streaming_response_upsert_by_external_event_id(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.events.with_streaming_response.upsert_by_external_event_id(
             path_external_event_id="externalEventId",
+            custom_properties=[
+                {
+                    "data_sensitivity": "none",
+                    "is_encrypted": True,
+                    "is_large_value": True,
+                    "name": "name",
+                    "persistence_timestamp": 0,
+                    "request_id": "requestId",
+                    "selected_by_user": True,
+                    "selected_by_user_timestamp": 0,
+                    "source": "UNKNOWN",
+                    "source_id": "sourceId",
+                    "source_label": "sourceLabel",
+                    "source_metadata": "sourceMetadata",
+                    "source_upstream_deployable": "sourceUpstreamDeployable",
+                    "source_vid": [0],
+                    "timestamp": 0,
+                    "unit": "unit",
+                    "updated_by_user_id": 0,
+                    "use_timestamp_as_persistence_timestamp": True,
+                    "value": "value",
+                }
+            ],
             event_name="eventName",
             event_organizer="eventOrganizer",
             external_account_id="externalAccountId",
@@ -2220,6 +3105,29 @@ class TestAsyncEvents:
         ):
             await async_client.marketing.events.with_raw_response.upsert_by_external_event_id(
                 path_external_event_id="",
+                custom_properties=[
+                    {
+                        "data_sensitivity": "none",
+                        "is_encrypted": True,
+                        "is_large_value": True,
+                        "name": "name",
+                        "persistence_timestamp": 0,
+                        "request_id": "requestId",
+                        "selected_by_user": True,
+                        "selected_by_user_timestamp": 0,
+                        "source": "UNKNOWN",
+                        "source_id": "sourceId",
+                        "source_label": "sourceLabel",
+                        "source_metadata": "sourceMetadata",
+                        "source_upstream_deployable": "sourceUpstreamDeployable",
+                        "source_vid": [0],
+                        "timestamp": 0,
+                        "unit": "unit",
+                        "updated_by_user_id": 0,
+                        "use_timestamp_as_persistence_timestamp": True,
+                        "value": "value",
+                    }
+                ],
                 event_name="eventName",
                 event_organizer="eventOrganizer",
                 external_account_id="externalAccountId",
@@ -2240,8 +3148,10 @@ class TestAsyncEvents:
             external_account_id="externalAccountId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -2265,8 +3175,10 @@ class TestAsyncEvents:
             external_account_id="externalAccountId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         )
@@ -2290,8 +3202,10 @@ class TestAsyncEvents:
             external_account_id="externalAccountId",
             inputs=[
                 {
+                    "contact_properties": {"foo": "string"},
                     "email": "email",
                     "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
                 }
             ],
         ) as event:
@@ -2314,8 +3228,10 @@ class TestAsyncEvents:
                 external_account_id="externalAccountId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -2327,8 +3243,10 @@ class TestAsyncEvents:
                 external_account_id="externalAccountId",
                 inputs=[
                     {
+                        "contact_properties": {"foo": "string"},
                         "email": "email",
                         "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
                     }
                 ],
             )
@@ -2345,7 +3263,13 @@ class TestAsyncEvents:
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
         assert event.is_closed
         assert await event.json() == {"foo": "bar"}
@@ -2365,7 +3289,13 @@ class TestAsyncEvents:
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         )
 
         assert event.is_closed is True
@@ -2385,7 +3315,13 @@ class TestAsyncEvents:
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
-            inputs=[{"interaction_date_time": 0}],
+            inputs=[
+                {
+                    "interaction_date_time": 0,
+                    "properties": {"foo": "string"},
+                    "vid": 0,
+                }
+            ],
         ) as event:
             assert not event.is_closed
             assert event.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2404,7 +3340,13 @@ class TestAsyncEvents:
                 subscriber_state="subscriberState",
                 external_event_id="",
                 external_account_id="externalAccountId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
@@ -2412,5 +3354,11 @@ class TestAsyncEvents:
                 subscriber_state="",
                 external_event_id="externalEventId",
                 external_account_id="externalAccountId",
-                inputs=[{"interaction_date_time": 0}],
+                inputs=[
+                    {
+                        "interaction_date_time": 0,
+                        "properties": {"foo": "string"},
+                        "vid": 0,
+                    }
+                ],
             )

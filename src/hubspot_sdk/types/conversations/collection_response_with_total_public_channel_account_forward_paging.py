@@ -4,13 +4,13 @@ from typing import List, Optional
 
 from ..._models import BaseModel
 from ..shared.forward_paging import ForwardPaging
-from .conversations_public_channel_account import ConversationsPublicChannelAccount
+from .public_channel_account import PublicChannelAccount
 
 __all__ = ["CollectionResponseWithTotalPublicChannelAccountForwardPaging"]
 
 
 class CollectionResponseWithTotalPublicChannelAccountForwardPaging(BaseModel):
-    results: List[ConversationsPublicChannelAccount]
+    results: List[PublicChannelAccount]
 
     total: int
 

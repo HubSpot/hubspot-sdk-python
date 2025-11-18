@@ -66,6 +66,8 @@ class BatchResource(SyncAPIResource):
 
           properties_with_history: Key-value pairs for setting properties for the new object and their histories.
 
+          id_property: A unique property used to identify objects instead of the default ID.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -166,6 +168,8 @@ class AsyncBatchResource(AsyncAPIResource):
           properties: Key-value pairs for setting properties for the new object.
 
           properties_with_history: Key-value pairs for setting properties for the new object and their histories.
+
+          id_property: A unique property used to identify objects instead of the default ID.
 
           extra_headers: Send extra headers
 

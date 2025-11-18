@@ -40,16 +40,7 @@ class PipelineStage(BaseModel):
     Each pipeline stage's label must be unique within that pipeline.
     """
 
-    updated_at: datetime = FieldInfo(alias="updatedAt")
-    """The date the pipeline stage was last updated."""
-
-    archived_at: Optional[datetime] = FieldInfo(alias="archivedAt", default=None)
-    """The date the pipeline was archived.
-
-    `archivedAt` will only be present if the pipeline is archived.
-    """
-
-    metadata: Optional[Dict[str, str]] = None
+    metadata: Dict[str, str]
     """
     A JSON object containing properties that are not present on all object
     pipelines.
@@ -62,6 +53,15 @@ class PipelineStage(BaseModel):
     (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
     has been closed by a member of your Support team. Possible values are `OPEN` or
     `CLOSED`.
+    """
+
+    updated_at: datetime = FieldInfo(alias="updatedAt")
+    """The date the pipeline stage was last updated."""
+
+    archived_at: Optional[datetime] = FieldInfo(alias="archivedAt", default=None)
+    """The date the pipeline was archived.
+
+    `archivedAt` will only be present if the pipeline is archived.
     """
 
     write_permissions: Optional[Literal["CRM_PERMISSIONS_ENFORCEMENT", "READ_ONLY", "INTERNAL_ONLY"]] = FieldInfo(

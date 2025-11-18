@@ -12,3 +12,6 @@ __all__ = ["ActorBatchReadParams"]
 class ActorBatchReadParams(TypedDict, total=False):
     inputs: Required[SequenceNotStr[str]]
     """Strings to input."""
+
+    property: str
+    """A specific property to include in the actor response."""

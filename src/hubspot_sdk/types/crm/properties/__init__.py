@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from .batch_get_params import BatchGetParams as BatchGetParams
+from .group_get_params import GroupGetParams as GroupGetParams
+from .group_list_params import GroupListParams as GroupListParams
 from .batch_create_params import BatchCreateParams as BatchCreateParams
 from .batch_delete_params import BatchDeleteParams as BatchDeleteParams
 from .group_create_params import GroupCreateParams as GroupCreateParams

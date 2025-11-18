@@ -70,9 +70,9 @@ class RowsResource(SyncAPIResource):
         self,
         table_id_or_name: str,
         *,
+        child_table_id: int,
+        display_index: int,
         values: Dict[str, VariantParam],
-        child_table_id: int | Omit = omit,
-        display_index: int | Omit = omit,
         name: str | Omit = omit,
         path: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -89,9 +89,9 @@ class RowsResource(SyncAPIResource):
         version.
 
         Args:
-          values: List of key value pairs with the column name and column value
-
           child_table_id: Specifies the value for the column child table id
+
+          values: List of key value pairs with the column name and column value
 
           name: Specifies the value for `hs_name` column, which will be used as title in the
               dynamic pages
@@ -113,9 +113,9 @@ class RowsResource(SyncAPIResource):
             f"/cms/v3/hubdb/tables/{table_id_or_name}/rows",
             body=maybe_transform(
                 {
-                    "values": values,
                     "child_table_id": child_table_id,
                     "display_index": display_index,
+                    "values": values,
                     "name": name,
                     "path": path,
                 },
@@ -443,9 +443,9 @@ class RowsResource(SyncAPIResource):
         row_id: str,
         *,
         table_id_or_name: str,
+        child_table_id: int,
+        display_index: int,
         values: Dict[str, VariantParam],
-        child_table_id: int | Omit = omit,
-        display_index: int | Omit = omit,
         name: str | Omit = omit,
         path: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -463,9 +463,9 @@ class RowsResource(SyncAPIResource):
         instructions on how to format the JSON row definitions.
 
         Args:
-          values: List of key value pairs with the column name and column value
-
           child_table_id: Specifies the value for the column child table id
+
+          values: List of key value pairs with the column name and column value
 
           name: Specifies the value for `hs_name` column, which will be used as title in the
               dynamic pages
@@ -489,9 +489,9 @@ class RowsResource(SyncAPIResource):
             f"/cms/v3/hubdb/tables/{table_id_or_name}/rows/{row_id}/draft",
             body=maybe_transform(
                 {
-                    "values": values,
                     "child_table_id": child_table_id,
                     "display_index": display_index,
+                    "values": values,
                     "name": name,
                     "path": path,
                 },
@@ -508,9 +508,9 @@ class RowsResource(SyncAPIResource):
         row_id: str,
         *,
         table_id_or_name: str,
+        child_table_id: int,
+        display_index: int,
         values: Dict[str, VariantParam],
-        child_table_id: int | Omit = omit,
-        display_index: int | Omit = omit,
         name: str | Omit = omit,
         path: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -528,9 +528,9 @@ class RowsResource(SyncAPIResource):
         the JSON row definitions.
 
         Args:
-          values: List of key value pairs with the column name and column value
-
           child_table_id: Specifies the value for the column child table id
+
+          values: List of key value pairs with the column name and column value
 
           name: Specifies the value for `hs_name` column, which will be used as title in the
               dynamic pages
@@ -554,9 +554,9 @@ class RowsResource(SyncAPIResource):
             f"/cms/v3/hubdb/tables/{table_id_or_name}/rows/{row_id}/draft",
             body=maybe_transform(
                 {
-                    "values": values,
                     "child_table_id": child_table_id,
                     "display_index": display_index,
+                    "values": values,
                     "name": name,
                     "path": path,
                 },
@@ -597,9 +597,9 @@ class AsyncRowsResource(AsyncAPIResource):
         self,
         table_id_or_name: str,
         *,
+        child_table_id: int,
+        display_index: int,
         values: Dict[str, VariantParam],
-        child_table_id: int | Omit = omit,
-        display_index: int | Omit = omit,
         name: str | Omit = omit,
         path: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -616,9 +616,9 @@ class AsyncRowsResource(AsyncAPIResource):
         version.
 
         Args:
-          values: List of key value pairs with the column name and column value
-
           child_table_id: Specifies the value for the column child table id
+
+          values: List of key value pairs with the column name and column value
 
           name: Specifies the value for `hs_name` column, which will be used as title in the
               dynamic pages
@@ -640,9 +640,9 @@ class AsyncRowsResource(AsyncAPIResource):
             f"/cms/v3/hubdb/tables/{table_id_or_name}/rows",
             body=await async_maybe_transform(
                 {
-                    "values": values,
                     "child_table_id": child_table_id,
                     "display_index": display_index,
+                    "values": values,
                     "name": name,
                     "path": path,
                 },
@@ -970,9 +970,9 @@ class AsyncRowsResource(AsyncAPIResource):
         row_id: str,
         *,
         table_id_or_name: str,
+        child_table_id: int,
+        display_index: int,
         values: Dict[str, VariantParam],
-        child_table_id: int | Omit = omit,
-        display_index: int | Omit = omit,
         name: str | Omit = omit,
         path: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -990,9 +990,9 @@ class AsyncRowsResource(AsyncAPIResource):
         instructions on how to format the JSON row definitions.
 
         Args:
-          values: List of key value pairs with the column name and column value
-
           child_table_id: Specifies the value for the column child table id
+
+          values: List of key value pairs with the column name and column value
 
           name: Specifies the value for `hs_name` column, which will be used as title in the
               dynamic pages
@@ -1016,9 +1016,9 @@ class AsyncRowsResource(AsyncAPIResource):
             f"/cms/v3/hubdb/tables/{table_id_or_name}/rows/{row_id}/draft",
             body=await async_maybe_transform(
                 {
-                    "values": values,
                     "child_table_id": child_table_id,
                     "display_index": display_index,
+                    "values": values,
                     "name": name,
                     "path": path,
                 },
@@ -1035,9 +1035,9 @@ class AsyncRowsResource(AsyncAPIResource):
         row_id: str,
         *,
         table_id_or_name: str,
+        child_table_id: int,
+        display_index: int,
         values: Dict[str, VariantParam],
-        child_table_id: int | Omit = omit,
-        display_index: int | Omit = omit,
         name: str | Omit = omit,
         path: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1055,9 +1055,9 @@ class AsyncRowsResource(AsyncAPIResource):
         the JSON row definitions.
 
         Args:
-          values: List of key value pairs with the column name and column value
-
           child_table_id: Specifies the value for the column child table id
+
+          values: List of key value pairs with the column name and column value
 
           name: Specifies the value for `hs_name` column, which will be used as title in the
               dynamic pages
@@ -1081,9 +1081,9 @@ class AsyncRowsResource(AsyncAPIResource):
             f"/cms/v3/hubdb/tables/{table_id_or_name}/rows/{row_id}/draft",
             body=await async_maybe_transform(
                 {
-                    "values": values,
                     "child_table_id": child_table_id,
                     "display_index": display_index,
+                    "values": values,
                     "name": name,
                     "path": path,
                 },

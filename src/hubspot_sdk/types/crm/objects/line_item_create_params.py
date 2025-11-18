@@ -11,7 +11,7 @@ __all__ = ["LineItemCreateParams"]
 
 
 class LineItemCreateParams(TypedDict, total=False):
+    associations: Required[Iterable[PublicAssociationsForObjectParam]]
+
     properties: Required[Dict[str, str]]
     """Key-value pairs for setting properties for the new object."""
-
-    associations: Iterable[PublicAssociationsForObjectParam]

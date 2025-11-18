@@ -22,7 +22,7 @@ class TestChannelAccountStagingTokens:
     def test_method_update(self, client: Hubspot) -> None:
         channel_account_staging_token = client.conversations.custom_channels.channel_account_staging_tokens.update(
             account_token="accountToken",
-            channel_id="channelId",
+            channel_id=0,
             account_name="accountName",
             delivery_identifier={
                 "type": "type",
@@ -36,7 +36,7 @@ class TestChannelAccountStagingTokens:
     def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
             account_token="accountToken",
-            channel_id="channelId",
+            channel_id=0,
             account_name="accountName",
             delivery_identifier={
                 "type": "type",
@@ -54,7 +54,7 @@ class TestChannelAccountStagingTokens:
     def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.channel_account_staging_tokens.with_streaming_response.update(
             account_token="accountToken",
-            channel_id="channelId",
+            channel_id=0,
             account_name="accountName",
             delivery_identifier={
                 "type": "type",
@@ -72,21 +72,10 @@ class TestChannelAccountStagingTokens:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
-                account_token="accountToken",
-                channel_id="",
-                account_name="accountName",
-                delivery_identifier={
-                    "type": "type",
-                    "value": "value",
-                },
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_token` but received ''"):
             client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
                 account_token="",
-                channel_id="channelId",
+                channel_id=0,
                 account_name="accountName",
                 delivery_identifier={
                     "type": "type",
@@ -106,7 +95,7 @@ class TestAsyncChannelAccountStagingTokens:
         channel_account_staging_token = (
             await async_client.conversations.custom_channels.channel_account_staging_tokens.update(
                 account_token="accountToken",
-                channel_id="channelId",
+                channel_id=0,
                 account_name="accountName",
                 delivery_identifier={
                     "type": "type",
@@ -122,7 +111,7 @@ class TestAsyncChannelAccountStagingTokens:
         response = (
             await async_client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
                 account_token="accountToken",
-                channel_id="channelId",
+                channel_id=0,
                 account_name="accountName",
                 delivery_identifier={
                     "type": "type",
@@ -142,7 +131,7 @@ class TestAsyncChannelAccountStagingTokens:
         async with (
             async_client.conversations.custom_channels.channel_account_staging_tokens.with_streaming_response.update(
                 account_token="accountToken",
-                channel_id="channelId",
+                channel_id=0,
                 account_name="accountName",
                 delivery_identifier={
                     "type": "type",
@@ -161,21 +150,10 @@ class TestAsyncChannelAccountStagingTokens:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            await async_client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
-                account_token="accountToken",
-                channel_id="",
-                account_name="accountName",
-                delivery_identifier={
-                    "type": "type",
-                    "value": "value",
-                },
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_token` but received ''"):
             await async_client.conversations.custom_channels.channel_account_staging_tokens.with_raw_response.update(
                 account_token="",
-                channel_id="channelId",
+                channel_id=0,
                 account_name="accountName",
                 delivery_identifier={
                     "type": "type",

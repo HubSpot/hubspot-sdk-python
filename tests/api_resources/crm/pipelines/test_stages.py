@@ -29,17 +29,6 @@ class TestStages:
             object_type="objectType",
             display_order=1,
             label="Done",
-        )
-        assert_matches_type(PipelineStage, stage, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
-        stage = client.crm.pipelines.stages.create(
-            pipeline_id="pipelineId",
-            object_type="objectType",
-            display_order=1,
-            label="Done",
             metadata={"ticketState": "CLOSED"},
         )
         assert_matches_type(PipelineStage, stage, path=["response"])
@@ -52,6 +41,7 @@ class TestStages:
             object_type="objectType",
             display_order=1,
             label="Done",
+            metadata={"ticketState": "CLOSED"},
         )
 
         assert response.is_closed is True
@@ -67,6 +57,7 @@ class TestStages:
             object_type="objectType",
             display_order=1,
             label="Done",
+            metadata={"ticketState": "CLOSED"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -85,6 +76,7 @@ class TestStages:
                 object_type="",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pipeline_id` but received ''"):
@@ -93,6 +85,7 @@ class TestStages:
                 object_type="objectType",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -102,6 +95,7 @@ class TestStages:
             stage_id="stageId",
             object_type="objectType",
             pipeline_id="pipelineId",
+            metadata={"ticketState": "CLOSED"},
         )
         assert_matches_type(PipelineStage, stage, path=["response"])
 
@@ -112,10 +106,10 @@ class TestStages:
             stage_id="stageId",
             object_type="objectType",
             pipeline_id="pipelineId",
+            metadata={"ticketState": "CLOSED"},
             archived=True,
             display_order=1,
             label="Done",
-            metadata={"ticketState": "CLOSED"},
         )
         assert_matches_type(PipelineStage, stage, path=["response"])
 
@@ -126,6 +120,7 @@ class TestStages:
             stage_id="stageId",
             object_type="objectType",
             pipeline_id="pipelineId",
+            metadata={"ticketState": "CLOSED"},
         )
 
         assert response.is_closed is True
@@ -140,6 +135,7 @@ class TestStages:
             stage_id="stageId",
             object_type="objectType",
             pipeline_id="pipelineId",
+            metadata={"ticketState": "CLOSED"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -157,6 +153,7 @@ class TestStages:
                 stage_id="stageId",
                 object_type="",
                 pipeline_id="pipelineId",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pipeline_id` but received ''"):
@@ -164,6 +161,7 @@ class TestStages:
                 stage_id="stageId",
                 object_type="objectType",
                 pipeline_id="",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `stage_id` but received ''"):
@@ -171,6 +169,7 @@ class TestStages:
                 stage_id="",
                 object_type="objectType",
                 pipeline_id="pipelineId",
+                metadata={"ticketState": "CLOSED"},
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -426,18 +425,6 @@ class TestStages:
             pipeline_id="pipelineId",
             display_order=1,
             label="Done",
-        )
-        assert_matches_type(PipelineStage, stage, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_replace_with_all_params(self, client: Hubspot) -> None:
-        stage = client.crm.pipelines.stages.replace(
-            stage_id="stageId",
-            object_type="objectType",
-            pipeline_id="pipelineId",
-            display_order=1,
-            label="Done",
             metadata={"ticketState": "CLOSED"},
         )
         assert_matches_type(PipelineStage, stage, path=["response"])
@@ -451,6 +438,7 @@ class TestStages:
             pipeline_id="pipelineId",
             display_order=1,
             label="Done",
+            metadata={"ticketState": "CLOSED"},
         )
 
         assert response.is_closed is True
@@ -467,6 +455,7 @@ class TestStages:
             pipeline_id="pipelineId",
             display_order=1,
             label="Done",
+            metadata={"ticketState": "CLOSED"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -486,6 +475,7 @@ class TestStages:
                 pipeline_id="pipelineId",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pipeline_id` but received ''"):
@@ -495,6 +485,7 @@ class TestStages:
                 pipeline_id="",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `stage_id` but received ''"):
@@ -504,6 +495,7 @@ class TestStages:
                 pipeline_id="pipelineId",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
 
@@ -515,17 +507,6 @@ class TestAsyncStages:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
-        stage = await async_client.crm.pipelines.stages.create(
-            pipeline_id="pipelineId",
-            object_type="objectType",
-            display_order=1,
-            label="Done",
-        )
-        assert_matches_type(PipelineStage, stage, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         stage = await async_client.crm.pipelines.stages.create(
             pipeline_id="pipelineId",
             object_type="objectType",
@@ -543,6 +524,7 @@ class TestAsyncStages:
             object_type="objectType",
             display_order=1,
             label="Done",
+            metadata={"ticketState": "CLOSED"},
         )
 
         assert response.is_closed is True
@@ -558,6 +540,7 @@ class TestAsyncStages:
             object_type="objectType",
             display_order=1,
             label="Done",
+            metadata={"ticketState": "CLOSED"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -576,6 +559,7 @@ class TestAsyncStages:
                 object_type="",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pipeline_id` but received ''"):
@@ -584,6 +568,7 @@ class TestAsyncStages:
                 object_type="objectType",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -593,6 +578,7 @@ class TestAsyncStages:
             stage_id="stageId",
             object_type="objectType",
             pipeline_id="pipelineId",
+            metadata={"ticketState": "CLOSED"},
         )
         assert_matches_type(PipelineStage, stage, path=["response"])
 
@@ -603,10 +589,10 @@ class TestAsyncStages:
             stage_id="stageId",
             object_type="objectType",
             pipeline_id="pipelineId",
+            metadata={"ticketState": "CLOSED"},
             archived=True,
             display_order=1,
             label="Done",
-            metadata={"ticketState": "CLOSED"},
         )
         assert_matches_type(PipelineStage, stage, path=["response"])
 
@@ -617,6 +603,7 @@ class TestAsyncStages:
             stage_id="stageId",
             object_type="objectType",
             pipeline_id="pipelineId",
+            metadata={"ticketState": "CLOSED"},
         )
 
         assert response.is_closed is True
@@ -631,6 +618,7 @@ class TestAsyncStages:
             stage_id="stageId",
             object_type="objectType",
             pipeline_id="pipelineId",
+            metadata={"ticketState": "CLOSED"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -648,6 +636,7 @@ class TestAsyncStages:
                 stage_id="stageId",
                 object_type="",
                 pipeline_id="pipelineId",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pipeline_id` but received ''"):
@@ -655,6 +644,7 @@ class TestAsyncStages:
                 stage_id="stageId",
                 object_type="objectType",
                 pipeline_id="",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `stage_id` but received ''"):
@@ -662,6 +652,7 @@ class TestAsyncStages:
                 stage_id="",
                 object_type="objectType",
                 pipeline_id="pipelineId",
+                metadata={"ticketState": "CLOSED"},
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -917,18 +908,6 @@ class TestAsyncStages:
             pipeline_id="pipelineId",
             display_order=1,
             label="Done",
-        )
-        assert_matches_type(PipelineStage, stage, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_replace_with_all_params(self, async_client: AsyncHubspot) -> None:
-        stage = await async_client.crm.pipelines.stages.replace(
-            stage_id="stageId",
-            object_type="objectType",
-            pipeline_id="pipelineId",
-            display_order=1,
-            label="Done",
             metadata={"ticketState": "CLOSED"},
         )
         assert_matches_type(PipelineStage, stage, path=["response"])
@@ -942,6 +921,7 @@ class TestAsyncStages:
             pipeline_id="pipelineId",
             display_order=1,
             label="Done",
+            metadata={"ticketState": "CLOSED"},
         )
 
         assert response.is_closed is True
@@ -958,6 +938,7 @@ class TestAsyncStages:
             pipeline_id="pipelineId",
             display_order=1,
             label="Done",
+            metadata={"ticketState": "CLOSED"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -977,6 +958,7 @@ class TestAsyncStages:
                 pipeline_id="pipelineId",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pipeline_id` but received ''"):
@@ -986,6 +968,7 @@ class TestAsyncStages:
                 pipeline_id="",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `stage_id` but received ''"):
@@ -995,4 +978,5 @@ class TestAsyncStages:
                 pipeline_id="pipelineId",
                 display_order=1,
                 label="Done",
+                metadata={"ticketState": "CLOSED"},
             )

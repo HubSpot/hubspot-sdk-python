@@ -68,6 +68,10 @@ class LimitsResource(SyncAPIResource):
         Returns limits and usage for custom association labels
 
         Args:
+          from_object_type_id: objectTypeId of the object type on the "from" side of the association
+
+          to_object_type_id: objectTypeId of the object type on the "to" side of the association
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -319,6 +323,10 @@ class AsyncLimitsResource(AsyncAPIResource):
         Returns limits and usage for custom association labels
 
         Args:
+          from_object_type_id: objectTypeId of the object type on the "from" side of the association
+
+          to_object_type_id: objectTypeId of the object type on the "to" side of the association
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

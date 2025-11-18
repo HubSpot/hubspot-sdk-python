@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
-
 from ..._models import BaseModel
 
 __all__ = ["PublicChannel"]
 
 
 class PublicChannel(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The ID of the channel."""
 
-    name: Optional[str] = None
+    name: str
     """The name of the channel."""

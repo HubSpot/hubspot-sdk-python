@@ -15,7 +15,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.cms.media_bridge import schema_update_params, schema_create_association_params
+from ....types.cms.media_bridge import schema_list_params, schema_update_params, schema_create_association_params
 from ....types.crm.objects.object_schema import ObjectSchema
 from ....types.events.association_definition import AssociationDefinition
 from ....types.shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
@@ -49,7 +49,7 @@ class SchemasResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         clear_description: bool | Omit = omit,
         description: str | Omit = omit,
         labels: ObjectTypeDefinitionLabels | Omit = omit,
@@ -89,8 +89,6 @@ class SchemasResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._patch(
@@ -116,8 +114,9 @@ class SchemasResource(SyncAPIResource):
 
     def list(
         self,
-        app_id: str,
+        app_id: int,
         *,
+        archived: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -129,6 +128,8 @@ class SchemasResource(SyncAPIResource):
         Get the schemas for all object types.
 
         Args:
+          archived: Whether to return only results that have been archived.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -137,12 +138,14 @@ class SchemasResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._get(
             f"/media-bridge/v1/{app_id}/schemas",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"archived": archived}, schema_list_params.SchemaListParams),
             ),
             cast_to=CollectionResponseObjectSchemaNoPaging,
         )
@@ -151,7 +154,7 @@ class SchemasResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         from_object_type_id: str,
         to_object_type_id: str,
         name: str | Omit = omit,
@@ -174,8 +177,6 @@ class SchemasResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -198,7 +199,7 @@ class SchemasResource(SyncAPIResource):
         self,
         association_id: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -219,8 +220,6 @@ class SchemasResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not association_id:
@@ -238,7 +237,7 @@ class SchemasResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -258,8 +257,6 @@ class SchemasResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._get(
@@ -295,7 +292,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         clear_description: bool | Omit = omit,
         description: str | Omit = omit,
         labels: ObjectTypeDefinitionLabels | Omit = omit,
@@ -335,8 +332,6 @@ class AsyncSchemasResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._patch(
@@ -362,8 +357,9 @@ class AsyncSchemasResource(AsyncAPIResource):
 
     async def list(
         self,
-        app_id: str,
+        app_id: int,
         *,
+        archived: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -375,6 +371,8 @@ class AsyncSchemasResource(AsyncAPIResource):
         Get the schemas for all object types.
 
         Args:
+          archived: Whether to return only results that have been archived.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -383,12 +381,14 @@ class AsyncSchemasResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._get(
             f"/media-bridge/v1/{app_id}/schemas",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"archived": archived}, schema_list_params.SchemaListParams),
             ),
             cast_to=CollectionResponseObjectSchemaNoPaging,
         )
@@ -397,7 +397,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         from_object_type_id: str,
         to_object_type_id: str,
         name: str | Omit = omit,
@@ -420,8 +420,6 @@ class AsyncSchemasResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -444,7 +442,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         self,
         association_id: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -465,8 +463,6 @@ class AsyncSchemasResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not association_id:
@@ -484,7 +480,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -504,8 +500,6 @@ class AsyncSchemasResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._get(

@@ -68,7 +68,13 @@ class TestBatch:
     def test_method_create_batch(self, client: Hubspot) -> None:
         batch = client.cms.hubdb.rows.batch.create_batch(
             table_id_or_name="tableIdOrName",
-            inputs=[{"values": {"foo": {}}}],
+            inputs=[
+                {
+                    "child_table_id": 0,
+                    "display_index": 0,
+                    "values": {"foo": {}},
+                }
+            ],
         )
         assert_matches_type(BatchResponseHubDBTableRowV3, batch, path=["response"])
 
@@ -77,7 +83,13 @@ class TestBatch:
     def test_raw_response_create_batch(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.batch.with_raw_response.create_batch(
             table_id_or_name="tableIdOrName",
-            inputs=[{"values": {"foo": {}}}],
+            inputs=[
+                {
+                    "child_table_id": 0,
+                    "display_index": 0,
+                    "values": {"foo": {}},
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -90,7 +102,13 @@ class TestBatch:
     def test_streaming_response_create_batch(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.batch.with_streaming_response.create_batch(
             table_id_or_name="tableIdOrName",
-            inputs=[{"values": {"foo": {}}}],
+            inputs=[
+                {
+                    "child_table_id": 0,
+                    "display_index": 0,
+                    "values": {"foo": {}},
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -106,7 +124,13 @@ class TestBatch:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.batch.with_raw_response.create_batch(
                 table_id_or_name="",
-                inputs=[{"values": {"foo": {}}}],
+                inputs=[
+                    {
+                        "child_table_id": 0,
+                        "display_index": 0,
+                        "values": {"foo": {}},
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -254,7 +278,8 @@ class TestBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -268,7 +293,8 @@ class TestBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -286,7 +312,8 @@ class TestBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -307,7 +334,8 @@ class TestBatch:
                 table_id_or_name="",
                 inputs=[
                     {
-                        "id": "id",
+                        "child_table_id": 0,
+                        "display_index": 0,
                         "values": {"foo": {}},
                     }
                 ],
@@ -320,7 +348,8 @@ class TestBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -334,7 +363,8 @@ class TestBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -352,7 +382,8 @@ class TestBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -373,7 +404,8 @@ class TestBatch:
                 table_id_or_name="",
                 inputs=[
                     {
-                        "id": "id",
+                        "child_table_id": 0,
+                        "display_index": 0,
                         "values": {"foo": {}},
                     }
                 ],
@@ -436,7 +468,13 @@ class TestAsyncBatch:
     async def test_method_create_batch(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.hubdb.rows.batch.create_batch(
             table_id_or_name="tableIdOrName",
-            inputs=[{"values": {"foo": {}}}],
+            inputs=[
+                {
+                    "child_table_id": 0,
+                    "display_index": 0,
+                    "values": {"foo": {}},
+                }
+            ],
         )
         assert_matches_type(BatchResponseHubDBTableRowV3, batch, path=["response"])
 
@@ -445,7 +483,13 @@ class TestAsyncBatch:
     async def test_raw_response_create_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.batch.with_raw_response.create_batch(
             table_id_or_name="tableIdOrName",
-            inputs=[{"values": {"foo": {}}}],
+            inputs=[
+                {
+                    "child_table_id": 0,
+                    "display_index": 0,
+                    "values": {"foo": {}},
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -458,7 +502,13 @@ class TestAsyncBatch:
     async def test_streaming_response_create_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.batch.with_streaming_response.create_batch(
             table_id_or_name="tableIdOrName",
-            inputs=[{"values": {"foo": {}}}],
+            inputs=[
+                {
+                    "child_table_id": 0,
+                    "display_index": 0,
+                    "values": {"foo": {}},
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -474,7 +524,13 @@ class TestAsyncBatch:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.batch.with_raw_response.create_batch(
                 table_id_or_name="",
-                inputs=[{"values": {"foo": {}}}],
+                inputs=[
+                    {
+                        "child_table_id": 0,
+                        "display_index": 0,
+                        "values": {"foo": {}},
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -622,7 +678,8 @@ class TestAsyncBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -636,7 +693,8 @@ class TestAsyncBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -654,7 +712,8 @@ class TestAsyncBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -675,7 +734,8 @@ class TestAsyncBatch:
                 table_id_or_name="",
                 inputs=[
                     {
-                        "id": "id",
+                        "child_table_id": 0,
+                        "display_index": 0,
                         "values": {"foo": {}},
                     }
                 ],
@@ -688,7 +748,8 @@ class TestAsyncBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -702,7 +763,8 @@ class TestAsyncBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -720,7 +782,8 @@ class TestAsyncBatch:
             table_id_or_name="tableIdOrName",
             inputs=[
                 {
-                    "id": "id",
+                    "child_table_id": 0,
+                    "display_index": 0,
                     "values": {"foo": {}},
                 }
             ],
@@ -741,7 +804,8 @@ class TestAsyncBatch:
                 table_id_or_name="",
                 inputs=[
                     {
-                        "id": "id",
+                        "child_table_id": 0,
+                        "display_index": 0,
                         "values": {"foo": {}},
                     }
                 ],

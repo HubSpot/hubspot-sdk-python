@@ -9,3 +9,4 @@ __all__ = ["SimplePublicObjectIDParam"]
 
 class SimplePublicObjectIDParam(TypedDict, total=False):
     id: Required[str]
+    """Object ID"""

@@ -17,6 +17,6 @@ class PublicFile(BaseModel):
 
     type: Literal["FILE"]
 
-    url: str
-
     name: Optional[str] = None
+
+    url: Optional[str] = None

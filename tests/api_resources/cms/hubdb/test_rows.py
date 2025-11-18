@@ -23,6 +23,8 @@ class TestRows:
     def test_method_create(self, client: Hubspot) -> None:
         row = client.cms.hubdb.rows.create(
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
@@ -32,9 +34,9 @@ class TestRows:
     def test_method_create_with_all_params(self, client: Hubspot) -> None:
         row = client.cms.hubdb.rows.create(
             table_id_or_name="tableIdOrName",
-            values={"foo": {}},
             child_table_id=0,
             display_index=0,
+            values={"foo": {}},
             name="name",
             path="path",
         )
@@ -45,6 +47,8 @@ class TestRows:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.create(
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
 
@@ -58,6 +62,8 @@ class TestRows:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.create(
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         ) as response:
             assert not response.is_closed
@@ -74,6 +80,8 @@ class TestRows:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.create(
                 table_id_or_name="",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -433,6 +441,8 @@ class TestRows:
         row = client.cms.hubdb.rows.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
@@ -443,9 +453,9 @@ class TestRows:
         row = client.cms.hubdb.rows.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
-            values={"foo": {}},
             child_table_id=0,
             display_index=0,
+            values={"foo": {}},
             name="name",
             path="path",
         )
@@ -457,6 +467,8 @@ class TestRows:
         response = client.cms.hubdb.rows.with_raw_response.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
 
@@ -471,6 +483,8 @@ class TestRows:
         with client.cms.hubdb.rows.with_streaming_response.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         ) as response:
             assert not response.is_closed
@@ -488,6 +502,8 @@ class TestRows:
             client.cms.hubdb.rows.with_raw_response.replace_draft(
                 row_id="321669910225",
                 table_id_or_name="",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -495,6 +511,8 @@ class TestRows:
             client.cms.hubdb.rows.with_raw_response.replace_draft(
                 row_id="",
                 table_id_or_name="tableIdOrName",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -504,6 +522,8 @@ class TestRows:
         row = client.cms.hubdb.rows.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
@@ -514,9 +534,9 @@ class TestRows:
         row = client.cms.hubdb.rows.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
-            values={"foo": {}},
             child_table_id=0,
             display_index=0,
+            values={"foo": {}},
             name="name",
             path="path",
         )
@@ -528,6 +548,8 @@ class TestRows:
         response = client.cms.hubdb.rows.with_raw_response.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
 
@@ -542,6 +564,8 @@ class TestRows:
         with client.cms.hubdb.rows.with_streaming_response.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         ) as response:
             assert not response.is_closed
@@ -559,6 +583,8 @@ class TestRows:
             client.cms.hubdb.rows.with_raw_response.update_draft(
                 row_id="321669910225",
                 table_id_or_name="",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -566,6 +592,8 @@ class TestRows:
             client.cms.hubdb.rows.with_raw_response.update_draft(
                 row_id="",
                 table_id_or_name="tableIdOrName",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -580,6 +608,8 @@ class TestAsyncRows:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         row = await async_client.cms.hubdb.rows.create(
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
@@ -589,9 +619,9 @@ class TestAsyncRows:
     async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         row = await async_client.cms.hubdb.rows.create(
             table_id_or_name="tableIdOrName",
-            values={"foo": {}},
             child_table_id=0,
             display_index=0,
+            values={"foo": {}},
             name="name",
             path="path",
         )
@@ -602,6 +632,8 @@ class TestAsyncRows:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.create(
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
 
@@ -615,6 +647,8 @@ class TestAsyncRows:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.create(
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         ) as response:
             assert not response.is_closed
@@ -631,6 +665,8 @@ class TestAsyncRows:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.create(
                 table_id_or_name="",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -990,6 +1026,8 @@ class TestAsyncRows:
         row = await async_client.cms.hubdb.rows.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
@@ -1000,9 +1038,9 @@ class TestAsyncRows:
         row = await async_client.cms.hubdb.rows.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
-            values={"foo": {}},
             child_table_id=0,
             display_index=0,
+            values={"foo": {}},
             name="name",
             path="path",
         )
@@ -1014,6 +1052,8 @@ class TestAsyncRows:
         response = await async_client.cms.hubdb.rows.with_raw_response.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
 
@@ -1028,6 +1068,8 @@ class TestAsyncRows:
         async with async_client.cms.hubdb.rows.with_streaming_response.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         ) as response:
             assert not response.is_closed
@@ -1045,6 +1087,8 @@ class TestAsyncRows:
             await async_client.cms.hubdb.rows.with_raw_response.replace_draft(
                 row_id="321669910225",
                 table_id_or_name="",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -1052,6 +1096,8 @@ class TestAsyncRows:
             await async_client.cms.hubdb.rows.with_raw_response.replace_draft(
                 row_id="",
                 table_id_or_name="tableIdOrName",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -1061,6 +1107,8 @@ class TestAsyncRows:
         row = await async_client.cms.hubdb.rows.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
@@ -1071,9 +1119,9 @@ class TestAsyncRows:
         row = await async_client.cms.hubdb.rows.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
-            values={"foo": {}},
             child_table_id=0,
             display_index=0,
+            values={"foo": {}},
             name="name",
             path="path",
         )
@@ -1085,6 +1133,8 @@ class TestAsyncRows:
         response = await async_client.cms.hubdb.rows.with_raw_response.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         )
 
@@ -1099,6 +1149,8 @@ class TestAsyncRows:
         async with async_client.cms.hubdb.rows.with_streaming_response.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
+            child_table_id=0,
+            display_index=0,
             values={"foo": {}},
         ) as response:
             assert not response.is_closed
@@ -1116,6 +1168,8 @@ class TestAsyncRows:
             await async_client.cms.hubdb.rows.with_raw_response.update_draft(
                 row_id="321669910225",
                 table_id_or_name="",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )
 
@@ -1123,5 +1177,7 @@ class TestAsyncRows:
             await async_client.cms.hubdb.rows.with_raw_response.update_draft(
                 row_id="",
                 table_id_or_name="tableIdOrName",
+                child_table_id=0,
+                display_index=0,
                 values={"foo": {}},
             )

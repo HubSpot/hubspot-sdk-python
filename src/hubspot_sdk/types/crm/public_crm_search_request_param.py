@@ -19,5 +19,7 @@ class PublicCrmSearchRequestParam(TypedDict, total=False):
     filters: Required[Iterable[FilterParam]]
 
     sorts: Required[SequenceNotStr[str]]
+    """Defines the order in which the CRM records should be returned."""
 
     query: str
+    """The search query string, to filter CRM records."""

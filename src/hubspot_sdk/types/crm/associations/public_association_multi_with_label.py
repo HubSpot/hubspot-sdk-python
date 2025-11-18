@@ -5,7 +5,7 @@ from typing import List, Optional
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from ...marketing.emails_paging import EmailsPaging
+from ...shared.paging import Paging
 from ...shared.public_object_id import PublicObjectID
 from ..multi_associated_object_with_label import MultiAssociatedObjectWithLabel
 
@@ -17,5 +17,4 @@ class PublicAssociationMultiWithLabel(BaseModel):
 
     to: List[MultiAssociatedObjectWithLabel]
 
-    paging: Optional[EmailsPaging] = None
-    """Contains information pagination of results."""
+    paging: Optional[Paging] = None

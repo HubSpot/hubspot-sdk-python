@@ -12,6 +12,10 @@ __all__ = ["PublicPropertyValidationRule"]
 
 class PublicPropertyValidationRule(BaseModel):
     rule_arguments: List[str] = FieldInfo(alias="ruleArguments")
+    """
+    A list of arguments that define the specific conditions or parameters for the
+    validation rule.
+    """
 
     rule_type: Literal[
         "FORMAT",
@@ -42,3 +46,7 @@ class PublicPropertyValidationRule(BaseModel):
         "EMAIL_BLOCKED_DOMAINS",
         "DOMAIN",
     ] = FieldInfo(alias="ruleType")
+    """
+    The category of validation applied to the property, such as FORMAT,
+    ALPHANUMERIC, or MAX_LENGTH.
+    """

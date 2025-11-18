@@ -77,15 +77,19 @@ class UsersResource(SyncAPIResource):
         email will prompt them to set a password and log in to HubSpot.
 
         Args:
-          email: The created user's email
+          email: The user's email.
 
-          primary_team_id: The user's primary team
+          first_name: The user's first name.
 
-          role_id: The user's role
+          last_name: The user's last name.
 
-          secondary_team_ids: The user's additional teams
+          primary_team_id: The user's primary team.
 
-          send_welcome_email: Whether to send a welcome email
+          role_id: The user's role.
+
+          secondary_team_ids: The user's additional teams.
+
+          send_welcome_email: Whether to send a welcome email.
 
           extra_headers: Send extra headers
 
@@ -141,11 +145,15 @@ class UsersResource(SyncAPIResource):
           id_property: The name of a property with unique user values. Valid values are
               `USER_ID`(default) or `EMAIL`
 
-          primary_team_id: The user's primary team
+          first_name: The first name of the user.
 
-          role_id: The user's role
+          last_name: The last name of the user.
 
-          secondary_team_ids: The user's additional teams
+          primary_team_id: The user's primary team.
+
+          role_id: The user's role.
+
+          secondary_team_ids: The user's additional teams.
 
           extra_headers: Send extra headers
 
@@ -396,15 +404,19 @@ class AsyncUsersResource(AsyncAPIResource):
         email will prompt them to set a password and log in to HubSpot.
 
         Args:
-          email: The created user's email
+          email: The user's email.
 
-          primary_team_id: The user's primary team
+          first_name: The user's first name.
 
-          role_id: The user's role
+          last_name: The user's last name.
 
-          secondary_team_ids: The user's additional teams
+          primary_team_id: The user's primary team.
 
-          send_welcome_email: Whether to send a welcome email
+          role_id: The user's role.
+
+          secondary_team_ids: The user's additional teams.
+
+          send_welcome_email: Whether to send a welcome email.
 
           extra_headers: Send extra headers
 
@@ -460,11 +472,15 @@ class AsyncUsersResource(AsyncAPIResource):
           id_property: The name of a property with unique user values. Valid values are
               `USER_ID`(default) or `EMAIL`
 
-          primary_team_id: The user's primary team
+          first_name: The first name of the user.
 
-          role_id: The user's role
+          last_name: The last name of the user.
 
-          secondary_team_ids: The user's additional teams
+          primary_team_id: The user's primary team.
+
+          role_id: The user's role.
+
+          secondary_team_ids: The user's additional teams.
 
           extra_headers: Send extra headers
 

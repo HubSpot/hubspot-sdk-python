@@ -60,6 +60,9 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociation:
         """
+        This endpoint allows you to create multiple associations between specified
+        'from' and 'to' object types in a single batch request.
+
         Args:
           extra_headers: Send extra headers
 
@@ -136,6 +139,9 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociationMulti:
         """
+        This endpoint allows you to retrieve multiple associations between specified
+        'from' and 'to' object types in a single batch request.
+
         Args:
           extra_headers: Send extra headers
 
@@ -193,6 +199,9 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociation:
         """
+        This endpoint allows you to create multiple associations between specified
+        'from' and 'to' object types in a single batch request.
+
         Args:
           extra_headers: Send extra headers
 
@@ -269,6 +278,9 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociationMulti:
         """
+        This endpoint allows you to retrieve multiple associations between specified
+        'from' and 'to' object types in a single batch request.
+
         Args:
           extra_headers: Send extra headers
 

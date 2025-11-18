@@ -49,11 +49,10 @@ class MessagesResource(SyncAPIResource):
 
     def create(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         attachments: Iterable[message_create_params.Attachment],
         channel_account_id: str,
-        integration_thread_id: str,
         message_direction: Literal["INCOMING", "OUTGOING"],
         recipients: Iterable[ChannelIntegrationParticipantParam],
         senders: Iterable[ChannelIntegrationParticipantParam],
@@ -61,6 +60,7 @@ class MessagesResource(SyncAPIResource):
         timestamp: Union[str, datetime],
         in_reply_to_id: str | Omit = omit,
         integration_idempotency_id: str | Omit = omit,
+        integration_thread_id: str | Omit = omit,
         pre_resolved_contacts: PreResolvedContactsParam | Omit = omit,
         rich_text: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -82,15 +82,12 @@ class MessagesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         return self._post(
             f"/conversations/v3/custom-channels/{channel_id}/messages",
             body=maybe_transform(
                 {
                     "attachments": attachments,
                     "channel_account_id": channel_account_id,
-                    "integration_thread_id": integration_thread_id,
                     "message_direction": message_direction,
                     "recipients": recipients,
                     "senders": senders,
@@ -98,6 +95,7 @@ class MessagesResource(SyncAPIResource):
                     "timestamp": timestamp,
                     "in_reply_to_id": in_reply_to_id,
                     "integration_idempotency_id": integration_idempotency_id,
+                    "integration_thread_id": integration_thread_id,
                     "pre_resolved_contacts": pre_resolved_contacts,
                     "rich_text": rich_text,
                 },
@@ -113,7 +111,7 @@ class MessagesResource(SyncAPIResource):
         self,
         message_id: str,
         *,
-        channel_id: str,
+        channel_id: int,
         status_type: Literal["SENT", "FAILED", "READ"],
         error_message: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -139,8 +137,6 @@ class MessagesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         if not message_id:
             raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
         return self._patch(
@@ -162,7 +158,7 @@ class MessagesResource(SyncAPIResource):
         self,
         message_id: str,
         *,
-        channel_id: str,
+        channel_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -182,8 +178,6 @@ class MessagesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         if not message_id:
             raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
         return self._get(
@@ -217,11 +211,10 @@ class AsyncMessagesResource(AsyncAPIResource):
 
     async def create(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         attachments: Iterable[message_create_params.Attachment],
         channel_account_id: str,
-        integration_thread_id: str,
         message_direction: Literal["INCOMING", "OUTGOING"],
         recipients: Iterable[ChannelIntegrationParticipantParam],
         senders: Iterable[ChannelIntegrationParticipantParam],
@@ -229,6 +222,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         timestamp: Union[str, datetime],
         in_reply_to_id: str | Omit = omit,
         integration_idempotency_id: str | Omit = omit,
+        integration_thread_id: str | Omit = omit,
         pre_resolved_contacts: PreResolvedContactsParam | Omit = omit,
         rich_text: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -250,15 +244,12 @@ class AsyncMessagesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         return await self._post(
             f"/conversations/v3/custom-channels/{channel_id}/messages",
             body=await async_maybe_transform(
                 {
                     "attachments": attachments,
                     "channel_account_id": channel_account_id,
-                    "integration_thread_id": integration_thread_id,
                     "message_direction": message_direction,
                     "recipients": recipients,
                     "senders": senders,
@@ -266,6 +257,7 @@ class AsyncMessagesResource(AsyncAPIResource):
                     "timestamp": timestamp,
                     "in_reply_to_id": in_reply_to_id,
                     "integration_idempotency_id": integration_idempotency_id,
+                    "integration_thread_id": integration_thread_id,
                     "pre_resolved_contacts": pre_resolved_contacts,
                     "rich_text": rich_text,
                 },
@@ -281,7 +273,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         self,
         message_id: str,
         *,
-        channel_id: str,
+        channel_id: int,
         status_type: Literal["SENT", "FAILED", "READ"],
         error_message: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -307,8 +299,6 @@ class AsyncMessagesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         if not message_id:
             raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
         return await self._patch(
@@ -330,7 +320,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         self,
         message_id: str,
         *,
-        channel_id: str,
+        channel_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -350,8 +340,6 @@ class AsyncMessagesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         if not message_id:
             raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
         return await self._get(

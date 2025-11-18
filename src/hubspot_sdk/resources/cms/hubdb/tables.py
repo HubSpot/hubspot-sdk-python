@@ -83,14 +83,14 @@ class TablesResource(SyncAPIResource):
     def create(
         self,
         *,
+        allow_child_tables: bool,
+        allow_public_api_access: bool,
+        columns: Iterable[ColumnRequestParam],
+        dynamic_meta_tags: Dict[str, int],
+        enable_child_table_pages: bool,
         label: str,
         name: str,
-        allow_child_tables: bool | Omit = omit,
-        allow_public_api_access: bool | Omit = omit,
-        columns: Iterable[ColumnRequestParam] | Omit = omit,
-        dynamic_meta_tags: Dict[str, int] | Omit = omit,
-        enable_child_table_pages: bool | Omit = omit,
-        use_for_pages: bool | Omit = omit,
+        use_for_pages: bool,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -104,10 +104,6 @@ class TablesResource(SyncAPIResource):
         should be unique for each account.
 
         Args:
-          label: Label of the table
-
-          name: Name of the table
-
           allow_child_tables: Specifies whether child tables can be created
 
           allow_public_api_access: Specifies whether the table can be read by public without authorization
@@ -119,6 +115,10 @@ class TablesResource(SyncAPIResource):
               with the associated column IDs.
 
           enable_child_table_pages: Specifies creation of multi-level dynamic pages using child tables
+
+          label: Label of the table
+
+          name: Name of the table
 
           use_for_pages: Specifies whether the table can be used for creation of dynamic pages
 
@@ -134,13 +134,13 @@ class TablesResource(SyncAPIResource):
             "/cms/v3/hubdb/tables",
             body=maybe_transform(
                 {
-                    "label": label,
-                    "name": name,
                     "allow_child_tables": allow_child_tables,
                     "allow_public_api_access": allow_public_api_access,
                     "columns": columns,
                     "dynamic_meta_tags": dynamic_meta_tags,
                     "enable_child_table_pages": enable_child_table_pages,
+                    "label": label,
+                    "name": name,
                     "use_for_pages": use_for_pages,
                 },
                 table_create_params.TableCreateParams,
@@ -837,17 +837,17 @@ class TablesResource(SyncAPIResource):
         self,
         table_id_or_name: str,
         *,
+        allow_child_tables: bool,
+        allow_public_api_access: bool,
+        columns: Iterable[ColumnRequestParam],
+        dynamic_meta_tags: Dict[str, int],
+        enable_child_table_pages: bool,
         label: str,
         name: str,
+        use_for_pages: bool,
         archived: bool | Omit = omit,
         include_foreign_ids: bool | Omit = omit,
         is_get_localized_schema: bool | Omit = omit,
-        allow_child_tables: bool | Omit = omit,
-        allow_public_api_access: bool | Omit = omit,
-        columns: Iterable[ColumnRequestParam] | Omit = omit,
-        dynamic_meta_tags: Dict[str, int] | Omit = omit,
-        enable_child_table_pages: bool | Omit = omit,
-        use_for_pages: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -867,14 +867,6 @@ class TablesResource(SyncAPIResource):
         column in the request, it will be deleted.
 
         Args:
-          label: Label of the table
-
-          name: Name of the table
-
-          archived: Specifies whether to return archived tables. Defaults to `false`.
-
-          include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
-
           allow_child_tables: Specifies whether child tables can be created
 
           allow_public_api_access: Specifies whether the table can be read by public without authorization
@@ -887,7 +879,15 @@ class TablesResource(SyncAPIResource):
 
           enable_child_table_pages: Specifies creation of multi-level dynamic pages using child tables
 
+          label: Label of the table
+
+          name: Name of the table
+
           use_for_pages: Specifies whether the table can be used for creation of dynamic pages
+
+          archived: Specifies whether to return archived tables. Defaults to `false`.
+
+          include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
 
           extra_headers: Send extra headers
 
@@ -903,13 +903,13 @@ class TablesResource(SyncAPIResource):
             f"/cms/v3/hubdb/tables/{table_id_or_name}/draft",
             body=maybe_transform(
                 {
-                    "label": label,
-                    "name": name,
                     "allow_child_tables": allow_child_tables,
                     "allow_public_api_access": allow_public_api_access,
                     "columns": columns,
                     "dynamic_meta_tags": dynamic_meta_tags,
                     "enable_child_table_pages": enable_child_table_pages,
+                    "label": label,
+                    "name": name,
                     "use_for_pages": use_for_pages,
                 },
                 table_update_draft_params.TableUpdateDraftParams,
@@ -955,14 +955,14 @@ class AsyncTablesResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        allow_child_tables: bool,
+        allow_public_api_access: bool,
+        columns: Iterable[ColumnRequestParam],
+        dynamic_meta_tags: Dict[str, int],
+        enable_child_table_pages: bool,
         label: str,
         name: str,
-        allow_child_tables: bool | Omit = omit,
-        allow_public_api_access: bool | Omit = omit,
-        columns: Iterable[ColumnRequestParam] | Omit = omit,
-        dynamic_meta_tags: Dict[str, int] | Omit = omit,
-        enable_child_table_pages: bool | Omit = omit,
-        use_for_pages: bool | Omit = omit,
+        use_for_pages: bool,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -976,10 +976,6 @@ class AsyncTablesResource(AsyncAPIResource):
         should be unique for each account.
 
         Args:
-          label: Label of the table
-
-          name: Name of the table
-
           allow_child_tables: Specifies whether child tables can be created
 
           allow_public_api_access: Specifies whether the table can be read by public without authorization
@@ -991,6 +987,10 @@ class AsyncTablesResource(AsyncAPIResource):
               with the associated column IDs.
 
           enable_child_table_pages: Specifies creation of multi-level dynamic pages using child tables
+
+          label: Label of the table
+
+          name: Name of the table
 
           use_for_pages: Specifies whether the table can be used for creation of dynamic pages
 
@@ -1006,13 +1006,13 @@ class AsyncTablesResource(AsyncAPIResource):
             "/cms/v3/hubdb/tables",
             body=await async_maybe_transform(
                 {
-                    "label": label,
-                    "name": name,
                     "allow_child_tables": allow_child_tables,
                     "allow_public_api_access": allow_public_api_access,
                     "columns": columns,
                     "dynamic_meta_tags": dynamic_meta_tags,
                     "enable_child_table_pages": enable_child_table_pages,
+                    "label": label,
+                    "name": name,
                     "use_for_pages": use_for_pages,
                 },
                 table_create_params.TableCreateParams,
@@ -1709,17 +1709,17 @@ class AsyncTablesResource(AsyncAPIResource):
         self,
         table_id_or_name: str,
         *,
+        allow_child_tables: bool,
+        allow_public_api_access: bool,
+        columns: Iterable[ColumnRequestParam],
+        dynamic_meta_tags: Dict[str, int],
+        enable_child_table_pages: bool,
         label: str,
         name: str,
+        use_for_pages: bool,
         archived: bool | Omit = omit,
         include_foreign_ids: bool | Omit = omit,
         is_get_localized_schema: bool | Omit = omit,
-        allow_child_tables: bool | Omit = omit,
-        allow_public_api_access: bool | Omit = omit,
-        columns: Iterable[ColumnRequestParam] | Omit = omit,
-        dynamic_meta_tags: Dict[str, int] | Omit = omit,
-        enable_child_table_pages: bool | Omit = omit,
-        use_for_pages: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1739,14 +1739,6 @@ class AsyncTablesResource(AsyncAPIResource):
         column in the request, it will be deleted.
 
         Args:
-          label: Label of the table
-
-          name: Name of the table
-
-          archived: Specifies whether to return archived tables. Defaults to `false`.
-
-          include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
-
           allow_child_tables: Specifies whether child tables can be created
 
           allow_public_api_access: Specifies whether the table can be read by public without authorization
@@ -1759,7 +1751,15 @@ class AsyncTablesResource(AsyncAPIResource):
 
           enable_child_table_pages: Specifies creation of multi-level dynamic pages using child tables
 
+          label: Label of the table
+
+          name: Name of the table
+
           use_for_pages: Specifies whether the table can be used for creation of dynamic pages
+
+          archived: Specifies whether to return archived tables. Defaults to `false`.
+
+          include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
 
           extra_headers: Send extra headers
 
@@ -1775,13 +1775,13 @@ class AsyncTablesResource(AsyncAPIResource):
             f"/cms/v3/hubdb/tables/{table_id_or_name}/draft",
             body=await async_maybe_transform(
                 {
-                    "label": label,
-                    "name": name,
                     "allow_child_tables": allow_child_tables,
                     "allow_public_api_access": allow_public_api_access,
                     "columns": columns,
                     "dynamic_meta_tags": dynamic_meta_tags,
                     "enable_child_table_pages": enable_child_table_pages,
+                    "label": label,
+                    "name": name,
                     "use_for_pages": use_for_pages,
                 },
                 table_update_draft_params.TableUpdateDraftParams,

@@ -74,8 +74,8 @@ class ContactsResource(SyncAPIResource):
     def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,8 +106,8 @@ class ContactsResource(SyncAPIResource):
             "/crm/v3/objects/contacts",
             body=maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 contact_create_params.ContactCreateParams,
             ),
@@ -122,6 +122,7 @@ class ContactsResource(SyncAPIResource):
         contact_id: str,
         *,
         properties: Dict[str, str],
+        id_property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -142,6 +143,8 @@ class ContactsResource(SyncAPIResource):
         Args:
           properties: Key value pairs representing the properties of the object.
 
+          id_property: The name of a property whose values are unique for this object.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -156,7 +159,11 @@ class ContactsResource(SyncAPIResource):
             f"/crm/v3/objects/contacts/{contact_id}",
             body=maybe_transform({"properties": properties}, contact_update_params.ContactUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"id_property": id_property}, contact_update_params.ContactUpdateParams),
             ),
             cast_to=SimplePublicObject,
         )
@@ -293,6 +300,10 @@ class ContactsResource(SyncAPIResource):
         [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
 
         Args:
+          object_id: ID of the object
+
+          id_property: ID property
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -323,6 +334,7 @@ class ContactsResource(SyncAPIResource):
         *,
         archived: bool | Omit = omit,
         associations: SequenceNotStr[str] | Omit = omit,
+        id_property: str | Omit = omit,
         properties: SequenceNotStr[str] | Omit = omit,
         properties_with_history: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -342,6 +354,8 @@ class ContactsResource(SyncAPIResource):
 
           associations: A comma separated list of object types to retrieve associated IDs for. If any of
               the specified associations do not exist, they will be ignored.
+
+          id_property: The name of a property whose values are unique for this object
 
           properties: A comma separated list of the properties to be returned in the response. If any
               of the specified properties are not present on the requested object(s), they
@@ -372,6 +386,7 @@ class ContactsResource(SyncAPIResource):
                     {
                         "archived": archived,
                         "associations": associations,
+                        "id_property": id_property,
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
@@ -399,6 +414,11 @@ class ContactsResource(SyncAPIResource):
         [merging records](https://knowledge.hubspot.com/records/merge-records).
 
         Args:
+          object_id_to_merge: The unique identifier of the CRM object that will be merged into the primary
+              object.
+
+          primary_object_id: The unique identifier of the CRM object that will remain after the merge.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -425,12 +445,12 @@ class ContactsResource(SyncAPIResource):
     def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -452,9 +472,9 @@ class ContactsResource(SyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -472,8 +492,8 @@ class ContactsResource(SyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 contact_search_params.ContactSearchParams,
             ),
@@ -511,8 +531,8 @@ class AsyncContactsResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -543,8 +563,8 @@ class AsyncContactsResource(AsyncAPIResource):
             "/crm/v3/objects/contacts",
             body=await async_maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 contact_create_params.ContactCreateParams,
             ),
@@ -559,6 +579,7 @@ class AsyncContactsResource(AsyncAPIResource):
         contact_id: str,
         *,
         properties: Dict[str, str],
+        id_property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -579,6 +600,8 @@ class AsyncContactsResource(AsyncAPIResource):
         Args:
           properties: Key value pairs representing the properties of the object.
 
+          id_property: The name of a property whose values are unique for this object.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -593,7 +616,13 @@ class AsyncContactsResource(AsyncAPIResource):
             f"/crm/v3/objects/contacts/{contact_id}",
             body=await async_maybe_transform({"properties": properties}, contact_update_params.ContactUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"id_property": id_property}, contact_update_params.ContactUpdateParams
+                ),
             ),
             cast_to=SimplePublicObject,
         )
@@ -730,6 +759,10 @@ class AsyncContactsResource(AsyncAPIResource):
         [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
 
         Args:
+          object_id: ID of the object
+
+          id_property: ID property
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -760,6 +793,7 @@ class AsyncContactsResource(AsyncAPIResource):
         *,
         archived: bool | Omit = omit,
         associations: SequenceNotStr[str] | Omit = omit,
+        id_property: str | Omit = omit,
         properties: SequenceNotStr[str] | Omit = omit,
         properties_with_history: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -779,6 +813,8 @@ class AsyncContactsResource(AsyncAPIResource):
 
           associations: A comma separated list of object types to retrieve associated IDs for. If any of
               the specified associations do not exist, they will be ignored.
+
+          id_property: The name of a property whose values are unique for this object
 
           properties: A comma separated list of the properties to be returned in the response. If any
               of the specified properties are not present on the requested object(s), they
@@ -809,6 +845,7 @@ class AsyncContactsResource(AsyncAPIResource):
                     {
                         "archived": archived,
                         "associations": associations,
+                        "id_property": id_property,
                         "properties": properties,
                         "properties_with_history": properties_with_history,
                     },
@@ -836,6 +873,11 @@ class AsyncContactsResource(AsyncAPIResource):
         [merging records](https://knowledge.hubspot.com/records/merge-records).
 
         Args:
+          object_id_to_merge: The unique identifier of the CRM object that will be merged into the primary
+              object.
+
+          primary_object_id: The unique identifier of the CRM object that will remain after the merge.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -862,12 +904,12 @@ class AsyncContactsResource(AsyncAPIResource):
     async def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -889,9 +931,9 @@ class AsyncContactsResource(AsyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -909,8 +951,8 @@ class AsyncContactsResource(AsyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 contact_search_params.ContactSearchParams,
             ),

@@ -51,6 +51,7 @@ class CalendarResource(SyncAPIResource):
     def create(
         self,
         *,
+        organizer_user_id: str,
         associations: Iterable[ExternalAssociationCreateRequestParam],
         email_reminder_schedule: ExternalEmailReminderScheduleParam,
         properties: ExternalCalendarMeetingEventCreatePropertiesParam,
@@ -84,7 +85,13 @@ class CalendarResource(SyncAPIResource):
                 calendar_create_params.CalendarCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"organizer_user_id": organizer_user_id}, calendar_create_params.CalendarCreateParams
+                ),
             ),
             cast_to=ExternalCalenderMeetingEventResponse,
         )
@@ -113,6 +120,7 @@ class AsyncCalendarResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        organizer_user_id: str,
         associations: Iterable[ExternalAssociationCreateRequestParam],
         email_reminder_schedule: ExternalEmailReminderScheduleParam,
         properties: ExternalCalendarMeetingEventCreatePropertiesParam,
@@ -146,7 +154,13 @@ class AsyncCalendarResource(AsyncAPIResource):
                 calendar_create_params.CalendarCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"organizer_user_id": organizer_user_id}, calendar_create_params.CalendarCreateParams
+                ),
             ),
             cast_to=ExternalCalenderMeetingEventResponse,
         )

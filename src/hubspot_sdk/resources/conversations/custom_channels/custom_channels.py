@@ -14,7 +14,7 @@ from .messages import (
     MessagesResourceWithStreamingResponse,
     AsyncMessagesResourceWithStreamingResponse,
 )
-from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -24,7 +24,8 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
 from .channel_accounts import (
     ChannelAccountsResource,
     AsyncChannelAccountsResource,
@@ -33,7 +34,11 @@ from .channel_accounts import (
     ChannelAccountsResourceWithStreamingResponse,
     AsyncChannelAccountsResourceWithStreamingResponse,
 )
-from ....types.conversations import custom_channel_create_params, custom_channel_update_params
+from ....types.conversations import (
+    custom_channel_list_params,
+    custom_channel_create_params,
+    custom_channel_update_params,
+)
 from .channel_account_staging_tokens import (
     ChannelAccountStagingTokensResource,
     AsyncChannelAccountStagingTokensResource,
@@ -43,9 +48,6 @@ from .channel_account_staging_tokens import (
     AsyncChannelAccountStagingTokensResourceWithStreamingResponse,
 )
 from ....types.conversations.public_channel_integration_channel import PublicChannelIntegrationChannel
-from ....types.conversations.collection_response_with_total_public_channel_integration_channel_forward_paging import (
-    CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
-)
 
 __all__ = ["CustomChannelsResource", "AsyncCustomChannelsResource"]
 
@@ -132,14 +134,14 @@ class CustomChannelsResource(SyncAPIResource):
 
     def update(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         capabilities: Dict[str, object],
+        channel_account_connection_redirect_url: object,
         channel_description: object,
         channel_logo_url: object,
-        channel_account_connection_redirect_url: object | Omit = omit,
-        name: object | Omit = omit,
-        webhook_url: object | Omit = omit,
+        name: object,
+        webhook_url: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -161,16 +163,14 @@ class CustomChannelsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         return self._patch(
             f"/conversations/v3/custom-channels/{channel_id}",
             body=maybe_transform(
                 {
                     "capabilities": capabilities,
+                    "channel_account_connection_redirect_url": channel_account_connection_redirect_url,
                     "channel_description": channel_description,
                     "channel_logo_url": channel_logo_url,
-                    "channel_account_connection_redirect_url": channel_account_connection_redirect_url,
                     "name": name,
                     "webhook_url": webhook_url,
                 },
@@ -185,25 +185,63 @@ class CustomChannelsResource(SyncAPIResource):
     def list(
         self,
         *,
+        after: str | Omit = omit,
+        default_page_length: int | Omit = omit,
+        limit: int | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging:
-        """Retrieve all custom channels associated with the app."""
-        return self._get(
+    ) -> SyncPage[PublicChannelIntegrationChannel]:
+        """
+        Retrieve all custom channels associated with the app.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          default_page_length: Specify the default number of results to return per page.
+
+          limit: The maximum number of results to display per page.
+
+          sort: Specify the sorting order for the results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
             "/conversations/v3/custom-channels/",
+            page=SyncPage[PublicChannelIntegrationChannel],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "default_page_length": default_page_length,
+                        "limit": limit,
+                        "sort": sort,
+                    },
+                    custom_channel_list_params.CustomChannelListParams,
+                ),
             ),
-            cast_to=CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
+            model=PublicChannelIntegrationChannel,
         )
 
     def delete(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -224,8 +262,6 @@ class CustomChannelsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/conversations/v3/custom-channels/{channel_id}",
@@ -237,7 +273,7 @@ class CustomChannelsResource(SyncAPIResource):
 
     def get(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -260,8 +296,6 @@ class CustomChannelsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         return self._get(
             f"/conversations/v3/custom-channels/{channel_id}",
             options=make_request_options(
@@ -353,14 +387,14 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
 
     async def update(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         capabilities: Dict[str, object],
+        channel_account_connection_redirect_url: object,
         channel_description: object,
         channel_logo_url: object,
-        channel_account_connection_redirect_url: object | Omit = omit,
-        name: object | Omit = omit,
-        webhook_url: object | Omit = omit,
+        name: object,
+        webhook_url: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,16 +416,14 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         return await self._patch(
             f"/conversations/v3/custom-channels/{channel_id}",
             body=await async_maybe_transform(
                 {
                     "capabilities": capabilities,
+                    "channel_account_connection_redirect_url": channel_account_connection_redirect_url,
                     "channel_description": channel_description,
                     "channel_logo_url": channel_logo_url,
-                    "channel_account_connection_redirect_url": channel_account_connection_redirect_url,
                     "name": name,
                     "webhook_url": webhook_url,
                 },
@@ -403,28 +435,66 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
             cast_to=PublicChannelIntegrationChannel,
         )
 
-    async def list(
+    def list(
         self,
         *,
+        after: str | Omit = omit,
+        default_page_length: int | Omit = omit,
+        limit: int | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging:
-        """Retrieve all custom channels associated with the app."""
-        return await self._get(
+    ) -> AsyncPaginator[PublicChannelIntegrationChannel, AsyncPage[PublicChannelIntegrationChannel]]:
+        """
+        Retrieve all custom channels associated with the app.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          default_page_length: Specify the default number of results to return per page.
+
+          limit: The maximum number of results to display per page.
+
+          sort: Specify the sorting order for the results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
             "/conversations/v3/custom-channels/",
+            page=AsyncPage[PublicChannelIntegrationChannel],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "default_page_length": default_page_length,
+                        "limit": limit,
+                        "sort": sort,
+                    },
+                    custom_channel_list_params.CustomChannelListParams,
+                ),
             ),
-            cast_to=CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
+            model=PublicChannelIntegrationChannel,
         )
 
     async def delete(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -445,8 +515,6 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/conversations/v3/custom-channels/{channel_id}",
@@ -458,7 +526,7 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
 
     async def get(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -481,8 +549,6 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         return await self._get(
             f"/conversations/v3/custom-channels/{channel_id}",
             options=make_request_options(

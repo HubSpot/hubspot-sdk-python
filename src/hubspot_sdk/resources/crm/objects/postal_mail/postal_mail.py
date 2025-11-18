@@ -72,8 +72,8 @@ class PostalMailResource(SyncAPIResource):
     def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -100,8 +100,8 @@ class PostalMailResource(SyncAPIResource):
             "/crm/v3/objects/postal_mail",
             body=maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 postal_mail_create_params.PostalMailCreateParams,
             ),
@@ -286,12 +286,12 @@ class PostalMailResource(SyncAPIResource):
     def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -311,9 +311,9 @@ class PostalMailResource(SyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -331,8 +331,8 @@ class PostalMailResource(SyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 postal_mail_search_params.PostalMailSearchParams,
             ),
@@ -370,8 +370,8 @@ class AsyncPostalMailResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -398,8 +398,8 @@ class AsyncPostalMailResource(AsyncAPIResource):
             "/crm/v3/objects/postal_mail",
             body=await async_maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 postal_mail_create_params.PostalMailCreateParams,
             ),
@@ -588,12 +588,12 @@ class AsyncPostalMailResource(AsyncAPIResource):
     async def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -613,9 +613,9 @@ class AsyncPostalMailResource(AsyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -633,8 +633,8 @@ class AsyncPostalMailResource(AsyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 postal_mail_search_params.PostalMailSearchParams,
             ),

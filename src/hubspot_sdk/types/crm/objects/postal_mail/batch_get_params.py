@@ -24,3 +24,4 @@ class BatchGetParams(TypedDict, total=False):
     archived: bool
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
+    """A unique property used to identify objects instead of the default ID."""

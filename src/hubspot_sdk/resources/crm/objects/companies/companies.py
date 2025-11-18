@@ -73,8 +73,8 @@ class CompaniesResource(SyncAPIResource):
     def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -105,8 +105,8 @@ class CompaniesResource(SyncAPIResource):
             "/crm/v3/objects/companies",
             body=maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 company_create_params.CompanyCreateParams,
             ),
@@ -358,6 +358,11 @@ class CompaniesResource(SyncAPIResource):
         [merging records](https://knowledge.hubspot.com/records/merge-records).
 
         Args:
+          object_id_to_merge: The unique identifier of the CRM object that will be merged into the primary
+              object.
+
+          primary_object_id: The unique identifier of the CRM object that will remain after the merge.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -384,12 +389,12 @@ class CompaniesResource(SyncAPIResource):
     def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -411,9 +416,9 @@ class CompaniesResource(SyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -431,8 +436,8 @@ class CompaniesResource(SyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 company_search_params.CompanySearchParams,
             ),
@@ -470,8 +475,8 @@ class AsyncCompaniesResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -502,8 +507,8 @@ class AsyncCompaniesResource(AsyncAPIResource):
             "/crm/v3/objects/companies",
             body=await async_maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 company_create_params.CompanyCreateParams,
             ),
@@ -757,6 +762,11 @@ class AsyncCompaniesResource(AsyncAPIResource):
         [merging records](https://knowledge.hubspot.com/records/merge-records).
 
         Args:
+          object_id_to_merge: The unique identifier of the CRM object that will be merged into the primary
+              object.
+
+          primary_object_id: The unique identifier of the CRM object that will remain after the merge.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -783,12 +793,12 @@ class AsyncCompaniesResource(AsyncAPIResource):
     async def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -810,9 +820,9 @@ class AsyncCompaniesResource(AsyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -830,8 +840,8 @@ class AsyncCompaniesResource(AsyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 company_search_params.CompanySearchParams,
             ),

@@ -52,7 +52,7 @@ class StagesResource(SyncAPIResource):
         object_type: str,
         display_order: int,
         label: str,
-        metadata: Dict[str, str] | Omit = omit,
+        metadata: Dict[str, str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -61,7 +61,7 @@ class StagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Create a pipeline stage
+        Create a new stage within the specified pipeline.
 
         Args:
           display_order: The order for displaying this pipeline stage. If two pipeline stages have a
@@ -116,10 +116,10 @@ class StagesResource(SyncAPIResource):
         *,
         object_type: str,
         pipeline_id: str,
+        metadata: Dict[str, str],
         archived: bool | Omit = omit,
         display_order: int | Omit = omit,
         label: str | Omit = omit,
-        metadata: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -128,15 +128,9 @@ class StagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
+        Perform a partial update on a specific stage of a pipeline.
+
         Args:
-          archived: Whether the pipeline is archived.
-
-          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
-              matching `displayOrder`, they will be sorted alphabetically by label.
-
-          label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
-              label must be unique within that pipeline.
-
           metadata: A JSON object containing properties that are not present on all object
               pipelines.
 
@@ -148,6 +142,14 @@ class StagesResource(SyncAPIResource):
               (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
               has been closed by a member of your Support team. Possible values are `OPEN` or
               `CLOSED`.
+
+          archived: Whether the pipeline is archived.
+
+          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
+              matching `displayOrder`, they will be sorted alphabetically by label.
+
+          label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
+              label must be unique within that pipeline.
 
           extra_headers: Send extra headers
 
@@ -167,10 +169,10 @@ class StagesResource(SyncAPIResource):
             f"/crm/v3/pipelines/{object_type}/{pipeline_id}/stages/{stage_id}",
             body=maybe_transform(
                 {
+                    "metadata": metadata,
                     "archived": archived,
                     "display_order": display_order,
                     "label": label,
-                    "metadata": metadata,
                 },
                 stage_update_params.StageUpdateParams,
             ),
@@ -230,7 +232,7 @@ class StagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a pipeline stage
+        Delete a specific stage from a pipeline.
 
         Args:
           extra_headers: Send extra headers
@@ -270,7 +272,7 @@ class StagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Return a pipeline stage by ID
+        Retrieve a specific stage from a pipeline using its ID.
 
         Args:
           extra_headers: Send extra headers
@@ -343,7 +345,7 @@ class StagesResource(SyncAPIResource):
         pipeline_id: str,
         display_order: int,
         label: str,
-        metadata: Dict[str, str] | Omit = omit,
+        metadata: Dict[str, str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -432,7 +434,7 @@ class AsyncStagesResource(AsyncAPIResource):
         object_type: str,
         display_order: int,
         label: str,
-        metadata: Dict[str, str] | Omit = omit,
+        metadata: Dict[str, str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -441,7 +443,7 @@ class AsyncStagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Create a pipeline stage
+        Create a new stage within the specified pipeline.
 
         Args:
           display_order: The order for displaying this pipeline stage. If two pipeline stages have a
@@ -496,10 +498,10 @@ class AsyncStagesResource(AsyncAPIResource):
         *,
         object_type: str,
         pipeline_id: str,
+        metadata: Dict[str, str],
         archived: bool | Omit = omit,
         display_order: int | Omit = omit,
         label: str | Omit = omit,
-        metadata: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -508,15 +510,9 @@ class AsyncStagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
+        Perform a partial update on a specific stage of a pipeline.
+
         Args:
-          archived: Whether the pipeline is archived.
-
-          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
-              matching `displayOrder`, they will be sorted alphabetically by label.
-
-          label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
-              label must be unique within that pipeline.
-
           metadata: A JSON object containing properties that are not present on all object
               pipelines.
 
@@ -528,6 +524,14 @@ class AsyncStagesResource(AsyncAPIResource):
               (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
               has been closed by a member of your Support team. Possible values are `OPEN` or
               `CLOSED`.
+
+          archived: Whether the pipeline is archived.
+
+          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
+              matching `displayOrder`, they will be sorted alphabetically by label.
+
+          label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
+              label must be unique within that pipeline.
 
           extra_headers: Send extra headers
 
@@ -547,10 +551,10 @@ class AsyncStagesResource(AsyncAPIResource):
             f"/crm/v3/pipelines/{object_type}/{pipeline_id}/stages/{stage_id}",
             body=await async_maybe_transform(
                 {
+                    "metadata": metadata,
                     "archived": archived,
                     "display_order": display_order,
                     "label": label,
-                    "metadata": metadata,
                 },
                 stage_update_params.StageUpdateParams,
             ),
@@ -610,7 +614,7 @@ class AsyncStagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a pipeline stage
+        Delete a specific stage from a pipeline.
 
         Args:
           extra_headers: Send extra headers
@@ -650,7 +654,7 @@ class AsyncStagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
-        Return a pipeline stage by ID
+        Retrieve a specific stage from a pipeline using its ID.
 
         Args:
           extra_headers: Send extra headers
@@ -723,7 +727,7 @@ class AsyncStagesResource(AsyncAPIResource):
         pipeline_id: str,
         display_order: int,
         label: str,
-        metadata: Dict[str, str] | Omit = omit,
+        metadata: Dict[str, str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

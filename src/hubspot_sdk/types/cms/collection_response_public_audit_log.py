@@ -3,8 +3,8 @@
 from typing import List, Optional
 
 from ..._models import BaseModel
+from ..shared.paging import Paging
 from .public_audit_log import PublicAuditLog
-from ..marketing.emails_paging import EmailsPaging
 
 __all__ = ["CollectionResponsePublicAuditLog"]
 
@@ -12,5 +12,4 @@ __all__ = ["CollectionResponsePublicAuditLog"]
 class CollectionResponsePublicAuditLog(BaseModel):
     results: List[PublicAuditLog]
 
-    paging: Optional[EmailsPaging] = None
-    """Contains information pagination of results."""
+    paging: Optional[Paging] = None

@@ -7,25 +7,34 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from ..shared.standard_error import StandardError
 from .public_default_association import PublicDefaultAssociation
-from .associations.standard_error_1 import StandardError1
 
 __all__ = ["BatchResponsePublicDefaultAssociation"]
 
 
 class BatchResponsePublicDefaultAssociation(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
+    """The timestamp when the batch process was completed, in ISO 8601 format."""
 
     results: List[PublicDefaultAssociation]
 
     started_at: datetime = FieldInfo(alias="startedAt")
+    """The timestamp when the batch process began execution, in ISO 8601 format."""
 
     status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    """
+    The status of the batch processing request: "PENDING", "PROCESSING",
+    "CANCELLED", or "COMPLETE".
+    """
 
-    errors: Optional[List[StandardError1]] = None
+    errors: Optional[List[StandardError]] = None
 
     links: Optional[Dict[str, str]] = None
+    """An object containing relevant links related to the batch request."""
 
     num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
+    """The number of errors encountered during the batch processing."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
+    """The timestamp when the batch process was initiated, in ISO 8601 format."""

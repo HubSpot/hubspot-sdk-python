@@ -12,5 +12,7 @@ __all__ = ["PublicPropertyValidationRuleMap"]
 
 class PublicPropertyValidationRuleMap(BaseModel):
     property_name: str = FieldInfo(alias="propertyName")
+    """The name of the property for which validation rules are defined."""
 
     property_validation_rules: List[PublicPropertyValidationRule] = FieldInfo(alias="propertyValidationRules")
+    """A list of validation rules applicable to the property."""

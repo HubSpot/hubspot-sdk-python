@@ -14,8 +14,10 @@ __all__ = ["BatchGetParams"]
 class BatchGetParams(TypedDict, total=False):
     archived: Required[bool]
 
+    data_sensitivity: Required[
+        Annotated[Literal["non_sensitive", "sensitive", "highly_sensitive"], PropertyInfo(alias="dataSensitivity")]
+    ]
+
     inputs: Required[Iterable[PropertyName]]
 
-    data_sensitivity: Annotated[
-        Literal["non_sensitive", "sensitive", "highly_sensitive"], PropertyInfo(alias="dataSensitivity")
-    ]
+    locale: str

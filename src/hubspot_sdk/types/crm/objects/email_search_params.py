@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
 
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
@@ -13,20 +13,20 @@ __all__ = ["EmailSearchParams"]
 
 
 class EmailSearchParams(TypedDict, total=False):
-    after: str
+    after: Required[str]
     """A paging cursor token for retrieving subsequent pages."""
 
-    filter_groups: Annotated[Iterable[FilterGroupParam], PropertyInfo(alias="filterGroups")]
+    filter_groups: Required[Annotated[Iterable[FilterGroupParam], PropertyInfo(alias="filterGroups")]]
     """Up to 6 groups of filters defining additional query criteria."""
 
-    limit: int
+    limit: Required[int]
     """The maximum results to return, up to 200 objects."""
 
-    properties: SequenceNotStr[str]
+    properties: Required[SequenceNotStr[str]]
     """A list of property names to include in the response."""
+
+    sorts: Required[SequenceNotStr[str]]
+    """Specifies sorting order based on object properties."""
 
     query: str
     """The search query string, up to 3000 characters."""
-
-    sorts: SequenceNotStr[str]
-    """Specifies sorting order based on object properties."""

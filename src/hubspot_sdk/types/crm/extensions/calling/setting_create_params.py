@@ -10,20 +10,20 @@ __all__ = ["SettingCreateParams"]
 
 
 class SettingCreateParams(TypedDict, total=False):
+    height: Required[int]
+
+    is_ready: Required[Annotated[bool, PropertyInfo(alias="isReady")]]
+
     name: Required[str]
+
+    supports_custom_objects: Required[Annotated[bool, PropertyInfo(alias="supportsCustomObjects")]]
+
+    supports_inbound_calling: Required[Annotated[bool, PropertyInfo(alias="supportsInboundCalling")]]
 
     url: Required[str]
 
-    height: int
+    uses_calling_window: Required[Annotated[bool, PropertyInfo(alias="usesCallingWindow")]]
 
-    is_ready: Annotated[bool, PropertyInfo(alias="isReady")]
+    uses_remote: Required[Annotated[bool, PropertyInfo(alias="usesRemote")]]
 
-    supports_custom_objects: Annotated[bool, PropertyInfo(alias="supportsCustomObjects")]
-
-    supports_inbound_calling: Annotated[bool, PropertyInfo(alias="supportsInboundCalling")]
-
-    uses_calling_window: Annotated[bool, PropertyInfo(alias="usesCallingWindow")]
-
-    uses_remote: Annotated[bool, PropertyInfo(alias="usesRemote")]
-
-    width: int
+    width: Required[int]

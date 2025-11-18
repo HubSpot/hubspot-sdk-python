@@ -14,6 +14,6 @@ class MarketingEventSubscriberParam(TypedDict, total=False):
     interaction_date_time: Required[Annotated[int, PropertyInfo(alias="interactionDateTime")]]
     """Timestamp in milliseconds at which the contact subscribed to the event."""
 
-    properties: Dict[str, str]
+    properties: Required[Dict[str, str]]
 
-    vid: int
+    vid: Required[int]

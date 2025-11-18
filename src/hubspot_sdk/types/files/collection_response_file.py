@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from .file import File
 from ..._models import BaseModel
-from ..marketing.emails_paging import EmailsPaging
+from ..shared.paging import Paging
 
 __all__ = ["CollectionResponseFile"]
 
@@ -12,5 +12,4 @@ __all__ = ["CollectionResponseFile"]
 class CollectionResponseFile(BaseModel):
     results: List[File]
 
-    paging: Optional[EmailsPaging] = None
-    """Contains information pagination of results."""
+    paging: Optional[Paging] = None

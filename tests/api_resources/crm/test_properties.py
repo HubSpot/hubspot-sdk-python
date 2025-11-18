@@ -214,6 +214,8 @@ class TestProperties:
         property = client.crm.properties.list(
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
+            locale="locale",
             properties="properties",
         )
         assert_matches_type(CollectionResponseProperty, property, path=["response"])
@@ -320,6 +322,8 @@ class TestProperties:
             property_name="propertyName",
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
+            locale="locale",
             properties="properties",
         )
         assert_matches_type(Property, property, path=["response"])
@@ -566,6 +570,8 @@ class TestAsyncProperties:
         property = await async_client.crm.properties.list(
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
+            locale="locale",
             properties="properties",
         )
         assert_matches_type(CollectionResponseProperty, property, path=["response"])
@@ -672,6 +678,8 @@ class TestAsyncProperties:
             property_name="propertyName",
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
+            locale="locale",
             properties="properties",
         )
         assert_matches_type(Property, property, path=["response"])

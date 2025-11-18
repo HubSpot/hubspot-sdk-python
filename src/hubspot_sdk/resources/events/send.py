@@ -48,10 +48,10 @@ class SendResource(SyncAPIResource):
         self,
         *,
         event_name: str,
+        properties: Dict[str, str],
         email: str | Omit = omit,
         object_id: str | Omit = omit,
         occurred_at: Union[str, datetime] | Omit = omit,
-        properties: Dict[str, str] | Omit = omit,
         utk: str | Omit = omit,
         uuid: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -71,6 +71,10 @@ class SendResource(SyncAPIResource):
               or in
               [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
 
+          properties: The event properties to update. Takes the format of key-value pairs (property
+              internal name and property value). Learn more about
+              [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+
           email: The visitor's email address. Used for associating the event data with a CRM
               record.
 
@@ -78,10 +82,6 @@ class SendResource(SyncAPIResource):
 
           occurred_at: The time when this event occurred. If this isn't set, the current time will be
               used.
-
-          properties: The event properties to update. Takes the format of key-value pairs (property
-              internal name and property value). Learn more about
-              [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
 
           utk: The visitor's usertoken. Used for associating the event data with a CRM record.
 
@@ -103,10 +103,10 @@ class SendResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "event_name": event_name,
+                    "properties": properties,
                     "email": email,
                     "object_id": object_id,
                     "occurred_at": occurred_at,
-                    "properties": properties,
                     "utk": utk,
                     "uuid": uuid,
                 },
@@ -176,10 +176,10 @@ class AsyncSendResource(AsyncAPIResource):
         self,
         *,
         event_name: str,
+        properties: Dict[str, str],
         email: str | Omit = omit,
         object_id: str | Omit = omit,
         occurred_at: Union[str, datetime] | Omit = omit,
-        properties: Dict[str, str] | Omit = omit,
         utk: str | Omit = omit,
         uuid: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -199,6 +199,10 @@ class AsyncSendResource(AsyncAPIResource):
               or in
               [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
 
+          properties: The event properties to update. Takes the format of key-value pairs (property
+              internal name and property value). Learn more about
+              [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+
           email: The visitor's email address. Used for associating the event data with a CRM
               record.
 
@@ -206,10 +210,6 @@ class AsyncSendResource(AsyncAPIResource):
 
           occurred_at: The time when this event occurred. If this isn't set, the current time will be
               used.
-
-          properties: The event properties to update. Takes the format of key-value pairs (property
-              internal name and property value). Learn more about
-              [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
 
           utk: The visitor's usertoken. Used for associating the event data with a CRM record.
 
@@ -231,10 +231,10 @@ class AsyncSendResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "event_name": event_name,
+                    "properties": properties,
                     "email": email,
                     "object_id": object_id,
                     "occurred_at": occurred_at,
-                    "properties": properties,
                     "utk": utk,
                     "uuid": uuid,
                 },

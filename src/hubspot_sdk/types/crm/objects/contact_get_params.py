@@ -20,6 +20,9 @@ class ContactGetParams(TypedDict, total=False):
     If any of the specified associations do not exist, they will be ignored.
     """
 
+    id_property: Annotated[str, PropertyInfo(alias="idProperty")]
+    """The name of a property whose values are unique for this object"""
+
     properties: SequenceNotStr[str]
     """A comma separated list of the properties to be returned in the response.
 

@@ -670,7 +670,20 @@ class TestEmails:
     @parametrize
     def test_method_get_ab_test_variation(self, client: Hubspot) -> None:
         email = client.marketing.emails.get_ab_test_variation(
-            "emailId",
+            email_id="emailId",
+        )
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_ab_test_variation_with_all_params(self, client: Hubspot) -> None:
+        email = client.marketing.emails.get_ab_test_variation(
+            email_id="emailId",
+            archived=True,
+            included_properties=["string"],
+            include_stats=True,
+            marketing_campaign_names=True,
+            workflow_names=True,
         )
         assert_matches_type(PublicEmail, email, path=["response"])
 
@@ -678,7 +691,7 @@ class TestEmails:
     @parametrize
     def test_raw_response_get_ab_test_variation(self, client: Hubspot) -> None:
         response = client.marketing.emails.with_raw_response.get_ab_test_variation(
-            "emailId",
+            email_id="emailId",
         )
 
         assert response.is_closed is True
@@ -690,7 +703,7 @@ class TestEmails:
     @parametrize
     def test_streaming_response_get_ab_test_variation(self, client: Hubspot) -> None:
         with client.marketing.emails.with_streaming_response.get_ab_test_variation(
-            "emailId",
+            email_id="emailId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -705,7 +718,7 @@ class TestEmails:
     def test_path_params_get_ab_test_variation(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.get_ab_test_variation(
-                "",
+                email_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -1939,7 +1952,20 @@ class TestAsyncEmails:
     @parametrize
     async def test_method_get_ab_test_variation(self, async_client: AsyncHubspot) -> None:
         email = await async_client.marketing.emails.get_ab_test_variation(
-            "emailId",
+            email_id="emailId",
+        )
+        assert_matches_type(PublicEmail, email, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_ab_test_variation_with_all_params(self, async_client: AsyncHubspot) -> None:
+        email = await async_client.marketing.emails.get_ab_test_variation(
+            email_id="emailId",
+            archived=True,
+            included_properties=["string"],
+            include_stats=True,
+            marketing_campaign_names=True,
+            workflow_names=True,
         )
         assert_matches_type(PublicEmail, email, path=["response"])
 
@@ -1947,7 +1973,7 @@ class TestAsyncEmails:
     @parametrize
     async def test_raw_response_get_ab_test_variation(self, async_client: AsyncHubspot) -> None:
         response = await async_client.marketing.emails.with_raw_response.get_ab_test_variation(
-            "emailId",
+            email_id="emailId",
         )
 
         assert response.is_closed is True
@@ -1959,7 +1985,7 @@ class TestAsyncEmails:
     @parametrize
     async def test_streaming_response_get_ab_test_variation(self, async_client: AsyncHubspot) -> None:
         async with async_client.marketing.emails.with_streaming_response.get_ab_test_variation(
-            "emailId",
+            email_id="emailId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1974,7 +2000,7 @@ class TestAsyncEmails:
     async def test_path_params_get_ab_test_variation(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.get_ab_test_variation(
-                "",
+                email_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")

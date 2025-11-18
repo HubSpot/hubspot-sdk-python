@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -13,11 +16,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.conversations.conversations_public_channel_account import ConversationsPublicChannelAccount
-from ...types.conversations.collection_response_with_total_public_channel_account_forward_paging import (
-    CollectionResponseWithTotalPublicChannelAccountForwardPaging,
-)
+from ...pagination import SyncPage, AsyncPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.conversations import channel_account_get_params, channel_account_list_params
+from ...types.conversations.public_channel_account import PublicChannelAccount
 
 __all__ = ["ChannelAccountsResource", "AsyncChannelAccountsResource"]
 
@@ -45,37 +47,40 @@ class ChannelAccountsResource(SyncAPIResource):
     def list(
         self,
         *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        channel_id: Iterable[int] | Omit = omit,
+        default_page_length: int | Omit = omit,
+        inbox_id: Iterable[int] | Omit = omit,
+        limit: int | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalPublicChannelAccountForwardPaging:
-        """Retrieve a list of channel accounts, with optional filters and sorting."""
-        return self._get(
-            "/conversations/v3/conversations/channel-accounts",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CollectionResponseWithTotalPublicChannelAccountForwardPaging,
-        )
-
-    def get(
-        self,
-        channel_account_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConversationsPublicChannelAccount:
+    ) -> SyncPage[PublicChannelAccount]:
         """
-        Retrieve details of a single channel account using the channel account ID.
+        Retrieve a list of channel accounts, with optional filters and sorting.
 
         Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to include archived channel accounts in the response.
+
+          channel_id: Limits results to channel accounts within a particular channel.
+
+          default_page_length: The default number of results to display per page.
+
+          inbox_id: Limits results to channel accounts within a particular inbox.
+
+          limit: The maximum number of results to display per page.
+
+          sort: The sort order for the channel accounts.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -84,14 +89,66 @@ class ChannelAccountsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_account_id:
-            raise ValueError(f"Expected a non-empty value for `channel_account_id` but received {channel_account_id!r}")
+        return self._get_api_list(
+            "/conversations/v3/conversations/channel-accounts",
+            page=SyncPage[PublicChannelAccount],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "channel_id": channel_id,
+                        "default_page_length": default_page_length,
+                        "inbox_id": inbox_id,
+                        "limit": limit,
+                        "sort": sort,
+                    },
+                    channel_account_list_params.ChannelAccountListParams,
+                ),
+            ),
+            model=PublicChannelAccount,
+        )
+
+    def get(
+        self,
+        channel_account_id: int,
+        *,
+        archived: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PublicChannelAccount:
+        """
+        Retrieve details of a single channel account using the channel account ID.
+
+        Args:
+          archived: Whether to include archived channel accounts in the response.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/conversations/v3/conversations/channel-accounts/{channel_account_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"archived": archived}, channel_account_get_params.ChannelAccountGetParams),
             ),
-            cast_to=ConversationsPublicChannelAccount,
+            cast_to=PublicChannelAccount,
         )
 
 
@@ -115,40 +172,43 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         """
         return AsyncChannelAccountsResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        channel_id: Iterable[int] | Omit = omit,
+        default_page_length: int | Omit = omit,
+        inbox_id: Iterable[int] | Omit = omit,
+        limit: int | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalPublicChannelAccountForwardPaging:
-        """Retrieve a list of channel accounts, with optional filters and sorting."""
-        return await self._get(
-            "/conversations/v3/conversations/channel-accounts",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CollectionResponseWithTotalPublicChannelAccountForwardPaging,
-        )
-
-    async def get(
-        self,
-        channel_account_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConversationsPublicChannelAccount:
+    ) -> AsyncPaginator[PublicChannelAccount, AsyncPage[PublicChannelAccount]]:
         """
-        Retrieve details of a single channel account using the channel account ID.
+        Retrieve a list of channel accounts, with optional filters and sorting.
 
         Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to include archived channel accounts in the response.
+
+          channel_id: Limits results to channel accounts within a particular channel.
+
+          default_page_length: The default number of results to display per page.
+
+          inbox_id: Limits results to channel accounts within a particular inbox.
+
+          limit: The maximum number of results to display per page.
+
+          sort: The sort order for the channel accounts.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -157,14 +217,68 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_account_id:
-            raise ValueError(f"Expected a non-empty value for `channel_account_id` but received {channel_account_id!r}")
+        return self._get_api_list(
+            "/conversations/v3/conversations/channel-accounts",
+            page=AsyncPage[PublicChannelAccount],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "channel_id": channel_id,
+                        "default_page_length": default_page_length,
+                        "inbox_id": inbox_id,
+                        "limit": limit,
+                        "sort": sort,
+                    },
+                    channel_account_list_params.ChannelAccountListParams,
+                ),
+            ),
+            model=PublicChannelAccount,
+        )
+
+    async def get(
+        self,
+        channel_account_id: int,
+        *,
+        archived: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PublicChannelAccount:
+        """
+        Retrieve details of a single channel account using the channel account ID.
+
+        Args:
+          archived: Whether to include archived channel accounts in the response.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/conversations/v3/conversations/channel-accounts/{channel_account_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"archived": archived}, channel_account_get_params.ChannelAccountGetParams
+                ),
             ),
-            cast_to=ConversationsPublicChannelAccount,
+            cast_to=PublicChannelAccount,
         )
 
 

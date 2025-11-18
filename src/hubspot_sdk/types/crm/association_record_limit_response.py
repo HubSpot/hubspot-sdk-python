@@ -15,9 +15,12 @@ class AssociationRecordLimitResponse(BaseModel):
     at_limit_from_record_samples: List[AtLimitRecordSample] = FieldInfo(alias="atLimitFromRecordSamples")
 
     limit: int
+    """The maximum number of associations allowed for records."""
 
     near_limit_from_record_samples: List[NearLimitRecordSample] = FieldInfo(alias="nearLimitFromRecordSamples")
 
     total_records_at_limit: int = FieldInfo(alias="totalRecordsAtLimit")
+    """The total number of records that have reached their association limit."""
 
     total_records_near_limit: int = FieldInfo(alias="totalRecordsNearLimit")
+    """The total number of records that are approaching their association limit."""

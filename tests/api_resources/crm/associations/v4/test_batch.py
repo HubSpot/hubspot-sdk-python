@@ -9,9 +9,12 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm import BatchResponsePublicDefaultAssociation
-from hubspot_sdk.types.crm.associations import (
+from hubspot_sdk.types.crm import (
     BatchResponseVoid,
+    BatchResponsePublicDefaultAssociation,
+    BatchResponseSimplePublicUpsertObject,
+)
+from hubspot_sdk.types.crm.associations import (
     BatchResponseLabelsBetweenObjectPair,
     BatchResponsePublicAssociationMultiWithLabel,
 )
@@ -467,6 +470,72 @@ class TestBatch:
                 inputs=[{"id": "id"}],
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_upsert(self, client: Hubspot) -> None:
+        batch = client.crm.associations.v4.batch.upsert(
+            object_type="objectType",
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        )
+        assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_upsert(self, client: Hubspot) -> None:
+        response = client.crm.associations.v4.batch.with_raw_response.upsert(
+            object_type="objectType",
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        batch = response.parse()
+        assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_upsert(self, client: Hubspot) -> None:
+        with client.crm.associations.v4.batch.with_streaming_response.upsert(
+            object_type="objectType",
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            batch = response.parse()
+            assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_upsert(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            client.crm.associations.v4.batch.with_raw_response.upsert(
+                object_type="",
+                inputs=[
+                    {
+                        "id": "id",
+                        "properties": {"foo": "string"},
+                    }
+                ],
+            )
+
 
 class TestAsyncBatch:
     parametrize = pytest.mark.parametrize(
@@ -916,4 +985,70 @@ class TestAsyncBatch:
                 to_object_type="",
                 from_object_type="fromObjectType",
                 inputs=[{"id": "id"}],
+            )
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_upsert(self, async_client: AsyncHubspot) -> None:
+        batch = await async_client.crm.associations.v4.batch.upsert(
+            object_type="objectType",
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        )
+        assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_upsert(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.associations.v4.batch.with_raw_response.upsert(
+            object_type="objectType",
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        batch = await response.parse()
+        assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_upsert(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.associations.v4.batch.with_streaming_response.upsert(
+            object_type="objectType",
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            batch = await response.parse()
+            assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_upsert(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            await async_client.crm.associations.v4.batch.with_raw_response.upsert(
+                object_type="",
+                inputs=[
+                    {
+                        "id": "id",
+                        "properties": {"foo": "string"},
+                    }
+                ],
             )

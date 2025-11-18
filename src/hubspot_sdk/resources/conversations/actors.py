@@ -6,7 +6,7 @@ from typing import Any, cast
 
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, SequenceNotStr, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -17,7 +17,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.conversations import actor_batch_read_params
+from ...types.conversations import actor_get_params, actor_batch_read_params
 from ...types.conversations.public_actor import PublicActor
 from ...types.conversations.batch_response_public_actor import BatchResponsePublicActor
 
@@ -48,6 +48,7 @@ class ActorsResource(SyncAPIResource):
         self,
         *,
         inputs: SequenceNotStr[str],
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -61,6 +62,8 @@ class ActorsResource(SyncAPIResource):
         Args:
           inputs: Strings to input.
 
+          property: A specific property to include in the actor response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -73,7 +76,11 @@ class ActorsResource(SyncAPIResource):
             "/conversations/v3/conversations/actors/batch/read",
             body=maybe_transform({"inputs": inputs}, actor_batch_read_params.ActorBatchReadParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"property": property}, actor_batch_read_params.ActorBatchReadParams),
             ),
             cast_to=BatchResponsePublicActor,
         )
@@ -82,6 +89,7 @@ class ActorsResource(SyncAPIResource):
         self,
         actor_id: str,
         *,
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -93,6 +101,8 @@ class ActorsResource(SyncAPIResource):
         Retrieve details of a single actor using the actor ID.
 
         Args:
+          property: A specific property to include in the actor response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -108,7 +118,11 @@ class ActorsResource(SyncAPIResource):
             self._get(
                 f"/conversations/v3/conversations/actors/{actor_id}",
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=maybe_transform({"property": property}, actor_get_params.ActorGetParams),
                 ),
                 cast_to=cast(Any, PublicActor),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -139,6 +153,7 @@ class AsyncActorsResource(AsyncAPIResource):
         self,
         *,
         inputs: SequenceNotStr[str],
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -152,6 +167,8 @@ class AsyncActorsResource(AsyncAPIResource):
         Args:
           inputs: Strings to input.
 
+          property: A specific property to include in the actor response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -164,7 +181,11 @@ class AsyncActorsResource(AsyncAPIResource):
             "/conversations/v3/conversations/actors/batch/read",
             body=await async_maybe_transform({"inputs": inputs}, actor_batch_read_params.ActorBatchReadParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"property": property}, actor_batch_read_params.ActorBatchReadParams),
             ),
             cast_to=BatchResponsePublicActor,
         )
@@ -173,6 +194,7 @@ class AsyncActorsResource(AsyncAPIResource):
         self,
         actor_id: str,
         *,
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -184,6 +206,8 @@ class AsyncActorsResource(AsyncAPIResource):
         Retrieve details of a single actor using the actor ID.
 
         Args:
+          property: A specific property to include in the actor response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -199,7 +223,11 @@ class AsyncActorsResource(AsyncAPIResource):
             await self._get(
                 f"/conversations/v3/conversations/actors/{actor_id}",
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=await async_maybe_transform({"property": property}, actor_get_params.ActorGetParams),
                 ),
                 cast_to=cast(Any, PublicActor),  # Union types cannot be passed in as arguments in the type system
             ),

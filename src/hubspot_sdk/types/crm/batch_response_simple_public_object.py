@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .simple_public_object import SimplePublicObject
-from .associations.standard_error_1 import StandardError1
+from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponseSimplePublicObject"]
 
@@ -28,12 +28,13 @@ class BatchResponseSimplePublicObject(BaseModel):
     "CANCELLED", or "COMPLETE"
     """
 
-    errors: Optional[List[StandardError1]] = None
+    errors: Optional[List[StandardError]] = None
 
     links: Optional[Dict[str, str]] = None
     """An object containing relevant links related to the batch request."""
 
     num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
+    """The number of errors encountered during the batch processing."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The timestamp when the batch request was initially made, in ISO 8601 format."""

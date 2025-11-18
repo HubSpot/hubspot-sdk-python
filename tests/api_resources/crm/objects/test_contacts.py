@@ -27,15 +27,6 @@ class TestContacts:
     @parametrize
     def test_method_create(self, client: Hubspot) -> None:
         contact = client.crm.objects.contacts.create(
-            properties={"foo": "string"},
-        )
-        assert_matches_type(CreatedResponseSimplePublicObject, contact, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
-        contact = client.crm.objects.contacts.create(
-            properties={"foo": "string"},
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -47,6 +38,7 @@ class TestContacts:
                     ],
                 }
             ],
+            properties={"foo": "string"},
         )
         assert_matches_type(CreatedResponseSimplePublicObject, contact, path=["response"])
 
@@ -54,6 +46,17 @@ class TestContacts:
     @parametrize
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.objects.contacts.with_raw_response.create(
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"foo": "string"},
         )
 
@@ -66,6 +69,17 @@ class TestContacts:
     @parametrize
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.objects.contacts.with_streaming_response.create(
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
@@ -82,6 +96,16 @@ class TestContacts:
         contact = client.crm.objects.contacts.update(
             contact_id="contactId",
             properties={"foo": "string"},
+        )
+        assert_matches_type(SimplePublicObject, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+        contact = client.crm.objects.contacts.update(
+            contact_id="contactId",
+            properties={"foo": "string"},
+            id_property="idProperty",
         )
         assert_matches_type(SimplePublicObject, contact, path=["response"])
 
@@ -263,6 +287,7 @@ class TestContacts:
             contact_id="contactId",
             archived=True,
             associations=["string"],
+            id_property="idProperty",
             properties=["string"],
             properties_with_history=["string"],
         )
@@ -342,7 +367,22 @@ class TestContacts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_search(self, client: Hubspot) -> None:
-        contact = client.crm.objects.contacts.search()
+        contact = client.crm.objects.contacts.search(
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        )
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, contact, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -365,15 +405,30 @@ class TestContacts:
             ],
             limit=0,
             properties=["string"],
-            query="query",
             sorts=["string"],
+            query="query",
         )
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, contact, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_search(self, client: Hubspot) -> None:
-        response = client.crm.objects.contacts.with_raw_response.search()
+        response = client.crm.objects.contacts.with_raw_response.search(
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -383,7 +438,22 @@ class TestContacts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_search(self, client: Hubspot) -> None:
-        with client.crm.objects.contacts.with_streaming_response.search() as response:
+        with client.crm.objects.contacts.with_streaming_response.search(
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -402,15 +472,6 @@ class TestAsyncContacts:
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         contact = await async_client.crm.objects.contacts.create(
-            properties={"foo": "string"},
-        )
-        assert_matches_type(CreatedResponseSimplePublicObject, contact, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
-        contact = await async_client.crm.objects.contacts.create(
-            properties={"foo": "string"},
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -422,6 +483,7 @@ class TestAsyncContacts:
                     ],
                 }
             ],
+            properties={"foo": "string"},
         )
         assert_matches_type(CreatedResponseSimplePublicObject, contact, path=["response"])
 
@@ -429,6 +491,17 @@ class TestAsyncContacts:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.contacts.with_raw_response.create(
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"foo": "string"},
         )
 
@@ -441,6 +514,17 @@ class TestAsyncContacts:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.contacts.with_streaming_response.create(
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
@@ -457,6 +541,16 @@ class TestAsyncContacts:
         contact = await async_client.crm.objects.contacts.update(
             contact_id="contactId",
             properties={"foo": "string"},
+        )
+        assert_matches_type(SimplePublicObject, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+        contact = await async_client.crm.objects.contacts.update(
+            contact_id="contactId",
+            properties={"foo": "string"},
+            id_property="idProperty",
         )
         assert_matches_type(SimplePublicObject, contact, path=["response"])
 
@@ -638,6 +732,7 @@ class TestAsyncContacts:
             contact_id="contactId",
             archived=True,
             associations=["string"],
+            id_property="idProperty",
             properties=["string"],
             properties_with_history=["string"],
         )
@@ -717,7 +812,22 @@ class TestAsyncContacts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_search(self, async_client: AsyncHubspot) -> None:
-        contact = await async_client.crm.objects.contacts.search()
+        contact = await async_client.crm.objects.contacts.search(
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        )
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, contact, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -740,15 +850,30 @@ class TestAsyncContacts:
             ],
             limit=0,
             properties=["string"],
-            query="query",
             sorts=["string"],
+            query="query",
         )
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, contact, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.objects.contacts.with_raw_response.search()
+        response = await async_client.crm.objects.contacts.with_raw_response.search(
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -758,7 +883,22 @@ class TestAsyncContacts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.objects.contacts.with_streaming_response.search() as response:
+        async with async_client.crm.objects.contacts.with_streaming_response.search(
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

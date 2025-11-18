@@ -11,12 +11,12 @@ __all__ = ["MarketingEventEmailSubscriberParam"]
 
 
 class MarketingEventEmailSubscriberParam(TypedDict, total=False):
+    contact_properties: Required[Annotated[Dict[str, str], PropertyInfo(alias="contactProperties")]]
+
     email: Required[str]
     """The email address of the contact in HubSpot to associate with the event."""
 
     interaction_date_time: Required[Annotated[int, PropertyInfo(alias="interactionDateTime")]]
     """Timestamp in milliseconds at which the contact subscribed to the event."""
 
-    contact_properties: Annotated[Dict[str, str], PropertyInfo(alias="contactProperties")]
-
-    properties: Dict[str, str]
+    properties: Required[Dict[str, str]]

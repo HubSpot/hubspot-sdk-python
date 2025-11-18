@@ -4,17 +4,25 @@ from __future__ import annotations
 
 import httpx
 
-from ...._types import Body, Query, Headers, NotGiven, not_given
-from ...._compat import cached_property
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from ...._response import (
+from .v4.v4 import (
+    V4Resource,
+    AsyncV4Resource,
+    V4ResourceWithRawResponse,
+    AsyncV4ResourceWithRawResponse,
+    V4ResourceWithStreamingResponse,
+    AsyncV4ResourceWithStreamingResponse,
+)
+from ....._types import Body, Query, Headers, NotGiven, not_given
+from ....._compat import cached_property
+from ....._resource import SyncAPIResource, AsyncAPIResource
+from ....._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
-from ....types.crm.associations.collection_response_public_association_definition_no_paging import (
+from ....._base_client import make_request_options
+from .....types.crm.associations.collection_response_public_association_definition_no_paging import (
     CollectionResponsePublicAssociationDefinitionNoPaging,
 )
 
@@ -22,6 +30,10 @@ __all__ = ["SchemaResource", "AsyncSchemaResource"]
 
 
 class SchemaResource(SyncAPIResource):
+    @cached_property
+    def v4(self) -> V4Resource:
+        return V4Resource(self._client)
+
     @cached_property
     def with_raw_response(self) -> SchemaResourceWithRawResponse:
         """
@@ -77,6 +89,10 @@ class SchemaResource(SyncAPIResource):
 
 
 class AsyncSchemaResource(AsyncAPIResource):
+    @cached_property
+    def v4(self) -> AsyncV4Resource:
+        return AsyncV4Resource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncSchemaResourceWithRawResponse:
         """
@@ -139,6 +155,10 @@ class SchemaResourceWithRawResponse:
             schema.list,
         )
 
+    @cached_property
+    def v4(self) -> V4ResourceWithRawResponse:
+        return V4ResourceWithRawResponse(self._schema.v4)
+
 
 class AsyncSchemaResourceWithRawResponse:
     def __init__(self, schema: AsyncSchemaResource) -> None:
@@ -147,6 +167,10 @@ class AsyncSchemaResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             schema.list,
         )
+
+    @cached_property
+    def v4(self) -> AsyncV4ResourceWithRawResponse:
+        return AsyncV4ResourceWithRawResponse(self._schema.v4)
 
 
 class SchemaResourceWithStreamingResponse:
@@ -157,6 +181,10 @@ class SchemaResourceWithStreamingResponse:
             schema.list,
         )
 
+    @cached_property
+    def v4(self) -> V4ResourceWithStreamingResponse:
+        return V4ResourceWithStreamingResponse(self._schema.v4)
+
 
 class AsyncSchemaResourceWithStreamingResponse:
     def __init__(self, schema: AsyncSchemaResource) -> None:
@@ -165,3 +193,7 @@ class AsyncSchemaResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             schema.list,
         )
+
+    @cached_property
+    def v4(self) -> AsyncV4ResourceWithStreamingResponse:
+        return AsyncV4ResourceWithStreamingResponse(self._schema.v4)

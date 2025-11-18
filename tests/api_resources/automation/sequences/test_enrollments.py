@@ -21,6 +21,7 @@ class TestEnrollments:
     @parametrize
     def test_method_enroll(self, client: Hubspot) -> None:
         enrollment = client.automation.sequences.enrollments.enroll(
+            user_id="userId",
             contact_id="contactId",
             sender_email="senderEmail",
             sequence_id="sequenceId",
@@ -31,6 +32,7 @@ class TestEnrollments:
     @parametrize
     def test_method_enroll_with_all_params(self, client: Hubspot) -> None:
         enrollment = client.automation.sequences.enrollments.enroll(
+            user_id="userId",
             contact_id="contactId",
             sender_email="senderEmail",
             sequence_id="sequenceId",
@@ -42,6 +44,7 @@ class TestEnrollments:
     @parametrize
     def test_raw_response_enroll(self, client: Hubspot) -> None:
         response = client.automation.sequences.enrollments.with_raw_response.enroll(
+            user_id="userId",
             contact_id="contactId",
             sender_email="senderEmail",
             sequence_id="sequenceId",
@@ -56,6 +59,7 @@ class TestEnrollments:
     @parametrize
     def test_streaming_response_enroll(self, client: Hubspot) -> None:
         with client.automation.sequences.enrollments.with_streaming_response.enroll(
+            user_id="userId",
             contact_id="contactId",
             sender_email="senderEmail",
             sequence_id="sequenceId",
@@ -120,6 +124,7 @@ class TestAsyncEnrollments:
     @parametrize
     async def test_method_enroll(self, async_client: AsyncHubspot) -> None:
         enrollment = await async_client.automation.sequences.enrollments.enroll(
+            user_id="userId",
             contact_id="contactId",
             sender_email="senderEmail",
             sequence_id="sequenceId",
@@ -130,6 +135,7 @@ class TestAsyncEnrollments:
     @parametrize
     async def test_method_enroll_with_all_params(self, async_client: AsyncHubspot) -> None:
         enrollment = await async_client.automation.sequences.enrollments.enroll(
+            user_id="userId",
             contact_id="contactId",
             sender_email="senderEmail",
             sequence_id="sequenceId",
@@ -141,6 +147,7 @@ class TestAsyncEnrollments:
     @parametrize
     async def test_raw_response_enroll(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.sequences.enrollments.with_raw_response.enroll(
+            user_id="userId",
             contact_id="contactId",
             sender_email="senderEmail",
             sequence_id="sequenceId",
@@ -155,6 +162,7 @@ class TestAsyncEnrollments:
     @parametrize
     async def test_streaming_response_enroll(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.sequences.enrollments.with_streaming_response.enroll(
+            user_id="userId",
             contact_id="contactId",
             sender_email="senderEmail",
             sequence_id="sequenceId",

@@ -692,7 +692,10 @@ class TestLists:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_search(self, client: Hubspot) -> None:
-        list_ = client.crm.lists.search()
+        list_ = client.crm.lists.search(
+            additional_properties=["hs_list_size_week_delta"],
+            offset=0,
+        )
         assert_matches_type(ListSearchResponse, list_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -700,9 +703,9 @@ class TestLists:
     def test_method_search_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.search(
             additional_properties=["hs_list_size_week_delta"],
+            offset=0,
             count=100,
             list_ids=["string"],
-            offset=0,
             processing_types=["string"],
             query="Test",
             sort="sort",
@@ -712,7 +715,10 @@ class TestLists:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_search(self, client: Hubspot) -> None:
-        response = client.crm.lists.with_raw_response.search()
+        response = client.crm.lists.with_raw_response.search(
+            additional_properties=["hs_list_size_week_delta"],
+            offset=0,
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -722,7 +728,10 @@ class TestLists:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_search(self, client: Hubspot) -> None:
-        with client.crm.lists.with_streaming_response.search() as response:
+        with client.crm.lists.with_streaming_response.search(
+            additional_properties=["hs_list_size_week_delta"],
+            offset=0,
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -2439,7 +2448,10 @@ class TestAsyncLists:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_search(self, async_client: AsyncHubspot) -> None:
-        list_ = await async_client.crm.lists.search()
+        list_ = await async_client.crm.lists.search(
+            additional_properties=["hs_list_size_week_delta"],
+            offset=0,
+        )
         assert_matches_type(ListSearchResponse, list_, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -2447,9 +2459,9 @@ class TestAsyncLists:
     async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.search(
             additional_properties=["hs_list_size_week_delta"],
+            offset=0,
             count=100,
             list_ids=["string"],
-            offset=0,
             processing_types=["string"],
             query="Test",
             sort="sort",
@@ -2459,7 +2471,10 @@ class TestAsyncLists:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.lists.with_raw_response.search()
+        response = await async_client.crm.lists.with_raw_response.search(
+            additional_properties=["hs_list_size_week_delta"],
+            offset=0,
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2469,7 +2484,10 @@ class TestAsyncLists:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.lists.with_streaming_response.search() as response:
+        async with async_client.crm.lists.with_streaming_response.search(
+            additional_properties=["hs_list_size_week_delta"],
+            offset=0,
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

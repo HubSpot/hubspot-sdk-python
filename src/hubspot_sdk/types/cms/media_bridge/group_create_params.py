@@ -10,7 +10,7 @@ __all__ = ["GroupCreateParams"]
 
 
 class GroupCreateParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     label: Required[str]
 

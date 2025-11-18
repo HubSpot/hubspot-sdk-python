@@ -12,16 +12,16 @@ __all__ = ["HubDBTableRowV3BatchUpdateRequestParam"]
 
 
 class HubDBTableRowV3BatchUpdateRequestParam(TypedDict, total=False):
-    id: Required[str]
-    """The id of the table row"""
+    child_table_id: Required[Annotated[int, PropertyInfo(alias="childTableId")]]
+    """Specifies the value for the column child table id"""
+
+    display_index: Required[Annotated[int, PropertyInfo(alias="displayIndex")]]
 
     values: Required[Dict[str, VariantParam]]
     """List of key value pairs with the column name and column value"""
 
-    child_table_id: Annotated[int, PropertyInfo(alias="childTableId")]
-    """Specifies the value for the column child table id"""
-
-    display_index: Annotated[int, PropertyInfo(alias="displayIndex")]
+    id: str
+    """The id of the table row"""
 
     name: str
     """

@@ -72,8 +72,8 @@ class OrdersResource(SyncAPIResource):
     def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -101,8 +101,8 @@ class OrdersResource(SyncAPIResource):
             "/crm/v3/objects/orders",
             body=maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 order_create_params.OrderCreateParams,
             ),
@@ -341,12 +341,12 @@ class OrdersResource(SyncAPIResource):
     def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -355,6 +355,9 @@ class OrdersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Execute a search for orders using specified criteria and return matching
+        results.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 
@@ -364,9 +367,9 @@ class OrdersResource(SyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -384,8 +387,8 @@ class OrdersResource(SyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 order_search_params.OrderSearchParams,
             ),
@@ -423,8 +426,8 @@ class AsyncOrdersResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        associations: Iterable[PublicAssociationsForObjectParam],
         properties: Dict[str, str],
-        associations: Iterable[PublicAssociationsForObjectParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -452,8 +455,8 @@ class AsyncOrdersResource(AsyncAPIResource):
             "/crm/v3/objects/orders",
             body=await async_maybe_transform(
                 {
-                    "properties": properties,
                     "associations": associations,
+                    "properties": properties,
                 },
                 order_create_params.OrderCreateParams,
             ),
@@ -692,12 +695,12 @@ class AsyncOrdersResource(AsyncAPIResource):
     async def search(
         self,
         *,
-        after: str | Omit = omit,
-        filter_groups: Iterable[FilterGroupParam] | Omit = omit,
-        limit: int | Omit = omit,
-        properties: SequenceNotStr[str] | Omit = omit,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
         query: str | Omit = omit,
-        sorts: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -706,6 +709,9 @@ class AsyncOrdersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
+        Execute a search for orders using specified criteria and return matching
+        results.
+
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 
@@ -715,9 +721,9 @@ class AsyncOrdersResource(AsyncAPIResource):
 
           properties: A list of property names to include in the response.
 
-          query: The search query string, up to 3000 characters.
-
           sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
 
           extra_headers: Send extra headers
 
@@ -735,8 +741,8 @@ class AsyncOrdersResource(AsyncAPIResource):
                     "filter_groups": filter_groups,
                     "limit": limit,
                     "properties": properties,
-                    "query": query,
                     "sorts": sorts,
+                    "query": query,
                 },
                 order_search_params.OrderSearchParams,
             ),

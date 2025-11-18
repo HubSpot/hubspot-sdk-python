@@ -13,6 +13,18 @@ __all__ = ["EventCreateParams"]
 
 
 class EventCreateParams(TypedDict, total=False):
+    custom_properties: Required[Annotated[Iterable[PropertyValueParam], PropertyInfo(alias="customProperties")]]
+    """A list of PropertyValues.
+
+    These can be whatever kind of property names and values you want. However, they
+    must already exist on the HubSpot account's definition of the MarketingEvent
+    Object. If they don't they will be filtered out and not set. In order to do this
+    you'll need to create a new PropertyGroup on the HubSpot account's
+    MarketingEvent object for your specific app and create the Custom Property you
+    want to track on that HubSpot account. Do not create any new default properties
+    on the MarketingEvent object as that will apply to all HubSpot accounts.
+    """
+
     event_name: Required[Annotated[str, PropertyInfo(alias="eventName")]]
     """The name of the marketing event."""
 
@@ -27,18 +39,6 @@ class EventCreateParams(TypedDict, total=False):
 
     external_event_id: Required[Annotated[str, PropertyInfo(alias="externalEventId")]]
     """The id of the marketing event in the external event application."""
-
-    custom_properties: Annotated[Iterable[PropertyValueParam], PropertyInfo(alias="customProperties")]
-    """A list of PropertyValues.
-
-    These can be whatever kind of property names and values you want. However, they
-    must already exist on the HubSpot account's definition of the MarketingEvent
-    Object. If they don't they will be filtered out and not set. In order to do this
-    you'll need to create a new PropertyGroup on the HubSpot account's
-    MarketingEvent object for your specific app and create the Custom Property you
-    want to track on that HubSpot account. Do not create any new default properties
-    on the MarketingEvent object as that will apply to all HubSpot accounts.
-    """
 
     end_date_time: Annotated[Union[str, datetime], PropertyInfo(alias="endDateTime", format="iso8601")]
     """The end date and time of the marketing event."""

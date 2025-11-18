@@ -10,6 +10,6 @@ __all__ = ["PublicCampaignAsset"]
 class PublicCampaignAsset(BaseModel):
     id: str
 
-    metrics: Dict[str, float]
+    metrics: Optional[Dict[str, float]] = None
 
     name: Optional[str] = None

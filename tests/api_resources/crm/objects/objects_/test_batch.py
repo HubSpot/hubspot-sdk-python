@@ -22,7 +22,22 @@ class TestBatch:
     def test_method_create(self, client: Hubspot) -> None:
         batch = client.crm.objects.objects.batch.create(
             object_type="objectType",
-            inputs=[{"properties": {"foo": "string"}}],
+            inputs=[
+                {
+                    "associations": [
+                        {
+                            "to": {"id": "37295"},
+                            "types": [
+                                {
+                                    "association_category": "HUBSPOT_DEFINED",
+                                    "association_type_id": 0,
+                                }
+                            ],
+                        }
+                    ],
+                    "properties": {"foo": "string"},
+                }
+            ],
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
@@ -31,7 +46,22 @@ class TestBatch:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.objects.objects.batch.with_raw_response.create(
             object_type="objectType",
-            inputs=[{"properties": {"foo": "string"}}],
+            inputs=[
+                {
+                    "associations": [
+                        {
+                            "to": {"id": "37295"},
+                            "types": [
+                                {
+                                    "association_category": "HUBSPOT_DEFINED",
+                                    "association_type_id": 0,
+                                }
+                            ],
+                        }
+                    ],
+                    "properties": {"foo": "string"},
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -44,7 +74,22 @@ class TestBatch:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.objects.objects.batch.with_streaming_response.create(
             object_type="objectType",
-            inputs=[{"properties": {"foo": "string"}}],
+            inputs=[
+                {
+                    "associations": [
+                        {
+                            "to": {"id": "37295"},
+                            "types": [
+                                {
+                                    "association_category": "HUBSPOT_DEFINED",
+                                    "association_type_id": 0,
+                                }
+                            ],
+                        }
+                    ],
+                    "properties": {"foo": "string"},
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -60,7 +105,22 @@ class TestBatch:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.objects.objects.batch.with_raw_response.create(
                 object_type="",
-                inputs=[{"properties": {"foo": "string"}}],
+                inputs=[
+                    {
+                        "associations": [
+                            {
+                                "to": {"id": "37295"},
+                                "types": [
+                                    {
+                                        "association_category": "HUBSPOT_DEFINED",
+                                        "association_type_id": 0,
+                                    }
+                                ],
+                            }
+                        ],
+                        "properties": {"foo": "string"},
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -319,7 +379,22 @@ class TestAsyncBatch:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.objects.batch.create(
             object_type="objectType",
-            inputs=[{"properties": {"foo": "string"}}],
+            inputs=[
+                {
+                    "associations": [
+                        {
+                            "to": {"id": "37295"},
+                            "types": [
+                                {
+                                    "association_category": "HUBSPOT_DEFINED",
+                                    "association_type_id": 0,
+                                }
+                            ],
+                        }
+                    ],
+                    "properties": {"foo": "string"},
+                }
+            ],
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
@@ -328,7 +403,22 @@ class TestAsyncBatch:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.objects.batch.with_raw_response.create(
             object_type="objectType",
-            inputs=[{"properties": {"foo": "string"}}],
+            inputs=[
+                {
+                    "associations": [
+                        {
+                            "to": {"id": "37295"},
+                            "types": [
+                                {
+                                    "association_category": "HUBSPOT_DEFINED",
+                                    "association_type_id": 0,
+                                }
+                            ],
+                        }
+                    ],
+                    "properties": {"foo": "string"},
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -341,7 +431,22 @@ class TestAsyncBatch:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.objects.batch.with_streaming_response.create(
             object_type="objectType",
-            inputs=[{"properties": {"foo": "string"}}],
+            inputs=[
+                {
+                    "associations": [
+                        {
+                            "to": {"id": "37295"},
+                            "types": [
+                                {
+                                    "association_category": "HUBSPOT_DEFINED",
+                                    "association_type_id": 0,
+                                }
+                            ],
+                        }
+                    ],
+                    "properties": {"foo": "string"},
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -357,7 +462,22 @@ class TestAsyncBatch:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.objects.objects.batch.with_raw_response.create(
                 object_type="",
-                inputs=[{"properties": {"foo": "string"}}],
+                inputs=[
+                    {
+                        "associations": [
+                            {
+                                "to": {"id": "37295"},
+                                "types": [
+                                    {
+                                        "association_category": "HUBSPOT_DEFINED",
+                                        "association_type_id": 0,
+                                    }
+                                ],
+                            }
+                        ],
+                        "properties": {"foo": "string"},
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")

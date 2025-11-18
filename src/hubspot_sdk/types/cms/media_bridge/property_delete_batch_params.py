@@ -8,10 +8,10 @@ from typing_extensions import Required, Annotated, TypedDict
 from ...._utils import PropertyInfo
 from ...shared_params.property_name import PropertyName
 
-__all__ = ["PropertyArchiveBatchParams"]
+__all__ = ["PropertyDeleteBatchParams"]
 
 
-class PropertyArchiveBatchParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+class PropertyDeleteBatchParams(TypedDict, total=False):
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     inputs: Required[Iterable[PropertyName]]

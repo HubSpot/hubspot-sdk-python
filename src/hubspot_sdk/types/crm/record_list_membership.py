@@ -11,12 +11,12 @@ __all__ = ["RecordListMembership"]
 
 
 class RecordListMembership(BaseModel):
-    first_added_timestamp: datetime = FieldInfo(alias="firstAddedTimestamp")
-
-    last_added_timestamp: datetime = FieldInfo(alias="lastAddedTimestamp")
-
     list_id: str = FieldInfo(alias="listId")
 
     list_version: int = FieldInfo(alias="listVersion")
 
+    first_added_timestamp: Optional[datetime] = FieldInfo(alias="firstAddedTimestamp", default=None)
+
     is_public_list: Optional[bool] = FieldInfo(alias="isPublicList", default=None)
+
+    last_added_timestamp: Optional[datetime] = FieldInfo(alias="lastAddedTimestamp", default=None)

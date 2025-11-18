@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import httpx
+
 from .batch import (
     BatchResource,
     AsyncBatchResource,
@@ -18,8 +20,19 @@ from .report import (
     ReportResourceWithStreamingResponse,
     AsyncReportResourceWithStreamingResponse,
 )
+from ....._types import Body, Query, Headers, NotGiven, not_given
+from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
+from ....._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from ....._base_client import make_request_options
+from .....types.crm.associations import v4_merge_params
+from .....types.crm.simple_public_object import SimplePublicObject
 
 __all__ = ["V4Resource", "AsyncV4Resource"]
 
@@ -52,6 +65,53 @@ class V4Resource(SyncAPIResource):
         """
         return V4ResourceWithStreamingResponse(self)
 
+    def merge(
+        self,
+        object_type: str,
+        *,
+        object_id_to_merge: str,
+        primary_object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SimplePublicObject:
+        """
+        Merge two CRM objects of the specified type into one.
+
+        Args:
+          object_id_to_merge: The unique identifier of the CRM object that will be merged into the primary
+              object.
+
+          primary_object_id: The unique identifier of the CRM object that will remain after the merge.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        return self._post(
+            f"/crm/v4/objects/{object_type}/merge",
+            body=maybe_transform(
+                {
+                    "object_id_to_merge": object_id_to_merge,
+                    "primary_object_id": primary_object_id,
+                },
+                v4_merge_params.V4MergeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SimplePublicObject,
+        )
+
 
 class AsyncV4Resource(AsyncAPIResource):
     @cached_property
@@ -81,10 +141,61 @@ class AsyncV4Resource(AsyncAPIResource):
         """
         return AsyncV4ResourceWithStreamingResponse(self)
 
+    async def merge(
+        self,
+        object_type: str,
+        *,
+        object_id_to_merge: str,
+        primary_object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SimplePublicObject:
+        """
+        Merge two CRM objects of the specified type into one.
+
+        Args:
+          object_id_to_merge: The unique identifier of the CRM object that will be merged into the primary
+              object.
+
+          primary_object_id: The unique identifier of the CRM object that will remain after the merge.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        return await self._post(
+            f"/crm/v4/objects/{object_type}/merge",
+            body=await async_maybe_transform(
+                {
+                    "object_id_to_merge": object_id_to_merge,
+                    "primary_object_id": primary_object_id,
+                },
+                v4_merge_params.V4MergeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SimplePublicObject,
+        )
+
 
 class V4ResourceWithRawResponse:
     def __init__(self, v4: V4Resource) -> None:
         self._v4 = v4
+
+        self.merge = to_raw_response_wrapper(
+            v4.merge,
+        )
 
     @cached_property
     def batch(self) -> BatchResourceWithRawResponse:
@@ -99,6 +210,10 @@ class AsyncV4ResourceWithRawResponse:
     def __init__(self, v4: AsyncV4Resource) -> None:
         self._v4 = v4
 
+        self.merge = async_to_raw_response_wrapper(
+            v4.merge,
+        )
+
     @cached_property
     def batch(self) -> AsyncBatchResourceWithRawResponse:
         return AsyncBatchResourceWithRawResponse(self._v4.batch)
@@ -112,6 +227,10 @@ class V4ResourceWithStreamingResponse:
     def __init__(self, v4: V4Resource) -> None:
         self._v4 = v4
 
+        self.merge = to_streamed_response_wrapper(
+            v4.merge,
+        )
+
     @cached_property
     def batch(self) -> BatchResourceWithStreamingResponse:
         return BatchResourceWithStreamingResponse(self._v4.batch)
@@ -124,6 +243,10 @@ class V4ResourceWithStreamingResponse:
 class AsyncV4ResourceWithStreamingResponse:
     def __init__(self, v4: AsyncV4Resource) -> None:
         self._v4 = v4
+
+        self.merge = async_to_streamed_response_wrapper(
+            v4.merge,
+        )
 
     @cached_property
     def batch(self) -> AsyncBatchResourceWithStreamingResponse:

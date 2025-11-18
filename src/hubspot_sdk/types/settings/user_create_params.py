@@ -12,20 +12,22 @@ __all__ = ["UserCreateParams"]
 
 class UserCreateParams(TypedDict, total=False):
     email: Required[str]
-    """The created user's email"""
+    """The user's email."""
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
+    """The user's first name."""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
+    """The user's last name."""
 
     primary_team_id: Annotated[str, PropertyInfo(alias="primaryTeamId")]
-    """The user's primary team"""
+    """The user's primary team."""
 
     role_id: Annotated[str, PropertyInfo(alias="roleId")]
-    """The user's role"""
+    """The user's role."""
 
     secondary_team_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="secondaryTeamIds")]
-    """The user's additional teams"""
+    """The user's additional teams."""
 
     send_welcome_email: Annotated[bool, PropertyInfo(alias="sendWelcomeEmail")]
-    """Whether to send a welcome email"""
+    """Whether to send a welcome email."""

@@ -45,6 +45,7 @@ class EnrollmentsResource(SyncAPIResource):
     def enroll(
         self,
         *,
+        user_id: str,
         contact_id: str,
         sender_email: str,
         sequence_id: str,
@@ -81,7 +82,11 @@ class EnrollmentsResource(SyncAPIResource):
                 enrollment_enroll_params.EnrollmentEnrollParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"user_id": user_id}, enrollment_enroll_params.EnrollmentEnrollParams),
             ),
             cast_to=PublicSequenceEnrollmentLiteResponse,
         )
@@ -143,6 +148,7 @@ class AsyncEnrollmentsResource(AsyncAPIResource):
     async def enroll(
         self,
         *,
+        user_id: str,
         contact_id: str,
         sender_email: str,
         sequence_id: str,
@@ -179,7 +185,13 @@ class AsyncEnrollmentsResource(AsyncAPIResource):
                 enrollment_enroll_params.EnrollmentEnrollParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"user_id": user_id}, enrollment_enroll_params.EnrollmentEnrollParams
+                ),
             ),
             cast_to=PublicSequenceEnrollmentLiteResponse,
         )

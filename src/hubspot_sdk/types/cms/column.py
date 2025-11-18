@@ -15,6 +15,13 @@ __all__ = ["Column"]
 
 
 class Column(BaseModel):
+    id: str
+    """Column Id"""
+
+    deleted: bool
+
+    description: str
+
     label: str
     """Label of the column"""
 
@@ -47,18 +54,11 @@ class Column(BaseModel):
     ]
     """Type of the column"""
 
-    id: Optional[str] = None
-    """Column Id"""
-
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
 
     created_by: Optional[SimpleUser] = FieldInfo(alias="createdBy", default=None)
 
     created_by_user_id: Optional[int] = FieldInfo(alias="createdByUserId", default=None)
-
-    deleted: Optional[bool] = None
-
-    description: Optional[str] = None
 
     foreign_column_id: Optional[int] = FieldInfo(alias="foreignColumnId", default=None)
     """Foreign Column id"""

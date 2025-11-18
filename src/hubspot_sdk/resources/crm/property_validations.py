@@ -126,7 +126,12 @@ class PropertyValidationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Update a specific validation rule for a property identified by its name and rule
+        type.
+
         Args:
+          rule_arguments: A list of arguments that define the constraints for the validation rule.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -287,7 +292,12 @@ class AsyncPropertyValidationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Update a specific validation rule for a property identified by its name and rule
+        type.
+
         Args:
+          rule_arguments: A list of arguments that define the constraints for the validation rule.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

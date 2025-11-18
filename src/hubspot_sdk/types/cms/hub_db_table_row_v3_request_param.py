@@ -12,13 +12,13 @@ __all__ = ["HubDBTableRowV3RequestParam"]
 
 
 class HubDBTableRowV3RequestParam(TypedDict, total=False):
-    values: Required[Dict[str, VariantParam]]
-    """List of key value pairs with the column name and column value"""
-
-    child_table_id: Annotated[int, PropertyInfo(alias="childTableId")]
+    child_table_id: Required[Annotated[int, PropertyInfo(alias="childTableId")]]
     """Specifies the value for the column child table id"""
 
-    display_index: Annotated[int, PropertyInfo(alias="displayIndex")]
+    display_index: Required[Annotated[int, PropertyInfo(alias="displayIndex")]]
+
+    values: Required[Dict[str, VariantParam]]
+    """List of key value pairs with the column name and column value"""
 
     name: str
     """

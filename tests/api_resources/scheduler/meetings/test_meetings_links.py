@@ -10,11 +10,12 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
+from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.scheduler import (
     ExternalBookingInfo,
+    ExternalLinkMetadata,
     ExternalMeetingBookingResponse,
     ExternalLinkAvailabilityAndBusyTimes,
-    CollectionResponseWithTotalExternalLinkMetadataForwardPaging,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -27,9 +28,19 @@ class TestMeetingsLinks:
     @parametrize
     def test_method_list(self, client: Hubspot) -> None:
         meetings_link = client.scheduler.meetings.meetings_links.list()
-        assert_matches_type(
-            CollectionResponseWithTotalExternalLinkMetadataForwardPaging, meetings_link, path=["response"]
+        assert_matches_type(SyncPage[ExternalLinkMetadata], meetings_link, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+        meetings_link = client.scheduler.meetings.meetings_links.list(
+            after="after",
+            limit=0,
+            name="name",
+            organizer_user_id="organizerUserId",
+            type="type",
         )
+        assert_matches_type(SyncPage[ExternalLinkMetadata], meetings_link, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -39,9 +50,7 @@ class TestMeetingsLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meetings_link = response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalExternalLinkMetadataForwardPaging, meetings_link, path=["response"]
-        )
+        assert_matches_type(SyncPage[ExternalLinkMetadata], meetings_link, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -51,9 +60,7 @@ class TestMeetingsLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meetings_link = response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalExternalLinkMetadataForwardPaging, meetings_link, path=["response"]
-            )
+            assert_matches_type(SyncPage[ExternalLinkMetadata], meetings_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -177,7 +184,18 @@ class TestMeetingsLinks:
     @parametrize
     def test_method_get_availability_by_slug(self, client: Hubspot) -> None:
         meetings_link = client.scheduler.meetings.meetings_links.get_availability_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
+        )
+        assert_matches_type(ExternalLinkAvailabilityAndBusyTimes, meetings_link, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_availability_by_slug_with_all_params(self, client: Hubspot) -> None:
+        meetings_link = client.scheduler.meetings.meetings_links.get_availability_by_slug(
+            slug="slug",
+            timezone="timezone",
+            month_offset=0,
         )
         assert_matches_type(ExternalLinkAvailabilityAndBusyTimes, meetings_link, path=["response"])
 
@@ -185,7 +203,8 @@ class TestMeetingsLinks:
     @parametrize
     def test_raw_response_get_availability_by_slug(self, client: Hubspot) -> None:
         response = client.scheduler.meetings.meetings_links.with_raw_response.get_availability_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         )
 
         assert response.is_closed is True
@@ -197,7 +216,8 @@ class TestMeetingsLinks:
     @parametrize
     def test_streaming_response_get_availability_by_slug(self, client: Hubspot) -> None:
         with client.scheduler.meetings.meetings_links.with_streaming_response.get_availability_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -212,14 +232,16 @@ class TestMeetingsLinks:
     def test_path_params_get_availability_by_slug(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.scheduler.meetings.meetings_links.with_raw_response.get_availability_by_slug(
-                "",
+                slug="",
+                timezone="timezone",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_booking_info_by_slug(self, client: Hubspot) -> None:
         meetings_link = client.scheduler.meetings.meetings_links.get_booking_info_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         )
         assert_matches_type(ExternalBookingInfo, meetings_link, path=["response"])
 
@@ -227,7 +249,8 @@ class TestMeetingsLinks:
     @parametrize
     def test_raw_response_get_booking_info_by_slug(self, client: Hubspot) -> None:
         response = client.scheduler.meetings.meetings_links.with_raw_response.get_booking_info_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         )
 
         assert response.is_closed is True
@@ -239,7 +262,8 @@ class TestMeetingsLinks:
     @parametrize
     def test_streaming_response_get_booking_info_by_slug(self, client: Hubspot) -> None:
         with client.scheduler.meetings.meetings_links.with_streaming_response.get_booking_info_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -254,7 +278,8 @@ class TestMeetingsLinks:
     def test_path_params_get_booking_info_by_slug(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.scheduler.meetings.meetings_links.with_raw_response.get_booking_info_by_slug(
-                "",
+                slug="",
+                timezone="timezone",
             )
 
 
@@ -267,9 +292,19 @@ class TestAsyncMeetingsLinks:
     @parametrize
     async def test_method_list(self, async_client: AsyncHubspot) -> None:
         meetings_link = await async_client.scheduler.meetings.meetings_links.list()
-        assert_matches_type(
-            CollectionResponseWithTotalExternalLinkMetadataForwardPaging, meetings_link, path=["response"]
+        assert_matches_type(AsyncPage[ExternalLinkMetadata], meetings_link, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+        meetings_link = await async_client.scheduler.meetings.meetings_links.list(
+            after="after",
+            limit=0,
+            name="name",
+            organizer_user_id="organizerUserId",
+            type="type",
         )
+        assert_matches_type(AsyncPage[ExternalLinkMetadata], meetings_link, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -279,9 +314,7 @@ class TestAsyncMeetingsLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meetings_link = await response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalExternalLinkMetadataForwardPaging, meetings_link, path=["response"]
-        )
+        assert_matches_type(AsyncPage[ExternalLinkMetadata], meetings_link, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -291,9 +324,7 @@ class TestAsyncMeetingsLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meetings_link = await response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalExternalLinkMetadataForwardPaging, meetings_link, path=["response"]
-            )
+            assert_matches_type(AsyncPage[ExternalLinkMetadata], meetings_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -417,7 +448,18 @@ class TestAsyncMeetingsLinks:
     @parametrize
     async def test_method_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
         meetings_link = await async_client.scheduler.meetings.meetings_links.get_availability_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
+        )
+        assert_matches_type(ExternalLinkAvailabilityAndBusyTimes, meetings_link, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_availability_by_slug_with_all_params(self, async_client: AsyncHubspot) -> None:
+        meetings_link = await async_client.scheduler.meetings.meetings_links.get_availability_by_slug(
+            slug="slug",
+            timezone="timezone",
+            month_offset=0,
         )
         assert_matches_type(ExternalLinkAvailabilityAndBusyTimes, meetings_link, path=["response"])
 
@@ -425,7 +467,8 @@ class TestAsyncMeetingsLinks:
     @parametrize
     async def test_raw_response_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
         response = await async_client.scheduler.meetings.meetings_links.with_raw_response.get_availability_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         )
 
         assert response.is_closed is True
@@ -437,7 +480,8 @@ class TestAsyncMeetingsLinks:
     @parametrize
     async def test_streaming_response_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
         async with async_client.scheduler.meetings.meetings_links.with_streaming_response.get_availability_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -452,14 +496,16 @@ class TestAsyncMeetingsLinks:
     async def test_path_params_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.scheduler.meetings.meetings_links.with_raw_response.get_availability_by_slug(
-                "",
+                slug="",
+                timezone="timezone",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
         meetings_link = await async_client.scheduler.meetings.meetings_links.get_booking_info_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         )
         assert_matches_type(ExternalBookingInfo, meetings_link, path=["response"])
 
@@ -467,7 +513,8 @@ class TestAsyncMeetingsLinks:
     @parametrize
     async def test_raw_response_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
         response = await async_client.scheduler.meetings.meetings_links.with_raw_response.get_booking_info_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         )
 
         assert response.is_closed is True
@@ -479,7 +526,8 @@ class TestAsyncMeetingsLinks:
     @parametrize
     async def test_streaming_response_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
         async with async_client.scheduler.meetings.meetings_links.with_streaming_response.get_booking_info_by_slug(
-            "slug",
+            slug="slug",
+            timezone="timezone",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -494,5 +542,6 @@ class TestAsyncMeetingsLinks:
     async def test_path_params_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.scheduler.meetings.meetings_links.with_raw_response.get_booking_info_by_slug(
-                "",
+                slug="",
+                timezone="timezone",
             )

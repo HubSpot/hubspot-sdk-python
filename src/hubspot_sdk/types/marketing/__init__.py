@@ -13,7 +13,6 @@ from .public_list import PublicList as PublicList
 from .radio_field import RadioField as RadioField
 from .number_field import NumberField as NumberField
 from .public_email import PublicEmail as PublicEmail
-from .emails_paging import EmailsPaging as EmailsPaging
 from .event_id_view import EventIDView as EventIDView
 from .dropdown_field import DropdownField as DropdownField
 from .property_value import PropertyValue as PropertyValue
@@ -147,6 +146,7 @@ from .hub_spot_form_configuration_param import HubSpotFormConfigurationParam as 
 from .public_email_style_settings_param import PublicEmailStyleSettingsParam as PublicEmailStyleSettingsParam
 from .public_email_subscription_details import PublicEmailSubscriptionDetails as PublicEmailSubscriptionDetails
 from .subscription_definitions_response import SubscriptionDefinitionsResponse as SubscriptionDefinitionsResponse
+from .email_get_ab_test_variation_params import EmailGetAbTestVariationParams as EmailGetAbTestVariationParams
 from .public_button_style_settings_param import PublicButtonStyleSettingsParam as PublicButtonStyleSettingsParam
 from .public_campaign_delete_input_param import PublicCampaignDeleteInputParam as PublicCampaignDeleteInputParam
 from .public_email_testing_details_param import PublicEmailTestingDetailsParam as PublicEmailTestingDetailsParam

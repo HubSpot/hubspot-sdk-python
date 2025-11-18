@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
@@ -14,5 +14,11 @@ class PropertyGetParams(TypedDict, total=False):
 
     archived: bool
     """Whether to return only results that have been archived."""
+
+    data_sensitivity: Annotated[
+        Literal["non_sensitive", "sensitive", "highly_sensitive"], PropertyInfo(alias="dataSensitivity")
+    ]
+
+    locale: str
 
     properties: str
