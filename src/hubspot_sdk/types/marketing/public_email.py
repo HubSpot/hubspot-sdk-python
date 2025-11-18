@@ -20,65 +20,10 @@ __all__ = ["PublicEmail"]
 
 
 class PublicEmail(BaseModel):
-    id: str
+    is_ab: bool = FieldInfo(alias="isAb")
+
+    id: Optional[str] = None
     """The email ID."""
-
-    content: PublicEmailContent
-    """Data structure representing the content of the email."""
-
-    from_: PublicEmailFromDetails = FieldInfo(alias="from")
-    """Data structure representing the from fields on the email."""
-
-    name: str
-    """The name of the email, as displayed on the email dashboard."""
-
-    send_on_publish: bool = FieldInfo(alias="sendOnPublish")
-    """Determines whether the email will be sent immediately on publish."""
-
-    state: Literal[
-        "AUTOMATED",
-        "AUTOMATED_DRAFT",
-        "AUTOMATED_SENDING",
-        "AUTOMATED_FOR_FORM",
-        "AUTOMATED_FOR_FORM_BUFFER",
-        "AUTOMATED_FOR_FORM_DRAFT",
-        "AUTOMATED_FOR_FORM_LEGACY",
-        "BLOG_EMAIL_DRAFT",
-        "BLOG_EMAIL_PUBLISHED",
-        "DRAFT",
-        "DRAFT_AB",
-        "DRAFT_AB_VARIANT",
-        "ERROR",
-        "LOSER_AB_VARIANT",
-        "PAGE_STUB",
-        "PRE_PROCESSING",
-        "PROCESSING",
-        "PUBLISHED",
-        "PUBLISHED_AB",
-        "PUBLISHED_AB_VARIANT",
-        "PUBLISHED_OR_SCHEDULED",
-        "RSS_TO_EMAIL_DRAFT",
-        "RSS_TO_EMAIL_PUBLISHED",
-        "SCHEDULED",
-        "SCHEDULED_AB",
-        "SCHEDULED_OR_PUBLISHED",
-        "AUTOMATED_AB",
-        "AUTOMATED_AB_VARIANT",
-        "AUTOMATED_DRAFT_AB",
-        "AUTOMATED_DRAFT_ABVARIANT",
-        "AUTOMATED_LOSER_ABVARIANT",
-        "AGENT_GENERATED",
-    ]
-    """The email state."""
-
-    subcategory: str
-    """The email subcategory."""
-
-    subject: str
-    """The subject of the email."""
-
-    to: PublicEmailToDetails
-    """Data structure representing the to fields of the email."""
 
     active_domain: Optional[str] = FieldInfo(alias="activeDomain", default=None)
     """The active domain of the email."""
@@ -102,6 +47,9 @@ class PublicEmail(BaseModel):
     cloned_from: Optional[str] = FieldInfo(alias="clonedFrom", default=None)
     """The ID of the email this email was cloned from."""
 
+    content: Optional[PublicEmailContent] = None
+    """Data structure representing the content of the email."""
+
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """The date and time of the email's creation, in ISO8601 representation."""
 
@@ -124,7 +72,8 @@ class PublicEmail(BaseModel):
 
     folder_id_v2: Optional[int] = FieldInfo(alias="folderIdV2", default=None)
 
-    is_ab: Optional[bool] = FieldInfo(alias="isAb", default=None)
+    from_: Optional[PublicEmailFromDetails] = FieldInfo(alias="from", default=None)
+    """Data structure representing the from fields on the email."""
 
     is_published: Optional[bool] = FieldInfo(alias="isPublished", default=None)
     """Returns the published status of the email. This is read only."""
@@ -930,6 +879,9 @@ class PublicEmail(BaseModel):
         ]
     ] = None
 
+    name: Optional[str] = None
+    """The name of the email, as displayed on the email dashboard."""
+
     preview_key: Optional[str] = FieldInfo(alias="previewKey", default=None)
 
     primary_email_campaign_id: Optional[str] = FieldInfo(alias="primaryEmailCampaignId", default=None)
@@ -955,7 +907,54 @@ class PublicEmail(BaseModel):
     rss_data: Optional[PublicRssEmailDetails] = FieldInfo(alias="rssData", default=None)
     """RSS related data if it is a blog or rss email."""
 
+    send_on_publish: Optional[bool] = FieldInfo(alias="sendOnPublish", default=None)
+    """Determines whether the email will be sent immediately on publish."""
+
+    state: Optional[
+        Literal[
+            "AUTOMATED",
+            "AUTOMATED_DRAFT",
+            "AUTOMATED_SENDING",
+            "AUTOMATED_FOR_FORM",
+            "AUTOMATED_FOR_FORM_BUFFER",
+            "AUTOMATED_FOR_FORM_DRAFT",
+            "AUTOMATED_FOR_FORM_LEGACY",
+            "BLOG_EMAIL_DRAFT",
+            "BLOG_EMAIL_PUBLISHED",
+            "DRAFT",
+            "DRAFT_AB",
+            "DRAFT_AB_VARIANT",
+            "ERROR",
+            "LOSER_AB_VARIANT",
+            "PAGE_STUB",
+            "PRE_PROCESSING",
+            "PROCESSING",
+            "PUBLISHED",
+            "PUBLISHED_AB",
+            "PUBLISHED_AB_VARIANT",
+            "PUBLISHED_OR_SCHEDULED",
+            "RSS_TO_EMAIL_DRAFT",
+            "RSS_TO_EMAIL_PUBLISHED",
+            "SCHEDULED",
+            "SCHEDULED_AB",
+            "SCHEDULED_OR_PUBLISHED",
+            "AUTOMATED_AB",
+            "AUTOMATED_AB_VARIANT",
+            "AUTOMATED_DRAFT_AB",
+            "AUTOMATED_DRAFT_ABVARIANT",
+            "AUTOMATED_LOSER_ABVARIANT",
+            "AGENT_GENERATED",
+        ]
+    ] = None
+    """The email state."""
+
     stats: Optional[EmailStatisticsData] = None
+
+    subcategory: Optional[str] = None
+    """The email subcategory."""
+
+    subject: Optional[str] = None
+    """The subject of the email."""
 
     subscription_details: Optional[PublicEmailSubscriptionDetails] = FieldInfo(
         alias="subscriptionDetails", default=None
@@ -966,6 +965,9 @@ class PublicEmail(BaseModel):
 
     testing: Optional[PublicEmailTestingDetails] = None
     """AB testing related data. This property is only returned for AB type emails."""
+
+    to: Optional[PublicEmailToDetails] = None
+    """Data structure representing the to fields of the email."""
 
     type: Optional[
         Literal[

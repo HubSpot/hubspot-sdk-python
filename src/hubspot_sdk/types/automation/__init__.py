@@ -20,9 +20,11 @@ from .api_input_variable import APIInputVariable as APIInputVariable
 from .api_webhook_action import APIWebhookAction as APIWebhookAction
 from .api_increment_value import APIIncrementValue as APIIncrementValue
 from .api_timestamp_value import APITimestampValue as APITimestampValue
+from .sequence_get_params import SequenceGetParams as SequenceGetParams
 from .api_connection_param import APIConnectionParam as APIConnectionParam
 from .api_time_delay_param import APITimeDelayParam as APITimeDelayParam
 from .public_action_labels import PublicActionLabels as PublicActionLabels
+from .sequence_list_params import SequenceListParams as SequenceListParams
 from .workflow_list_params import WorkflowListParams as WorkflowListParams
 from .api_action_data_value import APIActionDataValue as APIActionDataValue
 from .api_list_branch_param import APIListBranchParam as APIListBranchParam

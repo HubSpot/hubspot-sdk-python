@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+from typing import List, Union, Iterable
+from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -16,12 +18,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.conversations import thread_update_params
+from ...pagination import SyncPage, AsyncPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.conversations import thread_get_params, thread_list_params, thread_update_params
 from ...types.conversations.public_thread import PublicThread
-from ...types.conversations.collection_response_public_thread_forward_paging import (
-    CollectionResponsePublicThreadForwardPaging,
-)
 
 __all__ = ["ThreadsResource", "AsyncThreadsResource"]
 
@@ -48,9 +48,10 @@ class ThreadsResource(SyncAPIResource):
 
     def update(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
-        archived: bool | Omit = omit,
+        query_archived: bool | Omit = omit,
+        body_archived: bool | Omit = omit,
         status: Literal["OPEN", "CLOSED"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -65,7 +66,10 @@ class ThreadsResource(SyncAPIResource):
         can be restored.
 
         Args:
-          archived: Whether this thread is archived. Set to false to restore the thread.
+          query_archived: Whether the thread to update is archived. Default is false. A thread's status
+              property can not be updated if the thread is archived.
+
+          body_archived: Whether this thread is archived. Set to false to restore the thread.
 
           status: The thread's status: `OPEN` or `CLOSED`.
 
@@ -77,19 +81,21 @@ class ThreadsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         return self._patch(
             f"/conversations/v3/conversations/threads/{thread_id}",
             body=maybe_transform(
                 {
-                    "archived": archived,
+                    "body_archived": body_archived,
                     "status": status,
                 },
                 thread_update_params.ThreadUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"query_archived": query_archived}, thread_update_params.ThreadUpdateParams),
             ),
             cast_to=PublicThread,
         )
@@ -97,25 +103,101 @@ class ThreadsResource(SyncAPIResource):
     def list(
         self,
         *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        associated_contact_id: int | Omit = omit,
+        association: List[Literal["TICKET"]] | Omit = omit,
+        inbox_id: Iterable[int] | Omit = omit,
+        latest_message_timestamp_after: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        thread_status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicThreadForwardPaging:
-        """Retrieve a list of threads, with optional filters and sorting."""
-        return self._get(
+    ) -> SyncPage[PublicThread]:
+        """
+        Retrieve a list of threads, with optional filters and sorting.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          associated_contact_id: Retrieve a filtered list of conversations for a specific contact by its ID. This
+              parameter cannot be used in conjunction with the `inboxId` property.
+
+          association: You can specify an association type here of `TICKET`. If this is set the
+              response will included a thread associations object and associated ticket id if
+              present. If there are no associations to a ticket with this conversation, then
+              the thread associations object will not be present on the response.
+
+          inbox_id: The ID of the conversations inbox you can optionally include to retrieve the
+              associated messages for. This parameter cannot be used in conjunction with the
+              `associatedContactId` property.
+
+          latest_message_timestamp_after: The minimum(earliest) `latestMessageTimestamp`. This is required only when
+              sorting by `latestMessageTimestamp`.
+
+          limit: The maximum number of results to display per page.
+
+          property: A specific property to include in the thread response.
+
+          sort: Set the sort order of the response. Valid options are `id` (default) and
+              `latestMessageTimestamp` (which requires the `latestMessageTimestampAfter` field
+              to also be set). If you’re filtering threads by `associatedContactId` , you can
+              sort in descending order by prepending - to the sort option (e.g., `-id` or
+              `-latestMessageTimestampAfter` ). Otherwise, results are always returned in
+              ascending order.
+
+          thread_status: The status of the associated conversations to filter by (either `OPEN` or
+              `CLOSED`). This property must be provided if you’re including the
+              `associatedContactId` query parameter.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
             "/conversations/v3/conversations/threads",
+            page=SyncPage[PublicThread],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "associated_contact_id": associated_contact_id,
+                        "association": association,
+                        "inbox_id": inbox_id,
+                        "latest_message_timestamp_after": latest_message_timestamp_after,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "thread_status": thread_status,
+                    },
+                    thread_list_params.ThreadListParams,
+                ),
             ),
-            cast_to=CollectionResponsePublicThreadForwardPaging,
+            model=PublicThread,
         )
 
     def delete(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -138,8 +220,6 @@ class ThreadsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/conversations/v3/conversations/threads/{thread_id}",
@@ -151,8 +231,11 @@ class ThreadsResource(SyncAPIResource):
 
     def get(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
+        archived: bool | Omit = omit,
+        association: List[Literal["TICKET"]] | Omit = omit,
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -164,6 +247,15 @@ class ThreadsResource(SyncAPIResource):
         Retrieve a single thread by its ID
 
         Args:
+          archived: Whether to return only results that have been archived. Default is false.
+
+          association: You can specify an association type here of `TICKET`. If this is set the
+              response will included a thread associations object and associated ticket id if
+              present. If there are no associations to a ticket with this conversation, then
+              the thread associations object will not be present on the response.
+
+          property: A specific property to include in the thread response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -172,12 +264,21 @@ class ThreadsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         return self._get(
             f"/conversations/v3/conversations/threads/{thread_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "archived": archived,
+                        "association": association,
+                        "property": property,
+                    },
+                    thread_get_params.ThreadGetParams,
+                ),
             ),
             cast_to=PublicThread,
         )
@@ -205,9 +306,10 @@ class AsyncThreadsResource(AsyncAPIResource):
 
     async def update(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
-        archived: bool | Omit = omit,
+        query_archived: bool | Omit = omit,
+        body_archived: bool | Omit = omit,
         status: Literal["OPEN", "CLOSED"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -222,7 +324,10 @@ class AsyncThreadsResource(AsyncAPIResource):
         can be restored.
 
         Args:
-          archived: Whether this thread is archived. Set to false to restore the thread.
+          query_archived: Whether the thread to update is archived. Default is false. A thread's status
+              property can not be updated if the thread is archived.
+
+          body_archived: Whether this thread is archived. Set to false to restore the thread.
 
           status: The thread's status: `OPEN` or `CLOSED`.
 
@@ -234,45 +339,125 @@ class AsyncThreadsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         return await self._patch(
             f"/conversations/v3/conversations/threads/{thread_id}",
             body=await async_maybe_transform(
                 {
-                    "archived": archived,
+                    "body_archived": body_archived,
                     "status": status,
                 },
                 thread_update_params.ThreadUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"query_archived": query_archived}, thread_update_params.ThreadUpdateParams
+                ),
             ),
             cast_to=PublicThread,
         )
 
-    async def list(
+    def list(
         self,
         *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        associated_contact_id: int | Omit = omit,
+        association: List[Literal["TICKET"]] | Omit = omit,
+        inbox_id: Iterable[int] | Omit = omit,
+        latest_message_timestamp_after: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        thread_status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicThreadForwardPaging:
-        """Retrieve a list of threads, with optional filters and sorting."""
-        return await self._get(
+    ) -> AsyncPaginator[PublicThread, AsyncPage[PublicThread]]:
+        """
+        Retrieve a list of threads, with optional filters and sorting.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          associated_contact_id: Retrieve a filtered list of conversations for a specific contact by its ID. This
+              parameter cannot be used in conjunction with the `inboxId` property.
+
+          association: You can specify an association type here of `TICKET`. If this is set the
+              response will included a thread associations object and associated ticket id if
+              present. If there are no associations to a ticket with this conversation, then
+              the thread associations object will not be present on the response.
+
+          inbox_id: The ID of the conversations inbox you can optionally include to retrieve the
+              associated messages for. This parameter cannot be used in conjunction with the
+              `associatedContactId` property.
+
+          latest_message_timestamp_after: The minimum(earliest) `latestMessageTimestamp`. This is required only when
+              sorting by `latestMessageTimestamp`.
+
+          limit: The maximum number of results to display per page.
+
+          property: A specific property to include in the thread response.
+
+          sort: Set the sort order of the response. Valid options are `id` (default) and
+              `latestMessageTimestamp` (which requires the `latestMessageTimestampAfter` field
+              to also be set). If you’re filtering threads by `associatedContactId` , you can
+              sort in descending order by prepending - to the sort option (e.g., `-id` or
+              `-latestMessageTimestampAfter` ). Otherwise, results are always returned in
+              ascending order.
+
+          thread_status: The status of the associated conversations to filter by (either `OPEN` or
+              `CLOSED`). This property must be provided if you’re including the
+              `associatedContactId` query parameter.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
             "/conversations/v3/conversations/threads",
+            page=AsyncPage[PublicThread],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "associated_contact_id": associated_contact_id,
+                        "association": association,
+                        "inbox_id": inbox_id,
+                        "latest_message_timestamp_after": latest_message_timestamp_after,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "thread_status": thread_status,
+                    },
+                    thread_list_params.ThreadListParams,
+                ),
             ),
-            cast_to=CollectionResponsePublicThreadForwardPaging,
+            model=PublicThread,
         )
 
     async def delete(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -295,8 +480,6 @@ class AsyncThreadsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/conversations/v3/conversations/threads/{thread_id}",
@@ -308,8 +491,11 @@ class AsyncThreadsResource(AsyncAPIResource):
 
     async def get(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
+        archived: bool | Omit = omit,
+        association: List[Literal["TICKET"]] | Omit = omit,
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -321,6 +507,15 @@ class AsyncThreadsResource(AsyncAPIResource):
         Retrieve a single thread by its ID
 
         Args:
+          archived: Whether to return only results that have been archived. Default is false.
+
+          association: You can specify an association type here of `TICKET`. If this is set the
+              response will included a thread associations object and associated ticket id if
+              present. If there are no associations to a ticket with this conversation, then
+              the thread associations object will not be present on the response.
+
+          property: A specific property to include in the thread response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -329,12 +524,21 @@ class AsyncThreadsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         return await self._get(
             f"/conversations/v3/conversations/threads/{thread_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "archived": archived,
+                        "association": association,
+                        "property": property,
+                    },
+                    thread_get_params.ThreadGetParams,
+                ),
             ),
             cast_to=PublicThread,
         )

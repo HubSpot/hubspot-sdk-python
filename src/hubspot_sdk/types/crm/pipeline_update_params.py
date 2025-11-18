@@ -13,8 +13,10 @@ class PipelineUpdateParams(TypedDict, total=False):
     object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
 
     validate_deal_stage_usages_before_delete: Annotated[bool, PropertyInfo(alias="validateDealStageUsagesBeforeDelete")]
+    """Indicates whether to validate deal stage usages before deleting the pipeline."""
 
     validate_references_before_delete: Annotated[bool, PropertyInfo(alias="validateReferencesBeforeDelete")]
+    """Indicates whether to validate references before deleting the pipeline."""
 
     archived: bool
     """Whether the pipeline is archived.

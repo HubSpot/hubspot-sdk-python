@@ -11,5 +11,7 @@ __all__ = ["LimitGetAssociationLabelLimitsParams"]
 
 class LimitGetAssociationLabelLimitsParams(TypedDict, total=False):
     from_object_type_id: Annotated[str, PropertyInfo(alias="fromObjectTypeId")]
+    """objectTypeId of the object type on the "from" side of the association"""
 
     to_object_type_id: Annotated[str, PropertyInfo(alias="toObjectTypeId")]
+    """objectTypeId of the object type on the "to" side of the association"""

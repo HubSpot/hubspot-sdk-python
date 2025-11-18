@@ -21,6 +21,7 @@ class TestSend:
     def test_method_send(self, client: Hubspot) -> None:
         send = client.events.send.send(
             event_name="eventName",
+            properties={"foo": "string"},
         )
         assert send is None
 
@@ -29,10 +30,10 @@ class TestSend:
     def test_method_send_with_all_params(self, client: Hubspot) -> None:
         send = client.events.send.send(
             event_name="eventName",
+            properties={"foo": "string"},
             email="email",
             object_id="objectId",
             occurred_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            properties={"foo": "string"},
             utk="utk",
             uuid="uuid",
         )
@@ -43,6 +44,7 @@ class TestSend:
     def test_raw_response_send(self, client: Hubspot) -> None:
         response = client.events.send.with_raw_response.send(
             event_name="eventName",
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
@@ -55,6 +57,7 @@ class TestSend:
     def test_streaming_response_send(self, client: Hubspot) -> None:
         with client.events.send.with_streaming_response.send(
             event_name="eventName",
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -68,7 +71,12 @@ class TestSend:
     @parametrize
     def test_method_send_batch(self, client: Hubspot) -> None:
         send = client.events.send.send_batch(
-            inputs=[{"event_name": "eventName"}],
+            inputs=[
+                {
+                    "event_name": "eventName",
+                    "properties": {"foo": "string"},
+                }
+            ],
         )
         assert send is None
 
@@ -76,7 +84,12 @@ class TestSend:
     @parametrize
     def test_raw_response_send_batch(self, client: Hubspot) -> None:
         response = client.events.send.with_raw_response.send_batch(
-            inputs=[{"event_name": "eventName"}],
+            inputs=[
+                {
+                    "event_name": "eventName",
+                    "properties": {"foo": "string"},
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -88,7 +101,12 @@ class TestSend:
     @parametrize
     def test_streaming_response_send_batch(self, client: Hubspot) -> None:
         with client.events.send.with_streaming_response.send_batch(
-            inputs=[{"event_name": "eventName"}],
+            inputs=[
+                {
+                    "event_name": "eventName",
+                    "properties": {"foo": "string"},
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -109,6 +127,7 @@ class TestAsyncSend:
     async def test_method_send(self, async_client: AsyncHubspot) -> None:
         send = await async_client.events.send.send(
             event_name="eventName",
+            properties={"foo": "string"},
         )
         assert send is None
 
@@ -117,10 +136,10 @@ class TestAsyncSend:
     async def test_method_send_with_all_params(self, async_client: AsyncHubspot) -> None:
         send = await async_client.events.send.send(
             event_name="eventName",
+            properties={"foo": "string"},
             email="email",
             object_id="objectId",
             occurred_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            properties={"foo": "string"},
             utk="utk",
             uuid="uuid",
         )
@@ -131,6 +150,7 @@ class TestAsyncSend:
     async def test_raw_response_send(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.send.with_raw_response.send(
             event_name="eventName",
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
@@ -143,6 +163,7 @@ class TestAsyncSend:
     async def test_streaming_response_send(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.send.with_streaming_response.send(
             event_name="eventName",
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -156,7 +177,12 @@ class TestAsyncSend:
     @parametrize
     async def test_method_send_batch(self, async_client: AsyncHubspot) -> None:
         send = await async_client.events.send.send_batch(
-            inputs=[{"event_name": "eventName"}],
+            inputs=[
+                {
+                    "event_name": "eventName",
+                    "properties": {"foo": "string"},
+                }
+            ],
         )
         assert send is None
 
@@ -164,7 +190,12 @@ class TestAsyncSend:
     @parametrize
     async def test_raw_response_send_batch(self, async_client: AsyncHubspot) -> None:
         response = await async_client.events.send.with_raw_response.send_batch(
-            inputs=[{"event_name": "eventName"}],
+            inputs=[
+                {
+                    "event_name": "eventName",
+                    "properties": {"foo": "string"},
+                }
+            ],
         )
 
         assert response.is_closed is True
@@ -176,7 +207,12 @@ class TestAsyncSend:
     @parametrize
     async def test_streaming_response_send_batch(self, async_client: AsyncHubspot) -> None:
         async with async_client.events.send.with_streaming_response.send_batch(
-            inputs=[{"event_name": "eventName"}],
+            inputs=[
+                {
+                    "event_name": "eventName",
+                    "properties": {"foo": "string"},
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -14,3 +14,4 @@ class PublicAssociation(BaseModel):
     to: PublicObjectID
 
     type: str
+    """The type of association between the 'from' and 'to' objects."""

@@ -256,6 +256,8 @@ class PropertiesResource(SyncAPIResource):
         object_type: str,
         *,
         archived: bool | Omit = omit,
+        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        locale: str | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -290,6 +292,8 @@ class PropertiesResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "archived": archived,
+                        "data_sensitivity": data_sensitivity,
+                        "locale": locale,
                         "properties": properties,
                     },
                     property_list_params.PropertyListParams,
@@ -341,6 +345,8 @@ class PropertiesResource(SyncAPIResource):
         *,
         object_type: str,
         archived: bool | Omit = omit,
+        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        locale: str | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -377,6 +383,8 @@ class PropertiesResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "archived": archived,
+                        "data_sensitivity": data_sensitivity,
+                        "locale": locale,
                         "properties": properties,
                     },
                     property_get_params.PropertyGetParams,
@@ -599,6 +607,8 @@ class AsyncPropertiesResource(AsyncAPIResource):
         object_type: str,
         *,
         archived: bool | Omit = omit,
+        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        locale: str | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -633,6 +643,8 @@ class AsyncPropertiesResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "archived": archived,
+                        "data_sensitivity": data_sensitivity,
+                        "locale": locale,
                         "properties": properties,
                     },
                     property_list_params.PropertyListParams,
@@ -684,6 +696,8 @@ class AsyncPropertiesResource(AsyncAPIResource):
         *,
         object_type: str,
         archived: bool | Omit = omit,
+        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        locale: str | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -720,6 +734,8 @@ class AsyncPropertiesResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "archived": archived,
+                        "data_sensitivity": data_sensitivity,
+                        "locale": locale,
                         "properties": properties,
                     },
                     property_get_params.PropertyGetParams,

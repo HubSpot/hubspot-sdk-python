@@ -147,6 +147,7 @@ class TestBatch:
         batch = client.crm.properties.batch.get(
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
             inputs=[{"name": "name"}],
         )
         assert_matches_type(BatchResponseProperty, batch, path=["response"])
@@ -157,8 +158,9 @@ class TestBatch:
         batch = client.crm.properties.batch.get(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "name"}],
             data_sensitivity="non_sensitive",
+            inputs=[{"name": "name"}],
+            locale="locale",
         )
         assert_matches_type(BatchResponseProperty, batch, path=["response"])
 
@@ -168,6 +170,7 @@ class TestBatch:
         response = client.crm.properties.batch.with_raw_response.get(
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
             inputs=[{"name": "name"}],
         )
 
@@ -182,6 +185,7 @@ class TestBatch:
         with client.crm.properties.batch.with_streaming_response.get(
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
             inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
@@ -199,6 +203,7 @@ class TestBatch:
             client.crm.properties.batch.with_raw_response.get(
                 object_type="",
                 archived=True,
+                data_sensitivity="non_sensitive",
                 inputs=[{"name": "name"}],
             )
 
@@ -338,6 +343,7 @@ class TestAsyncBatch:
         batch = await async_client.crm.properties.batch.get(
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
             inputs=[{"name": "name"}],
         )
         assert_matches_type(BatchResponseProperty, batch, path=["response"])
@@ -348,8 +354,9 @@ class TestAsyncBatch:
         batch = await async_client.crm.properties.batch.get(
             object_type="objectType",
             archived=True,
-            inputs=[{"name": "name"}],
             data_sensitivity="non_sensitive",
+            inputs=[{"name": "name"}],
+            locale="locale",
         )
         assert_matches_type(BatchResponseProperty, batch, path=["response"])
 
@@ -359,6 +366,7 @@ class TestAsyncBatch:
         response = await async_client.crm.properties.batch.with_raw_response.get(
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
             inputs=[{"name": "name"}],
         )
 
@@ -373,6 +381,7 @@ class TestAsyncBatch:
         async with async_client.crm.properties.batch.with_streaming_response.get(
             object_type="objectType",
             archived=True,
+            data_sensitivity="non_sensitive",
             inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
@@ -390,5 +399,6 @@ class TestAsyncBatch:
             await async_client.crm.properties.batch.with_raw_response.get(
                 object_type="",
                 archived=True,
+                data_sensitivity="non_sensitive",
                 inputs=[{"name": "name"}],
             )

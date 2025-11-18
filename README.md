@@ -35,6 +35,17 @@ client = Hubspot(
 )
 
 result = client.crm.objects.contacts.create(
+    associations=[
+        {
+            "to": {"id": "37295"},
+            "types": [
+                {
+                    "association_category": "HUBSPOT_DEFINED",
+                    "association_type_id": 0,
+                }
+            ],
+        }
+    ],
     properties={"email": "mark.s@lumon.industries"},
 )
 print(result.created_resource_id)
@@ -55,6 +66,17 @@ client = AsyncHubspot(
 
 async def main() -> None:
     result = await client.crm.objects.contacts.create(
+        associations=[
+            {
+                "to": {"id": "37295"},
+                "types": [
+                    {
+                        "association_category": "HUBSPOT_DEFINED",
+                        "association_type_id": 0,
+                    }
+                ],
+            }
+        ],
         properties={"email": "mark.s@lumon.industries"},
     )
     print(result.created_resource_id)
@@ -90,6 +112,17 @@ async def main() -> None:
         http_client=DefaultAioHttpClient(),
     ) as client:
         result = await client.crm.objects.contacts.create(
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"email": "mark.s@lumon.industries"},
         )
         print(result.created_resource_id)
@@ -256,6 +289,17 @@ client = Hubspot()
 
 try:
     client.crm.objects.contacts.create(
+        associations=[
+            {
+                "to": {"id": "37295"},
+                "types": [
+                    {
+                        "association_category": "HUBSPOT_DEFINED",
+                        "association_type_id": 0,
+                    }
+                ],
+            }
+        ],
         properties={"email": "mark.s@lumon.industries"},
     )
 except hubspot_sdk.APIConnectionError as e:
@@ -301,6 +345,17 @@ client = Hubspot(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).crm.objects.contacts.create(
+    associations=[
+        {
+            "to": {"id": "37295"},
+            "types": [
+                {
+                    "association_category": "HUBSPOT_DEFINED",
+                    "association_type_id": 0,
+                }
+            ],
+        }
+    ],
     properties={"email": "mark.s@lumon.industries"},
 )
 ```
@@ -326,6 +381,17 @@ client = Hubspot(
 
 # Override per-request:
 client.with_options(timeout=5.0).crm.objects.contacts.create(
+    associations=[
+        {
+            "to": {"id": "37295"},
+            "types": [
+                {
+                    "association_category": "HUBSPOT_DEFINED",
+                    "association_type_id": 0,
+                }
+            ],
+        }
+    ],
     properties={"email": "mark.s@lumon.industries"},
 )
 ```
@@ -369,6 +435,15 @@ from hubspot_sdk import Hubspot
 
 client = Hubspot()
 response = client.crm.objects.contacts.with_raw_response.create(
+    associations=[{
+        "to": {
+            "id": "37295"
+        },
+        "types": [{
+            "association_category": "HUBSPOT_DEFINED",
+            "association_type_id": 0,
+        }],
+    }],
     properties={
         "email": "mark.s@lumon.industries"
     },
@@ -391,6 +466,17 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.crm.objects.contacts.with_streaming_response.create(
+    associations=[
+        {
+            "to": {"id": "37295"},
+            "types": [
+                {
+                    "association_category": "HUBSPOT_DEFINED",
+                    "association_type_id": 0,
+                }
+            ],
+        }
+    ],
     properties={"email": "mark.s@lumon.industries"},
 ) as response:
     print(response.headers.get("X-My-Header"))

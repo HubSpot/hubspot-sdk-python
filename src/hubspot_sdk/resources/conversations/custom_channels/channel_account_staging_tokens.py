@@ -46,7 +46,7 @@ class ChannelAccountStagingTokensResource(SyncAPIResource):
         self,
         account_token: str,
         *,
-        channel_id: str,
+        channel_id: int,
         account_name: str,
         delivery_identifier: PublicDeliveryIdentifierParam,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -70,8 +70,6 @@ class ChannelAccountStagingTokensResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         if not account_token:
             raise ValueError(f"Expected a non-empty value for `account_token` but received {account_token!r}")
         return self._patch(
@@ -114,7 +112,7 @@ class AsyncChannelAccountStagingTokensResource(AsyncAPIResource):
         self,
         account_token: str,
         *,
-        channel_id: str,
+        channel_id: int,
         account_name: str,
         delivery_identifier: PublicDeliveryIdentifierParam,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -138,8 +136,6 @@ class AsyncChannelAccountStagingTokensResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         if not account_token:
             raise ValueError(f"Expected a non-empty value for `account_token` but received {account_token!r}")
         return await self._patch(

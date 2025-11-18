@@ -66,7 +66,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of orders
+        Create a batch of orders in the system.
 
         Args:
           extra_headers: Send extra headers
@@ -98,7 +98,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of orders by internal ID, or unique property values
+        Update a batch of orders using their internal IDs or unique property values.
 
         Args:
           extra_headers: Send extra headers
@@ -130,7 +130,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a batch of orders by ID
+        Archive a batch of orders identified by their IDs.
 
         Args:
           extra_headers: Send extra headers
@@ -176,6 +176,8 @@ class BatchResource(SyncAPIResource):
           properties_with_history: Key-value pairs for setting properties for the new object and their histories.
 
           archived: Whether to return only results that have been archived.
+
+          id_property: A unique property used to identify objects instead of the default ID.
 
           extra_headers: Send extra headers
 
@@ -273,7 +275,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of orders
+        Create a batch of orders in the system.
 
         Args:
           extra_headers: Send extra headers
@@ -305,7 +307,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of orders by internal ID, or unique property values
+        Update a batch of orders using their internal IDs or unique property values.
 
         Args:
           extra_headers: Send extra headers
@@ -337,7 +339,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Archive a batch of orders by ID
+        Archive a batch of orders identified by their IDs.
 
         Args:
           extra_headers: Send extra headers
@@ -383,6 +385,8 @@ class AsyncBatchResource(AsyncAPIResource):
           properties_with_history: Key-value pairs for setting properties for the new object and their histories.
 
           archived: Whether to return only results that have been archived.
+
+          id_property: A unique property used to identify objects instead of the default ID.
 
           extra_headers: Send extra headers
 

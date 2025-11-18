@@ -11,3 +11,4 @@ __all__ = ["PortalObjectTypeEnablementPublicResponse"]
 
 class PortalObjectTypeEnablementPublicResponse(BaseModel):
     enablement_by_object_type_id: Dict[str, bool] = FieldInfo(alias="enablementByObjectTypeId")
+    """A map of objectTypeId to whether that object type is enabled or not"""

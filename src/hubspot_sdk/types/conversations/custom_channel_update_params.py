@@ -13,14 +13,14 @@ __all__ = ["CustomChannelUpdateParams"]
 class CustomChannelUpdateParams(TypedDict, total=False):
     capabilities: Required[Dict[str, object]]
 
+    channel_account_connection_redirect_url: Required[
+        Annotated[object, PropertyInfo(alias="channelAccountConnectionRedirectUrl")]
+    ]
+
     channel_description: Required[Annotated[object, PropertyInfo(alias="channelDescription")]]
 
     channel_logo_url: Required[Annotated[object, PropertyInfo(alias="channelLogoUrl")]]
 
-    channel_account_connection_redirect_url: Annotated[
-        object, PropertyInfo(alias="channelAccountConnectionRedirectUrl")
-    ]
+    name: Required[object]
 
-    name: object
-
-    webhook_url: Annotated[object, PropertyInfo(alias="webhookUrl")]
+    webhook_url: Required[Annotated[object, PropertyInfo(alias="webhookUrl")]]

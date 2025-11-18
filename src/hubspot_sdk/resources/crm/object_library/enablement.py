@@ -50,6 +50,10 @@ class EnablementResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PortalObjectTypeEnablementPublicResponse:
+        """
+        For all object types supporting enablement, returns whether they're enabled or
+        disabled
+        """
         return self._get(
             "/crm/v3/object-library/enablement",
             options=make_request_options(
@@ -70,6 +74,8 @@ class EnablementResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectTypeEnablementPublicResponse:
         """
+        Fetch whether object type is enabled
+
         Args:
           extra_headers: Send extra headers
 
@@ -120,6 +126,10 @@ class AsyncEnablementResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PortalObjectTypeEnablementPublicResponse:
+        """
+        For all object types supporting enablement, returns whether they're enabled or
+        disabled
+        """
         return await self._get(
             "/crm/v3/object-library/enablement",
             options=make_request_options(
@@ -140,6 +150,8 @@ class AsyncEnablementResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectTypeEnablementPublicResponse:
         """
+        Fetch whether object type is enabled
+
         Args:
           extra_headers: Send extra headers
 

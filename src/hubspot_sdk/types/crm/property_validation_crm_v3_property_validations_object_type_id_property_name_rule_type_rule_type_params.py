@@ -16,3 +16,4 @@ class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleType
     property_name: Required[Annotated[str, PropertyInfo(alias="propertyName")]]
 
     rule_arguments: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="ruleArguments")]]
+    """A list of arguments that define the constraints for the validation rule."""

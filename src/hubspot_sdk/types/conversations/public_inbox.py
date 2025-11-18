@@ -11,7 +11,16 @@ __all__ = ["PublicInbox"]
 
 
 class PublicInbox(BaseModel):
+    id: str
+    """The ID of the inbox."""
+
     archived: bool
+
+    created_at: datetime = FieldInfo(alias="createdAt")
+    """When the inbox was created."""
+
+    name: str
+    """The name of the inbox."""
 
     type: str
     """Specifies whether this refers to a Conversations Inbox or to the Help Desk.
@@ -19,15 +28,6 @@ class PublicInbox(BaseModel):
     Valid values are INBOX or HELP_DESK
     """
 
-    id: Optional[str] = None
-    """The ID of the inbox."""
+    updated_at: datetime = FieldInfo(alias="updatedAt")
 
     archived_at: Optional[datetime] = FieldInfo(alias="archivedAt", default=None)
-
-    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
-    """When the inbox was created."""
-
-    name: Optional[str] = None
-    """The name of the inbox."""
-
-    updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)

@@ -15,7 +15,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.crm.properties import group_create_params, group_update_params
+from ....types.crm.properties import group_get_params, group_list_params, group_create_params, group_update_params
 from ....types.crm.property_group import PropertyGroup
 from ....types.crm.created_response_property_group import CreatedResponsePropertyGroup
 from ....types.crm.collection_response_property_group import CollectionResponsePropertyGroup
@@ -138,6 +138,7 @@ class GroupsResource(SyncAPIResource):
         self,
         object_type: str,
         *,
+        locale: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -163,7 +164,11 @@ class GroupsResource(SyncAPIResource):
         return self._get(
             f"/crm/v3/properties/{object_type}/groups",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"locale": locale}, group_list_params.GroupListParams),
             ),
             cast_to=CollectionResponsePropertyGroup,
         )
@@ -210,6 +215,7 @@ class GroupsResource(SyncAPIResource):
         group_name: str,
         *,
         object_type: str,
+        locale: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -236,7 +242,11 @@ class GroupsResource(SyncAPIResource):
         return self._get(
             f"/crm/v3/properties/{object_type}/groups/{group_name}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"locale": locale}, group_get_params.GroupGetParams),
             ),
             cast_to=PropertyGroup,
         )
@@ -357,6 +367,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
+        locale: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,7 +393,11 @@ class AsyncGroupsResource(AsyncAPIResource):
         return await self._get(
             f"/crm/v3/properties/{object_type}/groups",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"locale": locale}, group_list_params.GroupListParams),
             ),
             cast_to=CollectionResponsePropertyGroup,
         )
@@ -429,6 +444,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         group_name: str,
         *,
         object_type: str,
+        locale: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -455,7 +471,11 @@ class AsyncGroupsResource(AsyncAPIResource):
         return await self._get(
             f"/crm/v3/properties/{object_type}/groups/{group_name}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"locale": locale}, group_get_params.GroupGetParams),
             ),
             cast_to=PropertyGroup,
         )

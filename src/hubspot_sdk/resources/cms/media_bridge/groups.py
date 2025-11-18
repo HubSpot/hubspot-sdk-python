@@ -46,7 +46,7 @@ class GroupsResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         label: str,
         name: str,
         display_order: int | Omit = omit,
@@ -69,8 +69,6 @@ class GroupsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -93,7 +91,7 @@ class GroupsResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -113,8 +111,6 @@ class GroupsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._get(
@@ -129,7 +125,7 @@ class GroupsResource(SyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -150,8 +146,6 @@ class GroupsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -169,7 +163,7 @@ class GroupsResource(SyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -190,8 +184,6 @@ class GroupsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -208,7 +200,7 @@ class GroupsResource(SyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         display_order: int | Omit = omit,
         label: str | Omit = omit,
@@ -231,8 +223,6 @@ class GroupsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -277,7 +267,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         label: str,
         name: str,
         display_order: int | Omit = omit,
@@ -300,8 +290,6 @@ class AsyncGroupsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -324,7 +312,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -344,8 +332,6 @@ class AsyncGroupsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._get(
@@ -360,7 +346,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -381,8 +367,6 @@ class AsyncGroupsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -400,7 +384,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -421,8 +405,6 @@ class AsyncGroupsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -439,7 +421,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         display_order: int | Omit = omit,
         label: str | Omit = omit,
@@ -462,8 +444,6 @@ class AsyncGroupsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:

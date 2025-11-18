@@ -28,16 +28,6 @@ class TestObjects:
     def test_method_create(self, client: Hubspot) -> None:
         object_ = client.crm.objects.objects.create(
             object_type="objectType",
-            properties={"foo": "string"},
-        )
-        assert_matches_type(CreatedResponseSimplePublicObject, object_, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
-        object_ = client.crm.objects.objects.create(
-            object_type="objectType",
-            properties={"foo": "string"},
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -49,6 +39,7 @@ class TestObjects:
                     ],
                 }
             ],
+            properties={"foo": "string"},
         )
         assert_matches_type(CreatedResponseSimplePublicObject, object_, path=["response"])
 
@@ -57,6 +48,17 @@ class TestObjects:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.objects.objects.with_raw_response.create(
             object_type="objectType",
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"foo": "string"},
         )
 
@@ -70,6 +72,17 @@ class TestObjects:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.objects.objects.with_streaming_response.create(
             object_type="objectType",
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
@@ -86,6 +99,17 @@ class TestObjects:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.objects.objects.with_raw_response.create(
                 object_type="",
+                associations=[
+                    {
+                        "to": {"id": "37295"},
+                        "types": [
+                            {
+                                "association_category": "HUBSPOT_DEFINED",
+                                "association_type_id": 0,
+                            }
+                        ],
+                    }
+                ],
                 properties={"foo": "string"},
             )
 
@@ -336,6 +360,20 @@ class TestObjects:
     def test_method_search(self, client: Hubspot) -> None:
         object_ = client.crm.objects.objects.search(
             object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
         )
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, object_, path=["response"])
 
@@ -360,8 +398,8 @@ class TestObjects:
             ],
             limit=0,
             properties=["string"],
-            query="query",
             sorts=["string"],
+            query="query",
         )
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, object_, path=["response"])
 
@@ -370,6 +408,20 @@ class TestObjects:
     def test_raw_response_search(self, client: Hubspot) -> None:
         response = client.crm.objects.objects.with_raw_response.search(
             object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
         )
 
         assert response.is_closed is True
@@ -382,6 +434,20 @@ class TestObjects:
     def test_streaming_response_search(self, client: Hubspot) -> None:
         with client.crm.objects.objects.with_streaming_response.search(
             object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -397,6 +463,20 @@ class TestObjects:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.crm.objects.objects.with_raw_response.search(
                 object_type="",
+                after="after",
+                filter_groups=[
+                    {
+                        "filters": [
+                            {
+                                "operator": "EQ",
+                                "property_name": "propertyName",
+                            }
+                        ]
+                    }
+                ],
+                limit=0,
+                properties=["string"],
+                sorts=["string"],
             )
 
 
@@ -410,16 +490,6 @@ class TestAsyncObjects:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         object_ = await async_client.crm.objects.objects.create(
             object_type="objectType",
-            properties={"foo": "string"},
-        )
-        assert_matches_type(CreatedResponseSimplePublicObject, object_, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
-        object_ = await async_client.crm.objects.objects.create(
-            object_type="objectType",
-            properties={"foo": "string"},
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -431,6 +501,7 @@ class TestAsyncObjects:
                     ],
                 }
             ],
+            properties={"foo": "string"},
         )
         assert_matches_type(CreatedResponseSimplePublicObject, object_, path=["response"])
 
@@ -439,6 +510,17 @@ class TestAsyncObjects:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.objects.with_raw_response.create(
             object_type="objectType",
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"foo": "string"},
         )
 
@@ -452,6 +534,17 @@ class TestAsyncObjects:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.objects.with_streaming_response.create(
             object_type="objectType",
+            associations=[
+                {
+                    "to": {"id": "37295"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
             properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
@@ -468,6 +561,17 @@ class TestAsyncObjects:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.objects.objects.with_raw_response.create(
                 object_type="",
+                associations=[
+                    {
+                        "to": {"id": "37295"},
+                        "types": [
+                            {
+                                "association_category": "HUBSPOT_DEFINED",
+                                "association_type_id": 0,
+                            }
+                        ],
+                    }
+                ],
                 properties={"foo": "string"},
             )
 
@@ -718,6 +822,20 @@ class TestAsyncObjects:
     async def test_method_search(self, async_client: AsyncHubspot) -> None:
         object_ = await async_client.crm.objects.objects.search(
             object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
         )
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, object_, path=["response"])
 
@@ -742,8 +860,8 @@ class TestAsyncObjects:
             ],
             limit=0,
             properties=["string"],
-            query="query",
             sorts=["string"],
+            query="query",
         )
         assert_matches_type(CollectionResponseWithTotalSimplePublicObject, object_, path=["response"])
 
@@ -752,6 +870,20 @@ class TestAsyncObjects:
     async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.objects.with_raw_response.search(
             object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
         )
 
         assert response.is_closed is True
@@ -764,6 +896,20 @@ class TestAsyncObjects:
     async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.objects.with_streaming_response.search(
             object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "EQ",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -779,4 +925,18 @@ class TestAsyncObjects:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.crm.objects.objects.with_raw_response.search(
                 object_type="",
+                after="after",
+                filter_groups=[
+                    {
+                        "filters": [
+                            {
+                                "operator": "EQ",
+                                "property_name": "propertyName",
+                            }
+                        ]
+                    }
+                ],
+                limit=0,
+                properties=["string"],
+                sorts=["string"],
             )

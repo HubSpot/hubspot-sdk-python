@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
+from typing import Dict
 from datetime import datetime
 
 from pydantic import Field as FieldInfo
@@ -30,7 +30,7 @@ class ExternalUnifiedEvent(BaseModel):
     occurred_at: datetime = FieldInfo(alias="occurredAt")
     """An ISO 8601 timestamp when the event occurred."""
 
-    properties: Optional[Dict[str, str]] = None
+    properties: Dict[str, str]
     """A key-value map of event-specific properties.
 
     The available properties depend on the event type definition.

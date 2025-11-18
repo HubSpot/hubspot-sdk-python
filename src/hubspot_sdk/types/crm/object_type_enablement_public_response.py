@@ -7,3 +7,4 @@ __all__ = ["ObjectTypeEnablementPublicResponse"]
 
 class ObjectTypeEnablementPublicResponse(BaseModel):
     enablement: bool
+    """Whether the object type is enabled or not"""

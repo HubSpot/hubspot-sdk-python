@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from ..._models import BaseModel
 from .api_usage import APIUsage
-from ..marketing.emails_paging import EmailsPaging
+from ..shared.paging import Paging
 
 __all__ = ["CollectionResponseAPIUsage"]
 
@@ -12,5 +12,4 @@ __all__ = ["CollectionResponseAPIUsage"]
 class CollectionResponseAPIUsage(BaseModel):
     results: List[APIUsage]
 
-    paging: Optional[EmailsPaging] = None
-    """Contains information pagination of results."""
+    paging: Optional[Paging] = None

@@ -9,5 +9,10 @@ __all__ = ["PublicFetchAssociationsBatchRequestParam"]
 
 class PublicFetchAssociationsBatchRequestParam(TypedDict, total=False):
     id: Required[str]
+    """The unique identifier for the object whose associations are being fetched."""
 
     after: str
+    """
+    A paging cursor token used to retrieve the next set of results in a paginated
+    response.
+    """

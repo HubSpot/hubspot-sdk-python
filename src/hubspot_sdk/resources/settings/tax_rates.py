@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -13,11 +14,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncPage, AsyncPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.settings import tax_rate_list_params
 from ...types.settings.public_tax_rate_group import PublicTaxRateGroup
-from ...types.settings.collection_response_public_tax_rate_group_forward_paging import (
-    CollectionResponsePublicTaxRateGroupForwardPaging,
-)
 
 __all__ = ["TaxRatesResource", "AsyncTaxRatesResource"]
 
@@ -45,23 +45,55 @@ class TaxRatesResource(SyncAPIResource):
     def list(
         self,
         *,
+        active: bool | Omit = omit,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicTaxRateGroupForwardPaging:
+    ) -> SyncPage[PublicTaxRateGroup]:
         """
         Retrieve a paginated list of all tax rates set up in the account tax rate
         library
+
+        Args:
+          active: Include inactive rates.
+
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the paging.next.after JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/tax-rates/v1/tax-rates",
+            page=SyncPage[PublicTaxRateGroup],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "active": active,
+                        "after": after,
+                        "limit": limit,
+                    },
+                    tax_rate_list_params.TaxRateListParams,
+                ),
             ),
-            cast_to=CollectionResponsePublicTaxRateGroupForwardPaging,
+            model=PublicTaxRateGroup,
         )
 
     def get(
@@ -118,26 +150,58 @@ class AsyncTaxRatesResource(AsyncAPIResource):
         """
         return AsyncTaxRatesResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
+        active: bool | Omit = omit,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicTaxRateGroupForwardPaging:
+    ) -> AsyncPaginator[PublicTaxRateGroup, AsyncPage[PublicTaxRateGroup]]:
         """
         Retrieve a paginated list of all tax rates set up in the account tax rate
         library
+
+        Args:
+          active: Include inactive rates.
+
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the paging.next.after JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/tax-rates/v1/tax-rates",
+            page=AsyncPage[PublicTaxRateGroup],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "active": active,
+                        "after": after,
+                        "limit": limit,
+                    },
+                    tax_rate_list_params.TaxRateListParams,
+                ),
             ),
-            cast_to=CollectionResponsePublicTaxRateGroupForwardPaging,
+            model=PublicTaxRateGroup,
         )
 
     async def get(

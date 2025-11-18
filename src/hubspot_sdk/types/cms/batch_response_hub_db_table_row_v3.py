@@ -13,14 +13,14 @@ __all__ = ["BatchResponseHubDBTableRowV3"]
 
 
 class BatchResponseHubDBTableRowV3(BaseModel):
-    completed_at: Optional[datetime] = FieldInfo(alias="completedAt", default=None)
+    completed_at: datetime = FieldInfo(alias="completedAt")
+
+    results: List[HubDBTableRowV3]
+
+    started_at: datetime = FieldInfo(alias="startedAt")
+
+    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
 
     links: Optional[Dict[str, str]] = None
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
-
-    results: Optional[List[HubDBTableRowV3]] = None
-
-    started_at: Optional[datetime] = FieldInfo(alias="startedAt", default=None)
-
-    status: Optional[Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]] = None

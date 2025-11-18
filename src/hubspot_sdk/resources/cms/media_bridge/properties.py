@@ -20,11 +20,13 @@ from ...._response import (
 from ...._base_client import make_request_options
 from ....types.shared.property import Property
 from ....types.cms.media_bridge import (
+    property_get_params,
+    property_list_params,
     property_create_params,
     property_update_params,
     property_get_batch_params,
     property_create_batch_params,
-    property_archive_batch_params,
+    property_delete_batch_params,
 )
 from ....types.shared_params.option_input import OptionInput
 from ....types.shared_params.property_name import PropertyName
@@ -59,7 +61,7 @@ class PropertiesResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         field_type: Literal[
             "booleancheckbox",
             "calculation_equation",
@@ -107,8 +109,6 @@ class PropertiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -143,7 +143,7 @@ class PropertiesResource(SyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         calculation_formula: str | Omit = omit,
         description: str | Omit = omit,
@@ -189,8 +189,6 @@ class PropertiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -223,7 +221,9 @@ class PropertiesResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
+        archived: bool | Omit = omit,
+        properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -235,6 +235,10 @@ class PropertiesResource(SyncAPIResource):
         Get the existing properties defined for a media object type.
 
         Args:
+          archived: Whether to return only results that have been archived.
+
+          properties: Filter the response to the specified properties.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -243,14 +247,22 @@ class PropertiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._get(
             f"/media-bridge/v1/{app_id}/properties/{object_type}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "archived": archived,
+                        "properties": properties,
+                    },
+                    property_list_params.PropertyListParams,
+                ),
             ),
             cast_to=CollectionResponsePropertyNoPaging,
         )
@@ -259,7 +271,7 @@ class PropertiesResource(SyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -280,8 +292,6 @@ class PropertiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -295,50 +305,11 @@ class PropertiesResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def archive_batch(
-        self,
-        object_type: str,
-        *,
-        app_id: str,
-        inputs: Iterable[PropertyName],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Archive a batch of existing properties for the specified types.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
-        if not object_type:
-            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            f"/media-bridge/v1/{app_id}/properties/{object_type}/batch/archive",
-            body=maybe_transform({"inputs": inputs}, property_archive_batch_params.PropertyArchiveBatchParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def create_batch(
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         inputs: Iterable[PropertyCreate],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -359,8 +330,6 @@ class PropertiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -372,12 +341,51 @@ class PropertiesResource(SyncAPIResource):
             cast_to=BatchResponseProperty,
         )
 
+    def delete_batch(
+        self,
+        object_type: str,
+        *,
+        app_id: int,
+        inputs: Iterable[PropertyName],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Archive a batch of existing properties for the specified types.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            f"/media-bridge/v1/{app_id}/properties/{object_type}/batch/archive",
+            body=maybe_transform({"inputs": inputs}, property_delete_batch_params.PropertyDeleteBatchParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     def get(
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
+        archived: bool | Omit = omit,
+        properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -389,6 +397,10 @@ class PropertiesResource(SyncAPIResource):
         Get the details for an existing property by name.
 
         Args:
+          archived: Whether to return only results that have been archived.
+
+          properties: Limit the response to only include the specified properties.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -397,8 +409,6 @@ class PropertiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -406,7 +416,17 @@ class PropertiesResource(SyncAPIResource):
         return self._get(
             f"/media-bridge/v1/{app_id}/properties/{object_type}/{property_name}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "archived": archived,
+                        "properties": properties,
+                    },
+                    property_get_params.PropertyGetParams,
+                ),
             ),
             cast_to=Property,
         )
@@ -415,10 +435,10 @@ class PropertiesResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         archived: bool,
+        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"],
         inputs: Iterable[PropertyName],
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -438,8 +458,6 @@ class PropertiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -447,8 +465,8 @@ class PropertiesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "archived": archived,
-                    "inputs": inputs,
                     "data_sensitivity": data_sensitivity,
+                    "inputs": inputs,
                 },
                 property_get_batch_params.PropertyGetBatchParams,
             ),
@@ -483,7 +501,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         field_type: Literal[
             "booleancheckbox",
             "calculation_equation",
@@ -531,8 +549,6 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -567,7 +583,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         calculation_formula: str | Omit = omit,
         description: str | Omit = omit,
@@ -613,8 +629,6 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -647,7 +661,9 @@ class AsyncPropertiesResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
+        archived: bool | Omit = omit,
+        properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -659,6 +675,10 @@ class AsyncPropertiesResource(AsyncAPIResource):
         Get the existing properties defined for a media object type.
 
         Args:
+          archived: Whether to return only results that have been archived.
+
+          properties: Filter the response to the specified properties.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -667,14 +687,22 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._get(
             f"/media-bridge/v1/{app_id}/properties/{object_type}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "archived": archived,
+                        "properties": properties,
+                    },
+                    property_list_params.PropertyListParams,
+                ),
             ),
             cast_to=CollectionResponsePropertyNoPaging,
         )
@@ -683,7 +711,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -704,8 +732,6 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -719,52 +745,11 @@ class AsyncPropertiesResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def archive_batch(
-        self,
-        object_type: str,
-        *,
-        app_id: str,
-        inputs: Iterable[PropertyName],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Archive a batch of existing properties for the specified types.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
-        if not object_type:
-            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            f"/media-bridge/v1/{app_id}/properties/{object_type}/batch/archive",
-            body=await async_maybe_transform(
-                {"inputs": inputs}, property_archive_batch_params.PropertyArchiveBatchParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def create_batch(
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         inputs: Iterable[PropertyCreate],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -785,8 +770,6 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -800,12 +783,53 @@ class AsyncPropertiesResource(AsyncAPIResource):
             cast_to=BatchResponseProperty,
         )
 
+    async def delete_batch(
+        self,
+        object_type: str,
+        *,
+        app_id: int,
+        inputs: Iterable[PropertyName],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Archive a batch of existing properties for the specified types.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            f"/media-bridge/v1/{app_id}/properties/{object_type}/batch/archive",
+            body=await async_maybe_transform(
+                {"inputs": inputs}, property_delete_batch_params.PropertyDeleteBatchParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def get(
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
+        archived: bool | Omit = omit,
+        properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -817,6 +841,10 @@ class AsyncPropertiesResource(AsyncAPIResource):
         Get the details for an existing property by name.
 
         Args:
+          archived: Whether to return only results that have been archived.
+
+          properties: Limit the response to only include the specified properties.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -825,8 +853,6 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -834,7 +860,17 @@ class AsyncPropertiesResource(AsyncAPIResource):
         return await self._get(
             f"/media-bridge/v1/{app_id}/properties/{object_type}/{property_name}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "archived": archived,
+                        "properties": properties,
+                    },
+                    property_get_params.PropertyGetParams,
+                ),
             ),
             cast_to=Property,
         )
@@ -843,10 +879,10 @@ class AsyncPropertiesResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         archived: bool,
+        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"],
         inputs: Iterable[PropertyName],
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -866,8 +902,6 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -875,8 +909,8 @@ class AsyncPropertiesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "archived": archived,
-                    "inputs": inputs,
                     "data_sensitivity": data_sensitivity,
+                    "inputs": inputs,
                 },
                 property_get_batch_params.PropertyGetBatchParams,
             ),
@@ -903,11 +937,11 @@ class PropertiesResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             properties.delete,
         )
-        self.archive_batch = to_raw_response_wrapper(
-            properties.archive_batch,
-        )
         self.create_batch = to_raw_response_wrapper(
             properties.create_batch,
+        )
+        self.delete_batch = to_raw_response_wrapper(
+            properties.delete_batch,
         )
         self.get = to_raw_response_wrapper(
             properties.get,
@@ -933,11 +967,11 @@ class AsyncPropertiesResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             properties.delete,
         )
-        self.archive_batch = async_to_raw_response_wrapper(
-            properties.archive_batch,
-        )
         self.create_batch = async_to_raw_response_wrapper(
             properties.create_batch,
+        )
+        self.delete_batch = async_to_raw_response_wrapper(
+            properties.delete_batch,
         )
         self.get = async_to_raw_response_wrapper(
             properties.get,
@@ -963,11 +997,11 @@ class PropertiesResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             properties.delete,
         )
-        self.archive_batch = to_streamed_response_wrapper(
-            properties.archive_batch,
-        )
         self.create_batch = to_streamed_response_wrapper(
             properties.create_batch,
+        )
+        self.delete_batch = to_streamed_response_wrapper(
+            properties.delete_batch,
         )
         self.get = to_streamed_response_wrapper(
             properties.get,
@@ -993,11 +1027,11 @@ class AsyncPropertiesResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             properties.delete,
         )
-        self.archive_batch = async_to_streamed_response_wrapper(
-            properties.archive_batch,
-        )
         self.create_batch = async_to_streamed_response_wrapper(
             properties.create_batch,
+        )
+        self.delete_batch = async_to_streamed_response_wrapper(
+            properties.delete_batch,
         )
         self.get = async_to_streamed_response_wrapper(
             properties.get,

@@ -12,7 +12,7 @@ __all__ = ["PropertyUpdateParams"]
 
 
 class PropertyUpdateParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
 

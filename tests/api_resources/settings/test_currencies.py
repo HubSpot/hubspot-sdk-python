@@ -10,13 +10,13 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
+from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.settings import (
     ExchangeRate,
     CompanyCurrency,
     BatchResponseExchangeRate,
     CollectionResponseExchangeRateNoPaging,
     CollectionResponseCurrencyCodeInfoNoPaging,
-    CollectionResponseExchangeRateForwardPaging,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -334,7 +334,18 @@ class TestCurrencies:
     @parametrize
     def test_method_list_exchange_rates(self, client: Hubspot) -> None:
         currency = client.settings.currencies.list_exchange_rates()
-        assert_matches_type(CollectionResponseExchangeRateForwardPaging, currency, path=["response"])
+        assert_matches_type(SyncPage[ExchangeRate], currency, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_exchange_rates_with_all_params(self, client: Hubspot) -> None:
+        currency = client.settings.currencies.list_exchange_rates(
+            after="after",
+            from_currency_code="AED",
+            limit=0,
+            to_currency_code="AED",
+        )
+        assert_matches_type(SyncPage[ExchangeRate], currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -344,7 +355,7 @@ class TestCurrencies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         currency = response.parse()
-        assert_matches_type(CollectionResponseExchangeRateForwardPaging, currency, path=["response"])
+        assert_matches_type(SyncPage[ExchangeRate], currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -354,7 +365,7 @@ class TestCurrencies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             currency = response.parse()
-            assert_matches_type(CollectionResponseExchangeRateForwardPaging, currency, path=["response"])
+            assert_matches_type(SyncPage[ExchangeRate], currency, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -803,7 +814,18 @@ class TestAsyncCurrencies:
     @parametrize
     async def test_method_list_exchange_rates(self, async_client: AsyncHubspot) -> None:
         currency = await async_client.settings.currencies.list_exchange_rates()
-        assert_matches_type(CollectionResponseExchangeRateForwardPaging, currency, path=["response"])
+        assert_matches_type(AsyncPage[ExchangeRate], currency, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_exchange_rates_with_all_params(self, async_client: AsyncHubspot) -> None:
+        currency = await async_client.settings.currencies.list_exchange_rates(
+            after="after",
+            from_currency_code="AED",
+            limit=0,
+            to_currency_code="AED",
+        )
+        assert_matches_type(AsyncPage[ExchangeRate], currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -813,7 +835,7 @@ class TestAsyncCurrencies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         currency = await response.parse()
-        assert_matches_type(CollectionResponseExchangeRateForwardPaging, currency, path=["response"])
+        assert_matches_type(AsyncPage[ExchangeRate], currency, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -823,7 +845,7 @@ class TestAsyncCurrencies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             currency = await response.parse()
-            assert_matches_type(CollectionResponseExchangeRateForwardPaging, currency, path=["response"])
+            assert_matches_type(AsyncPage[ExchangeRate], currency, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

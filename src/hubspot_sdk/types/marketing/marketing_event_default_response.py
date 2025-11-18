@@ -12,13 +12,7 @@ __all__ = ["MarketingEventDefaultResponse"]
 
 
 class MarketingEventDefaultResponse(BaseModel):
-    event_name: str = FieldInfo(alias="eventName")
-    """The name of the marketing event."""
-
-    event_organizer: str = FieldInfo(alias="eventOrganizer")
-    """The name of the organizer of the marketing event."""
-
-    custom_properties: Optional[List[PropertyValue]] = FieldInfo(alias="customProperties", default=None)
+    custom_properties: List[PropertyValue] = FieldInfo(alias="customProperties")
     """A list of PropertyValues.
 
     These can be whatever kind of property names and values you want. However, they
@@ -29,6 +23,12 @@ class MarketingEventDefaultResponse(BaseModel):
     want to track on that HubSpot account. Do not create any new default properties
     on the MarketingEvent object as that will apply to all HubSpot accounts.
     """
+
+    event_name: str = FieldInfo(alias="eventName")
+    """The name of the marketing event."""
+
+    event_organizer: str = FieldInfo(alias="eventOrganizer")
+    """The name of the organizer of the marketing event."""
 
     end_date_time: Optional[datetime] = FieldInfo(alias="endDateTime", default=None)
     """The end date and time of the marketing event."""

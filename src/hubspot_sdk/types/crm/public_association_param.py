@@ -21,3 +21,4 @@ class PublicAssociationParam(_PublicAssociationParamReservedKeywords, total=Fals
     to: Required[PublicObjectID]
 
     type: Required[str]
+    """The type of association between the 'from' and 'to' objects."""

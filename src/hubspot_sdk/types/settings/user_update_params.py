@@ -18,14 +18,16 @@ class UserUpdateParams(TypedDict, total=False):
     """
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
+    """The first name of the user."""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
+    """The last name of the user."""
 
     primary_team_id: Annotated[str, PropertyInfo(alias="primaryTeamId")]
-    """The user's primary team"""
+    """The user's primary team."""
 
     role_id: Annotated[str, PropertyInfo(alias="roleId")]
-    """The user's role"""
+    """The user's role."""
 
     secondary_team_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="secondaryTeamIds")]
-    """The user's additional teams"""
+    """The user's additional teams."""

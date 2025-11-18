@@ -14,6 +14,8 @@ __all__ = ["CalendarCreateParams"]
 
 
 class CalendarCreateParams(TypedDict, total=False):
+    organizer_user_id: Required[Annotated[str, PropertyInfo(alias="organizerUserId")]]
+
     associations: Required[Iterable[ExternalAssociationCreateRequestParam]]
 
     email_reminder_schedule: Required[

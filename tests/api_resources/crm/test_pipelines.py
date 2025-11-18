@@ -32,10 +32,12 @@ class TestPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         )
@@ -52,10 +54,12 @@ class TestPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         )
@@ -76,10 +80,12 @@ class TestPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         ) as response:
@@ -103,10 +109,12 @@ class TestPipelines:
                     {
                         "display_order": 0,
                         "label": "In Progress",
+                        "metadata": {"ticketState": "OPEN"},
                     },
                     {
                         "display_order": 1,
                         "label": "Done",
+                        "metadata": {"ticketState": "CLOSED"},
                     },
                 ],
             )
@@ -398,10 +406,12 @@ class TestPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         )
@@ -444,10 +454,12 @@ class TestPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         )
@@ -469,10 +481,12 @@ class TestPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         ) as response:
@@ -497,10 +511,12 @@ class TestPipelines:
                     {
                         "display_order": 0,
                         "label": "In Progress",
+                        "metadata": {"ticketState": "OPEN"},
                     },
                     {
                         "display_order": 1,
                         "label": "Done",
+                        "metadata": {"ticketState": "CLOSED"},
                     },
                 ],
             )
@@ -515,10 +531,12 @@ class TestPipelines:
                     {
                         "display_order": 0,
                         "label": "In Progress",
+                        "metadata": {"ticketState": "OPEN"},
                     },
                     {
                         "display_order": 1,
                         "label": "Done",
+                        "metadata": {"ticketState": "CLOSED"},
                     },
                 ],
             )
@@ -540,10 +558,12 @@ class TestAsyncPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         )
@@ -560,10 +580,12 @@ class TestAsyncPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         )
@@ -584,10 +606,12 @@ class TestAsyncPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         ) as response:
@@ -611,10 +635,12 @@ class TestAsyncPipelines:
                     {
                         "display_order": 0,
                         "label": "In Progress",
+                        "metadata": {"ticketState": "OPEN"},
                     },
                     {
                         "display_order": 1,
                         "label": "Done",
+                        "metadata": {"ticketState": "CLOSED"},
                     },
                 ],
             )
@@ -906,10 +932,12 @@ class TestAsyncPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         )
@@ -952,10 +980,12 @@ class TestAsyncPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         )
@@ -977,10 +1007,12 @@ class TestAsyncPipelines:
                 {
                     "display_order": 0,
                     "label": "In Progress",
+                    "metadata": {"ticketState": "OPEN"},
                 },
                 {
                     "display_order": 1,
                     "label": "Done",
+                    "metadata": {"ticketState": "CLOSED"},
                 },
             ],
         ) as response:
@@ -1005,10 +1037,12 @@ class TestAsyncPipelines:
                     {
                         "display_order": 0,
                         "label": "In Progress",
+                        "metadata": {"ticketState": "OPEN"},
                     },
                     {
                         "display_order": 1,
                         "label": "Done",
+                        "metadata": {"ticketState": "CLOSED"},
                     },
                 ],
             )
@@ -1023,10 +1057,12 @@ class TestAsyncPipelines:
                     {
                         "display_order": 0,
                         "label": "In Progress",
+                        "metadata": {"ticketState": "OPEN"},
                     },
                     {
                         "display_order": 1,
                         "label": "Done",
+                        "metadata": {"ticketState": "CLOSED"},
                     },
                 ],
             )

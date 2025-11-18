@@ -12,5 +12,7 @@ class ReportCreationResponse(BaseModel):
     enqueue_time: DateTime = FieldInfo(alias="enqueueTime")
 
     user_email: str = FieldInfo(alias="userEmail")
+    """Email of the user"""
 
     user_id: int = FieldInfo(alias="userId")
+    """ID of the user"""

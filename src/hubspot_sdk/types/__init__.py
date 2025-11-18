@@ -63,6 +63,7 @@ from .shared import (
     PublicFiscalYearReference as PublicFiscalYearReference,
     PublicRangedTimeOperation as PublicRangedTimeOperation,
     PublicUnifiedEventsFilter as PublicUnifiedEventsFilter,
+    BatchReadInputPropertyName as BatchReadInputPropertyName,
     ObjectTypeDefinitionLabels as ObjectTypeDefinitionLabels,
     PublicEventAnalyticsFilter as PublicEventAnalyticsFilter,
     PublicFormSubmissionFilter as PublicFormSubmissionFilter,

@@ -9,10 +9,8 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.conversations import (
-    ConversationsPublicChannelAccount,
-    CollectionResponseWithTotalPublicChannelAccountForwardPaging,
-)
+from hubspot_sdk.pagination import SyncPage, AsyncPage
+from hubspot_sdk.types.conversations import PublicChannelAccount
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -24,18 +22,18 @@ class TestChannelAccounts:
     @parametrize
     def test_method_create(self, client: Hubspot) -> None:
         channel_account = client.conversations.custom_channels.channel_accounts.create(
-            channel_id="channelId",
+            channel_id=0,
             authorized=True,
             inbox_id="inboxId",
             name="name",
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Hubspot) -> None:
         channel_account = client.conversations.custom_channels.channel_accounts.create(
-            channel_id="channelId",
+            channel_id=0,
             authorized=True,
             inbox_id="inboxId",
             name="name",
@@ -44,13 +42,13 @@ class TestChannelAccounts:
                 "value": "value",
             },
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.channel_accounts.with_raw_response.create(
-            channel_id="channelId",
+            channel_id=0,
             authorized=True,
             inbox_id="inboxId",
             name="name",
@@ -59,13 +57,13 @@ class TestChannelAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account = response.parse()
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.channel_accounts.with_streaming_response.create(
-            channel_id="channelId",
+            channel_id=0,
             authorized=True,
             inbox_id="inboxId",
             name="name",
@@ -74,183 +72,153 @@ class TestChannelAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account = response.parse()
-            assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+            assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_create(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            client.conversations.custom_channels.channel_accounts.with_raw_response.create(
-                channel_id="",
-                authorized=True,
-                inbox_id="inboxId",
-                name="name",
-            )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Hubspot) -> None:
         channel_account = client.conversations.custom_channels.channel_accounts.update(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Hubspot) -> None:
         channel_account = client.conversations.custom_channels.channel_accounts.update(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
             authorized=True,
             name="name",
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.channel_accounts.with_raw_response.update(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account = response.parse()
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.channel_accounts.with_streaming_response.update(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account = response.parse()
-            assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+            assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            client.conversations.custom_channels.channel_accounts.with_raw_response.update(
-                channel_account_id="channelAccountId",
-                channel_id="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_account_id` but received ''"):
-            client.conversations.custom_channels.channel_accounts.with_raw_response.update(
-                channel_account_id="",
-                channel_id="channelId",
-            )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Hubspot) -> None:
         channel_account = client.conversations.custom_channels.channel_accounts.list(
-            "channelId",
+            channel_id=0,
         )
-        assert_matches_type(
-            CollectionResponseWithTotalPublicChannelAccountForwardPaging, channel_account, path=["response"]
+        assert_matches_type(SyncPage[PublicChannelAccount], channel_account, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+        channel_account = client.conversations.custom_channels.channel_accounts.list(
+            channel_id=0,
+            after="after",
+            archived=True,
+            default_page_length=0,
+            delivery_identifier_type=["string"],
+            delivery_identifier_value=["string"],
+            limit=0,
+            sort=["string"],
         )
+        assert_matches_type(SyncPage[PublicChannelAccount], channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.channel_accounts.with_raw_response.list(
-            "channelId",
+            channel_id=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account = response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalPublicChannelAccountForwardPaging, channel_account, path=["response"]
-        )
+        assert_matches_type(SyncPage[PublicChannelAccount], channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.channel_accounts.with_streaming_response.list(
-            "channelId",
+            channel_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account = response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalPublicChannelAccountForwardPaging, channel_account, path=["response"]
-            )
+            assert_matches_type(SyncPage[PublicChannelAccount], channel_account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_list(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            client.conversations.custom_channels.channel_accounts.with_raw_response.list(
-                "",
-            )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get(self, client: Hubspot) -> None:
         channel_account = client.conversations.custom_channels.channel_accounts.get(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+        channel_account = client.conversations.custom_channels.channel_accounts.get(
+            channel_account_id=0,
+            channel_id=0,
+            archived=True,
+        )
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.conversations.custom_channels.channel_accounts.with_raw_response.get(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account = response.parse()
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.conversations.custom_channels.channel_accounts.with_streaming_response.get(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account = response.parse()
-            assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+            assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            client.conversations.custom_channels.channel_accounts.with_raw_response.get(
-                channel_account_id="channelAccountId",
-                channel_id="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_account_id` but received ''"):
-            client.conversations.custom_channels.channel_accounts.with_raw_response.get(
-                channel_account_id="",
-                channel_id="channelId",
-            )
 
 
 class TestAsyncChannelAccounts:
@@ -262,18 +230,18 @@ class TestAsyncChannelAccounts:
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         channel_account = await async_client.conversations.custom_channels.channel_accounts.create(
-            channel_id="channelId",
+            channel_id=0,
             authorized=True,
             inbox_id="inboxId",
             name="name",
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         channel_account = await async_client.conversations.custom_channels.channel_accounts.create(
-            channel_id="channelId",
+            channel_id=0,
             authorized=True,
             inbox_id="inboxId",
             name="name",
@@ -282,13 +250,13 @@ class TestAsyncChannelAccounts:
                 "value": "value",
             },
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.custom_channels.channel_accounts.with_raw_response.create(
-            channel_id="channelId",
+            channel_id=0,
             authorized=True,
             inbox_id="inboxId",
             name="name",
@@ -297,13 +265,13 @@ class TestAsyncChannelAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account = await response.parse()
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.custom_channels.channel_accounts.with_streaming_response.create(
-            channel_id="channelId",
+            channel_id=0,
             authorized=True,
             inbox_id="inboxId",
             name="name",
@@ -312,180 +280,150 @@ class TestAsyncChannelAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account = await response.parse()
-            assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+            assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            await async_client.conversations.custom_channels.channel_accounts.with_raw_response.create(
-                channel_id="",
-                authorized=True,
-                inbox_id="inboxId",
-                name="name",
-            )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncHubspot) -> None:
         channel_account = await async_client.conversations.custom_channels.channel_accounts.update(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         channel_account = await async_client.conversations.custom_channels.channel_accounts.update(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
             authorized=True,
             name="name",
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.custom_channels.channel_accounts.with_raw_response.update(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account = await response.parse()
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.custom_channels.channel_accounts.with_streaming_response.update(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account = await response.parse()
-            assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+            assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            await async_client.conversations.custom_channels.channel_accounts.with_raw_response.update(
-                channel_account_id="channelAccountId",
-                channel_id="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_account_id` but received ''"):
-            await async_client.conversations.custom_channels.channel_accounts.with_raw_response.update(
-                channel_account_id="",
-                channel_id="channelId",
-            )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncHubspot) -> None:
         channel_account = await async_client.conversations.custom_channels.channel_accounts.list(
-            "channelId",
+            channel_id=0,
         )
-        assert_matches_type(
-            CollectionResponseWithTotalPublicChannelAccountForwardPaging, channel_account, path=["response"]
+        assert_matches_type(AsyncPage[PublicChannelAccount], channel_account, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+        channel_account = await async_client.conversations.custom_channels.channel_accounts.list(
+            channel_id=0,
+            after="after",
+            archived=True,
+            default_page_length=0,
+            delivery_identifier_type=["string"],
+            delivery_identifier_value=["string"],
+            limit=0,
+            sort=["string"],
         )
+        assert_matches_type(AsyncPage[PublicChannelAccount], channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.custom_channels.channel_accounts.with_raw_response.list(
-            "channelId",
+            channel_id=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account = await response.parse()
-        assert_matches_type(
-            CollectionResponseWithTotalPublicChannelAccountForwardPaging, channel_account, path=["response"]
-        )
+        assert_matches_type(AsyncPage[PublicChannelAccount], channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.custom_channels.channel_accounts.with_streaming_response.list(
-            "channelId",
+            channel_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account = await response.parse()
-            assert_matches_type(
-                CollectionResponseWithTotalPublicChannelAccountForwardPaging, channel_account, path=["response"]
-            )
+            assert_matches_type(AsyncPage[PublicChannelAccount], channel_account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            await async_client.conversations.custom_channels.channel_accounts.with_raw_response.list(
-                "",
-            )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get(self, async_client: AsyncHubspot) -> None:
         channel_account = await async_client.conversations.custom_channels.channel_accounts.get(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         )
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+        channel_account = await async_client.conversations.custom_channels.channel_accounts.get(
+            channel_account_id=0,
+            channel_id=0,
+            archived=True,
+        )
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.conversations.custom_channels.channel_accounts.with_raw_response.get(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         channel_account = await response.parse()
-        assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+        assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.conversations.custom_channels.channel_accounts.with_streaming_response.get(
-            channel_account_id="channelAccountId",
-            channel_id="channelId",
+            channel_account_id=0,
+            channel_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             channel_account = await response.parse()
-            assert_matches_type(ConversationsPublicChannelAccount, channel_account, path=["response"])
+            assert_matches_type(PublicChannelAccount, channel_account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_id` but received ''"):
-            await async_client.conversations.custom_channels.channel_accounts.with_raw_response.get(
-                channel_account_id="channelAccountId",
-                channel_id="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `channel_account_id` but received ''"):
-            await async_client.conversations.custom_channels.channel_accounts.with_raw_response.get(
-                channel_account_id="",
-                channel_id="channelId",
-            )

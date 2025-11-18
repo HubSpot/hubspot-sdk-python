@@ -12,6 +12,7 @@ from .currency_code_info import CurrencyCodeInfo as CurrencyCodeInfo
 from .user_create_params import UserCreateParams as UserCreateParams
 from .user_delete_params import UserDeleteParams as UserDeleteParams
 from .user_update_params import UserUpdateParams as UserUpdateParams
+from .tax_rate_list_params import TaxRateListParams as TaxRateListParams
 from .public_permission_set import PublicPermissionSet as PublicPermissionSet
 from .public_tax_rate_group import PublicTaxRateGroup as PublicTaxRateGroup
 from .currency_batch_get_params import CurrencyBatchGetParams as CurrencyBatchGetParams
@@ -22,6 +23,7 @@ from .currency_update_visibility_params import CurrencyUpdateVisibilityParams as
 from .central_exchange_rates_information import CentralExchangeRatesInformation as CentralExchangeRatesInformation
 from .exchange_rate_create_request_param import ExchangeRateCreateRequestParam as ExchangeRateCreateRequestParam
 from .exchange_rate_update_request_param import ExchangeRateUpdateRequestParam as ExchangeRateUpdateRequestParam
+from .currency_list_exchange_rates_params import CurrencyListExchangeRatesParams as CurrencyListExchangeRatesParams
 from .currency_create_exchange_rate_params import CurrencyCreateExchangeRateParams as CurrencyCreateExchangeRateParams
 from .currency_update_exchange_rate_params import CurrencyUpdateExchangeRateParams as CurrencyUpdateExchangeRateParams
 from .currency_update_company_currency_params import (

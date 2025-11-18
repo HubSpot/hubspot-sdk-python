@@ -11,5 +11,7 @@ __all__ = ["ContactGdprDeleteParams"]
 
 class ContactGdprDeleteParams(TypedDict, total=False):
     object_id: Required[Annotated[str, PropertyInfo(alias="objectId")]]
+    """ID of the object"""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
+    """ID property"""

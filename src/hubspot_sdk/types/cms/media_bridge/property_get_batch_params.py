@@ -12,12 +12,12 @@ __all__ = ["PropertyGetBatchParams"]
 
 
 class PropertyGetBatchParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     archived: Required[bool]
 
-    inputs: Required[Iterable[PropertyName]]
-
-    data_sensitivity: Annotated[
-        Literal["non_sensitive", "sensitive", "highly_sensitive"], PropertyInfo(alias="dataSensitivity")
+    data_sensitivity: Required[
+        Annotated[Literal["non_sensitive", "sensitive", "highly_sensitive"], PropertyInfo(alias="dataSensitivity")]
     ]
+
+    inputs: Required[Iterable[PropertyName]]

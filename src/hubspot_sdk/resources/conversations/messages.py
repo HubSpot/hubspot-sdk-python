@@ -7,7 +7,8 @@ from typing_extensions import overload
 
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -16,12 +17,12 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncPage, AsyncPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.conversations import message_get_params, message_list_params, message_get_original_content_params
 from ...types.conversations.public_message import PublicMessage
 from ...types.conversations.public_message_content import PublicMessageContent
-from ...types.conversations.collection_response_public_message_forward_paging import (
-    CollectionResponsePublicMessageForwardPaging,
-)
+from ...types.conversations.collection_response_public_message_forward_paging import Result
 
 __all__ = ["MessagesResource", "AsyncMessagesResource"]
 
@@ -49,7 +50,7 @@ class MessagesResource(SyncAPIResource):
     @overload
     def create(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -75,7 +76,7 @@ class MessagesResource(SyncAPIResource):
     @overload
     def create(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -100,7 +101,7 @@ class MessagesResource(SyncAPIResource):
 
     def create(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -109,8 +110,6 @@ class MessagesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicMessage:
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         return cast(
             PublicMessage,
             self._post(
@@ -124,19 +123,37 @@ class MessagesResource(SyncAPIResource):
 
     def list(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicMessageForwardPaging:
+    ) -> SyncPage[Result]:
         """
         Retrieve the message history for a specific thread.
 
         Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          property: A specific property to include in the message response.
+
+          sort: Sort direction. Valid options are `createdAt` (ascending), and `-createdAt`
+              (descending, default)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -145,21 +162,34 @@ class MessagesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/conversations/v3/conversations/threads/{thread_id}/messages",
+            page=SyncPage[Result],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                    },
+                    message_list_params.MessageListParams,
+                ),
             ),
-            cast_to=CollectionResponsePublicMessageForwardPaging,
+            model=cast(Any, Result),  # Union types cannot be passed in as arguments in the type system
         )
 
     def get(
         self,
         message_id: str,
         *,
-        thread_id: str,
+        thread_id: int,
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -171,6 +201,8 @@ class MessagesResource(SyncAPIResource):
         Retrieve a single message from a thread using the message ID.
 
         Args:
+          property: A specific property to include in the message response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -179,8 +211,6 @@ class MessagesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not message_id:
             raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
         return cast(
@@ -188,7 +218,11 @@ class MessagesResource(SyncAPIResource):
             self._get(
                 f"/conversations/v3/conversations/threads/{thread_id}/messages/{message_id}",
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=maybe_transform({"property": property}, message_get_params.MessageGetParams),
                 ),
                 cast_to=cast(Any, PublicMessage),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -198,7 +232,8 @@ class MessagesResource(SyncAPIResource):
         self,
         message_id: str,
         *,
-        thread_id: str,
+        thread_id: int,
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -213,6 +248,8 @@ class MessagesResource(SyncAPIResource):
         `truncationStatus` is anything other than `NOT_TRUNCATED`.
 
         Args:
+          property: A specific property to include in the original content response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -221,14 +258,18 @@ class MessagesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not message_id:
             raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
         return self._get(
             f"/conversations/v3/conversations/threads/{thread_id}/messages/{message_id}/original-content",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"property": property}, message_get_original_content_params.MessageGetOriginalContentParams
+                ),
             ),
             cast_to=PublicMessageContent,
         )
@@ -257,7 +298,7 @@ class AsyncMessagesResource(AsyncAPIResource):
     @overload
     async def create(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -283,7 +324,7 @@ class AsyncMessagesResource(AsyncAPIResource):
     @overload
     async def create(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -308,7 +349,7 @@ class AsyncMessagesResource(AsyncAPIResource):
 
     async def create(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -317,8 +358,6 @@ class AsyncMessagesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicMessage:
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         return cast(
             PublicMessage,
             await self._post(
@@ -330,21 +369,39 @@ class AsyncMessagesResource(AsyncAPIResource):
             ),
         )
 
-    async def list(
+    def list(
         self,
-        thread_id: str,
+        thread_id: int,
         *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponsePublicMessageForwardPaging:
+    ) -> AsyncPaginator[Result, AsyncPage[Result]]:
         """
         Retrieve the message history for a specific thread.
 
         Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          property: A specific property to include in the message response.
+
+          sort: Sort direction. Valid options are `createdAt` (ascending), and `-createdAt`
+              (descending, default)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -353,21 +410,34 @@ class AsyncMessagesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/conversations/v3/conversations/threads/{thread_id}/messages",
+            page=AsyncPage[Result],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                    },
+                    message_list_params.MessageListParams,
+                ),
             ),
-            cast_to=CollectionResponsePublicMessageForwardPaging,
+            model=cast(Any, Result),  # Union types cannot be passed in as arguments in the type system
         )
 
     async def get(
         self,
         message_id: str,
         *,
-        thread_id: str,
+        thread_id: int,
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -379,6 +449,8 @@ class AsyncMessagesResource(AsyncAPIResource):
         Retrieve a single message from a thread using the message ID.
 
         Args:
+          property: A specific property to include in the message response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -387,8 +459,6 @@ class AsyncMessagesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not message_id:
             raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
         return cast(
@@ -396,7 +466,11 @@ class AsyncMessagesResource(AsyncAPIResource):
             await self._get(
                 f"/conversations/v3/conversations/threads/{thread_id}/messages/{message_id}",
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=await async_maybe_transform({"property": property}, message_get_params.MessageGetParams),
                 ),
                 cast_to=cast(Any, PublicMessage),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -406,7 +480,8 @@ class AsyncMessagesResource(AsyncAPIResource):
         self,
         message_id: str,
         *,
-        thread_id: str,
+        thread_id: int,
+        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -421,6 +496,8 @@ class AsyncMessagesResource(AsyncAPIResource):
         `truncationStatus` is anything other than `NOT_TRUNCATED`.
 
         Args:
+          property: A specific property to include in the original content response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -429,14 +506,18 @@ class AsyncMessagesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not thread_id:
-            raise ValueError(f"Expected a non-empty value for `thread_id` but received {thread_id!r}")
         if not message_id:
             raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
         return await self._get(
             f"/conversations/v3/conversations/threads/{thread_id}/messages/{message_id}/original-content",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"property": property}, message_get_original_content_params.MessageGetOriginalContentParams
+                ),
             ),
             cast_to=PublicMessageContent,
         )

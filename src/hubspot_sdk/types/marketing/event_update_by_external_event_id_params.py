@@ -19,7 +19,7 @@ class EventUpdateByExternalEventIDParams(TypedDict, total=False):
     application
     """
 
-    custom_properties: Annotated[Iterable[PropertyValueParam], PropertyInfo(alias="customProperties")]
+    custom_properties: Required[Annotated[Iterable[PropertyValueParam], PropertyInfo(alias="customProperties")]]
     """A list of PropertyValues.
 
     These can be whatever kind of property names and values you want. However, they

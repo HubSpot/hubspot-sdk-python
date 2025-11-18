@@ -10,7 +10,7 @@ __all__ = ["SchemaCreateAssociationParams"]
 
 
 class SchemaCreateAssociationParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     from_object_type_id: Required[Annotated[str, PropertyInfo(alias="fromObjectTypeId")]]
 

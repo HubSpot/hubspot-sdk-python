@@ -12,15 +12,19 @@ __all__ = ["AssociationLabelLimitResponse"]
 
 class AssociationLabelLimitResponse(BaseModel):
     all_labels: List[str] = FieldInfo(alias="allLabels")
+    """A list of all association labels."""
 
     from_object_type: ObjectsSchemasObjectTypeDefinition = FieldInfo(alias="fromObjectType")
     """Defines an object type."""
 
     limit: int
+    """The maximum number of association labels allowed."""
 
     percentage: float
+    """The percentage of the association label limit that has been used."""
 
     to_object_type: ObjectsSchemasObjectTypeDefinition = FieldInfo(alias="toObjectType")
     """Defines an object type."""
 
     usage: int
+    """The current number of association labels used."""

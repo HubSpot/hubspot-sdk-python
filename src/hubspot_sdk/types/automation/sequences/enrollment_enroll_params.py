@@ -10,6 +10,8 @@ __all__ = ["EnrollmentEnrollParams"]
 
 
 class EnrollmentEnrollParams(TypedDict, total=False):
+    user_id: Required[Annotated[str, PropertyInfo(alias="userId")]]
+
     contact_id: Required[Annotated[str, PropertyInfo(alias="contactId")]]
 
     sender_email: Required[Annotated[str, PropertyInfo(alias="senderEmail")]]

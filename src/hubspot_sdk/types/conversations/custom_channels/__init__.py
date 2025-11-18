@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from .message_create_params import MessageCreateParams as MessageCreateParams
 from .message_update_params import MessageUpdateParams as MessageUpdateParams
+from .channel_account_get_params import ChannelAccountGetParams as ChannelAccountGetParams
+from .channel_account_list_params import ChannelAccountListParams as ChannelAccountListParams
 from .channel_account_create_params import ChannelAccountCreateParams as ChannelAccountCreateParams
 from .channel_account_update_params import ChannelAccountUpdateParams as ChannelAccountUpdateParams
 from .channel_account_staging_token_update_params import (

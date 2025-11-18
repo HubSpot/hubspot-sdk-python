@@ -37,6 +37,7 @@ from ....types.marketing import (
     email_update_params,
     email_update_draft_params,
     email_list_revisions_params,
+    email_get_ab_test_variation_params,
     email_create_ab_test_variation_params,
 )
 from ....types.marketing.public_email import PublicEmail
@@ -2459,6 +2460,11 @@ class EmailsResource(SyncAPIResource):
         self,
         email_id: str,
         *,
+        archived: bool | Omit = omit,
+        included_properties: SequenceNotStr[str] | Omit = omit,
+        include_stats: bool | Omit = omit,
+        marketing_campaign_names: bool | Omit = omit,
+        workflow_names: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2473,6 +2479,16 @@ class EmailsResource(SyncAPIResource):
         versa.
 
         Args:
+          archived: Boolean variable to request archived email
+
+          included_properties: List of properties to be returned in the API response
+
+          include_stats: Boolean variable to request stats to be returned in response
+
+          marketing_campaign_names: Boolean variable to request name of the campaign in response
+
+          workflow_names: Boolean variable to request name of the associated workflows in response
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2486,7 +2502,20 @@ class EmailsResource(SyncAPIResource):
         return self._get(
             f"/marketing/v3/emails/{email_id}/ab-test/get-variation",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "archived": archived,
+                        "included_properties": included_properties,
+                        "include_stats": include_stats,
+                        "marketing_campaign_names": marketing_campaign_names,
+                        "workflow_names": workflow_names,
+                    },
+                    email_get_ab_test_variation_params.EmailGetAbTestVariationParams,
+                ),
             ),
             cast_to=PublicEmail,
         )
@@ -6231,6 +6260,11 @@ class AsyncEmailsResource(AsyncAPIResource):
         self,
         email_id: str,
         *,
+        archived: bool | Omit = omit,
+        included_properties: SequenceNotStr[str] | Omit = omit,
+        include_stats: bool | Omit = omit,
+        marketing_campaign_names: bool | Omit = omit,
+        workflow_names: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -6245,6 +6279,16 @@ class AsyncEmailsResource(AsyncAPIResource):
         versa.
 
         Args:
+          archived: Boolean variable to request archived email
+
+          included_properties: List of properties to be returned in the API response
+
+          include_stats: Boolean variable to request stats to be returned in response
+
+          marketing_campaign_names: Boolean variable to request name of the campaign in response
+
+          workflow_names: Boolean variable to request name of the associated workflows in response
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -6258,7 +6302,20 @@ class AsyncEmailsResource(AsyncAPIResource):
         return await self._get(
             f"/marketing/v3/emails/{email_id}/ab-test/get-variation",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "archived": archived,
+                        "included_properties": included_properties,
+                        "include_stats": include_stats,
+                        "marketing_campaign_names": marketing_campaign_names,
+                        "workflow_names": workflow_names,
+                    },
+                    email_get_ab_test_variation_params.EmailGetAbTestVariationParams,
+                ),
             ),
             cast_to=PublicEmail,
         )

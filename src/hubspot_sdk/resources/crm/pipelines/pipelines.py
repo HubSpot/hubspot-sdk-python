@@ -139,6 +139,10 @@ class PipelinesResource(SyncAPIResource):
         updated pipeline will be returned in the response.
 
         Args:
+          validate_deal_stage_usages_before_delete: Indicates whether to validate deal stage usages before deleting the pipeline.
+
+          validate_references_before_delete: Indicates whether to validate references before deleting the pipeline.
+
           archived: Whether the pipeline is archived. This property should only be provided when
               restoring an archived pipeline. If it's provided in any other call, the request
               will fail and a `400 Bad Request` will be returned.
@@ -234,9 +238,13 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a pipeline
+        Delete a pipeline identified by its unique pipelineId
 
         Args:
+          validate_deal_stage_usages_before_delete: Indicates whether to validate deal stage usages before deleting the pipeline.
+
+          validate_references_before_delete: Indicates whether to validate references before deleting the pipeline.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -359,7 +367,7 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Pipeline:
         """
-        Replace a pipeline
+        Replace all properties of an existing pipeline with the provided values.
 
         Args:
           display_order: The order for displaying this pipeline. If two pipelines have a matching
@@ -368,6 +376,10 @@ class PipelinesResource(SyncAPIResource):
           label: A unique label used to organize pipelines in HubSpot's UI
 
           stages: Pipeline stage inputs used to create the new or replacement pipeline.
+
+          validate_deal_stage_usages_before_delete: Indicates whether to validate deal stage usages before deleting the pipeline.
+
+          validate_references_before_delete: Indicates whether to validate references before deleting the pipeline.
 
           extra_headers: Send extra headers
 
@@ -508,6 +520,10 @@ class AsyncPipelinesResource(AsyncAPIResource):
         updated pipeline will be returned in the response.
 
         Args:
+          validate_deal_stage_usages_before_delete: Indicates whether to validate deal stage usages before deleting the pipeline.
+
+          validate_references_before_delete: Indicates whether to validate references before deleting the pipeline.
+
           archived: Whether the pipeline is archived. This property should only be provided when
               restoring an archived pipeline. If it's provided in any other call, the request
               will fail and a `400 Bad Request` will be returned.
@@ -603,9 +619,13 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a pipeline
+        Delete a pipeline identified by its unique pipelineId
 
         Args:
+          validate_deal_stage_usages_before_delete: Indicates whether to validate deal stage usages before deleting the pipeline.
+
+          validate_references_before_delete: Indicates whether to validate references before deleting the pipeline.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -728,7 +748,7 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Pipeline:
         """
-        Replace a pipeline
+        Replace all properties of an existing pipeline with the provided values.
 
         Args:
           display_order: The order for displaying this pipeline. If two pipelines have a matching
@@ -737,6 +757,10 @@ class AsyncPipelinesResource(AsyncAPIResource):
           label: A unique label used to organize pipelines in HubSpot's UI
 
           stages: Pipeline stage inputs used to create the new or replacement pipeline.
+
+          validate_deal_stage_usages_before_delete: Indicates whether to validate deal stage usages before deleting the pipeline.
+
+          validate_references_before_delete: Indicates whether to validate references before deleting the pipeline.
 
           extra_headers: Send extra headers
 

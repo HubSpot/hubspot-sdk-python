@@ -17,16 +17,20 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
-from ....types.scheduler.meetings import meetings_link_book_params
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.scheduler.meetings import (
+    meetings_link_book_params,
+    meetings_link_list_params,
+    meetings_link_get_availability_by_slug_params,
+    meetings_link_get_booking_info_by_slug_params,
+)
 from ....types.scheduler.external_booking_info import ExternalBookingInfo
+from ....types.scheduler.external_link_metadata import ExternalLinkMetadata
 from ....types.scheduler.external_booking_form_field_param import ExternalBookingFormFieldParam
 from ....types.scheduler.external_meeting_booking_response import ExternalMeetingBookingResponse
 from ....types.scheduler.external_legal_consent_response_param import ExternalLegalConsentResponseParam
 from ....types.scheduler.external_link_availability_and_busy_times import ExternalLinkAvailabilityAndBusyTimes
-from ....types.scheduler.collection_response_with_total_external_link_metadata_forward_paging import (
-    CollectionResponseWithTotalExternalLinkMetadataForwardPaging,
-)
 
 __all__ = ["MeetingsLinksResource", "AsyncMeetingsLinksResource"]
 
@@ -54,20 +58,62 @@ class MeetingsLinksResource(SyncAPIResource):
     def list(
         self,
         *,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        name: str | Omit = omit,
+        organizer_user_id: str | Omit = omit,
+        type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalExternalLinkMetadataForwardPaging:
-        """Get a paged list meeting scheduling pages"""
-        return self._get(
+    ) -> SyncPage[ExternalLinkMetadata]:
+        """
+        Get a paged list meeting scheduling pages
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          name: Retrieve scheduling pages with a specified name.
+
+          organizer_user_id: Filter the response to scheduling pages created by the specified user.
+
+          type: Filter the response to the specific type of meeting.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
             "/scheduler/v3/meetings/meeting-links",
+            page=SyncPage[ExternalLinkMetadata],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                        "name": name,
+                        "organizer_user_id": organizer_user_id,
+                        "type": type,
+                    },
+                    meetings_link_list_params.MeetingsLinkListParams,
+                ),
             ),
-            cast_to=CollectionResponseWithTotalExternalLinkMetadataForwardPaging,
+            model=ExternalLinkMetadata,
         )
 
     def book(
@@ -131,6 +177,8 @@ class MeetingsLinksResource(SyncAPIResource):
         self,
         slug: str,
         *,
+        timezone: str,
+        month_offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -142,6 +190,10 @@ class MeetingsLinksResource(SyncAPIResource):
         Get the next availability times for a meeting page.
 
         Args:
+          timezone: Return times in response based on specified time zone.
+
+          month_offset: Get times for a different month.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -155,7 +207,17 @@ class MeetingsLinksResource(SyncAPIResource):
         return self._get(
             f"/scheduler/v3/meetings/meeting-links/book/availability-page/{slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "timezone": timezone,
+                        "month_offset": month_offset,
+                    },
+                    meetings_link_get_availability_by_slug_params.MeetingsLinkGetAvailabilityBySlugParams,
+                ),
             ),
             cast_to=ExternalLinkAvailabilityAndBusyTimes,
         )
@@ -164,6 +226,7 @@ class MeetingsLinksResource(SyncAPIResource):
         self,
         slug: str,
         *,
+        timezone: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -175,6 +238,8 @@ class MeetingsLinksResource(SyncAPIResource):
         Get details about the initial information necessary for a meeting scheduler.
 
         Args:
+          timezone: Return times in response based on specified time zone.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -188,7 +253,14 @@ class MeetingsLinksResource(SyncAPIResource):
         return self._get(
             f"/scheduler/v3/meetings/meeting-links/book/{slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"timezone": timezone},
+                    meetings_link_get_booking_info_by_slug_params.MeetingsLinkGetBookingInfoBySlugParams,
+                ),
             ),
             cast_to=ExternalBookingInfo,
         )
@@ -214,23 +286,65 @@ class AsyncMeetingsLinksResource(AsyncAPIResource):
         """
         return AsyncMeetingsLinksResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        name: str | Omit = omit,
+        organizer_user_id: str | Omit = omit,
+        type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalExternalLinkMetadataForwardPaging:
-        """Get a paged list meeting scheduling pages"""
-        return await self._get(
+    ) -> AsyncPaginator[ExternalLinkMetadata, AsyncPage[ExternalLinkMetadata]]:
+        """
+        Get a paged list meeting scheduling pages
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          name: Retrieve scheduling pages with a specified name.
+
+          organizer_user_id: Filter the response to scheduling pages created by the specified user.
+
+          type: Filter the response to the specific type of meeting.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
             "/scheduler/v3/meetings/meeting-links",
+            page=AsyncPage[ExternalLinkMetadata],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                        "name": name,
+                        "organizer_user_id": organizer_user_id,
+                        "type": type,
+                    },
+                    meetings_link_list_params.MeetingsLinkListParams,
+                ),
             ),
-            cast_to=CollectionResponseWithTotalExternalLinkMetadataForwardPaging,
+            model=ExternalLinkMetadata,
         )
 
     async def book(
@@ -294,6 +408,8 @@ class AsyncMeetingsLinksResource(AsyncAPIResource):
         self,
         slug: str,
         *,
+        timezone: str,
+        month_offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -305,6 +421,10 @@ class AsyncMeetingsLinksResource(AsyncAPIResource):
         Get the next availability times for a meeting page.
 
         Args:
+          timezone: Return times in response based on specified time zone.
+
+          month_offset: Get times for a different month.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -318,7 +438,17 @@ class AsyncMeetingsLinksResource(AsyncAPIResource):
         return await self._get(
             f"/scheduler/v3/meetings/meeting-links/book/availability-page/{slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "timezone": timezone,
+                        "month_offset": month_offset,
+                    },
+                    meetings_link_get_availability_by_slug_params.MeetingsLinkGetAvailabilityBySlugParams,
+                ),
             ),
             cast_to=ExternalLinkAvailabilityAndBusyTimes,
         )
@@ -327,6 +457,7 @@ class AsyncMeetingsLinksResource(AsyncAPIResource):
         self,
         slug: str,
         *,
+        timezone: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -338,6 +469,8 @@ class AsyncMeetingsLinksResource(AsyncAPIResource):
         Get details about the initial information necessary for a meeting scheduler.
 
         Args:
+          timezone: Return times in response based on specified time zone.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -351,7 +484,14 @@ class AsyncMeetingsLinksResource(AsyncAPIResource):
         return await self._get(
             f"/scheduler/v3/meetings/meeting-links/book/{slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"timezone": timezone},
+                    meetings_link_get_booking_info_by_slug_params.MeetingsLinkGetBookingInfoBySlugParams,
+                ),
             ),
             cast_to=ExternalBookingInfo,
         )

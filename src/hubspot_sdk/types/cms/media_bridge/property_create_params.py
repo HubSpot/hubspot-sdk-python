@@ -12,7 +12,7 @@ __all__ = ["PropertyCreateParams"]
 
 
 class PropertyCreateParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     field_type: Required[
         Annotated[

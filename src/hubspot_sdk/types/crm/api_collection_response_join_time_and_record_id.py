@@ -3,8 +3,8 @@
 from typing import List, Optional
 
 from ..._models import BaseModel
+from ..shared.paging import Paging
 from .join_time_and_record_id import JoinTimeAndRecordID
-from ..marketing.emails_paging import EmailsPaging
 
 __all__ = ["APICollectionResponseJoinTimeAndRecordID"]
 
@@ -12,7 +12,6 @@ __all__ = ["APICollectionResponseJoinTimeAndRecordID"]
 class APICollectionResponseJoinTimeAndRecordID(BaseModel):
     results: List[JoinTimeAndRecordID]
 
-    paging: Optional[EmailsPaging] = None
-    """Contains information pagination of results."""
+    paging: Optional[Paging] = None
 
     total: Optional[int] = None

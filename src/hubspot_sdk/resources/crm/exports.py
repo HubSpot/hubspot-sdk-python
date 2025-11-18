@@ -101,6 +101,9 @@ class ExportsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicExportResponse:
         """
+        Retrieve detailed information about a specific CRM export, including its current
+        state and properties.
+
         Args:
           extra_headers: Send extra headers
 
@@ -229,6 +232,9 @@ class AsyncExportsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicExportResponse:
         """
+        Retrieve detailed information about a specific CRM export, including its current
+        state and properties.
+
         Args:
           extra_headers: Send extra headers
 

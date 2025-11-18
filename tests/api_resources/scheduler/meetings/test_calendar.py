@@ -24,6 +24,7 @@ class TestCalendar:
     @parametrize
     def test_method_create(self, client: Hubspot) -> None:
         calendar = client.scheduler.meetings.calendar.create(
+            organizer_user_id="organizerUserId",
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -50,6 +51,7 @@ class TestCalendar:
                 "hs_meeting_start_time": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "hs_meeting_title": "hs_meeting_title",
                 "hs_timestamp": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "hubspot_owner_id": "hubspot_owner_id",
             },
             timezone="timezone",
         )
@@ -59,6 +61,7 @@ class TestCalendar:
     @parametrize
     def test_method_create_with_all_params(self, client: Hubspot) -> None:
         calendar = client.scheduler.meetings.calendar.create(
+            organizer_user_id="organizerUserId",
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -85,6 +88,7 @@ class TestCalendar:
                 "hs_meeting_start_time": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "hs_meeting_title": "hs_meeting_title",
                 "hs_timestamp": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "hubspot_owner_id": "hubspot_owner_id",
                 "hs_activity_type": "hs_activity_type",
                 "hs_attachment_ids": ["string"],
                 "hs_attendee_owner_ids": ["string"],
@@ -92,7 +96,6 @@ class TestCalendar:
                 "hs_meeting_body": "hs_meeting_body",
                 "hs_meeting_location": "hs_meeting_location",
                 "hs_meeting_location_type": "hs_meeting_location_type",
-                "hubspot_owner_id": "hubspot_owner_id",
             },
             timezone="timezone",
         )
@@ -102,6 +105,7 @@ class TestCalendar:
     @parametrize
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.scheduler.meetings.calendar.with_raw_response.create(
+            organizer_user_id="organizerUserId",
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -128,6 +132,7 @@ class TestCalendar:
                 "hs_meeting_start_time": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "hs_meeting_title": "hs_meeting_title",
                 "hs_timestamp": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "hubspot_owner_id": "hubspot_owner_id",
             },
             timezone="timezone",
         )
@@ -141,6 +146,7 @@ class TestCalendar:
     @parametrize
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.scheduler.meetings.calendar.with_streaming_response.create(
+            organizer_user_id="organizerUserId",
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -167,6 +173,7 @@ class TestCalendar:
                 "hs_meeting_start_time": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "hs_meeting_title": "hs_meeting_title",
                 "hs_timestamp": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "hubspot_owner_id": "hubspot_owner_id",
             },
             timezone="timezone",
         ) as response:
@@ -188,6 +195,7 @@ class TestAsyncCalendar:
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         calendar = await async_client.scheduler.meetings.calendar.create(
+            organizer_user_id="organizerUserId",
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -214,6 +222,7 @@ class TestAsyncCalendar:
                 "hs_meeting_start_time": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "hs_meeting_title": "hs_meeting_title",
                 "hs_timestamp": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "hubspot_owner_id": "hubspot_owner_id",
             },
             timezone="timezone",
         )
@@ -223,6 +232,7 @@ class TestAsyncCalendar:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         calendar = await async_client.scheduler.meetings.calendar.create(
+            organizer_user_id="organizerUserId",
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -249,6 +259,7 @@ class TestAsyncCalendar:
                 "hs_meeting_start_time": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "hs_meeting_title": "hs_meeting_title",
                 "hs_timestamp": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "hubspot_owner_id": "hubspot_owner_id",
                 "hs_activity_type": "hs_activity_type",
                 "hs_attachment_ids": ["string"],
                 "hs_attendee_owner_ids": ["string"],
@@ -256,7 +267,6 @@ class TestAsyncCalendar:
                 "hs_meeting_body": "hs_meeting_body",
                 "hs_meeting_location": "hs_meeting_location",
                 "hs_meeting_location_type": "hs_meeting_location_type",
-                "hubspot_owner_id": "hubspot_owner_id",
             },
             timezone="timezone",
         )
@@ -266,6 +276,7 @@ class TestAsyncCalendar:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.scheduler.meetings.calendar.with_raw_response.create(
+            organizer_user_id="organizerUserId",
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -292,6 +303,7 @@ class TestAsyncCalendar:
                 "hs_meeting_start_time": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "hs_meeting_title": "hs_meeting_title",
                 "hs_timestamp": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "hubspot_owner_id": "hubspot_owner_id",
             },
             timezone="timezone",
         )
@@ -305,6 +317,7 @@ class TestAsyncCalendar:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.scheduler.meetings.calendar.with_streaming_response.create(
+            organizer_user_id="organizerUserId",
             associations=[
                 {
                     "to": {"id": "37295"},
@@ -331,6 +344,7 @@ class TestAsyncCalendar:
                 "hs_meeting_start_time": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "hs_meeting_title": "hs_meeting_title",
                 "hs_timestamp": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "hubspot_owner_id": "hubspot_owner_id",
             },
             timezone="timezone",
         ) as response:

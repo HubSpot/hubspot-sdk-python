@@ -29,6 +29,7 @@ from .public_object_list import PublicObjectList as PublicObjectList
 from .user_create_params import UserCreateParams as UserCreateParams
 from .user_search_params import UserSearchParams as UserSearchParams
 from .user_update_params import UserUpdateParams as UserUpdateParams
+from .batch_response_void import BatchResponseVoid as BatchResponseVoid
 from .list_fetch_response import ListFetchResponse as ListFetchResponse
 from .property_get_params import PropertyGetParams as PropertyGetParams
 from .public_import_error import PublicImportError as PublicImportError

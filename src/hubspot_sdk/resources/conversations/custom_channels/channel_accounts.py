@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -14,13 +14,16 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
-from ....types.conversations.custom_channels import channel_account_create_params, channel_account_update_params
-from ....types.conversations.public_delivery_identifier_param import PublicDeliveryIdentifierParam
-from ....types.conversations.conversations_public_channel_account import ConversationsPublicChannelAccount
-from ....types.conversations.collection_response_with_total_public_channel_account_forward_paging import (
-    CollectionResponseWithTotalPublicChannelAccountForwardPaging,
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.conversations.custom_channels import (
+    channel_account_get_params,
+    channel_account_list_params,
+    channel_account_create_params,
+    channel_account_update_params,
 )
+from ....types.conversations.public_channel_account import PublicChannelAccount
+from ....types.conversations.public_delivery_identifier_param import PublicDeliveryIdentifierParam
 
 __all__ = ["ChannelAccountsResource", "AsyncChannelAccountsResource"]
 
@@ -47,7 +50,7 @@ class ChannelAccountsResource(SyncAPIResource):
 
     def create(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         authorized: bool,
         inbox_id: str,
@@ -59,7 +62,7 @@ class ChannelAccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConversationsPublicChannelAccount:
+    ) -> PublicChannelAccount:
         """Create a new account for a channel.
 
         Multiple accounts can communicate over a
@@ -74,8 +77,6 @@ class ChannelAccountsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         return self._post(
             f"/conversations/v3/custom-channels/{channel_id}/channel-accounts",
             body=maybe_transform(
@@ -90,14 +91,14 @@ class ChannelAccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConversationsPublicChannelAccount,
+            cast_to=PublicChannelAccount,
         )
 
     def update(
         self,
-        channel_account_id: str,
+        channel_account_id: int,
         *,
-        channel_id: str,
+        channel_id: int,
         authorized: bool | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -106,7 +107,7 @@ class ChannelAccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConversationsPublicChannelAccount:
+    ) -> PublicChannelAccount:
         """
         This API is used to update the name of the channel account and it's isAuthorized
         status. Setting to isAuthorized flag to False disables the channel account.
@@ -120,10 +121,6 @@ class ChannelAccountsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
-        if not channel_account_id:
-            raise ValueError(f"Expected a non-empty value for `channel_account_id` but received {channel_account_id!r}")
         return self._patch(
             f"/conversations/v3/custom-channels/{channel_id}/channel-accounts/{channel_account_id}",
             body=maybe_transform(
@@ -136,20 +133,27 @@ class ChannelAccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConversationsPublicChannelAccount,
+            cast_to=PublicChannelAccount,
         )
 
     def list(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        default_page_length: int | Omit = omit,
+        delivery_identifier_type: SequenceNotStr[str] | Omit = omit,
+        delivery_identifier_value: SequenceNotStr[str] | Omit = omit,
+        limit: int | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalPublicChannelAccountForwardPaging:
+    ) -> SyncPage[PublicChannelAccount]:
         """
         Retrieve a list of accounts for a custom channel.
 
@@ -162,28 +166,43 @@ class ChannelAccountsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/conversations/v3/custom-channels/{channel_id}/channel-accounts",
+            page=SyncPage[PublicChannelAccount],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "default_page_length": default_page_length,
+                        "delivery_identifier_type": delivery_identifier_type,
+                        "delivery_identifier_value": delivery_identifier_value,
+                        "limit": limit,
+                        "sort": sort,
+                    },
+                    channel_account_list_params.ChannelAccountListParams,
+                ),
             ),
-            cast_to=CollectionResponseWithTotalPublicChannelAccountForwardPaging,
+            model=PublicChannelAccount,
         )
 
     def get(
         self,
-        channel_account_id: str,
+        channel_account_id: int,
         *,
-        channel_id: str,
+        channel_id: int,
+        archived: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConversationsPublicChannelAccount:
+    ) -> PublicChannelAccount:
         """Retrieve the details for a specific channel account.
 
         This contains all the
@@ -191,6 +210,8 @@ class ChannelAccountsResource(SyncAPIResource):
         and delivery identifier information.
 
         Args:
+          archived: Filter results to include only archived or non-archived channel accounts.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -199,16 +220,16 @@ class ChannelAccountsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
-        if not channel_account_id:
-            raise ValueError(f"Expected a non-empty value for `channel_account_id` but received {channel_account_id!r}")
         return self._get(
             f"/conversations/v3/custom-channels/{channel_id}/channel-accounts/{channel_account_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"archived": archived}, channel_account_get_params.ChannelAccountGetParams),
             ),
-            cast_to=ConversationsPublicChannelAccount,
+            cast_to=PublicChannelAccount,
         )
 
 
@@ -234,7 +255,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
 
     async def create(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
         authorized: bool,
         inbox_id: str,
@@ -246,7 +267,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConversationsPublicChannelAccount:
+    ) -> PublicChannelAccount:
         """Create a new account for a channel.
 
         Multiple accounts can communicate over a
@@ -261,8 +282,6 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
         return await self._post(
             f"/conversations/v3/custom-channels/{channel_id}/channel-accounts",
             body=await async_maybe_transform(
@@ -277,14 +296,14 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConversationsPublicChannelAccount,
+            cast_to=PublicChannelAccount,
         )
 
     async def update(
         self,
-        channel_account_id: str,
+        channel_account_id: int,
         *,
-        channel_id: str,
+        channel_id: int,
         authorized: bool | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -293,7 +312,7 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConversationsPublicChannelAccount:
+    ) -> PublicChannelAccount:
         """
         This API is used to update the name of the channel account and it's isAuthorized
         status. Setting to isAuthorized flag to False disables the channel account.
@@ -307,10 +326,6 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
-        if not channel_account_id:
-            raise ValueError(f"Expected a non-empty value for `channel_account_id` but received {channel_account_id!r}")
         return await self._patch(
             f"/conversations/v3/custom-channels/{channel_id}/channel-accounts/{channel_account_id}",
             body=await async_maybe_transform(
@@ -323,20 +338,27 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConversationsPublicChannelAccount,
+            cast_to=PublicChannelAccount,
         )
 
-    async def list(
+    def list(
         self,
-        channel_id: str,
+        channel_id: int,
         *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        default_page_length: int | Omit = omit,
+        delivery_identifier_type: SequenceNotStr[str] | Omit = omit,
+        delivery_identifier_value: SequenceNotStr[str] | Omit = omit,
+        limit: int | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseWithTotalPublicChannelAccountForwardPaging:
+    ) -> AsyncPaginator[PublicChannelAccount, AsyncPage[PublicChannelAccount]]:
         """
         Retrieve a list of accounts for a custom channel.
 
@@ -349,28 +371,43 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/conversations/v3/custom-channels/{channel_id}/channel-accounts",
+            page=AsyncPage[PublicChannelAccount],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "default_page_length": default_page_length,
+                        "delivery_identifier_type": delivery_identifier_type,
+                        "delivery_identifier_value": delivery_identifier_value,
+                        "limit": limit,
+                        "sort": sort,
+                    },
+                    channel_account_list_params.ChannelAccountListParams,
+                ),
             ),
-            cast_to=CollectionResponseWithTotalPublicChannelAccountForwardPaging,
+            model=PublicChannelAccount,
         )
 
     async def get(
         self,
-        channel_account_id: str,
+        channel_account_id: int,
         *,
-        channel_id: str,
+        channel_id: int,
+        archived: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConversationsPublicChannelAccount:
+    ) -> PublicChannelAccount:
         """Retrieve the details for a specific channel account.
 
         This contains all the
@@ -378,6 +415,8 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         and delivery identifier information.
 
         Args:
+          archived: Filter results to include only archived or non-archived channel accounts.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -386,16 +425,18 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not channel_id:
-            raise ValueError(f"Expected a non-empty value for `channel_id` but received {channel_id!r}")
-        if not channel_account_id:
-            raise ValueError(f"Expected a non-empty value for `channel_account_id` but received {channel_account_id!r}")
         return await self._get(
             f"/conversations/v3/custom-channels/{channel_id}/channel-accounts/{channel_account_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"archived": archived}, channel_account_get_params.ChannelAccountGetParams
+                ),
             ),
-            cast_to=ConversationsPublicChannelAccount,
+            cast_to=PublicChannelAccount,
         )
 
 

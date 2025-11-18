@@ -28,5 +28,7 @@ class PipelineReplaceParams(TypedDict, total=False):
     """Pipeline stage inputs used to create the new or replacement pipeline."""
 
     validate_deal_stage_usages_before_delete: Annotated[bool, PropertyInfo(alias="validateDealStageUsagesBeforeDelete")]
+    """Indicates whether to validate deal stage usages before deleting the pipeline."""
 
     validate_references_before_delete: Annotated[bool, PropertyInfo(alias="validateReferencesBeforeDelete")]
+    """Indicates whether to validate references before deleting the pipeline."""

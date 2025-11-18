@@ -22,10 +22,13 @@ from ...._base_client import make_request_options
 from ....types.cms.media_bridge import (
     integrator_setting_update_app_name_params,
     integrator_setting_register_app_name_params,
+    integrator_setting_list_oembed_domains_params,
     integrator_setting_create_oembed_domain_params,
+    integrator_setting_delete_oembed_domain_params,
     integrator_setting_update_oembed_domain_params,
     integrator_setting_create_object_definition_params,
     integrator_setting_update_event_visibility_settings_params,
+    integrator_setting_get_object_definitions_by_media_type_params,
 )
 from ....types.cms.endpoints_param import EndpointsParam
 from ....types.cms.event_visibility_change import EventVisibilityChange
@@ -61,7 +64,7 @@ class IntegratorSettingsResource(SyncAPIResource):
 
     def create_object_definition(
         self,
-        app_id: str,
+        app_id: int,
         *,
         media_types: List[Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"]],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -83,8 +86,6 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._post(
             f"/media-bridge/v1/{app_id}/settings/object-definitions",
             body=maybe_transform(
@@ -99,7 +100,7 @@ class IntegratorSettingsResource(SyncAPIResource):
 
     def create_oembed_domain(
         self,
-        app_id: str,
+        app_id: int,
         *,
         endpoints: EndpointsParam,
         portal_id: int | Omit = omit,
@@ -122,8 +123,6 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._post(
             f"/media-bridge/v1/{app_id}/settings/oembed-domains",
             body=maybe_transform(
@@ -141,8 +140,10 @@ class IntegratorSettingsResource(SyncAPIResource):
 
     def delete_oembed_domain(
         self,
-        app_id: str,
+        app_id: int,
         *,
+        id: int | Omit = omit,
+        domain_portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -154,6 +155,10 @@ class IntegratorSettingsResource(SyncAPIResource):
         Delete an existing oEmbed domain.
 
         Args:
+          id: The ID of the oEmbed to delete.
+
+          domain_portal_id: Filter response by Hub ID.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -162,20 +167,28 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/media-bridge/v1/{app_id}/settings/oembed-domains",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "id": id,
+                        "domain_portal_id": domain_portal_id,
+                    },
+                    integrator_setting_delete_oembed_domain_params.IntegratorSettingDeleteOembedDomainParams,
+                ),
             ),
             cast_to=NoneType,
         )
 
     def get_event_visibility_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -196,8 +209,6 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._get(
             f"/media-bridge/v1/{app_id}/settings/event-visibility",
             options=make_request_options(
@@ -208,9 +219,10 @@ class IntegratorSettingsResource(SyncAPIResource):
 
     def get_object_definitions_by_media_type(
         self,
-        media_type: str,
+        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
         *,
-        app_id: str,
+        app_id: int,
+        include_full_definition: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -222,6 +234,8 @@ class IntegratorSettingsResource(SyncAPIResource):
         Get the existing objects types that belong to the specified media type.
 
         Args:
+          include_full_definition: Include the full definition in the response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -230,14 +244,19 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not media_type:
             raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
         return self._get(
             f"/media-bridge/v1/{app_id}/settings/object-definitions/{media_type}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"include_full_definition": include_full_definition},
+                    integrator_setting_get_object_definitions_by_media_type_params.IntegratorSettingGetObjectDefinitionsByMediaTypeParams,
+                ),
             ),
             cast_to=ObjectDefinitionResponse,
         )
@@ -246,7 +265,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         self,
         o_embed_domain_id: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -266,8 +285,6 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not o_embed_domain_id:
             raise ValueError(f"Expected a non-empty value for `o_embed_domain_id` but received {o_embed_domain_id!r}")
         return self._get(
@@ -280,8 +297,9 @@ class IntegratorSettingsResource(SyncAPIResource):
 
     def list_oembed_domains(
         self,
-        app_id: str,
+        app_id: int,
         *,
+        domain_portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -293,6 +311,8 @@ class IntegratorSettingsResource(SyncAPIResource):
         Get the details for existing oEmbed domains for your app
 
         Args:
+          domain_portal_id: Filter response by Hub ID.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -301,12 +321,17 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._get(
             f"/media-bridge/v1/{app_id}/settings/oembed-domains",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"domain_portal_id": domain_portal_id},
+                    integrator_setting_list_oembed_domains_params.IntegratorSettingListOembedDomainsParams,
+                ),
             ),
             cast_to=OEmbedDomainsCollectionResponse,
         )
@@ -314,7 +339,7 @@ class IntegratorSettingsResource(SyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     def register_app_name(
         self,
-        app_id: str,
+        app_id: int,
         *,
         updated_at: int,
         name: str | Omit = omit,
@@ -338,8 +363,6 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._post(
             f"/media-bridge/v1/{app_id}/settings/register",
             body=maybe_transform(
@@ -357,7 +380,7 @@ class IntegratorSettingsResource(SyncAPIResource):
 
     def update_app_name(
         self,
-        app_id: str,
+        app_id: int,
         *,
         updated_at: int,
         name: str | Omit = omit,
@@ -381,8 +404,6 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._put(
             f"/media-bridge/v1/{app_id}/settings",
             body=maybe_transform(
@@ -400,7 +421,7 @@ class IntegratorSettingsResource(SyncAPIResource):
 
     def update_event_visibility_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         event_type: Literal["ALL", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT", "ATTENTION_SPAN"],
         updated_at: int,
@@ -426,8 +447,6 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._patch(
             f"/media-bridge/v1/{app_id}/settings/event-visibility",
             body=maybe_transform(
@@ -450,7 +469,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         self,
         o_embed_domain_id: str,
         *,
-        app_id: str,
+        app_id: int,
         endpoints: EndpointsParam,
         portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -472,8 +491,6 @@ class IntegratorSettingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not o_embed_domain_id:
             raise ValueError(f"Expected a non-empty value for `o_embed_domain_id` but received {o_embed_domain_id!r}")
         return self._patch(
@@ -514,7 +531,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
     async def create_object_definition(
         self,
-        app_id: str,
+        app_id: int,
         *,
         media_types: List[Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"]],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -536,8 +553,6 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._post(
             f"/media-bridge/v1/{app_id}/settings/object-definitions",
             body=await async_maybe_transform(
@@ -552,7 +567,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
     async def create_oembed_domain(
         self,
-        app_id: str,
+        app_id: int,
         *,
         endpoints: EndpointsParam,
         portal_id: int | Omit = omit,
@@ -575,8 +590,6 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._post(
             f"/media-bridge/v1/{app_id}/settings/oembed-domains",
             body=await async_maybe_transform(
@@ -594,8 +607,10 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
     async def delete_oembed_domain(
         self,
-        app_id: str,
+        app_id: int,
         *,
+        id: int | Omit = omit,
+        domain_portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -607,6 +622,10 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         Delete an existing oEmbed domain.
 
         Args:
+          id: The ID of the oEmbed to delete.
+
+          domain_portal_id: Filter response by Hub ID.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -615,20 +634,28 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/media-bridge/v1/{app_id}/settings/oembed-domains",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "id": id,
+                        "domain_portal_id": domain_portal_id,
+                    },
+                    integrator_setting_delete_oembed_domain_params.IntegratorSettingDeleteOembedDomainParams,
+                ),
             ),
             cast_to=NoneType,
         )
 
     async def get_event_visibility_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -649,8 +676,6 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._get(
             f"/media-bridge/v1/{app_id}/settings/event-visibility",
             options=make_request_options(
@@ -661,9 +686,10 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
     async def get_object_definitions_by_media_type(
         self,
-        media_type: str,
+        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
         *,
-        app_id: str,
+        app_id: int,
+        include_full_definition: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -675,6 +701,8 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         Get the existing objects types that belong to the specified media type.
 
         Args:
+          include_full_definition: Include the full definition in the response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -683,14 +711,19 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not media_type:
             raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
         return await self._get(
             f"/media-bridge/v1/{app_id}/settings/object-definitions/{media_type}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"include_full_definition": include_full_definition},
+                    integrator_setting_get_object_definitions_by_media_type_params.IntegratorSettingGetObjectDefinitionsByMediaTypeParams,
+                ),
             ),
             cast_to=ObjectDefinitionResponse,
         )
@@ -699,7 +732,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         self,
         o_embed_domain_id: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -719,8 +752,6 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not o_embed_domain_id:
             raise ValueError(f"Expected a non-empty value for `o_embed_domain_id` but received {o_embed_domain_id!r}")
         return await self._get(
@@ -733,8 +764,9 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
     async def list_oembed_domains(
         self,
-        app_id: str,
+        app_id: int,
         *,
+        domain_portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -746,6 +778,8 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         Get the details for existing oEmbed domains for your app
 
         Args:
+          domain_portal_id: Filter response by Hub ID.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -754,12 +788,17 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._get(
             f"/media-bridge/v1/{app_id}/settings/oembed-domains",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"domain_portal_id": domain_portal_id},
+                    integrator_setting_list_oembed_domains_params.IntegratorSettingListOembedDomainsParams,
+                ),
             ),
             cast_to=OEmbedDomainsCollectionResponse,
         )
@@ -767,7 +806,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     async def register_app_name(
         self,
-        app_id: str,
+        app_id: int,
         *,
         updated_at: int,
         name: str | Omit = omit,
@@ -791,8 +830,6 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._post(
             f"/media-bridge/v1/{app_id}/settings/register",
             body=await async_maybe_transform(
@@ -810,7 +847,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
     async def update_app_name(
         self,
-        app_id: str,
+        app_id: int,
         *,
         updated_at: int,
         name: str | Omit = omit,
@@ -834,8 +871,6 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._put(
             f"/media-bridge/v1/{app_id}/settings",
             body=await async_maybe_transform(
@@ -853,7 +888,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
     async def update_event_visibility_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         event_type: Literal["ALL", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT", "ATTENTION_SPAN"],
         updated_at: int,
@@ -879,8 +914,6 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._patch(
             f"/media-bridge/v1/{app_id}/settings/event-visibility",
             body=await async_maybe_transform(
@@ -903,7 +936,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         self,
         o_embed_domain_id: str,
         *,
-        app_id: str,
+        app_id: int,
         endpoints: EndpointsParam,
         portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -925,8 +958,6 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not o_embed_domain_id:
             raise ValueError(f"Expected a non-empty value for `o_embed_domain_id` but received {o_embed_domain_id!r}")
         return await self._patch(

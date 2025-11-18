@@ -12,30 +12,30 @@ __all__ = ["TableCreateParams"]
 
 
 class TableCreateParams(TypedDict, total=False):
-    label: Required[str]
-    """Label of the table"""
-
-    name: Required[str]
-    """Name of the table"""
-
-    allow_child_tables: Annotated[bool, PropertyInfo(alias="allowChildTables")]
+    allow_child_tables: Required[Annotated[bool, PropertyInfo(alias="allowChildTables")]]
     """Specifies whether child tables can be created"""
 
-    allow_public_api_access: Annotated[bool, PropertyInfo(alias="allowPublicApiAccess")]
+    allow_public_api_access: Required[Annotated[bool, PropertyInfo(alias="allowPublicApiAccess")]]
     """Specifies whether the table can be read by public without authorization"""
 
-    columns: Iterable[ColumnRequestParam]
+    columns: Required[Iterable[ColumnRequestParam]]
     """List of columns in the table"""
 
-    dynamic_meta_tags: Annotated[Dict[str, int], PropertyInfo(alias="dynamicMetaTags")]
+    dynamic_meta_tags: Required[Annotated[Dict[str, int], PropertyInfo(alias="dynamicMetaTags")]]
     """
     Specifies the key value pairs of the
     [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages)
     with the associated column IDs.
     """
 
-    enable_child_table_pages: Annotated[bool, PropertyInfo(alias="enableChildTablePages")]
+    enable_child_table_pages: Required[Annotated[bool, PropertyInfo(alias="enableChildTablePages")]]
     """Specifies creation of multi-level dynamic pages using child tables"""
 
-    use_for_pages: Annotated[bool, PropertyInfo(alias="useForPages")]
+    label: Required[str]
+    """Label of the table"""
+
+    name: Required[str]
+    """Name of the table"""
+
+    use_for_pages: Required[Annotated[bool, PropertyInfo(alias="useForPages")]]
     """Specifies whether the table can be used for creation of dynamic pages"""

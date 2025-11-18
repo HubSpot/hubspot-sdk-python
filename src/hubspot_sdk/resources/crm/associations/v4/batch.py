@@ -21,11 +21,14 @@ from .....types.crm.associations.v4 import (
     batch_get_params,
     batch_create_params,
     batch_delete_params,
+    batch_upsert_params,
     batch_delete_labels_params,
     batch_create_default_params,
 )
-from .....types.crm.associations.batch_response_void import BatchResponseVoid
+from .....types.crm.batch_response_void import BatchResponseVoid
 from .....types.crm.batch_response_public_default_association import BatchResponsePublicDefaultAssociation
+from .....types.crm.batch_response_simple_public_upsert_object import BatchResponseSimplePublicUpsertObject
+from .....types.crm.simple_public_object_batch_input_upsert_param import SimplePublicObjectBatchInputUpsertParam
 from .....types.crm.associations.public_association_multi_post_param import PublicAssociationMultiPostParam
 from .....types.crm.associations.public_association_multi_archive_param import PublicAssociationMultiArchiveParam
 from .....types.crm.associations.batch_response_labels_between_object_pair import BatchResponseLabelsBetweenObjectPair
@@ -259,6 +262,42 @@ class BatchResource(SyncAPIResource):
             cast_to=BatchResponsePublicAssociationMultiWithLabel,
         )
 
+    def upsert(
+        self,
+        object_type: str,
+        *,
+        inputs: Iterable[SimplePublicObjectBatchInputUpsertParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseSimplePublicUpsertObject:
+        """
+        Upsert a batch of CRM objects, creating new records or updating existing ones
+        based on their internal IDs or unique property values.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        return self._post(
+            f"/crm/v4/objects/{object_type}/batch/upsert",
+            body=maybe_transform({"inputs": inputs}, batch_upsert_params.BatchUpsertParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchResponseSimplePublicUpsertObject,
+        )
+
 
 class AsyncBatchResource(AsyncAPIResource):
     @cached_property
@@ -477,6 +516,42 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=BatchResponsePublicAssociationMultiWithLabel,
         )
 
+    async def upsert(
+        self,
+        object_type: str,
+        *,
+        inputs: Iterable[SimplePublicObjectBatchInputUpsertParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseSimplePublicUpsertObject:
+        """
+        Upsert a batch of CRM objects, creating new records or updating existing ones
+        based on their internal IDs or unique property values.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        return await self._post(
+            f"/crm/v4/objects/{object_type}/batch/upsert",
+            body=await async_maybe_transform({"inputs": inputs}, batch_upsert_params.BatchUpsertParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchResponseSimplePublicUpsertObject,
+        )
+
 
 class BatchResourceWithRawResponse:
     def __init__(self, batch: BatchResource) -> None:
@@ -496,6 +571,9 @@ class BatchResourceWithRawResponse:
         )
         self.get = to_raw_response_wrapper(
             batch.get,
+        )
+        self.upsert = to_raw_response_wrapper(
+            batch.upsert,
         )
 
 
@@ -518,6 +596,9 @@ class AsyncBatchResourceWithRawResponse:
         self.get = async_to_raw_response_wrapper(
             batch.get,
         )
+        self.upsert = async_to_raw_response_wrapper(
+            batch.upsert,
+        )
 
 
 class BatchResourceWithStreamingResponse:
@@ -539,6 +620,9 @@ class BatchResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             batch.get,
         )
+        self.upsert = to_streamed_response_wrapper(
+            batch.upsert,
+        )
 
 
 class AsyncBatchResourceWithStreamingResponse:
@@ -559,4 +643,7 @@ class AsyncBatchResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             batch.get,
+        )
+        self.upsert = async_to_streamed_response_wrapper(
+            batch.upsert,
         )

@@ -14,3 +14,4 @@ class MultiAssociatedObjectWithLabel(BaseModel):
     association_types: List[AssociationSpecWithLabel] = FieldInfo(alias="associationTypes")
 
     to_object_id: str = FieldInfo(alias="toObjectId")
+    """The unique identifier for the target object in the association."""

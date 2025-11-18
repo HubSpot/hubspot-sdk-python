@@ -19,16 +19,16 @@ class TestReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_get_high_usage_report(self, client: Hubspot) -> None:
-        report = client.crm.associations.v4.report.get_high_usage_report(
+    def test_method_request_high_usage_report(self, client: Hubspot) -> None:
+        report = client.crm.associations.v4.report.request_high_usage_report(
             0,
         )
         assert_matches_type(ReportCreationResponse, report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_get_high_usage_report(self, client: Hubspot) -> None:
-        response = client.crm.associations.v4.report.with_raw_response.get_high_usage_report(
+    def test_raw_response_request_high_usage_report(self, client: Hubspot) -> None:
+        response = client.crm.associations.v4.report.with_raw_response.request_high_usage_report(
             0,
         )
 
@@ -39,8 +39,8 @@ class TestReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_get_high_usage_report(self, client: Hubspot) -> None:
-        with client.crm.associations.v4.report.with_streaming_response.get_high_usage_report(
+    def test_streaming_response_request_high_usage_report(self, client: Hubspot) -> None:
+        with client.crm.associations.v4.report.with_streaming_response.request_high_usage_report(
             0,
         ) as response:
             assert not response.is_closed
@@ -59,16 +59,16 @@ class TestAsyncReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_get_high_usage_report(self, async_client: AsyncHubspot) -> None:
-        report = await async_client.crm.associations.v4.report.get_high_usage_report(
+    async def test_method_request_high_usage_report(self, async_client: AsyncHubspot) -> None:
+        report = await async_client.crm.associations.v4.report.request_high_usage_report(
             0,
         )
         assert_matches_type(ReportCreationResponse, report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_get_high_usage_report(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.associations.v4.report.with_raw_response.get_high_usage_report(
+    async def test_raw_response_request_high_usage_report(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.associations.v4.report.with_raw_response.request_high_usage_report(
             0,
         )
 
@@ -79,8 +79,8 @@ class TestAsyncReport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_get_high_usage_report(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.associations.v4.report.with_streaming_response.get_high_usage_report(
+    async def test_streaming_response_request_high_usage_report(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.associations.v4.report.with_streaming_response.request_high_usage_report(
             0,
         ) as response:
             assert not response.is_closed

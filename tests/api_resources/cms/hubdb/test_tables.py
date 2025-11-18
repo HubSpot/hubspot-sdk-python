@@ -31,17 +31,6 @@ class TestTables:
     @parametrize
     def test_method_create(self, client: Hubspot) -> None:
         table = client.cms.hubdb.tables.create(
-            label="label",
-            name="name",
-        )
-        assert_matches_type(HubDBTableV3, table, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
-        table = client.cms.hubdb.tables.create(
-            label="label",
-            name="name",
             allow_child_tables=True,
             allow_public_api_access=True,
             columns=[
@@ -54,19 +43,15 @@ class TestTables:
                             "hidden": False,
                             "label": "Option A",
                             "value": "A",
-                            "description": "Choice number one",
-                            "display_order": 1,
                         }
                     ],
                     "type": "NULL",
-                    "foreign_column_id": 0,
-                    "foreign_table_id": 0,
-                    "max_number_of_characters": 0,
-                    "max_number_of_options": 0,
                 }
             ],
             dynamic_meta_tags={"foo": 0},
             enable_child_table_pages=True,
+            label="label",
+            name="name",
             use_for_pages=True,
         )
         assert_matches_type(HubDBTableV3, table, path=["response"])
@@ -75,8 +60,28 @@ class TestTables:
     @parametrize
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.hubdb.tables.with_raw_response.create(
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         )
 
         assert response.is_closed is True
@@ -88,8 +93,28 @@ class TestTables:
     @parametrize
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.hubdb.tables.with_streaming_response.create(
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -801,8 +826,28 @@ class TestTables:
     def test_method_update_draft(self, client: Hubspot) -> None:
         table = client.cms.hubdb.tables.update_draft(
             table_id_or_name="tableIdOrName",
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         )
         assert_matches_type(HubDBTableV3, table, path=["response"])
 
@@ -811,11 +856,6 @@ class TestTables:
     def test_method_update_draft_with_all_params(self, client: Hubspot) -> None:
         table = client.cms.hubdb.tables.update_draft(
             table_id_or_name="tableIdOrName",
-            label="label",
-            name="name",
-            archived=True,
-            include_foreign_ids=True,
-            is_get_localized_schema=True,
             allow_child_tables=True,
             allow_public_api_access=True,
             columns=[
@@ -841,7 +881,12 @@ class TestTables:
             ],
             dynamic_meta_tags={"foo": 0},
             enable_child_table_pages=True,
+            label="label",
+            name="name",
             use_for_pages=True,
+            archived=True,
+            include_foreign_ids=True,
+            is_get_localized_schema=True,
         )
         assert_matches_type(HubDBTableV3, table, path=["response"])
 
@@ -850,8 +895,28 @@ class TestTables:
     def test_raw_response_update_draft(self, client: Hubspot) -> None:
         response = client.cms.hubdb.tables.with_raw_response.update_draft(
             table_id_or_name="tableIdOrName",
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         )
 
         assert response.is_closed is True
@@ -864,8 +929,28 @@ class TestTables:
     def test_streaming_response_update_draft(self, client: Hubspot) -> None:
         with client.cms.hubdb.tables.with_streaming_response.update_draft(
             table_id_or_name="tableIdOrName",
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -881,8 +966,28 @@ class TestTables:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.tables.with_raw_response.update_draft(
                 table_id_or_name="",
+                allow_child_tables=True,
+                allow_public_api_access=True,
+                columns=[
+                    {
+                        "id": 0,
+                        "label": "label",
+                        "name": "name",
+                        "options": [
+                            {
+                                "hidden": False,
+                                "label": "Option A",
+                                "value": "A",
+                            }
+                        ],
+                        "type": "NULL",
+                    }
+                ],
+                dynamic_meta_tags={"foo": 0},
+                enable_child_table_pages=True,
                 label="label",
                 name="name",
+                use_for_pages=True,
             )
 
 
@@ -895,17 +1000,6 @@ class TestAsyncTables:
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         table = await async_client.cms.hubdb.tables.create(
-            label="label",
-            name="name",
-        )
-        assert_matches_type(HubDBTableV3, table, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
-        table = await async_client.cms.hubdb.tables.create(
-            label="label",
-            name="name",
             allow_child_tables=True,
             allow_public_api_access=True,
             columns=[
@@ -918,19 +1012,15 @@ class TestAsyncTables:
                             "hidden": False,
                             "label": "Option A",
                             "value": "A",
-                            "description": "Choice number one",
-                            "display_order": 1,
                         }
                     ],
                     "type": "NULL",
-                    "foreign_column_id": 0,
-                    "foreign_table_id": 0,
-                    "max_number_of_characters": 0,
-                    "max_number_of_options": 0,
                 }
             ],
             dynamic_meta_tags={"foo": 0},
             enable_child_table_pages=True,
+            label="label",
+            name="name",
             use_for_pages=True,
         )
         assert_matches_type(HubDBTableV3, table, path=["response"])
@@ -939,8 +1029,28 @@ class TestAsyncTables:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.tables.with_raw_response.create(
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         )
 
         assert response.is_closed is True
@@ -952,8 +1062,28 @@ class TestAsyncTables:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.tables.with_streaming_response.create(
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1667,8 +1797,28 @@ class TestAsyncTables:
     async def test_method_update_draft(self, async_client: AsyncHubspot) -> None:
         table = await async_client.cms.hubdb.tables.update_draft(
             table_id_or_name="tableIdOrName",
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         )
         assert_matches_type(HubDBTableV3, table, path=["response"])
 
@@ -1677,11 +1827,6 @@ class TestAsyncTables:
     async def test_method_update_draft_with_all_params(self, async_client: AsyncHubspot) -> None:
         table = await async_client.cms.hubdb.tables.update_draft(
             table_id_or_name="tableIdOrName",
-            label="label",
-            name="name",
-            archived=True,
-            include_foreign_ids=True,
-            is_get_localized_schema=True,
             allow_child_tables=True,
             allow_public_api_access=True,
             columns=[
@@ -1707,7 +1852,12 @@ class TestAsyncTables:
             ],
             dynamic_meta_tags={"foo": 0},
             enable_child_table_pages=True,
+            label="label",
+            name="name",
             use_for_pages=True,
+            archived=True,
+            include_foreign_ids=True,
+            is_get_localized_schema=True,
         )
         assert_matches_type(HubDBTableV3, table, path=["response"])
 
@@ -1716,8 +1866,28 @@ class TestAsyncTables:
     async def test_raw_response_update_draft(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.hubdb.tables.with_raw_response.update_draft(
             table_id_or_name="tableIdOrName",
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         )
 
         assert response.is_closed is True
@@ -1730,8 +1900,28 @@ class TestAsyncTables:
     async def test_streaming_response_update_draft(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.hubdb.tables.with_streaming_response.update_draft(
             table_id_or_name="tableIdOrName",
+            allow_child_tables=True,
+            allow_public_api_access=True,
+            columns=[
+                {
+                    "id": 0,
+                    "label": "label",
+                    "name": "name",
+                    "options": [
+                        {
+                            "hidden": False,
+                            "label": "Option A",
+                            "value": "A",
+                        }
+                    ],
+                    "type": "NULL",
+                }
+            ],
+            dynamic_meta_tags={"foo": 0},
+            enable_child_table_pages=True,
             label="label",
             name="name",
+            use_for_pages=True,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1747,6 +1937,26 @@ class TestAsyncTables:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.tables.with_raw_response.update_draft(
                 table_id_or_name="",
+                allow_child_tables=True,
+                allow_public_api_access=True,
+                columns=[
+                    {
+                        "id": 0,
+                        "label": "label",
+                        "name": "name",
+                        "options": [
+                            {
+                                "hidden": False,
+                                "label": "Option A",
+                                "value": "A",
+                            }
+                        ],
+                        "type": "NULL",
+                    }
+                ],
+                dynamic_meta_tags={"foo": 0},
+                enable_child_table_pages=True,
                 label="label",
                 name="name",
+                use_for_pages=True,
             )

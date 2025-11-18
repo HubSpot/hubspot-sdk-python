@@ -21,6 +21,14 @@ class BehavioralEventHTTPCompletionRequestParam(TypedDict, total=False):
     [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
     """
 
+    properties: Required[Dict[str, str]]
+    """The event properties to update.
+
+    Takes the format of key-value pairs (property internal name and property value).
+    Learn more about
+    [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+    """
+
     email: str
     """The visitor's email address.
 
@@ -34,14 +42,6 @@ class BehavioralEventHTTPCompletionRequestParam(TypedDict, total=False):
     """The time when this event occurred.
 
     If this isn't set, the current time will be used.
-    """
-
-    properties: Dict[str, str]
-    """The event properties to update.
-
-    Takes the format of key-value pairs (property internal name and property value).
-    Learn more about
-    [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
     """
 
     utk: str

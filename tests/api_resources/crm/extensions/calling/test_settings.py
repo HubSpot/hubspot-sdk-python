@@ -22,22 +22,12 @@ class TestSettings:
     def test_method_create(self, client: Hubspot) -> None:
         setting = client.crm.extensions.calling.settings.create(
             app_id=0,
-            name="name",
-            url="url",
-        )
-        assert_matches_type(SettingsResponse, setting, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
-        setting = client.crm.extensions.calling.settings.create(
-            app_id=0,
-            name="name",
-            url="url",
             height=0,
             is_ready=True,
+            name="name",
             supports_custom_objects=True,
             supports_inbound_calling=True,
+            url="url",
             uses_calling_window=True,
             uses_remote=True,
             width=0,
@@ -49,8 +39,15 @@ class TestSettings:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.extensions.calling.settings.with_raw_response.create(
             app_id=0,
+            height=0,
+            is_ready=True,
             name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
             url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
         )
 
         assert response.is_closed is True
@@ -63,8 +60,15 @@ class TestSettings:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.extensions.calling.settings.with_streaming_response.create(
             app_id=0,
+            height=0,
+            is_ready=True,
             name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
             url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -204,22 +208,12 @@ class TestAsyncSettings:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         setting = await async_client.crm.extensions.calling.settings.create(
             app_id=0,
-            name="name",
-            url="url",
-        )
-        assert_matches_type(SettingsResponse, setting, path=["response"])
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
-        setting = await async_client.crm.extensions.calling.settings.create(
-            app_id=0,
-            name="name",
-            url="url",
             height=0,
             is_ready=True,
+            name="name",
             supports_custom_objects=True,
             supports_inbound_calling=True,
+            url="url",
             uses_calling_window=True,
             uses_remote=True,
             width=0,
@@ -231,8 +225,15 @@ class TestAsyncSettings:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.extensions.calling.settings.with_raw_response.create(
             app_id=0,
+            height=0,
+            is_ready=True,
             name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
             url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
         )
 
         assert response.is_closed is True
@@ -245,8 +246,15 @@ class TestAsyncSettings:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.extensions.calling.settings.with_streaming_response.create(
             app_id=0,
+            height=0,
+            is_ready=True,
             name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
             url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

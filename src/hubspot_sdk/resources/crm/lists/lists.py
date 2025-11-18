@@ -547,10 +547,10 @@ class ListsResource(SyncAPIResource):
     def search(
         self,
         *,
-        additional_properties: SequenceNotStr[str] | Omit = omit,
+        additional_properties: SequenceNotStr[str],
+        offset: int,
         count: int | Omit = omit,
         list_ids: SequenceNotStr[str] | Omit = omit,
-        offset: int | Omit = omit,
         processing_types: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
         sort: str | Omit = omit,
@@ -574,6 +574,10 @@ class ListsResource(SyncAPIResource):
               `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
               `hs_folder_name`, and `hs_list_reference_count`.
 
+          offset: Value used to paginate through lists. The `offset` provided in the response can
+              be used in the next request to fetch the next page of results. Defaults to `0`
+              if no offset is provided.
+
           count: The number of lists to include in the response. Defaults to `20` if no value is
               provided. The max `count` is `500`.
 
@@ -583,10 +587,6 @@ class ListsResource(SyncAPIResource):
 
               If no value is provided, or if an empty list is provided, then the results will
               not be filtered by `listId`.
-
-          offset: Value used to paginate through lists. The `offset` provided in the response can
-              be used in the next request to fetch the next page of results. Defaults to `0`
-              if no offset is provided.
 
           processing_types: The `processingTypes` that will be used to filter results by `processingType`.
               If values are provided, then the response will only include results that have a
@@ -613,9 +613,9 @@ class ListsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "additional_properties": additional_properties,
+                    "offset": offset,
                     "count": count,
                     "list_ids": list_ids,
-                    "offset": offset,
                     "processing_types": processing_types,
                     "query": query,
                     "sort": sort,
@@ -1214,10 +1214,10 @@ class AsyncListsResource(AsyncAPIResource):
     async def search(
         self,
         *,
-        additional_properties: SequenceNotStr[str] | Omit = omit,
+        additional_properties: SequenceNotStr[str],
+        offset: int,
         count: int | Omit = omit,
         list_ids: SequenceNotStr[str] | Omit = omit,
-        offset: int | Omit = omit,
         processing_types: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
         sort: str | Omit = omit,
@@ -1241,6 +1241,10 @@ class AsyncListsResource(AsyncAPIResource):
               `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
               `hs_folder_name`, and `hs_list_reference_count`.
 
+          offset: Value used to paginate through lists. The `offset` provided in the response can
+              be used in the next request to fetch the next page of results. Defaults to `0`
+              if no offset is provided.
+
           count: The number of lists to include in the response. Defaults to `20` if no value is
               provided. The max `count` is `500`.
 
@@ -1250,10 +1254,6 @@ class AsyncListsResource(AsyncAPIResource):
 
               If no value is provided, or if an empty list is provided, then the results will
               not be filtered by `listId`.
-
-          offset: Value used to paginate through lists. The `offset` provided in the response can
-              be used in the next request to fetch the next page of results. Defaults to `0`
-              if no offset is provided.
 
           processing_types: The `processingTypes` that will be used to filter results by `processingType`.
               If values are provided, then the response will only include results that have a
@@ -1280,9 +1280,9 @@ class AsyncListsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "additional_properties": additional_properties,
+                    "offset": offset,
                     "count": count,
                     "list_ids": list_ids,
-                    "offset": offset,
                     "processing_types": processing_types,
                     "query": query,
                     "sort": sort,

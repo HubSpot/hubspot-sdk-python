@@ -23,6 +23,8 @@ class ExternalCalendarMeetingEventCreatePropertiesParam(TypedDict, total=False):
 
     hs_timestamp: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
 
+    hubspot_owner_id: Required[str]
+
     hs_activity_type: str
 
     hs_attachment_ids: SequenceNotStr[str]
@@ -36,5 +38,3 @@ class ExternalCalendarMeetingEventCreatePropertiesParam(TypedDict, total=False):
     hs_meeting_location: str
 
     hs_meeting_location_type: str
-
-    hubspot_owner_id: str

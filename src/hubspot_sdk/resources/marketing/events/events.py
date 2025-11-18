@@ -150,11 +150,11 @@ class EventsResource(SyncAPIResource):
     def create(
         self,
         *,
+        custom_properties: Iterable[PropertyValueParam],
         event_name: str,
         event_organizer: str,
         external_account_id: str,
         external_event_id: str,
-        custom_properties: Iterable[PropertyValueParam] | Omit = omit,
         end_date_time: Union[str, datetime] | Omit = omit,
         event_cancelled: bool | Omit = omit,
         event_completed: bool | Omit = omit,
@@ -173,15 +173,6 @@ class EventsResource(SyncAPIResource):
         Creates a new marketing event in HubSpot
 
         Args:
-          event_name: The name of the marketing event.
-
-          event_organizer: The name of the organizer of the marketing event.
-
-          external_account_id: The accountId that is associated with this marketing event in the external event
-              application.
-
-          external_event_id: The id of the marketing event in the external event application.
-
           custom_properties: A list of PropertyValues. These can be whatever kind of property names and
               values you want. However, they must already exist on the HubSpot account's
               definition of the MarketingEvent Object. If they don't they will be filtered out
@@ -190,6 +181,15 @@ class EventsResource(SyncAPIResource):
               Custom Property you want to track on that HubSpot account. Do not create any new
               default properties on the MarketingEvent object as that will apply to all
               HubSpot accounts.
+
+          event_name: The name of the marketing event.
+
+          event_organizer: The name of the organizer of the marketing event.
+
+          external_account_id: The accountId that is associated with this marketing event in the external event
+              application.
+
+          external_event_id: The id of the marketing event in the external event application.
 
           end_date_time: The end date and time of the marketing event.
 
@@ -217,11 +217,11 @@ class EventsResource(SyncAPIResource):
             "/marketing/v3/marketing-events/events",
             body=maybe_transform(
                 {
+                    "custom_properties": custom_properties,
                     "event_name": event_name,
                     "event_organizer": event_organizer,
                     "external_account_id": external_account_id,
                     "external_event_id": external_event_id,
-                    "custom_properties": custom_properties,
                     "end_date_time": end_date_time,
                     "event_cancelled": event_cancelled,
                     "event_completed": event_completed,
@@ -809,7 +809,7 @@ class EventsResource(SyncAPIResource):
         external_event_id: str,
         *,
         external_account_id: str,
-        custom_properties: Iterable[PropertyValueParam] | Omit = omit,
+        custom_properties: Iterable[PropertyValueParam],
         end_date_time: Union[str, datetime] | Omit = omit,
         event_cancelled: bool | Omit = omit,
         event_completed: bool | Omit = omit,
@@ -943,11 +943,11 @@ class EventsResource(SyncAPIResource):
         self,
         path_external_event_id: str,
         *,
+        custom_properties: Iterable[PropertyValueParam],
         event_name: str,
         event_organizer: str,
         external_account_id: str,
         body_external_event_id: str,
-        custom_properties: Iterable[PropertyValueParam] | Omit = omit,
         end_date_time: Union[str, datetime] | Omit = omit,
         event_cancelled: bool | Omit = omit,
         event_completed: bool | Omit = omit,
@@ -967,15 +967,6 @@ class EventsResource(SyncAPIResource):
         specified ID, it will be updated; otherwise a new event will be created.
 
         Args:
-          event_name: The name of the marketing event.
-
-          event_organizer: The name of the organizer of the marketing event.
-
-          external_account_id: The accountId that is associated with this marketing event in the external event
-              application.
-
-          body_external_event_id: The id of the marketing event in the external event application.
-
           custom_properties: A list of PropertyValues. These can be whatever kind of property names and
               values you want. However, they must already exist on the HubSpot account's
               definition of the MarketingEvent Object. If they don't they will be filtered out
@@ -984,6 +975,15 @@ class EventsResource(SyncAPIResource):
               Custom Property you want to track on that HubSpot account. Do not create any new
               default properties on the MarketingEvent object as that will apply to all
               HubSpot accounts.
+
+          event_name: The name of the marketing event.
+
+          event_organizer: The name of the organizer of the marketing event.
+
+          external_account_id: The accountId that is associated with this marketing event in the external event
+              application.
+
+          body_external_event_id: The id of the marketing event in the external event application.
 
           end_date_time: The end date and time of the marketing event.
 
@@ -1015,11 +1015,11 @@ class EventsResource(SyncAPIResource):
             f"/marketing/v3/marketing-events/events/{path_external_event_id}",
             body=maybe_transform(
                 {
+                    "custom_properties": custom_properties,
                     "event_name": event_name,
                     "event_organizer": event_organizer,
                     "external_account_id": external_account_id,
                     "body_external_event_id": body_external_event_id,
-                    "custom_properties": custom_properties,
                     "end_date_time": end_date_time,
                     "event_cancelled": event_cancelled,
                     "event_completed": event_completed,
@@ -1191,11 +1191,11 @@ class AsyncEventsResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        custom_properties: Iterable[PropertyValueParam],
         event_name: str,
         event_organizer: str,
         external_account_id: str,
         external_event_id: str,
-        custom_properties: Iterable[PropertyValueParam] | Omit = omit,
         end_date_time: Union[str, datetime] | Omit = omit,
         event_cancelled: bool | Omit = omit,
         event_completed: bool | Omit = omit,
@@ -1214,15 +1214,6 @@ class AsyncEventsResource(AsyncAPIResource):
         Creates a new marketing event in HubSpot
 
         Args:
-          event_name: The name of the marketing event.
-
-          event_organizer: The name of the organizer of the marketing event.
-
-          external_account_id: The accountId that is associated with this marketing event in the external event
-              application.
-
-          external_event_id: The id of the marketing event in the external event application.
-
           custom_properties: A list of PropertyValues. These can be whatever kind of property names and
               values you want. However, they must already exist on the HubSpot account's
               definition of the MarketingEvent Object. If they don't they will be filtered out
@@ -1231,6 +1222,15 @@ class AsyncEventsResource(AsyncAPIResource):
               Custom Property you want to track on that HubSpot account. Do not create any new
               default properties on the MarketingEvent object as that will apply to all
               HubSpot accounts.
+
+          event_name: The name of the marketing event.
+
+          event_organizer: The name of the organizer of the marketing event.
+
+          external_account_id: The accountId that is associated with this marketing event in the external event
+              application.
+
+          external_event_id: The id of the marketing event in the external event application.
 
           end_date_time: The end date and time of the marketing event.
 
@@ -1258,11 +1258,11 @@ class AsyncEventsResource(AsyncAPIResource):
             "/marketing/v3/marketing-events/events",
             body=await async_maybe_transform(
                 {
+                    "custom_properties": custom_properties,
                     "event_name": event_name,
                     "event_organizer": event_organizer,
                     "external_account_id": external_account_id,
                     "external_event_id": external_event_id,
-                    "custom_properties": custom_properties,
                     "end_date_time": end_date_time,
                     "event_cancelled": event_cancelled,
                     "event_completed": event_completed,
@@ -1850,7 +1850,7 @@ class AsyncEventsResource(AsyncAPIResource):
         external_event_id: str,
         *,
         external_account_id: str,
-        custom_properties: Iterable[PropertyValueParam] | Omit = omit,
+        custom_properties: Iterable[PropertyValueParam],
         end_date_time: Union[str, datetime] | Omit = omit,
         event_cancelled: bool | Omit = omit,
         event_completed: bool | Omit = omit,
@@ -1984,11 +1984,11 @@ class AsyncEventsResource(AsyncAPIResource):
         self,
         path_external_event_id: str,
         *,
+        custom_properties: Iterable[PropertyValueParam],
         event_name: str,
         event_organizer: str,
         external_account_id: str,
         body_external_event_id: str,
-        custom_properties: Iterable[PropertyValueParam] | Omit = omit,
         end_date_time: Union[str, datetime] | Omit = omit,
         event_cancelled: bool | Omit = omit,
         event_completed: bool | Omit = omit,
@@ -2008,15 +2008,6 @@ class AsyncEventsResource(AsyncAPIResource):
         specified ID, it will be updated; otherwise a new event will be created.
 
         Args:
-          event_name: The name of the marketing event.
-
-          event_organizer: The name of the organizer of the marketing event.
-
-          external_account_id: The accountId that is associated with this marketing event in the external event
-              application.
-
-          body_external_event_id: The id of the marketing event in the external event application.
-
           custom_properties: A list of PropertyValues. These can be whatever kind of property names and
               values you want. However, they must already exist on the HubSpot account's
               definition of the MarketingEvent Object. If they don't they will be filtered out
@@ -2025,6 +2016,15 @@ class AsyncEventsResource(AsyncAPIResource):
               Custom Property you want to track on that HubSpot account. Do not create any new
               default properties on the MarketingEvent object as that will apply to all
               HubSpot accounts.
+
+          event_name: The name of the marketing event.
+
+          event_organizer: The name of the organizer of the marketing event.
+
+          external_account_id: The accountId that is associated with this marketing event in the external event
+              application.
+
+          body_external_event_id: The id of the marketing event in the external event application.
 
           end_date_time: The end date and time of the marketing event.
 
@@ -2056,11 +2056,11 @@ class AsyncEventsResource(AsyncAPIResource):
             f"/marketing/v3/marketing-events/events/{path_external_event_id}",
             body=await async_maybe_transform(
                 {
+                    "custom_properties": custom_properties,
                     "event_name": event_name,
                     "event_organizer": event_organizer,
                     "external_account_id": external_account_id,
                     "body_external_event_id": body_external_event_id,
-                    "custom_properties": custom_properties,
                     "end_date_time": end_date_time,
                     "event_cancelled": event_cancelled,
                     "event_completed": event_completed,
