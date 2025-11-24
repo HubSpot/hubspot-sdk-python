@@ -13,7 +13,9 @@ class StreamingCollectionResponseWithTotalHubDBTableRowV3(BaseModel):
     results: List[object]
 
     total: int
+    """The total number of rows available in the collection."""
 
     type: Literal["STREAMING"]
+    """Indicates the type of response, which is 'STREAMING' by default."""
 
     paging: Optional[Paging] = None

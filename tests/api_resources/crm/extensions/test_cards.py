@@ -37,7 +37,7 @@ class TestCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -72,7 +72,7 @@ class TestCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -109,7 +109,7 @@ class TestCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -148,7 +148,7 @@ class TestCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -199,7 +199,7 @@ class TestCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -433,7 +433,7 @@ class TestAsyncCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -468,7 +468,7 @@ class TestAsyncCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -505,7 +505,7 @@ class TestAsyncCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -544,7 +544,7 @@ class TestAsyncCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }
@@ -595,7 +595,7 @@ class TestAsyncCards:
                             {
                                 "label": "label",
                                 "name": "name",
-                                "type": "DEFAULT",
+                                "type": "DANGER",
                             }
                         ],
                     }

@@ -233,6 +233,8 @@ class URLRedirectsResource(SyncAPIResource):
 
           limit: Maximum number of result per page
 
+          sort: A query parameter to specify the order in which the URL redirects are returned.
+
           updated_after: Only return redirects last updated after this date.
 
           updated_at: Only return redirects last updated on exactly this date.
@@ -549,6 +551,8 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
           created_before: Only return redirects created before this date.
 
           limit: Maximum number of result per page
+
+          sort: A query parameter to specify the order in which the URL redirects are returned.
 
           updated_after: Only return redirects last updated after this date.
 

@@ -24,7 +24,7 @@ class ObjectTypePropertyCreateParam(TypedDict, total=False):
     from the API.
     """
 
-    type: Required[Literal["string", "number", "date", "datetime", "enumeration", "bool"]]
+    type: Required[Literal["bool", "date", "datetime", "enumeration", "number", "string"]]
     """The data type of the property."""
 
     description: str
@@ -53,7 +53,7 @@ class ObjectTypePropertyCreateParam(TypedDict, total=False):
     hidden: bool
 
     number_display_hint: Annotated[
-        Literal["unformatted", "formatted", "currency", "percentage", "duration", "probability"],
+        Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"],
         PropertyInfo(alias="numberDisplayHint"),
     ]
     """Controls how numeric properties are formatted in the HubSpot UI"""
@@ -64,7 +64,7 @@ class ObjectTypePropertyCreateParam(TypedDict, total=False):
     This field is only required for enumerated properties.
     """
 
-    option_sort_strategy: Annotated[Literal["DISPLAY_ORDER", "ALPHABETICAL"], PropertyInfo(alias="optionSortStrategy")]
+    option_sort_strategy: Annotated[Literal["ALPHABETICAL", "DISPLAY_ORDER"], PropertyInfo(alias="optionSortStrategy")]
     """Controls how the property options will be sorted in the HubSpot UI."""
 
     referenced_object_type: Annotated[str, PropertyInfo(alias="referencedObjectType")]
@@ -84,14 +84,14 @@ class ObjectTypePropertyCreateParam(TypedDict, total=False):
 
     text_display_hint: Annotated[
         Literal[
-            "unformatted_single_line",
-            "multi_line",
-            "email",
-            "phone_number",
             "domain_name",
+            "email",
             "ip_address",
+            "multi_line",
+            "phone_number",
             "physical_address",
             "postal_code",
+            "unformatted_single_line",
         ],
         PropertyInfo(alias="textDisplayHint"),
     ]

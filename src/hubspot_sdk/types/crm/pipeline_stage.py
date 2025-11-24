@@ -64,7 +64,7 @@ class PipelineStage(BaseModel):
     `archivedAt` will only be present if the pipeline is archived.
     """
 
-    write_permissions: Optional[Literal["CRM_PERMISSIONS_ENFORCEMENT", "READ_ONLY", "INTERNAL_ONLY"]] = FieldInfo(
+    write_permissions: Optional[Literal["CRM_PERMISSIONS_ENFORCEMENT", "INTERNAL_ONLY", "READ_ONLY"]] = FieldInfo(
         alias="writePermissions", default=None
     )
     """

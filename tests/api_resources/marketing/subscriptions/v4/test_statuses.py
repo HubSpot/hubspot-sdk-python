@@ -30,7 +30,7 @@ class TestStatuses:
         status = client.marketing.subscriptions.v4.statuses.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
-            status_state="SUBSCRIBED",
+            status_state="NOT_SPECIFIED",
             subscription_id=0,
         )
         assert_matches_type(ActionResponseWithResultsPublicStatus, status, path=["response"])
@@ -41,9 +41,9 @@ class TestStatuses:
         status = client.marketing.subscriptions.v4.statuses.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
-            status_state="SUBSCRIBED",
+            status_state="NOT_SPECIFIED",
             subscription_id=0,
-            legal_basis="LEGITIMATE_INTEREST_PQL",
+            legal_basis="CONSENT_WITH_NOTICE",
             legal_basis_explanation="legalBasisExplanation",
         )
         assert_matches_type(ActionResponseWithResultsPublicStatus, status, path=["response"])
@@ -54,7 +54,7 @@ class TestStatuses:
         response = client.marketing.subscriptions.v4.statuses.with_raw_response.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
-            status_state="SUBSCRIBED",
+            status_state="NOT_SPECIFIED",
             subscription_id=0,
         )
 
@@ -69,7 +69,7 @@ class TestStatuses:
         with client.marketing.subscriptions.v4.statuses.with_streaming_response.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
-            status_state="SUBSCRIBED",
+            status_state="NOT_SPECIFIED",
             subscription_id=0,
         ) as response:
             assert not response.is_closed
@@ -87,7 +87,7 @@ class TestStatuses:
             client.marketing.subscriptions.v4.statuses.with_raw_response.update(
                 subscriber_id_string="",
                 channel="EMAIL",
-                status_state="SUBSCRIBED",
+                status_state="NOT_SPECIFIED",
                 subscription_id=0,
             )
 
@@ -240,7 +240,7 @@ class TestStatuses:
             inputs=[
                 {
                     "channel": "EMAIL",
-                    "status_state": "SUBSCRIBED",
+                    "status_state": "NOT_SPECIFIED",
                     "subscriber_id_string": "subscriberIdString",
                     "subscription_id": 0,
                 }
@@ -255,7 +255,7 @@ class TestStatuses:
             inputs=[
                 {
                     "channel": "EMAIL",
-                    "status_state": "SUBSCRIBED",
+                    "status_state": "NOT_SPECIFIED",
                     "subscriber_id_string": "subscriberIdString",
                     "subscription_id": 0,
                 }
@@ -274,7 +274,7 @@ class TestStatuses:
             inputs=[
                 {
                     "channel": "EMAIL",
-                    "status_state": "SUBSCRIBED",
+                    "status_state": "NOT_SPECIFIED",
                     "subscriber_id_string": "subscriberIdString",
                     "subscription_id": 0,
                 }
@@ -470,7 +470,7 @@ class TestAsyncStatuses:
         status = await async_client.marketing.subscriptions.v4.statuses.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
-            status_state="SUBSCRIBED",
+            status_state="NOT_SPECIFIED",
             subscription_id=0,
         )
         assert_matches_type(ActionResponseWithResultsPublicStatus, status, path=["response"])
@@ -481,9 +481,9 @@ class TestAsyncStatuses:
         status = await async_client.marketing.subscriptions.v4.statuses.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
-            status_state="SUBSCRIBED",
+            status_state="NOT_SPECIFIED",
             subscription_id=0,
-            legal_basis="LEGITIMATE_INTEREST_PQL",
+            legal_basis="CONSENT_WITH_NOTICE",
             legal_basis_explanation="legalBasisExplanation",
         )
         assert_matches_type(ActionResponseWithResultsPublicStatus, status, path=["response"])
@@ -494,7 +494,7 @@ class TestAsyncStatuses:
         response = await async_client.marketing.subscriptions.v4.statuses.with_raw_response.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
-            status_state="SUBSCRIBED",
+            status_state="NOT_SPECIFIED",
             subscription_id=0,
         )
 
@@ -509,7 +509,7 @@ class TestAsyncStatuses:
         async with async_client.marketing.subscriptions.v4.statuses.with_streaming_response.update(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
-            status_state="SUBSCRIBED",
+            status_state="NOT_SPECIFIED",
             subscription_id=0,
         ) as response:
             assert not response.is_closed
@@ -527,7 +527,7 @@ class TestAsyncStatuses:
             await async_client.marketing.subscriptions.v4.statuses.with_raw_response.update(
                 subscriber_id_string="",
                 channel="EMAIL",
-                status_state="SUBSCRIBED",
+                status_state="NOT_SPECIFIED",
                 subscription_id=0,
             )
 
@@ -684,7 +684,7 @@ class TestAsyncStatuses:
             inputs=[
                 {
                     "channel": "EMAIL",
-                    "status_state": "SUBSCRIBED",
+                    "status_state": "NOT_SPECIFIED",
                     "subscriber_id_string": "subscriberIdString",
                     "subscription_id": 0,
                 }
@@ -699,7 +699,7 @@ class TestAsyncStatuses:
             inputs=[
                 {
                     "channel": "EMAIL",
-                    "status_state": "SUBSCRIBED",
+                    "status_state": "NOT_SPECIFIED",
                     "subscriber_id_string": "subscriberIdString",
                     "subscription_id": 0,
                 }
@@ -718,7 +718,7 @@ class TestAsyncStatuses:
             inputs=[
                 {
                     "channel": "EMAIL",
-                    "status_state": "SUBSCRIBED",
+                    "status_state": "NOT_SPECIFIED",
                     "subscriber_id_string": "subscriberIdString",
                     "subscription_id": 0,
                 }

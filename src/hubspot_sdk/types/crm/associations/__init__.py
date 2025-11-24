@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .date_time import DateTime as DateTime
-from .v4_merge_params import V4MergeParams as V4MergeParams
 from .batch_get_params import BatchGetParams as BatchGetParams
 from .batch_create_params import BatchCreateParams as BatchCreateParams
 from .batch_delete_params import BatchDeleteParams as BatchDeleteParams

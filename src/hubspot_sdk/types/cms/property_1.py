@@ -40,7 +40,7 @@ class Property1(BaseModel):
 
     created_user_id: Optional[str] = FieldInfo(alias="createdUserId", default=None)
 
-    data_sensitivity: Optional[Literal["non_sensitive", "sensitive", "highly_sensitive"]] = FieldInfo(
+    data_sensitivity: Optional[Literal["highly_sensitive", "non_sensitive", "sensitive"]] = FieldInfo(
         alias="dataSensitivity", default=None
     )
 

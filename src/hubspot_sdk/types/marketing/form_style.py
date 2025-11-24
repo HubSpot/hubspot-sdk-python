@@ -26,7 +26,7 @@ class FormStyle(BaseModel):
 
     legal_consent_text_size: str = FieldInfo(alias="legalConsentTextSize")
 
-    submit_alignment: Literal["left", "right", "center"] = FieldInfo(alias="submitAlignment")
+    submit_alignment: Literal["center", "left", "right"] = FieldInfo(alias="submitAlignment")
 
     submit_color: str = FieldInfo(alias="submitColor")
 

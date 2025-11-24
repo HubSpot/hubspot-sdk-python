@@ -13,6 +13,9 @@ __all__ = ["ExchangeRateCreateRequestParam"]
 
 class ExchangeRateCreateRequestParam(TypedDict, total=False):
     conversion_rate: Required[Annotated[float, PropertyInfo(alias="conversionRate")]]
+    """
+    The conversion rate between the to and from currency code of this exchange rate.
+    """
 
     from_currency_code: Required[
         Annotated[
@@ -197,5 +200,10 @@ class ExchangeRateCreateRequestParam(TypedDict, total=False):
             PropertyInfo(alias="fromCurrencyCode"),
         ]
     ]
+    """
+    This represents the three-letter currency code (such as USD for US Dollar) of
+    the currency you want to convert from.
+    """
 
     effective_at: Annotated[Union[str, datetime], PropertyInfo(alias="effectiveAt", format="iso8601")]
+    """The date the exchange rate is in effect."""

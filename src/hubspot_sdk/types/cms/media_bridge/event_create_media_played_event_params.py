@@ -11,7 +11,7 @@ __all__ = ["EventCreateMediaPlayedEventParams"]
 
 class EventCreateMediaPlayedEventParams(TypedDict, total=False):
     media_type: Required[
-        Annotated[Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"], PropertyInfo(alias="mediaType")]
+        Annotated[Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"], PropertyInfo(alias="mediaType")]
     ]
 
     occurred_timestamp: Required[Annotated[int, PropertyInfo(alias="occurredTimestamp")]]

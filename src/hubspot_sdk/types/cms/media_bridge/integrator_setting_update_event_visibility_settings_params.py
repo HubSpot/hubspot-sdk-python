@@ -12,7 +12,7 @@ __all__ = ["IntegratorSettingUpdateEventVisibilitySettingsParams"]
 class IntegratorSettingUpdateEventVisibilitySettingsParams(TypedDict, total=False):
     event_type: Required[
         Annotated[
-            Literal["ALL", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT", "ATTENTION_SPAN"], PropertyInfo(alias="eventType")
+            Literal["ALL", "ATTENTION_SPAN", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT"], PropertyInfo(alias="eventType")
         ]
     ]
 

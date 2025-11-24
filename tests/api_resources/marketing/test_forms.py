@@ -73,7 +73,7 @@ class TestForms:
                 "notify_contact_owner": True,
                 "notify_recipients": ["string"],
                 "post_submit_action": {
-                    "type": "thank_you",
+                    "type": "redirect_url",
                     "value": "value",
                 },
                 "pre_populate_known_values": True,
@@ -96,13 +96,13 @@ class TestForms:
                     "label_text_size": "labelTextSize",
                     "legal_consent_text_color": "legalConsentTextColor",
                     "legal_consent_text_size": "legalConsentTextSize",
-                    "submit_alignment": "left",
+                    "submit_alignment": "center",
                     "submit_color": "submitColor",
                     "submit_font_color": "submitFontColor",
                     "submit_size": "submitSize",
                 },
                 "submit_button_text": "submitButtonText",
-                "theme": "default_style",
+                "theme": "canvas",
                 "css_class": "cssClass",
             },
             field_groups=[
@@ -112,7 +112,7 @@ class TestForms:
                             "dependent_fields": [
                                 {
                                     "dependent_condition": {
-                                        "operator": "eq",
+                                        "operator": "between",
                                         "range_end": "rangeEnd",
                                         "range_start": "rangeStart",
                                         "value": "value",
@@ -153,7 +153,7 @@ class TestForms:
                         }
                     ],
                     "group_type": "default_group",
-                    "rich_text_type": "text",
+                    "rich_text_type": "image",
                     "rich_text": "richText",
                 }
             ],
@@ -428,7 +428,7 @@ class TestAsyncForms:
                 "notify_contact_owner": True,
                 "notify_recipients": ["string"],
                 "post_submit_action": {
-                    "type": "thank_you",
+                    "type": "redirect_url",
                     "value": "value",
                 },
                 "pre_populate_known_values": True,
@@ -451,13 +451,13 @@ class TestAsyncForms:
                     "label_text_size": "labelTextSize",
                     "legal_consent_text_color": "legalConsentTextColor",
                     "legal_consent_text_size": "legalConsentTextSize",
-                    "submit_alignment": "left",
+                    "submit_alignment": "center",
                     "submit_color": "submitColor",
                     "submit_font_color": "submitFontColor",
                     "submit_size": "submitSize",
                 },
                 "submit_button_text": "submitButtonText",
-                "theme": "default_style",
+                "theme": "canvas",
                 "css_class": "cssClass",
             },
             field_groups=[
@@ -467,7 +467,7 @@ class TestAsyncForms:
                             "dependent_fields": [
                                 {
                                     "dependent_condition": {
-                                        "operator": "eq",
+                                        "operator": "between",
                                         "range_end": "rangeEnd",
                                         "range_start": "rangeStart",
                                         "value": "value",
@@ -508,7 +508,7 @@ class TestAsyncForms:
                         }
                     ],
                     "group_type": "default_group",
-                    "rich_text_type": "text",
+                    "rich_text_type": "image",
                     "rich_text": "richText",
                 }
             ],

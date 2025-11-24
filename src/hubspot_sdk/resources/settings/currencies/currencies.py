@@ -367,6 +367,13 @@ class CurrenciesResource(SyncAPIResource):
         Create a new exchange rate with specified conversion rate and currency codes.
 
         Args:
+          conversion_rate: The conversion rate between the to and from currency code of this exchange rate.
+
+          from_currency_code: This represents the three-letter currency code (such as USD for US Dollar) of
+              the currency you want to convert from.
+
+          effective_at: The date the exchange rate is in effect.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1092,6 +1099,8 @@ class CurrenciesResource(SyncAPIResource):
         Set or update the primary company currency.
 
         Args:
+          currency_code: The three-letter code representing a specific currency (ex. USD).
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1129,6 +1138,11 @@ class CurrenciesResource(SyncAPIResource):
         Update an existing conversion rate, specified by its ID.
 
         Args:
+          conversion_rate: The updated conversion rate between the to and from currency code of this
+              exchange rate.
+
+          effective_at: The date the exchange rate is in effect.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1527,6 +1541,15 @@ class CurrenciesResource(SyncAPIResource):
         currency pair for users in the HubSpot app.
 
         Args:
+          from_currency_code: This represents the three-letter currency code (such as USD for US Dollar) of
+              the currency you want to convert from.
+
+          to_currency_code: This represents the three-letter currency code (such as USD for US Dollar) of
+              the currency you want to convert to.
+
+          visible_in_ui: This indicates if the currency pair is shown in the MultiCurrency settings page.
+              Setting this to false will remove the currency pair from the settings page.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1872,6 +1895,13 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         Create a new exchange rate with specified conversion rate and currency codes.
 
         Args:
+          conversion_rate: The conversion rate between the to and from currency code of this exchange rate.
+
+          from_currency_code: This represents the three-letter currency code (such as USD for US Dollar) of
+              the currency you want to convert from.
+
+          effective_at: The date the exchange rate is in effect.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2597,6 +2627,8 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         Set or update the primary company currency.
 
         Args:
+          currency_code: The three-letter code representing a specific currency (ex. USD).
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2634,6 +2666,11 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         Update an existing conversion rate, specified by its ID.
 
         Args:
+          conversion_rate: The updated conversion rate between the to and from currency code of this
+              exchange rate.
+
+          effective_at: The date the exchange rate is in effect.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -3032,6 +3069,15 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         currency pair for users in the HubSpot app.
 
         Args:
+          from_currency_code: This represents the three-letter currency code (such as USD for US Dollar) of
+              the currency you want to convert from.
+
+          to_currency_code: This represents the three-letter currency code (such as USD for US Dollar) of
+              the currency you want to convert to.
+
+          visible_in_ui: This indicates if the currency pair is shown in the MultiCurrency settings page.
+              Setting this to false will remove the currency pair from the settings page.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

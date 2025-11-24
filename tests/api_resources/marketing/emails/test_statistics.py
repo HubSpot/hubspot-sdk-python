@@ -71,7 +71,7 @@ class TestStatistics:
         statistic = client.marketing.emails.statistics.get_histogram(
             email_ids=[0],
             end_timestamp="endTimestamp",
-            interval="YEAR",
+            interval="DAY",
             start_timestamp="startTimestamp",
         )
         assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, statistic, path=["response"])
@@ -155,7 +155,7 @@ class TestAsyncStatistics:
         statistic = await async_client.marketing.emails.statistics.get_histogram(
             email_ids=[0],
             end_timestamp="endTimestamp",
-            interval="YEAR",
+            interval="DAY",
             start_timestamp="startTimestamp",
         )
         assert_matches_type(CollectionResponseWithTotalEmailStatisticIntervalNoPaging, statistic, path=["response"])

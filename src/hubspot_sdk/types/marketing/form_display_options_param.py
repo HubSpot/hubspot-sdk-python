@@ -20,7 +20,7 @@ class FormDisplayOptionsParam(TypedDict, total=False):
     submit_button_text: Required[Annotated[str, PropertyInfo(alias="submitButtonText")]]
     """The text displayed on the form submit button."""
 
-    theme: Required[Literal["default_style", "canvas", "linear", "round", "sharp", "legacy"]]
+    theme: Required[Literal["canvas", "default_style", "legacy", "linear", "round", "sharp"]]
     """The theme used for styling the input fields.
 
     This will not apply if the form is added to a HubSpot CMS page.

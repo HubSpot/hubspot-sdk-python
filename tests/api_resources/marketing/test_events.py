@@ -43,7 +43,7 @@ class TestEvents:
         event = client.marketing.events.create(
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -51,7 +51,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -77,7 +77,7 @@ class TestEvents:
         event = client.marketing.events.create(
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -85,7 +85,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -118,7 +118,7 @@ class TestEvents:
         response = client.marketing.events.with_raw_response.create(
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -126,7 +126,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -156,7 +156,7 @@ class TestEvents:
         with client.marketing.events.with_streaming_response.create(
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -164,7 +164,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -197,7 +197,7 @@ class TestEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -205,7 +205,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -228,7 +228,7 @@ class TestEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -236,7 +236,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -267,7 +267,7 @@ class TestEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -275,7 +275,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -302,7 +302,7 @@ class TestEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -310,7 +310,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -340,7 +340,7 @@ class TestEvents:
                 object_id="",
                 custom_properties=[
                     {
-                        "data_sensitivity": "none",
+                        "data_sensitivity": "high",
                         "is_encrypted": True,
                         "is_large_value": True,
                         "name": "name",
@@ -348,7 +348,7 @@ class TestEvents:
                         "request_id": "requestId",
                         "selected_by_user": True,
                         "selected_by_user_timestamp": 0,
-                        "source": "UNKNOWN",
+                        "source": "ACADEMY",
                         "source_id": "sourceId",
                         "source_label": "sourceLabel",
                         "source_metadata": "sourceMetadata",
@@ -868,7 +868,7 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -876,7 +876,7 @@ class TestEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -903,7 +903,7 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -911,7 +911,7 @@ class TestEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -942,7 +942,7 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -950,7 +950,7 @@ class TestEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -983,7 +983,7 @@ class TestEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -991,7 +991,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1015,7 +1015,7 @@ class TestEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1023,7 +1023,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1056,7 +1056,7 @@ class TestEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1064,7 +1064,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1092,7 +1092,7 @@ class TestEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1100,7 +1100,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1131,7 +1131,7 @@ class TestEvents:
                 external_account_id="externalAccountId",
                 custom_properties=[
                     {
-                        "data_sensitivity": "none",
+                        "data_sensitivity": "high",
                         "is_encrypted": True,
                         "is_large_value": True,
                         "name": "name",
@@ -1139,7 +1139,7 @@ class TestEvents:
                         "request_id": "requestId",
                         "selected_by_user": True,
                         "selected_by_user_timestamp": 0,
-                        "source": "UNKNOWN",
+                        "source": "ACADEMY",
                         "source_id": "sourceId",
                         "source_label": "sourceLabel",
                         "source_metadata": "sourceMetadata",
@@ -1162,7 +1162,7 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -1170,7 +1170,7 @@ class TestEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -1200,7 +1200,7 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -1208,7 +1208,7 @@ class TestEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -1242,7 +1242,7 @@ class TestEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -1250,7 +1250,7 @@ class TestEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -1285,7 +1285,7 @@ class TestEvents:
             path_external_event_id="externalEventId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1293,7 +1293,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1320,7 +1320,7 @@ class TestEvents:
             path_external_event_id="externalEventId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1328,7 +1328,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1362,7 +1362,7 @@ class TestEvents:
             path_external_event_id="externalEventId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1370,7 +1370,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1401,7 +1401,7 @@ class TestEvents:
             path_external_event_id="externalEventId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1409,7 +1409,7 @@ class TestEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1445,7 +1445,7 @@ class TestEvents:
                 path_external_event_id="",
                 custom_properties=[
                     {
-                        "data_sensitivity": "none",
+                        "data_sensitivity": "high",
                         "is_encrypted": True,
                         "is_large_value": True,
                         "name": "name",
@@ -1453,7 +1453,7 @@ class TestEvents:
                         "request_id": "requestId",
                         "selected_by_user": True,
                         "selected_by_user_timestamp": 0,
-                        "source": "UNKNOWN",
+                        "source": "ACADEMY",
                         "source_id": "sourceId",
                         "source_label": "sourceLabel",
                         "source_metadata": "sourceMetadata",
@@ -1701,7 +1701,7 @@ class TestAsyncEvents:
         event = await async_client.marketing.events.create(
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1709,7 +1709,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1735,7 +1735,7 @@ class TestAsyncEvents:
         event = await async_client.marketing.events.create(
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1743,7 +1743,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1776,7 +1776,7 @@ class TestAsyncEvents:
         response = await async_client.marketing.events.with_raw_response.create(
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1784,7 +1784,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1814,7 +1814,7 @@ class TestAsyncEvents:
         async with async_client.marketing.events.with_streaming_response.create(
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1822,7 +1822,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1855,7 +1855,7 @@ class TestAsyncEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1863,7 +1863,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1886,7 +1886,7 @@ class TestAsyncEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1894,7 +1894,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1925,7 +1925,7 @@ class TestAsyncEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1933,7 +1933,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1960,7 +1960,7 @@ class TestAsyncEvents:
             object_id="objectId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -1968,7 +1968,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -1998,7 +1998,7 @@ class TestAsyncEvents:
                 object_id="",
                 custom_properties=[
                     {
-                        "data_sensitivity": "none",
+                        "data_sensitivity": "high",
                         "is_encrypted": True,
                         "is_large_value": True,
                         "name": "name",
@@ -2006,7 +2006,7 @@ class TestAsyncEvents:
                         "request_id": "requestId",
                         "selected_by_user": True,
                         "selected_by_user_timestamp": 0,
-                        "source": "UNKNOWN",
+                        "source": "ACADEMY",
                         "source_id": "sourceId",
                         "source_label": "sourceLabel",
                         "source_metadata": "sourceMetadata",
@@ -2530,7 +2530,7 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -2538,7 +2538,7 @@ class TestAsyncEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -2565,7 +2565,7 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -2573,7 +2573,7 @@ class TestAsyncEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -2604,7 +2604,7 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -2612,7 +2612,7 @@ class TestAsyncEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -2645,7 +2645,7 @@ class TestAsyncEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -2653,7 +2653,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -2677,7 +2677,7 @@ class TestAsyncEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -2685,7 +2685,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -2718,7 +2718,7 @@ class TestAsyncEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -2726,7 +2726,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -2754,7 +2754,7 @@ class TestAsyncEvents:
             external_account_id="externalAccountId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -2762,7 +2762,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -2793,7 +2793,7 @@ class TestAsyncEvents:
                 external_account_id="externalAccountId",
                 custom_properties=[
                     {
-                        "data_sensitivity": "none",
+                        "data_sensitivity": "high",
                         "is_encrypted": True,
                         "is_large_value": True,
                         "name": "name",
@@ -2801,7 +2801,7 @@ class TestAsyncEvents:
                         "request_id": "requestId",
                         "selected_by_user": True,
                         "selected_by_user_timestamp": 0,
-                        "source": "UNKNOWN",
+                        "source": "ACADEMY",
                         "source_id": "sourceId",
                         "source_label": "sourceLabel",
                         "source_metadata": "sourceMetadata",
@@ -2824,7 +2824,7 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -2832,7 +2832,7 @@ class TestAsyncEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -2862,7 +2862,7 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -2870,7 +2870,7 @@ class TestAsyncEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -2904,7 +2904,7 @@ class TestAsyncEvents:
                 {
                     "custom_properties": [
                         {
-                            "data_sensitivity": "none",
+                            "data_sensitivity": "high",
                             "is_encrypted": True,
                             "is_large_value": True,
                             "name": "name",
@@ -2912,7 +2912,7 @@ class TestAsyncEvents:
                             "request_id": "requestId",
                             "selected_by_user": True,
                             "selected_by_user_timestamp": 0,
-                            "source": "UNKNOWN",
+                            "source": "ACADEMY",
                             "source_id": "sourceId",
                             "source_label": "sourceLabel",
                             "source_metadata": "sourceMetadata",
@@ -2947,7 +2947,7 @@ class TestAsyncEvents:
             path_external_event_id="externalEventId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -2955,7 +2955,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -2982,7 +2982,7 @@ class TestAsyncEvents:
             path_external_event_id="externalEventId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -2990,7 +2990,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -3024,7 +3024,7 @@ class TestAsyncEvents:
             path_external_event_id="externalEventId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -3032,7 +3032,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -3063,7 +3063,7 @@ class TestAsyncEvents:
             path_external_event_id="externalEventId",
             custom_properties=[
                 {
-                    "data_sensitivity": "none",
+                    "data_sensitivity": "high",
                     "is_encrypted": True,
                     "is_large_value": True,
                     "name": "name",
@@ -3071,7 +3071,7 @@ class TestAsyncEvents:
                     "request_id": "requestId",
                     "selected_by_user": True,
                     "selected_by_user_timestamp": 0,
-                    "source": "UNKNOWN",
+                    "source": "ACADEMY",
                     "source_id": "sourceId",
                     "source_label": "sourceLabel",
                     "source_metadata": "sourceMetadata",
@@ -3107,7 +3107,7 @@ class TestAsyncEvents:
                 path_external_event_id="",
                 custom_properties=[
                     {
-                        "data_sensitivity": "none",
+                        "data_sensitivity": "high",
                         "is_encrypted": True,
                         "is_large_value": True,
                         "name": "name",
@@ -3115,7 +3115,7 @@ class TestAsyncEvents:
                         "request_id": "requestId",
                         "selected_by_user": True,
                         "selected_by_user_timestamp": 0,
-                        "source": "UNKNOWN",
+                        "source": "ACADEMY",
                         "source_id": "sourceId",
                         "source_label": "sourceLabel",
                         "source_metadata": "sourceMetadata",

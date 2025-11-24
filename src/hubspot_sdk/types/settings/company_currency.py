@@ -11,5 +11,7 @@ __all__ = ["CompanyCurrency"]
 
 class CompanyCurrency(BaseModel):
     id: str
+    """The currency code for the company currency"""
 
     created_at: datetime = FieldInfo(alias="createdAt")
+    """The date the company currency was created."""

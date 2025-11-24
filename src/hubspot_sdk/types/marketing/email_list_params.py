@@ -50,6 +50,12 @@ class EmailListParams(TypedDict, total=False):
     marketing_campaign_names: Annotated[bool, PropertyInfo(alias="marketingCampaignNames")]
     """Include the names for any associated marketing campaigns."""
 
+    published_after: Annotated[Union[str, datetime], PropertyInfo(alias="publishedAfter", format="iso8601")]
+
+    published_at: Annotated[Union[str, datetime], PropertyInfo(alias="publishedAt", format="iso8601")]
+
+    published_before: Annotated[Union[str, datetime], PropertyInfo(alias="publishedBefore", format="iso8601")]
+
     sort: SequenceNotStr[str]
     """Specifies which fields to use for sorting results.
 
@@ -59,36 +65,36 @@ class EmailListParams(TypedDict, total=False):
 
     type: Literal[
         "AB_EMAIL",
-        "BATCH_EMAIL",
-        "LOCALTIME_EMAIL",
         "AUTOMATED_AB_EMAIL",
+        "AUTOMATED_EMAIL",
+        "BATCH_EMAIL",
         "BLOG_EMAIL",
         "BLOG_EMAIL_CHILD",
-        "RSS_EMAIL",
-        "RSS_EMAIL_CHILD",
-        "RESUBSCRIBE_EMAIL",
-        "OPTIN_EMAIL",
-        "OPTIN_FOLLOWUP_EMAIL",
-        "AUTOMATED_EMAIL",
         "FEEDBACK_CES_EMAIL",
         "FEEDBACK_CUSTOM_EMAIL",
         "FEEDBACK_CUSTOM_SURVEY_EMAIL",
         "FEEDBACK_NPS_EMAIL",
         "FOLLOWUP_EMAIL",
         "LEADFLOW_EMAIL",
-        "SINGLE_SEND_API",
+        "LOCALTIME_EMAIL",
         "MARKETING_SINGLE_SEND_API",
+        "MEMBERSHIP_EMAIL_VERIFICATION_EMAIL",
+        "MEMBERSHIP_FOLLOW_UP_EMAIL",
+        "MEMBERSHIP_OTP_LOGIN_EMAIL",
+        "MEMBERSHIP_PASSWORD_RESET_EMAIL",
+        "MEMBERSHIP_PASSWORD_SAVED_EMAIL",
+        "MEMBERSHIP_PASSWORDLESS_AUTH_EMAIL",
+        "MEMBERSHIP_REGISTRATION_EMAIL",
+        "MEMBERSHIP_REGISTRATION_FOLLOW_UP_EMAIL",
+        "MEMBERSHIP_VERIFICATION_EMAIL",
+        "OPTIN_EMAIL",
+        "OPTIN_FOLLOWUP_EMAIL",
+        "RESUBSCRIBE_EMAIL",
+        "RSS_EMAIL",
+        "RSS_EMAIL_CHILD",
+        "SINGLE_SEND_API",
         "SMTP_TOKEN",
         "TICKET_EMAIL",
-        "MEMBERSHIP_REGISTRATION_EMAIL",
-        "MEMBERSHIP_PASSWORD_SAVED_EMAIL",
-        "MEMBERSHIP_PASSWORD_RESET_EMAIL",
-        "MEMBERSHIP_EMAIL_VERIFICATION_EMAIL",
-        "MEMBERSHIP_PASSWORDLESS_AUTH_EMAIL",
-        "MEMBERSHIP_REGISTRATION_FOLLOW_UP_EMAIL",
-        "MEMBERSHIP_OTP_LOGIN_EMAIL",
-        "MEMBERSHIP_FOLLOW_UP_EMAIL",
-        "MEMBERSHIP_VERIFICATION_EMAIL",
     ]
     """Email types to be filtered by.
 

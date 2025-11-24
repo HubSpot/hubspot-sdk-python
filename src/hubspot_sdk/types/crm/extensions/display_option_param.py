@@ -14,5 +14,5 @@ class DisplayOptionParam(TypedDict, total=False):
     name: Required[str]
     """JSON-friendly unique name for option."""
 
-    type: Required[Literal["DEFAULT", "SUCCESS", "WARNING", "DANGER", "INFO"]]
+    type: Required[Literal["DANGER", "DEFAULT", "INFO", "SUCCESS", "WARNING"]]
     """The type of status."""

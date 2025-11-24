@@ -10,7 +10,7 @@ __all__ = ["AssociationSpec"]
 
 
 class AssociationSpec(BaseModel):
-    association_category: Literal["HUBSPOT_DEFINED", "USER_DEFINED", "INTEGRATOR_DEFINED"] = FieldInfo(
+    association_category: Literal["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED"] = FieldInfo(
         alias="associationCategory"
     )
     """The category of the association, such as "HUBSPOT_DEFINED"."""

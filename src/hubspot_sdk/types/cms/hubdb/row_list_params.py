@@ -18,11 +18,13 @@ class RowListParams(TypedDict, total=False):
     """
 
     archived: bool
+    """Specifies whether to include archived rows in the response."""
 
     limit: int
     """The maximum number of results to return. Default is `1000`."""
 
     offset: int
+    """The number of rows to skip before starting to return results."""
 
     properties: SequenceNotStr[str]
     """

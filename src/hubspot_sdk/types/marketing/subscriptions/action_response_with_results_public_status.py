@@ -23,7 +23,7 @@ class ActionResponseWithResultsPublicStatus(BaseModel):
     started_at: datetime = FieldInfo(alias="startedAt")
     """The date and time when the operation started."""
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """
     Indicates the current status of the operation, with possible values: PENDING,
     PROCESSING, CANCELED, COMPLETE.

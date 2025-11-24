@@ -36,6 +36,7 @@ class DomainListParams(TypedDict, total=False):
     """Maximum number of results per page."""
 
     sort: SequenceNotStr[str]
+    """Specifies the order in which the domains are returned."""
 
     updated_after: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAfter", format="iso8601")]
     """Only return domains updated after this date."""

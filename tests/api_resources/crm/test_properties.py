@@ -45,7 +45,7 @@ class TestProperties:
             name="name",
             type="bool",
             calculation_formula="calculationFormula",
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             description="description",
             display_order=0,
             external_options=True,
@@ -214,7 +214,7 @@ class TestProperties:
         property = client.crm.properties.list(
             object_type="objectType",
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             locale="locale",
             properties="properties",
         )
@@ -322,7 +322,7 @@ class TestProperties:
             property_name="propertyName",
             object_type="objectType",
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             locale="locale",
             properties="properties",
         )
@@ -401,7 +401,7 @@ class TestAsyncProperties:
             name="name",
             type="bool",
             calculation_formula="calculationFormula",
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             description="description",
             display_order=0,
             external_options=True,
@@ -570,7 +570,7 @@ class TestAsyncProperties:
         property = await async_client.crm.properties.list(
             object_type="objectType",
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             locale="locale",
             properties="properties",
         )
@@ -678,7 +678,7 @@ class TestAsyncProperties:
             property_name="propertyName",
             object_type="objectType",
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             locale="locale",
             properties="properties",
         )

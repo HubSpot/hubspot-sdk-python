@@ -12,6 +12,6 @@ __all__ = ["AppUpdateParams"]
 class AppUpdateParams(TypedDict, total=False):
     app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
-    default_state: Required[Annotated[Literal["OFF", "ON", "ABSENT"], PropertyInfo(alias="defaultState")]]
+    default_state: Required[Annotated[Literal["ABSENT", "OFF", "ON"], PropertyInfo(alias="defaultState")]]
 
-    override_state: Annotated[Literal["OFF", "ON", "ABSENT"], PropertyInfo(alias="overrideState")]
+    override_state: Annotated[Literal["ABSENT", "OFF", "ON"], PropertyInfo(alias="overrideState")]

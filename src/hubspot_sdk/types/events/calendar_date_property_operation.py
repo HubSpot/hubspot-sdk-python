@@ -15,13 +15,13 @@ class CalendarDatePropertyOperation(BaseModel):
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["IN_THIS_TIME_UNIT", "IN_THIS_TIME_UNIT_SO_FAR", "IN_NEXT_TIME_UNIT", "IN_LAST_TIME_UNIT"]
+    operator: Literal["IN_LAST_TIME_UNIT", "IN_NEXT_TIME_UNIT", "IN_THIS_TIME_UNIT", "IN_THIS_TIME_UNIT_SO_FAR"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 
     property_type: Literal["calendar-date"] = FieldInfo(alias="propertyType")
 
-    time_unit: Literal["DAY", "WEEK", "MONTH", "QUARTER", "YEAR"] = FieldInfo(alias="timeUnit")
+    time_unit: Literal["DAY", "MONTH", "QUARTER", "WEEK", "YEAR"] = FieldInfo(alias="timeUnit")
 
     time_unit_count: int = FieldInfo(alias="timeUnitCount")
 
@@ -31,17 +31,17 @@ class CalendarDatePropertyOperation(BaseModel):
 
     fiscal_year_start: Optional[
         Literal[
-            "JANUARY",
-            "FEBRUARY",
-            "MARCH",
             "APRIL",
-            "MAY",
-            "JUNE",
-            "JULY",
             "AUGUST",
-            "SEPTEMBER",
-            "OCTOBER",
-            "NOVEMBER",
             "DECEMBER",
+            "FEBRUARY",
+            "JANUARY",
+            "JULY",
+            "JUNE",
+            "MARCH",
+            "MAY",
+            "NOVEMBER",
+            "OCTOBER",
+            "SEPTEMBER",
         ]
     ] = FieldInfo(alias="fiscalYearStart", default=None)

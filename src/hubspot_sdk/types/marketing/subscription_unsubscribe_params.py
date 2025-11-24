@@ -18,13 +18,13 @@ class SubscriptionUnsubscribeParams(TypedDict, total=False):
 
     legal_basis: Annotated[
         Literal[
-            "LEGITIMATE_INTEREST_PQL",
-            "LEGITIMATE_INTEREST_CLIENT",
-            "PERFORMANCE_OF_CONTRACT",
             "CONSENT_WITH_NOTICE",
-            "NON_GDPR",
-            "PROCESS_AND_STORE",
+            "LEGITIMATE_INTEREST_CLIENT",
             "LEGITIMATE_INTEREST_OTHER",
+            "LEGITIMATE_INTEREST_PQL",
+            "NON_GDPR",
+            "PERFORMANCE_OF_CONTRACT",
+            "PROCESS_AND_STORE",
         ],
         PropertyInfo(alias="legalBasis"),
     ]

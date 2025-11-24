@@ -14,7 +14,7 @@ __all__ = ["CardDisplayPropertyParam"]
 class CardDisplayPropertyParam(TypedDict, total=False):
     data_type: Required[
         Annotated[
-            Literal["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STRING", "STATUS"],
+            Literal["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STATUS", "STRING"],
             PropertyInfo(alias="dataType"),
         ]
     ]

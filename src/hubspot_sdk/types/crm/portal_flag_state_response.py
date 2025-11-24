@@ -14,6 +14,6 @@ class PortalFlagStateResponse(BaseModel):
 
     flag_name: str = FieldInfo(alias="flagName")
 
-    flag_state: Literal["OFF", "ON", "ABSENT"] = FieldInfo(alias="flagState")
+    flag_state: Literal["ABSENT", "OFF", "ON"] = FieldInfo(alias="flagState")
 
     portal_id: int = FieldInfo(alias="portalId")

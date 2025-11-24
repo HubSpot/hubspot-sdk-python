@@ -125,7 +125,7 @@ class TestFeedbackSubmissions:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -146,7 +146,7 @@ class TestFeedbackSubmissions:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -171,7 +171,7 @@ class TestFeedbackSubmissions:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -196,7 +196,7 @@ class TestFeedbackSubmissions:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -327,7 +327,7 @@ class TestAsyncFeedbackSubmissions:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -348,7 +348,7 @@ class TestAsyncFeedbackSubmissions:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -373,7 +373,7 @@ class TestAsyncFeedbackSubmissions:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -398,7 +398,7 @@ class TestAsyncFeedbackSubmissions:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]

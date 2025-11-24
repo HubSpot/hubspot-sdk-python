@@ -10,7 +10,7 @@ __all__ = ["PublicAssociationDefinitionConfigurationCreateRequestParam"]
 
 
 class PublicAssociationDefinitionConfigurationCreateRequestParam(TypedDict, total=False):
-    category: Required[Literal["HUBSPOT_DEFINED", "USER_DEFINED", "INTEGRATOR_DEFINED"]]
+    category: Required[Literal["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED"]]
 
     max_to_object_ids: Required[Annotated[int, PropertyInfo(alias="maxToObjectIds")]]
 

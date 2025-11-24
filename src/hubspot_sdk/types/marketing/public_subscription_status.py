@@ -20,7 +20,7 @@ class PublicSubscriptionStatus(BaseModel):
     name: str
     """The name of the subscription."""
 
-    source_of_status: Literal["PORTAL_WIDE_STATUS", "BRAND_WIDE_STATUS", "SUBSCRIPTION_STATUS"] = FieldInfo(
+    source_of_status: Literal["BRAND_WIDE_STATUS", "PORTAL_WIDE_STATUS", "SUBSCRIPTION_STATUS"] = FieldInfo(
         alias="sourceOfStatus"
     )
     """Where the status is determined from e.g.
@@ -28,7 +28,7 @@ class PublicSubscriptionStatus(BaseModel):
     PORTAL_WIDE_STATUS if the contact opted out from the portal.
     """
 
-    status: Literal["SUBSCRIBED", "NOT_SUBSCRIBED"]
+    status: Literal["NOT_SUBSCRIBED", "SUBSCRIBED"]
     """Whether the contact is subscribed."""
 
     brand_id: Optional[int] = FieldInfo(alias="brandId", default=None)
@@ -36,13 +36,13 @@ class PublicSubscriptionStatus(BaseModel):
 
     legal_basis: Optional[
         Literal[
-            "LEGITIMATE_INTEREST_PQL",
-            "LEGITIMATE_INTEREST_CLIENT",
-            "PERFORMANCE_OF_CONTRACT",
             "CONSENT_WITH_NOTICE",
-            "NON_GDPR",
-            "PROCESS_AND_STORE",
+            "LEGITIMATE_INTEREST_CLIENT",
             "LEGITIMATE_INTEREST_OTHER",
+            "LEGITIMATE_INTEREST_PQL",
+            "NON_GDPR",
+            "PERFORMANCE_OF_CONTRACT",
+            "PROCESS_AND_STORE",
         ]
     ] = FieldInfo(alias="legalBasis", default=None)
     """The legal reason for the current status of the subscription."""

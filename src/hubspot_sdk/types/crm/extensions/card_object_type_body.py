@@ -11,7 +11,7 @@ __all__ = ["CardObjectTypeBody"]
 
 
 class CardObjectTypeBody(BaseModel):
-    name: Literal["contacts", "deals", "companies", "tickets", "marketing_events"]
+    name: Literal["companies", "contacts", "deals", "marketing_events", "tickets"]
     """A CRM object type where this card should be displayed."""
 
     properties_to_send: List[str] = FieldInfo(alias="propertiesToSend")

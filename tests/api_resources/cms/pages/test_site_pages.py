@@ -24,7 +24,7 @@ class TestSitePages:
     def test_method_create(self, client: Hubspot) -> None:
         site_page = client.cms.pages.site_pages.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -197,7 +197,7 @@ class TestSitePages:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.pages.site_pages.with_raw_response.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -374,7 +374,7 @@ class TestSitePages:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.pages.site_pages.with_streaming_response.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -554,7 +554,7 @@ class TestSitePages:
         site_page = client.cms.pages.site_pages.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -728,7 +728,7 @@ class TestSitePages:
         site_page = client.cms.pages.site_pages.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -918,7 +918,7 @@ class TestSitePages:
         response = client.cms.pages.site_pages.with_raw_response.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -1096,7 +1096,7 @@ class TestSitePages:
         with client.cms.pages.site_pages.with_streaming_response.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -1277,7 +1277,7 @@ class TestSitePages:
             client.cms.pages.site_pages.with_raw_response.update(
                 object_id="",
                 id="id",
-                ab_status="master",
+                ab_status="automated_loser_variant",
                 ab_test_id="abTestId",
                 archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
                 archived_in_dashboard=True,
@@ -1679,7 +1679,7 @@ class TestSitePages:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "archived_in_dashboard": True,
@@ -1856,7 +1856,7 @@ class TestSitePages:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "archived_in_dashboard": True,
@@ -2037,7 +2037,7 @@ class TestSitePages:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "archived_in_dashboard": True,
@@ -2943,7 +2943,7 @@ class TestSitePages:
         site_page = client.cms.pages.site_pages.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -3117,7 +3117,7 @@ class TestSitePages:
         response = client.cms.pages.site_pages.with_raw_response.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -3295,7 +3295,7 @@ class TestSitePages:
         with client.cms.pages.site_pages.with_streaming_response.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -3476,7 +3476,7 @@ class TestSitePages:
             client.cms.pages.site_pages.with_raw_response.update_draft(
                 object_id="",
                 id="id",
-                ab_status="master",
+                ab_status="automated_loser_variant",
                 ab_test_id="abTestId",
                 archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
                 archived_in_dashboard=True,
@@ -3691,7 +3691,7 @@ class TestAsyncSitePages:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         site_page = await async_client.cms.pages.site_pages.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -3864,7 +3864,7 @@ class TestAsyncSitePages:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.pages.site_pages.with_raw_response.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -4041,7 +4041,7 @@ class TestAsyncSitePages:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.pages.site_pages.with_streaming_response.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -4221,7 +4221,7 @@ class TestAsyncSitePages:
         site_page = await async_client.cms.pages.site_pages.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -4395,7 +4395,7 @@ class TestAsyncSitePages:
         site_page = await async_client.cms.pages.site_pages.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -4585,7 +4585,7 @@ class TestAsyncSitePages:
         response = await async_client.cms.pages.site_pages.with_raw_response.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -4763,7 +4763,7 @@ class TestAsyncSitePages:
         async with async_client.cms.pages.site_pages.with_streaming_response.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -4944,7 +4944,7 @@ class TestAsyncSitePages:
             await async_client.cms.pages.site_pages.with_raw_response.update(
                 object_id="",
                 id="id",
-                ab_status="master",
+                ab_status="automated_loser_variant",
                 ab_test_id="abTestId",
                 archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
                 archived_in_dashboard=True,
@@ -5346,7 +5346,7 @@ class TestAsyncSitePages:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "archived_in_dashboard": True,
@@ -5523,7 +5523,7 @@ class TestAsyncSitePages:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "archived_in_dashboard": True,
@@ -5704,7 +5704,7 @@ class TestAsyncSitePages:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "archived_in_dashboard": True,
@@ -6610,7 +6610,7 @@ class TestAsyncSitePages:
         site_page = await async_client.cms.pages.site_pages.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -6784,7 +6784,7 @@ class TestAsyncSitePages:
         response = await async_client.cms.pages.site_pages.with_raw_response.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -6962,7 +6962,7 @@ class TestAsyncSitePages:
         async with async_client.cms.pages.site_pages.with_streaming_response.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             archived_in_dashboard=True,
@@ -7143,7 +7143,7 @@ class TestAsyncSitePages:
             await async_client.cms.pages.site_pages.with_raw_response.update_draft(
                 object_id="",
                 id="id",
-                ab_status="master",
+                ab_status="automated_loser_variant",
                 ab_test_id="abTestId",
                 archived_at=parse_datetime("2019-12-27T18:11:19.117Z"),
                 archived_in_dashboard=True,

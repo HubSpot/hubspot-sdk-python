@@ -20,18 +20,18 @@ class PublicCalendarDatePropertyOperation(TypedDict, total=False):
 
     fiscal_year_start: Annotated[
         Literal[
-            "JANUARY",
-            "FEBRUARY",
-            "MARCH",
             "APRIL",
-            "MAY",
-            "JUNE",
-            "JULY",
             "AUGUST",
-            "SEPTEMBER",
-            "OCTOBER",
-            "NOVEMBER",
             "DECEMBER",
+            "FEBRUARY",
+            "JANUARY",
+            "JULY",
+            "JUNE",
+            "MARCH",
+            "MAY",
+            "NOVEMBER",
+            "OCTOBER",
+            "SEPTEMBER",
         ],
         PropertyInfo(alias="fiscalYearStart"),
     ]

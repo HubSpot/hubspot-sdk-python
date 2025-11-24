@@ -10,6 +10,6 @@ __all__ = ["BatchPortalEntryParam"]
 
 
 class BatchPortalEntryParam(TypedDict, total=False):
-    flag_state: Required[Annotated[Literal["OFF", "ON", "ABSENT"], PropertyInfo(alias="flagState")]]
+    flag_state: Required[Annotated[Literal["ABSENT", "OFF", "ON"], PropertyInfo(alias="flagState")]]
 
     portal_id: Required[Annotated[int, PropertyInfo(alias="portalId")]]

@@ -38,7 +38,7 @@ class TestFiles:
     def test_method_update_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.update(
             file_id="321669910225",
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             clear_expires=True,
             expires_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             is_usable_in_content=True,
@@ -324,7 +324,7 @@ class TestFiles:
         file = client.files.files.get_signed_url(
             file_id="321669910225",
             expiration_seconds=0,
-            size="thumb",
+            size="icon",
             upscale=True,
         )
         assert_matches_type(SignedURL, file, path=["response"])
@@ -367,7 +367,7 @@ class TestFiles:
     @parametrize
     def test_method_import_from_url_async(self, client: Hubspot) -> None:
         file = client.files.files.import_from_url_async(
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             url="url",
         )
         assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
@@ -376,7 +376,7 @@ class TestFiles:
     @parametrize
     def test_method_import_from_url_async_with_all_params(self, client: Hubspot) -> None:
         file = client.files.files.import_from_url_async(
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             url="url",
             duplicate_validation_scope="ENTIRE_PORTAL",
             duplicate_validation_strategy="NONE",
@@ -393,7 +393,7 @@ class TestFiles:
     @parametrize
     def test_raw_response_import_from_url_async(self, client: Hubspot) -> None:
         response = client.files.files.with_raw_response.import_from_url_async(
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             url="url",
         )
 
@@ -406,7 +406,7 @@ class TestFiles:
     @parametrize
     def test_streaming_response_import_from_url_async(self, client: Hubspot) -> None:
         with client.files.files.with_streaming_response.import_from_url_async(
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             url="url",
         ) as response:
             assert not response.is_closed
@@ -601,7 +601,7 @@ class TestAsyncFiles:
     async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.update(
             file_id="321669910225",
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             clear_expires=True,
             expires_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             is_usable_in_content=True,
@@ -887,7 +887,7 @@ class TestAsyncFiles:
         file = await async_client.files.files.get_signed_url(
             file_id="321669910225",
             expiration_seconds=0,
-            size="thumb",
+            size="icon",
             upscale=True,
         )
         assert_matches_type(SignedURL, file, path=["response"])
@@ -930,7 +930,7 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_import_from_url_async(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.import_from_url_async(
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             url="url",
         )
         assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
@@ -939,7 +939,7 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_import_from_url_async_with_all_params(self, async_client: AsyncHubspot) -> None:
         file = await async_client.files.files.import_from_url_async(
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             url="url",
             duplicate_validation_scope="ENTIRE_PORTAL",
             duplicate_validation_strategy="NONE",
@@ -956,7 +956,7 @@ class TestAsyncFiles:
     @parametrize
     async def test_raw_response_import_from_url_async(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.files.with_raw_response.import_from_url_async(
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             url="url",
         )
 
@@ -969,7 +969,7 @@ class TestAsyncFiles:
     @parametrize
     async def test_streaming_response_import_from_url_async(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.files.with_streaming_response.import_from_url_async(
-            access="PUBLIC_INDEXABLE",
+            access="HIDDEN_INDEXABLE",
             url="url",
         ) as response:
             assert not response.is_closed

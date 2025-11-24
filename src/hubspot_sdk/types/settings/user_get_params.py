@@ -10,7 +10,7 @@ __all__ = ["UserGetParams"]
 
 
 class UserGetParams(TypedDict, total=False):
-    id_property: Annotated[Literal["USER_ID", "EMAIL"], PropertyInfo(alias="idProperty")]
+    id_property: Annotated[Literal["EMAIL", "USER_ID"], PropertyInfo(alias="idProperty")]
     """The name of a property with unique user values.
 
     Valid values are `USER_ID`(default) or `EMAIL`

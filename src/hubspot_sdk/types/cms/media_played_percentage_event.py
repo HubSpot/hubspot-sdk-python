@@ -27,7 +27,7 @@ class MediaPlayedPercentageEvent(BaseModel):
 
     media_name: str = FieldInfo(alias="mediaName")
 
-    media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"] = FieldInfo(alias="mediaType")
+    media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"] = FieldInfo(alias="mediaType")
 
     occurred_timestamp: int = FieldInfo(alias="occurredTimestamp")
 

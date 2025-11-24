@@ -21,7 +21,7 @@ class FormDisplayOptions(BaseModel):
     submit_button_text: str = FieldInfo(alias="submitButtonText")
     """The text displayed on the form submit button."""
 
-    theme: Literal["default_style", "canvas", "linear", "round", "sharp", "legacy"]
+    theme: Literal["canvas", "default_style", "legacy", "linear", "round", "sharp"]
     """The theme used for styling the input fields.
 
     This will not apply if the form is added to a HubSpot CMS page.

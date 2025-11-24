@@ -15,7 +15,7 @@ class PublicWideStatus(BaseModel):
     channel: Literal["EMAIL"]
     """The type of communication channel, with 'EMAIL' as the only supported option."""
 
-    status: Literal["SUBSCRIBED", "UNSUBSCRIBED", "NOT_SPECIFIED"]
+    status: Literal["NOT_SPECIFIED", "SUBSCRIBED", "UNSUBSCRIBED"]
     """
     The subscription status of the contact, which can be 'SUBSCRIBED',
     'UNSUBSCRIBED', or 'NOT_SPECIFIED'.
@@ -27,7 +27,7 @@ class PublicWideStatus(BaseModel):
     timestamp: datetime
     """The date and time when the status was recorded."""
 
-    wide_status_type: Literal["PORTAL_WIDE", "BUSINESS_UNIT_WIDE"] = FieldInfo(alias="wideStatusType")
+    wide_status_type: Literal["BUSINESS_UNIT_WIDE", "PORTAL_WIDE"] = FieldInfo(alias="wideStatusType")
     """The type of wide status, which can be 'PORTAL_WIDE' or 'BUSINESS_UNIT_WIDE'."""
 
     business_unit_id: Optional[int] = FieldInfo(alias="businessUnitId", default=None)

@@ -11,7 +11,7 @@ __all__ = ["RelativeComparativeTimestampRefineBy"]
 
 
 class RelativeComparativeTimestampRefineBy(BaseModel):
-    comparison: Literal["BEFORE", "AFTER"]
+    comparison: Literal["AFTER", "BEFORE"]
 
     time_offset: TimeOffset = FieldInfo(alias="timeOffset")
 

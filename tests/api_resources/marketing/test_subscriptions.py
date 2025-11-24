@@ -106,7 +106,7 @@ class TestSubscriptions:
         subscription = client.marketing.subscriptions.subscribe(
             email_address="emailAddress",
             subscription_id="subscriptionId",
-            legal_basis="LEGITIMATE_INTEREST_PQL",
+            legal_basis="CONSENT_WITH_NOTICE",
             legal_basis_explanation="legalBasisExplanation",
         )
         assert_matches_type(PublicSubscriptionStatus, subscription, path=["response"])
@@ -154,7 +154,7 @@ class TestSubscriptions:
         subscription = client.marketing.subscriptions.unsubscribe(
             email_address="emailAddress",
             subscription_id="subscriptionId",
-            legal_basis="LEGITIMATE_INTEREST_PQL",
+            legal_basis="CONSENT_WITH_NOTICE",
             legal_basis_explanation="legalBasisExplanation",
         )
         assert_matches_type(PublicSubscriptionStatus, subscription, path=["response"])
@@ -278,7 +278,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.marketing.subscriptions.subscribe(
             email_address="emailAddress",
             subscription_id="subscriptionId",
-            legal_basis="LEGITIMATE_INTEREST_PQL",
+            legal_basis="CONSENT_WITH_NOTICE",
             legal_basis_explanation="legalBasisExplanation",
         )
         assert_matches_type(PublicSubscriptionStatus, subscription, path=["response"])
@@ -326,7 +326,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.marketing.subscriptions.unsubscribe(
             email_address="emailAddress",
             subscription_id="subscriptionId",
-            legal_basis="LEGITIMATE_INTEREST_PQL",
+            legal_basis="CONSENT_WITH_NOTICE",
             legal_basis_explanation="legalBasisExplanation",
         )
         assert_matches_type(PublicSubscriptionStatus, subscription, path=["response"])

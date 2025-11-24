@@ -33,7 +33,7 @@ class TestSiteSearch:
     def test_method_get_indexed_data_with_all_params(self, client: Hubspot) -> None:
         site_search = client.cms.site_search.get_indexed_data(
             content_id="contentId",
-            type="LANDING_PAGE",
+            type="BLOG_POST",
         )
         assert_matches_type(IndexedData, site_search, path=["response"])
 
@@ -88,7 +88,7 @@ class TestSiteSearch:
             group_id=[0],
             hubdb_query="hubdbQuery",
             language="af",
-            length="SHORT",
+            length="LONG",
             limit=0,
             match_prefix=True,
             offset=0,
@@ -142,7 +142,7 @@ class TestAsyncSiteSearch:
     async def test_method_get_indexed_data_with_all_params(self, async_client: AsyncHubspot) -> None:
         site_search = await async_client.cms.site_search.get_indexed_data(
             content_id="contentId",
-            type="LANDING_PAGE",
+            type="BLOG_POST",
         )
         assert_matches_type(IndexedData, site_search, path=["response"])
 
@@ -197,7 +197,7 @@ class TestAsyncSiteSearch:
             group_id=[0],
             hubdb_query="hubdbQuery",
             language="af",
-            length="SHORT",
+            length="LONG",
             limit=0,
             match_prefix=True,
             offset=0,

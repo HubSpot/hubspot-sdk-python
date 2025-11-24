@@ -85,6 +85,8 @@ class DomainsResource(SyncAPIResource):
 
           limit: Maximum number of results per page.
 
+          sort: Specifies the order in which the domains are returned.
+
           updated_after: Only return domains updated after this date.
 
           updated_at: Only return domains updated at this date.
@@ -219,6 +221,8 @@ class AsyncDomainsResource(AsyncAPIResource):
           created_before: Only return domains created before this date.
 
           limit: Maximum number of results per page.
+
+          sort: Specifies the order in which the domains are returned.
 
           updated_after: Only return domains updated after this date.
 

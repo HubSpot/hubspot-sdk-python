@@ -19,7 +19,7 @@ class BatchResponseMarketingEventPublicDefaultResponseV2(BaseModel):
 
     started_at: datetime = FieldInfo(alias="startedAt")
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
 
     links: Optional[Dict[str, str]] = None
 

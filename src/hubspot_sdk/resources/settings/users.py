@@ -123,7 +123,7 @@ class UsersResource(SyncAPIResource):
         self,
         user_id: str,
         *,
-        id_property: Literal["USER_ID", "EMAIL"] | Omit = omit,
+        id_property: Literal["EMAIL", "USER_ID"] | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
         primary_team_id: str | Omit = omit,
@@ -239,7 +239,7 @@ class UsersResource(SyncAPIResource):
         self,
         user_id: str,
         *,
-        id_property: Literal["USER_ID", "EMAIL"] | Omit = omit,
+        id_property: Literal["EMAIL", "USER_ID"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -283,7 +283,7 @@ class UsersResource(SyncAPIResource):
         self,
         user_id: str,
         *,
-        id_property: Literal["USER_ID", "EMAIL"] | Omit = omit,
+        id_property: Literal["EMAIL", "USER_ID"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -450,7 +450,7 @@ class AsyncUsersResource(AsyncAPIResource):
         self,
         user_id: str,
         *,
-        id_property: Literal["USER_ID", "EMAIL"] | Omit = omit,
+        id_property: Literal["EMAIL", "USER_ID"] | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
         primary_team_id: str | Omit = omit,
@@ -566,7 +566,7 @@ class AsyncUsersResource(AsyncAPIResource):
         self,
         user_id: str,
         *,
-        id_property: Literal["USER_ID", "EMAIL"] | Omit = omit,
+        id_property: Literal["EMAIL", "USER_ID"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -610,7 +610,7 @@ class AsyncUsersResource(AsyncAPIResource):
         self,
         user_id: str,
         *,
-        id_property: Literal["USER_ID", "EMAIL"] | Omit = omit,
+        id_property: Literal["EMAIL", "USER_ID"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

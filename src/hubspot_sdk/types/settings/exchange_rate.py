@@ -12,12 +12,18 @@ __all__ = ["ExchangeRate"]
 
 class ExchangeRate(BaseModel):
     id: str
+    """A unique identifier for the exchange rate"""
 
     conversion_rate: float = FieldInfo(alias="conversionRate")
+    """
+    The conversion rate between the to and from currency code of this exchange rate.
+    """
 
     created_at: datetime = FieldInfo(alias="createdAt")
+    """The date the exchange rate was created."""
 
     effective_at: datetime = FieldInfo(alias="effectiveAt")
+    """The date the exchange rate is in effect."""
 
     from_currency_code: Literal[
         "AED",
@@ -197,6 +203,10 @@ class ExchangeRate(BaseModel):
         "ZMW",
         "ZWL",
     ] = FieldInfo(alias="fromCurrencyCode")
+    """
+    This represents the three-letter currency code (such as USD for US Dollar) of
+    the currency you are converting from.
+    """
 
     to_currency_code: Literal[
         "AED",
@@ -376,7 +386,15 @@ class ExchangeRate(BaseModel):
         "ZMW",
         "ZWL",
     ] = FieldInfo(alias="toCurrencyCode")
+    """
+    This represents the three-letter currency code (such as USD for US Dollar) of
+    the currency you are converting to.
+    """
 
     updated_at: datetime = FieldInfo(alias="updatedAt")
+    """The date the exchange rate was last updated."""
 
     visible_in_ui: bool = FieldInfo(alias="visibleInUI")
+    """
+    This indicates if the exchange rate is shown in the MultiCurrency settings page.
+    """

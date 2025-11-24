@@ -14,13 +14,13 @@ __all__ = ["FileImportFromURLAsyncParams"]
 class FileImportFromURLAsyncParams(TypedDict, total=False):
     access: Required[
         Literal[
-            "PUBLIC_INDEXABLE",
-            "PUBLIC_NOT_INDEXABLE",
             "HIDDEN_INDEXABLE",
             "HIDDEN_NOT_INDEXABLE",
             "HIDDEN_PRIVATE",
-            "PRIVATE",
             "HIDDEN_SENSITIVE",
+            "PRIVATE",
+            "PUBLIC_INDEXABLE",
+            "PUBLIC_NOT_INDEXABLE",
             "SENSITIVE",
         ]
     ]

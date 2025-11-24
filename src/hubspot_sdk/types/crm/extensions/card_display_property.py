@@ -12,7 +12,7 @@ __all__ = ["CardDisplayProperty"]
 
 
 class CardDisplayProperty(BaseModel):
-    data_type: Literal["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STRING", "STATUS"] = (
+    data_type: Literal["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STATUS", "STRING"] = (
         FieldInfo(alias="dataType")
     )
     """Type of data represented by this property."""

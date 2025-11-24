@@ -16,13 +16,13 @@ class File(BaseModel):
     """File ID."""
 
     access: Literal[
-        "PUBLIC_INDEXABLE",
-        "PUBLIC_NOT_INDEXABLE",
         "HIDDEN_INDEXABLE",
         "HIDDEN_NOT_INDEXABLE",
         "HIDDEN_PRIVATE",
-        "PRIVATE",
         "HIDDEN_SENSITIVE",
+        "PRIVATE",
+        "PUBLIC_INDEXABLE",
+        "PUBLIC_NOT_INDEXABLE",
         "SENSITIVE",
     ]
     """File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE."""

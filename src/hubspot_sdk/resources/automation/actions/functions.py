@@ -91,7 +91,7 @@ class FunctionsResource(SyncAPIResource):
         app_id: int,
         definition_id: str,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -134,7 +134,7 @@ class FunctionsResource(SyncAPIResource):
         app_id: int,
         definition_id: str,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         body: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -174,7 +174,7 @@ class FunctionsResource(SyncAPIResource):
     def create_or_replace_by_function_type(
         self,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         *,
         app_id: int,
@@ -217,7 +217,7 @@ class FunctionsResource(SyncAPIResource):
     def delete_by_function_type(
         self,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         *,
         app_id: int,
@@ -261,7 +261,7 @@ class FunctionsResource(SyncAPIResource):
         app_id: int,
         definition_id: str,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -299,7 +299,7 @@ class FunctionsResource(SyncAPIResource):
     def get_by_function_type(
         self,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         *,
         app_id: int,
@@ -397,7 +397,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
         app_id: int,
         definition_id: str,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -440,7 +440,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
         app_id: int,
         definition_id: str,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         body: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -480,7 +480,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
     async def create_or_replace_by_function_type(
         self,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         *,
         app_id: int,
@@ -523,7 +523,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
     async def delete_by_function_type(
         self,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         *,
         app_id: int,
@@ -567,7 +567,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
         app_id: int,
         definition_id: str,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -605,7 +605,7 @@ class AsyncFunctionsResource(AsyncAPIResource):
     async def get_by_function_type(
         self,
         function_type: Literal[
-            "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+            "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
         ],
         *,
         app_id: int,

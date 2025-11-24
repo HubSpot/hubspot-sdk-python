@@ -47,13 +47,13 @@ class ExternalBehavioralEventTypeDefinition(BaseModel):
 
     tracking_type: Optional[
         Literal[
-            "VISITED_URL",
             "CLICKED_ELEMENT",
-            "CUSTOM_SCRIPT",
-            "MANUAL",
-            "IMPORT",
-            "PROPERTY_CHANGE",
             "COMBO_EVENT",
+            "CUSTOM_SCRIPT",
+            "IMPORT",
+            "MANUAL",
+            "PROPERTY_CHANGE",
+            "VISITED_URL",
             "WEBHOOK",
         ]
     ] = FieldInfo(alias="trackingType", default=None)

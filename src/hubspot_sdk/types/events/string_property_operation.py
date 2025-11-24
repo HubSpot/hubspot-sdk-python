@@ -16,16 +16,16 @@ class StringPropertyOperation(BaseModel):
     operation_type: str = FieldInfo(alias="operationType")
 
     operator: Literal[
-        "IS_EQUAL_TO",
-        "IS_NOT_EQUAL_TO",
         "CONTAINS",
         "DOES_NOT_CONTAIN",
-        "STARTS_WITH",
         "ENDS_WITH",
         "HAS_EVER_BEEN_EQUAL_TO",
-        "HAS_NEVER_BEEN_EQUAL_TO",
         "HAS_EVER_CONTAINED",
+        "HAS_NEVER_BEEN_EQUAL_TO",
         "HAS_NEVER_CONTAINED",
+        "IS_EQUAL_TO",
+        "IS_NOT_EQUAL_TO",
+        "STARTS_WITH",
     ]
 
     operator_name: str = FieldInfo(alias="operatorName")

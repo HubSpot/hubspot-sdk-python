@@ -16,14 +16,14 @@ class NumberPropertyOperation(BaseModel):
     operation_type: str = FieldInfo(alias="operationType")
 
     operator: Literal[
+        "HAS_EVER_BEEN_EQUAL_TO",
+        "HAS_NEVER_BEEN_EQUAL_TO",
         "IS_EQUAL_TO",
-        "IS_NOT_EQUAL_TO",
         "IS_GREATER_THAN",
         "IS_GREATER_THAN_OR_EQUAL_TO",
         "IS_LESS_THAN",
         "IS_LESS_THAN_OR_EQUAL_TO",
-        "HAS_EVER_BEEN_EQUAL_TO",
-        "HAS_NEVER_BEEN_EQUAL_TO",
+        "IS_NOT_EQUAL_TO",
     ]
 
     operator_name: str = FieldInfo(alias="operatorName")

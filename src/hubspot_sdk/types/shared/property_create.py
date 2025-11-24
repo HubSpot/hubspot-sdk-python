@@ -37,7 +37,7 @@ class PropertyCreate(BaseModel):
 
     calculation_formula: Optional[str] = FieldInfo(alias="calculationFormula", default=None)
 
-    data_sensitivity: Optional[Literal["non_sensitive", "sensitive", "highly_sensitive"]] = FieldInfo(
+    data_sensitivity: Optional[Literal["highly_sensitive", "non_sensitive", "sensitive"]] = FieldInfo(
         alias="dataSensitivity", default=None
     )
 

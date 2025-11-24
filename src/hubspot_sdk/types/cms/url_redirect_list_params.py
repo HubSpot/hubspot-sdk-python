@@ -36,6 +36,7 @@ class URLRedirectListParams(TypedDict, total=False):
     """Maximum number of result per page"""
 
     sort: SequenceNotStr[str]
+    """A query parameter to specify the order in which the URL redirects are returned."""
 
     updated_after: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAfter", format="iso8601")]
     """Only return redirects last updated after this date."""

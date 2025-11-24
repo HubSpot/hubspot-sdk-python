@@ -11,7 +11,7 @@ __all__ = ["PublicAssociationDefinitionConfigurationUpdateResult"]
 
 
 class PublicAssociationDefinitionConfigurationUpdateResult(BaseModel):
-    category: Literal["HUBSPOT_DEFINED", "USER_DEFINED", "INTEGRATOR_DEFINED"]
+    category: Literal["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED"]
 
     type_id: int = FieldInfo(alias="typeId")
 

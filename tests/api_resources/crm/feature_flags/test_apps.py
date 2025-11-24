@@ -23,7 +23,7 @@ class TestApps:
         app = client.crm.feature_flags.apps.update(
             flag_name="flagName",
             app_id=0,
-            default_state="OFF",
+            default_state="ABSENT",
         )
         assert_matches_type(FlagResponse, app, path=["response"])
 
@@ -33,8 +33,8 @@ class TestApps:
         app = client.crm.feature_flags.apps.update(
             flag_name="flagName",
             app_id=0,
-            default_state="OFF",
-            override_state="OFF",
+            default_state="ABSENT",
+            override_state="ABSENT",
         )
         assert_matches_type(FlagResponse, app, path=["response"])
 
@@ -44,7 +44,7 @@ class TestApps:
         response = client.crm.feature_flags.apps.with_raw_response.update(
             flag_name="flagName",
             app_id=0,
-            default_state="OFF",
+            default_state="ABSENT",
         )
 
         assert response.is_closed is True
@@ -58,7 +58,7 @@ class TestApps:
         with client.crm.feature_flags.apps.with_streaming_response.update(
             flag_name="flagName",
             app_id=0,
-            default_state="OFF",
+            default_state="ABSENT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -75,7 +75,7 @@ class TestApps:
             client.crm.feature_flags.apps.with_raw_response.update(
                 flag_name="",
                 app_id=0,
-                default_state="OFF",
+                default_state="ABSENT",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -239,7 +239,7 @@ class TestAsyncApps:
         app = await async_client.crm.feature_flags.apps.update(
             flag_name="flagName",
             app_id=0,
-            default_state="OFF",
+            default_state="ABSENT",
         )
         assert_matches_type(FlagResponse, app, path=["response"])
 
@@ -249,8 +249,8 @@ class TestAsyncApps:
         app = await async_client.crm.feature_flags.apps.update(
             flag_name="flagName",
             app_id=0,
-            default_state="OFF",
-            override_state="OFF",
+            default_state="ABSENT",
+            override_state="ABSENT",
         )
         assert_matches_type(FlagResponse, app, path=["response"])
 
@@ -260,7 +260,7 @@ class TestAsyncApps:
         response = await async_client.crm.feature_flags.apps.with_raw_response.update(
             flag_name="flagName",
             app_id=0,
-            default_state="OFF",
+            default_state="ABSENT",
         )
 
         assert response.is_closed is True
@@ -274,7 +274,7 @@ class TestAsyncApps:
         async with async_client.crm.feature_flags.apps.with_streaming_response.update(
             flag_name="flagName",
             app_id=0,
-            default_state="OFF",
+            default_state="ABSENT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -291,7 +291,7 @@ class TestAsyncApps:
             await async_client.crm.feature_flags.apps.with_raw_response.update(
                 flag_name="",
                 app_id=0,
-                default_state="OFF",
+                default_state="ABSENT",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")

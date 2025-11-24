@@ -26,7 +26,7 @@ class FormStyleParam(TypedDict, total=False):
 
     legal_consent_text_size: Required[Annotated[str, PropertyInfo(alias="legalConsentTextSize")]]
 
-    submit_alignment: Required[Annotated[Literal["left", "right", "center"], PropertyInfo(alias="submitAlignment")]]
+    submit_alignment: Required[Annotated[Literal["center", "left", "right"], PropertyInfo(alias="submitAlignment")]]
 
     submit_color: Required[Annotated[str, PropertyInfo(alias="submitColor")]]
 

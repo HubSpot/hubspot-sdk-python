@@ -63,7 +63,7 @@ class TestSchemas:
                     "group_name": "my_object_information",
                     "has_unique_value": False,
                     "hidden": True,
-                    "number_display_hint": "unformatted",
+                    "number_display_hint": "currency",
                     "options": [
                         {
                             "display_order": 1,
@@ -80,11 +80,11 @@ class TestSchemas:
                             "description": "Choice number two",
                         },
                     ],
-                    "option_sort_strategy": "DISPLAY_ORDER",
+                    "option_sort_strategy": "ALPHABETICAL",
                     "referenced_object_type": "referencedObjectType",
                     "searchable_in_global_search": True,
                     "show_currency_symbol": True,
-                    "text_display_hint": "unformatted_single_line",
+                    "text_display_hint": "domain_name",
                 }
             ],
             required_properties=["my_object_property"],
@@ -495,7 +495,7 @@ class TestAsyncSchemas:
                     "group_name": "my_object_information",
                     "has_unique_value": False,
                     "hidden": True,
-                    "number_display_hint": "unformatted",
+                    "number_display_hint": "currency",
                     "options": [
                         {
                             "display_order": 1,
@@ -512,11 +512,11 @@ class TestAsyncSchemas:
                             "description": "Choice number two",
                         },
                     ],
-                    "option_sort_strategy": "DISPLAY_ORDER",
+                    "option_sort_strategy": "ALPHABETICAL",
                     "referenced_object_type": "referencedObjectType",
                     "searchable_in_global_search": True,
                     "show_currency_symbol": True,
-                    "text_display_hint": "unformatted_single_line",
+                    "text_display_hint": "domain_name",
                 }
             ],
             required_properties=["my_object_property"],

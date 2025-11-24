@@ -16,22 +16,22 @@ TimePoint: TypeAlias = Union[DatePoint, IndexedTimePoint, PropertyReferencedTime
 
 
 class TimePointOperation(BaseModel):
-    endpoint_behavior: Literal["INCLUSIVE", "EXCLUSIVE"] = FieldInfo(alias="endpointBehavior")
+    endpoint_behavior: Literal["EXCLUSIVE", "INCLUSIVE"] = FieldInfo(alias="endpointBehavior")
 
     include_objects_with_no_value_set: bool = FieldInfo(alias="includeObjectsWithNoValueSet")
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["IS_BEFORE", "IS_AFTER"]
+    operator: Literal["IS_AFTER", "IS_BEFORE"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 
     property_parser: Literal[
-        "VALUE",
-        "UPDATED_AT",
         "ANNIVERSARY",
-        "VALUE_WITH_ZONE_SAME_LOCAL_CONVERSION",
         "ANNIVERSARY_WITH_ZONE_SAME_LOCAL_CONVERSION",
+        "UPDATED_AT",
+        "VALUE",
+        "VALUE_WITH_ZONE_SAME_LOCAL_CONVERSION",
     ] = FieldInfo(alias="propertyParser")
 
     property_type: Literal["timepoint"] = FieldInfo(alias="propertyType")

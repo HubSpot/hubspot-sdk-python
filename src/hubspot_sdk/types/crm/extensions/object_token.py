@@ -14,7 +14,7 @@ class ObjectToken(BaseModel):
     value: str
 
     data_type: Optional[
-        Literal["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STRING", "STATUS"]
+        Literal["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STATUS", "STRING"]
     ] = FieldInfo(alias="dataType", default=None)
 
     label: Optional[str] = None

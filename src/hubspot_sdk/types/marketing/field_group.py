@@ -34,7 +34,7 @@ class FieldGroup(BaseModel):
 
     group_type: Literal["default_group", "progressive", "queued"] = FieldInfo(alias="groupType")
 
-    rich_text_type: Literal["text", "image"] = FieldInfo(alias="richTextType")
+    rich_text_type: Literal["image", "text"] = FieldInfo(alias="richTextType")
     """The type of rich text included. The default value is text."""
 
     rich_text: Optional[str] = FieldInfo(alias="richText", default=None)

@@ -13,3 +13,4 @@ class RowCloneDraftParams(TypedDict, total=False):
     table_id_or_name: Required[Annotated[str, PropertyInfo(alias="tableIdOrName")]]
 
     name: str
+    """The name for the cloned row."""

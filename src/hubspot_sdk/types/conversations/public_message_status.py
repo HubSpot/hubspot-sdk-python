@@ -12,6 +12,6 @@ __all__ = ["PublicMessageStatus"]
 
 
 class PublicMessageStatus(BaseModel):
-    status_type: Literal["SENT", "FAILED", "RECEIVED", "READ"] = FieldInfo(alias="statusType")
+    status_type: Literal["FAILED", "READ", "RECEIVED", "SENT"] = FieldInfo(alias="statusType")
 
     failure_details: Optional[PublicMessageFailureDetails] = FieldInfo(alias="failureDetails", default=None)

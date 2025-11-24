@@ -15,11 +15,11 @@ class DatePropertyOperation(BaseModel):
 
     include_objects_with_no_value_set: bool = FieldInfo(alias="includeObjectsWithNoValueSet")
 
-    month: Literal["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+    month: Literal["APR", "AUG", "DEC", "FEB", "JAN", "JUL", "JUN", "MAR", "MAY", "NOV", "OCT", "SEP"]
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["EQUAL", "BEFORE", "AFTER"]
+    operator: Literal["AFTER", "BEFORE", "EQUAL"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 

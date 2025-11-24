@@ -24,6 +24,7 @@ class TableListDraftParams(TypedDict, total=False):
     """Specifies whether to return archived tables. Defaults to `false`."""
 
     content_type: Annotated[str, PropertyInfo(alias="contentType")]
+    """Specifies the content type for the response."""
 
     created_after: Annotated[Union[str, datetime], PropertyInfo(alias="createdAfter", format="iso8601")]
     """Only return tables created after the specified time."""
@@ -35,6 +36,7 @@ class TableListDraftParams(TypedDict, total=False):
     """Only return tables created before the specified time."""
 
     is_get_localized_schema: Annotated[bool, PropertyInfo(alias="isGetLocalizedSchema")]
+    """Indicates whether to retrieve the localized schema."""
 
     limit: int
     """The maximum number of results to return. Default is 1000."""

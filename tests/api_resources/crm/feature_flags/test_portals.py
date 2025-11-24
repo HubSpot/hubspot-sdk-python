@@ -24,7 +24,7 @@ class TestPortals:
             portal_id=0,
             app_id=0,
             flag_name="flagName",
-            flag_state="OFF",
+            flag_state="ABSENT",
         )
         assert_matches_type(PortalFlagStateResponse, portal, path=["response"])
 
@@ -35,7 +35,7 @@ class TestPortals:
             portal_id=0,
             app_id=0,
             flag_name="flagName",
-            flag_state="OFF",
+            flag_state="ABSENT",
         )
 
         assert response.is_closed is True
@@ -50,7 +50,7 @@ class TestPortals:
             portal_id=0,
             app_id=0,
             flag_name="flagName",
-            flag_state="OFF",
+            flag_state="ABSENT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -68,7 +68,7 @@ class TestPortals:
                 portal_id=0,
                 app_id=0,
                 flag_name="",
-                flag_state="OFF",
+                flag_state="ABSENT",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -179,7 +179,7 @@ class TestPortals:
             app_id=0,
             portal_states=[
                 {
-                    "flag_state": "OFF",
+                    "flag_state": "ABSENT",
                     "portal_id": 0,
                 }
             ],
@@ -194,7 +194,7 @@ class TestPortals:
             app_id=0,
             portal_states=[
                 {
-                    "flag_state": "OFF",
+                    "flag_state": "ABSENT",
                     "portal_id": 0,
                 }
             ],
@@ -213,7 +213,7 @@ class TestPortals:
             app_id=0,
             portal_states=[
                 {
-                    "flag_state": "OFF",
+                    "flag_state": "ABSENT",
                     "portal_id": 0,
                 }
             ],
@@ -235,7 +235,7 @@ class TestPortals:
                 app_id=0,
                 portal_states=[
                     {
-                        "flag_state": "OFF",
+                        "flag_state": "ABSENT",
                         "portal_id": 0,
                     }
                 ],
@@ -304,7 +304,7 @@ class TestAsyncPortals:
             portal_id=0,
             app_id=0,
             flag_name="flagName",
-            flag_state="OFF",
+            flag_state="ABSENT",
         )
         assert_matches_type(PortalFlagStateResponse, portal, path=["response"])
 
@@ -315,7 +315,7 @@ class TestAsyncPortals:
             portal_id=0,
             app_id=0,
             flag_name="flagName",
-            flag_state="OFF",
+            flag_state="ABSENT",
         )
 
         assert response.is_closed is True
@@ -330,7 +330,7 @@ class TestAsyncPortals:
             portal_id=0,
             app_id=0,
             flag_name="flagName",
-            flag_state="OFF",
+            flag_state="ABSENT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -348,7 +348,7 @@ class TestAsyncPortals:
                 portal_id=0,
                 app_id=0,
                 flag_name="",
-                flag_state="OFF",
+                flag_state="ABSENT",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -459,7 +459,7 @@ class TestAsyncPortals:
             app_id=0,
             portal_states=[
                 {
-                    "flag_state": "OFF",
+                    "flag_state": "ABSENT",
                     "portal_id": 0,
                 }
             ],
@@ -474,7 +474,7 @@ class TestAsyncPortals:
             app_id=0,
             portal_states=[
                 {
-                    "flag_state": "OFF",
+                    "flag_state": "ABSENT",
                     "portal_id": 0,
                 }
             ],
@@ -493,7 +493,7 @@ class TestAsyncPortals:
             app_id=0,
             portal_states=[
                 {
-                    "flag_state": "OFF",
+                    "flag_state": "ABSENT",
                     "portal_id": 0,
                 }
             ],
@@ -515,7 +515,7 @@ class TestAsyncPortals:
                 app_id=0,
                 portal_states=[
                     {
-                        "flag_state": "OFF",
+                        "flag_state": "ABSENT",
                         "portal_id": 0,
                     }
                 ],

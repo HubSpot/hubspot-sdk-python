@@ -21,18 +21,18 @@ class PublicCalendarDatePropertyOperation(BaseModel):
 
     fiscal_year_start: Optional[
         Literal[
-            "JANUARY",
-            "FEBRUARY",
-            "MARCH",
             "APRIL",
-            "MAY",
-            "JUNE",
-            "JULY",
             "AUGUST",
-            "SEPTEMBER",
-            "OCTOBER",
-            "NOVEMBER",
             "DECEMBER",
+            "FEBRUARY",
+            "JANUARY",
+            "JULY",
+            "JUNE",
+            "MARCH",
+            "MAY",
+            "NOVEMBER",
+            "OCTOBER",
+            "SEPTEMBER",
         ]
     ] = FieldInfo(alias="fiscalYearStart", default=None)
 

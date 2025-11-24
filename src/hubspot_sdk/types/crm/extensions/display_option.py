@@ -14,5 +14,5 @@ class DisplayOption(BaseModel):
     name: str
     """JSON-friendly unique name for option."""
 
-    type: Literal["DEFAULT", "SUCCESS", "WARNING", "DANGER", "INFO"]
+    type: Literal["DANGER", "DEFAULT", "INFO", "SUCCESS", "WARNING"]
     """The type of status."""

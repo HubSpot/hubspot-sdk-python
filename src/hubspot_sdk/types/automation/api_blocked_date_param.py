@@ -14,18 +14,18 @@ class APIBlockedDateParam(TypedDict, total=False):
 
     month: Required[
         Literal[
-            "JANUARY",
-            "FEBRUARY",
-            "MARCH",
             "APRIL",
-            "MAY",
-            "JUNE",
-            "JULY",
             "AUGUST",
-            "SEPTEMBER",
-            "OCTOBER",
-            "NOVEMBER",
             "DECEMBER",
+            "FEBRUARY",
+            "JANUARY",
+            "JULY",
+            "JUNE",
+            "MARCH",
+            "MAY",
+            "NOVEMBER",
+            "OCTOBER",
+            "SEPTEMBER",
         ]
     ]
 

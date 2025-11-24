@@ -18,7 +18,7 @@ class PublicStatus(BaseModel):
     source: str
     """The origin or method through which the subscription status was set."""
 
-    status: Literal["SUBSCRIBED", "UNSUBSCRIBED", "NOT_SPECIFIED"]
+    status: Literal["NOT_SPECIFIED", "SUBSCRIBED", "UNSUBSCRIBED"]
     """
     The current subscription status of the contact, which can be 'SUBSCRIBED',
     'UNSUBSCRIBED', or 'NOT_SPECIFIED'.
@@ -38,13 +38,13 @@ class PublicStatus(BaseModel):
 
     legal_basis: Optional[
         Literal[
-            "LEGITIMATE_INTEREST_PQL",
-            "LEGITIMATE_INTEREST_CLIENT",
-            "PERFORMANCE_OF_CONTRACT",
             "CONSENT_WITH_NOTICE",
-            "NON_GDPR",
-            "PROCESS_AND_STORE",
+            "LEGITIMATE_INTEREST_CLIENT",
             "LEGITIMATE_INTEREST_OTHER",
+            "LEGITIMATE_INTEREST_PQL",
+            "NON_GDPR",
+            "PERFORMANCE_OF_CONTRACT",
+            "PROCESS_AND_STORE",
         ]
     ] = FieldInfo(alias="legalBasis", default=None)
     """
@@ -59,7 +59,7 @@ class PublicStatus(BaseModel):
 
     set_status_success_reason: Optional[
         Literal[
-            "RESUBSCRIBE_OCCURRED", "NO_STATUS_CHANGE", "UNSUBSCRIBE_FROM_ALL_OCCURRED", "REQUESTED_CHANGE_OCCURRED"
+            "NO_STATUS_CHANGE", "REQUESTED_CHANGE_OCCURRED", "RESUBSCRIBE_OCCURRED", "UNSUBSCRIBE_FROM_ALL_OCCURRED"
         ]
     ] = FieldInfo(alias="setStatusSuccessReason", default=None)
     """

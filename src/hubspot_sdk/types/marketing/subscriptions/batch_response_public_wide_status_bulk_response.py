@@ -25,7 +25,7 @@ class BatchResponsePublicWideStatusBulkResponse(BaseModel):
     started_at: datetime = FieldInfo(alias="startedAt")
     """The date and time when the batch process began."""
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """
     The current status of the batch process, with possible values: PENDING,
     PROCESSING, CANCELED, COMPLETE.

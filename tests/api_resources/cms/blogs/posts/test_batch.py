@@ -25,7 +25,7 @@ class TestBatch:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": 0,
                     "archived_in_dashboard": True,
@@ -206,7 +206,7 @@ class TestBatch:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": 0,
                     "archived_in_dashboard": True,
@@ -391,7 +391,7 @@ class TestBatch:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": 0,
                     "archived_in_dashboard": True,
@@ -704,7 +704,7 @@ class TestAsyncBatch:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": 0,
                     "archived_in_dashboard": True,
@@ -885,7 +885,7 @@ class TestAsyncBatch:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": 0,
                     "archived_in_dashboard": True,
@@ -1070,7 +1070,7 @@ class TestAsyncBatch:
             inputs=[
                 {
                     "id": "id",
-                    "ab_status": "master",
+                    "ab_status": "automated_loser_variant",
                     "ab_test_id": "abTestId",
                     "archived_at": 0,
                     "archived_in_dashboard": True,

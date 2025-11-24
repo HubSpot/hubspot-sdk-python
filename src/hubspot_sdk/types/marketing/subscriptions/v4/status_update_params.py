@@ -14,7 +14,7 @@ class StatusUpdateParams(TypedDict, total=False):
     """The type of communication channel, with 'EMAIL' as the only supported option."""
 
     status_state: Required[
-        Annotated[Literal["SUBSCRIBED", "UNSUBSCRIBED", "NOT_SPECIFIED"], PropertyInfo(alias="statusState")]
+        Annotated[Literal["NOT_SPECIFIED", "SUBSCRIBED", "UNSUBSCRIBED"], PropertyInfo(alias="statusState")]
     ]
     """
     The current subscription status of the contact, which can be 'SUBSCRIBED',
@@ -26,13 +26,13 @@ class StatusUpdateParams(TypedDict, total=False):
 
     legal_basis: Annotated[
         Literal[
-            "LEGITIMATE_INTEREST_PQL",
-            "LEGITIMATE_INTEREST_CLIENT",
-            "PERFORMANCE_OF_CONTRACT",
             "CONSENT_WITH_NOTICE",
-            "NON_GDPR",
-            "PROCESS_AND_STORE",
+            "LEGITIMATE_INTEREST_CLIENT",
             "LEGITIMATE_INTEREST_OTHER",
+            "LEGITIMATE_INTEREST_PQL",
+            "NON_GDPR",
+            "PERFORMANCE_OF_CONTRACT",
+            "PROCESS_AND_STORE",
         ],
         PropertyInfo(alias="legalBasis"),
     ]

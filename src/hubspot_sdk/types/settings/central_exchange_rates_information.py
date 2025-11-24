@@ -9,3 +9,4 @@ __all__ = ["CentralExchangeRatesInformation"]
 
 class CentralExchangeRatesInformation(BaseModel):
     central_exchange_rates_enabled: bool = FieldInfo(alias="centralExchangeRatesEnabled")
+    """Indicates if central exchange rates is enabled for the portal or not."""

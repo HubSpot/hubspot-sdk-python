@@ -20,7 +20,7 @@ class BatchResponseSubscriberEmailResponse(BaseModel):
 
     started_at: datetime = FieldInfo(alias="startedAt")
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
 
     errors: Optional[List[StandardError]] = None
 

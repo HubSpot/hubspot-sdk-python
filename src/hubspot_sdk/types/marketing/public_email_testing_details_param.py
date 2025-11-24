@@ -12,14 +12,14 @@ __all__ = ["PublicEmailTestingDetailsParam"]
 class PublicEmailTestingDetailsParam(TypedDict, total=False):
     ab_sample_size_default: Annotated[
         Literal[
-            "master",
-            "variant",
+            "automated_loser_variant",
+            "automated_master",
+            "automated_variant",
             "loser_variant",
             "mab_master",
             "mab_variant",
-            "automated_master",
-            "automated_variant",
-            "automated_loser_variant",
+            "master",
+            "variant",
         ],
         PropertyInfo(alias="abSampleSizeDefault"),
     ]
@@ -30,14 +30,14 @@ class PublicEmailTestingDetailsParam(TypedDict, total=False):
 
     ab_sampling_default: Annotated[
         Literal[
-            "master",
-            "variant",
+            "automated_loser_variant",
+            "automated_master",
+            "automated_variant",
             "loser_variant",
             "mab_master",
             "mab_variant",
-            "automated_master",
-            "automated_variant",
-            "automated_loser_variant",
+            "master",
+            "variant",
         ],
         PropertyInfo(alias="abSamplingDefault"),
     ]
@@ -48,21 +48,21 @@ class PublicEmailTestingDetailsParam(TypedDict, total=False):
 
     ab_status: Annotated[
         Literal[
-            "master",
-            "variant",
+            "automated_loser_variant",
+            "automated_master",
+            "automated_variant",
             "loser_variant",
             "mab_master",
             "mab_variant",
-            "automated_master",
-            "automated_variant",
-            "automated_loser_variant",
+            "master",
+            "variant",
         ],
         PropertyInfo(alias="abStatus"),
     ]
     """Status of the AB test."""
 
     ab_success_metric: Annotated[
-        Literal["CLICKS_BY_OPENS", "CLICKS_BY_DELIVERED", "OPENS_BY_DELIVERED"], PropertyInfo(alias="abSuccessMetric")
+        Literal["CLICKS_BY_DELIVERED", "CLICKS_BY_OPENS", "OPENS_BY_DELIVERED"], PropertyInfo(alias="abSuccessMetric")
     ]
     """Metric to determine the version that will be sent to the remaining contacts."""
 

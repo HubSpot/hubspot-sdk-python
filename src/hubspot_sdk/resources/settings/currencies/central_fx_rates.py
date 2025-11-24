@@ -241,6 +241,9 @@ class CentralFxRatesResource(SyncAPIResource):
         currencies cannot be added here.
 
         Args:
+          currency_code: The currency code being added to the HubSpot portal for use with central
+              exchange rates.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -520,6 +523,9 @@ class AsyncCentralFxRatesResource(AsyncAPIResource):
         currencies cannot be added here.
 
         Args:
+          currency_code: The currency code being added to the HubSpot portal for use with central
+              exchange rates.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

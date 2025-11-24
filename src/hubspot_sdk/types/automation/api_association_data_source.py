@@ -12,7 +12,7 @@ __all__ = ["APIAssociationDataSource"]
 
 
 class APIAssociationDataSource(BaseModel):
-    association_category: Literal["HUBSPOT_DEFINED", "USER_DEFINED", "INTEGRATOR_DEFINED"] = FieldInfo(
+    association_category: Literal["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED"] = FieldInfo(
         alias="associationCategory"
     )
 

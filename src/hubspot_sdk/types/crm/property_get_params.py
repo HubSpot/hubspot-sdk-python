@@ -16,7 +16,7 @@ class PropertyGetParams(TypedDict, total=False):
     """Whether to return only results that have been archived."""
 
     data_sensitivity: Annotated[
-        Literal["non_sensitive", "sensitive", "highly_sensitive"], PropertyInfo(alias="dataSensitivity")
+        Literal["highly_sensitive", "non_sensitive", "sensitive"], PropertyInfo(alias="dataSensitivity")
     ]
 
     locale: str

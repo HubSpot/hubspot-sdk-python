@@ -16,18 +16,18 @@ class EnumerationPropertyOperation(BaseModel):
     operation_type: str = FieldInfo(alias="operationType")
 
     operator: Literal[
-        "IS_ANY_OF",
-        "IS_NONE_OF",
-        "IS_EXACTLY",
-        "IS_NOT_EXACTLY",
         "CONTAINS_ALL",
         "DOES_NOT_CONTAIN_ALL",
         "HAS_EVER_BEEN_ANY_OF",
-        "HAS_NEVER_BEEN_ANY_OF",
         "HAS_EVER_BEEN_EXACTLY",
-        "HAS_NEVER_BEEN_EXACTLY",
         "HAS_EVER_CONTAINED_ALL",
+        "HAS_NEVER_BEEN_ANY_OF",
+        "HAS_NEVER_BEEN_EXACTLY",
         "HAS_NEVER_CONTAINED_ALL",
+        "IS_ANY_OF",
+        "IS_EXACTLY",
+        "IS_NONE_OF",
+        "IS_NOT_EXACTLY",
     ]
 
     operator_name: str = FieldInfo(alias="operatorName")

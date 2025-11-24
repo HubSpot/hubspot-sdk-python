@@ -94,7 +94,7 @@ class PropertiesResource(SyncAPIResource):
         name: str,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"],
         calculation_formula: str | Omit = omit,
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] | Omit = omit,
         description: str | Omit = omit,
         display_order: int | Omit = omit,
         external_options: bool | Omit = omit,
@@ -256,7 +256,7 @@ class PropertiesResource(SyncAPIResource):
         object_type: str,
         *,
         archived: bool | Omit = omit,
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] | Omit = omit,
         locale: str | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -345,7 +345,7 @@ class PropertiesResource(SyncAPIResource):
         *,
         object_type: str,
         archived: bool | Omit = omit,
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] | Omit = omit,
         locale: str | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -445,7 +445,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         name: str,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"],
         calculation_formula: str | Omit = omit,
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] | Omit = omit,
         description: str | Omit = omit,
         display_order: int | Omit = omit,
         external_options: bool | Omit = omit,
@@ -607,7 +607,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         object_type: str,
         *,
         archived: bool | Omit = omit,
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] | Omit = omit,
         locale: str | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -696,7 +696,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         *,
         object_type: str,
         archived: bool | Omit = omit,
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] | Omit = omit,
+        data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] | Omit = omit,
         locale: str | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

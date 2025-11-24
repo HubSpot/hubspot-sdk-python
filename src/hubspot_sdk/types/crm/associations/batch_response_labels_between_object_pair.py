@@ -22,7 +22,7 @@ class BatchResponseLabelsBetweenObjectPair(BaseModel):
     started_at: datetime = FieldInfo(alias="startedAt")
     """The timestamp when the batch processing began, in ISO 8601 format."""
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """
     The status of the batch processing request: "PENDING", "PROCESSING",
     "CANCELLED", or "COMPLETE".

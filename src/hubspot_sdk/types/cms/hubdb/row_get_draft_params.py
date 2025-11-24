@@ -13,3 +13,4 @@ class RowGetDraftParams(TypedDict, total=False):
     table_id_or_name: Required[Annotated[str, PropertyInfo(alias="tableIdOrName")]]
 
     archived: bool
+    """Set this to `true` to return an archived row. Defaults to `false`."""

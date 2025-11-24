@@ -183,11 +183,15 @@ class TablesResource(SyncAPIResource):
 
           archived: Specifies whether to return archived tables. Defaults to `false`.
 
+          content_type: Specifies the content type for the response.
+
           created_after: Only return tables created after the specified time.
 
           created_at: Only return tables created at exactly the specified time.
 
           created_before: Only return tables created before the specified time.
+
+          is_get_localized_schema: Indicates whether to retrieve the localized schema for the tables.
 
           limit: The maximum number of results to return. Default is 1000.
 
@@ -475,6 +479,8 @@ class TablesResource(SyncAPIResource):
 
           include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
 
+          is_get_localized_schema: Indicates whether to retrieve the localized schema for the tables.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -528,6 +534,8 @@ class TablesResource(SyncAPIResource):
           archived: Set this to `true` to return an archived table. Defaults to `false`.
 
           include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+
+          is_get_localized_schema: Indicates whether to retrieve the localized schema for the table.
 
           extra_headers: Send extra headers
 
@@ -647,11 +655,15 @@ class TablesResource(SyncAPIResource):
 
           archived: Specifies whether to return archived tables. Defaults to `false`.
 
+          content_type: Specifies the content type for the response.
+
           created_after: Only return tables created after the specified time.
 
           created_at: Only return tables created at exactly the specified time.
 
           created_before: Only return tables created before the specified time.
+
+          is_get_localized_schema: Indicates whether to retrieve the localized schema.
 
           limit: The maximum number of results to return. Default is 1000.
 
@@ -889,6 +901,8 @@ class TablesResource(SyncAPIResource):
 
           include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
 
+          is_get_localized_schema: Indicates whether to retrieve the localized schema for the table.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1055,11 +1069,15 @@ class AsyncTablesResource(AsyncAPIResource):
 
           archived: Specifies whether to return archived tables. Defaults to `false`.
 
+          content_type: Specifies the content type for the response.
+
           created_after: Only return tables created after the specified time.
 
           created_at: Only return tables created at exactly the specified time.
 
           created_before: Only return tables created before the specified time.
+
+          is_get_localized_schema: Indicates whether to retrieve the localized schema for the tables.
 
           limit: The maximum number of results to return. Default is 1000.
 
@@ -1347,6 +1365,8 @@ class AsyncTablesResource(AsyncAPIResource):
 
           include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
 
+          is_get_localized_schema: Indicates whether to retrieve the localized schema for the tables.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1400,6 +1420,8 @@ class AsyncTablesResource(AsyncAPIResource):
           archived: Set this to `true` to return an archived table. Defaults to `false`.
 
           include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+
+          is_get_localized_schema: Indicates whether to retrieve the localized schema for the table.
 
           extra_headers: Send extra headers
 
@@ -1519,11 +1541,15 @@ class AsyncTablesResource(AsyncAPIResource):
 
           archived: Specifies whether to return archived tables. Defaults to `false`.
 
+          content_type: Specifies the content type for the response.
+
           created_after: Only return tables created after the specified time.
 
           created_at: Only return tables created at exactly the specified time.
 
           created_before: Only return tables created before the specified time.
+
+          is_get_localized_schema: Indicates whether to retrieve the localized schema.
 
           limit: The maximum number of results to return. Default is 1000.
 
@@ -1760,6 +1786,8 @@ class AsyncTablesResource(AsyncAPIResource):
           archived: Specifies whether to return archived tables. Defaults to `false`.
 
           include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+
+          is_get_localized_schema: Indicates whether to retrieve the localized schema for the table.
 
           extra_headers: Send extra headers
 

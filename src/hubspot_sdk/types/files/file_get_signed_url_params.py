@@ -13,7 +13,7 @@ class FileGetSignedURLParams(TypedDict, total=False):
     expiration_seconds: Annotated[int, PropertyInfo(alias="expirationSeconds")]
     """How long in seconds the link will provide access to the file."""
 
-    size: Literal["thumb", "icon", "medium", "preview"]
+    size: Literal["icon", "medium", "preview", "thumb"]
     """For image files.
 
     This will resize the image to the desired size before sharing. Does not affect

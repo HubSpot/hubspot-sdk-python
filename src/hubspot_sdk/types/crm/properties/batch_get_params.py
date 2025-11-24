@@ -15,7 +15,7 @@ class BatchGetParams(TypedDict, total=False):
     archived: Required[bool]
 
     data_sensitivity: Required[
-        Annotated[Literal["non_sensitive", "sensitive", "highly_sensitive"], PropertyInfo(alias="dataSensitivity")]
+        Annotated[Literal["highly_sensitive", "non_sensitive", "sensitive"], PropertyInfo(alias="dataSensitivity")]
     ]
 
     inputs: Required[Iterable[PropertyName]]

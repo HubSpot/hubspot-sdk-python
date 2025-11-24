@@ -28,7 +28,7 @@ class PublicImportResponse(BaseModel):
     emails.
     """
 
-    state: Literal["STARTED", "PROCESSING", "DONE", "FAILED", "CANCELED", "DEFERRED", "REVERTED"]
+    state: Literal["CANCELED", "DEFERRED", "DONE", "FAILED", "PROCESSING", "REVERTED", "STARTED"]
     """The status of the import."""
 
     updated_at: datetime = FieldInfo(alias="updatedAt")

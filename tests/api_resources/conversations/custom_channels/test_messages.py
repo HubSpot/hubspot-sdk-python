@@ -10,7 +10,7 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
-from hubspot_sdk.types.conversations import ConversationsPublicConversationsMessage
+from hubspot_sdk.types.conversations import PublicConversationsMessage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -50,7 +50,7 @@ class TestMessages:
             text="text",
             timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -99,7 +99,7 @@ class TestMessages:
             },
             rich_text="richText",
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -137,7 +137,7 @@ class TestMessages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         message = response.parse()
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -175,7 +175,7 @@ class TestMessages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             message = response.parse()
-            assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+            assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -185,9 +185,9 @@ class TestMessages:
         message = client.conversations.custom_channels.messages.update(
             message_id="messageId",
             channel_id=0,
-            status_type="SENT",
+            status_type="FAILED",
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -195,10 +195,10 @@ class TestMessages:
         message = client.conversations.custom_channels.messages.update(
             message_id="messageId",
             channel_id=0,
-            status_type="SENT",
+            status_type="FAILED",
             error_message="errorMessage",
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -206,13 +206,13 @@ class TestMessages:
         response = client.conversations.custom_channels.messages.with_raw_response.update(
             message_id="messageId",
             channel_id=0,
-            status_type="SENT",
+            status_type="FAILED",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         message = response.parse()
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -220,13 +220,13 @@ class TestMessages:
         with client.conversations.custom_channels.messages.with_streaming_response.update(
             message_id="messageId",
             channel_id=0,
-            status_type="SENT",
+            status_type="FAILED",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             message = response.parse()
-            assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+            assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -237,7 +237,7 @@ class TestMessages:
             client.conversations.custom_channels.messages.with_raw_response.update(
                 message_id="",
                 channel_id=0,
-                status_type="SENT",
+                status_type="FAILED",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -247,7 +247,7 @@ class TestMessages:
             message_id="messageId",
             channel_id=0,
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -260,7 +260,7 @@ class TestMessages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         message = response.parse()
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -273,7 +273,7 @@ class TestMessages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             message = response.parse()
-            assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+            assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -324,7 +324,7 @@ class TestAsyncMessages:
             text="text",
             timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -373,7 +373,7 @@ class TestAsyncMessages:
             },
             rich_text="richText",
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -411,7 +411,7 @@ class TestAsyncMessages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         message = await response.parse()
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -449,7 +449,7 @@ class TestAsyncMessages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             message = await response.parse()
-            assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+            assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -459,9 +459,9 @@ class TestAsyncMessages:
         message = await async_client.conversations.custom_channels.messages.update(
             message_id="messageId",
             channel_id=0,
-            status_type="SENT",
+            status_type="FAILED",
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -469,10 +469,10 @@ class TestAsyncMessages:
         message = await async_client.conversations.custom_channels.messages.update(
             message_id="messageId",
             channel_id=0,
-            status_type="SENT",
+            status_type="FAILED",
             error_message="errorMessage",
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -480,13 +480,13 @@ class TestAsyncMessages:
         response = await async_client.conversations.custom_channels.messages.with_raw_response.update(
             message_id="messageId",
             channel_id=0,
-            status_type="SENT",
+            status_type="FAILED",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         message = await response.parse()
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -494,13 +494,13 @@ class TestAsyncMessages:
         async with async_client.conversations.custom_channels.messages.with_streaming_response.update(
             message_id="messageId",
             channel_id=0,
-            status_type="SENT",
+            status_type="FAILED",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             message = await response.parse()
-            assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+            assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -511,7 +511,7 @@ class TestAsyncMessages:
             await async_client.conversations.custom_channels.messages.with_raw_response.update(
                 message_id="",
                 channel_id=0,
-                status_type="SENT",
+                status_type="FAILED",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -521,7 +521,7 @@ class TestAsyncMessages:
             message_id="messageId",
             channel_id=0,
         )
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -534,7 +534,7 @@ class TestAsyncMessages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         message = await response.parse()
-        assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+        assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -547,7 +547,7 @@ class TestAsyncMessages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             message = await response.parse()
-            assert_matches_type(ConversationsPublicConversationsMessage, message, path=["response"])
+            assert_matches_type(PublicConversationsMessage, message, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

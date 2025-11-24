@@ -38,7 +38,7 @@ class MultiStringPropertyOperation(BaseModel):
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["IS_EQUAL_TO", "IS_NOT_EQUAL_TO", "CONTAINS", "DOES_NOT_CONTAIN", "STARTS_WITH", "ENDS_WITH"]
+    operator: Literal["CONTAINS", "DOES_NOT_CONTAIN", "ENDS_WITH", "IS_EQUAL_TO", "IS_NOT_EQUAL_TO", "STARTS_WITH"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 

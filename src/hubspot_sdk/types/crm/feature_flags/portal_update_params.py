@@ -14,4 +14,4 @@ class PortalUpdateParams(TypedDict, total=False):
 
     flag_name: Required[Annotated[str, PropertyInfo(alias="flagName")]]
 
-    flag_state: Required[Annotated[Literal["OFF", "ON", "ABSENT"], PropertyInfo(alias="flagState")]]
+    flag_state: Required[Annotated[Literal["ABSENT", "OFF", "ON"], PropertyInfo(alias="flagState")]]

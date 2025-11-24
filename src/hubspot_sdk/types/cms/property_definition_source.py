@@ -9,6 +9,6 @@ __all__ = ["PropertyDefinitionSource"]
 
 
 class PropertyDefinitionSource(BaseModel):
-    type: Literal["GLOBAL", "OBJECT_TYPE", "HAVEN_BRANCH", "PORTAL"]
+    type: Literal["GLOBAL", "HAVEN_BRANCH", "OBJECT_TYPE", "PORTAL"]
 
     name: Optional[str] = None

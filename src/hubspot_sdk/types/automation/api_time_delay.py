@@ -20,22 +20,22 @@ class APITimeDelay(BaseModel):
     delta: int
 
     time_unit: Literal[
-        "NANOS",
-        "MICROS",
-        "MILLIS",
-        "SECONDS",
-        "MINUTES",
-        "HOURS",
-        "HALF_DAYS",
-        "DAYS",
-        "WEEKS",
-        "MONTHS",
-        "YEARS",
-        "DECADES",
         "CENTURIES",
-        "MILLENNIA",
+        "DAYS",
+        "DECADES",
         "ERAS",
         "FOREVER",
+        "HALF_DAYS",
+        "HOURS",
+        "MICROS",
+        "MILLENNIA",
+        "MILLIS",
+        "MINUTES",
+        "MONTHS",
+        "NANOS",
+        "SECONDS",
+        "WEEKS",
+        "YEARS",
     ] = FieldInfo(alias="timeUnit")
 
     time_of_day: Optional[APITimeOfDay] = FieldInfo(alias="timeOfDay", default=None)

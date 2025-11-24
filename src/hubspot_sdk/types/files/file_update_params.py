@@ -13,13 +13,13 @@ __all__ = ["FileUpdateParams"]
 
 class FileUpdateParams(TypedDict, total=False):
     access: Literal[
-        "PUBLIC_INDEXABLE",
-        "PUBLIC_NOT_INDEXABLE",
         "HIDDEN_INDEXABLE",
         "HIDDEN_NOT_INDEXABLE",
         "HIDDEN_PRIVATE",
-        "PRIVATE",
         "HIDDEN_SENSITIVE",
+        "PRIVATE",
+        "PUBLIC_INDEXABLE",
+        "PUBLIC_NOT_INDEXABLE",
         "SENSITIVE",
     ]
     """NONE: Do not run any duplicate validation.

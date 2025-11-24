@@ -22,7 +22,7 @@ class BatchResponseTag(BaseModel):
     started_at: datetime = FieldInfo(alias="startedAt")
     """Time of batch operation start."""
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """Status of batch operation."""
 
     links: Optional[Dict[str, str]] = None

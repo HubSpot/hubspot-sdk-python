@@ -14,13 +14,21 @@ __all__ = ["BatchResponseHubDBTableRowV3"]
 
 class BatchResponseHubDBTableRowV3(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
+    """The timestamp indicating when the batch processing was completed."""
 
     results: List[HubDBTableRowV3]
 
     started_at: datetime = FieldInfo(alias="startedAt")
+    """The timestamp indicating when the batch processing began."""
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
+    """
+    The current status of the batch operation, with possible values: CANCELED,
+    COMPLETE, PENDING, PROCESSING.
+    """
 
     links: Optional[Dict[str, str]] = None
+    """A collection of related links associated with the batch response."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
+    """The timestamp indicating when the batch request was made."""

@@ -11,7 +11,7 @@ __all__ = ["APIMonthlyRelativeDaysEnrollmentSchedule"]
 
 
 class APIMonthlyRelativeDaysEnrollmentSchedule(BaseModel):
-    monthly_relative_days: Literal["LAST_DAY_OF_MONTH", "FIRST_MONDAY_OF_MONTH"] = FieldInfo(
+    monthly_relative_days: Literal["FIRST_MONDAY_OF_MONTH", "LAST_DAY_OF_MONTH"] = FieldInfo(
         alias="monthlyRelativeDays"
     )
 
