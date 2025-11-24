@@ -168,6 +168,14 @@ from .products import (
     ProductsResourceWithStreamingResponse,
     AsyncProductsResourceWithStreamingResponse,
 )
+from .projects import (
+    ProjectsResource,
+    AsyncProjectsResource,
+    ProjectsResourceWithRawResponse,
+    AsyncProjectsResourceWithRawResponse,
+    ProjectsResourceWithStreamingResponse,
+    AsyncProjectsResourceWithStreamingResponse,
+)
 from .services import (
     ServicesResource,
     AsyncServicesResource,
@@ -436,6 +444,12 @@ __all__ = [
     "AsyncProductsResourceWithRawResponse",
     "ProductsResourceWithStreamingResponse",
     "AsyncProductsResourceWithStreamingResponse",
+    "ProjectsResource",
+    "AsyncProjectsResource",
+    "ProjectsResourceWithRawResponse",
+    "AsyncProjectsResourceWithRawResponse",
+    "ProjectsResourceWithStreamingResponse",
+    "AsyncProjectsResourceWithStreamingResponse",
     "QuotesResource",
     "AsyncQuotesResource",
     "QuotesResourceWithRawResponse",

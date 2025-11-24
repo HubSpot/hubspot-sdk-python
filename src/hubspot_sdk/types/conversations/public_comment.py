@@ -15,12 +15,11 @@ from .public_location import PublicLocation
 from .public_recipient import PublicRecipient
 from .public_quick_replies import PublicQuickReplies
 from .public_message_header import PublicMessageHeader
-from .public_message_status import PublicMessageStatus
 from .public_unsupported_content import PublicUnsupportedContent
 from .public_social_metadata_attachment import PublicSocialMetadataAttachment
 from .public_whats_app_template_metadata import PublicWhatsAppTemplateMetadata
 
-__all__ = ["PublicConversationsMessage", "Attachment"]
+__all__ = ["PublicComment", "Attachment"]
 
 Attachment: TypeAlias = Union[
     PublicFile,
@@ -34,16 +33,12 @@ Attachment: TypeAlias = Union[
 ]
 
 
-class PublicConversationsMessage(BaseModel):
+class PublicComment(BaseModel):
     id: str
 
     archived: bool
 
     attachments: List[Attachment]
-
-    channel_account_id: str = FieldInfo(alias="channelAccountId")
-
-    channel_id: str = FieldInfo(alias="channelId")
 
     client: PublicClient
 
@@ -53,26 +48,14 @@ class PublicConversationsMessage(BaseModel):
 
     created_by: str = FieldInfo(alias="createdBy")
 
-    direction: Literal["INCOMING", "OUTGOING"]
-
     recipients: List[PublicRecipient]
+
+    rich_text: str = FieldInfo(alias="richText")
 
     senders: List[PublicSender]
 
     text: str
 
-    truncation_status: Literal["NOT_TRUNCATED", "TRUNCATED", "TRUNCATED_TO_MOST_RECENT_REPLY"] = FieldInfo(
-        alias="truncationStatus"
-    )
-
-    type: Literal["MESSAGE"]
-
-    in_reply_to_id: Optional[str] = FieldInfo(alias="inReplyToId", default=None)
-
-    rich_text: Optional[str] = FieldInfo(alias="richText", default=None)
-
-    status: Optional[PublicMessageStatus] = None
-
-    subject: Optional[str] = None
+    type: Literal["COMMENT"]
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
