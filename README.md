@@ -226,7 +226,7 @@ public_action_definition = client.automation.actions.definitions.create(
     functions=[
         {
             "function_source": "functionSource",
-            "function_type": "PRE_ACTION_EXECUTION",
+            "function_type": "POST_ACTION_EXECUTION",
         }
     ],
     input_fields=[
@@ -242,7 +242,7 @@ public_action_definition = client.automation.actions.definitions.create(
                         "value": "A",
                     }
                 ],
-                "type": "string",
+                "type": "bool",
             },
         }
     ],

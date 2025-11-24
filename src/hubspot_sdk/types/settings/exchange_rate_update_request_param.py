@@ -13,7 +13,13 @@ __all__ = ["ExchangeRateUpdateRequestParam"]
 
 class ExchangeRateUpdateRequestParam(TypedDict, total=False):
     id: Required[str]
+    """A unique identifier for the exchange rate being updated"""
 
     conversion_rate: Required[Annotated[float, PropertyInfo(alias="conversionRate")]]
+    """
+    The updated conversion rate between the to and from currency code of this
+    exchange rate.
+    """
 
     effective_at: Annotated[Union[str, datetime], PropertyInfo(alias="effectiveAt", format="iso8601")]
+    """The date the exchange rate will be in effect."""

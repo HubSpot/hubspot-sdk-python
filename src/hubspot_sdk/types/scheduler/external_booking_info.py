@@ -23,7 +23,7 @@ class ExternalBookingInfo(BaseModel):
 
     link_id: str = FieldInfo(alias="linkId")
 
-    link_type: Literal["PERSONAL_LINK", "GROUP_CALENDAR", "ROUND_ROBIN_CALENDAR"] = FieldInfo(alias="linkType")
+    link_type: Literal["GROUP_CALENDAR", "PERSONAL_LINK", "ROUND_ROBIN_CALENDAR"] = FieldInfo(alias="linkType")
 
     branding_metadata: Optional[ExternalBrandingMetadata] = FieldInfo(alias="brandingMetadata", default=None)
 

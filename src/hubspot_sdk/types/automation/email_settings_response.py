@@ -12,4 +12,4 @@ __all__ = ["EmailSettingsResponse"]
 class EmailSettingsResponse(BaseModel):
     criteria: Literal["ALL", "NONE"]
 
-    selling_strategy: Literal["LEAD_BASED", "ACCOUNT_BASED"] = FieldInfo(alias="sellingStrategy")
+    selling_strategy: Literal["ACCOUNT_BASED", "LEAD_BASED"] = FieldInfo(alias="sellingStrategy")

@@ -39,12 +39,12 @@ class InboundDBObjectType(BaseModel):
     last_modified_property_name: str = FieldInfo(alias="lastModifiedPropertyName")
 
     meta_type: Literal[
-        "HUBSPOT",
-        "INTEGRATION",
-        "PORTAL_SPECIFIC",
         "CMS_HUBDB",
+        "HUBSPOT",
         "HUBSPOT_EVENT",
+        "INTEGRATION",
         "INTEGRATION_EVENT",
+        "PORTAL_SPECIFIC",
         "PORTAL_SPECIFIC_EVENT",
     ] = FieldInfo(alias="metaType")
 

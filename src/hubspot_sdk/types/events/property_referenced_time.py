@@ -13,15 +13,15 @@ class PropertyReferencedTime(BaseModel):
     property: str
 
     reference_type: Literal[
-        "VALUE",
-        "UPDATED_AT",
         "ANNIVERSARY",
-        "VALUE_WITH_ZONE_SAME_LOCAL_CONVERSION",
         "ANNIVERSARY_WITH_ZONE_SAME_LOCAL_CONVERSION",
+        "UPDATED_AT",
+        "VALUE",
+        "VALUE_WITH_ZONE_SAME_LOCAL_CONVERSION",
     ] = FieldInfo(alias="referenceType")
 
     time_type: Literal["PROPERTY_REFERENCED"] = FieldInfo(alias="timeType")
 
-    timezone_source: Literal["CUSTOM", "USER", "PORTAL"] = FieldInfo(alias="timezoneSource")
+    timezone_source: Literal["CUSTOM", "PORTAL", "USER"] = FieldInfo(alias="timezoneSource")
 
     zone_id: str = FieldInfo(alias="zoneId")

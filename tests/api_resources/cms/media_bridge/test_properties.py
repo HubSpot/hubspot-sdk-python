@@ -44,7 +44,7 @@ class TestProperties:
             name="name",
             type="bool",
             calculation_formula="calculationFormula",
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             description="description",
             display_order=0,
             external_options=True,
@@ -524,7 +524,7 @@ class TestProperties:
             object_type="objectType",
             app_id=0,
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
         )
         assert_matches_type(BatchResponseProperty, property, path=["response"])
@@ -536,7 +536,7 @@ class TestProperties:
             object_type="objectType",
             app_id=0,
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
         )
 
@@ -552,7 +552,7 @@ class TestProperties:
             object_type="objectType",
             app_id=0,
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
@@ -571,7 +571,7 @@ class TestProperties:
                 object_type="",
                 app_id=0,
                 archived=True,
-                data_sensitivity="non_sensitive",
+                data_sensitivity="highly_sensitive",
                 inputs=[{"name": "name"}],
             )
 
@@ -607,7 +607,7 @@ class TestAsyncProperties:
             name="name",
             type="bool",
             calculation_formula="calculationFormula",
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             description="description",
             display_order=0,
             external_options=True,
@@ -1087,7 +1087,7 @@ class TestAsyncProperties:
             object_type="objectType",
             app_id=0,
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
         )
         assert_matches_type(BatchResponseProperty, property, path=["response"])
@@ -1099,7 +1099,7 @@ class TestAsyncProperties:
             object_type="objectType",
             app_id=0,
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
         )
 
@@ -1115,7 +1115,7 @@ class TestAsyncProperties:
             object_type="objectType",
             app_id=0,
             archived=True,
-            data_sensitivity="non_sensitive",
+            data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
@@ -1134,6 +1134,6 @@ class TestAsyncProperties:
                 object_type="",
                 app_id=0,
                 archived=True,
-                data_sensitivity="non_sensitive",
+                data_sensitivity="highly_sensitive",
                 inputs=[{"name": "name"}],
             )

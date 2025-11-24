@@ -126,7 +126,7 @@ class BatchResource(SyncAPIResource):
         object_type: str,
         *,
         archived: bool,
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"],
+        data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"],
         inputs: Iterable[PropertyName],
         locale: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -271,7 +271,7 @@ class AsyncBatchResource(AsyncAPIResource):
         object_type: str,
         *,
         archived: bool,
-        data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"],
+        data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"],
         inputs: Iterable[PropertyName],
         locale: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

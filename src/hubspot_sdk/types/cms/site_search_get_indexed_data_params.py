@@ -8,7 +8,7 @@ __all__ = ["SiteSearchGetIndexedDataParams"]
 
 
 class SiteSearchGetIndexedDataParams(TypedDict, total=False):
-    type: Literal["LANDING_PAGE", "BLOG_POST", "SITE_PAGE", "KNOWLEDGE_ARTICLE", "LISTING_PAGE"]
+    type: Literal["BLOG_POST", "KNOWLEDGE_ARTICLE", "LANDING_PAGE", "LISTING_PAGE", "SITE_PAGE"]
     """The type of document.
 
     Can be one of `SITE_PAGE`, `BLOG_POST`, or `KNOWLEDGE_ARTICLE`.

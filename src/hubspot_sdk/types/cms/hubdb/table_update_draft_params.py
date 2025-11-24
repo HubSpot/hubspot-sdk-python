@@ -47,3 +47,4 @@ class TableUpdateDraftParams(TypedDict, total=False):
     """Set this to `true` to populate foreign ID values in the result."""
 
     is_get_localized_schema: Annotated[bool, PropertyInfo(alias="isGetLocalizedSchema")]
+    """Indicates whether to retrieve the localized schema for the table."""

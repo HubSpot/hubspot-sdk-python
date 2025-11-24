@@ -17,7 +17,7 @@ class StatisticGetHistogramParams(TypedDict, total=False):
     end_timestamp: Annotated[str, PropertyInfo(alias="endTimestamp")]
     """The end timestamp of the time span, in ISO8601 representation."""
 
-    interval: Literal["YEAR", "QUARTER", "MONTH", "WEEK", "DAY", "HOUR", "QUARTER_HOUR", "MINUTE", "SECOND"]
+    interval: Literal["DAY", "HOUR", "MINUTE", "MONTH", "QUARTER", "QUARTER_HOUR", "SECOND", "WEEK", "YEAR"]
     """The interval to aggregate statistics for."""
 
     start_timestamp: Annotated[str, PropertyInfo(alias="startTimestamp")]

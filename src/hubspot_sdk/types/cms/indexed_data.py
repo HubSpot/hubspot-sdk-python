@@ -16,7 +16,7 @@ class IndexedData(BaseModel):
     fields: Dict[str, IndexedField]
     """The indexed fields in HubSpot."""
 
-    type: Literal["LANDING_PAGE", "BLOG_POST", "SITE_PAGE", "KNOWLEDGE_ARTICLE", "LISTING_PAGE"]
+    type: Literal["BLOG_POST", "KNOWLEDGE_ARTICLE", "LANDING_PAGE", "LISTING_PAGE", "SITE_PAGE"]
     """The type of document.
 
     Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or

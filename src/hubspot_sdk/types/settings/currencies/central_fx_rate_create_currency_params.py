@@ -193,3 +193,7 @@ class CentralFxRateCreateCurrencyParams(TypedDict, total=False):
             PropertyInfo(alias="currencyCode"),
         ]
     ]
+    """
+    The currency code being added to the HubSpot portal for use with central
+    exchange rates.
+    """

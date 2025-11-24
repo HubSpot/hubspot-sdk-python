@@ -18,7 +18,7 @@ class APIUsage(BaseModel):
     current_usage: int = FieldInfo(alias="currentUsage")
     """How many API calls an account has made for the current day."""
 
-    fetch_status: Literal["SUCCESS", "TIMEOUT", "FAILURE", "CACHED", "NOTFOUND"] = FieldInfo(alias="fetchStatus")
+    fetch_status: Literal["CACHED", "FAILURE", "NOTFOUND", "SUCCESS", "TIMEOUT"] = FieldInfo(alias="fetchStatus")
     """Status of fetching the information, including if the data came from the cache."""
 
     name: str

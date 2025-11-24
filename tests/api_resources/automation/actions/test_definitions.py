@@ -27,7 +27,7 @@ class TestDefinitions:
             functions=[
                 {
                     "function_source": "functionSource",
-                    "function_type": "PRE_ACTION_EXECUTION",
+                    "function_type": "POST_ACTION_EXECUTION",
                 }
             ],
             input_fields=[
@@ -43,7 +43,7 @@ class TestDefinitions:
                                 "value": "A",
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                     },
                 }
             ],
@@ -62,7 +62,7 @@ class TestDefinitions:
             functions=[
                 {
                     "function_source": "functionSource",
-                    "function_type": "PRE_ACTION_EXECUTION",
+                    "function_type": "POST_ACTION_EXECUTION",
                     "id": "id",
                 }
             ],
@@ -81,14 +81,14 @@ class TestDefinitions:
                                 "display_order": 1,
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                         "description": "description",
                         "external_options_reference_type": "externalOptionsReferenceType",
                         "field_type": "booleancheckbox",
                         "help_text": "helpText",
                         "label": "label",
                         "options_url": "optionsUrl",
-                        "referenced_object_type": "CONTACT",
+                        "referenced_object_type": "ABANDONED_CART",
                     },
                     "automation_field_type": "automationFieldType",
                     "supported_value_types": ["STATIC_VALUE"],
@@ -138,14 +138,14 @@ class TestDefinitions:
                                 "display_order": 1,
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                         "description": "description",
                         "external_options_reference_type": "externalOptionsReferenceType",
                         "field_type": "booleancheckbox",
                         "help_text": "helpText",
                         "label": "label",
                         "options_url": "optionsUrl",
-                        "referenced_object_type": "CONTACT",
+                        "referenced_object_type": "ABANDONED_CART",
                     }
                 }
             ],
@@ -161,7 +161,7 @@ class TestDefinitions:
             functions=[
                 {
                     "function_source": "functionSource",
-                    "function_type": "PRE_ACTION_EXECUTION",
+                    "function_type": "POST_ACTION_EXECUTION",
                 }
             ],
             input_fields=[
@@ -177,7 +177,7 @@ class TestDefinitions:
                                 "value": "A",
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                     },
                 }
             ],
@@ -200,7 +200,7 @@ class TestDefinitions:
             functions=[
                 {
                     "function_source": "functionSource",
-                    "function_type": "PRE_ACTION_EXECUTION",
+                    "function_type": "POST_ACTION_EXECUTION",
                 }
             ],
             input_fields=[
@@ -216,7 +216,7 @@ class TestDefinitions:
                                 "value": "A",
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                     },
                 }
             ],
@@ -276,14 +276,14 @@ class TestDefinitions:
                                 "display_order": 1,
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                         "description": "description",
                         "external_options_reference_type": "externalOptionsReferenceType",
                         "field_type": "booleancheckbox",
                         "help_text": "helpText",
                         "label": "label",
                         "options_url": "optionsUrl",
-                        "referenced_object_type": "CONTACT",
+                        "referenced_object_type": "ABANDONED_CART",
                     },
                     "automation_field_type": "automationFieldType",
                     "supported_value_types": ["STATIC_VALUE"],
@@ -318,14 +318,14 @@ class TestDefinitions:
                                 "display_order": 1,
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                         "description": "description",
                         "external_options_reference_type": "externalOptionsReferenceType",
                         "field_type": "booleancheckbox",
                         "help_text": "helpText",
                         "label": "label",
                         "options_url": "optionsUrl",
-                        "referenced_object_type": "CONTACT",
+                        "referenced_object_type": "ABANDONED_CART",
                     }
                 }
             ],
@@ -532,7 +532,7 @@ class TestAsyncDefinitions:
             functions=[
                 {
                     "function_source": "functionSource",
-                    "function_type": "PRE_ACTION_EXECUTION",
+                    "function_type": "POST_ACTION_EXECUTION",
                 }
             ],
             input_fields=[
@@ -548,7 +548,7 @@ class TestAsyncDefinitions:
                                 "value": "A",
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                     },
                 }
             ],
@@ -567,7 +567,7 @@ class TestAsyncDefinitions:
             functions=[
                 {
                     "function_source": "functionSource",
-                    "function_type": "PRE_ACTION_EXECUTION",
+                    "function_type": "POST_ACTION_EXECUTION",
                     "id": "id",
                 }
             ],
@@ -586,14 +586,14 @@ class TestAsyncDefinitions:
                                 "display_order": 1,
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                         "description": "description",
                         "external_options_reference_type": "externalOptionsReferenceType",
                         "field_type": "booleancheckbox",
                         "help_text": "helpText",
                         "label": "label",
                         "options_url": "optionsUrl",
-                        "referenced_object_type": "CONTACT",
+                        "referenced_object_type": "ABANDONED_CART",
                     },
                     "automation_field_type": "automationFieldType",
                     "supported_value_types": ["STATIC_VALUE"],
@@ -643,14 +643,14 @@ class TestAsyncDefinitions:
                                 "display_order": 1,
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                         "description": "description",
                         "external_options_reference_type": "externalOptionsReferenceType",
                         "field_type": "booleancheckbox",
                         "help_text": "helpText",
                         "label": "label",
                         "options_url": "optionsUrl",
-                        "referenced_object_type": "CONTACT",
+                        "referenced_object_type": "ABANDONED_CART",
                     }
                 }
             ],
@@ -666,7 +666,7 @@ class TestAsyncDefinitions:
             functions=[
                 {
                     "function_source": "functionSource",
-                    "function_type": "PRE_ACTION_EXECUTION",
+                    "function_type": "POST_ACTION_EXECUTION",
                 }
             ],
             input_fields=[
@@ -682,7 +682,7 @@ class TestAsyncDefinitions:
                                 "value": "A",
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                     },
                 }
             ],
@@ -705,7 +705,7 @@ class TestAsyncDefinitions:
             functions=[
                 {
                     "function_source": "functionSource",
-                    "function_type": "PRE_ACTION_EXECUTION",
+                    "function_type": "POST_ACTION_EXECUTION",
                 }
             ],
             input_fields=[
@@ -721,7 +721,7 @@ class TestAsyncDefinitions:
                                 "value": "A",
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                     },
                 }
             ],
@@ -781,14 +781,14 @@ class TestAsyncDefinitions:
                                 "display_order": 1,
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                         "description": "description",
                         "external_options_reference_type": "externalOptionsReferenceType",
                         "field_type": "booleancheckbox",
                         "help_text": "helpText",
                         "label": "label",
                         "options_url": "optionsUrl",
-                        "referenced_object_type": "CONTACT",
+                        "referenced_object_type": "ABANDONED_CART",
                     },
                     "automation_field_type": "automationFieldType",
                     "supported_value_types": ["STATIC_VALUE"],
@@ -823,14 +823,14 @@ class TestAsyncDefinitions:
                                 "display_order": 1,
                             }
                         ],
-                        "type": "string",
+                        "type": "bool",
                         "description": "description",
                         "external_options_reference_type": "externalOptionsReferenceType",
                         "field_type": "booleancheckbox",
                         "help_text": "helpText",
                         "label": "label",
                         "options_url": "optionsUrl",
-                        "referenced_object_type": "CONTACT",
+                        "referenced_object_type": "ABANDONED_CART",
                     }
                 }
             ],

@@ -25,7 +25,7 @@ class PublicListConversionInactivity(TypedDict, total=False):
 
     offset: Required[int]
 
-    time_unit: Required[Annotated[Literal["DAY", "WEEK", "MONTH"], PropertyInfo(alias="timeUnit")]]
+    time_unit: Required[Annotated[Literal["DAY", "MONTH", "WEEK"], PropertyInfo(alias="timeUnit")]]
 
 
 ListScheduleConversionParams: TypeAlias = Union[PublicListConversionDate, PublicListConversionInactivity]

@@ -19,11 +19,11 @@ class PublicExportResponse(BaseModel):
     """The timestamp when the export was created, in ISO 8601 format."""
 
     export_state: Literal[
-        "ENQUEUED", "PROCESSING", "DONE", "FAILED", "CANCELED", "CONFLICT", "DELETED", "DEFERRED", "PENDING_APPROVAL"
+        "CANCELED", "CONFLICT", "DEFERRED", "DELETED", "DONE", "ENQUEUED", "FAILED", "PENDING_APPROVAL", "PROCESSING"
     ] = FieldInfo(alias="exportState")
     """The current state of the export process."""
 
-    export_type: Literal["VIEW", "LIST"] = FieldInfo(alias="exportType")
+    export_type: Literal["LIST", "VIEW"] = FieldInfo(alias="exportType")
     """The type of export, which can be either VIEW or LIST."""
 
     object_properties: List[str] = FieldInfo(alias="objectProperties")

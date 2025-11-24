@@ -12,7 +12,7 @@ __all__ = ["MessageUpdateParams"]
 class MessageUpdateParams(TypedDict, total=False):
     channel_id: Required[Annotated[int, PropertyInfo(alias="channelId")]]
 
-    status_type: Required[Annotated[Literal["SENT", "FAILED", "READ"], PropertyInfo(alias="statusType")]]
+    status_type: Required[Annotated[Literal["FAILED", "READ", "SENT"], PropertyInfo(alias="statusType")]]
     """Valid status are SENT, FAILED, and READ"""
 
     error_message: Annotated[str, PropertyInfo(alias="errorMessage")]

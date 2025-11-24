@@ -11,7 +11,7 @@ __all__ = ["CardObjectTypeBodyParam"]
 
 
 class CardObjectTypeBodyParam(TypedDict, total=False):
-    name: Required[Literal["contacts", "deals", "companies", "tickets", "marketing_events"]]
+    name: Required[Literal["companies", "contacts", "deals", "marketing_events", "tickets"]]
     """A CRM object type where this card should be displayed."""
 
     properties_to_send: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="propertiesToSend")]]

@@ -14,4 +14,4 @@ class PublicListConversionInactivity(BaseModel):
 
     offset: int
 
-    time_unit: Literal["DAY", "WEEK", "MONTH"] = FieldInfo(alias="timeUnit")
+    time_unit: Literal["DAY", "MONTH", "WEEK"] = FieldInfo(alias="timeUnit")

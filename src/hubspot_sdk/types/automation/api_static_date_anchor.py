@@ -14,18 +14,18 @@ class APIStaticDateAnchor(BaseModel):
     day_of_month: int = FieldInfo(alias="dayOfMonth")
 
     month: Literal[
-        "JANUARY",
-        "FEBRUARY",
-        "MARCH",
         "APRIL",
-        "MAY",
-        "JUNE",
-        "JULY",
         "AUGUST",
-        "SEPTEMBER",
-        "OCTOBER",
-        "NOVEMBER",
         "DECEMBER",
+        "FEBRUARY",
+        "JANUARY",
+        "JULY",
+        "JUNE",
+        "MARCH",
+        "MAY",
+        "NOVEMBER",
+        "OCTOBER",
+        "SEPTEMBER",
     ]
 
     type: Literal["STATIC_DATE_ANCHOR"]

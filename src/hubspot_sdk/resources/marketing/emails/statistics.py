@@ -109,7 +109,7 @@ class StatisticsResource(SyncAPIResource):
         *,
         email_ids: Iterable[int] | Omit = omit,
         end_timestamp: str | Omit = omit,
-        interval: Literal["YEAR", "QUARTER", "MONTH", "WEEK", "DAY", "HOUR", "QUARTER_HOUR", "MINUTE", "SECOND"]
+        interval: Literal["DAY", "HOUR", "MINUTE", "MONTH", "QUARTER", "QUARTER_HOUR", "SECOND", "WEEK", "YEAR"]
         | Omit = omit,
         start_timestamp: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -244,7 +244,7 @@ class AsyncStatisticsResource(AsyncAPIResource):
         *,
         email_ids: Iterable[int] | Omit = omit,
         end_timestamp: str | Omit = omit,
-        interval: Literal["YEAR", "QUARTER", "MONTH", "WEEK", "DAY", "HOUR", "QUARTER_HOUR", "MINUTE", "SECOND"]
+        interval: Literal["DAY", "HOUR", "MINUTE", "MONTH", "QUARTER", "QUARTER_HOUR", "SECOND", "WEEK", "YEAR"]
         | Omit = omit,
         start_timestamp: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

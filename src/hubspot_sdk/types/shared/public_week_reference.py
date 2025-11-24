@@ -11,7 +11,7 @@ __all__ = ["PublicWeekReference"]
 
 
 class PublicWeekReference(BaseModel):
-    day_of_week: Literal["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"] = FieldInfo(
+    day_of_week: Literal["FRIDAY", "MONDAY", "SATURDAY", "SUNDAY", "THURSDAY", "TUESDAY", "WEDNESDAY"] = FieldInfo(
         alias="dayOfWeek"
     )
 

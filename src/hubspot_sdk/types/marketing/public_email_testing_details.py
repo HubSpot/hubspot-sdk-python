@@ -13,14 +13,14 @@ __all__ = ["PublicEmailTestingDetails"]
 class PublicEmailTestingDetails(BaseModel):
     ab_sample_size_default: Optional[
         Literal[
-            "master",
-            "variant",
+            "automated_loser_variant",
+            "automated_master",
+            "automated_variant",
             "loser_variant",
             "mab_master",
             "mab_variant",
-            "automated_master",
-            "automated_variant",
-            "automated_loser_variant",
+            "master",
+            "variant",
         ]
     ] = FieldInfo(alias="abSampleSizeDefault", default=None)
     """
@@ -30,14 +30,14 @@ class PublicEmailTestingDetails(BaseModel):
 
     ab_sampling_default: Optional[
         Literal[
-            "master",
-            "variant",
+            "automated_loser_variant",
+            "automated_master",
+            "automated_variant",
             "loser_variant",
             "mab_master",
             "mab_variant",
-            "automated_master",
-            "automated_variant",
-            "automated_loser_variant",
+            "master",
+            "variant",
         ]
     ] = FieldInfo(alias="abSamplingDefault", default=None)
     """
@@ -47,19 +47,19 @@ class PublicEmailTestingDetails(BaseModel):
 
     ab_status: Optional[
         Literal[
-            "master",
-            "variant",
+            "automated_loser_variant",
+            "automated_master",
+            "automated_variant",
             "loser_variant",
             "mab_master",
             "mab_variant",
-            "automated_master",
-            "automated_variant",
-            "automated_loser_variant",
+            "master",
+            "variant",
         ]
     ] = FieldInfo(alias="abStatus", default=None)
     """Status of the AB test."""
 
-    ab_success_metric: Optional[Literal["CLICKS_BY_OPENS", "CLICKS_BY_DELIVERED", "OPENS_BY_DELIVERED"]] = FieldInfo(
+    ab_success_metric: Optional[Literal["CLICKS_BY_DELIVERED", "CLICKS_BY_OPENS", "OPENS_BY_DELIVERED"]] = FieldInfo(
         alias="abSuccessMetric", default=None
     )
     """Metric to determine the version that will be sent to the remaining contacts."""

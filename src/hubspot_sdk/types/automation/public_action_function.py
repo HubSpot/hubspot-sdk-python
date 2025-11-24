@@ -14,7 +14,7 @@ class PublicActionFunction(BaseModel):
     function_source: str = FieldInfo(alias="functionSource")
 
     function_type: Literal[
-        "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION"
+        "POST_ACTION_EXECUTION", "POST_FETCH_OPTIONS", "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS"
     ] = FieldInfo(alias="functionType")
 
     id: Optional[str] = None

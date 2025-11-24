@@ -12,7 +12,7 @@ __all__ = ["PublicAuditLog"]
 
 
 class PublicAuditLog(BaseModel):
-    event: Literal["CREATED", "UPDATED", "PUBLISHED", "DELETED", "UNPUBLISHED", "RESTORE"]
+    event: Literal["CREATED", "DELETED", "PUBLISHED", "RESTORE", "UNPUBLISHED", "UPDATED"]
     """
     The type of event that took place (CREATED, UPDATED, PUBLISHED, DELETED,
     UNPUBLISHED).
@@ -30,24 +30,24 @@ class PublicAuditLog(BaseModel):
     object_type: Literal[
         "BLOG",
         "BLOG_POST",
-        "LANDING_PAGE",
-        "WEBSITE_PAGE",
-        "TEMPLATE",
-        "MODULE",
-        "GLOBAL_MODULE",
-        "SERVERLESS_FUNCTION",
-        "DOMAIN",
-        "URL_MAPPING",
-        "EMAIL",
         "CONTENT_SETTINGS",
-        "HUBDB_TABLE",
-        "KNOWLEDGE_BASE_ARTICLE",
-        "KNOWLEDGE_BASE",
-        "THEME",
         "CSS",
-        "JS",
         "CTA",
+        "DOMAIN",
+        "EMAIL",
         "FILE",
+        "GLOBAL_MODULE",
+        "HUBDB_TABLE",
+        "JS",
+        "KNOWLEDGE_BASE",
+        "KNOWLEDGE_BASE_ARTICLE",
+        "LANDING_PAGE",
+        "MODULE",
+        "SERVERLESS_FUNCTION",
+        "TEMPLATE",
+        "THEME",
+        "URL_MAPPING",
+        "WEBSITE_PAGE",
     ] = FieldInfo(alias="objectType")
     """The type of the object (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)"""
 
@@ -58,3 +58,9 @@ class PublicAuditLog(BaseModel):
     """The ID of the user who caused the event."""
 
     meta: Optional[object] = None
+    """Supplementary metadata associated with the audit log entry.
+
+    It provides additional context about the audited event (ex: rows deleted/updated
+    for a HubDB event, the specific fields that were changed for a Content Settings
+    event).
+    """

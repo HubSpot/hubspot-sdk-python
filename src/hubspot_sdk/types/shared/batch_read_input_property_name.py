@@ -14,6 +14,6 @@ __all__ = ["BatchReadInputPropertyName"]
 class BatchReadInputPropertyName(BaseModel):
     archived: bool
 
-    data_sensitivity: Literal["non_sensitive", "sensitive", "highly_sensitive"] = FieldInfo(alias="dataSensitivity")
+    data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] = FieldInfo(alias="dataSensitivity")
 
     inputs: List[PropertyName]

@@ -481,7 +481,7 @@ class ListsResource(SyncAPIResource):
         *,
         conversion_type: Literal["INACTIVITY"],
         offset: int,
-        time_unit: Literal["DAY", "WEEK", "MONTH"],
+        time_unit: Literal["DAY", "MONTH", "WEEK"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -515,7 +515,7 @@ class ListsResource(SyncAPIResource):
         month: int | Omit = omit,
         year: int | Omit = omit,
         offset: int | Omit = omit,
-        time_unit: Literal["DAY", "WEEK", "MONTH"] | Omit = omit,
+        time_unit: Literal["DAY", "MONTH", "WEEK"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1148,7 +1148,7 @@ class AsyncListsResource(AsyncAPIResource):
         *,
         conversion_type: Literal["INACTIVITY"],
         offset: int,
-        time_unit: Literal["DAY", "WEEK", "MONTH"],
+        time_unit: Literal["DAY", "MONTH", "WEEK"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1182,7 +1182,7 @@ class AsyncListsResource(AsyncAPIResource):
         month: int | Omit = omit,
         year: int | Omit = omit,
         offset: int | Omit = omit,
-        time_unit: Literal["DAY", "WEEK", "MONTH"] | Omit = omit,
+        time_unit: Literal["DAY", "MONTH", "WEEK"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

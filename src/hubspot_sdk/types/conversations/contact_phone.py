@@ -11,4 +11,4 @@ __all__ = ["ContactPhone"]
 class ContactPhone(BaseModel):
     phone: str
 
-    type: Optional[Literal["CELL", "MAIN", "HOME", "WORK"]] = None
+    type: Optional[Literal["CELL", "HOME", "MAIN", "WORK"]] = None

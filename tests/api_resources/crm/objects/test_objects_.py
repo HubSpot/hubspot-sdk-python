@@ -365,7 +365,7 @@ class TestObjects:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -387,7 +387,7 @@ class TestObjects:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -413,7 +413,7 @@ class TestObjects:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -439,7 +439,7 @@ class TestObjects:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -468,7 +468,7 @@ class TestObjects:
                     {
                         "filters": [
                             {
-                                "operator": "EQ",
+                                "operator": "BETWEEN",
                                 "property_name": "propertyName",
                             }
                         ]
@@ -827,7 +827,7 @@ class TestAsyncObjects:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -849,7 +849,7 @@ class TestAsyncObjects:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -875,7 +875,7 @@ class TestAsyncObjects:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -901,7 +901,7 @@ class TestAsyncObjects:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -930,7 +930,7 @@ class TestAsyncObjects:
                     {
                         "filters": [
                             {
-                                "operator": "EQ",
+                                "operator": "BETWEEN",
                                 "property_name": "propertyName",
                             }
                         ]

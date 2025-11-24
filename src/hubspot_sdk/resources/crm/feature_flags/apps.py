@@ -49,8 +49,8 @@ class AppsResource(SyncAPIResource):
         flag_name: str,
         *,
         app_id: int,
-        default_state: Literal["OFF", "ON", "ABSENT"],
-        override_state: Literal["OFF", "ON", "ABSENT"] | Omit = omit,
+        default_state: Literal["ABSENT", "OFF", "ON"],
+        override_state: Literal["ABSENT", "OFF", "ON"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -238,8 +238,8 @@ class AsyncAppsResource(AsyncAPIResource):
         flag_name: str,
         *,
         app_id: int,
-        default_state: Literal["OFF", "ON", "ABSENT"],
-        override_state: Literal["OFF", "ON", "ABSENT"] | Omit = omit,
+        default_state: Literal["ABSENT", "OFF", "ON"],
+        override_state: Literal["ABSENT", "OFF", "ON"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

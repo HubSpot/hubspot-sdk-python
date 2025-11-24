@@ -54,7 +54,7 @@ class EventsResource(SyncAPIResource):
     def create_attention_span_event(
         self,
         *,
-        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
+        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         occurred_timestamp: int,
         raw_data_map: Dict[str, int],
         session_id: str,
@@ -121,7 +121,7 @@ class EventsResource(SyncAPIResource):
     def create_media_played_event(
         self,
         *,
-        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
+        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         occurred_timestamp: int,
         session_id: str,
         state: Literal["STARTED", "VIEWED"],
@@ -186,7 +186,7 @@ class EventsResource(SyncAPIResource):
     def create_media_played_percent_event(
         self,
         *,
-        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
+        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         occurred_timestamp: int,
         played_percent: int,
         session_id: str,
@@ -271,7 +271,7 @@ class AsyncEventsResource(AsyncAPIResource):
     async def create_attention_span_event(
         self,
         *,
-        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
+        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         occurred_timestamp: int,
         raw_data_map: Dict[str, int],
         session_id: str,
@@ -338,7 +338,7 @@ class AsyncEventsResource(AsyncAPIResource):
     async def create_media_played_event(
         self,
         *,
-        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
+        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         occurred_timestamp: int,
         session_id: str,
         state: Literal["STARTED", "VIEWED"],
@@ -403,7 +403,7 @@ class AsyncEventsResource(AsyncAPIResource):
     async def create_media_played_percent_event(
         self,
         *,
-        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
+        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         occurred_timestamp: int,
         played_percent: int,
         session_id: str,

@@ -11,7 +11,7 @@ __all__ = ["LegalConsentOptionsLegitimateInterestParam"]
 
 
 class LegalConsentOptionsLegitimateInterestParam(TypedDict, total=False):
-    lawful_basis: Required[Annotated[Literal["lead", "client", "other"], PropertyInfo(alias="lawfulBasis")]]
+    lawful_basis: Required[Annotated[Literal["client", "lead", "other"], PropertyInfo(alias="lawfulBasis")]]
 
     privacy_text: Required[Annotated[str, PropertyInfo(alias="privacyText")]]
 

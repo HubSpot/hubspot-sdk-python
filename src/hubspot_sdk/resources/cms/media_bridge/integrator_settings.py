@@ -219,7 +219,7 @@ class IntegratorSettingsResource(SyncAPIResource):
 
     def get_object_definitions_by_media_type(
         self,
-        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
+        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         *,
         app_id: int,
         include_full_definition: bool | Omit = omit,
@@ -423,7 +423,7 @@ class IntegratorSettingsResource(SyncAPIResource):
         self,
         app_id: int,
         *,
-        event_type: Literal["ALL", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT", "ATTENTION_SPAN"],
+        event_type: Literal["ALL", "ATTENTION_SPAN", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT"],
         updated_at: int,
         show_in_reporting: bool | Omit = omit,
         show_in_timeline: bool | Omit = omit,
@@ -686,7 +686,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
 
     async def get_object_definitions_by_media_type(
         self,
-        media_type: Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"],
+        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         *,
         app_id: int,
         include_full_definition: bool | Omit = omit,
@@ -890,7 +890,7 @@ class AsyncIntegratorSettingsResource(AsyncAPIResource):
         self,
         app_id: int,
         *,
-        event_type: Literal["ALL", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT", "ATTENTION_SPAN"],
+        event_type: Literal["ALL", "ATTENTION_SPAN", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT"],
         updated_at: int,
         show_in_reporting: bool | Omit = omit,
         show_in_timeline: bool | Omit = omit,

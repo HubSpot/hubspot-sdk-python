@@ -164,6 +164,7 @@ Types:
 from hubspot_sdk.types.auth import (
     AccessTokenInfoResponse,
     RefreshTokenInfoResponse,
+    SignedAccessToken,
     TokenResponseIf,
 )
 ```
@@ -1006,93 +1007,6 @@ Methods:
 
 # Conversations
 
-Types:
-
-```python
-from hubspot_sdk.types.conversations import (
-    AgentActor,
-    BatchResponsePublicActor,
-    BatchResponsePublicActorWithErrors,
-    BotActor,
-    CollectionResponsePublicMessageForwardPaging,
-    CollectionResponsePublicThreadForwardPaging,
-    CollectionResponseWithTotalPublicChannelAccountForwardPaging,
-    CollectionResponseWithTotalPublicChannelForwardPaging,
-    CollectionResponseWithTotalPublicInboxForwardPaging,
-    ContactAddress,
-    ContactEmail,
-    ContactName,
-    ContactOrg,
-    ContactPhone,
-    ContactProfile,
-    ContactURL,
-    ConversationsPublicConversationsMessage,
-    EmailActor,
-    IntegratorActor,
-    LlmActor,
-    PublicActor,
-    PublicAssignmentMessage,
-    PublicChannel,
-    PublicChannelAccount,
-    PublicClient,
-    PublicComment,
-    PublicCommentEgg,
-    PublicContact,
-    PublicConversationsMessageEgg,
-    PublicDeliveryIdentifier,
-    PublicFile,
-    PublicFileEgg,
-    PublicInbox,
-    PublicLocation,
-    PublicMessage,
-    PublicMessageContent,
-    PublicMessageEgg,
-    PublicMessageFailureDetails,
-    PublicMessageHeader,
-    PublicMessageStatus,
-    PublicQuickReplies,
-    PublicQuickRepliesEgg,
-    PublicRecipient,
-    PublicRecipientEgg,
-    PublicSender,
-    PublicSocialMediaEgg,
-    PublicSocialMetadataAttachment,
-    PublicThread,
-    PublicThreadAssociations,
-    PublicThreadInboxChange,
-    PublicThreadStatusChange,
-    PublicThreadUpdateRequest,
-    PublicUnsupportedContent,
-    PublicWelcomeMessage,
-    PublicWhatsAppTemplateMetadata,
-    QuickReply,
-    SocialMetadata,
-    SystemActor,
-    VisitorActor,
-)
-```
-
-## Actors
-
-Methods:
-
-- <code title="post /conversations/v3/conversations/actors/batch/read">client.conversations.actors.<a href="./src/hubspot_sdk/resources/conversations/actors.py">batch_read</a>(\*\*<a href="src/hubspot_sdk/types/conversations/actor_batch_read_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/batch_response_public_actor.py">BatchResponsePublicActor</a></code>
-- <code title="get /conversations/v3/conversations/actors/{actorId}">client.conversations.actors.<a href="./src/hubspot_sdk/resources/conversations/actors.py">get</a>(actor_id, \*\*<a href="src/hubspot_sdk/types/conversations/actor_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_actor.py">PublicActor</a></code>
-
-## ChannelAccounts
-
-Methods:
-
-- <code title="get /conversations/v3/conversations/channel-accounts">client.conversations.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/channel_accounts.py">list</a>(\*\*<a href="src/hubspot_sdk/types/conversations/channel_account_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_account.py">SyncPage[PublicChannelAccount]</a></code>
-- <code title="get /conversations/v3/conversations/channel-accounts/{channelAccountId}">client.conversations.channel_accounts.<a href="./src/hubspot_sdk/resources/conversations/channel_accounts.py">get</a>(channel_account_id, \*\*<a href="src/hubspot_sdk/types/conversations/channel_account_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_channel_account.py">PublicChannelAccount</a></code>
-
-## Channels
-
-Methods:
-
-- <code title="get /conversations/v3/conversations/channels">client.conversations.channels.<a href="./src/hubspot_sdk/resources/conversations/channels.py">list</a>(\*\*<a href="src/hubspot_sdk/types/conversations/channel_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_channel.py">SyncPage[PublicChannel]</a></code>
-- <code title="get /conversations/v3/conversations/channels/{channelId}">client.conversations.channels.<a href="./src/hubspot_sdk/resources/conversations/channels.py">get</a>(channel_id) -> <a href="./src/hubspot_sdk/types/conversations/public_channel.py">PublicChannel</a></code>
-
 ## CustomChannels
 
 Types:
@@ -1101,13 +1015,22 @@ Types:
 from hubspot_sdk.types.conversations import (
     ChannelIntegrationMessageEgg,
     ChannelIntegrationParticipant,
+    CollectionResponseWithTotalPublicChannelAccountForwardPaging,
     CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging,
+    ContactAddress,
     ContactAttachment,
+    ContactEmail,
+    ContactName,
+    ContactOrg,
+    ContactPhone,
+    ContactProfile,
+    ContactURL,
     FileAttachment,
     LocationAttachment,
     MessageHeaderAttachment,
     PreResolvedContact,
     PreResolvedContacts,
+    PublicChannelAccount,
     PublicChannelAccountEgg,
     PublicChannelAccountStagingToken,
     PublicChannelAccountStagingTokenUpdateRequest,
@@ -1116,8 +1039,24 @@ from hubspot_sdk.types.conversations import (
     PublicChannelIntegrationChannelCreate,
     PublicChannelIntegrationChannelPatch,
     PublicChannelIntegrationMessageUpdateRequest,
+    PublicClient,
+    PublicContact,
     PublicConversationsMessage,
+    PublicDeliveryIdentifier,
+    PublicFile,
+    PublicLocation,
+    PublicMessageFailureDetails,
+    PublicMessageHeader,
+    PublicMessageStatus,
+    PublicQuickReplies,
+    PublicRecipient,
+    PublicSender,
+    PublicSocialMetadataAttachment,
+    PublicUnsupportedContent,
+    PublicWhatsAppTemplateMetadata,
     QuickRepliesAttachment,
+    QuickReply,
+    SocialMetadata,
     SocialMetadataIntegrationAttachment,
     UnsupportedContentAttachment,
 )
@@ -1150,34 +1089,9 @@ Methods:
 
 Methods:
 
-- <code title="post /conversations/v3/custom-channels/{channelId}/messages">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">create</a>(channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/message_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_conversations_message.py">ConversationsPublicConversationsMessage</a></code>
-- <code title="patch /conversations/v3/custom-channels/{channelId}/messages/{messageId}">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">update</a>(message_id, \*, channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/message_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_conversations_message.py">ConversationsPublicConversationsMessage</a></code>
-- <code title="get /conversations/v3/custom-channels/{channelId}/messages/{messageId}">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">get</a>(message_id, \*, channel_id) -> <a href="./src/hubspot_sdk/types/conversations/conversations_public_conversations_message.py">ConversationsPublicConversationsMessage</a></code>
-
-## Inboxes
-
-Methods:
-
-- <code title="get /conversations/v3/conversations/inboxes">client.conversations.inboxes.<a href="./src/hubspot_sdk/resources/conversations/inboxes.py">list</a>(\*\*<a href="src/hubspot_sdk/types/conversations/inbox_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_inbox.py">SyncPage[PublicInbox]</a></code>
-- <code title="get /conversations/v3/conversations/inboxes/{inboxId}">client.conversations.inboxes.<a href="./src/hubspot_sdk/resources/conversations/inboxes.py">get</a>(inbox_id, \*\*<a href="src/hubspot_sdk/types/conversations/inbox_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_inbox.py">PublicInbox</a></code>
-
-## Messages
-
-Methods:
-
-- <code title="post /conversations/v3/conversations/threads/{threadId}/messages">client.conversations.messages.<a href="./src/hubspot_sdk/resources/conversations/messages.py">create</a>(thread_id) -> <a href="./src/hubspot_sdk/types/conversations/public_message.py">PublicMessage</a></code>
-- <code title="get /conversations/v3/conversations/threads/{threadId}/messages">client.conversations.messages.<a href="./src/hubspot_sdk/resources/conversations/messages.py">list</a>(thread_id, \*\*<a href="src/hubspot_sdk/types/conversations/message_list_params.py">params</a>) -> SyncPage[Result]</code>
-- <code title="get /conversations/v3/conversations/threads/{threadId}/messages/{messageId}">client.conversations.messages.<a href="./src/hubspot_sdk/resources/conversations/messages.py">get</a>(message_id, \*, thread_id, \*\*<a href="src/hubspot_sdk/types/conversations/message_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_message.py">PublicMessage</a></code>
-- <code title="get /conversations/v3/conversations/threads/{threadId}/messages/{messageId}/original-content">client.conversations.messages.<a href="./src/hubspot_sdk/resources/conversations/messages.py">get_original_content</a>(message_id, \*, thread_id, \*\*<a href="src/hubspot_sdk/types/conversations/message_get_original_content_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_message_content.py">PublicMessageContent</a></code>
-
-## Threads
-
-Methods:
-
-- <code title="patch /conversations/v3/conversations/threads/{threadId}">client.conversations.threads.<a href="./src/hubspot_sdk/resources/conversations/threads.py">update</a>(thread_id, \*\*<a href="src/hubspot_sdk/types/conversations/thread_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_thread.py">PublicThread</a></code>
-- <code title="get /conversations/v3/conversations/threads">client.conversations.threads.<a href="./src/hubspot_sdk/resources/conversations/threads.py">list</a>(\*\*<a href="src/hubspot_sdk/types/conversations/thread_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_thread.py">SyncPage[PublicThread]</a></code>
-- <code title="delete /conversations/v3/conversations/threads/{threadId}">client.conversations.threads.<a href="./src/hubspot_sdk/resources/conversations/threads.py">delete</a>(thread_id) -> None</code>
-- <code title="get /conversations/v3/conversations/threads/{threadId}">client.conversations.threads.<a href="./src/hubspot_sdk/resources/conversations/threads.py">get</a>(thread_id, \*\*<a href="src/hubspot_sdk/types/conversations/thread_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_thread.py">PublicThread</a></code>
+- <code title="post /conversations/v3/custom-channels/{channelId}/messages">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">create</a>(channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/message_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_conversations_message.py">PublicConversationsMessage</a></code>
+- <code title="patch /conversations/v3/custom-channels/{channelId}/messages/{messageId}">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">update</a>(message_id, \*, channel_id, \*\*<a href="src/hubspot_sdk/types/conversations/custom_channels/message_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/conversations/public_conversations_message.py">PublicConversationsMessage</a></code>
+- <code title="get /conversations/v3/custom-channels/{channelId}/messages/{messageId}">client.conversations.custom_channels.messages.<a href="./src/hubspot_sdk/resources/conversations/custom_channels/messages.py">get</a>(message_id, \*, channel_id) -> <a href="./src/hubspot_sdk/types/conversations/public_conversations_message.py">PublicConversationsMessage</a></code>
 
 ## VisitorIdentification
 
@@ -1346,10 +1260,6 @@ from hubspot_sdk.types.crm.associations import (
 )
 ```
 
-Methods:
-
-- <code title="post /crm/v4/objects/{objectType}/merge">client.crm.associations.v4.<a href="./src/hubspot_sdk/resources/crm/associations/v4/v4.py">merge</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4_merge_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
-
 #### Batch
 
 Methods:
@@ -1359,7 +1269,6 @@ Methods:
 - <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/associate/default">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">create_default</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_create_default_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_public_default_association.py">BatchResponsePublicDefaultAssociation</a></code>
 - <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/labels/archive">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">delete_labels</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_delete_labels_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_void.py">BatchResponseVoid</a></code>
 - <code title="post /crm/v4/associations/{fromObjectType}/{toObjectType}/batch/read">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">get</a>(to_object_type, \*, from_object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/associations/batch_response_public_association_multi_with_label.py">BatchResponsePublicAssociationMultiWithLabel</a></code>
-- <code title="post /crm/v4/objects/{objectType}/batch/upsert">client.crm.associations.v4.batch.<a href="./src/hubspot_sdk/resources/crm/associations/v4/batch.py">upsert</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/associations/v4/batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
 
 #### Report
 

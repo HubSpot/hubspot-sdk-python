@@ -12,6 +12,6 @@ __all__ = ["TimeOffset"]
 class TimeOffset(BaseModel):
     amount: int
 
-    offset_direction: Literal["PAST", "FUTURE"] = FieldInfo(alias="offsetDirection")
+    offset_direction: Literal["FUTURE", "PAST"] = FieldInfo(alias="offsetDirection")
 
-    time_unit: Literal["WEEKS", "DAYS", "HOURS", "MINUTES"] = FieldInfo(alias="timeUnit")
+    time_unit: Literal["DAYS", "HOURS", "MINUTES", "WEEKS"] = FieldInfo(alias="timeUnit")

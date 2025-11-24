@@ -10,4 +10,4 @@ __all__ = ["ContactPhoneParam"]
 class ContactPhoneParam(TypedDict, total=False):
     phone: Required[str]
 
-    type: Literal["CELL", "MAIN", "HOME", "WORK"]
+    type: Literal["CELL", "HOME", "MAIN", "WORK"]

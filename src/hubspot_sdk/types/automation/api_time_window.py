@@ -12,7 +12,7 @@ __all__ = ["APITimeWindow"]
 
 
 class APITimeWindow(BaseModel):
-    day: Literal["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+    day: Literal["FRIDAY", "MONDAY", "SATURDAY", "SUNDAY", "THURSDAY", "TUESDAY", "WEDNESDAY"]
 
     end_time: Optional[APITimeOfDay] = FieldInfo(alias="endTime", default=None)
 

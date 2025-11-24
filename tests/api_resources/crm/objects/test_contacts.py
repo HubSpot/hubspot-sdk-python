@@ -373,7 +373,7 @@ class TestContacts:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -394,7 +394,7 @@ class TestContacts:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -419,7 +419,7 @@ class TestContacts:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -444,7 +444,7 @@ class TestContacts:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -818,7 +818,7 @@ class TestAsyncContacts:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -839,7 +839,7 @@ class TestAsyncContacts:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -864,7 +864,7 @@ class TestAsyncContacts:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -889,7 +889,7 @@ class TestAsyncContacts:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]

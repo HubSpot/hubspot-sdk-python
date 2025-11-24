@@ -15,7 +15,7 @@ class DateTimePropertyOperation(BaseModel):
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["IS_BEFORE", "IS_AFTER", "IS_EQUAL_TO", "IS_BEFORE_DATE", "IS_AFTER_DATE"]
+    operator: Literal["IS_AFTER", "IS_AFTER_DATE", "IS_BEFORE", "IS_BEFORE_DATE", "IS_EQUAL_TO"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 

@@ -35,7 +35,7 @@ class IndexedTimePoint(BaseModel):
 
     time_type: Literal["INDEXED"] = FieldInfo(alias="timeType")
 
-    timezone_source: Literal["CUSTOM", "USER", "PORTAL"] = FieldInfo(alias="timezoneSource")
+    timezone_source: Literal["CUSTOM", "PORTAL", "USER"] = FieldInfo(alias="timezoneSource")
 
     zone_id: str = FieldInfo(alias="zoneId")
 

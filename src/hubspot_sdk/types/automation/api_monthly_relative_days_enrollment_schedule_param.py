@@ -12,7 +12,7 @@ __all__ = ["APIMonthlyRelativeDaysEnrollmentScheduleParam"]
 
 class APIMonthlyRelativeDaysEnrollmentScheduleParam(TypedDict, total=False):
     monthly_relative_days: Required[
-        Annotated[Literal["LAST_DAY_OF_MONTH", "FIRST_MONDAY_OF_MONTH"], PropertyInfo(alias="monthlyRelativeDays")]
+        Annotated[Literal["FIRST_MONDAY_OF_MONTH", "LAST_DAY_OF_MONTH"], PropertyInfo(alias="monthlyRelativeDays")]
     ]
 
     time_of_day: Required[Annotated[APITimeOfDayParam, PropertyInfo(alias="timeOfDay")]]

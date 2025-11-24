@@ -11,7 +11,7 @@ __all__ = ["APITimeWindowParam"]
 
 
 class APITimeWindowParam(TypedDict, total=False):
-    day: Required[Literal["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]]
+    day: Required[Literal["FRIDAY", "MONDAY", "SATURDAY", "SUNDAY", "THURSDAY", "TUESDAY", "WEDNESDAY"]]
 
     end_time: Annotated[APITimeOfDayParam, PropertyInfo(alias="endTime")]
 

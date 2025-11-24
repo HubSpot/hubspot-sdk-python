@@ -209,7 +209,7 @@ class TestIntegratorSettings:
     @parametrize
     def test_method_get_object_definitions_by_media_type(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.get_object_definitions_by_media_type(
-            media_type="VIDEO",
+            media_type="AUDIO",
             app_id=0,
         )
         assert_matches_type(ObjectDefinitionResponse, integrator_setting, path=["response"])
@@ -218,7 +218,7 @@ class TestIntegratorSettings:
     @parametrize
     def test_method_get_object_definitions_by_media_type_with_all_params(self, client: Hubspot) -> None:
         integrator_setting = client.cms.media_bridge.integrator_settings.get_object_definitions_by_media_type(
-            media_type="VIDEO",
+            media_type="AUDIO",
             app_id=0,
             include_full_definition=True,
         )
@@ -228,7 +228,7 @@ class TestIntegratorSettings:
     @parametrize
     def test_raw_response_get_object_definitions_by_media_type(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.integrator_settings.with_raw_response.get_object_definitions_by_media_type(
-            media_type="VIDEO",
+            media_type="AUDIO",
             app_id=0,
         )
 
@@ -241,7 +241,7 @@ class TestIntegratorSettings:
     @parametrize
     def test_streaming_response_get_object_definitions_by_media_type(self, client: Hubspot) -> None:
         with client.cms.media_bridge.integrator_settings.with_streaming_response.get_object_definitions_by_media_type(
-            media_type="VIDEO",
+            media_type="AUDIO",
             app_id=0,
         ) as response:
             assert not response.is_closed
@@ -768,7 +768,7 @@ class TestAsyncIntegratorSettings:
     async def test_method_get_object_definitions_by_media_type(self, async_client: AsyncHubspot) -> None:
         integrator_setting = (
             await async_client.cms.media_bridge.integrator_settings.get_object_definitions_by_media_type(
-                media_type="VIDEO",
+                media_type="AUDIO",
                 app_id=0,
             )
         )
@@ -781,7 +781,7 @@ class TestAsyncIntegratorSettings:
     ) -> None:
         integrator_setting = (
             await async_client.cms.media_bridge.integrator_settings.get_object_definitions_by_media_type(
-                media_type="VIDEO",
+                media_type="AUDIO",
                 app_id=0,
                 include_full_definition=True,
             )
@@ -792,7 +792,7 @@ class TestAsyncIntegratorSettings:
     @parametrize
     async def test_raw_response_get_object_definitions_by_media_type(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.integrator_settings.with_raw_response.get_object_definitions_by_media_type(
-            media_type="VIDEO",
+            media_type="AUDIO",
             app_id=0,
         )
 
@@ -805,7 +805,7 @@ class TestAsyncIntegratorSettings:
     @parametrize
     async def test_streaming_response_get_object_definitions_by_media_type(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.integrator_settings.with_streaming_response.get_object_definitions_by_media_type(
-            media_type="VIDEO",
+            media_type="AUDIO",
             app_id=0,
         ) as response:
             assert not response.is_closed

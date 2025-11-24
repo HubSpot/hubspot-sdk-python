@@ -193,6 +193,10 @@ class CurrencyUpdateVisibilityParams(TypedDict, total=False):
             PropertyInfo(alias="fromCurrencyCode"),
         ]
     ]
+    """
+    This represents the three-letter currency code (such as USD for US Dollar) of
+    the currency you want to convert from.
+    """
 
     to_currency_code: Required[
         Annotated[
@@ -377,5 +381,13 @@ class CurrencyUpdateVisibilityParams(TypedDict, total=False):
             PropertyInfo(alias="toCurrencyCode"),
         ]
     ]
+    """
+    This represents the three-letter currency code (such as USD for US Dollar) of
+    the currency you want to convert to.
+    """
 
     visible_in_ui: Required[Annotated[bool, PropertyInfo(alias="visibleInUI")]]
+    """This indicates if the currency pair is shown in the MultiCurrency settings page.
+
+    Setting this to false will remove the currency pair from the settings page.
+    """

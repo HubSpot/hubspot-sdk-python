@@ -27,7 +27,7 @@ class TestPosts:
     def test_method_create(self, client: Hubspot) -> None:
         post = client.cms.blogs.posts.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -204,7 +204,7 @@ class TestPosts:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.blogs.posts.with_raw_response.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -385,7 +385,7 @@ class TestPosts:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.blogs.posts.with_streaming_response.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -569,7 +569,7 @@ class TestPosts:
         post = client.cms.blogs.posts.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -747,7 +747,7 @@ class TestPosts:
         post = client.cms.blogs.posts.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -941,7 +941,7 @@ class TestPosts:
         response = client.cms.blogs.posts.with_raw_response.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -1123,7 +1123,7 @@ class TestPosts:
         with client.cms.blogs.posts.with_streaming_response.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -1308,7 +1308,7 @@ class TestPosts:
             client.cms.blogs.posts.with_raw_response.update(
                 object_id="",
                 id="id",
-                ab_status="master",
+                ab_status="automated_loser_variant",
                 ab_test_id="abTestId",
                 archived_at=0,
                 archived_in_dashboard=True,
@@ -2205,7 +2205,7 @@ class TestPosts:
         post = client.cms.blogs.posts.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -2383,7 +2383,7 @@ class TestPosts:
         response = client.cms.blogs.posts.with_raw_response.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -2565,7 +2565,7 @@ class TestPosts:
         with client.cms.blogs.posts.with_streaming_response.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -2750,7 +2750,7 @@ class TestPosts:
             client.cms.blogs.posts.with_raw_response.update_draft(
                 object_id="",
                 id="id",
-                ab_status="master",
+                ab_status="automated_loser_variant",
                 ab_test_id="abTestId",
                 archived_at=0,
                 archived_in_dashboard=True,
@@ -2969,7 +2969,7 @@ class TestAsyncPosts:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         post = await async_client.cms.blogs.posts.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -3146,7 +3146,7 @@ class TestAsyncPosts:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.blogs.posts.with_raw_response.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -3327,7 +3327,7 @@ class TestAsyncPosts:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.blogs.posts.with_streaming_response.create(
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -3511,7 +3511,7 @@ class TestAsyncPosts:
         post = await async_client.cms.blogs.posts.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -3689,7 +3689,7 @@ class TestAsyncPosts:
         post = await async_client.cms.blogs.posts.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -3883,7 +3883,7 @@ class TestAsyncPosts:
         response = await async_client.cms.blogs.posts.with_raw_response.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -4065,7 +4065,7 @@ class TestAsyncPosts:
         async with async_client.cms.blogs.posts.with_streaming_response.update(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -4250,7 +4250,7 @@ class TestAsyncPosts:
             await async_client.cms.blogs.posts.with_raw_response.update(
                 object_id="",
                 id="id",
-                ab_status="master",
+                ab_status="automated_loser_variant",
                 ab_test_id="abTestId",
                 archived_at=0,
                 archived_in_dashboard=True,
@@ -5147,7 +5147,7 @@ class TestAsyncPosts:
         post = await async_client.cms.blogs.posts.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -5325,7 +5325,7 @@ class TestAsyncPosts:
         response = await async_client.cms.blogs.posts.with_raw_response.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -5507,7 +5507,7 @@ class TestAsyncPosts:
         async with async_client.cms.blogs.posts.with_streaming_response.update_draft(
             object_id="objectId",
             id="id",
-            ab_status="master",
+            ab_status="automated_loser_variant",
             ab_test_id="abTestId",
             archived_at=0,
             archived_in_dashboard=True,
@@ -5692,7 +5692,7 @@ class TestAsyncPosts:
             await async_client.cms.blogs.posts.with_raw_response.update_draft(
                 object_id="",
                 id="id",
-                ab_status="master",
+                ab_status="automated_loser_variant",
                 ab_test_id="abTestId",
                 archived_at=0,
                 archived_in_dashboard=True,

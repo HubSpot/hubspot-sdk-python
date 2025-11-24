@@ -32,7 +32,7 @@ class FieldGroupParam(TypedDict, total=False):
 
     group_type: Required[Annotated[Literal["default_group", "progressive", "queued"], PropertyInfo(alias="groupType")]]
 
-    rich_text_type: Required[Annotated[Literal["text", "image"], PropertyInfo(alias="richTextType")]]
+    rich_text_type: Required[Annotated[Literal["image", "text"], PropertyInfo(alias="richTextType")]]
     """The type of rich text included. The default value is text."""
 
     rich_text: Annotated[str, PropertyInfo(alias="richText")]

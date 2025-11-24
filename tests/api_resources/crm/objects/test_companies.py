@@ -330,7 +330,7 @@ class TestCompanies:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -351,7 +351,7 @@ class TestCompanies:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -376,7 +376,7 @@ class TestCompanies:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -401,7 +401,7 @@ class TestCompanies:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -732,7 +732,7 @@ class TestAsyncCompanies:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -753,7 +753,7 @@ class TestAsyncCompanies:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -778,7 +778,7 @@ class TestAsyncCompanies:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -803,7 +803,7 @@ class TestAsyncCompanies:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]

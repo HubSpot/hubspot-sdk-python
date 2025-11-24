@@ -3,6 +3,7 @@
 from typing import List, Optional
 
 from ..._models import BaseModel
+from .signed_access_token import SignedAccessToken
 
 __all__ = ["AccessTokenInfoResponse"]
 
@@ -23,5 +24,9 @@ class AccessTokenInfoResponse(BaseModel):
     user_id: int
 
     hub_domain: Optional[str] = None
+
+    is_private_distribution: Optional[bool] = None
+
+    signed_access_token: Optional[SignedAccessToken] = None
 
     user: Optional[str] = None

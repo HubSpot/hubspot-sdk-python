@@ -193,3 +193,4 @@ class CurrencyUpdateCompanyCurrencyParams(TypedDict, total=False):
             PropertyInfo(alias="currencyCode"),
         ]
     ]
+    """The three-letter code representing a specific currency (ex. USD)."""

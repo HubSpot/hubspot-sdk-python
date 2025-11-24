@@ -17,7 +17,7 @@ class DatePoint(BaseModel):
 
     time_type: Literal["DATE"] = FieldInfo(alias="timeType")
 
-    timezone_source: Literal["CUSTOM", "USER", "PORTAL"] = FieldInfo(alias="timezoneSource")
+    timezone_source: Literal["CUSTOM", "PORTAL", "USER"] = FieldInfo(alias="timezoneSource")
 
     year: int
 

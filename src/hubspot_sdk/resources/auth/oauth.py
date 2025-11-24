@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing_extensions import Literal
 
 import httpx
@@ -48,12 +49,16 @@ class OAuthResource(SyncAPIResource):
     def create_access_token(
         self,
         *,
+        query_client_secret: str | Omit = omit,
+        query_refresh_token: str | Omit = omit,
         client_id: str | Omit = omit,
-        client_secret: str | Omit = omit,
+        body_client_secret: str | Omit = omit,
         code: str | Omit = omit,
-        grant_type: Literal["authorization_code", "refresh_token"] | Omit = omit,
+        code_verifier: str | Omit = omit,
+        grant_type: Literal["authorization_code", "client_credentials", "refresh_token"] | Omit = omit,
         redirect_uri: str | Omit = omit,
-        refresh_token: str | Omit = omit,
+        body_refresh_token: str | Omit = omit,
+        scope: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -90,20 +95,33 @@ class OAuthResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "client_id": client_id,
-                    "client_secret": client_secret,
+                    "body_client_secret": body_client_secret,
                     "code": code,
+                    "code_verifier": code_verifier,
                     "grant_type": grant_type,
                     "redirect_uri": redirect_uri,
-                    "refresh_token": refresh_token,
+                    "body_refresh_token": body_refresh_token,
+                    "scope": scope,
                 },
                 oauth_create_access_token_params.OAuthCreateAccessTokenParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "query_client_secret": query_client_secret,
+                        "query_refresh_token": query_refresh_token,
+                    },
+                    oauth_create_access_token_params.OAuthCreateAccessTokenParams,
+                ),
             ),
             cast_to=TokenResponseIf,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def delete_refresh_token(
         self,
         token: str,
@@ -143,6 +161,7 @@ class OAuthResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def get_access_token(
         self,
         token: str,
@@ -181,6 +200,7 @@ class OAuthResource(SyncAPIResource):
             cast_to=AccessTokenInfoResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def get_refresh_token(
         self,
         token: str,
@@ -241,12 +261,16 @@ class AsyncOAuthResource(AsyncAPIResource):
     async def create_access_token(
         self,
         *,
+        query_client_secret: str | Omit = omit,
+        query_refresh_token: str | Omit = omit,
         client_id: str | Omit = omit,
-        client_secret: str | Omit = omit,
+        body_client_secret: str | Omit = omit,
         code: str | Omit = omit,
-        grant_type: Literal["authorization_code", "refresh_token"] | Omit = omit,
+        code_verifier: str | Omit = omit,
+        grant_type: Literal["authorization_code", "client_credentials", "refresh_token"] | Omit = omit,
         redirect_uri: str | Omit = omit,
-        refresh_token: str | Omit = omit,
+        body_refresh_token: str | Omit = omit,
+        scope: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -283,20 +307,33 @@ class AsyncOAuthResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "client_id": client_id,
-                    "client_secret": client_secret,
+                    "body_client_secret": body_client_secret,
                     "code": code,
+                    "code_verifier": code_verifier,
                     "grant_type": grant_type,
                     "redirect_uri": redirect_uri,
-                    "refresh_token": refresh_token,
+                    "body_refresh_token": body_refresh_token,
+                    "scope": scope,
                 },
                 oauth_create_access_token_params.OAuthCreateAccessTokenParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "query_client_secret": query_client_secret,
+                        "query_refresh_token": query_refresh_token,
+                    },
+                    oauth_create_access_token_params.OAuthCreateAccessTokenParams,
+                ),
             ),
             cast_to=TokenResponseIf,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def delete_refresh_token(
         self,
         token: str,
@@ -336,6 +373,7 @@ class AsyncOAuthResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def get_access_token(
         self,
         token: str,
@@ -374,6 +412,7 @@ class AsyncOAuthResource(AsyncAPIResource):
             cast_to=AccessTokenInfoResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def get_refresh_token(
         self,
         token: str,
@@ -418,14 +457,20 @@ class OAuthResourceWithRawResponse:
         self.create_access_token = to_raw_response_wrapper(
             oauth.create_access_token,
         )
-        self.delete_refresh_token = to_raw_response_wrapper(
-            oauth.delete_refresh_token,
+        self.delete_refresh_token = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                oauth.delete_refresh_token,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.get_access_token = to_raw_response_wrapper(
-            oauth.get_access_token,
+        self.get_access_token = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                oauth.get_access_token,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.get_refresh_token = to_raw_response_wrapper(
-            oauth.get_refresh_token,
+        self.get_refresh_token = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                oauth.get_refresh_token,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -436,14 +481,20 @@ class AsyncOAuthResourceWithRawResponse:
         self.create_access_token = async_to_raw_response_wrapper(
             oauth.create_access_token,
         )
-        self.delete_refresh_token = async_to_raw_response_wrapper(
-            oauth.delete_refresh_token,
+        self.delete_refresh_token = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                oauth.delete_refresh_token,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.get_access_token = async_to_raw_response_wrapper(
-            oauth.get_access_token,
+        self.get_access_token = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                oauth.get_access_token,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.get_refresh_token = async_to_raw_response_wrapper(
-            oauth.get_refresh_token,
+        self.get_refresh_token = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                oauth.get_refresh_token,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -454,14 +505,20 @@ class OAuthResourceWithStreamingResponse:
         self.create_access_token = to_streamed_response_wrapper(
             oauth.create_access_token,
         )
-        self.delete_refresh_token = to_streamed_response_wrapper(
-            oauth.delete_refresh_token,
+        self.delete_refresh_token = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                oauth.delete_refresh_token,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.get_access_token = to_streamed_response_wrapper(
-            oauth.get_access_token,
+        self.get_access_token = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                oauth.get_access_token,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.get_refresh_token = to_streamed_response_wrapper(
-            oauth.get_refresh_token,
+        self.get_refresh_token = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                oauth.get_refresh_token,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -472,12 +529,18 @@ class AsyncOAuthResourceWithStreamingResponse:
         self.create_access_token = async_to_streamed_response_wrapper(
             oauth.create_access_token,
         )
-        self.delete_refresh_token = async_to_streamed_response_wrapper(
-            oauth.delete_refresh_token,
+        self.delete_refresh_token = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                oauth.delete_refresh_token,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.get_access_token = async_to_streamed_response_wrapper(
-            oauth.get_access_token,
+        self.get_access_token = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                oauth.get_access_token,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.get_refresh_token = async_to_streamed_response_wrapper(
-            oauth.get_refresh_token,
+        self.get_refresh_token = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                oauth.get_refresh_token,  # pyright: ignore[reportDeprecated],
+            )
         )

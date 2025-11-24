@@ -11,7 +11,7 @@ __all__ = ["EventVisibilityChange"]
 
 
 class EventVisibilityChange(BaseModel):
-    event_type: Literal["ALL", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT", "ATTENTION_SPAN"] = FieldInfo(alias="eventType")
+    event_type: Literal["ALL", "ATTENTION_SPAN", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT"] = FieldInfo(alias="eventType")
 
     updated_at: int = FieldInfo(alias="updatedAt")
 

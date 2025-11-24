@@ -45,7 +45,7 @@ class TestTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -74,7 +74,7 @@ class TestTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -107,7 +107,7 @@ class TestTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -840,7 +840,7 @@ class TestTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -872,7 +872,7 @@ class TestTables:
                             "display_order": 1,
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                     "foreign_column_id": 0,
                     "foreign_table_id": 0,
                     "max_number_of_characters": 0,
@@ -909,7 +909,7 @@ class TestTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -943,7 +943,7 @@ class TestTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -980,7 +980,7 @@ class TestTables:
                                 "value": "A",
                             }
                         ],
-                        "type": "NULL",
+                        "type": "BOOLEAN",
                     }
                 ],
                 dynamic_meta_tags={"foo": 0},
@@ -1014,7 +1014,7 @@ class TestAsyncTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -1043,7 +1043,7 @@ class TestAsyncTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -1076,7 +1076,7 @@ class TestAsyncTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -1811,7 +1811,7 @@ class TestAsyncTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -1843,7 +1843,7 @@ class TestAsyncTables:
                             "display_order": 1,
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                     "foreign_column_id": 0,
                     "foreign_table_id": 0,
                     "max_number_of_characters": 0,
@@ -1880,7 +1880,7 @@ class TestAsyncTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -1914,7 +1914,7 @@ class TestAsyncTables:
                             "value": "A",
                         }
                     ],
-                    "type": "NULL",
+                    "type": "BOOLEAN",
                 }
             ],
             dynamic_meta_tags={"foo": 0},
@@ -1951,7 +1951,7 @@ class TestAsyncTables:
                                 "value": "A",
                             }
                         ],
-                        "type": "NULL",
+                        "type": "BOOLEAN",
                     }
                 ],
                 dynamic_meta_tags={"foo": 0},

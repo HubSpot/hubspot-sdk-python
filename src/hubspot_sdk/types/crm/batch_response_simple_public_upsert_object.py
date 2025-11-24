@@ -22,7 +22,7 @@ class BatchResponseSimplePublicUpsertObject(BaseModel):
     started_at: datetime = FieldInfo(alias="startedAt")
     """The timestamp when the batch process began execution, in ISO 8601 format."""
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """The status of the batch processing request.
 
     Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".

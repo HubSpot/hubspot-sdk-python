@@ -66,7 +66,7 @@ class Property(BaseModel):
     This field may not exist if the property was created outside of HubSpot.
     """
 
-    data_sensitivity: Optional[Literal["non_sensitive", "sensitive", "highly_sensitive"]] = FieldInfo(
+    data_sensitivity: Optional[Literal["highly_sensitive", "non_sensitive", "sensitive"]] = FieldInfo(
         alias="dataSensitivity", default=None
     )
     """

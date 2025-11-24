@@ -41,19 +41,19 @@ class PublicEmailEventFilter(BaseModel):
     level: str
 
     operator: Literal[
+        "BOUNCED",
         "LINK_CLICKED",
         "MARKED_SPAM",
         "OPENED",
         "OPENED_BUT_LINK_NOT_CLICKED",
         "OPENED_BUT_NOT_REPLIED",
-        "REPLIED",
-        "UNSUBSCRIBED",
-        "BOUNCED",
         "RECEIVED",
         "RECEIVED_BUT_NOT_OPENED",
+        "REPLIED",
         "SENT",
         "SENT_BUT_LINK_NOT_CLICKED",
         "SENT_BUT_NOT_RECEIVED",
+        "UNSUBSCRIBED",
     ]
 
     click_url: Optional[str] = FieldInfo(alias="clickUrl", default=None)

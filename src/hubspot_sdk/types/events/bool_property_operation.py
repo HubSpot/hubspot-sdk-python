@@ -15,7 +15,7 @@ class BoolPropertyOperation(BaseModel):
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["IS_EQUAL_TO", "IS_NOT_EQUAL_TO", "HAS_EVER_BEEN_EQUAL_TO", "HAS_NEVER_BEEN_EQUAL_TO"]
+    operator: Literal["HAS_EVER_BEEN_EQUAL_TO", "HAS_NEVER_BEEN_EQUAL_TO", "IS_EQUAL_TO", "IS_NOT_EQUAL_TO"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 

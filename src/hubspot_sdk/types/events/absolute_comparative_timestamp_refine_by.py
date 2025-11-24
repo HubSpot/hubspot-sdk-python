@@ -8,7 +8,7 @@ __all__ = ["AbsoluteComparativeTimestampRefineBy"]
 
 
 class AbsoluteComparativeTimestampRefineBy(BaseModel):
-    comparison: Literal["BEFORE", "AFTER"]
+    comparison: Literal["AFTER", "BEFORE"]
 
     timestamp: int
 

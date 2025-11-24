@@ -10,11 +10,11 @@ __all__ = ["CardAuditResponse"]
 
 
 class CardAuditResponse(BaseModel):
-    action_type: Literal["CREATE", "UPDATE", "DELETE"] = FieldInfo(alias="actionType")
+    action_type: Literal["CREATE", "DELETE", "UPDATE"] = FieldInfo(alias="actionType")
 
     application_id: int = FieldInfo(alias="applicationId")
 
-    auth_source: Literal["INTERNAL", "APP", "EXTERNAL"] = FieldInfo(alias="authSource")
+    auth_source: Literal["APP", "EXTERNAL", "INTERNAL"] = FieldInfo(alias="authSource")
 
     changed_at: int = FieldInfo(alias="changedAt")
 

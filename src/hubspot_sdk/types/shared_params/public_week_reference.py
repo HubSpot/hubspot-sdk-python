@@ -12,7 +12,7 @@ __all__ = ["PublicWeekReference"]
 class PublicWeekReference(TypedDict, total=False):
     day_of_week: Required[
         Annotated[
-            Literal["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"],
+            Literal["FRIDAY", "MONDAY", "SATURDAY", "SUNDAY", "THURSDAY", "TUESDAY", "WEDNESDAY"],
             PropertyInfo(alias="dayOfWeek"),
         ]
     ]

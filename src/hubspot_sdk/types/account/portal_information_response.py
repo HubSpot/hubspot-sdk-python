@@ -11,7 +11,7 @@ __all__ = ["PortalInformationResponse"]
 
 
 class PortalInformationResponse(BaseModel):
-    account_type: Literal["STANDARD", "DEVELOPER_TEST", "SANDBOX", "APP_DEVELOPER"] = FieldInfo(alias="accountType")
+    account_type: Literal["APP_DEVELOPER", "DEVELOPER_TEST", "SANDBOX", "STANDARD"] = FieldInfo(alias="accountType")
 
     additional_currencies: List[str] = FieldInfo(alias="additionalCurrencies")
 

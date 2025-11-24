@@ -38,7 +38,7 @@ class AllPropertyTypesOperation(BaseModel):
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["IS_KNOWN", "IS_UNKNOWN", "IS_BLANK", "IS_NOT_BLANK"]
+    operator: Literal["IS_BLANK", "IS_KNOWN", "IS_NOT_BLANK", "IS_UNKNOWN"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 

@@ -17,7 +17,7 @@ class ComparativeDatePropertyOperation(BaseModel):
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["IS_BEFORE", "IS_AFTER"]
+    operator: Literal["IS_AFTER", "IS_BEFORE"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 

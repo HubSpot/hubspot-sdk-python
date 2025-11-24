@@ -20,7 +20,7 @@ class FileActionResponse(BaseModel):
     started_at: datetime = FieldInfo(alias="startedAt")
     """Timestamp of when the task was started."""
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """Current status of the task."""
 
     task_id: str = FieldInfo(alias="taskId")

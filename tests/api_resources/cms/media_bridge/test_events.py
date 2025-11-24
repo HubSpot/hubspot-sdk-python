@@ -25,7 +25,7 @@ class TestEvents:
     @parametrize
     def test_method_create_attention_span_event(self, client: Hubspot) -> None:
         event = client.cms.media_bridge.events.create_attention_span_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             raw_data_map={"foo": 0},
             session_id="sessionId",
@@ -36,7 +36,7 @@ class TestEvents:
     @parametrize
     def test_method_create_attention_span_event_with_all_params(self, client: Hubspot) -> None:
         event = client.cms.media_bridge.events.create_attention_span_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             raw_data_map={"foo": 0},
             session_id="sessionId",
@@ -62,7 +62,7 @@ class TestEvents:
     @parametrize
     def test_raw_response_create_attention_span_event(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.events.with_raw_response.create_attention_span_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             raw_data_map={"foo": 0},
             session_id="sessionId",
@@ -77,7 +77,7 @@ class TestEvents:
     @parametrize
     def test_streaming_response_create_attention_span_event(self, client: Hubspot) -> None:
         with client.cms.media_bridge.events.with_streaming_response.create_attention_span_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             raw_data_map={"foo": 0},
             session_id="sessionId",
@@ -94,7 +94,7 @@ class TestEvents:
     @parametrize
     def test_method_create_media_played_event(self, client: Hubspot) -> None:
         event = client.cms.media_bridge.events.create_media_played_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             session_id="sessionId",
             state="STARTED",
@@ -105,7 +105,7 @@ class TestEvents:
     @parametrize
     def test_method_create_media_played_event_with_all_params(self, client: Hubspot) -> None:
         event = client.cms.media_bridge.events.create_media_played_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             session_id="sessionId",
             state="STARTED",
@@ -127,7 +127,7 @@ class TestEvents:
     @parametrize
     def test_raw_response_create_media_played_event(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.events.with_raw_response.create_media_played_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             session_id="sessionId",
             state="STARTED",
@@ -142,7 +142,7 @@ class TestEvents:
     @parametrize
     def test_streaming_response_create_media_played_event(self, client: Hubspot) -> None:
         with client.cms.media_bridge.events.with_streaming_response.create_media_played_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             session_id="sessionId",
             state="STARTED",
@@ -159,7 +159,7 @@ class TestEvents:
     @parametrize
     def test_method_create_media_played_percent_event(self, client: Hubspot) -> None:
         event = client.cms.media_bridge.events.create_media_played_percent_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             played_percent=0,
             session_id="sessionId",
@@ -170,7 +170,7 @@ class TestEvents:
     @parametrize
     def test_method_create_media_played_percent_event_with_all_params(self, client: Hubspot) -> None:
         event = client.cms.media_bridge.events.create_media_played_percent_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             played_percent=0,
             session_id="sessionId",
@@ -191,7 +191,7 @@ class TestEvents:
     @parametrize
     def test_raw_response_create_media_played_percent_event(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.events.with_raw_response.create_media_played_percent_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             played_percent=0,
             session_id="sessionId",
@@ -206,7 +206,7 @@ class TestEvents:
     @parametrize
     def test_streaming_response_create_media_played_percent_event(self, client: Hubspot) -> None:
         with client.cms.media_bridge.events.with_streaming_response.create_media_played_percent_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             played_percent=0,
             session_id="sessionId",
@@ -229,7 +229,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_create_attention_span_event(self, async_client: AsyncHubspot) -> None:
         event = await async_client.cms.media_bridge.events.create_attention_span_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             raw_data_map={"foo": 0},
             session_id="sessionId",
@@ -240,7 +240,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_create_attention_span_event_with_all_params(self, async_client: AsyncHubspot) -> None:
         event = await async_client.cms.media_bridge.events.create_attention_span_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             raw_data_map={"foo": 0},
             session_id="sessionId",
@@ -266,7 +266,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_raw_response_create_attention_span_event(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.events.with_raw_response.create_attention_span_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             raw_data_map={"foo": 0},
             session_id="sessionId",
@@ -281,7 +281,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_streaming_response_create_attention_span_event(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.events.with_streaming_response.create_attention_span_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             raw_data_map={"foo": 0},
             session_id="sessionId",
@@ -298,7 +298,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_create_media_played_event(self, async_client: AsyncHubspot) -> None:
         event = await async_client.cms.media_bridge.events.create_media_played_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             session_id="sessionId",
             state="STARTED",
@@ -309,7 +309,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_create_media_played_event_with_all_params(self, async_client: AsyncHubspot) -> None:
         event = await async_client.cms.media_bridge.events.create_media_played_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             session_id="sessionId",
             state="STARTED",
@@ -331,7 +331,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_raw_response_create_media_played_event(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.events.with_raw_response.create_media_played_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             session_id="sessionId",
             state="STARTED",
@@ -346,7 +346,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_streaming_response_create_media_played_event(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.events.with_streaming_response.create_media_played_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             session_id="sessionId",
             state="STARTED",
@@ -363,7 +363,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_create_media_played_percent_event(self, async_client: AsyncHubspot) -> None:
         event = await async_client.cms.media_bridge.events.create_media_played_percent_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             played_percent=0,
             session_id="sessionId",
@@ -374,7 +374,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_create_media_played_percent_event_with_all_params(self, async_client: AsyncHubspot) -> None:
         event = await async_client.cms.media_bridge.events.create_media_played_percent_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             played_percent=0,
             session_id="sessionId",
@@ -395,7 +395,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_raw_response_create_media_played_percent_event(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.events.with_raw_response.create_media_played_percent_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             played_percent=0,
             session_id="sessionId",
@@ -410,7 +410,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_streaming_response_create_media_played_percent_event(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.events.with_streaming_response.create_media_played_percent_event(
-            media_type="VIDEO",
+            media_type="AUDIO",
             occurred_timestamp=0,
             played_percent=0,
             session_id="sessionId",

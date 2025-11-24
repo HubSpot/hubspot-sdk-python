@@ -17,7 +17,7 @@ class RollingPropertyUpdatedOperation(BaseModel):
 
     operation_type: str = FieldInfo(alias="operationType")
 
-    operator: Literal["UPDATED_IN_LAST_X_DAYS", "NOT_UPDATED_IN_LAST_X_DAYS"]
+    operator: Literal["NOT_UPDATED_IN_LAST_X_DAYS", "UPDATED_IN_LAST_X_DAYS"]
 
     operator_name: str = FieldInfo(alias="operatorName")
 

@@ -10,7 +10,7 @@ __all__ = ["SetOccurrencesRefineBy"]
 
 
 class SetOccurrencesRefineBy(BaseModel):
-    set_type: Literal["ALL", "ALL_INCLUDE_EMPTY", "ANY", "NONE", "NONE_EXCLUDE_EMPTY", "ANY_INCLUDE_EMPTY"] = FieldInfo(
+    set_type: Literal["ALL", "ALL_INCLUDE_EMPTY", "ANY", "ANY_INCLUDE_EMPTY", "NONE", "NONE_EXCLUDE_EMPTY"] = FieldInfo(
         alias="setType"
     )
 

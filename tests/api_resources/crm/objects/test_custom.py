@@ -415,7 +415,7 @@ class TestCustom:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -437,7 +437,7 @@ class TestCustom:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -463,7 +463,7 @@ class TestCustom:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -489,7 +489,7 @@ class TestCustom:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -518,7 +518,7 @@ class TestCustom:
                     {
                         "filters": [
                             {
-                                "operator": "EQ",
+                                "operator": "BETWEEN",
                                 "property_name": "propertyName",
                             }
                         ]
@@ -927,7 +927,7 @@ class TestAsyncCustom:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -949,7 +949,7 @@ class TestAsyncCustom:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                             "high_value": "highValue",
                             "value": "value",
@@ -975,7 +975,7 @@ class TestAsyncCustom:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -1001,7 +1001,7 @@ class TestAsyncCustom:
                 {
                     "filters": [
                         {
-                            "operator": "EQ",
+                            "operator": "BETWEEN",
                             "property_name": "propertyName",
                         }
                     ]
@@ -1030,7 +1030,7 @@ class TestAsyncCustom:
                     {
                         "filters": [
                             {
-                                "operator": "EQ",
+                                "operator": "BETWEEN",
                                 "property_name": "propertyName",
                             }
                         ]

@@ -161,7 +161,11 @@ class RowsResource(SyncAPIResource):
           after: The cursor token value to get the next set of results. You can get this from the
               `paging.next.after` JSON property of a paged response containing more results.
 
+          archived: Specifies whether to include archived rows in the response.
+
           limit: The maximum number of results to return. Default is `1000`.
+
+          offset: The number of rows to skip before starting to return results.
 
           properties: Specify the column names to get results containing only the required columns
               instead of all column details.
@@ -219,6 +223,8 @@ class RowsResource(SyncAPIResource):
         Clones a single row in the draft version of a table.
 
         Args:
+          name: The name for the cloned row.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -300,6 +306,8 @@ class RowsResource(SyncAPIResource):
         allowed for public access.
 
         Args:
+          archived: Specifies whether to return an archived row. Defaults to `false`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -341,6 +349,8 @@ class RowsResource(SyncAPIResource):
         Get a single row by ID from a table's draft version.
 
         Args:
+          archived: Set this to `true` to return an archived row. Defaults to `false`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -397,7 +407,11 @@ class RowsResource(SyncAPIResource):
           after: The cursor token value to get the next set of results. You can get this from the
               `paging.next.after` JSON property of a paged response containing more results.
 
+          archived: Specifies whether to return archived rows. Defaults to `false`.
+
           limit: The maximum number of results to return. Default is `1000`.
+
+          offset: The number of rows to skip before starting to return results.
 
           properties: Specify the column names to get results containing only the required columns
               instead of all column details. If you want to include multiple columns in the
@@ -688,7 +702,11 @@ class AsyncRowsResource(AsyncAPIResource):
           after: The cursor token value to get the next set of results. You can get this from the
               `paging.next.after` JSON property of a paged response containing more results.
 
+          archived: Specifies whether to include archived rows in the response.
+
           limit: The maximum number of results to return. Default is `1000`.
+
+          offset: The number of rows to skip before starting to return results.
 
           properties: Specify the column names to get results containing only the required columns
               instead of all column details.
@@ -746,6 +764,8 @@ class AsyncRowsResource(AsyncAPIResource):
         Clones a single row in the draft version of a table.
 
         Args:
+          name: The name for the cloned row.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -827,6 +847,8 @@ class AsyncRowsResource(AsyncAPIResource):
         allowed for public access.
 
         Args:
+          archived: Specifies whether to return an archived row. Defaults to `false`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -868,6 +890,8 @@ class AsyncRowsResource(AsyncAPIResource):
         Get a single row by ID from a table's draft version.
 
         Args:
+          archived: Set this to `true` to return an archived row. Defaults to `false`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -924,7 +948,11 @@ class AsyncRowsResource(AsyncAPIResource):
           after: The cursor token value to get the next set of results. You can get this from the
               `paging.next.after` JSON property of a paged response containing more results.
 
+          archived: Specifies whether to return archived rows. Defaults to `false`.
+
           limit: The maximum number of results to return. Default is `1000`.
+
+          offset: The number of rows to skip before starting to return results.
 
           properties: Specify the column names to get results containing only the required columns
               instead of all column details. If you want to include multiple columns in the

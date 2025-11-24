@@ -83,7 +83,7 @@ class TestUsers:
     def test_method_update_with_all_params(self, client: Hubspot) -> None:
         user = client.settings.users.update(
             user_id="userId",
-            id_property="USER_ID",
+            id_property="EMAIL",
             first_name="firstName",
             last_name="lastName",
             primary_team_id="101",
@@ -176,7 +176,7 @@ class TestUsers:
     def test_method_delete_with_all_params(self, client: Hubspot) -> None:
         user = client.settings.users.delete(
             user_id="userId",
-            id_property="USER_ID",
+            id_property="EMAIL",
         )
         assert user is None
 
@@ -227,7 +227,7 @@ class TestUsers:
     def test_method_get_with_all_params(self, client: Hubspot) -> None:
         user = client.settings.users.get(
             user_id="userId",
-            id_property="USER_ID",
+            id_property="EMAIL",
         )
         assert_matches_type(PublicUser, user, path=["response"])
 
@@ -388,7 +388,7 @@ class TestAsyncUsers:
     async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
         user = await async_client.settings.users.update(
             user_id="userId",
-            id_property="USER_ID",
+            id_property="EMAIL",
             first_name="firstName",
             last_name="lastName",
             primary_team_id="101",
@@ -481,7 +481,7 @@ class TestAsyncUsers:
     async def test_method_delete_with_all_params(self, async_client: AsyncHubspot) -> None:
         user = await async_client.settings.users.delete(
             user_id="userId",
-            id_property="USER_ID",
+            id_property="EMAIL",
         )
         assert user is None
 
@@ -532,7 +532,7 @@ class TestAsyncUsers:
     async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         user = await async_client.settings.users.get(
             user_id="userId",
-            id_property="USER_ID",
+            id_property="EMAIL",
         )
         assert_matches_type(PublicUser, user, path=["response"])
 

@@ -74,7 +74,7 @@ class TestPropertyValidations:
         self, client: Hubspot
     ) -> None:
         property_validation = client.crm.property_validations.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-            rule_type="FORMAT",
+            rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
             property_name="propertyName",
             rule_arguments=["string"],
@@ -87,7 +87,7 @@ class TestPropertyValidations:
         self, client: Hubspot
     ) -> None:
         response = client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-            rule_type="FORMAT",
+            rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
             property_name="propertyName",
             rule_arguments=["string"],
@@ -104,7 +104,7 @@ class TestPropertyValidations:
         self, client: Hubspot
     ) -> None:
         with client.crm.property_validations.with_streaming_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-            rule_type="FORMAT",
+            rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
             property_name="propertyName",
             rule_arguments=["string"],
@@ -124,7 +124,7 @@ class TestPropertyValidations:
     ) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-                rule_type="FORMAT",
+                rule_type="AFTER_DATETIME_DURATION",
                 object_type_id="",
                 property_name="propertyName",
                 rule_arguments=["string"],
@@ -132,7 +132,7 @@ class TestPropertyValidations:
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `property_name` but received ''"):
             client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-                rule_type="FORMAT",
+                rule_type="AFTER_DATETIME_DURATION",
                 object_type_id="objectTypeId",
                 property_name="",
                 rule_arguments=["string"],
@@ -256,7 +256,7 @@ class TestAsyncPropertyValidations:
         self, async_client: AsyncHubspot
     ) -> None:
         property_validation = await async_client.crm.property_validations.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-            rule_type="FORMAT",
+            rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
             property_name="propertyName",
             rule_arguments=["string"],
@@ -269,7 +269,7 @@ class TestAsyncPropertyValidations:
         self, async_client: AsyncHubspot
     ) -> None:
         response = await async_client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-            rule_type="FORMAT",
+            rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
             property_name="propertyName",
             rule_arguments=["string"],
@@ -286,7 +286,7 @@ class TestAsyncPropertyValidations:
         self, async_client: AsyncHubspot
     ) -> None:
         async with async_client.crm.property_validations.with_streaming_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-            rule_type="FORMAT",
+            rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
             property_name="propertyName",
             rule_arguments=["string"],
@@ -306,7 +306,7 @@ class TestAsyncPropertyValidations:
     ) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-                rule_type="FORMAT",
+                rule_type="AFTER_DATETIME_DURATION",
                 object_type_id="",
                 property_name="propertyName",
                 rule_arguments=["string"],
@@ -314,7 +314,7 @@ class TestAsyncPropertyValidations:
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `property_name` but received ''"):
             await async_client.crm.property_validations.with_raw_response.crm_v3_property_validations_object_type_id_property_name_rule_type_rule_type(
-                rule_type="FORMAT",
+                rule_type="AFTER_DATETIME_DURATION",
                 object_type_id="objectTypeId",
                 property_name="",
                 rule_arguments=["string"],

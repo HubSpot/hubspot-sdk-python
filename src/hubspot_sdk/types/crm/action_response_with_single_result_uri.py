@@ -19,7 +19,7 @@ class ActionResponseWithSingleResultUri(BaseModel):
     started_at: datetime = FieldInfo(alias="startedAt")
     """The timestamp when the export process started, in ISO 8601 format."""
 
-    status: Literal["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]
+    status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """
     The current status of the export, which can be PENDING, PROCESSING, COMPLETE or
     CANCELED.

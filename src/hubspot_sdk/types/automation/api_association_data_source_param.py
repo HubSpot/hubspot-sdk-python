@@ -13,7 +13,7 @@ __all__ = ["APIAssociationDataSourceParam"]
 class APIAssociationDataSourceParam(TypedDict, total=False):
     association_category: Required[
         Annotated[
-            Literal["HUBSPOT_DEFINED", "USER_DEFINED", "INTEGRATOR_DEFINED"], PropertyInfo(alias="associationCategory")
+            Literal["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED"], PropertyInfo(alias="associationCategory")
         ]
     ]
 

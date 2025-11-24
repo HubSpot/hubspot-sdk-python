@@ -11,7 +11,7 @@ __all__ = ["ParticipationProperties"]
 
 
 class ParticipationProperties(BaseModel):
-    attendance_state: Literal["REGISTERED", "ATTENDED", "CANCELLED", "EMPTY", "NO_SHOW"] = FieldInfo(
+    attendance_state: Literal["ATTENDED", "CANCELLED", "EMPTY", "NO_SHOW", "REGISTERED"] = FieldInfo(
         alias="attendanceState"
     )
 

@@ -11,7 +11,7 @@ __all__ = ["LegalConsentOptionsLegitimateInterest"]
 
 
 class LegalConsentOptionsLegitimateInterest(BaseModel):
-    lawful_basis: Literal["lead", "client", "other"] = FieldInfo(alias="lawfulBasis")
+    lawful_basis: Literal["client", "lead", "other"] = FieldInfo(alias="lawfulBasis")
 
     privacy_text: str = FieldInfo(alias="privacyText")
 

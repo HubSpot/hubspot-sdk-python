@@ -74,7 +74,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         )
         assert function is None
 
@@ -85,7 +85,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         )
 
         assert response.is_closed is True
@@ -100,7 +100,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -118,7 +118,7 @@ class TestFunctions:
                 function_id="functionId",
                 app_id=0,
                 definition_id="",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `function_id` but received ''"):
@@ -126,7 +126,7 @@ class TestFunctions:
                 function_id="",
                 app_id=0,
                 definition_id="definitionId",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -136,7 +136,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             body="body",
         )
         assert_matches_type(PublicActionFunctionIdentifier, function, path=["response"])
@@ -148,7 +148,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             body="body",
         )
 
@@ -164,7 +164,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             body="body",
         ) as response:
             assert not response.is_closed
@@ -183,7 +183,7 @@ class TestFunctions:
                 function_id="functionId",
                 app_id=0,
                 definition_id="",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 body="body",
             )
 
@@ -192,7 +192,7 @@ class TestFunctions:
                 function_id="",
                 app_id=0,
                 definition_id="definitionId",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 body="body",
             )
 
@@ -200,7 +200,7 @@ class TestFunctions:
     @parametrize
     def test_method_create_or_replace_by_function_type(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.create_or_replace_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
             body="body",
@@ -211,7 +211,7 @@ class TestFunctions:
     @parametrize
     def test_raw_response_create_or_replace_by_function_type(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.create_or_replace_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
             body="body",
@@ -226,7 +226,7 @@ class TestFunctions:
     @parametrize
     def test_streaming_response_create_or_replace_by_function_type(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.create_or_replace_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
             body="body",
@@ -244,7 +244,7 @@ class TestFunctions:
     def test_path_params_create_or_replace_by_function_type(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.create_or_replace_by_function_type(
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 app_id=0,
                 definition_id="",
                 body="body",
@@ -254,7 +254,7 @@ class TestFunctions:
     @parametrize
     def test_method_delete_by_function_type(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.delete_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         )
@@ -264,7 +264,7 @@ class TestFunctions:
     @parametrize
     def test_raw_response_delete_by_function_type(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.delete_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         )
@@ -278,7 +278,7 @@ class TestFunctions:
     @parametrize
     def test_streaming_response_delete_by_function_type(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.delete_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         ) as response:
@@ -295,7 +295,7 @@ class TestFunctions:
     def test_path_params_delete_by_function_type(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.delete_by_function_type(
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 app_id=0,
                 definition_id="",
             )
@@ -307,7 +307,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         )
         assert_matches_type(PublicActionFunction, function, path=["response"])
 
@@ -318,7 +318,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         )
 
         assert response.is_closed is True
@@ -333,7 +333,7 @@ class TestFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -351,7 +351,7 @@ class TestFunctions:
                 function_id="functionId",
                 app_id=0,
                 definition_id="",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `function_id` but received ''"):
@@ -359,14 +359,14 @@ class TestFunctions:
                 function_id="",
                 app_id=0,
                 definition_id="definitionId",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_by_function_type(self, client: Hubspot) -> None:
         function = client.automation.actions.functions.get_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         )
@@ -376,7 +376,7 @@ class TestFunctions:
     @parametrize
     def test_raw_response_get_by_function_type(self, client: Hubspot) -> None:
         response = client.automation.actions.functions.with_raw_response.get_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         )
@@ -390,7 +390,7 @@ class TestFunctions:
     @parametrize
     def test_streaming_response_get_by_function_type(self, client: Hubspot) -> None:
         with client.automation.actions.functions.with_streaming_response.get_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         ) as response:
@@ -407,7 +407,7 @@ class TestFunctions:
     def test_path_params_get_by_function_type(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.functions.with_raw_response.get_by_function_type(
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 app_id=0,
                 definition_id="",
             )
@@ -471,7 +471,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         )
         assert function is None
 
@@ -482,7 +482,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         )
 
         assert response.is_closed is True
@@ -497,7 +497,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -515,7 +515,7 @@ class TestAsyncFunctions:
                 function_id="functionId",
                 app_id=0,
                 definition_id="",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `function_id` but received ''"):
@@ -523,7 +523,7 @@ class TestAsyncFunctions:
                 function_id="",
                 app_id=0,
                 definition_id="definitionId",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -533,7 +533,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             body="body",
         )
         assert_matches_type(PublicActionFunctionIdentifier, function, path=["response"])
@@ -545,7 +545,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             body="body",
         )
 
@@ -561,7 +561,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             body="body",
         ) as response:
             assert not response.is_closed
@@ -580,7 +580,7 @@ class TestAsyncFunctions:
                 function_id="functionId",
                 app_id=0,
                 definition_id="",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 body="body",
             )
 
@@ -589,7 +589,7 @@ class TestAsyncFunctions:
                 function_id="",
                 app_id=0,
                 definition_id="definitionId",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 body="body",
             )
 
@@ -597,7 +597,7 @@ class TestAsyncFunctions:
     @parametrize
     async def test_method_create_or_replace_by_function_type(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.create_or_replace_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
             body="body",
@@ -608,7 +608,7 @@ class TestAsyncFunctions:
     @parametrize
     async def test_raw_response_create_or_replace_by_function_type(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.create_or_replace_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
             body="body",
@@ -623,7 +623,7 @@ class TestAsyncFunctions:
     @parametrize
     async def test_streaming_response_create_or_replace_by_function_type(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.create_or_replace_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
             body="body",
@@ -641,7 +641,7 @@ class TestAsyncFunctions:
     async def test_path_params_create_or_replace_by_function_type(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.create_or_replace_by_function_type(
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 app_id=0,
                 definition_id="",
                 body="body",
@@ -651,7 +651,7 @@ class TestAsyncFunctions:
     @parametrize
     async def test_method_delete_by_function_type(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.delete_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         )
@@ -661,7 +661,7 @@ class TestAsyncFunctions:
     @parametrize
     async def test_raw_response_delete_by_function_type(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.delete_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         )
@@ -675,7 +675,7 @@ class TestAsyncFunctions:
     @parametrize
     async def test_streaming_response_delete_by_function_type(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.delete_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         ) as response:
@@ -692,7 +692,7 @@ class TestAsyncFunctions:
     async def test_path_params_delete_by_function_type(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.delete_by_function_type(
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 app_id=0,
                 definition_id="",
             )
@@ -704,7 +704,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         )
         assert_matches_type(PublicActionFunction, function, path=["response"])
 
@@ -715,7 +715,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         )
 
         assert response.is_closed is True
@@ -730,7 +730,7 @@ class TestAsyncFunctions:
             function_id="functionId",
             app_id=0,
             definition_id="definitionId",
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -748,7 +748,7 @@ class TestAsyncFunctions:
                 function_id="functionId",
                 app_id=0,
                 definition_id="",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `function_id` but received ''"):
@@ -756,14 +756,14 @@ class TestAsyncFunctions:
                 function_id="",
                 app_id=0,
                 definition_id="definitionId",
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_by_function_type(self, async_client: AsyncHubspot) -> None:
         function = await async_client.automation.actions.functions.get_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         )
@@ -773,7 +773,7 @@ class TestAsyncFunctions:
     @parametrize
     async def test_raw_response_get_by_function_type(self, async_client: AsyncHubspot) -> None:
         response = await async_client.automation.actions.functions.with_raw_response.get_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         )
@@ -787,7 +787,7 @@ class TestAsyncFunctions:
     @parametrize
     async def test_streaming_response_get_by_function_type(self, async_client: AsyncHubspot) -> None:
         async with async_client.automation.actions.functions.with_streaming_response.get_by_function_type(
-            function_type="PRE_ACTION_EXECUTION",
+            function_type="POST_ACTION_EXECUTION",
             app_id=0,
             definition_id="definitionId",
         ) as response:
@@ -804,7 +804,7 @@ class TestAsyncFunctions:
     async def test_path_params_get_by_function_type(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.functions.with_raw_response.get_by_function_type(
-                function_type="PRE_ACTION_EXECUTION",
+                function_type="POST_ACTION_EXECUTION",
                 app_id=0,
                 definition_id="",
             )
