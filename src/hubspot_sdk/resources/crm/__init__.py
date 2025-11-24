@@ -112,6 +112,14 @@ from .feature_flags import (
     FeatureFlagsResourceWithStreamingResponse,
     AsyncFeatureFlagsResourceWithStreamingResponse,
 )
+from .subscriptions import (
+    SubscriptionsResource,
+    AsyncSubscriptionsResource,
+    SubscriptionsResourceWithRawResponse,
+    AsyncSubscriptionsResourceWithRawResponse,
+    SubscriptionsResourceWithStreamingResponse,
+    AsyncSubscriptionsResourceWithStreamingResponse,
+)
 from .app_uninstalls import (
     AppUninstallsResource,
     AsyncAppUninstallsResource,
@@ -222,6 +230,12 @@ __all__ = [
     "AsyncPropertyValidationsResourceWithRawResponse",
     "PropertyValidationsResourceWithStreamingResponse",
     "AsyncPropertyValidationsResourceWithStreamingResponse",
+    "SubscriptionsResource",
+    "AsyncSubscriptionsResource",
+    "SubscriptionsResourceWithRawResponse",
+    "AsyncSubscriptionsResourceWithRawResponse",
+    "SubscriptionsResourceWithStreamingResponse",
+    "AsyncSubscriptionsResourceWithStreamingResponse",
     "TimelineResource",
     "AsyncTimelineResource",
     "TimelineResourceWithRawResponse",

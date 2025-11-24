@@ -60,6 +60,7 @@ from .note_search_params import NoteSearchParams as NoteSearchParams
 from .note_update_params import NoteUpdateParams as NoteUpdateParams
 from .object_list_params import ObjectListParams as ObjectListParams
 from .product_get_params import ProductGetParams as ProductGetParams
+from .project_get_params import ProjectGetParams as ProjectGetParams
 from .schema_list_params import SchemaListParams as SchemaListParams
 from .service_get_params import ServiceGetParams as ServiceGetParams
 from .task_create_params import TaskCreateParams as TaskCreateParams
@@ -82,6 +83,7 @@ from .order_create_params import OrderCreateParams as OrderCreateParams
 from .order_search_params import OrderSearchParams as OrderSearchParams
 from .order_update_params import OrderUpdateParams as OrderUpdateParams
 from .product_list_params import ProductListParams as ProductListParams
+from .project_list_params import ProjectListParams as ProjectListParams
 from .quote_create_params import QuoteCreateParams as QuoteCreateParams
 from .quote_search_params import QuoteSearchParams as QuoteSearchParams
 from .quote_update_params import QuoteUpdateParams as QuoteUpdateParams
@@ -101,6 +103,7 @@ from .line_item_get_params import LineItemGetParams as LineItemGetParams
 from .object_create_params import ObjectCreateParams as ObjectCreateParams
 from .object_search_params import ObjectSearchParams as ObjectSearchParams
 from .object_update_params import ObjectUpdateParams as ObjectUpdateParams
+from .project_merge_params import ProjectMergeParams as ProjectMergeParams
 from .schema_create_params import SchemaCreateParams as SchemaCreateParams
 from .schema_delete_params import SchemaDeleteParams as SchemaDeleteParams
 from .schema_update_params import SchemaUpdateParams as SchemaUpdateParams
@@ -126,6 +129,9 @@ from .meeting_update_params import MeetingUpdateParams as MeetingUpdateParams
 from .product_create_params import ProductCreateParams as ProductCreateParams
 from .product_search_params import ProductSearchParams as ProductSearchParams
 from .product_update_params import ProductUpdateParams as ProductUpdateParams
+from .project_create_params import ProjectCreateParams as ProjectCreateParams
+from .project_search_params import ProjectSearchParams as ProjectSearchParams
+from .project_update_params import ProjectUpdateParams as ProjectUpdateParams
 from .service_create_params import ServiceCreateParams as ServiceCreateParams
 from .service_search_params import ServiceSearchParams as ServiceSearchParams
 from .service_update_params import ServiceUpdateParams as ServiceUpdateParams

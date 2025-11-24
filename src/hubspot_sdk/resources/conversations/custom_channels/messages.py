@@ -21,8 +21,8 @@ from ...._response import (
 from ...._base_client import make_request_options
 from ....types.conversations.custom_channels import message_create_params, message_update_params
 from ....types.conversations.pre_resolved_contacts_param import PreResolvedContactsParam
-from ....types.conversations.public_conversations_message import PublicConversationsMessage
 from ....types.conversations.channel_integration_participant_param import ChannelIntegrationParticipantParam
+from ....types.conversations.conversations_public_conversations_message import ConversationsPublicConversationsMessage
 
 __all__ = ["MessagesResource", "AsyncMessagesResource"]
 
@@ -69,7 +69,7 @@ class MessagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicConversationsMessage:
+    ) -> ConversationsPublicConversationsMessage:
         """
         Publish a message over your custom channel
 
@@ -104,7 +104,7 @@ class MessagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicConversationsMessage,
+            cast_to=ConversationsPublicConversationsMessage,
         )
 
     def update(
@@ -120,7 +120,7 @@ class MessagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicConversationsMessage:
+    ) -> ConversationsPublicConversationsMessage:
         """
         Update a message's status to indicate if it was successfully sent, failed to
         send, or was read. For failed messages, this can also include the error message
@@ -151,7 +151,7 @@ class MessagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicConversationsMessage,
+            cast_to=ConversationsPublicConversationsMessage,
         )
 
     def get(
@@ -165,7 +165,7 @@ class MessagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicConversationsMessage:
+    ) -> ConversationsPublicConversationsMessage:
         """
         Get the details for a specific message sent over a custom channel
 
@@ -185,7 +185,7 @@ class MessagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicConversationsMessage,
+            cast_to=ConversationsPublicConversationsMessage,
         )
 
 
@@ -231,7 +231,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicConversationsMessage:
+    ) -> ConversationsPublicConversationsMessage:
         """
         Publish a message over your custom channel
 
@@ -266,7 +266,7 @@ class AsyncMessagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicConversationsMessage,
+            cast_to=ConversationsPublicConversationsMessage,
         )
 
     async def update(
@@ -282,7 +282,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicConversationsMessage:
+    ) -> ConversationsPublicConversationsMessage:
         """
         Update a message's status to indicate if it was successfully sent, failed to
         send, or was read. For failed messages, this can also include the error message
@@ -313,7 +313,7 @@ class AsyncMessagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicConversationsMessage,
+            cast_to=ConversationsPublicConversationsMessage,
         )
 
     async def get(
@@ -327,7 +327,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PublicConversationsMessage:
+    ) -> ConversationsPublicConversationsMessage:
         """
         Get the details for a specific message sent over a custom channel
 
@@ -347,7 +347,7 @@ class AsyncMessagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PublicConversationsMessage,
+            cast_to=ConversationsPublicConversationsMessage,
         )
 
 

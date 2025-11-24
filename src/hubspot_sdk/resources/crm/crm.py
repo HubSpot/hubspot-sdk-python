@@ -52,6 +52,14 @@ from .users.users import (
     UsersResourceWithStreamingResponse,
     AsyncUsersResourceWithStreamingResponse,
 )
+from .subscriptions import (
+    SubscriptionsResource,
+    AsyncSubscriptionsResource,
+    SubscriptionsResourceWithRawResponse,
+    AsyncSubscriptionsResourceWithRawResponse,
+    SubscriptionsResourceWithStreamingResponse,
+    AsyncSubscriptionsResourceWithStreamingResponse,
+)
 from .app_uninstalls import (
     AppUninstallsResource,
     AsyncAppUninstallsResource,
@@ -194,6 +202,10 @@ class CrmResource(SyncAPIResource):
         return PropertyValidationsResource(self._client)
 
     @cached_property
+    def subscriptions(self) -> SubscriptionsResource:
+        return SubscriptionsResource(self._client)
+
+    @cached_property
     def timeline(self) -> TimelineResource:
         return TimelineResource(self._client)
 
@@ -277,6 +289,10 @@ class AsyncCrmResource(AsyncAPIResource):
     @cached_property
     def property_validations(self) -> AsyncPropertyValidationsResource:
         return AsyncPropertyValidationsResource(self._client)
+
+    @cached_property
+    def subscriptions(self) -> AsyncSubscriptionsResource:
+        return AsyncSubscriptionsResource(self._client)
 
     @cached_property
     def timeline(self) -> AsyncTimelineResource:
@@ -367,6 +383,10 @@ class CrmResourceWithRawResponse:
         return PropertyValidationsResourceWithRawResponse(self._crm.property_validations)
 
     @cached_property
+    def subscriptions(self) -> SubscriptionsResourceWithRawResponse:
+        return SubscriptionsResourceWithRawResponse(self._crm.subscriptions)
+
+    @cached_property
     def timeline(self) -> TimelineResourceWithRawResponse:
         return TimelineResourceWithRawResponse(self._crm.timeline)
 
@@ -434,6 +454,10 @@ class AsyncCrmResourceWithRawResponse:
     @cached_property
     def property_validations(self) -> AsyncPropertyValidationsResourceWithRawResponse:
         return AsyncPropertyValidationsResourceWithRawResponse(self._crm.property_validations)
+
+    @cached_property
+    def subscriptions(self) -> AsyncSubscriptionsResourceWithRawResponse:
+        return AsyncSubscriptionsResourceWithRawResponse(self._crm.subscriptions)
 
     @cached_property
     def timeline(self) -> AsyncTimelineResourceWithRawResponse:
@@ -505,6 +529,10 @@ class CrmResourceWithStreamingResponse:
         return PropertyValidationsResourceWithStreamingResponse(self._crm.property_validations)
 
     @cached_property
+    def subscriptions(self) -> SubscriptionsResourceWithStreamingResponse:
+        return SubscriptionsResourceWithStreamingResponse(self._crm.subscriptions)
+
+    @cached_property
     def timeline(self) -> TimelineResourceWithStreamingResponse:
         return TimelineResourceWithStreamingResponse(self._crm.timeline)
 
@@ -572,6 +600,10 @@ class AsyncCrmResourceWithStreamingResponse:
     @cached_property
     def property_validations(self) -> AsyncPropertyValidationsResourceWithStreamingResponse:
         return AsyncPropertyValidationsResourceWithStreamingResponse(self._crm.property_validations)
+
+    @cached_property
+    def subscriptions(self) -> AsyncSubscriptionsResourceWithStreamingResponse:
+        return AsyncSubscriptionsResourceWithStreamingResponse(self._crm.subscriptions)
 
     @cached_property
     def timeline(self) -> AsyncTimelineResourceWithStreamingResponse:
