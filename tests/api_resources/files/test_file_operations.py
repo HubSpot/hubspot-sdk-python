@@ -221,7 +221,7 @@ class TestFileOperations:
     @parametrize
     def test_method_get_by_path(self, client: Hubspot) -> None:
         file_operation = client.files.file_operations.get_by_path(
-            path="path",
+            file_path="file_path",
         )
         assert_matches_type(FileStat, file_operation, path=["response"])
 
@@ -229,7 +229,7 @@ class TestFileOperations:
     @parametrize
     def test_method_get_by_path_with_all_params(self, client: Hubspot) -> None:
         file_operation = client.files.file_operations.get_by_path(
-            path="path",
+            file_path="file_path",
             properties=["string"],
         )
         assert_matches_type(FileStat, file_operation, path=["response"])
@@ -238,7 +238,7 @@ class TestFileOperations:
     @parametrize
     def test_raw_response_get_by_path(self, client: Hubspot) -> None:
         response = client.files.file_operations.with_raw_response.get_by_path(
-            path="path",
+            file_path="file_path",
         )
 
         assert response.is_closed is True
@@ -250,7 +250,7 @@ class TestFileOperations:
     @parametrize
     def test_streaming_response_get_by_path(self, client: Hubspot) -> None:
         with client.files.file_operations.with_streaming_response.get_by_path(
-            path="path",
+            file_path="file_path",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -263,9 +263,9 @@ class TestFileOperations:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_get_by_path(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             client.files.file_operations.with_raw_response.get_by_path(
-                path="",
+                file_path="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -784,7 +784,7 @@ class TestAsyncFileOperations:
     @parametrize
     async def test_method_get_by_path(self, async_client: AsyncHubspot) -> None:
         file_operation = await async_client.files.file_operations.get_by_path(
-            path="path",
+            file_path="file_path",
         )
         assert_matches_type(FileStat, file_operation, path=["response"])
 
@@ -792,7 +792,7 @@ class TestAsyncFileOperations:
     @parametrize
     async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubspot) -> None:
         file_operation = await async_client.files.file_operations.get_by_path(
-            path="path",
+            file_path="file_path",
             properties=["string"],
         )
         assert_matches_type(FileStat, file_operation, path=["response"])
@@ -801,7 +801,7 @@ class TestAsyncFileOperations:
     @parametrize
     async def test_raw_response_get_by_path(self, async_client: AsyncHubspot) -> None:
         response = await async_client.files.file_operations.with_raw_response.get_by_path(
-            path="path",
+            file_path="file_path",
         )
 
         assert response.is_closed is True
@@ -813,7 +813,7 @@ class TestAsyncFileOperations:
     @parametrize
     async def test_streaming_response_get_by_path(self, async_client: AsyncHubspot) -> None:
         async with async_client.files.file_operations.with_streaming_response.get_by_path(
-            path="path",
+            file_path="file_path",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -826,9 +826,9 @@ class TestAsyncFileOperations:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_get_by_path(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             await async_client.files.file_operations.with_raw_response.get_by_path(
-                path="",
+                file_path="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")

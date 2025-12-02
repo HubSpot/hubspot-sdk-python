@@ -35,7 +35,7 @@ class TestSourceCode:
     def test_method_create(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             source_code = client.cms.source_code.create(
-                path="path",
+                file_path="file_path",
                 environment="environment",
             )
 
@@ -46,7 +46,7 @@ class TestSourceCode:
     def test_method_create_with_all_params(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             source_code = client.cms.source_code.create(
-                path="path",
+                file_path="file_path",
                 environment="environment",
                 file=b"raw file contents",
             )
@@ -58,7 +58,7 @@ class TestSourceCode:
     def test_raw_response_create(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             response = client.cms.source_code.with_raw_response.create(
-                path="path",
+                file_path="file_path",
                 environment="environment",
             )
 
@@ -72,7 +72,7 @@ class TestSourceCode:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with pytest.warns(DeprecationWarning):
             with client.cms.source_code.with_streaming_response.create(
-                path="path",
+                file_path="file_path",
                 environment="environment",
             ) as response:
                 assert not response.is_closed
@@ -89,13 +89,13 @@ class TestSourceCode:
         with pytest.warns(DeprecationWarning):
             with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
                 client.cms.source_code.with_raw_response.create(
-                    path="path",
+                    file_path="file_path",
                     environment="",
                 )
 
-            with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
                 client.cms.source_code.with_raw_response.create(
-                    path="",
+                    file_path="",
                     environment="environment",
                 )
 
@@ -103,7 +103,7 @@ class TestSourceCode:
     @parametrize
     def test_method_delete(self, client: Hubspot) -> None:
         source_code = client.cms.source_code.delete(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert source_code is None
@@ -112,7 +112,7 @@ class TestSourceCode:
     @parametrize
     def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.cms.source_code.with_raw_response.delete(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -125,7 +125,7 @@ class TestSourceCode:
     @parametrize
     def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.cms.source_code.with_streaming_response.delete(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as response:
             assert not response.is_closed
@@ -141,13 +141,13 @@ class TestSourceCode:
     def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             client.cms.source_code.with_raw_response.delete(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             client.cms.source_code.with_raw_response.delete(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
@@ -188,11 +188,11 @@ class TestSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/v3/source-code/environment/content/path").mock(
+        respx_mock.get("/cms/v3/source-code/environment/content/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         source_code = client.cms.source_code.get(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert source_code.is_closed
@@ -203,12 +203,12 @@ class TestSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/v3/source-code/environment/content/path").mock(
+        respx_mock.get("/cms/v3/source-code/environment/content/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
         source_code = client.cms.source_code.with_raw_response.get(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -220,11 +220,11 @@ class TestSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_streaming_response_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/v3/source-code/environment/content/path").mock(
+        respx_mock.get("/cms/v3/source-code/environment/content/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.cms.source_code.with_streaming_response.get(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as source_code:
             assert not source_code.is_closed
@@ -241,13 +241,13 @@ class TestSourceCode:
     def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             client.cms.source_code.with_raw_response.get(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             client.cms.source_code.with_raw_response.get(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
@@ -289,7 +289,7 @@ class TestSourceCode:
     @parametrize
     def test_method_get_metadata(self, client: Hubspot) -> None:
         source_code = client.cms.source_code.get_metadata(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert_matches_type(AssetFileMetadata, source_code, path=["response"])
@@ -298,7 +298,7 @@ class TestSourceCode:
     @parametrize
     def test_method_get_metadata_with_all_params(self, client: Hubspot) -> None:
         source_code = client.cms.source_code.get_metadata(
-            path="path",
+            file_path="file_path",
             environment="environment",
             properties="properties",
         )
@@ -308,7 +308,7 @@ class TestSourceCode:
     @parametrize
     def test_raw_response_get_metadata(self, client: Hubspot) -> None:
         response = client.cms.source_code.with_raw_response.get_metadata(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -321,7 +321,7 @@ class TestSourceCode:
     @parametrize
     def test_streaming_response_get_metadata(self, client: Hubspot) -> None:
         with client.cms.source_code.with_streaming_response.get_metadata(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as response:
             assert not response.is_closed
@@ -337,13 +337,13 @@ class TestSourceCode:
     def test_path_params_get_metadata(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             client.cms.source_code.with_raw_response.get_metadata(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             client.cms.source_code.with_raw_response.get_metadata(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
@@ -351,7 +351,7 @@ class TestSourceCode:
     @parametrize
     def test_method_upsert(self, client: Hubspot) -> None:
         source_code = client.cms.source_code.upsert(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert_matches_type(AssetFileMetadata, source_code, path=["response"])
@@ -360,7 +360,7 @@ class TestSourceCode:
     @parametrize
     def test_method_upsert_with_all_params(self, client: Hubspot) -> None:
         source_code = client.cms.source_code.upsert(
-            path="path",
+            file_path="file_path",
             environment="environment",
             file=b"raw file contents",
         )
@@ -370,7 +370,7 @@ class TestSourceCode:
     @parametrize
     def test_raw_response_upsert(self, client: Hubspot) -> None:
         response = client.cms.source_code.with_raw_response.upsert(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -383,7 +383,7 @@ class TestSourceCode:
     @parametrize
     def test_streaming_response_upsert(self, client: Hubspot) -> None:
         with client.cms.source_code.with_streaming_response.upsert(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as response:
             assert not response.is_closed
@@ -399,24 +399,24 @@ class TestSourceCode:
     def test_path_params_upsert(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             client.cms.source_code.with_raw_response.upsert(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             client.cms.source_code.with_raw_response.upsert(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_validate(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/v3/source-code/environment/validate/path").mock(
+        respx_mock.post("/cms/v3/source-code/environment/validate/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         source_code = client.cms.source_code.validate(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert source_code.is_closed
@@ -427,11 +427,11 @@ class TestSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_validate_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/v3/source-code/environment/validate/path").mock(
+        respx_mock.post("/cms/v3/source-code/environment/validate/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         source_code = client.cms.source_code.validate(
-            path="path",
+            file_path="file_path",
             environment="environment",
             file=b"raw file contents",
         )
@@ -443,12 +443,12 @@ class TestSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response_validate(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/v3/source-code/environment/validate/path").mock(
+        respx_mock.post("/cms/v3/source-code/environment/validate/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
         source_code = client.cms.source_code.with_raw_response.validate(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -460,11 +460,11 @@ class TestSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_streaming_response_validate(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/v3/source-code/environment/validate/path").mock(
+        respx_mock.post("/cms/v3/source-code/environment/validate/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.cms.source_code.with_streaming_response.validate(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as source_code:
             assert not source_code.is_closed
@@ -481,13 +481,13 @@ class TestSourceCode:
     def test_path_params_validate(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             client.cms.source_code.with_raw_response.validate(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             client.cms.source_code.with_raw_response.validate(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
@@ -502,7 +502,7 @@ class TestAsyncSourceCode:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             source_code = await async_client.cms.source_code.create(
-                path="path",
+                file_path="file_path",
                 environment="environment",
             )
 
@@ -513,7 +513,7 @@ class TestAsyncSourceCode:
     async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             source_code = await async_client.cms.source_code.create(
-                path="path",
+                file_path="file_path",
                 environment="environment",
                 file=b"raw file contents",
             )
@@ -525,7 +525,7 @@ class TestAsyncSourceCode:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             response = await async_client.cms.source_code.with_raw_response.create(
-                path="path",
+                file_path="file_path",
                 environment="environment",
             )
 
@@ -539,7 +539,7 @@ class TestAsyncSourceCode:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         with pytest.warns(DeprecationWarning):
             async with async_client.cms.source_code.with_streaming_response.create(
-                path="path",
+                file_path="file_path",
                 environment="environment",
             ) as response:
                 assert not response.is_closed
@@ -556,13 +556,13 @@ class TestAsyncSourceCode:
         with pytest.warns(DeprecationWarning):
             with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
                 await async_client.cms.source_code.with_raw_response.create(
-                    path="path",
+                    file_path="file_path",
                     environment="",
                 )
 
-            with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
                 await async_client.cms.source_code.with_raw_response.create(
-                    path="",
+                    file_path="",
                     environment="environment",
                 )
 
@@ -570,7 +570,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         source_code = await async_client.cms.source_code.delete(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert source_code is None
@@ -579,7 +579,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.source_code.with_raw_response.delete(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -592,7 +592,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.source_code.with_streaming_response.delete(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as response:
             assert not response.is_closed
@@ -608,13 +608,13 @@ class TestAsyncSourceCode:
     async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             await async_client.cms.source_code.with_raw_response.delete(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             await async_client.cms.source_code.with_raw_response.delete(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
@@ -655,11 +655,11 @@ class TestAsyncSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/v3/source-code/environment/content/path").mock(
+        respx_mock.get("/cms/v3/source-code/environment/content/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         source_code = await async_client.cms.source_code.get(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert source_code.is_closed
@@ -670,12 +670,12 @@ class TestAsyncSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/v3/source-code/environment/content/path").mock(
+        respx_mock.get("/cms/v3/source-code/environment/content/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
         source_code = await async_client.cms.source_code.with_raw_response.get(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -687,11 +687,11 @@ class TestAsyncSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/v3/source-code/environment/content/path").mock(
+        respx_mock.get("/cms/v3/source-code/environment/content/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.cms.source_code.with_streaming_response.get(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as source_code:
             assert not source_code.is_closed
@@ -708,13 +708,13 @@ class TestAsyncSourceCode:
     async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             await async_client.cms.source_code.with_raw_response.get(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             await async_client.cms.source_code.with_raw_response.get(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
@@ -756,7 +756,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_method_get_metadata(self, async_client: AsyncHubspot) -> None:
         source_code = await async_client.cms.source_code.get_metadata(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert_matches_type(AssetFileMetadata, source_code, path=["response"])
@@ -765,7 +765,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_method_get_metadata_with_all_params(self, async_client: AsyncHubspot) -> None:
         source_code = await async_client.cms.source_code.get_metadata(
-            path="path",
+            file_path="file_path",
             environment="environment",
             properties="properties",
         )
@@ -775,7 +775,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_raw_response_get_metadata(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.source_code.with_raw_response.get_metadata(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -788,7 +788,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_streaming_response_get_metadata(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.source_code.with_streaming_response.get_metadata(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as response:
             assert not response.is_closed
@@ -804,13 +804,13 @@ class TestAsyncSourceCode:
     async def test_path_params_get_metadata(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             await async_client.cms.source_code.with_raw_response.get_metadata(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             await async_client.cms.source_code.with_raw_response.get_metadata(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
@@ -818,7 +818,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_method_upsert(self, async_client: AsyncHubspot) -> None:
         source_code = await async_client.cms.source_code.upsert(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert_matches_type(AssetFileMetadata, source_code, path=["response"])
@@ -827,7 +827,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_method_upsert_with_all_params(self, async_client: AsyncHubspot) -> None:
         source_code = await async_client.cms.source_code.upsert(
-            path="path",
+            file_path="file_path",
             environment="environment",
             file=b"raw file contents",
         )
@@ -837,7 +837,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_raw_response_upsert(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.source_code.with_raw_response.upsert(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -850,7 +850,7 @@ class TestAsyncSourceCode:
     @parametrize
     async def test_streaming_response_upsert(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.source_code.with_streaming_response.upsert(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as response:
             assert not response.is_closed
@@ -866,24 +866,24 @@ class TestAsyncSourceCode:
     async def test_path_params_upsert(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             await async_client.cms.source_code.with_raw_response.upsert(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             await async_client.cms.source_code.with_raw_response.upsert(
-                path="",
+                file_path="",
                 environment="environment",
             )
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_validate(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/v3/source-code/environment/validate/path").mock(
+        respx_mock.post("/cms/v3/source-code/environment/validate/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         source_code = await async_client.cms.source_code.validate(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
         assert source_code.is_closed
@@ -894,11 +894,11 @@ class TestAsyncSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_validate_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/v3/source-code/environment/validate/path").mock(
+        respx_mock.post("/cms/v3/source-code/environment/validate/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         source_code = await async_client.cms.source_code.validate(
-            path="path",
+            file_path="file_path",
             environment="environment",
             file=b"raw file contents",
         )
@@ -910,12 +910,12 @@ class TestAsyncSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_validate(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/v3/source-code/environment/validate/path").mock(
+        respx_mock.post("/cms/v3/source-code/environment/validate/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
         source_code = await async_client.cms.source_code.with_raw_response.validate(
-            path="path",
+            file_path="file_path",
             environment="environment",
         )
 
@@ -927,11 +927,11 @@ class TestAsyncSourceCode:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_validate(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/v3/source-code/environment/validate/path").mock(
+        respx_mock.post("/cms/v3/source-code/environment/validate/file_path").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.cms.source_code.with_streaming_response.validate(
-            path="path",
+            file_path="file_path",
             environment="environment",
         ) as source_code:
             assert not source_code.is_closed
@@ -948,12 +948,12 @@ class TestAsyncSourceCode:
     async def test_path_params_validate(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `environment` but received ''"):
             await async_client.cms.source_code.with_raw_response.validate(
-                path="path",
+                file_path="file_path",
                 environment="",
             )
 
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_path` but received ''"):
             await async_client.cms.source_code.with_raw_response.validate(
-                path="",
+                file_path="",
                 environment="environment",
             )
