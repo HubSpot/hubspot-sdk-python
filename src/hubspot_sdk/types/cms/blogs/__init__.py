@@ -17,7 +17,6 @@ from .tag_list_params import TagListParams as TagListParams
 from .post_list_params import PostListParams as PostListParams
 from .author_get_params import AuthorGetParams as AuthorGetParams
 from .blog_author_param import BlogAuthorParam as BlogAuthorParam
-from .breakpoint_styles import BreakpointStyles as BreakpointStyles
 from .post_clone_params import PostCloneParams as PostCloneParams
 from .tag_create_params import TagCreateParams as TagCreateParams
 from .tag_delete_params import TagDeleteParams as TagDeleteParams
@@ -35,7 +34,6 @@ from .author_update_params import AuthorUpdateParams as AuthorUpdateParams
 from .post_schedule_params import PostScheduleParams as PostScheduleParams
 from .tag_get_batch_params import TagGetBatchParams as TagGetBatchParams
 from .author_get_batch_params import AuthorGetBatchParams as AuthorGetBatchParams
-from .breakpoint_styles_param import BreakpointStylesParam as BreakpointStylesParam
 from .tag_create_batch_params import TagCreateBatchParams as TagCreateBatchParams
 from .tag_delete_batch_params import TagDeleteBatchParams as TagDeleteBatchParams
 from .tag_update_batch_params import TagUpdateBatchParams as TagUpdateBatchParams

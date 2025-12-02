@@ -88,6 +88,7 @@ from .rgba_color_param import RgbaColorParam as RgbaColorParam
 from .round_up_numbers import RoundUpNumbers as RoundUpNumbers
 from .subtract_numbers import SubtractNumbers as SubtractNumbers
 from .bounded_next_page import BoundedNextPage as BoundedNextPage
+from .breakpoint_styles import BreakpointStyles as BreakpointStyles
 from .definition_source import DefinitionSource as DefinitionSource
 from .rollup_expression import RollupExpression as RollupExpression
 from .domain_list_params import DomainListParams as DomainListParams
@@ -121,6 +122,7 @@ from .background_image_param import BackgroundImageParam as BackgroundImageParam
 from .field_level_permission import FieldLevelPermission as FieldLevelPermission
 from .inbound_db_object_type import InboundDBObjectType as InboundDBObjectType
 from .version_content_folder import VersionContentFolder as VersionContentFolder
+from .breakpoint_styles_param import BreakpointStylesParam as BreakpointStylesParam
 from .event_visibility_change import EventVisibilityChange as EventVisibilityChange
 from .is_pipeline_stage_closed import IsPipelineStageClosed as IsPipelineStageClosed
 from .number_property_variable import NumberPropertyVariable as NumberPropertyVariable

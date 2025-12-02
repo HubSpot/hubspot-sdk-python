@@ -9,7 +9,7 @@ from ..._utils import PropertyInfo
 from .gradient_param import GradientParam
 from .rgba_color_param import RgbaColorParam
 from .background_image_param import BackgroundImageParam
-from .blogs.breakpoint_styles_param import BreakpointStylesParam
+from .breakpoint_styles_param import BreakpointStylesParam
 
 __all__ = ["StylesParam"]
 
