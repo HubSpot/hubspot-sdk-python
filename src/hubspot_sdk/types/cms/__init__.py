@@ -21,10 +21,12 @@ from .angle_param import AngleParam as AngleParam
 from .simple_user import SimpleUser as SimpleUser
 from .url_mapping import URLMapping as URLMapping
 from .indexed_data import IndexedData as IndexedData
+from .margin_param import MarginParam as MarginParam
 from .styles_param import StylesParam as StylesParam
 from .version_page import VersionPage as VersionPage
 from .import_result import ImportResult as ImportResult
 from .indexed_field import IndexedField as IndexedField
+from .padding_param import PaddingParam as PaddingParam
 from .row_meta_data import RowMetaData as RowMetaData
 from .scope_mapping import ScopeMapping as ScopeMapping
 from .variant_param import VariantParam as VariantParam

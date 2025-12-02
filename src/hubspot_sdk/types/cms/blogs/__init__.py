@@ -7,9 +7,7 @@ from .blog import Blog as Blog
 from .blog_post import BlogPost as BlogPost
 from .tag_param import TagParam as TagParam
 from .blog_author import BlogAuthor as BlogAuthor
-from .margin_param import MarginParam as MarginParam
 from .version_blog import VersionBlog as VersionBlog
-from .padding_param import PaddingParam as PaddingParam
 from .tag_get_params import TagGetParams as TagGetParams
 from .blog_post_param import BlogPostParam as BlogPostParam
 from .post_get_params import PostGetParams as PostGetParams

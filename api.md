@@ -400,6 +400,8 @@ from hubspot_sdk.types.cms import (
     DetachFromLangGroupRequestVNext,
     Gradient,
     LayoutSection,
+    Margin,
+    Padding,
     PublicAccessRule,
     RgbaColor,
     RowMetaData,
@@ -470,8 +472,6 @@ from hubspot_sdk.types.cms.blogs import (
     CollectionResponseWithTotalBlogPostForwardPaging,
     CollectionResponseWithTotalVersionBlogPost,
     ContentLanguageVariation,
-    Margin,
-    Padding,
     VersionBlogPost,
 )
 ```
