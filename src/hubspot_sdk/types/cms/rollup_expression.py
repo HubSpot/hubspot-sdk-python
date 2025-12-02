@@ -2,107 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
-from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, List, Union, Optional
+from typing_extensions import TypeAlias, TypeAliasType
 
 from pydantic import Field as FieldInfo
-
-from ..._models import BaseModel
-from ..shared.association_spec import AssociationSpec
-
-__all__ = ["RollupExpression", "ConditionalExpression"]
-
-ConditionalExpression: TypeAlias = Union[
-    "ConstantBoolean",
-    "ConstantNumber",
-    "ConstantString",
-    "BooleanPropertyVariable",
-    "StringPropertyVariable",
-    "NumberPropertyVariable",
-    "TimestampOfPropertyVariable",
-    "BooleanTargetPropertyVariable",
-    "StringTargetPropertyVariable",
-    "NumberTargetPropertyVariable",
-    "TimestampOfTargetPropertyVariable",
-    "AddNumbers",
-    "SubtractNumbers",
-    "MultiplyNumbers",
-    "DivideNumbers",
-    "RoundDownNumbers",
-    "RoundUpNumbers",
-    "RoundNearestNumbers",
-    "UpperCase",
-    "LowerCase",
-    "ConcatStrings",
-    "Contains",
-    "BeginsWith",
-    "NumberToString",
-    "ParseNumber",
-    "FetchExchangeRate",
-    "FetchCurrencyDecimalPlaces",
-    "FetchSingleCurrencyPortalCurrency",
-    "DatedExchangeRate",
-    "PipelineProbability",
-    "MaxNumbers",
-    "MinNumbers",
-    "LessThan",
-    "LessThanOrEqual",
-    "MoreThan",
-    "MoreThanOrEqual",
-    "NumberEquals",
-    "StringEquals",
-    "IsPipelineStageClosed",
-    "Not",
-    "Date",
-    "Month",
-    "Year",
-    "Now",
-    "TimeBetween",
-    "PeriodToMonths",
-    "PeriodToWeeks",
-    "And",
-    "Or",
-    "Xor",
-    "IfString",
-    "IfNumber",
-    "IfBoolean",
-    "IsPresent",
-    "HasEmailReply",
-    "HasPlainTextEmailReply",
-    "ExtractMostRecentEmailReplyHTML",
-    "ExtractMostRecentEmailReplyText",
-    "ExtractMostRecentPlainTextEmailReply",
-    "SetContainsString",
-    "IsEngagementType",
-    "FormatFullName",
-    "AbsoluteValue",
-    "SquareRoot",
-    "Power",
-    "Substring",
-    "Euler",
-    "StringLength",
-    "AddTime",
-    "SubtractTime",
-]
-
-
-class RollupExpression(BaseModel):
-    association_types: List[AssociationSpec] = FieldInfo(alias="associationTypes")
-
-    rollup_operator: str = FieldInfo(alias="rollupOperator")
-
-    source_object_type_id: str = FieldInfo(alias="sourceObjectTypeId")
-
-    source_property_name: str = FieldInfo(alias="sourcePropertyName")
-
-    conditional_expression: Optional[ConditionalExpression] = FieldInfo(alias="conditionalExpression", default=None)
-
-    conditional_formula: Optional[str] = FieldInfo(alias="conditionalFormula", default=None)
-
-    empty_rollup_value: Optional[str] = FieldInfo(alias="emptyRollupValue", default=None)
-
-    source_compare_by_property_name: Optional[str] = FieldInfo(alias="sourceCompareByPropertyName", default=None)
-
 
 from .now import Now
 from .or_ import Or
@@ -116,6 +19,8 @@ from .month import Month
 from .power import Power
 from .add_time import AddTime
 from .contains import Contains
+from ..._compat import PYDANTIC_V1
+from ..._models import BaseModel
 from .if_number import IfNumber
 from .if_string import IfString
 from .less_than import LessThan
@@ -159,6 +64,7 @@ from .fetch_exchange_rate import FetchExchangeRate
 from .set_contains_string import SetContainsString
 from .pipeline_probability import PipelineProbability
 from .round_nearest_numbers import RoundNearestNumbers
+from ..shared.association_spec import AssociationSpec
 from .is_pipeline_stage_closed import IsPipelineStageClosed
 from .number_property_variable import NumberPropertyVariable
 from .string_property_variable import StringPropertyVariable
@@ -174,3 +80,173 @@ from .extract_most_recent_email_reply_text import ExtractMostRecentEmailReplyTex
 from .fetch_single_currency_portal_currency import FetchSingleCurrencyPortalCurrency
 from .timestamp_of_target_property_variable import TimestampOfTargetPropertyVariable
 from .extract_most_recent_plain_text_email_reply import ExtractMostRecentPlainTextEmailReply
+
+__all__ = ["RollupExpression", "ConditionalExpression"]
+
+if TYPE_CHECKING or not PYDANTIC_V1:
+    ConditionalExpression = TypeAliasType(
+        "ConditionalExpression",
+        Union[
+            ConstantBoolean,
+            ConstantNumber,
+            ConstantString,
+            BooleanPropertyVariable,
+            StringPropertyVariable,
+            NumberPropertyVariable,
+            TimestampOfPropertyVariable,
+            BooleanTargetPropertyVariable,
+            StringTargetPropertyVariable,
+            NumberTargetPropertyVariable,
+            TimestampOfTargetPropertyVariable,
+            AddNumbers,
+            SubtractNumbers,
+            MultiplyNumbers,
+            DivideNumbers,
+            RoundDownNumbers,
+            RoundUpNumbers,
+            RoundNearestNumbers,
+            UpperCase,
+            LowerCase,
+            ConcatStrings,
+            Contains,
+            BeginsWith,
+            NumberToString,
+            ParseNumber,
+            FetchExchangeRate,
+            FetchCurrencyDecimalPlaces,
+            FetchSingleCurrencyPortalCurrency,
+            DatedExchangeRate,
+            PipelineProbability,
+            MaxNumbers,
+            MinNumbers,
+            LessThan,
+            LessThanOrEqual,
+            MoreThan,
+            MoreThanOrEqual,
+            NumberEquals,
+            StringEquals,
+            IsPipelineStageClosed,
+            Not,
+            Date,
+            Month,
+            Year,
+            Now,
+            TimeBetween,
+            PeriodToMonths,
+            PeriodToWeeks,
+            And,
+            Or,
+            Xor,
+            IfString,
+            IfNumber,
+            IfBoolean,
+            IsPresent,
+            HasEmailReply,
+            HasPlainTextEmailReply,
+            ExtractMostRecentEmailReplyHTML,
+            ExtractMostRecentEmailReplyText,
+            ExtractMostRecentPlainTextEmailReply,
+            SetContainsString,
+            IsEngagementType,
+            FormatFullName,
+            AbsoluteValue,
+            SquareRoot,
+            Power,
+            Substring,
+            Euler,
+            StringLength,
+            AddTime,
+            SubtractTime,
+        ],
+    )
+else:
+    ConditionalExpression: TypeAlias = Union[
+        ConstantBoolean,
+        ConstantNumber,
+        ConstantString,
+        BooleanPropertyVariable,
+        StringPropertyVariable,
+        NumberPropertyVariable,
+        TimestampOfPropertyVariable,
+        BooleanTargetPropertyVariable,
+        StringTargetPropertyVariable,
+        NumberTargetPropertyVariable,
+        TimestampOfTargetPropertyVariable,
+        AddNumbers,
+        SubtractNumbers,
+        MultiplyNumbers,
+        DivideNumbers,
+        RoundDownNumbers,
+        RoundUpNumbers,
+        RoundNearestNumbers,
+        UpperCase,
+        LowerCase,
+        ConcatStrings,
+        Contains,
+        BeginsWith,
+        NumberToString,
+        ParseNumber,
+        FetchExchangeRate,
+        FetchCurrencyDecimalPlaces,
+        FetchSingleCurrencyPortalCurrency,
+        DatedExchangeRate,
+        PipelineProbability,
+        MaxNumbers,
+        MinNumbers,
+        LessThan,
+        LessThanOrEqual,
+        MoreThan,
+        MoreThanOrEqual,
+        NumberEquals,
+        StringEquals,
+        IsPipelineStageClosed,
+        Not,
+        Date,
+        Month,
+        Year,
+        Now,
+        TimeBetween,
+        PeriodToMonths,
+        PeriodToWeeks,
+        And,
+        Or,
+        Xor,
+        IfString,
+        IfNumber,
+        IfBoolean,
+        IsPresent,
+        HasEmailReply,
+        HasPlainTextEmailReply,
+        ExtractMostRecentEmailReplyHTML,
+        ExtractMostRecentEmailReplyText,
+        ExtractMostRecentPlainTextEmailReply,
+        SetContainsString,
+        IsEngagementType,
+        FormatFullName,
+        AbsoluteValue,
+        SquareRoot,
+        Power,
+        Substring,
+        Euler,
+        StringLength,
+        AddTime,
+        SubtractTime,
+    ]
+
+
+class RollupExpression(BaseModel):
+    association_types: List[AssociationSpec] = FieldInfo(alias="associationTypes")
+
+    rollup_operator: str = FieldInfo(alias="rollupOperator")
+
+    source_object_type_id: str = FieldInfo(alias="sourceObjectTypeId")
+
+    source_property_name: str = FieldInfo(alias="sourcePropertyName")
+
+    conditional_expression: Optional[ConditionalExpression] = FieldInfo(alias="conditionalExpression", default=None)
+
+    conditional_formula: Optional[str] = FieldInfo(alias="conditionalFormula", default=None)
+
+    empty_rollup_value: Optional[str] = FieldInfo(alias="emptyRollupValue", default=None)
+
+    source_compare_by_property_name: Optional[str] = FieldInfo(alias="sourceCompareByPropertyName", default=None)
