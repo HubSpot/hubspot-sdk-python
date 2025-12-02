@@ -6,10 +6,10 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["FileGetSignedURLParams"]
+__all__ = ["FileOperationGetSignedURLParams"]
 
 
-class FileGetSignedURLParams(TypedDict, total=False):
+class FileOperationGetSignedURLParams(TypedDict, total=False):
     expiration_seconds: Annotated[int, PropertyInfo(alias="expirationSeconds")]
     """How long in seconds the link will provide access to the file."""
 

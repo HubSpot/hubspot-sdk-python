@@ -6,23 +6,25 @@ from .file import File as File
 from .folder import Folder as Folder
 from .file_stat import FileStat as FileStat
 from .signed_url import SignedURL as SignedURL
-from .file_get_params import FileGetParams as FileGetParams
-from .file_search_params import FileSearchParams as FileSearchParams
-from .file_update_params import FileUpdateParams as FileUpdateParams
-from .file_upload_params import FileUploadParams as FileUploadParams
-from .file_replace_params import FileReplaceParams as FileReplaceParams
 from .file_action_response import FileActionResponse as FileActionResponse
 from .folder_create_params import FolderCreateParams as FolderCreateParams
 from .folder_search_params import FolderSearchParams as FolderSearchParams
 from .folder_action_response import FolderActionResponse as FolderActionResponse
-from .file_get_by_path_params import FileGetByPathParams as FileGetByPathParams
 from .folder_get_by_id_params import FolderGetByIDParams as FolderGetByIDParams
 from .collection_response_file import CollectionResponseFile as CollectionResponseFile
+from .file_operation_get_params import FileOperationGetParams as FileOperationGetParams
 from .folder_get_by_path_params import FolderGetByPathParams as FolderGetByPathParams
 from .collection_response_folder import CollectionResponseFolder as CollectionResponseFolder
-from .file_get_signed_url_params import FileGetSignedURLParams as FileGetSignedURLParams
 from .folder_update_by_id_params import FolderUpdateByIDParams as FolderUpdateByIDParams
 from .folder_update_task_locator import FolderUpdateTaskLocator as FolderUpdateTaskLocator
+from .file_operation_search_params import FileOperationSearchParams as FileOperationSearchParams
+from .file_operation_update_params import FileOperationUpdateParams as FileOperationUpdateParams
+from .file_operation_upload_params import FileOperationUploadParams as FileOperationUploadParams
 from .import_from_url_task_locator import ImportFromURLTaskLocator as ImportFromURLTaskLocator
+from .file_operation_replace_params import FileOperationReplaceParams as FileOperationReplaceParams
 from .folder_update_async_by_id_params import FolderUpdateAsyncByIDParams as FolderUpdateAsyncByIDParams
-from .file_import_from_url_async_params import FileImportFromURLAsyncParams as FileImportFromURLAsyncParams
+from .file_operation_get_by_path_params import FileOperationGetByPathParams as FileOperationGetByPathParams
+from .file_operation_get_signed_url_params import FileOperationGetSignedURLParams as FileOperationGetSignedURLParams
+from .file_operation_import_from_url_async_params import (
+    FileOperationImportFromURLAsyncParams as FileOperationImportFromURLAsyncParams,
+)

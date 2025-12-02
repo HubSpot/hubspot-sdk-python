@@ -5,9 +5,9 @@ from __future__ import annotations
 from . import shared
 from .. import _compat
 from .shared import (
-    Error as Error,
     Option as Option,
     Paging as Paging,
+    APIError as APIError,
     NextPage as NextPage,
     Property as Property,
     ErrorDetail as ErrorDetail,

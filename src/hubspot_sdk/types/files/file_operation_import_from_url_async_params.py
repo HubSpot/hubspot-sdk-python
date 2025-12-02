@@ -8,10 +8,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["FileImportFromURLAsyncParams"]
+__all__ = ["FileOperationImportFromURLAsyncParams"]
 
 
-class FileImportFromURLAsyncParams(TypedDict, total=False):
+class FileOperationImportFromURLAsyncParams(TypedDict, total=False):
     access: Required[
         Literal[
             "HIDDEN_INDEXABLE",

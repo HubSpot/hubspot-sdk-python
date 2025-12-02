@@ -31,14 +31,14 @@ from ..._response import (
 )
 from ...pagination import SyncPage, AsyncPage
 from ...types.files import (
-    file_get_params,
-    file_search_params,
-    file_update_params,
-    file_upload_params,
-    file_replace_params,
-    file_get_by_path_params,
-    file_get_signed_url_params,
-    file_import_from_url_async_params,
+    file_operation_get_params,
+    file_operation_search_params,
+    file_operation_update_params,
+    file_operation_upload_params,
+    file_operation_replace_params,
+    file_operation_get_by_path_params,
+    file_operation_get_signed_url_params,
+    file_operation_import_from_url_async_params,
 )
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.files.file import File
@@ -47,28 +47,28 @@ from ...types.files.signed_url import SignedURL
 from ...types.files.file_action_response import FileActionResponse
 from ...types.files.import_from_url_task_locator import ImportFromURLTaskLocator
 
-__all__ = ["FilesResource", "AsyncFilesResource"]
+__all__ = ["FileOperationsResource", "AsyncFileOperationsResource"]
 
 
-class FilesResource(SyncAPIResource):
+class FileOperationsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> FilesResourceWithRawResponse:
+    def with_raw_response(self) -> FileOperationsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
-        return FilesResourceWithRawResponse(self)
+        return FileOperationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> FilesResourceWithStreamingResponse:
+    def with_streaming_response(self) -> FileOperationsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
-        return FilesResourceWithStreamingResponse(self)
+        return FileOperationsResourceWithStreamingResponse(self)
 
     def update(
         self,
@@ -138,7 +138,7 @@ class FilesResource(SyncAPIResource):
                     "parent_folder_id": parent_folder_id,
                     "parent_folder_path": parent_folder_path,
                 },
-                file_update_params.FileUpdateParams,
+                file_operation_update_params.FileOperationUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -247,7 +247,7 @@ class FilesResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"properties": properties}, file_get_params.FileGetParams),
+                query=maybe_transform({"properties": properties}, file_operation_get_params.FileOperationGetParams),
             ),
             cast_to=File,
         )
@@ -287,7 +287,9 @@ class FilesResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"properties": properties}, file_get_by_path_params.FileGetByPathParams),
+                query=maybe_transform(
+                    {"properties": properties}, file_operation_get_by_path_params.FileOperationGetByPathParams
+                ),
             ),
             cast_to=FileStat,
         )
@@ -373,7 +375,7 @@ class FilesResource(SyncAPIResource):
                         "size": size,
                         "upscale": upscale,
                     },
-                    file_get_signed_url_params.FileGetSignedURLParams,
+                    file_operation_get_signed_url_params.FileOperationGetSignedURLParams,
                 ),
             ),
             cast_to=SignedURL,
@@ -471,7 +473,7 @@ class FilesResource(SyncAPIResource):
                     "overwrite": overwrite,
                     "ttl": ttl,
                 },
-                file_import_from_url_async_params.FileImportFromURLAsyncParams,
+                file_operation_import_from_url_async_params.FileOperationImportFromURLAsyncParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -531,7 +533,7 @@ class FilesResource(SyncAPIResource):
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._put(
             f"/files/v3/files/{file_id}",
-            body=maybe_transform(body, file_replace_params.FileReplaceParams),
+            body=maybe_transform(body, file_operation_replace_params.FileOperationReplaceParams),
             files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -728,7 +730,7 @@ class FilesResource(SyncAPIResource):
                         "width_gte": width_gte,
                         "width_lte": width_lte,
                     },
-                    file_search_params.FileSearchParams,
+                    file_operation_search_params.FileOperationSearchParams,
                 ),
             ),
             model=File,
@@ -794,7 +796,7 @@ class FilesResource(SyncAPIResource):
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
             "/files/v3/files",
-            body=maybe_transform(body, file_upload_params.FileUploadParams),
+            body=maybe_transform(body, file_operation_upload_params.FileOperationUploadParams),
             files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -803,25 +805,25 @@ class FilesResource(SyncAPIResource):
         )
 
 
-class AsyncFilesResource(AsyncAPIResource):
+class AsyncFileOperationsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncFilesResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncFileOperationsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncFilesResourceWithRawResponse(self)
+        return AsyncFileOperationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncFilesResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncFileOperationsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
-        return AsyncFilesResourceWithStreamingResponse(self)
+        return AsyncFileOperationsResourceWithStreamingResponse(self)
 
     async def update(
         self,
@@ -891,7 +893,7 @@ class AsyncFilesResource(AsyncAPIResource):
                     "parent_folder_id": parent_folder_id,
                     "parent_folder_path": parent_folder_path,
                 },
-                file_update_params.FileUpdateParams,
+                file_operation_update_params.FileOperationUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1000,7 +1002,9 @@ class AsyncFilesResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"properties": properties}, file_get_params.FileGetParams),
+                query=await async_maybe_transform(
+                    {"properties": properties}, file_operation_get_params.FileOperationGetParams
+                ),
             ),
             cast_to=File,
         )
@@ -1041,7 +1045,7 @@ class AsyncFilesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"properties": properties}, file_get_by_path_params.FileGetByPathParams
+                    {"properties": properties}, file_operation_get_by_path_params.FileOperationGetByPathParams
                 ),
             ),
             cast_to=FileStat,
@@ -1128,7 +1132,7 @@ class AsyncFilesResource(AsyncAPIResource):
                         "size": size,
                         "upscale": upscale,
                     },
-                    file_get_signed_url_params.FileGetSignedURLParams,
+                    file_operation_get_signed_url_params.FileOperationGetSignedURLParams,
                 ),
             ),
             cast_to=SignedURL,
@@ -1226,7 +1230,7 @@ class AsyncFilesResource(AsyncAPIResource):
                     "overwrite": overwrite,
                     "ttl": ttl,
                 },
-                file_import_from_url_async_params.FileImportFromURLAsyncParams,
+                file_operation_import_from_url_async_params.FileOperationImportFromURLAsyncParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1286,7 +1290,7 @@ class AsyncFilesResource(AsyncAPIResource):
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._put(
             f"/files/v3/files/{file_id}",
-            body=await async_maybe_transform(body, file_replace_params.FileReplaceParams),
+            body=await async_maybe_transform(body, file_operation_replace_params.FileOperationReplaceParams),
             files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1483,7 +1487,7 @@ class AsyncFilesResource(AsyncAPIResource):
                         "width_gte": width_gte,
                         "width_lte": width_lte,
                     },
-                    file_search_params.FileSearchParams,
+                    file_operation_search_params.FileOperationSearchParams,
                 ),
             ),
             model=File,
@@ -1549,7 +1553,7 @@ class AsyncFilesResource(AsyncAPIResource):
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/files/v3/files",
-            body=await async_maybe_transform(body, file_upload_params.FileUploadParams),
+            body=await async_maybe_transform(body, file_operation_upload_params.FileOperationUploadParams),
             files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1558,157 +1562,157 @@ class AsyncFilesResource(AsyncAPIResource):
         )
 
 
-class FilesResourceWithRawResponse:
-    def __init__(self, files: FilesResource) -> None:
-        self._files = files
+class FileOperationsResourceWithRawResponse:
+    def __init__(self, file_operations: FileOperationsResource) -> None:
+        self._file_operations = file_operations
 
         self.update = to_raw_response_wrapper(
-            files.update,
+            file_operations.update,
         )
         self.delete = to_raw_response_wrapper(
-            files.delete,
+            file_operations.delete,
         )
         self.gdpr_delete = to_raw_response_wrapper(
-            files.gdpr_delete,
+            file_operations.gdpr_delete,
         )
         self.get = to_raw_response_wrapper(
-            files.get,
+            file_operations.get,
         )
         self.get_by_path = to_raw_response_wrapper(
-            files.get_by_path,
+            file_operations.get_by_path,
         )
         self.get_import_task_status = to_raw_response_wrapper(
-            files.get_import_task_status,
+            file_operations.get_import_task_status,
         )
         self.get_signed_url = to_raw_response_wrapper(
-            files.get_signed_url,
+            file_operations.get_signed_url,
         )
         self.import_from_url_async = to_raw_response_wrapper(
-            files.import_from_url_async,
+            file_operations.import_from_url_async,
         )
         self.replace = to_raw_response_wrapper(
-            files.replace,
+            file_operations.replace,
         )
         self.search = to_raw_response_wrapper(
-            files.search,
+            file_operations.search,
         )
         self.upload = to_raw_response_wrapper(
-            files.upload,
+            file_operations.upload,
         )
 
 
-class AsyncFilesResourceWithRawResponse:
-    def __init__(self, files: AsyncFilesResource) -> None:
-        self._files = files
+class AsyncFileOperationsResourceWithRawResponse:
+    def __init__(self, file_operations: AsyncFileOperationsResource) -> None:
+        self._file_operations = file_operations
 
         self.update = async_to_raw_response_wrapper(
-            files.update,
+            file_operations.update,
         )
         self.delete = async_to_raw_response_wrapper(
-            files.delete,
+            file_operations.delete,
         )
         self.gdpr_delete = async_to_raw_response_wrapper(
-            files.gdpr_delete,
+            file_operations.gdpr_delete,
         )
         self.get = async_to_raw_response_wrapper(
-            files.get,
+            file_operations.get,
         )
         self.get_by_path = async_to_raw_response_wrapper(
-            files.get_by_path,
+            file_operations.get_by_path,
         )
         self.get_import_task_status = async_to_raw_response_wrapper(
-            files.get_import_task_status,
+            file_operations.get_import_task_status,
         )
         self.get_signed_url = async_to_raw_response_wrapper(
-            files.get_signed_url,
+            file_operations.get_signed_url,
         )
         self.import_from_url_async = async_to_raw_response_wrapper(
-            files.import_from_url_async,
+            file_operations.import_from_url_async,
         )
         self.replace = async_to_raw_response_wrapper(
-            files.replace,
+            file_operations.replace,
         )
         self.search = async_to_raw_response_wrapper(
-            files.search,
+            file_operations.search,
         )
         self.upload = async_to_raw_response_wrapper(
-            files.upload,
+            file_operations.upload,
         )
 
 
-class FilesResourceWithStreamingResponse:
-    def __init__(self, files: FilesResource) -> None:
-        self._files = files
+class FileOperationsResourceWithStreamingResponse:
+    def __init__(self, file_operations: FileOperationsResource) -> None:
+        self._file_operations = file_operations
 
         self.update = to_streamed_response_wrapper(
-            files.update,
+            file_operations.update,
         )
         self.delete = to_streamed_response_wrapper(
-            files.delete,
+            file_operations.delete,
         )
         self.gdpr_delete = to_streamed_response_wrapper(
-            files.gdpr_delete,
+            file_operations.gdpr_delete,
         )
         self.get = to_streamed_response_wrapper(
-            files.get,
+            file_operations.get,
         )
         self.get_by_path = to_streamed_response_wrapper(
-            files.get_by_path,
+            file_operations.get_by_path,
         )
         self.get_import_task_status = to_streamed_response_wrapper(
-            files.get_import_task_status,
+            file_operations.get_import_task_status,
         )
         self.get_signed_url = to_streamed_response_wrapper(
-            files.get_signed_url,
+            file_operations.get_signed_url,
         )
         self.import_from_url_async = to_streamed_response_wrapper(
-            files.import_from_url_async,
+            file_operations.import_from_url_async,
         )
         self.replace = to_streamed_response_wrapper(
-            files.replace,
+            file_operations.replace,
         )
         self.search = to_streamed_response_wrapper(
-            files.search,
+            file_operations.search,
         )
         self.upload = to_streamed_response_wrapper(
-            files.upload,
+            file_operations.upload,
         )
 
 
-class AsyncFilesResourceWithStreamingResponse:
-    def __init__(self, files: AsyncFilesResource) -> None:
-        self._files = files
+class AsyncFileOperationsResourceWithStreamingResponse:
+    def __init__(self, file_operations: AsyncFileOperationsResource) -> None:
+        self._file_operations = file_operations
 
         self.update = async_to_streamed_response_wrapper(
-            files.update,
+            file_operations.update,
         )
         self.delete = async_to_streamed_response_wrapper(
-            files.delete,
+            file_operations.delete,
         )
         self.gdpr_delete = async_to_streamed_response_wrapper(
-            files.gdpr_delete,
+            file_operations.gdpr_delete,
         )
         self.get = async_to_streamed_response_wrapper(
-            files.get,
+            file_operations.get,
         )
         self.get_by_path = async_to_streamed_response_wrapper(
-            files.get_by_path,
+            file_operations.get_by_path,
         )
         self.get_import_task_status = async_to_streamed_response_wrapper(
-            files.get_import_task_status,
+            file_operations.get_import_task_status,
         )
         self.get_signed_url = async_to_streamed_response_wrapper(
-            files.get_signed_url,
+            file_operations.get_signed_url,
         )
         self.import_from_url_async = async_to_streamed_response_wrapper(
-            files.import_from_url_async,
+            file_operations.import_from_url_async,
         )
         self.replace = async_to_streamed_response_wrapper(
-            files.replace,
+            file_operations.replace,
         )
         self.search = async_to_streamed_response_wrapper(
-            files.search,
+            file_operations.search,
         )
         self.upload = async_to_streamed_response_wrapper(
-            files.upload,
+            file_operations.upload,
         )

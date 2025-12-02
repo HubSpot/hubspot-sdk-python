@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypeAlias
+from typing_extensions import TypedDict
 
 __all__ = ["VariantParam"]
 
-VariantParam: TypeAlias = object
+
+class VariantParam(TypedDict, total=False):
+    pass
