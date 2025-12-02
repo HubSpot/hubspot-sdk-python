@@ -22,7 +22,6 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.conversations import message_get_params, message_list_params, message_get_original_content_params
 from ...types.conversations.public_message import PublicMessage
 from ...types.conversations.public_message_content import PublicMessageContent
-from ...types.conversations.collection_response_public_message_forward_paging import Result
 
 __all__ = ["MessagesResource", "AsyncMessagesResource"]
 
@@ -132,7 +131,7 @@ class MessagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[Result]:
+    ) -> SyncPage[PublicMessage]:
         """
         Args:
           extra_headers: Send extra headers
@@ -145,7 +144,7 @@ class MessagesResource(SyncAPIResource):
         """
         return self._get_api_list(
             f"/conversations/v3/conversations/threads/{thread_id}/messages",
-            page=SyncPage[Result],
+            page=SyncPage[PublicMessage],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -162,7 +161,7 @@ class MessagesResource(SyncAPIResource):
                     message_list_params.MessageListParams,
                 ),
             ),
-            model=cast(Any, Result),  # Union types cannot be passed in as arguments in the type system
+            model=cast(Any, PublicMessage),  # Union types cannot be passed in as arguments in the type system
         )
 
     def get(
@@ -350,7 +349,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[Result, AsyncPage[Result]]:
+    ) -> AsyncPaginator[PublicMessage, AsyncPage[PublicMessage]]:
         """
         Args:
           extra_headers: Send extra headers
@@ -363,7 +362,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         """
         return self._get_api_list(
             f"/conversations/v3/conversations/threads/{thread_id}/messages",
-            page=AsyncPage[Result],
+            page=AsyncPage[PublicMessage],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -380,7 +379,7 @@ class AsyncMessagesResource(AsyncAPIResource):
                     message_list_params.MessageListParams,
                 ),
             ),
-            model=cast(Any, Result),  # Union types cannot be passed in as arguments in the type system
+            model=cast(Any, PublicMessage),  # Union types cannot be passed in as arguments in the type system
         )
 
     async def get(

@@ -14,7 +14,6 @@ from hubspot_sdk.types.conversations import (
     PublicMessage,
     PublicMessageContent,
 )
-from hubspot_sdk.types.conversations.collection_response_public_message_forward_paging import Result
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -96,7 +95,7 @@ class TestMessages:
         message = client.conversations.messages.list(
             thread_id=0,
         )
-        assert_matches_type(SyncPage[Result], message, path=["response"])
+        assert_matches_type(SyncPage[PublicMessage], message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -109,7 +108,7 @@ class TestMessages:
             property="property",
             sort=["string"],
         )
-        assert_matches_type(SyncPage[Result], message, path=["response"])
+        assert_matches_type(SyncPage[PublicMessage], message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -121,7 +120,7 @@ class TestMessages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         message = response.parse()
-        assert_matches_type(SyncPage[Result], message, path=["response"])
+        assert_matches_type(SyncPage[PublicMessage], message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -133,7 +132,7 @@ class TestMessages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             message = response.parse()
-            assert_matches_type(SyncPage[Result], message, path=["response"])
+            assert_matches_type(SyncPage[PublicMessage], message, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -329,7 +328,7 @@ class TestAsyncMessages:
         message = await async_client.conversations.messages.list(
             thread_id=0,
         )
-        assert_matches_type(AsyncPage[Result], message, path=["response"])
+        assert_matches_type(AsyncPage[PublicMessage], message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -342,7 +341,7 @@ class TestAsyncMessages:
             property="property",
             sort=["string"],
         )
-        assert_matches_type(AsyncPage[Result], message, path=["response"])
+        assert_matches_type(AsyncPage[PublicMessage], message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -354,7 +353,7 @@ class TestAsyncMessages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         message = await response.parse()
-        assert_matches_type(AsyncPage[Result], message, path=["response"])
+        assert_matches_type(AsyncPage[PublicMessage], message, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -366,7 +365,7 @@ class TestAsyncMessages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             message = await response.parse()
-            assert_matches_type(AsyncPage[Result], message, path=["response"])
+            assert_matches_type(AsyncPage[PublicMessage], message, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
