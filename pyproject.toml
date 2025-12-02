@@ -82,7 +82,7 @@ format = { chain = [
 
 typecheck = { chain = [
   "typecheck:pyright",
-  "typecheck:mypy"
+  # "typecheck:mypy"  # disabled: ~2000 type files create SCC of 2076 modules causing mypy to hang
 ]}
 "typecheck:pyright" = "pyright"
 "typecheck:verify-types" = "pyright --verifytypes hubspot_sdk --ignoreexternal"
