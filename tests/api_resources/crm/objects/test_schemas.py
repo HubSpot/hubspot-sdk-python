@@ -10,9 +10,9 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.events import AssociationDefinition
-from hubspot_sdk.types.shared import CollectionResponseObjectSchemaNoPaging
 from hubspot_sdk.types.crm.objects import (
     ObjectSchema,
+    SchemaListResponse,
     ObjectsSchemasObjectTypeDefinition,
 )
 
@@ -208,7 +208,7 @@ class TestSchemas:
     @parametrize
     def test_method_list(self, client: Hubspot) -> None:
         schema = client.crm.objects.schemas.list()
-        assert_matches_type(CollectionResponseObjectSchemaNoPaging, schema, path=["response"])
+        assert_matches_type(SchemaListResponse, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -216,7 +216,7 @@ class TestSchemas:
         schema = client.crm.objects.schemas.list(
             archived=True,
         )
-        assert_matches_type(CollectionResponseObjectSchemaNoPaging, schema, path=["response"])
+        assert_matches_type(SchemaListResponse, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -226,7 +226,7 @@ class TestSchemas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         schema = response.parse()
-        assert_matches_type(CollectionResponseObjectSchemaNoPaging, schema, path=["response"])
+        assert_matches_type(SchemaListResponse, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -236,7 +236,7 @@ class TestSchemas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             schema = response.parse()
-            assert_matches_type(CollectionResponseObjectSchemaNoPaging, schema, path=["response"])
+            assert_matches_type(SchemaListResponse, schema, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -640,7 +640,7 @@ class TestAsyncSchemas:
     @parametrize
     async def test_method_list(self, async_client: AsyncHubspot) -> None:
         schema = await async_client.crm.objects.schemas.list()
-        assert_matches_type(CollectionResponseObjectSchemaNoPaging, schema, path=["response"])
+        assert_matches_type(SchemaListResponse, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -648,7 +648,7 @@ class TestAsyncSchemas:
         schema = await async_client.crm.objects.schemas.list(
             archived=True,
         )
-        assert_matches_type(CollectionResponseObjectSchemaNoPaging, schema, path=["response"])
+        assert_matches_type(SchemaListResponse, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -658,7 +658,7 @@ class TestAsyncSchemas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         schema = await response.parse()
-        assert_matches_type(CollectionResponseObjectSchemaNoPaging, schema, path=["response"])
+        assert_matches_type(SchemaListResponse, schema, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -668,7 +668,7 @@ class TestAsyncSchemas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             schema = await response.parse()
-            assert_matches_type(CollectionResponseObjectSchemaNoPaging, schema, path=["response"])
+            assert_matches_type(SchemaListResponse, schema, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

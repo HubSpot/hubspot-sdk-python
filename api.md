@@ -14,7 +14,6 @@ from hubspot_sdk.types import (
     BatchInputString,
     BatchReadInputPropertyName,
     BatchResponseProperty,
-    CollectionResponseObjectSchemaNoPaging,
     Error,
     ErrorDetail,
     ForwardPaging,
@@ -838,10 +837,16 @@ Methods:
 
 ### Schemas
 
+Types:
+
+```python
+from hubspot_sdk.types.cms.media_bridge import SchemaListResponse
+```
+
 Methods:
 
 - <code title="patch /media-bridge/v1/{appId}/schemas/{objectType}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">update</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/objects_schemas_object_type_definition.py">ObjectsSchemasObjectTypeDefinition</a></code>
-- <code title="get /media-bridge/v1/{appId}/schemas">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">list</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
+- <code title="get /media-bridge/v1/{appId}/schemas">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">list</a>(app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/media_bridge/schema_list_response.py">SchemaListResponse</a></code>
 - <code title="post /media-bridge/v1/{appId}/schemas/{objectType}/associations">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">create_association</a>(object_type, \*, app_id, \*\*<a href="src/hubspot_sdk/types/cms/media_bridge/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/association_definition.py">AssociationDefinition</a></code>
 - <code title="delete /media-bridge/v1/{appId}/schemas/{objectType}/associations/{associationId}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">delete_association</a>(association_id, \*, app_id, object_type) -> None</code>
 - <code title="get /media-bridge/v1/{appId}/schemas/{objectType}">client.cms.media_bridge.schemas.<a href="./src/hubspot_sdk/resources/cms/media_bridge/schemas.py">get</a>(object_type, \*, app_id) -> <a href="./src/hubspot_sdk/types/crm/objects/object_schema.py">ObjectSchema</a></code>
@@ -2364,6 +2369,7 @@ from hubspot_sdk.types.crm.objects import (
     ObjectTypeDefinitionPatch,
     ObjectTypePropertyCreate,
     ObjectsSchemasObjectTypeDefinition,
+    SchemaListResponse,
 )
 ```
 
@@ -2371,7 +2377,7 @@ Methods:
 
 - <code title="post /crm-object-schemas/v3/schemas">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/schema_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/object_schema.py">ObjectSchema</a></code>
 - <code title="patch /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">update</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/objects_schemas_object_type_definition.py">ObjectsSchemasObjectTypeDefinition</a></code>
-- <code title="get /crm-object-schemas/v3/schemas">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
+- <code title="get /crm-object-schemas/v3/schemas">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/objects/schema_list_response.py">SchemaListResponse</a></code>
 - <code title="delete /crm-object-schemas/v3/schemas/{objectType}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">delete</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_delete_params.py">params</a>) -> None</code>
 - <code title="post /crm-object-schemas/v3/schemas/{objectType}/associations">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">create_association</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/association_definition.py">AssociationDefinition</a></code>
 - <code title="delete /crm-object-schemas/v3/schemas/{objectType}/associations/{associationIdentifier}">client.crm.objects.schemas.<a href="./src/hubspot_sdk/resources/crm/objects/schemas.py">delete_association</a>(association_identifier, \*, object_type) -> None</code>

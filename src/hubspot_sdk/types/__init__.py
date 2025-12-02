@@ -102,7 +102,6 @@ from .shared import (
     PublicPropertyAssociationInListFilter as PublicPropertyAssociationInListFilter,
     PublicRelativeRangedTimestampRefineBy as PublicRelativeRangedTimestampRefineBy,
     PublicRollingPropertyUpdatedOperation as PublicRollingPropertyUpdatedOperation,
-    CollectionResponseObjectSchemaNoPaging as CollectionResponseObjectSchemaNoPaging,
     PublicComparativeDatePropertyOperation as PublicComparativeDatePropertyOperation,
     PublicRollingDateRangePropertyOperation as PublicRollingDateRangePropertyOperation,
     PublicComparativePropertyUpdatedOperation as PublicComparativePropertyUpdatedOperation,

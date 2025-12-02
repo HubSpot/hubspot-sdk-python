@@ -6,6 +6,7 @@ from .schema_list_params import SchemaListParams as SchemaListParams
 from .group_create_params import GroupCreateParams as GroupCreateParams
 from .property_get_params import PropertyGetParams as PropertyGetParams
 from .property_list_params import PropertyListParams as PropertyListParams
+from .schema_list_response import SchemaListResponse as SchemaListResponse
 from .schema_update_params import SchemaUpdateParams as SchemaUpdateParams
 from .property_create_params import PropertyCreateParams as PropertyCreateParams
 from .property_update_params import PropertyUpdateParams as PropertyUpdateParams

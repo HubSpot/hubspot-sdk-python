@@ -106,6 +106,7 @@ from .object_update_params import ObjectUpdateParams as ObjectUpdateParams
 from .project_merge_params import ProjectMergeParams as ProjectMergeParams
 from .schema_create_params import SchemaCreateParams as SchemaCreateParams
 from .schema_delete_params import SchemaDeleteParams as SchemaDeleteParams
+from .schema_list_response import SchemaListResponse as SchemaListResponse
 from .schema_update_params import SchemaUpdateParams as SchemaUpdateParams
 from .ticket_create_params import TicketCreateParams as TicketCreateParams
 from .ticket_search_params import TicketSearchParams as TicketSearchParams

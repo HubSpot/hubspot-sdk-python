@@ -26,10 +26,10 @@ from ....types.crm.objects import (
 )
 from ....types.crm.objects.object_schema import ObjectSchema
 from ....types.events.association_definition import AssociationDefinition
+from ....types.crm.objects.schema_list_response import SchemaListResponse
 from ....types.shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
 from ....types.crm.objects.object_type_property_create_param import ObjectTypePropertyCreateParam
 from ....types.crm.objects.objects_schemas_object_type_definition import ObjectsSchemasObjectTypeDefinition
-from ....types.shared.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
 
 __all__ = ["SchemasResource", "AsyncSchemasResource"]
 
@@ -197,7 +197,7 @@ class SchemasResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseObjectSchemaNoPaging:
+    ) -> SchemaListResponse:
         """
         Args:
           archived: Whether to return only results that have been archived.
@@ -219,7 +219,7 @@ class SchemasResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"archived": archived}, schema_list_params.SchemaListParams),
             ),
-            cast_to=CollectionResponseObjectSchemaNoPaging,
+            cast_to=SchemaListResponse,
         )
 
     def delete(
@@ -535,7 +535,7 @@ class AsyncSchemasResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseObjectSchemaNoPaging:
+    ) -> SchemaListResponse:
         """
         Args:
           archived: Whether to return only results that have been archived.
@@ -557,7 +557,7 @@ class AsyncSchemasResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform({"archived": archived}, schema_list_params.SchemaListParams),
             ),
-            cast_to=CollectionResponseObjectSchemaNoPaging,
+            cast_to=SchemaListResponse,
         )
 
     async def delete(
