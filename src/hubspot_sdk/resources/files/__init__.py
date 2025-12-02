@@ -16,8 +16,22 @@ from .folders import (
     FoldersResourceWithStreamingResponse,
     AsyncFoldersResourceWithStreamingResponse,
 )
+from .file_operations import (
+    FileOperationsResource,
+    AsyncFileOperationsResource,
+    FileOperationsResourceWithRawResponse,
+    AsyncFileOperationsResourceWithRawResponse,
+    FileOperationsResourceWithStreamingResponse,
+    AsyncFileOperationsResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "FileOperationsResource",
+    "AsyncFileOperationsResource",
+    "FileOperationsResourceWithRawResponse",
+    "AsyncFileOperationsResourceWithRawResponse",
+    "FileOperationsResourceWithStreamingResponse",
+    "AsyncFileOperationsResourceWithStreamingResponse",
     "FoldersResource",
     "AsyncFoldersResource",
     "FoldersResourceWithRawResponse",

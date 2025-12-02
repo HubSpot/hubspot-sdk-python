@@ -8,10 +8,10 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["FileUpdateParams"]
+__all__ = ["FileOperationUpdateParams"]
 
 
-class FileUpdateParams(TypedDict, total=False):
+class FileOperationUpdateParams(TypedDict, total=False):
     access: Literal[
         "HIDDEN_INDEXABLE",
         "HIDDEN_NOT_INDEXABLE",

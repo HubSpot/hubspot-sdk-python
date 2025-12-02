@@ -7,10 +7,10 @@ from typing_extensions import Annotated, TypedDict
 from ..._types import FileTypes
 from ..._utils import PropertyInfo
 
-__all__ = ["FileReplaceParams"]
+__all__ = ["FileOperationReplaceParams"]
 
 
-class FileReplaceParams(TypedDict, total=False):
+class FileOperationReplaceParams(TypedDict, total=False):
     charset_hunch: Annotated[str, PropertyInfo(alias="charsetHunch")]
     """Character set of given file data."""
 

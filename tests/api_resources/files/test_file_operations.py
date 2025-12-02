@@ -22,21 +22,21 @@ from hubspot_sdk.types.files import (
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
-class TestFiles:
+class TestFileOperations:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Hubspot) -> None:
-        file = client.files.files.update(
+        file_operation = client.files.file_operations.update(
             file_id="321669910225",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Hubspot) -> None:
-        file = client.files.files.update(
+        file_operation = client.files.file_operations.update(
             file_id="321669910225",
             access="HIDDEN_INDEXABLE",
             clear_expires=True,
@@ -46,31 +46,31 @@ class TestFiles:
             parent_folder_id="parentFolderId",
             parent_folder_path="parentFolderPath",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.update(
+        response = client.files.file_operations.with_raw_response.update(
             file_id="321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.update(
+        with client.files.file_operations.with_streaming_response.update(
             file_id="321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(File, file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(File, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -78,41 +78,41 @@ class TestFiles:
     @parametrize
     def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            client.files.files.with_raw_response.update(
+            client.files.file_operations.with_raw_response.update(
                 file_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Hubspot) -> None:
-        file = client.files.files.delete(
+        file_operation = client.files.file_operations.delete(
             "321669910225",
         )
-        assert file is None
+        assert file_operation is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.delete(
+        response = client.files.file_operations.with_raw_response.delete(
             "321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert file is None
+        file_operation = response.parse()
+        assert file_operation is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.delete(
+        with client.files.file_operations.with_streaming_response.delete(
             "321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert file is None
+            file_operation = response.parse()
+            assert file_operation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -120,41 +120,41 @@ class TestFiles:
     @parametrize
     def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            client.files.files.with_raw_response.delete(
+            client.files.file_operations.with_raw_response.delete(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_gdpr_delete(self, client: Hubspot) -> None:
-        file = client.files.files.gdpr_delete(
+        file_operation = client.files.file_operations.gdpr_delete(
             "321669910225",
         )
-        assert file is None
+        assert file_operation is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_gdpr_delete(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.gdpr_delete(
+        response = client.files.file_operations.with_raw_response.gdpr_delete(
             "321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert file is None
+        file_operation = response.parse()
+        assert file_operation is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_gdpr_delete(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.gdpr_delete(
+        with client.files.file_operations.with_streaming_response.gdpr_delete(
             "321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert file is None
+            file_operation = response.parse()
+            assert file_operation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -162,50 +162,50 @@ class TestFiles:
     @parametrize
     def test_path_params_gdpr_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            client.files.files.with_raw_response.gdpr_delete(
+            client.files.file_operations.with_raw_response.gdpr_delete(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get(self, client: Hubspot) -> None:
-        file = client.files.files.get(
+        file_operation = client.files.file_operations.get(
             file_id="321669910225",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_with_all_params(self, client: Hubspot) -> None:
-        file = client.files.files.get(
+        file_operation = client.files.file_operations.get(
             file_id="321669910225",
             properties=["string"],
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.get(
+        response = client.files.file_operations.with_raw_response.get(
             file_id="321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.get(
+        with client.files.file_operations.with_streaming_response.get(
             file_id="321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(File, file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(File, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -213,50 +213,50 @@ class TestFiles:
     @parametrize
     def test_path_params_get(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            client.files.files.with_raw_response.get(
+            client.files.file_operations.with_raw_response.get(
                 file_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_by_path(self, client: Hubspot) -> None:
-        file = client.files.files.get_by_path(
+        file_operation = client.files.file_operations.get_by_path(
             path="path",
         )
-        assert_matches_type(FileStat, file, path=["response"])
+        assert_matches_type(FileStat, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_by_path_with_all_params(self, client: Hubspot) -> None:
-        file = client.files.files.get_by_path(
+        file_operation = client.files.file_operations.get_by_path(
             path="path",
             properties=["string"],
         )
-        assert_matches_type(FileStat, file, path=["response"])
+        assert_matches_type(FileStat, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_by_path(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.get_by_path(
+        response = client.files.file_operations.with_raw_response.get_by_path(
             path="path",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(FileStat, file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(FileStat, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_by_path(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.get_by_path(
+        with client.files.file_operations.with_streaming_response.get_by_path(
             path="path",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(FileStat, file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(FileStat, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -264,41 +264,41 @@ class TestFiles:
     @parametrize
     def test_path_params_get_by_path(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
-            client.files.files.with_raw_response.get_by_path(
+            client.files.file_operations.with_raw_response.get_by_path(
                 path="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_import_task_status(self, client: Hubspot) -> None:
-        file = client.files.files.get_import_task_status(
+        file_operation = client.files.file_operations.get_import_task_status(
             "taskId",
         )
-        assert_matches_type(FileActionResponse, file, path=["response"])
+        assert_matches_type(FileActionResponse, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_import_task_status(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.get_import_task_status(
+        response = client.files.file_operations.with_raw_response.get_import_task_status(
             "taskId",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(FileActionResponse, file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(FileActionResponse, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_import_task_status(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.get_import_task_status(
+        with client.files.file_operations.with_streaming_response.get_import_task_status(
             "taskId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(FileActionResponse, file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(FileActionResponse, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -306,52 +306,52 @@ class TestFiles:
     @parametrize
     def test_path_params_get_import_task_status(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
-            client.files.files.with_raw_response.get_import_task_status(
+            client.files.file_operations.with_raw_response.get_import_task_status(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_signed_url(self, client: Hubspot) -> None:
-        file = client.files.files.get_signed_url(
+        file_operation = client.files.file_operations.get_signed_url(
             file_id="321669910225",
         )
-        assert_matches_type(SignedURL, file, path=["response"])
+        assert_matches_type(SignedURL, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_signed_url_with_all_params(self, client: Hubspot) -> None:
-        file = client.files.files.get_signed_url(
+        file_operation = client.files.file_operations.get_signed_url(
             file_id="321669910225",
             expiration_seconds=0,
             size="icon",
             upscale=True,
         )
-        assert_matches_type(SignedURL, file, path=["response"])
+        assert_matches_type(SignedURL, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_signed_url(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.get_signed_url(
+        response = client.files.file_operations.with_raw_response.get_signed_url(
             file_id="321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(SignedURL, file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(SignedURL, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_signed_url(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.get_signed_url(
+        with client.files.file_operations.with_streaming_response.get_signed_url(
             file_id="321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(SignedURL, file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(SignedURL, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -359,23 +359,23 @@ class TestFiles:
     @parametrize
     def test_path_params_get_signed_url(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            client.files.files.with_raw_response.get_signed_url(
+            client.files.file_operations.with_raw_response.get_signed_url(
                 file_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_import_from_url_async(self, client: Hubspot) -> None:
-        file = client.files.files.import_from_url_async(
+        file_operation = client.files.file_operations.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             url="url",
         )
-        assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
+        assert_matches_type(ImportFromURLTaskLocator, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_import_from_url_async_with_all_params(self, client: Hubspot) -> None:
-        file = client.files.files.import_from_url_async(
+        file_operation = client.files.file_operations.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             url="url",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -387,78 +387,78 @@ class TestFiles:
             overwrite=True,
             ttl="ttl",
         )
-        assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
+        assert_matches_type(ImportFromURLTaskLocator, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_import_from_url_async(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.import_from_url_async(
+        response = client.files.file_operations.with_raw_response.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             url="url",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(ImportFromURLTaskLocator, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_import_from_url_async(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.import_from_url_async(
+        with client.files.file_operations.with_streaming_response.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             url="url",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(ImportFromURLTaskLocator, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_replace(self, client: Hubspot) -> None:
-        file = client.files.files.replace(
+        file_operation = client.files.file_operations.replace(
             file_id="321669910225",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_replace_with_all_params(self, client: Hubspot) -> None:
-        file = client.files.files.replace(
+        file_operation = client.files.file_operations.replace(
             file_id="321669910225",
             charset_hunch="charsetHunch",
             file=b"raw file contents",
             options="options",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_replace(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.replace(
+        response = client.files.file_operations.with_raw_response.replace(
             file_id="321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_replace(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.replace(
+        with client.files.file_operations.with_streaming_response.replace(
             file_id="321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(File, file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(File, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -466,20 +466,20 @@ class TestFiles:
     @parametrize
     def test_path_params_replace(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            client.files.files.with_raw_response.replace(
+            client.files.file_operations.with_raw_response.replace(
                 file_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_search(self, client: Hubspot) -> None:
-        file = client.files.files.search()
-        assert_matches_type(SyncPage[File], file, path=["response"])
+        file_operation = client.files.file_operations.search()
+        assert_matches_type(SyncPage[File], file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_search_with_all_params(self, client: Hubspot) -> None:
-        file = client.files.files.search(
+        file_operation = client.files.file_operations.search(
             after="after",
             allows_anonymous_access=True,
             before="before",
@@ -517,40 +517,40 @@ class TestFiles:
             width_gte=0,
             width_lte=0,
         )
-        assert_matches_type(SyncPage[File], file, path=["response"])
+        assert_matches_type(SyncPage[File], file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_search(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.search()
+        response = client.files.file_operations.with_raw_response.search()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(SyncPage[File], file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(SyncPage[File], file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_search(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.search() as response:
+        with client.files.file_operations.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(SyncPage[File], file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(SyncPage[File], file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_upload(self, client: Hubspot) -> None:
-        file = client.files.files.upload()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = client.files.file_operations.upload()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_upload_with_all_params(self, client: Hubspot) -> None:
-        file = client.files.files.upload(
+        file_operation = client.files.file_operations.upload(
             charset_hunch="charsetHunch",
             file=b"raw file contents",
             file_name="fileName",
@@ -558,32 +558,32 @@ class TestFiles:
             folder_path="folderPath",
             options="options",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_upload(self, client: Hubspot) -> None:
-        response = client.files.files.with_raw_response.upload()
+        response = client.files.file_operations.with_raw_response.upload()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = response.parse()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_upload(self, client: Hubspot) -> None:
-        with client.files.files.with_streaming_response.upload() as response:
+        with client.files.file_operations.with_streaming_response.upload() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(File, file, path=["response"])
+            file_operation = response.parse()
+            assert_matches_type(File, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
-class TestAsyncFiles:
+class TestAsyncFileOperations:
     parametrize = pytest.mark.parametrize(
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
@@ -591,15 +591,15 @@ class TestAsyncFiles:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.update(
+        file_operation = await async_client.files.file_operations.update(
             file_id="321669910225",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.update(
+        file_operation = await async_client.files.file_operations.update(
             file_id="321669910225",
             access="HIDDEN_INDEXABLE",
             clear_expires=True,
@@ -609,31 +609,31 @@ class TestAsyncFiles:
             parent_folder_id="parentFolderId",
             parent_folder_path="parentFolderPath",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.update(
+        response = await async_client.files.file_operations.with_raw_response.update(
             file_id="321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.update(
+        async with async_client.files.file_operations.with_streaming_response.update(
             file_id="321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(File, file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(File, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -641,41 +641,41 @@ class TestAsyncFiles:
     @parametrize
     async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            await async_client.files.files.with_raw_response.update(
+            await async_client.files.file_operations.with_raw_response.update(
                 file_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.delete(
+        file_operation = await async_client.files.file_operations.delete(
             "321669910225",
         )
-        assert file is None
+        assert file_operation is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.delete(
+        response = await async_client.files.file_operations.with_raw_response.delete(
             "321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert file is None
+        file_operation = await response.parse()
+        assert file_operation is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.delete(
+        async with async_client.files.file_operations.with_streaming_response.delete(
             "321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert file is None
+            file_operation = await response.parse()
+            assert file_operation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -683,41 +683,41 @@ class TestAsyncFiles:
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            await async_client.files.files.with_raw_response.delete(
+            await async_client.files.file_operations.with_raw_response.delete(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_gdpr_delete(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.gdpr_delete(
+        file_operation = await async_client.files.file_operations.gdpr_delete(
             "321669910225",
         )
-        assert file is None
+        assert file_operation is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.gdpr_delete(
+        response = await async_client.files.file_operations.with_raw_response.gdpr_delete(
             "321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert file is None
+        file_operation = await response.parse()
+        assert file_operation is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.gdpr_delete(
+        async with async_client.files.file_operations.with_streaming_response.gdpr_delete(
             "321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert file is None
+            file_operation = await response.parse()
+            assert file_operation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -725,50 +725,50 @@ class TestAsyncFiles:
     @parametrize
     async def test_path_params_gdpr_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            await async_client.files.files.with_raw_response.gdpr_delete(
+            await async_client.files.file_operations.with_raw_response.gdpr_delete(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.get(
+        file_operation = await async_client.files.file_operations.get(
             file_id="321669910225",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.get(
+        file_operation = await async_client.files.file_operations.get(
             file_id="321669910225",
             properties=["string"],
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.get(
+        response = await async_client.files.file_operations.with_raw_response.get(
             file_id="321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.get(
+        async with async_client.files.file_operations.with_streaming_response.get(
             file_id="321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(File, file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(File, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -776,50 +776,50 @@ class TestAsyncFiles:
     @parametrize
     async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            await async_client.files.files.with_raw_response.get(
+            await async_client.files.file_operations.with_raw_response.get(
                 file_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_by_path(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.get_by_path(
+        file_operation = await async_client.files.file_operations.get_by_path(
             path="path",
         )
-        assert_matches_type(FileStat, file, path=["response"])
+        assert_matches_type(FileStat, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.get_by_path(
+        file_operation = await async_client.files.file_operations.get_by_path(
             path="path",
             properties=["string"],
         )
-        assert_matches_type(FileStat, file, path=["response"])
+        assert_matches_type(FileStat, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_by_path(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.get_by_path(
+        response = await async_client.files.file_operations.with_raw_response.get_by_path(
             path="path",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(FileStat, file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(FileStat, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_by_path(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.get_by_path(
+        async with async_client.files.file_operations.with_streaming_response.get_by_path(
             path="path",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(FileStat, file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(FileStat, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -827,41 +827,41 @@ class TestAsyncFiles:
     @parametrize
     async def test_path_params_get_by_path(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
-            await async_client.files.files.with_raw_response.get_by_path(
+            await async_client.files.file_operations.with_raw_response.get_by_path(
                 path="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_import_task_status(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.get_import_task_status(
+        file_operation = await async_client.files.file_operations.get_import_task_status(
             "taskId",
         )
-        assert_matches_type(FileActionResponse, file, path=["response"])
+        assert_matches_type(FileActionResponse, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_import_task_status(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.get_import_task_status(
+        response = await async_client.files.file_operations.with_raw_response.get_import_task_status(
             "taskId",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(FileActionResponse, file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(FileActionResponse, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_import_task_status(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.get_import_task_status(
+        async with async_client.files.file_operations.with_streaming_response.get_import_task_status(
             "taskId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(FileActionResponse, file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(FileActionResponse, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -869,52 +869,52 @@ class TestAsyncFiles:
     @parametrize
     async def test_path_params_get_import_task_status(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
-            await async_client.files.files.with_raw_response.get_import_task_status(
+            await async_client.files.file_operations.with_raw_response.get_import_task_status(
                 "",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_signed_url(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.get_signed_url(
+        file_operation = await async_client.files.file_operations.get_signed_url(
             file_id="321669910225",
         )
-        assert_matches_type(SignedURL, file, path=["response"])
+        assert_matches_type(SignedURL, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_signed_url_with_all_params(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.get_signed_url(
+        file_operation = await async_client.files.file_operations.get_signed_url(
             file_id="321669910225",
             expiration_seconds=0,
             size="icon",
             upscale=True,
         )
-        assert_matches_type(SignedURL, file, path=["response"])
+        assert_matches_type(SignedURL, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_signed_url(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.get_signed_url(
+        response = await async_client.files.file_operations.with_raw_response.get_signed_url(
             file_id="321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(SignedURL, file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(SignedURL, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_signed_url(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.get_signed_url(
+        async with async_client.files.file_operations.with_streaming_response.get_signed_url(
             file_id="321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(SignedURL, file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(SignedURL, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -922,23 +922,23 @@ class TestAsyncFiles:
     @parametrize
     async def test_path_params_get_signed_url(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            await async_client.files.files.with_raw_response.get_signed_url(
+            await async_client.files.file_operations.with_raw_response.get_signed_url(
                 file_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_import_from_url_async(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.import_from_url_async(
+        file_operation = await async_client.files.file_operations.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             url="url",
         )
-        assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
+        assert_matches_type(ImportFromURLTaskLocator, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_import_from_url_async_with_all_params(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.import_from_url_async(
+        file_operation = await async_client.files.file_operations.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             url="url",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -950,78 +950,78 @@ class TestAsyncFiles:
             overwrite=True,
             ttl="ttl",
         )
-        assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
+        assert_matches_type(ImportFromURLTaskLocator, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_import_from_url_async(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.import_from_url_async(
+        response = await async_client.files.file_operations.with_raw_response.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             url="url",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(ImportFromURLTaskLocator, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_import_from_url_async(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.import_from_url_async(
+        async with async_client.files.file_operations.with_streaming_response.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             url="url",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(ImportFromURLTaskLocator, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_replace(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.replace(
+        file_operation = await async_client.files.file_operations.replace(
             file_id="321669910225",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_replace_with_all_params(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.replace(
+        file_operation = await async_client.files.file_operations.replace(
             file_id="321669910225",
             charset_hunch="charsetHunch",
             file=b"raw file contents",
             options="options",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_replace(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.replace(
+        response = await async_client.files.file_operations.with_raw_response.replace(
             file_id="321669910225",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_replace(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.replace(
+        async with async_client.files.file_operations.with_streaming_response.replace(
             file_id="321669910225",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(File, file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(File, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1029,20 +1029,20 @@ class TestAsyncFiles:
     @parametrize
     async def test_path_params_replace(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
-            await async_client.files.files.with_raw_response.replace(
+            await async_client.files.file_operations.with_raw_response.replace(
                 file_id="",
             )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_search(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.search()
-        assert_matches_type(AsyncPage[File], file, path=["response"])
+        file_operation = await async_client.files.file_operations.search()
+        assert_matches_type(AsyncPage[File], file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.search(
+        file_operation = await async_client.files.file_operations.search(
             after="after",
             allows_anonymous_access=True,
             before="before",
@@ -1080,40 +1080,40 @@ class TestAsyncFiles:
             width_gte=0,
             width_lte=0,
         )
-        assert_matches_type(AsyncPage[File], file, path=["response"])
+        assert_matches_type(AsyncPage[File], file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.search()
+        response = await async_client.files.file_operations.with_raw_response.search()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(AsyncPage[File], file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(AsyncPage[File], file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.search() as response:
+        async with async_client.files.file_operations.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(AsyncPage[File], file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(AsyncPage[File], file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_upload(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.upload()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = await async_client.files.file_operations.upload()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_upload_with_all_params(self, async_client: AsyncHubspot) -> None:
-        file = await async_client.files.files.upload(
+        file_operation = await async_client.files.file_operations.upload(
             charset_hunch="charsetHunch",
             file=b"raw file contents",
             file_name="fileName",
@@ -1121,26 +1121,26 @@ class TestAsyncFiles:
             folder_path="folderPath",
             options="options",
         )
-        assert_matches_type(File, file, path=["response"])
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_upload(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.files.files.with_raw_response.upload()
+        response = await async_client.files.file_operations.with_raw_response.upload()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = await response.parse()
-        assert_matches_type(File, file, path=["response"])
+        file_operation = await response.parse()
+        assert_matches_type(File, file_operation, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_upload(self, async_client: AsyncHubspot) -> None:
-        async with async_client.files.files.with_streaming_response.upload() as response:
+        async with async_client.files.file_operations.with_streaming_response.upload() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(File, file, path=["response"])
+            file_operation = await response.parse()
+            assert_matches_type(File, file_operation, path=["response"])
 
         assert cast(Any, response.is_closed) is True

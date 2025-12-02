@@ -5,7 +5,7 @@ from typing import List
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.error import Error
+from ..shared.api_error import APIError
 
 __all__ = ["ImportResult"]
 
@@ -14,7 +14,7 @@ class ImportResult(BaseModel):
     duplicate_rows: int = FieldInfo(alias="duplicateRows")
     """Specifies number of duplicate rows"""
 
-    errors: List[Error]
+    errors: List[APIError]
     """List of errors during import"""
 
     row_limit_exceeded: bool = FieldInfo(alias="rowLimitExceeded")

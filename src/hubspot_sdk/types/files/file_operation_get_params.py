@@ -6,9 +6,8 @@ from typing_extensions import TypedDict
 
 from ..._types import SequenceNotStr
 
-__all__ = ["FileGetByPathParams"]
+__all__ = ["FileOperationGetParams"]
 
 
-class FileGetByPathParams(TypedDict, total=False):
+class FileOperationGetParams(TypedDict, total=False):
     properties: SequenceNotStr[str]
-    """Properties to return in the response."""

@@ -9,10 +9,10 @@ from typing_extensions import Annotated, TypedDict
 from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
-__all__ = ["FileSearchParams"]
+__all__ = ["FileOperationSearchParams"]
 
 
-class FileSearchParams(TypedDict, total=False):
+class FileOperationSearchParams(TypedDict, total=False):
     after: str
     """Offset search results by this value.
 

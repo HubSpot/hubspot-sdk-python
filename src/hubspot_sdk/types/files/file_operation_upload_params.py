@@ -7,10 +7,10 @@ from typing_extensions import Annotated, TypedDict
 from ..._types import FileTypes
 from ..._utils import PropertyInfo
 
-__all__ = ["FileUploadParams"]
+__all__ = ["FileOperationUploadParams"]
 
 
-class FileUploadParams(TypedDict, total=False):
+class FileOperationUploadParams(TypedDict, total=False):
     charset_hunch: Annotated[str, PropertyInfo(alias="charsetHunch")]
     """Character set of the uploaded file."""
 
