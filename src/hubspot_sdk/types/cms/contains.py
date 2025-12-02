@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List, Optional
 from typing_extensions import Literal
 
@@ -13,10 +15,13 @@ __all__ = ["Contains"]
 class Contains(BaseModel):
     operator: Literal["CONTAINS"]
 
-    string_to_check: object = FieldInfo(alias="stringToCheck")
+    string_to_check: "Expression" = FieldInfo(alias="stringToCheck")
 
-    inputs: Optional[List[object]] = None
+    inputs: Optional[List["Expression"]] = None
 
     property_name: Optional[str] = FieldInfo(alias="propertyName", default=None)
 
     value: Optional[bool] = None
+
+
+from .expression import Expression

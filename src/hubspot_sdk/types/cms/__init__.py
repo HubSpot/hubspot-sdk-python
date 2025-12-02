@@ -29,6 +29,7 @@ from .less_than import LessThan as LessThan
 from .more_than import MoreThan as MoreThan
 from .substring import Substring as Substring
 from .color_stop import ColorStop as ColorStop
+from .expression import Expression as Expression
 from .foreign_id import ForeignID as ForeignID
 from .group_view import GroupView as GroupView
 from .if_boolean import IfBoolean as IfBoolean
