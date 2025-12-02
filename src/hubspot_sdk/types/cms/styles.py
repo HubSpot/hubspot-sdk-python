@@ -8,7 +8,7 @@ from .gradient import Gradient
 from ..._models import BaseModel
 from .rgba_color import RgbaColor
 from .background_image import BackgroundImage
-from .blogs.breakpoint_styles import BreakpointStyles
+from .breakpoint_styles import BreakpointStyles
 
 __all__ = ["Styles"]
 
