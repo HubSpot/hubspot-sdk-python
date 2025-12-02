@@ -695,6 +695,7 @@ from hubspot_sdk.types.cms import (
     Euler,
     EventVisibilityChange,
     EventVisibilityResponse,
+    Expression,
     ExtensionData,
     ExternalOptionsMetaData,
     ExtractMostRecentEmailReplyHTML,

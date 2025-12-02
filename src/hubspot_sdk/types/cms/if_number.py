@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List, Optional
 from typing_extensions import Literal
 
@@ -13,14 +15,17 @@ __all__ = ["IfNumber"]
 class IfNumber(BaseModel):
     enclosed_in_parentheses: bool = FieldInfo(alias="enclosedInParentheses")
 
-    if_expression: object = FieldInfo(alias="ifExpression")
+    if_expression: "Expression" = FieldInfo(alias="ifExpression")
 
     operator: Literal["IF_NUMBER"]
 
-    else_expression: Optional[object] = FieldInfo(alias="elseExpression", default=None)
+    else_expression: Optional["Expression"] = FieldInfo(alias="elseExpression", default=None)
 
-    inputs: Optional[List[object]] = None
+    inputs: Optional[List["Expression"]] = None
 
     property_name: Optional[str] = FieldInfo(alias="propertyName", default=None)
 
     value: Optional[float] = None
+
+
+from .expression import Expression
