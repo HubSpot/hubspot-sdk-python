@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-from .blogs.margin_param import MarginParam
-from .blogs.padding_param import PaddingParam
+from .margin_param import MarginParam
+from .padding_param import PaddingParam
 
 __all__ = ["BreakpointStylesParam"]
 
