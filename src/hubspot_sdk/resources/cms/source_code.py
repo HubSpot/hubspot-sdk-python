@@ -63,7 +63,7 @@ class SourceCodeResource(SyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     def create(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         file: FileTypes | Omit = omit,
@@ -91,8 +91,8 @@ class SourceCodeResource(SyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         body = deepcopy_minimal({"file": file})
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
         # It should be noted that the actual Content-Type header that will be
@@ -100,7 +100,7 @@ class SourceCodeResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
-            f"/cms/v3/source-code/{environment}/content/{path}",
+            f"/cms/v3/source-code/{environment}/content/{file_path}",
             body=maybe_transform(body, source_code_create_params.SourceCodeCreateParams),
             files=files,
             options=make_request_options(
@@ -111,7 +111,7 @@ class SourceCodeResource(SyncAPIResource):
 
     def delete(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -135,11 +135,11 @@ class SourceCodeResource(SyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/cms/v3/source-code/{environment}/content/{path}",
+            f"/cms/v3/source-code/{environment}/content/{file_path}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -182,7 +182,7 @@ class SourceCodeResource(SyncAPIResource):
 
     def get(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -207,11 +207,11 @@ class SourceCodeResource(SyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return self._get(
-            f"/cms/v3/source-code/{environment}/content/{path}",
+            f"/cms/v3/source-code/{environment}/content/{file_path}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -252,7 +252,7 @@ class SourceCodeResource(SyncAPIResource):
 
     def get_metadata(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         properties: str | Omit = omit,
@@ -278,10 +278,10 @@ class SourceCodeResource(SyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         return self._get(
-            f"/cms/v3/source-code/{environment}/metadata/{path}",
+            f"/cms/v3/source-code/{environment}/metadata/{file_path}",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -296,7 +296,7 @@ class SourceCodeResource(SyncAPIResource):
 
     def upsert(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         file: FileTypes | Omit = omit,
@@ -323,8 +323,8 @@ class SourceCodeResource(SyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         body = deepcopy_minimal({"file": file})
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
         # It should be noted that the actual Content-Type header that will be
@@ -332,7 +332,7 @@ class SourceCodeResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._put(
-            f"/cms/v3/source-code/{environment}/content/{path}",
+            f"/cms/v3/source-code/{environment}/content/{file_path}",
             body=maybe_transform(body, source_code_upsert_params.SourceCodeUpsertParams),
             files=files,
             options=make_request_options(
@@ -343,7 +343,7 @@ class SourceCodeResource(SyncAPIResource):
 
     def validate(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         file: FileTypes | Omit = omit,
@@ -369,8 +369,8 @@ class SourceCodeResource(SyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         body = deepcopy_minimal({"file": file})
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
@@ -379,7 +379,7 @@ class SourceCodeResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
-            f"/cms/v3/source-code/{environment}/validate/{path}",
+            f"/cms/v3/source-code/{environment}/validate/{file_path}",
             body=maybe_transform(body, source_code_validate_params.SourceCodeValidateParams),
             files=files,
             options=make_request_options(
@@ -412,7 +412,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     async def create(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         file: FileTypes | Omit = omit,
@@ -440,8 +440,8 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         body = deepcopy_minimal({"file": file})
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
         # It should be noted that the actual Content-Type header that will be
@@ -449,7 +449,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
-            f"/cms/v3/source-code/{environment}/content/{path}",
+            f"/cms/v3/source-code/{environment}/content/{file_path}",
             body=await async_maybe_transform(body, source_code_create_params.SourceCodeCreateParams),
             files=files,
             options=make_request_options(
@@ -460,7 +460,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
 
     async def delete(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -484,11 +484,11 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/cms/v3/source-code/{environment}/content/{path}",
+            f"/cms/v3/source-code/{environment}/content/{file_path}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -533,7 +533,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
 
     async def get(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -558,11 +558,11 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return await self._get(
-            f"/cms/v3/source-code/{environment}/content/{path}",
+            f"/cms/v3/source-code/{environment}/content/{file_path}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -603,7 +603,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
 
     async def get_metadata(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         properties: str | Omit = omit,
@@ -629,10 +629,10 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         return await self._get(
-            f"/cms/v3/source-code/{environment}/metadata/{path}",
+            f"/cms/v3/source-code/{environment}/metadata/{file_path}",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -647,7 +647,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
 
     async def upsert(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         file: FileTypes | Omit = omit,
@@ -674,8 +674,8 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         body = deepcopy_minimal({"file": file})
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
         # It should be noted that the actual Content-Type header that will be
@@ -683,7 +683,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._put(
-            f"/cms/v3/source-code/{environment}/content/{path}",
+            f"/cms/v3/source-code/{environment}/content/{file_path}",
             body=await async_maybe_transform(body, source_code_upsert_params.SourceCodeUpsertParams),
             files=files,
             options=make_request_options(
@@ -694,7 +694,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
 
     async def validate(
         self,
-        path: str,
+        file_path: str,
         *,
         environment: str,
         file: FileTypes | Omit = omit,
@@ -720,8 +720,8 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         """
         if not environment:
             raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         body = deepcopy_minimal({"file": file})
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
@@ -730,7 +730,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
-            f"/cms/v3/source-code/{environment}/validate/{path}",
+            f"/cms/v3/source-code/{environment}/validate/{file_path}",
             body=await async_maybe_transform(body, source_code_validate_params.SourceCodeValidateParams),
             files=files,
             options=make_request_options(

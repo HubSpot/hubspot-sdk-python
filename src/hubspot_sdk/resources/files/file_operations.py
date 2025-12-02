@@ -254,7 +254,7 @@ class FileOperationsResource(SyncAPIResource):
 
     def get_by_path(
         self,
-        path: str,
+        file_path: str,
         *,
         properties: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -278,10 +278,10 @@ class FileOperationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         return self._get(
-            f"/files/v3/files/stat/{path}",
+            f"/files/v3/files/stat/{file_path}",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1011,7 +1011,7 @@ class AsyncFileOperationsResource(AsyncAPIResource):
 
     async def get_by_path(
         self,
-        path: str,
+        file_path: str,
         *,
         properties: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1035,10 +1035,10 @@ class AsyncFileOperationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        if not file_path:
+            raise ValueError(f"Expected a non-empty value for `file_path` but received {file_path!r}")
         return await self._get(
-            f"/files/v3/files/stat/{path}",
+            f"/files/v3/files/stat/{file_path}",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

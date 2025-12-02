@@ -1,8 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
-from typing import Optional
+from typing import Dict, Optional
 
 from pydantic import Field as FieldInfo
 
@@ -10,6 +8,7 @@ from ..._models import BaseModel
 from .extension_data import ExtensionData
 from ..shared.property import Property
 from .definition_source import DefinitionSource
+from .rollup_expression import RollupExpression
 from .default_requirements import DefaultRequirements
 from .field_level_permission import FieldLevelPermission
 from .external_options_meta_data import ExternalOptionsMetaData
@@ -24,7 +23,7 @@ class PropertyDefinition(BaseModel):
     property: Property
     """Defines a property"""
 
-    calculation_expression: Optional["Expression"] = FieldInfo(alias="calculationExpression", default=None)
+    calculation_expression: Optional[Dict[str, object]] = FieldInfo(alias="calculationExpression", default=None)
 
     calculation_formula: Optional[str] = FieldInfo(alias="calculationFormula", default=None)
 
@@ -48,8 +47,4 @@ class PropertyDefinition(BaseModel):
 
     property_requirements: Optional[DefaultRequirements] = FieldInfo(alias="propertyRequirements", default=None)
 
-    rollup_expression: Optional["RollupExpression"] = FieldInfo(alias="rollupExpression", default=None)
-
-
-from .expression import Expression
-from .rollup_expression import RollupExpression
+    rollup_expression: Optional[RollupExpression] = FieldInfo(alias="rollupExpression", default=None)
