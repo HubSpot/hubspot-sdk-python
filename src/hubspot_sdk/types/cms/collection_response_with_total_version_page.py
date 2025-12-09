@@ -11,6 +11,8 @@ __all__ = ["CollectionResponseWithTotalVersionPage"]
 
 
 class CollectionResponseWithTotalVersionPage(BaseModel):
+    """Response object for collections of page versions with pagination information."""
+
     results: List["VersionPage"]
     """Collection of page versions."""
 

@@ -12,6 +12,8 @@ __all__ = ["File"]
 
 
 class File(BaseModel):
+    """File"""
+
     id: str
     """File ID."""
 

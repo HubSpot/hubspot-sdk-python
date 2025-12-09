@@ -13,6 +13,10 @@ __all__ = ["MultipleCheckboxesFieldParam"]
 
 
 class MultipleCheckboxesFieldParam(TypedDict, total=False):
+    """
+    A form field consisting of a set of checkboxes allowing multiple choices to be selected at one time.
+    """
+
     default_values: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="defaultValues")]]
     """The values selected by default.
 

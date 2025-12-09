@@ -10,6 +10,8 @@ __all__ = ["FormStyle"]
 
 
 class FormStyle(BaseModel):
+    """Styling options for the form"""
+
     background_width: str = FieldInfo(alias="backgroundWidth")
 
     font_family: str = FieldInfo(alias="fontFamily")

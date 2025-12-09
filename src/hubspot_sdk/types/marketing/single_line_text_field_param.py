@@ -11,6 +11,8 @@ __all__ = ["SingleLineTextFieldParam"]
 
 
 class SingleLineTextFieldParam(TypedDict, total=False):
+    """A form field consisting of a single-line text box."""
+
     dependent_fields: Required[Annotated[Iterable["DependentFieldParam"], PropertyInfo(alias="dependentFields")]]
     """
     A list of other fields to make visible based on the value filled in for this

@@ -12,6 +12,8 @@ __all__ = ["TimelineEventResponse"]
 
 
 class TimelineEventResponse(BaseModel):
+    """The current state of the timeline event."""
+
     id: str
     """Identifier for the event.
 

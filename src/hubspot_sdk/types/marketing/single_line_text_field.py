@@ -13,6 +13,8 @@ __all__ = ["SingleLineTextField"]
 
 
 class SingleLineTextField(BaseModel):
+    """A form field consisting of a single-line text box."""
+
     dependent_fields: List["DependentField"] = FieldInfo(alias="dependentFields")
     """
     A list of other fields to make visible based on the value filled in for this

@@ -13,6 +13,8 @@ __all__ = ["PublicEmailContentParam"]
 
 
 class PublicEmailContentParam(TypedDict, total=False):
+    """Data structure representing the content of the email."""
+
     flex_areas: Annotated[Dict[str, object], PropertyInfo(alias="flexAreas")]
 
     plain_text_version: Annotated[str, PropertyInfo(alias="plainTextVersion")]

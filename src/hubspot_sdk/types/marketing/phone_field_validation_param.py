@@ -10,6 +10,8 @@ __all__ = ["PhoneFieldValidationParam"]
 
 
 class PhoneFieldValidationParam(TypedDict, total=False):
+    """Describes how a phone number should be validated."""
+
     max_allowed_digits: Required[Annotated[int, PropertyInfo(alias="maxAllowedDigits")]]
 
     min_allowed_digits: Required[Annotated[int, PropertyInfo(alias="minAllowedDigits")]]

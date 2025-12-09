@@ -11,6 +11,8 @@ __all__ = ["StandardError"]
 
 
 class StandardError(BaseModel):
+    """Ye olde error"""
+
     category: str
     """The main category of the error."""
 

@@ -10,6 +10,8 @@ __all__ = ["PublicEmailSubscriptionDetailsParam"]
 
 
 class PublicEmailSubscriptionDetailsParam(TypedDict, total=False):
+    """Data structure representing the subscription fields of the email."""
+
     office_location_id: Annotated[str, PropertyInfo(alias="officeLocationId")]
     """ID of the selected office location."""
 

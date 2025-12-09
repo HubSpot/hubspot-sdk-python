@@ -12,6 +12,8 @@ __all__ = ["CardFetchBodyParam"]
 
 
 class CardFetchBodyParam(TypedDict, total=False):
+    """Configuration for this card's data fetch request."""
+
     object_types: Required[Annotated[Iterable[CardObjectTypeBodyParam], PropertyInfo(alias="objectTypes")]]
     """An array of CRM object types where this card should be displayed.
 

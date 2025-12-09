@@ -12,6 +12,8 @@ __all__ = ["TimelineEventTemplate"]
 
 
 class TimelineEventTemplate(BaseModel):
+    """The current state of the template definition."""
+
     id: str
     """The template ID."""
 

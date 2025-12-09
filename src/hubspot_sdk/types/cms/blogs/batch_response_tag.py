@@ -13,6 +13,8 @@ __all__ = ["BatchResponseTag"]
 
 
 class BatchResponseTag(BaseModel):
+    """Response object for batch operations on blog tags."""
+
     completed_at: datetime = FieldInfo(alias="completedAt")
     """Time of batch operation completion."""
 

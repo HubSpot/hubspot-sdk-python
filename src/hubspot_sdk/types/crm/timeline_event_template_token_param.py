@@ -13,6 +13,8 @@ __all__ = ["TimelineEventTemplateTokenParam"]
 
 
 class TimelineEventTemplateTokenParam(TypedDict, total=False):
+    """State of the token definition."""
+
     label: Required[str]
     """Used for list segmentation and reporting."""
 

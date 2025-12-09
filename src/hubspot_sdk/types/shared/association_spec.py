@@ -10,6 +10,10 @@ __all__ = ["AssociationSpec"]
 
 
 class AssociationSpec(BaseModel):
+    """
+    Defines the type, direction, and details of the relationship between two CRM objects.
+    """
+
     association_category: Literal["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED"] = FieldInfo(
         alias="associationCategory"
     )

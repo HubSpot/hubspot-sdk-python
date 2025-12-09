@@ -11,6 +11,8 @@ __all__ = ["ValueWithTimestamp"]
 
 
 class ValueWithTimestamp(BaseModel):
+    """Property model that includes timestamp."""
+
     source_type: str = FieldInfo(alias="sourceType")
     """The property type."""
 

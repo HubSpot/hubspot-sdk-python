@@ -8,6 +8,8 @@ __all__ = ["FolderUpdateTaskLocator"]
 
 
 class FolderUpdateTaskLocator(BaseModel):
+    """Information on the task that has been started, and where to check it's status."""
+
     id: str
     """ID of the task"""
 

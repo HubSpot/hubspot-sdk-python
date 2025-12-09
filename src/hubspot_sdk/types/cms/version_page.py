@@ -13,6 +13,11 @@ __all__ = ["VersionPage"]
 
 
 class VersionPage(BaseModel):
+    """Model definition for a landing page or site page version.
+
+    Contains metadata describing the version of the page. It can be used to view edit history of a page.
+    """
+
     id: str
     """ID of this page version."""
 

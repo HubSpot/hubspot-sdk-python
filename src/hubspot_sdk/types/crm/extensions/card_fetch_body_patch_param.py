@@ -12,6 +12,8 @@ __all__ = ["CardFetchBodyPatchParam"]
 
 
 class CardFetchBodyPatchParam(TypedDict, total=False):
+    """Variant of CardFetchBody with fields as optional for patches"""
+
     object_types: Required[Annotated[Iterable[CardObjectTypeBodyParam], PropertyInfo(alias="objectTypes")]]
     """An array of CRM object types where this card should be displayed.
 

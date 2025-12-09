@@ -8,6 +8,8 @@ __all__ = ["ImportFromURLTaskLocator"]
 
 
 class ImportFromURLTaskLocator(BaseModel):
+    """Information on the task that has been started, and where to check it's status."""
+
     id: str
     """ID of the task"""
 

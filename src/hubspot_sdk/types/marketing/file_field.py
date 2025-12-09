@@ -13,6 +13,8 @@ __all__ = ["FileField"]
 
 
 class FileField(BaseModel):
+    """A form field used for uploading one or more files."""
+
     allow_multiple_files: bool = FieldInfo(alias="allowMultipleFiles")
     """Whether to allow the upload of multiple files."""
 

@@ -12,6 +12,8 @@ __all__ = ["TagParam"]
 
 
 class TagParam(TypedDict, total=False):
+    """Model definition for a Tag."""
+
     id: Required[str]
     """The unique ID of the Blog Tag."""
 

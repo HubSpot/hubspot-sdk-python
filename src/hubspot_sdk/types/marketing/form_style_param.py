@@ -10,6 +10,8 @@ __all__ = ["FormStyleParam"]
 
 
 class FormStyleParam(TypedDict, total=False):
+    """Styling options for the form"""
+
     background_width: Required[Annotated[str, PropertyInfo(alias="backgroundWidth")]]
 
     font_family: Required[Annotated[str, PropertyInfo(alias="fontFamily")]]

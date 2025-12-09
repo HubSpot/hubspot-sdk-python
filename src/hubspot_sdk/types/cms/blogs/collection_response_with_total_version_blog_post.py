@@ -11,6 +11,10 @@ __all__ = ["CollectionResponseWithTotalVersionBlogPost"]
 
 
 class CollectionResponseWithTotalVersionBlogPost(BaseModel):
+    """
+    Response object for collections of blog post versions with pagination information.
+    """
+
     results: List["VersionBlogPost"]
     """Collection of blog post versions."""
 

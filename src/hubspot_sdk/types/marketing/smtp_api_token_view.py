@@ -11,6 +11,10 @@ __all__ = ["SmtpAPITokenView"]
 
 
 class SmtpAPITokenView(BaseModel):
+    """
+    A SMTP API token provides both an ID and password that can be used to send email through the HubSpot SMTP API.
+    """
+
     id: str
     """User name to log into the HubSpot SMTP server."""
 

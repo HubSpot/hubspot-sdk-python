@@ -11,6 +11,10 @@ __all__ = ["AggregateEmailStatistics"]
 
 
 class AggregateEmailStatistics(BaseModel):
+    """
+    Aggregated statistics for the given interval, plus the IDs of emails that were sent during that interval.
+    """
+
     aggregate: Optional[EmailStatisticsData] = None
 
     campaign_aggregations: Optional[Dict[str, EmailStatisticsData]] = FieldInfo(

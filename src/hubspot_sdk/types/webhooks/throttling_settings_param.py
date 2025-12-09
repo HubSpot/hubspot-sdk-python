@@ -10,6 +10,8 @@ __all__ = ["ThrottlingSettingsParam"]
 
 
 class ThrottlingSettingsParam(TypedDict, total=False):
+    """Configuration details for webhook throttling."""
+
     max_concurrent_requests: Required[Annotated[int, PropertyInfo(alias="maxConcurrentRequests")]]
     """
     The maximum number of concurrent HTTP requests HubSpot will attempt to make to

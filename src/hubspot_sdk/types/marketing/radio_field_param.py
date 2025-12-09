@@ -13,6 +13,10 @@ __all__ = ["RadioFieldParam"]
 
 
 class RadioFieldParam(TypedDict, total=False):
+    """
+    A form field consisting of a set of radio options, out of which one can be selected at a time.
+    """
+
     default_values: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="defaultValues")]]
     """The values selected by default.
 

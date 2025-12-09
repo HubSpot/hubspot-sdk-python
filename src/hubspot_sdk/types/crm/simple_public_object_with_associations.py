@@ -13,6 +13,10 @@ __all__ = ["SimplePublicObjectWithAssociations"]
 
 
 class SimplePublicObjectWithAssociations(BaseModel):
+    """
+    Represents a CRM object along with its properties, timestamps, and a set of associated object IDs grouped by association type.
+    """
+
     id: str
     """The unique ID of the object."""
 

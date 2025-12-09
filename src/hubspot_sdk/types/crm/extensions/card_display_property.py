@@ -12,6 +12,8 @@ __all__ = ["CardDisplayProperty"]
 
 
 class CardDisplayProperty(BaseModel):
+    """Definition for a card display property."""
+
     data_type: Literal["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STATUS", "STRING"] = (
         FieldInfo(alias="dataType")
     )

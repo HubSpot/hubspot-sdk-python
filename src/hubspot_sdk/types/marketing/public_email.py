@@ -20,6 +20,8 @@ __all__ = ["PublicEmail"]
 
 
 class PublicEmail(BaseModel):
+    """A marketing email"""
+
     is_ab: bool = FieldInfo(alias="isAb")
 
     id: Optional[str] = None

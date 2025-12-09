@@ -14,6 +14,8 @@ __all__ = ["BlogPostParam"]
 
 
 class BlogPostParam(TypedDict, total=False):
+    """Model definition for a Blog Post."""
+
     id: Required[str]
     """The unique ID of the blog post."""
 

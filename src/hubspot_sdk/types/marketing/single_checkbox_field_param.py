@@ -11,6 +11,8 @@ __all__ = ["SingleCheckboxFieldParam"]
 
 
 class SingleCheckboxFieldParam(TypedDict, total=False):
+    """A form field consisting of a single checkbox."""
+
     dependent_fields: Required[Annotated[Iterable["DependentFieldParam"], PropertyInfo(alias="dependentFields")]]
     """
     A list of other fields to make visible based on the value filled in for this

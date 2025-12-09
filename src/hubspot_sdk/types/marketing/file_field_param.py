@@ -11,6 +11,8 @@ __all__ = ["FileFieldParam"]
 
 
 class FileFieldParam(TypedDict, total=False):
+    """A form field used for uploading one or more files."""
+
     allow_multiple_files: Required[Annotated[bool, PropertyInfo(alias="allowMultipleFiles")]]
     """Whether to allow the upload of multiple files."""
 

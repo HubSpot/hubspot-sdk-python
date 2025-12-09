@@ -10,6 +10,11 @@ __all__ = ["MembershipsUpdateResponse"]
 
 
 class MembershipsUpdateResponse(BaseModel):
+    """
+    The IDs of the records that were `added`, `removed`, and/or found to be `missing` as a result of the
+    membership update request.
+    """
+
     record_ids_missing: List[str] = FieldInfo(alias="recordIdsMissing")
     """The IDs of the records that were `missing` (e.g.
 

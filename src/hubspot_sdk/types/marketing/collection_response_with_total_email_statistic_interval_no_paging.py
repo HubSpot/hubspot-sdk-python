@@ -9,6 +9,8 @@ __all__ = ["CollectionResponseWithTotalEmailStatisticIntervalNoPaging"]
 
 
 class CollectionResponseWithTotalEmailStatisticIntervalNoPaging(BaseModel):
+    """Response object for collections of EmailStatisticIntervals."""
+
     results: List[EmailStatisticInterval]
     """Collection of objects."""
 

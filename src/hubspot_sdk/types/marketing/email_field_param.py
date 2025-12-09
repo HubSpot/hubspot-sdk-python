@@ -12,6 +12,8 @@ __all__ = ["EmailFieldParam"]
 
 
 class EmailFieldParam(TypedDict, total=False):
+    """A form field used for collecting an email address."""
+
     dependent_fields: Required[Annotated[Iterable["DependentFieldParam"], PropertyInfo(alias="dependentFields")]]
     """
     A list of other fields to make visible based on the value filled in for this

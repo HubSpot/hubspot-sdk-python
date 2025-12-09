@@ -14,6 +14,8 @@ __all__ = ["PageParam"]
 
 
 class PageParam(TypedDict, total=False):
+    """Model definition for a landing page or site page."""
+
     id: Required[str]
     """The unique ID of the page."""
 

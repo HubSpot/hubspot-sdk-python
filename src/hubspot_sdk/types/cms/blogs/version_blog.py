@@ -12,6 +12,11 @@ __all__ = ["VersionBlog"]
 
 
 class VersionBlog(BaseModel):
+    """Model definition for a Version Blog.
+
+    Contains metadata describing the version of the Blog. It can be used to view edit history of the settings.
+    """
+
     id: str
     """The id of the version."""
 

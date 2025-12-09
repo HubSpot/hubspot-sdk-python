@@ -8,6 +8,8 @@ __all__ = ["EventIDView"]
 
 
 class EventIDView(BaseModel):
+    """The ID of a send event."""
+
     id: str
     """Identifier of event."""
 

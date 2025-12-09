@@ -10,6 +10,8 @@ __all__ = ["NumberFieldValidationParam"]
 
 
 class NumberFieldValidationParam(TypedDict, total=False):
+    """Describes how a numeric value should be validated."""
+
     max_allowed_digits: Required[Annotated[int, PropertyInfo(alias="maxAllowedDigits")]]
 
     min_allowed_digits: Required[Annotated[int, PropertyInfo(alias="minAllowedDigits")]]

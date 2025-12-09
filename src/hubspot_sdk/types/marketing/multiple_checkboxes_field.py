@@ -14,6 +14,10 @@ __all__ = ["MultipleCheckboxesField"]
 
 
 class MultipleCheckboxesField(BaseModel):
+    """
+    A form field consisting of a set of checkboxes allowing multiple choices to be selected at one time.
+    """
+
     default_values: List[str] = FieldInfo(alias="defaultValues")
     """The values selected by default.
 

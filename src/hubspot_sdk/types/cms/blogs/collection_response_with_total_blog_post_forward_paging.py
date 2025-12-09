@@ -11,6 +11,8 @@ __all__ = ["CollectionResponseWithTotalBlogPostForwardPaging"]
 
 
 class CollectionResponseWithTotalBlogPostForwardPaging(BaseModel):
+    """Response object for collections of blog posts with pagination information."""
+
     results: List["BlogPost"]
     """Collection of blog posts."""
 

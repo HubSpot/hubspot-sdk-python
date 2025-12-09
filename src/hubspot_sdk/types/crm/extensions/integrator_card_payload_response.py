@@ -13,6 +13,10 @@ __all__ = ["IntegratorCardPayloadResponse"]
 
 
 class IntegratorCardPayloadResponse(BaseModel):
+    """
+    The card details payload, sent to HubSpot by an app in response to a data fetch request when a user visits a CRM record page.
+    """
+
     total_count: int = FieldInfo(alias="totalCount")
     """The total number of card properties that will be sent in this response."""
 

@@ -13,6 +13,8 @@ __all__ = ["BatchResponseContentFolder"]
 
 
 class BatchResponseContentFolder(BaseModel):
+    """Response object for successful batch operations on content folders."""
+
     completed_at: datetime = FieldInfo(alias="completedAt")
 
     results: List[ContentFolder]

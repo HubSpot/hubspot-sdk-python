@@ -14,6 +14,8 @@ __all__ = ["BatchResponseBlogPost"]
 
 
 class BatchResponseBlogPost(BaseModel):
+    """Response object for batch operations on blog posts."""
+
     completed_at: datetime = FieldInfo(alias="completedAt")
     """Time of batch operation completion."""
 

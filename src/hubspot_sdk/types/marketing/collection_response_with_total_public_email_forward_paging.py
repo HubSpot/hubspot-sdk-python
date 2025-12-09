@@ -10,6 +10,10 @@ __all__ = ["CollectionResponseWithTotalPublicEmailForwardPaging"]
 
 
 class CollectionResponseWithTotalPublicEmailForwardPaging(BaseModel):
+    """
+    Response object for collections of marketing emails with pagination information.
+    """
+
     results: List[PublicEmail]
     """Collection of emails."""
 

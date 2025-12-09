@@ -10,6 +10,8 @@ __all__ = ["CollectionResponseWithTotalBlogAuthorForwardPaging"]
 
 
 class CollectionResponseWithTotalBlogAuthorForwardPaging(BaseModel):
+    """Response object for collections of blog authors with pagination information."""
+
     results: List[BlogAuthor]
     """Collection of blog authors."""
 

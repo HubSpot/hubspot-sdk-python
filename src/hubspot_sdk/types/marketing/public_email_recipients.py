@@ -8,6 +8,8 @@ __all__ = ["PublicEmailRecipients"]
 
 
 class PublicEmailRecipients(BaseModel):
+    """Data structure representing lists of IDs that should be included and excluded."""
+
     exclude: Optional[List[str]] = None
     """Excluded IDs."""
 

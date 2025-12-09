@@ -11,6 +11,8 @@ __all__ = ["ContentSearchResult"]
 
 
 class ContentSearchResult(BaseModel):
+    """An individual search result."""
+
     id: int
     """The ID of the content."""
 

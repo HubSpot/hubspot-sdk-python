@@ -11,6 +11,10 @@ __all__ = ["DependentField"]
 
 
 class DependentField(BaseModel):
+    """
+    A form field that will be displayed based on what the customer entered in another field.
+    """
+
     dependent_condition: DependentFieldFilter = FieldInfo(alias="dependentCondition")
     """A condition based on customer input"""
 

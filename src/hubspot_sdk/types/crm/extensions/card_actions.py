@@ -10,6 +10,8 @@ __all__ = ["CardActions"]
 
 
 class CardActions(BaseModel):
+    """Configuration for custom user actions on cards."""
+
     base_urls: List[str] = FieldInfo(alias="baseUrls")
     """A list of URL prefixes that will be accepted for card action URLs.
 

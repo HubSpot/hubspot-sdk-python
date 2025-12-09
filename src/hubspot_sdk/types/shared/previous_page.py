@@ -8,6 +8,10 @@ __all__ = ["PreviousPage"]
 
 
 class PreviousPage(BaseModel):
+    """
+    specifies the paging information needed to retrieve the previous set of results in a paginated API response
+    """
+
     before: str
     """A paging cursor token for retrieving previous pages."""
 

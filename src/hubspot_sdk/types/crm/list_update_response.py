@@ -12,6 +12,8 @@ __all__ = ["ListUpdateResponse"]
 
 
 class ListUpdateResponse(BaseModel):
+    """The updated definition of the list in response to a list update request."""
+
     updated_list: Optional["PublicObjectList"] = FieldInfo(alias="updatedList", default=None)
     """An object list definition."""
 

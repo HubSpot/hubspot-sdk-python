@@ -12,6 +12,8 @@ __all__ = ["PhoneFieldParam"]
 
 
 class PhoneFieldParam(TypedDict, total=False):
+    """A form field used for collecting a phone number."""
+
     dependent_fields: Required[Annotated[Iterable["DependentFieldParam"], PropertyInfo(alias="dependentFields")]]
     """
     A list of other fields to make visible based on the value filled in for this

@@ -12,6 +12,8 @@ __all__ = ["SubscriptionResponse"]
 
 
 class SubscriptionResponse(BaseModel):
+    """Complete details for an event subscription."""
+
     id: str
     """The unique ID of the subscription."""
 

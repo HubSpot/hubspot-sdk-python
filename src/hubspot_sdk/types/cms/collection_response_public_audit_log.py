@@ -10,6 +10,8 @@ __all__ = ["CollectionResponsePublicAuditLog"]
 
 
 class CollectionResponsePublicAuditLog(BaseModel):
+    """The collection of audit logs."""
+
     results: List[PublicAuditLog]
 
     paging: Optional[Paging] = None

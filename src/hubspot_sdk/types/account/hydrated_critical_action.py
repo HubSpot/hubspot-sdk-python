@@ -11,6 +11,8 @@ __all__ = ["HydratedCriticalAction"]
 
 
 class HydratedCriticalAction(BaseModel):
+    """Details about the a particular security activity for a HubSpot account."""
+
     id: str
     """The unique ID of the activity."""
 

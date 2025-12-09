@@ -10,6 +10,8 @@ __all__ = ["Option"]
 
 
 class Option(BaseModel):
+    """The options available when a property is an enumeration"""
+
     hidden: bool
     """Hidden options will not be displayed in HubSpot."""
 

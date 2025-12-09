@@ -11,6 +11,10 @@ __all__ = ["ListSearchResponse"]
 
 
 class ListSearchResponse(BaseModel):
+    """
+    The response object with the list search hits and additional information regarding pagination.
+    """
+
     has_more: bool = FieldInfo(alias="hasMore")
     """Whether or not there are more results to page through."""
 

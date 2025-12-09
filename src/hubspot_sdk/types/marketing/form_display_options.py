@@ -12,6 +12,8 @@ __all__ = ["FormDisplayOptions"]
 
 
 class FormDisplayOptions(BaseModel):
+    """Options for styling the form."""
+
     render_raw_html: bool = FieldInfo(alias="renderRawHtml")
     """Whether the form will render as raw HTML as opposed to inside an iFrame."""
 

@@ -9,6 +9,8 @@ __all__ = ["CardDisplayBody"]
 
 
 class CardDisplayBody(BaseModel):
+    """Configuration for displayed info on a card"""
+
     properties: List[CardDisplayProperty]
     """Card display properties.
 

@@ -11,6 +11,10 @@ __all__ = ["SimplePublicObjectBatchInputUpsertParam"]
 
 
 class SimplePublicObjectBatchInputUpsertParam(TypedDict, total=False):
+    """
+    Represents an object used in batch upsert operations, containing an object’s unique identifier, its properties, and optionally the unique property name and a write trace ID.
+    """
+
     id: Required[str]
     """The unique ID of the object."""
 

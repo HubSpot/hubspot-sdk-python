@@ -27,6 +27,8 @@ Field: TypeAlias = Union[
 
 
 class FieldGroupParam(TypedDict, total=False):
+    """A collection of up to three form fields usually displayed in a row."""
+
     fields: Required[Iterable[Field]]
     """The form fields included in the group"""
 

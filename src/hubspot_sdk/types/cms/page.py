@@ -15,6 +15,8 @@ __all__ = ["Page"]
 
 
 class Page(BaseModel):
+    """Model definition for a landing page or site page."""
+
     id: str
     """The unique ID of the page."""
 

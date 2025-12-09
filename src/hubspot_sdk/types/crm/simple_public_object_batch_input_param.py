@@ -11,6 +11,10 @@ __all__ = ["SimplePublicObjectBatchInputParam"]
 
 
 class SimplePublicObjectBatchInputParam(TypedDict, total=False):
+    """
+    Contains an array of CRM object records to be processed in a batch operation, each defined by their ID and properties.
+    """
+
     id: Required[str]
     """The unique ID of the object."""
 

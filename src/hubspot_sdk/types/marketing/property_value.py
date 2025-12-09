@@ -11,6 +11,10 @@ __all__ = ["PropertyValue"]
 
 
 class PropertyValue(BaseModel):
+    """
+    Represents a single custom property of a marketing event, storing its name, value, metadata (like source, timestamp, and sensitivity), and related audit information for tracking changes.
+    """
+
     data_sensitivity: Literal["high", "none", "standard"] = FieldInfo(alias="dataSensitivity")
     """
     The sensitivity level of the property, such as "non_sensitive", "sensitive", and

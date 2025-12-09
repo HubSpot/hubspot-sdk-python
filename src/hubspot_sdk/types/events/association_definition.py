@@ -11,6 +11,8 @@ __all__ = ["AssociationDefinition"]
 
 
 class AssociationDefinition(BaseModel):
+    """The definition of an association"""
+
     id: int
     """The unique ID of the associated object (e.g., a contact ID)."""
 

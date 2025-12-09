@@ -8,6 +8,11 @@ __all__ = ["VersionUser"]
 
 
 class VersionUser(BaseModel):
+    """Model definition for a version user.
+
+    Contains addition information about the user who created a version.
+    """
+
     id: str
     """The unique ID of the User."""
 

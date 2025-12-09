@@ -9,5 +9,7 @@ __all__ = ["CollectionResponsePublicBusinessUnitNoPaging"]
 
 
 class CollectionResponsePublicBusinessUnitNoPaging(BaseModel):
+    """A response object containing a collection of Business Units"""
+
     results: List[PublicBusinessUnit]
     """The collection of Business Units"""

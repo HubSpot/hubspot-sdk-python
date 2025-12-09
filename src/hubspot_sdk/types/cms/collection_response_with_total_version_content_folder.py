@@ -10,6 +10,10 @@ __all__ = ["CollectionResponseWithTotalVersionContentFolder"]
 
 
 class CollectionResponseWithTotalVersionContentFolder(BaseModel):
+    """
+    Response object for collections of content folder versions with pagination information.
+    """
+
     results: List[VersionContentFolder]
     """Collection of content folder versions."""
 
