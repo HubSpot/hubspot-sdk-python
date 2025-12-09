@@ -8,5 +8,7 @@ __all__ = ["BatchInputString"]
 
 
 class BatchInputString(BaseModel):
+    """Wrapper for providing an array of strings as inputs."""
+
     inputs: List[str]
     """Strings to input."""

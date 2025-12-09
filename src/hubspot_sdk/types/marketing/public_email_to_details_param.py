@@ -11,6 +11,8 @@ __all__ = ["PublicEmailToDetailsParam"]
 
 
 class PublicEmailToDetailsParam(TypedDict, total=False):
+    """Data structure representing the to fields of the email."""
+
     contact_ids: Annotated[PublicEmailRecipientsParam, PropertyInfo(alias="contactIds")]
     """Data structure representing lists of IDs that should be included and excluded."""
 

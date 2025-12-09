@@ -8,6 +8,8 @@ __all__ = ["DisplayOptionParam"]
 
 
 class DisplayOptionParam(TypedDict, total=False):
+    """Option definition for STATUS dataTypes."""
+
     label: Required[str]
     """The text that will be displayed to users for this option."""
 

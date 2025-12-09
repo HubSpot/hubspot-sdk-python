@@ -10,6 +10,8 @@ __all__ = ["ListsByIDResponse"]
 
 
 class ListsByIDResponse(BaseModel):
+    """The response object containing the lists found for a multi-list fetch."""
+
     lists: List["PublicObjectList"]
     """The object list definitions."""
 

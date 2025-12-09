@@ -11,6 +11,8 @@ __all__ = ["CardDisplayBodyParam"]
 
 
 class CardDisplayBodyParam(TypedDict, total=False):
+    """Configuration for displayed info on a card"""
+
     properties: Required[Iterable[CardDisplayPropertyParam]]
     """Card display properties.
 

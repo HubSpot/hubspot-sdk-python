@@ -14,6 +14,8 @@ __all__ = ["DropdownField"]
 
 
 class DropdownField(BaseModel):
+    """A field consisting of a drop down with multiple choices."""
+
     default_values: List[str] = FieldInfo(alias="defaultValues")
     """The values selected by default.
 

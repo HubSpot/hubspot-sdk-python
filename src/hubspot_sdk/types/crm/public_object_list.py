@@ -27,6 +27,8 @@ FilterBranch: TypeAlias = Union[
 
 
 class PublicObjectList(BaseModel):
+    """An object list definition."""
+
     list_id: str = FieldInfo(alias="listId")
     """The **ILS ID** of the list."""
 

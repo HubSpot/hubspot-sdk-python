@@ -11,6 +11,8 @@ __all__ = ["FormDisplayOptionsParam"]
 
 
 class FormDisplayOptionsParam(TypedDict, total=False):
+    """Options for styling the form."""
+
     render_raw_html: Required[Annotated[bool, PropertyInfo(alias="renderRawHtml")]]
     """Whether the form will render as raw HTML as opposed to inside an iFrame."""
 

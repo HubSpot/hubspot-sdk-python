@@ -8,6 +8,8 @@ __all__ = ["PropertyGroup"]
 
 
 class PropertyGroup(BaseModel):
+    """An ID for a group of properties"""
+
     archived: bool
 
     display_order: int = FieldInfo(alias="displayOrder")

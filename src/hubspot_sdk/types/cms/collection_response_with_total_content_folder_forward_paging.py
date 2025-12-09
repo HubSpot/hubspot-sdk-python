@@ -10,6 +10,8 @@ __all__ = ["CollectionResponseWithTotalContentFolderForwardPaging"]
 
 
 class CollectionResponseWithTotalContentFolderForwardPaging(BaseModel):
+    """Response object for collections of content folders with pagination information."""
+
     results: List[ContentFolder]
     """Collection of content folders."""
 

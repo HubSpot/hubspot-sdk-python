@@ -12,6 +12,8 @@ __all__ = ["SimplePublicObject"]
 
 
 class SimplePublicObject(BaseModel):
+    """A simple public object."""
+
     id: str
     """The unique ID of the object."""
 

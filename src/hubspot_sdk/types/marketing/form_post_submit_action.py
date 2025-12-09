@@ -8,6 +8,8 @@ __all__ = ["FormPostSubmitAction"]
 
 
 class FormPostSubmitAction(BaseModel):
+    """What should happen after the customer submits the form."""
+
     type: Literal["redirect_url", "thank_you"]
     """The action to take after submit.
 

@@ -8,6 +8,8 @@ __all__ = ["AutomationActionsOption"]
 
 
 class AutomationActionsOption(BaseModel):
+    """A HubSpot property option"""
+
     description: str
     """A description of the option."""
 

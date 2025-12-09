@@ -8,6 +8,8 @@ __all__ = ["NumberFieldValidation"]
 
 
 class NumberFieldValidation(BaseModel):
+    """Describes how a numeric value should be validated."""
+
     max_allowed_digits: int = FieldInfo(alias="maxAllowedDigits")
 
     min_allowed_digits: int = FieldInfo(alias="minAllowedDigits")

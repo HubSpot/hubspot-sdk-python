@@ -12,6 +12,8 @@ __all__ = ["BlogAuthorParam"]
 
 
 class BlogAuthorParam(TypedDict, total=False):
+    """Model definition for a Blog Author."""
+
     id: Required[str]
     """The unique ID of the Blog Author."""
 

@@ -11,6 +11,8 @@ __all__ = ["DependentFieldFilterParam"]
 
 
 class DependentFieldFilterParam(TypedDict, total=False):
+    """A condition based on customer input"""
+
     operator: Required[
         Literal[
             "between",

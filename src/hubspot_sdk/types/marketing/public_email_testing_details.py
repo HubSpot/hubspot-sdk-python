@@ -11,6 +11,8 @@ __all__ = ["PublicEmailTestingDetails"]
 
 
 class PublicEmailTestingDetails(BaseModel):
+    """AB testing related data. This property is only returned for AB type emails."""
+
     ab_sample_size_default: Optional[
         Literal[
             "automated_loser_variant",

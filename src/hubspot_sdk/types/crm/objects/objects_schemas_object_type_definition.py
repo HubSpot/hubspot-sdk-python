@@ -12,6 +12,8 @@ __all__ = ["ObjectsSchemasObjectTypeDefinition"]
 
 
 class ObjectsSchemasObjectTypeDefinition(BaseModel):
+    """Defines an object type."""
+
     id: str
     """A unique ID for this object type. Will be defined as {meta-type}-{unique ID}."""
 

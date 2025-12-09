@@ -6,5 +6,7 @@ __all__ = ["EventDetail"]
 
 
 class EventDetail(BaseModel):
+    """The details Markdown rendered as HTML."""
+
     details: str
     """The details Markdown rendered as HTML."""

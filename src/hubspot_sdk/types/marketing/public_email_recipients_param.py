@@ -10,6 +10,8 @@ __all__ = ["PublicEmailRecipientsParam"]
 
 
 class PublicEmailRecipientsParam(TypedDict, total=False):
+    """Data structure representing lists of IDs that should be included and excluded."""
+
     exclude: SequenceNotStr[str]
     """Excluded IDs."""
 

@@ -29,6 +29,8 @@ Field: TypeAlias = Union[
 
 
 class FieldGroup(BaseModel):
+    """A collection of up to three form fields usually displayed in a row."""
+
     fields: List[Field]
     """The form fields included in the group"""
 

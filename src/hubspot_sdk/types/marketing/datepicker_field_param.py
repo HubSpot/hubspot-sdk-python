@@ -11,6 +11,8 @@ __all__ = ["DatepickerFieldParam"]
 
 
 class DatepickerFieldParam(TypedDict, total=False):
+    """A form field used to select a date"""
+
     dependent_fields: Required[Annotated[Iterable["DependentFieldParam"], PropertyInfo(alias="dependentFields")]]
     """
     A list of other fields to make visible based on the value filled in for this

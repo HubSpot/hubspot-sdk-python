@@ -8,6 +8,8 @@ __all__ = ["ListCreateResponse"]
 
 
 class ListCreateResponse(BaseModel):
+    """The response for a list create request."""
+
     list: "PublicObjectList"
     """An object list definition."""
 

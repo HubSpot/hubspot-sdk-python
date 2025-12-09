@@ -13,6 +13,8 @@ __all__ = ["VersionBlogPost"]
 
 
 class VersionBlogPost(BaseModel):
+    """Model definition of a version of a blog post."""
+
     id: str
     """The id of the version."""
 

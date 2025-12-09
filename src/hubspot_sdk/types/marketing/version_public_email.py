@@ -12,6 +12,11 @@ __all__ = ["VersionPublicEmail"]
 
 
 class VersionPublicEmail(BaseModel):
+    """Model definition for a marketing email version.
+
+    Contains metadata describing the version of the marketing email. It can be used to view edit history of a marketing email.
+    """
+
     id: str
     """ID of this marketing email version."""
 

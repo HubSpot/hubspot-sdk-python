@@ -11,6 +11,8 @@ __all__ = ["CollectionResponseWithTotalPageForwardPaging"]
 
 
 class CollectionResponseWithTotalPageForwardPaging(BaseModel):
+    """Response object for collections of pages with pagination information."""
+
     results: List["Page"]
     """Collection of pages."""
 

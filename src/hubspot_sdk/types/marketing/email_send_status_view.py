@@ -13,6 +13,8 @@ __all__ = ["EmailSendStatusView"]
 
 
 class EmailSendStatusView(BaseModel):
+    """Describes the status of an email send request."""
+
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """Status of the send request."""
 

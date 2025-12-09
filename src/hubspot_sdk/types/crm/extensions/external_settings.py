@@ -10,6 +10,11 @@ __all__ = ["ExternalSettings"]
 
 
 class ExternalSettings(BaseModel):
+    """The URLs of the various actions provided by the video conferencing application.
+
+    All URLs must use the `https` protocol.
+    """
+
     create_meeting_url: str = FieldInfo(alias="createMeetingUrl")
     """The URL that HubSpot will send requests to create a new video conference."""
 

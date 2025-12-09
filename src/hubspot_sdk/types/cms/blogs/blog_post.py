@@ -15,6 +15,8 @@ __all__ = ["BlogPost"]
 
 
 class BlogPost(BaseModel):
+    """Model definition for a Blog Post."""
+
     id: str
     """The unique ID of the blog post."""
 

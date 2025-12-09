@@ -11,6 +11,8 @@ __all__ = ["SignedURL"]
 
 
 class SignedURL(BaseModel):
+    """Signed Url object with optional ancillary metadata of requested file"""
+
     expires_at: datetime = FieldInfo(alias="expiresAt")
     """Timestamp of when the URL will no longer grant access to the file."""
 

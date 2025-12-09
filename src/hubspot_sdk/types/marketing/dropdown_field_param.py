@@ -13,6 +13,8 @@ __all__ = ["DropdownFieldParam"]
 
 
 class DropdownFieldParam(TypedDict, total=False):
+    """A field consisting of a drop down with multiple choices."""
+
     default_values: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="defaultValues")]]
     """The values selected by default.
 

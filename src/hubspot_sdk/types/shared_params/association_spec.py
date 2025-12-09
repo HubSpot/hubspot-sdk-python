@@ -10,6 +10,10 @@ __all__ = ["AssociationSpec"]
 
 
 class AssociationSpec(TypedDict, total=False):
+    """
+    Defines the type, direction, and details of the relationship between two CRM objects.
+    """
+
     association_category: Required[
         Annotated[
             Literal["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED"], PropertyInfo(alias="associationCategory")

@@ -11,6 +11,8 @@ __all__ = ["PublicEmailToDetails"]
 
 
 class PublicEmailToDetails(BaseModel):
+    """Data structure representing the to fields of the email."""
+
     contact_ids: Optional[PublicEmailRecipients] = FieldInfo(alias="contactIds", default=None)
     """Data structure representing lists of IDs that should be included and excluded."""
 

@@ -14,6 +14,10 @@ __all__ = ["RadioField"]
 
 
 class RadioField(BaseModel):
+    """
+    A form field consisting of a set of radio options, out of which one can be selected at a time.
+    """
+
     default_values: List[str] = FieldInfo(alias="defaultValues")
     """The values selected by default.
 

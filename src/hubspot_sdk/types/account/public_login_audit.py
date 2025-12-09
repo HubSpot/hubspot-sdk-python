@@ -11,6 +11,8 @@ __all__ = ["PublicLoginAudit"]
 
 
 class PublicLoginAudit(BaseModel):
+    """Details about the a particular login activity for a HubSpot account."""
+
     id: str
     """The login activity's unique ID."""
 

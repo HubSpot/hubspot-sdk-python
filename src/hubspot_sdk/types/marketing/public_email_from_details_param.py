@@ -10,6 +10,8 @@ __all__ = ["PublicEmailFromDetailsParam"]
 
 
 class PublicEmailFromDetailsParam(TypedDict, total=False):
+    """Data structure representing the from fields on the email."""
+
     custom_reply_to: Annotated[str, PropertyInfo(alias="customReplyTo")]
     """The reply to recipients will see."""
 

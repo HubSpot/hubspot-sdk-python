@@ -12,6 +12,8 @@ __all__ = ["SimplePublicUpsertObject"]
 
 
 class SimplePublicUpsertObject(BaseModel):
+    """Represents a CRM object that has either been created or updated (upserted)"""
+
     id: str
     """The unique ID of the object."""
 

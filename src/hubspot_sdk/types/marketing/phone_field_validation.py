@@ -8,6 +8,8 @@ __all__ = ["PhoneFieldValidation"]
 
 
 class PhoneFieldValidation(BaseModel):
+    """Describes how a phone number should be validated."""
+
     max_allowed_digits: int = FieldInfo(alias="maxAllowedDigits")
 
     min_allowed_digits: int = FieldInfo(alias="minAllowedDigits")

@@ -14,6 +14,10 @@ __all__ = ["BatchResponseSimplePublicUpsertObject"]
 
 
 class BatchResponseSimplePublicUpsertObject(BaseModel):
+    """
+    Represents the result of a batch upsert operation, including the operation’s status, timestamps, and a list of successfully created or updated objects.
+    """
+
     completed_at: datetime = FieldInfo(alias="completedAt")
     """The timestamp when the batch process was completed, in ISO 8601 format."""
 

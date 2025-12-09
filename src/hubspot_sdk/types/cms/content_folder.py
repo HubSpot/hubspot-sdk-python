@@ -10,6 +10,8 @@ __all__ = ["ContentFolder"]
 
 
 class ContentFolder(BaseModel):
+    """Model definition for a content folder."""
+
     id: str
     """The unique ID of the content folder."""
 

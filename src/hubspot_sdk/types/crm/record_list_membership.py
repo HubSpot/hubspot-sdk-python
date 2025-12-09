@@ -11,6 +11,8 @@ __all__ = ["RecordListMembership"]
 
 
 class RecordListMembership(BaseModel):
+    """Lists record is member of"""
+
     list_id: str = FieldInfo(alias="listId")
 
     list_version: int = FieldInfo(alias="listVersion")

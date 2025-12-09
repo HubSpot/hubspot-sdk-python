@@ -19,6 +19,8 @@ _PublicSingleSendEmailParamReservedKeywords = TypedDict(
 
 
 class PublicSingleSendEmailParam(_PublicSingleSendEmailParamReservedKeywords, total=False):
+    """A JSON object containing anything you want to override."""
+
     to: Required[str]
     """The recipient of the email."""
 

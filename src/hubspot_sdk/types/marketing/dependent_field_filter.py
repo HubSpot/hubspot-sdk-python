@@ -11,6 +11,8 @@ __all__ = ["DependentFieldFilter"]
 
 
 class DependentFieldFilter(BaseModel):
+    """A condition based on customer input"""
+
     operator: Literal[
         "between",
         "contains",

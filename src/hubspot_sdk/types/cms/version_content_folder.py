@@ -12,6 +12,11 @@ __all__ = ["VersionContentFolder"]
 
 
 class VersionContentFolder(BaseModel):
+    """Model definition for a content folder version.
+
+    Contains metadata describing the version of the folder. It can be used to view edit history of a folder.
+    """
+
     id: str
     """ID of this folder version."""
 

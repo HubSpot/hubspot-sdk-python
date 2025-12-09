@@ -13,6 +13,8 @@ __all__ = ["TimelineEventTemplateToken"]
 
 
 class TimelineEventTemplateToken(BaseModel):
+    """State of the token definition."""
+
     label: str
     """Used for list segmentation and reporting."""
 

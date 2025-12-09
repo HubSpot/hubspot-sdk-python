@@ -10,6 +10,10 @@ __all__ = ["CollectionResponseWithTotalVersionPublicEmail"]
 
 
 class CollectionResponseWithTotalVersionPublicEmail(BaseModel):
+    """
+    Response object for collections of marketing emails with pagination information.
+    """
+
     results: List[VersionPublicEmail]
     """Collection of emails."""
 

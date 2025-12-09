@@ -12,6 +12,8 @@ __all__ = ["ContentFolderParam"]
 
 
 class ContentFolderParam(TypedDict, total=False):
+    """Model definition for a content folder."""
+
     id: Required[str]
     """The unique ID of the content folder."""
 

@@ -14,6 +14,8 @@ __all__ = ["MobilePhoneField"]
 
 
 class MobilePhoneField(BaseModel):
+    """A form field used for collecting a mobile phone number."""
+
     dependent_fields: List["DependentField"] = FieldInfo(alias="dependentFields")
     """
     A list of other fields to make visible based on the value filled in for this

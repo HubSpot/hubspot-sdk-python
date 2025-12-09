@@ -11,6 +11,8 @@ __all__ = ["PipelineStageInputParam"]
 
 
 class PipelineStageInputParam(TypedDict, total=False):
+    """An input used to create or replace a pipeline stage's definition."""
+
     display_order: Required[Annotated[int, PropertyInfo(alias="displayOrder")]]
     """The order for displaying this pipeline stage.
 

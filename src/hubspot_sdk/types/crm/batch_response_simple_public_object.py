@@ -14,6 +14,8 @@ __all__ = ["BatchResponseSimplePublicObject"]
 
 
 class BatchResponseSimplePublicObject(BaseModel):
+    """A public object batch response object"""
+
     completed_at: datetime = FieldInfo(alias="completedAt")
     """The timestamp when the batch processing was completed, in ISO 8601 format."""
 

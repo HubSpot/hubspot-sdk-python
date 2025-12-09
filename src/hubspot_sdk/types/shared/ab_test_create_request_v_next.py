@@ -8,6 +8,8 @@ __all__ = ["AbTestCreateRequestVNext"]
 
 
 class AbTestCreateRequestVNext(BaseModel):
+    """Request body object for creating A/B tests."""
+
     content_id: str = FieldInfo(alias="contentId")
     """ID of the object to test."""
 

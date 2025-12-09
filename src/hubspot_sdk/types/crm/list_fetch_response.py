@@ -8,6 +8,8 @@ __all__ = ["ListFetchResponse"]
 
 
 class ListFetchResponse(BaseModel):
+    """The response for a list fetch request."""
+
     list: "PublicObjectList"
     """An object list definition."""
 

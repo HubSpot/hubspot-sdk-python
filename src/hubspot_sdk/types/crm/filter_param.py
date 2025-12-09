@@ -11,6 +11,10 @@ __all__ = ["FilterParam"]
 
 
 class FilterParam(TypedDict, total=False):
+    """
+    Defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against.
+    """
+
     operator: Required[
         Literal[
             "BETWEEN",

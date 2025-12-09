@@ -11,6 +11,8 @@ __all__ = ["EmailFieldValidationParam"]
 
 
 class EmailFieldValidationParam(TypedDict, total=False):
+    """Describes how an email address should be validated."""
+
     blocked_email_domains: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="blockedEmailDomains")]]
     """A list of email domains to block."""
 

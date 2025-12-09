@@ -49,6 +49,10 @@ else:
 
 
 class DependentFieldParam(TypedDict, total=False):
+    """
+    A form field that will be displayed based on what the customer entered in another field.
+    """
+
     dependent_condition: Required[Annotated[DependentFieldFilterParam, PropertyInfo(alias="dependentCondition")]]
     """A condition based on customer input"""
 

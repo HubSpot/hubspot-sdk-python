@@ -8,6 +8,8 @@ __all__ = ["FormPostSubmitActionParam"]
 
 
 class FormPostSubmitActionParam(TypedDict, total=False):
+    """What should happen after the customer submits the form."""
+
     type: Required[Literal["redirect_url", "thank_you"]]
     """The action to take after submit.
 

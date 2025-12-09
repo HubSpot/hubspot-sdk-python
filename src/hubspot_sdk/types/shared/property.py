@@ -14,6 +14,8 @@ __all__ = ["Property"]
 
 
 class Property(BaseModel):
+    """Defines a property"""
+
     description: str
     """A description of the property that will be shown as help text in HubSpot."""
 

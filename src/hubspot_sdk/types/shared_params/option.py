@@ -10,6 +10,8 @@ __all__ = ["Option"]
 
 
 class Option(TypedDict, total=False):
+    """The options available when a property is an enumeration"""
+
     hidden: Required[bool]
     """Hidden options will not be displayed in HubSpot."""
 

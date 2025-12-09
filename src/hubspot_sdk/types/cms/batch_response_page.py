@@ -14,6 +14,8 @@ __all__ = ["BatchResponsePage"]
 
 
 class BatchResponsePage(BaseModel):
+    """Response object for successful batch operations on pages."""
+
     completed_at: datetime = FieldInfo(alias="completedAt")
 
     results: List["Page"]

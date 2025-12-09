@@ -14,6 +14,8 @@ __all__ = ["ObjectSchema"]
 
 
 class ObjectSchema(BaseModel):
+    """Defines an object schema, including its properties and associations."""
+
     id: str
     """A unique ID for this schema's object type.
 

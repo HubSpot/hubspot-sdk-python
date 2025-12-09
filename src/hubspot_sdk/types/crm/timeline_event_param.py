@@ -13,6 +13,8 @@ __all__ = ["TimelineEventParam"]
 
 
 class TimelineEventParam(TypedDict, total=False):
+    """The state of the timeline event."""
+
     event_template_id: Required[Annotated[str, PropertyInfo(alias="eventTemplateId")]]
     """The event template ID."""
 

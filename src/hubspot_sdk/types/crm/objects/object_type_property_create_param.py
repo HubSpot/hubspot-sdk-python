@@ -12,6 +12,8 @@ __all__ = ["ObjectTypePropertyCreateParam"]
 
 
 class ObjectTypePropertyCreateParam(TypedDict, total=False):
+    """Defines a property to create."""
+
     field_type: Required[Annotated[str, PropertyInfo(alias="fieldType")]]
     """Controls how the property appears in HubSpot."""
 

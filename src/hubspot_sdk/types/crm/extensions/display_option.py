@@ -8,6 +8,8 @@ __all__ = ["DisplayOption"]
 
 
 class DisplayOption(BaseModel):
+    """Option definition for STATUS dataTypes."""
+
     label: str
     """The text that will be displayed to users for this option."""
 

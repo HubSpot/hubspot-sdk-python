@@ -6,6 +6,8 @@ __all__ = ["AssociatedID"]
 
 
 class AssociatedID(BaseModel):
+    """Contains the id and type of an association"""
+
     id: str
     """The ID for the association type."""
 

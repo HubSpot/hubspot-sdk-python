@@ -8,6 +8,8 @@ __all__ = ["ThrottlingSettings"]
 
 
 class ThrottlingSettings(BaseModel):
+    """Configuration details for webhook throttling."""
+
     max_concurrent_requests: int = FieldInfo(alias="maxConcurrentRequests")
     """
     The maximum number of concurrent HTTP requests HubSpot will attempt to make to

@@ -10,6 +10,8 @@ __all__ = ["PublicTeam"]
 
 
 class PublicTeam(BaseModel):
+    """A team that can be assigned to a user"""
+
     id: str
     """The team's unique ID"""
 

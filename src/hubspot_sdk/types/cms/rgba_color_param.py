@@ -8,6 +8,8 @@ __all__ = ["RgbaColorParam"]
 
 
 class RgbaColorParam(TypedDict, total=False):
+    """A color defined by RGB values."""
+
     a: Required[float]
     """Alpha."""
 

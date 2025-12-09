@@ -10,6 +10,8 @@ __all__ = ["PublicEmailTestingDetailsParam"]
 
 
 class PublicEmailTestingDetailsParam(TypedDict, total=False):
+    """AB testing related data. This property is only returned for AB type emails."""
+
     ab_sample_size_default: Annotated[
         Literal[
             "automated_loser_variant",

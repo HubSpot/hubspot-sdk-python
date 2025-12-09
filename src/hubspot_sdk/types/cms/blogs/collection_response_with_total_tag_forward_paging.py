@@ -10,6 +10,8 @@ __all__ = ["CollectionResponseWithTotalTagForwardPaging"]
 
 
 class CollectionResponseWithTotalTagForwardPaging(BaseModel):
+    """Response object for collections of blog tags with pagination information."""
+
     results: List[Tag]
     """Collection of blog tags."""
 

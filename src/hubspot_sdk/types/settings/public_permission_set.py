@@ -8,6 +8,8 @@ __all__ = ["PublicPermissionSet"]
 
 
 class PublicPermissionSet(BaseModel):
+    """A role that can be assigned to a user"""
+
     id: str
     """The role's unique ID"""
 

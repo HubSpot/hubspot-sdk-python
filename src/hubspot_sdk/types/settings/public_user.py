@@ -10,6 +10,8 @@ __all__ = ["PublicUser"]
 
 
 class PublicUser(BaseModel):
+    """A user"""
+
     id: str
     """The user's unique ID."""
 

@@ -10,6 +10,8 @@ __all__ = ["CollectionResponseFile"]
 
 
 class CollectionResponseFile(BaseModel):
+    """Collections of files"""
+
     results: List[File]
 
     paging: Optional[Paging] = None

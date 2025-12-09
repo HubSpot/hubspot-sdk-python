@@ -6,6 +6,8 @@ __all__ = ["RgbaColor"]
 
 
 class RgbaColor(BaseModel):
+    """A color defined by RGB values."""
+
     a: float
     """Alpha."""
 

@@ -11,6 +11,8 @@ __all__ = ["CardActionsParam"]
 
 
 class CardActionsParam(TypedDict, total=False):
+    """Configuration for custom user actions on cards."""
+
     base_urls: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="baseUrls")]]
     """A list of URL prefixes that will be accepted for card action URLs.
 

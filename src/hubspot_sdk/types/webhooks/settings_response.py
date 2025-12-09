@@ -12,6 +12,8 @@ __all__ = ["SettingsResponse"]
 
 
 class SettingsResponse(BaseModel):
+    """Webhook settings for an app."""
+
     created_at: datetime = FieldInfo(alias="createdAt")
     """When this subscription was created.
 

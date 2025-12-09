@@ -12,6 +12,8 @@ __all__ = ["APIUsage"]
 
 
 class APIUsage(BaseModel):
+    """API usage and limits information for a HubSpot account."""
+
     collected_at: datetime = FieldInfo(alias="collectedAt")
     """Indicates when the cache was last updated."""
 

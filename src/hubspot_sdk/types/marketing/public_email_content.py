@@ -11,6 +11,8 @@ __all__ = ["PublicEmailContent"]
 
 
 class PublicEmailContent(BaseModel):
+    """Data structure representing the content of the email."""
+
     flex_areas: Optional[Dict[str, object]] = FieldInfo(alias="flexAreas", default=None)
 
     plain_text_version: Optional[str] = FieldInfo(alias="plainTextVersion", default=None)

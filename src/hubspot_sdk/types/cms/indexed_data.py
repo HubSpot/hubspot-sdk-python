@@ -10,6 +10,8 @@ __all__ = ["IndexedData"]
 
 
 class IndexedData(BaseModel):
+    """The indexed data in HubSpot"""
+
     id: str
     """The ID of the document in HubSpot."""
 

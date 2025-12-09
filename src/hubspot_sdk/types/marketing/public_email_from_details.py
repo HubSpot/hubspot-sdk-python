@@ -10,6 +10,8 @@ __all__ = ["PublicEmailFromDetails"]
 
 
 class PublicEmailFromDetails(BaseModel):
+    """Data structure representing the from fields on the email."""
+
     custom_reply_to: Optional[str] = FieldInfo(alias="customReplyTo", default=None)
     """The reply to recipients will see."""
 

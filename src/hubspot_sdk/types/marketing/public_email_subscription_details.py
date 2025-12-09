@@ -10,6 +10,8 @@ __all__ = ["PublicEmailSubscriptionDetails"]
 
 
 class PublicEmailSubscriptionDetails(BaseModel):
+    """Data structure representing the subscription fields of the email."""
+
     office_location_id: Optional[str] = FieldInfo(alias="officeLocationId", default=None)
     """ID of the selected office location."""
 

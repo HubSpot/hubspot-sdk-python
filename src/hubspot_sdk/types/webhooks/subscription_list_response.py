@@ -9,5 +9,7 @@ __all__ = ["SubscriptionListResponse"]
 
 
 class SubscriptionListResponse(BaseModel):
+    """List of event subscriptions for your app"""
+
     results: List[SubscriptionResponse]
     """List of event subscriptions for your app"""

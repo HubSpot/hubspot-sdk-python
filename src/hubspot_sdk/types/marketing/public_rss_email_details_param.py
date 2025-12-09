@@ -11,6 +11,8 @@ __all__ = ["PublicRssEmailDetailsParam"]
 
 
 class PublicRssEmailDetailsParam(TypedDict, total=False):
+    """RSS related data if it is a blog or rss email."""
+
     blog_email_type: Annotated[str, PropertyInfo(alias="blogEmailType")]
 
     blog_image_max_width: Annotated[int, PropertyInfo(alias="blogImageMaxWidth")]

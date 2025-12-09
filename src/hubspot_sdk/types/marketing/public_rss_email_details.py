@@ -10,6 +10,8 @@ __all__ = ["PublicRssEmailDetails"]
 
 
 class PublicRssEmailDetails(BaseModel):
+    """RSS related data if it is a blog or rss email."""
+
     blog_email_type: Optional[str] = FieldInfo(alias="blogEmailType", default=None)
 
     blog_image_max_width: Optional[int] = FieldInfo(alias="blogImageMaxWidth", default=None)
