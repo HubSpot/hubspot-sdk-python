@@ -51,7 +51,6 @@ if TYPE_CHECKING:
     from .resources.auth.auth import AuthResource, AsyncAuthResource
     from .resources.files.files import FilesResource, AsyncFilesResource
     from .resources.events.events import EventsResource, AsyncEventsResource
-    from .resources.business_units import BusinessUnitsResource, AsyncBusinessUnitsResource
     from .resources.account.account import AccountResource, AsyncAccountResource
     from .resources.settings.settings import SettingsResource, AsyncSettingsResource
     from .resources.webhooks.webhooks import WebhooksResource, AsyncWebhooksResource
@@ -59,6 +58,7 @@ if TYPE_CHECKING:
     from .resources.scheduler.scheduler import SchedulerResource, AsyncSchedulerResource
     from .resources.automation.automation import AutomationResource, AsyncAutomationResource
     from .resources.conversations.conversations import ConversationsResource, AsyncConversationsResource
+    from .resources.business_units.business_units import BusinessUnitsResource, AsyncBusinessUnitsResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Hubspot", "AsyncHubspot", "Client", "AsyncClient"]
 
