@@ -23,18 +23,19 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestActivity:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_audit_logs(self, client: Hubspot) -> None:
         activity = client.account.activity.list_audit_logs()
         assert_matches_type(SyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_audit_logs_with_all_params(self, client: Hubspot) -> None:
         activity = client.account.activity.list_audit_logs(
             acting_user_id=[0],
             after="after",
+            fill_final_timestamp=True,
             limit=0,
             occurred_after=parse_datetime("2019-12-27T18:11:19.117Z"),
             occurred_before=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -42,7 +43,7 @@ class TestActivity:
         )
         assert_matches_type(SyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_audit_logs(self, client: Hubspot) -> None:
         response = client.account.activity.with_raw_response.list_audit_logs()
@@ -52,7 +53,7 @@ class TestActivity:
         activity = response.parse()
         assert_matches_type(SyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_audit_logs(self, client: Hubspot) -> None:
         with client.account.activity.with_streaming_response.list_audit_logs() as response:
@@ -64,13 +65,13 @@ class TestActivity:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_login_activities(self, client: Hubspot) -> None:
         activity = client.account.activity.list_login_activities()
         assert_matches_type(SyncPage[PublicLoginAudit], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_login_activities_with_all_params(self, client: Hubspot) -> None:
         activity = client.account.activity.list_login_activities(
@@ -80,7 +81,7 @@ class TestActivity:
         )
         assert_matches_type(SyncPage[PublicLoginAudit], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_login_activities(self, client: Hubspot) -> None:
         response = client.account.activity.with_raw_response.list_login_activities()
@@ -90,7 +91,7 @@ class TestActivity:
         activity = response.parse()
         assert_matches_type(SyncPage[PublicLoginAudit], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_login_activities(self, client: Hubspot) -> None:
         with client.account.activity.with_streaming_response.list_login_activities() as response:
@@ -102,13 +103,13 @@ class TestActivity:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_security_activities(self, client: Hubspot) -> None:
         activity = client.account.activity.list_security_activities()
         assert_matches_type(SyncPage[HydratedCriticalAction], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_security_activities_with_all_params(self, client: Hubspot) -> None:
         activity = client.account.activity.list_security_activities(
@@ -120,7 +121,7 @@ class TestActivity:
         )
         assert_matches_type(SyncPage[HydratedCriticalAction], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_security_activities(self, client: Hubspot) -> None:
         response = client.account.activity.with_raw_response.list_security_activities()
@@ -130,7 +131,7 @@ class TestActivity:
         activity = response.parse()
         assert_matches_type(SyncPage[HydratedCriticalAction], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_security_activities(self, client: Hubspot) -> None:
         with client.account.activity.with_streaming_response.list_security_activities() as response:
@@ -148,18 +149,19 @@ class TestAsyncActivity:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_audit_logs(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_audit_logs()
         assert_matches_type(AsyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_audit_logs_with_all_params(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_audit_logs(
             acting_user_id=[0],
             after="after",
+            fill_final_timestamp=True,
             limit=0,
             occurred_after=parse_datetime("2019-12-27T18:11:19.117Z"),
             occurred_before=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -167,7 +169,7 @@ class TestAsyncActivity:
         )
         assert_matches_type(AsyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_audit_logs(self, async_client: AsyncHubspot) -> None:
         response = await async_client.account.activity.with_raw_response.list_audit_logs()
@@ -177,7 +179,7 @@ class TestAsyncActivity:
         activity = await response.parse()
         assert_matches_type(AsyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_audit_logs(self, async_client: AsyncHubspot) -> None:
         async with async_client.account.activity.with_streaming_response.list_audit_logs() as response:
@@ -189,13 +191,13 @@ class TestAsyncActivity:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_login_activities(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_login_activities()
         assert_matches_type(AsyncPage[PublicLoginAudit], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_login_activities_with_all_params(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_login_activities(
@@ -205,7 +207,7 @@ class TestAsyncActivity:
         )
         assert_matches_type(AsyncPage[PublicLoginAudit], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_login_activities(self, async_client: AsyncHubspot) -> None:
         response = await async_client.account.activity.with_raw_response.list_login_activities()
@@ -215,7 +217,7 @@ class TestAsyncActivity:
         activity = await response.parse()
         assert_matches_type(AsyncPage[PublicLoginAudit], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_login_activities(self, async_client: AsyncHubspot) -> None:
         async with async_client.account.activity.with_streaming_response.list_login_activities() as response:
@@ -227,13 +229,13 @@ class TestAsyncActivity:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_security_activities(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_security_activities()
         assert_matches_type(AsyncPage[HydratedCriticalAction], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_security_activities_with_all_params(self, async_client: AsyncHubspot) -> None:
         activity = await async_client.account.activity.list_security_activities(
@@ -245,7 +247,7 @@ class TestAsyncActivity:
         )
         assert_matches_type(AsyncPage[HydratedCriticalAction], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_security_activities(self, async_client: AsyncHubspot) -> None:
         response = await async_client.account.activity.with_raw_response.list_security_activities()
@@ -255,7 +257,7 @@ class TestAsyncActivity:
         activity = await response.parse()
         assert_matches_type(AsyncPage[HydratedCriticalAction], activity, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_security_activities(self, async_client: AsyncHubspot) -> None:
         async with async_client.account.activity.with_streaming_response.list_security_activities() as response:

@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["SimplePublicObjectIDParam"]
+__all__ = ["PublicObjectIDParam"]
 
 
-class SimplePublicObjectIDParam(TypedDict, total=False):
+class PublicObjectIDParam(TypedDict, total=False):
     """Contains the Id of a Public Object"""
 
     id: Required[str]

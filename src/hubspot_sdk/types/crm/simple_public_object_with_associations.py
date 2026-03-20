@@ -39,7 +39,7 @@ class SimplePublicObjectWithAssociations(BaseModel):
     """A list defining relationships with other objects."""
 
     object_write_trace_id: Optional[str] = FieldInfo(alias="objectWriteTraceId", default=None)
-    """A unique identifier for tracing the creation request."""
+    """An identifier used for tracing the creation or update request of the object."""
 
     properties_with_history: Optional[Dict[str, List[ValueWithTimestamp]]] = FieldInfo(
         alias="propertiesWithHistory", default=None
@@ -50,3 +50,7 @@ class SimplePublicObjectWithAssociations(BaseModel):
     """
 
     url: Optional[str] = None
+    """
+    The URL on the API that provide direct navigation to the corresponding UI pages
+    for the connectors.
+    """

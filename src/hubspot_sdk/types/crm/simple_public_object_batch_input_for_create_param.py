@@ -12,10 +12,14 @@ __all__ = ["SimplePublicObjectBatchInputForCreateParam"]
 
 
 class SimplePublicObjectBatchInputForCreateParam(TypedDict, total=False):
+    """
+    An input object that contains a collection of objects to be created together in a batch.
+    """
+
     associations: Required[Iterable[PublicAssociationsForObjectParam]]
 
     properties: Required[Dict[str, str]]
-    """Key-value pairs representing the properties of the object."""
+    """Key value pairs representing the properties of the object."""
 
     object_write_trace_id: Annotated[str, PropertyInfo(alias="objectWriteTraceId")]
-    """A unique identifier for tracing the creation request."""
+    """An identifier used for tracing the creation or update request of the object."""

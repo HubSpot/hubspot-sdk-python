@@ -56,6 +56,7 @@ class ActivityResource(SyncAPIResource):
         *,
         acting_user_id: Iterable[int] | Omit = omit,
         after: str | Omit = omit,
+        fill_final_timestamp: bool | Omit = omit,
         limit: int | Omit = omit,
         occurred_after: Union[str, datetime] | Omit = omit,
         occurred_before: Union[str, datetime] | Omit = omit,
@@ -74,20 +75,11 @@ class ActivityResource(SyncAPIResource):
         [activities included in audit log exports](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history-in-a-centralized-audit-log?hubs_content=knowledge.hubspot.com/account-management/view-and-export-account-activity-history&hubs_content-cta=centralized%20audit%20log#data-included-in-the-centralized-audit-log).
 
         Args:
-          acting_user_id: The ID of a user, for retrieving user-specific logs.
-
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
               results.
 
           limit: The maximum number of results to display per page.
-
-          occurred_after: A timestamp, as a starting point for retrieving activity logs.
-
-          occurred_before: A timestamp, as an end point for retrieving activity logs.
-
-          sort: Set to `occurredAt` to order results by the time of the event. By default,
-              events are ordered from oldest to newest.
 
           extra_headers: Send extra headers
 
@@ -98,7 +90,7 @@ class ActivityResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/account-info/v3/activity/audit-logs",
+            "/account-info/2026-03/activity/audit-logs",
             page=SyncPage[PublicAPIUserActionEvent],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -109,6 +101,7 @@ class ActivityResource(SyncAPIResource):
                     {
                         "acting_user_id": acting_user_id,
                         "after": after,
+                        "fill_final_timestamp": fill_final_timestamp,
                         "limit": limit,
                         "occurred_after": occurred_after,
                         "occurred_before": occurred_before,
@@ -138,12 +131,11 @@ class ActivityResource(SyncAPIResource):
         [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
 
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
-          limit: The maximum number of results to display per page. Max value of limit is 200.
-
-          user_id: The ID of a user, for retrieving user-specific logs.
+          limit: The maximum number of results to display per page.
 
           extra_headers: Send extra headers
 
@@ -154,7 +146,7 @@ class ActivityResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/account-info/v3/activity/login",
+            "/account-info/2026-03/activity/login",
             page=SyncPage[PublicLoginAudit],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -193,16 +185,11 @@ class ActivityResource(SyncAPIResource):
         [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
 
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
-          from_timestamp: The start time, for retrieving logs within a specific timeframe.
-
-          limit: The maximum number of results to display per page. Max value of limit is 200.
-
-          to_timestamp: The end time, for retrieving logs within a specific timeframe.
-
-          user_id: The ID of a user, for retrieving user-specific logs.
+          limit: The maximum number of results to display per page.
 
           extra_headers: Send extra headers
 
@@ -213,7 +200,7 @@ class ActivityResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/account-info/v3/activity/security",
+            "/account-info/2026-03/activity/security",
             page=SyncPage[HydratedCriticalAction],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -260,6 +247,7 @@ class AsyncActivityResource(AsyncAPIResource):
         *,
         acting_user_id: Iterable[int] | Omit = omit,
         after: str | Omit = omit,
+        fill_final_timestamp: bool | Omit = omit,
         limit: int | Omit = omit,
         occurred_after: Union[str, datetime] | Omit = omit,
         occurred_before: Union[str, datetime] | Omit = omit,
@@ -278,20 +266,11 @@ class AsyncActivityResource(AsyncAPIResource):
         [activities included in audit log exports](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history-in-a-centralized-audit-log?hubs_content=knowledge.hubspot.com/account-management/view-and-export-account-activity-history&hubs_content-cta=centralized%20audit%20log#data-included-in-the-centralized-audit-log).
 
         Args:
-          acting_user_id: The ID of a user, for retrieving user-specific logs.
-
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
               results.
 
           limit: The maximum number of results to display per page.
-
-          occurred_after: A timestamp, as a starting point for retrieving activity logs.
-
-          occurred_before: A timestamp, as an end point for retrieving activity logs.
-
-          sort: Set to `occurredAt` to order results by the time of the event. By default,
-              events are ordered from oldest to newest.
 
           extra_headers: Send extra headers
 
@@ -302,7 +281,7 @@ class AsyncActivityResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/account-info/v3/activity/audit-logs",
+            "/account-info/2026-03/activity/audit-logs",
             page=AsyncPage[PublicAPIUserActionEvent],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -313,6 +292,7 @@ class AsyncActivityResource(AsyncAPIResource):
                     {
                         "acting_user_id": acting_user_id,
                         "after": after,
+                        "fill_final_timestamp": fill_final_timestamp,
                         "limit": limit,
                         "occurred_after": occurred_after,
                         "occurred_before": occurred_before,
@@ -342,12 +322,11 @@ class AsyncActivityResource(AsyncAPIResource):
         [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
 
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
-          limit: The maximum number of results to display per page. Max value of limit is 200.
-
-          user_id: The ID of a user, for retrieving user-specific logs.
+          limit: The maximum number of results to display per page.
 
           extra_headers: Send extra headers
 
@@ -358,7 +337,7 @@ class AsyncActivityResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/account-info/v3/activity/login",
+            "/account-info/2026-03/activity/login",
             page=AsyncPage[PublicLoginAudit],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -397,16 +376,11 @@ class AsyncActivityResource(AsyncAPIResource):
         [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
 
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
-          from_timestamp: The start time, for retrieving logs within a specific timeframe.
-
-          limit: The maximum number of results to display per page. Max value of limit is 200.
-
-          to_timestamp: The end time, for retrieving logs within a specific timeframe.
-
-          user_id: The ID of a user, for retrieving user-specific logs.
+          limit: The maximum number of results to display per page.
 
           extra_headers: Send extra headers
 
@@ -417,7 +391,7 @@ class AsyncActivityResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/account-info/v3/activity/security",
+            "/account-info/2026-03/activity/security",
             page=AsyncPage[HydratedCriticalAction],
             options=make_request_options(
                 extra_headers=extra_headers,

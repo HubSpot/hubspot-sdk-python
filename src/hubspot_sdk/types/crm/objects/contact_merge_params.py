@@ -12,9 +12,12 @@ __all__ = ["ContactMergeParams"]
 class ContactMergeParams(TypedDict, total=False):
     object_id_to_merge: Required[Annotated[str, PropertyInfo(alias="objectIdToMerge")]]
     """
-    The unique identifier of the CRM object that will be merged into the primary
-    object.
+    The object ID of the record that the merge will not set as the current value
+    after the merge.
     """
 
     primary_object_id: Required[Annotated[str, PropertyInfo(alias="primaryObjectId")]]
-    """The unique identifier of the CRM object that will remain after the merge."""
+    """
+    The object ID of the record that the merge will generally set as the current
+    value after the merge.
+    """

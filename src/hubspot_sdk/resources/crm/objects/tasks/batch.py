@@ -7,7 +7,7 @@ from typing import Iterable
 import httpx
 
 from ....._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -56,6 +56,7 @@ class BatchResource(SyncAPIResource):
 
     def create(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectBatchInputForCreateParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -66,7 +67,9 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of tasks
+        Create multiple tasks in a single request by providing a batch of task
+        properties and associations. This endpoint allows for efficient task creation by
+        processing multiple tasks together.
 
         Args:
           extra_headers: Send extra headers
@@ -77,8 +80,10 @@ class BatchResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
-            "/crm/v3/objects/tasks/batch/create",
+            path_template("/crm/objects/2026-03/{object_type}/batch/create", object_type=object_type),
             body=maybe_transform({"inputs": inputs}, batch_create_params.BatchCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -88,6 +93,7 @@ class BatchResource(SyncAPIResource):
 
     def update(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectBatchInputParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -98,7 +104,9 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of tasks by internal ID, or unique property values
+        Update multiple tasks in a single request using their internal IDs or unique
+        property values. This operation allows you to modify the properties of each task
+        in the batch, ensuring efficient management of task data.
 
         Args:
           extra_headers: Send extra headers
@@ -109,8 +117,10 @@ class BatchResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
-            "/crm/v3/objects/tasks/batch/update",
+            path_template("/crm/objects/2026-03/{object_type}/batch/update", object_type=object_type),
             body=maybe_transform({"inputs": inputs}, batch_update_params.BatchUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -120,6 +130,7 @@ class BatchResource(SyncAPIResource):
 
     def delete(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -129,8 +140,10 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
-        Archive a batch of tasks by ID
+        """Archive a batch of tasks by their IDs, moving them to the recycling bin.
+
+        This
+        operation requires a list of task IDs to be provided in the request body.
 
         Args:
           extra_headers: Send extra headers
@@ -141,9 +154,11 @@ class BatchResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            "/crm/v3/objects/tasks/batch/archive",
+            path_template("/crm/objects/2026-03/{object_type}/batch/archive", object_type=object_type),
             body=maybe_transform({"inputs": inputs}, batch_delete_params.BatchDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -153,6 +168,7 @@ class BatchResource(SyncAPIResource):
 
     def get(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
         properties: SequenceNotStr[str],
@@ -177,7 +193,8 @@ class BatchResource(SyncAPIResource):
 
           archived: Whether to return only results that have been archived.
 
-          id_property: A unique property used to identify objects instead of the default ID.
+          id_property: When using a custom unique value property to retrieve records, the name of the
+              property. Do not include this parameter if retrieving by record ID.
 
           extra_headers: Send extra headers
 
@@ -187,8 +204,10 @@ class BatchResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
-            "/crm/v3/objects/tasks/batch/read",
+            path_template("/crm/objects/2026-03/{object_type}/batch/read", object_type=object_type),
             body=maybe_transform(
                 {
                     "inputs": inputs,
@@ -210,6 +229,7 @@ class BatchResource(SyncAPIResource):
 
     def upsert(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectBatchInputUpsertParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -233,8 +253,10 @@ class BatchResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
-            "/crm/v3/objects/tasks/batch/upsert",
+            path_template("/crm/objects/2026-03/{object_type}/batch/upsert", object_type=object_type),
             body=maybe_transform({"inputs": inputs}, batch_upsert_params.BatchUpsertParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -265,6 +287,7 @@ class AsyncBatchResource(AsyncAPIResource):
 
     async def create(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectBatchInputForCreateParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -275,7 +298,9 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create a batch of tasks
+        Create multiple tasks in a single request by providing a batch of task
+        properties and associations. This endpoint allows for efficient task creation by
+        processing multiple tasks together.
 
         Args:
           extra_headers: Send extra headers
@@ -286,8 +311,10 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
-            "/crm/v3/objects/tasks/batch/create",
+            path_template("/crm/objects/2026-03/{object_type}/batch/create", object_type=object_type),
             body=await async_maybe_transform({"inputs": inputs}, batch_create_params.BatchCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -297,6 +324,7 @@ class AsyncBatchResource(AsyncAPIResource):
 
     async def update(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectBatchInputParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -307,7 +335,9 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of tasks by internal ID, or unique property values
+        Update multiple tasks in a single request using their internal IDs or unique
+        property values. This operation allows you to modify the properties of each task
+        in the batch, ensuring efficient management of task data.
 
         Args:
           extra_headers: Send extra headers
@@ -318,8 +348,10 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
-            "/crm/v3/objects/tasks/batch/update",
+            path_template("/crm/objects/2026-03/{object_type}/batch/update", object_type=object_type),
             body=await async_maybe_transform({"inputs": inputs}, batch_update_params.BatchUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -329,6 +361,7 @@ class AsyncBatchResource(AsyncAPIResource):
 
     async def delete(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -338,8 +371,10 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
-        Archive a batch of tasks by ID
+        """Archive a batch of tasks by their IDs, moving them to the recycling bin.
+
+        This
+        operation requires a list of task IDs to be provided in the request body.
 
         Args:
           extra_headers: Send extra headers
@@ -350,9 +385,11 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            "/crm/v3/objects/tasks/batch/archive",
+            path_template("/crm/objects/2026-03/{object_type}/batch/archive", object_type=object_type),
             body=await async_maybe_transform({"inputs": inputs}, batch_delete_params.BatchDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -362,6 +399,7 @@ class AsyncBatchResource(AsyncAPIResource):
 
     async def get(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectIDParam],
         properties: SequenceNotStr[str],
@@ -386,7 +424,8 @@ class AsyncBatchResource(AsyncAPIResource):
 
           archived: Whether to return only results that have been archived.
 
-          id_property: A unique property used to identify objects instead of the default ID.
+          id_property: When using a custom unique value property to retrieve records, the name of the
+              property. Do not include this parameter if retrieving by record ID.
 
           extra_headers: Send extra headers
 
@@ -396,8 +435,10 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
-            "/crm/v3/objects/tasks/batch/read",
+            path_template("/crm/objects/2026-03/{object_type}/batch/read", object_type=object_type),
             body=await async_maybe_transform(
                 {
                     "inputs": inputs,
@@ -419,6 +460,7 @@ class AsyncBatchResource(AsyncAPIResource):
 
     async def upsert(
         self,
+        object_type: str,
         *,
         inputs: Iterable[SimplePublicObjectBatchInputUpsertParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -442,8 +484,10 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
-            "/crm/v3/objects/tasks/batch/upsert",
+            path_template("/crm/objects/2026-03/{object_type}/batch/upsert", object_type=object_type),
             body=await async_maybe_transform({"inputs": inputs}, batch_upsert_params.BatchUpsertParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

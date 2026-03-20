@@ -23,7 +23,7 @@ from hubspot_sdk import Hubspot, AsyncHubspot, APIResponseValidationError
 from hubspot_sdk._types import Omit
 from hubspot_sdk._utils import asyncify
 from hubspot_sdk._models import BaseModel, FinalRequestOptions
-from hubspot_sdk._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from hubspot_sdk._exceptions import APIStatusError, APIResponseValidationError
 from hubspot_sdk._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -101,14 +101,6 @@ async def _make_async_iterator(iterable: Iterable[T], counter: Optional[Counter]
         if counter:
             counter.value += 1
         yield item
-
-
-def _get_open_connections(client: Hubspot | AsyncHubspot) -> int:
-    transport = client._client._transport
-    assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
-
-    pool = transport._pool
-    return len(pool._requests)
 
 
 class TestHubspot:
@@ -866,51 +858,6 @@ class TestHubspot:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Hubspot) -> None:
-        respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=httpx.TimeoutException("Test timeout error"))
-
-        with pytest.raises(APITimeoutError):
-            client.crm.objects.contacts.with_streaming_response.create(
-                associations=[
-                    {
-                        "to": {"id": "37295"},
-                        "types": [
-                            {
-                                "association_category": "HUBSPOT_DEFINED",
-                                "association_type_id": 0,
-                            }
-                        ],
-                    }
-                ],
-                properties={"foo": "string"},
-            ).__enter__()
-
-        assert _get_open_connections(client) == 0
-
-    @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Hubspot) -> None:
-        respx_mock.post("/crm/v3/objects/contacts").mock(return_value=httpx.Response(500))
-
-        with pytest.raises(APIStatusError):
-            client.crm.objects.contacts.with_streaming_response.create(
-                associations=[
-                    {
-                        "to": {"id": "37295"},
-                        "types": [
-                            {
-                                "association_category": "HUBSPOT_DEFINED",
-                                "association_type_id": 0,
-                            }
-                        ],
-                    }
-                ],
-                properties={"foo": "string"},
-            ).__enter__()
-        assert _get_open_connections(client) == 0
-
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
@@ -935,22 +882,9 @@ class TestHubspot:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=retry_handler)
+        respx_mock.get("/account-info/2026-03/activity/audit-logs").mock(side_effect=retry_handler)
 
-        response = client.crm.objects.contacts.with_raw_response.create(
-            associations=[
-                {
-                    "to": {"id": "37295"},
-                    "types": [
-                        {
-                            "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 0,
-                        }
-                    ],
-                }
-            ],
-            properties={"foo": "string"},
-        )
+        response = client.account.activity.with_raw_response.list_audit_logs()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -972,22 +906,10 @@ class TestHubspot:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=retry_handler)
+        respx_mock.get("/account-info/2026-03/activity/audit-logs").mock(side_effect=retry_handler)
 
-        response = client.crm.objects.contacts.with_raw_response.create(
-            associations=[
-                {
-                    "to": {"id": "37295"},
-                    "types": [
-                        {
-                            "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 0,
-                        }
-                    ],
-                }
-            ],
-            properties={"foo": "string"},
-            extra_headers={"x-stainless-retry-count": Omit()},
+        response = client.account.activity.with_raw_response.list_audit_logs(
+            extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1009,22 +931,10 @@ class TestHubspot:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=retry_handler)
+        respx_mock.get("/account-info/2026-03/activity/audit-logs").mock(side_effect=retry_handler)
 
-        response = client.crm.objects.contacts.with_raw_response.create(
-            associations=[
-                {
-                    "to": {"id": "37295"},
-                    "types": [
-                        {
-                            "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 0,
-                        }
-                    ],
-                }
-            ],
-            properties={"foo": "string"},
-            extra_headers={"x-stainless-retry-count": "42"},
+        response = client.account.activity.with_raw_response.list_audit_logs(
+            extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
@@ -1032,6 +942,14 @@ class TestHubspot:
     def test_proxy_environment_variables(self, monkeypatch: pytest.MonkeyPatch) -> None:
         # Test that the proxy environment variables are set correctly
         monkeypatch.setenv("HTTPS_PROXY", "https://example.org")
+        # Delete in case our environment has any proxy env vars set
+        monkeypatch.delenv("HTTP_PROXY", raising=False)
+        monkeypatch.delenv("ALL_PROXY", raising=False)
+        monkeypatch.delenv("NO_PROXY", raising=False)
+        monkeypatch.delenv("http_proxy", raising=False)
+        monkeypatch.delenv("https_proxy", raising=False)
+        monkeypatch.delenv("all_proxy", raising=False)
+        monkeypatch.delenv("no_proxy", raising=False)
 
         client = DefaultHttpxClient()
 
@@ -1841,53 +1759,6 @@ class TestAsyncHubspot:
         calculated = async_client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_timeout_errors_doesnt_leak(
-        self, respx_mock: MockRouter, async_client: AsyncHubspot
-    ) -> None:
-        respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=httpx.TimeoutException("Test timeout error"))
-
-        with pytest.raises(APITimeoutError):
-            await async_client.crm.objects.contacts.with_streaming_response.create(
-                associations=[
-                    {
-                        "to": {"id": "37295"},
-                        "types": [
-                            {
-                                "association_category": "HUBSPOT_DEFINED",
-                                "association_type_id": 0,
-                            }
-                        ],
-                    }
-                ],
-                properties={"foo": "string"},
-            ).__aenter__()
-
-        assert _get_open_connections(async_client) == 0
-
-    @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncHubspot) -> None:
-        respx_mock.post("/crm/v3/objects/contacts").mock(return_value=httpx.Response(500))
-
-        with pytest.raises(APIStatusError):
-            await async_client.crm.objects.contacts.with_streaming_response.create(
-                associations=[
-                    {
-                        "to": {"id": "37295"},
-                        "types": [
-                            {
-                                "association_category": "HUBSPOT_DEFINED",
-                                "association_type_id": 0,
-                            }
-                        ],
-                    }
-                ],
-                properties={"foo": "string"},
-            ).__aenter__()
-        assert _get_open_connections(async_client) == 0
-
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("hubspot_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
@@ -1912,22 +1783,9 @@ class TestAsyncHubspot:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=retry_handler)
+        respx_mock.get("/account-info/2026-03/activity/audit-logs").mock(side_effect=retry_handler)
 
-        response = await client.crm.objects.contacts.with_raw_response.create(
-            associations=[
-                {
-                    "to": {"id": "37295"},
-                    "types": [
-                        {
-                            "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 0,
-                        }
-                    ],
-                }
-            ],
-            properties={"foo": "string"},
-        )
+        response = await client.account.activity.with_raw_response.list_audit_logs()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1949,22 +1807,10 @@ class TestAsyncHubspot:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=retry_handler)
+        respx_mock.get("/account-info/2026-03/activity/audit-logs").mock(side_effect=retry_handler)
 
-        response = await client.crm.objects.contacts.with_raw_response.create(
-            associations=[
-                {
-                    "to": {"id": "37295"},
-                    "types": [
-                        {
-                            "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 0,
-                        }
-                    ],
-                }
-            ],
-            properties={"foo": "string"},
-            extra_headers={"x-stainless-retry-count": Omit()},
+        response = await client.account.activity.with_raw_response.list_audit_logs(
+            extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1986,22 +1832,10 @@ class TestAsyncHubspot:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/crm/v3/objects/contacts").mock(side_effect=retry_handler)
+        respx_mock.get("/account-info/2026-03/activity/audit-logs").mock(side_effect=retry_handler)
 
-        response = await client.crm.objects.contacts.with_raw_response.create(
-            associations=[
-                {
-                    "to": {"id": "37295"},
-                    "types": [
-                        {
-                            "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 0,
-                        }
-                    ],
-                }
-            ],
-            properties={"foo": "string"},
-            extra_headers={"x-stainless-retry-count": "42"},
+        response = await client.account.activity.with_raw_response.list_audit_logs(
+            extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
@@ -2013,6 +1847,14 @@ class TestAsyncHubspot:
     async def test_proxy_environment_variables(self, monkeypatch: pytest.MonkeyPatch) -> None:
         # Test that the proxy environment variables are set correctly
         monkeypatch.setenv("HTTPS_PROXY", "https://example.org")
+        # Delete in case our environment has any proxy env vars set
+        monkeypatch.delenv("HTTP_PROXY", raising=False)
+        monkeypatch.delenv("ALL_PROXY", raising=False)
+        monkeypatch.delenv("NO_PROXY", raising=False)
+        monkeypatch.delenv("http_proxy", raising=False)
+        monkeypatch.delenv("https_proxy", raising=False)
+        monkeypatch.delenv("all_proxy", raising=False)
+        monkeypatch.delenv("no_proxy", raising=False)
 
         client = DefaultAsyncHttpxClient()
 

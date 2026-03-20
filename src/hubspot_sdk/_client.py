@@ -31,34 +31,9 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import (
-        cms,
-        crm,
-        auth,
-        files,
-        events,
-        account,
-        settings,
-        webhooks,
-        marketing,
-        scheduler,
-        automation,
-        conversations,
-        business_units,
-    )
-    from .resources.cms.cms import CmsResource, AsyncCmsResource
+    from .resources import crm, account
     from .resources.crm.crm import CrmResource, AsyncCrmResource
-    from .resources.auth.auth import AuthResource, AsyncAuthResource
-    from .resources.files.files import FilesResource, AsyncFilesResource
-    from .resources.events.events import EventsResource, AsyncEventsResource
     from .resources.account.account import AccountResource, AsyncAccountResource
-    from .resources.settings.settings import SettingsResource, AsyncSettingsResource
-    from .resources.webhooks.webhooks import WebhooksResource, AsyncWebhooksResource
-    from .resources.marketing.marketing import MarketingResource, AsyncMarketingResource
-    from .resources.scheduler.scheduler import SchedulerResource, AsyncSchedulerResource
-    from .resources.automation.automation import AutomationResource, AsyncAutomationResource
-    from .resources.conversations.conversations import ConversationsResource, AsyncConversationsResource
-    from .resources.business_units.business_units import BusinessUnitsResource, AsyncBusinessUnitsResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Hubspot", "AsyncHubspot", "Client", "AsyncClient"]
 
@@ -120,76 +95,10 @@ class Hubspot(SyncAPIClient):
         return AccountResource(self)
 
     @cached_property
-    def auth(self) -> AuthResource:
-        from .resources.auth import AuthResource
-
-        return AuthResource(self)
-
-    @cached_property
-    def automation(self) -> AutomationResource:
-        from .resources.automation import AutomationResource
-
-        return AutomationResource(self)
-
-    @cached_property
-    def business_units(self) -> BusinessUnitsResource:
-        from .resources.business_units import BusinessUnitsResource
-
-        return BusinessUnitsResource(self)
-
-    @cached_property
-    def cms(self) -> CmsResource:
-        from .resources.cms import CmsResource
-
-        return CmsResource(self)
-
-    @cached_property
-    def conversations(self) -> ConversationsResource:
-        from .resources.conversations import ConversationsResource
-
-        return ConversationsResource(self)
-
-    @cached_property
     def crm(self) -> CrmResource:
         from .resources.crm import CrmResource
 
         return CrmResource(self)
-
-    @cached_property
-    def events(self) -> EventsResource:
-        from .resources.events import EventsResource
-
-        return EventsResource(self)
-
-    @cached_property
-    def files(self) -> FilesResource:
-        from .resources.files import FilesResource
-
-        return FilesResource(self)
-
-    @cached_property
-    def marketing(self) -> MarketingResource:
-        from .resources.marketing import MarketingResource
-
-        return MarketingResource(self)
-
-    @cached_property
-    def scheduler(self) -> SchedulerResource:
-        from .resources.scheduler import SchedulerResource
-
-        return SchedulerResource(self)
-
-    @cached_property
-    def settings(self) -> SettingsResource:
-        from .resources.settings import SettingsResource
-
-        return SettingsResource(self)
-
-    @cached_property
-    def webhooks(self) -> WebhooksResource:
-        from .resources.webhooks import WebhooksResource
-
-        return WebhooksResource(self)
 
     @cached_property
     def with_raw_response(self) -> HubspotWithRawResponse:
@@ -374,76 +283,10 @@ class AsyncHubspot(AsyncAPIClient):
         return AsyncAccountResource(self)
 
     @cached_property
-    def auth(self) -> AsyncAuthResource:
-        from .resources.auth import AsyncAuthResource
-
-        return AsyncAuthResource(self)
-
-    @cached_property
-    def automation(self) -> AsyncAutomationResource:
-        from .resources.automation import AsyncAutomationResource
-
-        return AsyncAutomationResource(self)
-
-    @cached_property
-    def business_units(self) -> AsyncBusinessUnitsResource:
-        from .resources.business_units import AsyncBusinessUnitsResource
-
-        return AsyncBusinessUnitsResource(self)
-
-    @cached_property
-    def cms(self) -> AsyncCmsResource:
-        from .resources.cms import AsyncCmsResource
-
-        return AsyncCmsResource(self)
-
-    @cached_property
-    def conversations(self) -> AsyncConversationsResource:
-        from .resources.conversations import AsyncConversationsResource
-
-        return AsyncConversationsResource(self)
-
-    @cached_property
     def crm(self) -> AsyncCrmResource:
         from .resources.crm import AsyncCrmResource
 
         return AsyncCrmResource(self)
-
-    @cached_property
-    def events(self) -> AsyncEventsResource:
-        from .resources.events import AsyncEventsResource
-
-        return AsyncEventsResource(self)
-
-    @cached_property
-    def files(self) -> AsyncFilesResource:
-        from .resources.files import AsyncFilesResource
-
-        return AsyncFilesResource(self)
-
-    @cached_property
-    def marketing(self) -> AsyncMarketingResource:
-        from .resources.marketing import AsyncMarketingResource
-
-        return AsyncMarketingResource(self)
-
-    @cached_property
-    def scheduler(self) -> AsyncSchedulerResource:
-        from .resources.scheduler import AsyncSchedulerResource
-
-        return AsyncSchedulerResource(self)
-
-    @cached_property
-    def settings(self) -> AsyncSettingsResource:
-        from .resources.settings import AsyncSettingsResource
-
-        return AsyncSettingsResource(self)
-
-    @cached_property
-    def webhooks(self) -> AsyncWebhooksResource:
-        from .resources.webhooks import AsyncWebhooksResource
-
-        return AsyncWebhooksResource(self)
 
     @cached_property
     def with_raw_response(self) -> AsyncHubspotWithRawResponse:
@@ -584,76 +427,10 @@ class HubspotWithRawResponse:
         return AccountResourceWithRawResponse(self._client.account)
 
     @cached_property
-    def auth(self) -> auth.AuthResourceWithRawResponse:
-        from .resources.auth import AuthResourceWithRawResponse
-
-        return AuthResourceWithRawResponse(self._client.auth)
-
-    @cached_property
-    def automation(self) -> automation.AutomationResourceWithRawResponse:
-        from .resources.automation import AutomationResourceWithRawResponse
-
-        return AutomationResourceWithRawResponse(self._client.automation)
-
-    @cached_property
-    def business_units(self) -> business_units.BusinessUnitsResourceWithRawResponse:
-        from .resources.business_units import BusinessUnitsResourceWithRawResponse
-
-        return BusinessUnitsResourceWithRawResponse(self._client.business_units)
-
-    @cached_property
-    def cms(self) -> cms.CmsResourceWithRawResponse:
-        from .resources.cms import CmsResourceWithRawResponse
-
-        return CmsResourceWithRawResponse(self._client.cms)
-
-    @cached_property
-    def conversations(self) -> conversations.ConversationsResourceWithRawResponse:
-        from .resources.conversations import ConversationsResourceWithRawResponse
-
-        return ConversationsResourceWithRawResponse(self._client.conversations)
-
-    @cached_property
     def crm(self) -> crm.CrmResourceWithRawResponse:
         from .resources.crm import CrmResourceWithRawResponse
 
         return CrmResourceWithRawResponse(self._client.crm)
-
-    @cached_property
-    def events(self) -> events.EventsResourceWithRawResponse:
-        from .resources.events import EventsResourceWithRawResponse
-
-        return EventsResourceWithRawResponse(self._client.events)
-
-    @cached_property
-    def files(self) -> files.FilesResourceWithRawResponse:
-        from .resources.files import FilesResourceWithRawResponse
-
-        return FilesResourceWithRawResponse(self._client.files)
-
-    @cached_property
-    def marketing(self) -> marketing.MarketingResourceWithRawResponse:
-        from .resources.marketing import MarketingResourceWithRawResponse
-
-        return MarketingResourceWithRawResponse(self._client.marketing)
-
-    @cached_property
-    def scheduler(self) -> scheduler.SchedulerResourceWithRawResponse:
-        from .resources.scheduler import SchedulerResourceWithRawResponse
-
-        return SchedulerResourceWithRawResponse(self._client.scheduler)
-
-    @cached_property
-    def settings(self) -> settings.SettingsResourceWithRawResponse:
-        from .resources.settings import SettingsResourceWithRawResponse
-
-        return SettingsResourceWithRawResponse(self._client.settings)
-
-    @cached_property
-    def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
-        from .resources.webhooks import WebhooksResourceWithRawResponse
-
-        return WebhooksResourceWithRawResponse(self._client.webhooks)
 
 
 class AsyncHubspotWithRawResponse:
@@ -669,76 +446,10 @@ class AsyncHubspotWithRawResponse:
         return AsyncAccountResourceWithRawResponse(self._client.account)
 
     @cached_property
-    def auth(self) -> auth.AsyncAuthResourceWithRawResponse:
-        from .resources.auth import AsyncAuthResourceWithRawResponse
-
-        return AsyncAuthResourceWithRawResponse(self._client.auth)
-
-    @cached_property
-    def automation(self) -> automation.AsyncAutomationResourceWithRawResponse:
-        from .resources.automation import AsyncAutomationResourceWithRawResponse
-
-        return AsyncAutomationResourceWithRawResponse(self._client.automation)
-
-    @cached_property
-    def business_units(self) -> business_units.AsyncBusinessUnitsResourceWithRawResponse:
-        from .resources.business_units import AsyncBusinessUnitsResourceWithRawResponse
-
-        return AsyncBusinessUnitsResourceWithRawResponse(self._client.business_units)
-
-    @cached_property
-    def cms(self) -> cms.AsyncCmsResourceWithRawResponse:
-        from .resources.cms import AsyncCmsResourceWithRawResponse
-
-        return AsyncCmsResourceWithRawResponse(self._client.cms)
-
-    @cached_property
-    def conversations(self) -> conversations.AsyncConversationsResourceWithRawResponse:
-        from .resources.conversations import AsyncConversationsResourceWithRawResponse
-
-        return AsyncConversationsResourceWithRawResponse(self._client.conversations)
-
-    @cached_property
     def crm(self) -> crm.AsyncCrmResourceWithRawResponse:
         from .resources.crm import AsyncCrmResourceWithRawResponse
 
         return AsyncCrmResourceWithRawResponse(self._client.crm)
-
-    @cached_property
-    def events(self) -> events.AsyncEventsResourceWithRawResponse:
-        from .resources.events import AsyncEventsResourceWithRawResponse
-
-        return AsyncEventsResourceWithRawResponse(self._client.events)
-
-    @cached_property
-    def files(self) -> files.AsyncFilesResourceWithRawResponse:
-        from .resources.files import AsyncFilesResourceWithRawResponse
-
-        return AsyncFilesResourceWithRawResponse(self._client.files)
-
-    @cached_property
-    def marketing(self) -> marketing.AsyncMarketingResourceWithRawResponse:
-        from .resources.marketing import AsyncMarketingResourceWithRawResponse
-
-        return AsyncMarketingResourceWithRawResponse(self._client.marketing)
-
-    @cached_property
-    def scheduler(self) -> scheduler.AsyncSchedulerResourceWithRawResponse:
-        from .resources.scheduler import AsyncSchedulerResourceWithRawResponse
-
-        return AsyncSchedulerResourceWithRawResponse(self._client.scheduler)
-
-    @cached_property
-    def settings(self) -> settings.AsyncSettingsResourceWithRawResponse:
-        from .resources.settings import AsyncSettingsResourceWithRawResponse
-
-        return AsyncSettingsResourceWithRawResponse(self._client.settings)
-
-    @cached_property
-    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
-        from .resources.webhooks import AsyncWebhooksResourceWithRawResponse
-
-        return AsyncWebhooksResourceWithRawResponse(self._client.webhooks)
 
 
 class HubspotWithStreamedResponse:
@@ -754,76 +465,10 @@ class HubspotWithStreamedResponse:
         return AccountResourceWithStreamingResponse(self._client.account)
 
     @cached_property
-    def auth(self) -> auth.AuthResourceWithStreamingResponse:
-        from .resources.auth import AuthResourceWithStreamingResponse
-
-        return AuthResourceWithStreamingResponse(self._client.auth)
-
-    @cached_property
-    def automation(self) -> automation.AutomationResourceWithStreamingResponse:
-        from .resources.automation import AutomationResourceWithStreamingResponse
-
-        return AutomationResourceWithStreamingResponse(self._client.automation)
-
-    @cached_property
-    def business_units(self) -> business_units.BusinessUnitsResourceWithStreamingResponse:
-        from .resources.business_units import BusinessUnitsResourceWithStreamingResponse
-
-        return BusinessUnitsResourceWithStreamingResponse(self._client.business_units)
-
-    @cached_property
-    def cms(self) -> cms.CmsResourceWithStreamingResponse:
-        from .resources.cms import CmsResourceWithStreamingResponse
-
-        return CmsResourceWithStreamingResponse(self._client.cms)
-
-    @cached_property
-    def conversations(self) -> conversations.ConversationsResourceWithStreamingResponse:
-        from .resources.conversations import ConversationsResourceWithStreamingResponse
-
-        return ConversationsResourceWithStreamingResponse(self._client.conversations)
-
-    @cached_property
     def crm(self) -> crm.CrmResourceWithStreamingResponse:
         from .resources.crm import CrmResourceWithStreamingResponse
 
         return CrmResourceWithStreamingResponse(self._client.crm)
-
-    @cached_property
-    def events(self) -> events.EventsResourceWithStreamingResponse:
-        from .resources.events import EventsResourceWithStreamingResponse
-
-        return EventsResourceWithStreamingResponse(self._client.events)
-
-    @cached_property
-    def files(self) -> files.FilesResourceWithStreamingResponse:
-        from .resources.files import FilesResourceWithStreamingResponse
-
-        return FilesResourceWithStreamingResponse(self._client.files)
-
-    @cached_property
-    def marketing(self) -> marketing.MarketingResourceWithStreamingResponse:
-        from .resources.marketing import MarketingResourceWithStreamingResponse
-
-        return MarketingResourceWithStreamingResponse(self._client.marketing)
-
-    @cached_property
-    def scheduler(self) -> scheduler.SchedulerResourceWithStreamingResponse:
-        from .resources.scheduler import SchedulerResourceWithStreamingResponse
-
-        return SchedulerResourceWithStreamingResponse(self._client.scheduler)
-
-    @cached_property
-    def settings(self) -> settings.SettingsResourceWithStreamingResponse:
-        from .resources.settings import SettingsResourceWithStreamingResponse
-
-        return SettingsResourceWithStreamingResponse(self._client.settings)
-
-    @cached_property
-    def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
-        from .resources.webhooks import WebhooksResourceWithStreamingResponse
-
-        return WebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
 class AsyncHubspotWithStreamedResponse:
@@ -839,76 +484,10 @@ class AsyncHubspotWithStreamedResponse:
         return AsyncAccountResourceWithStreamingResponse(self._client.account)
 
     @cached_property
-    def auth(self) -> auth.AsyncAuthResourceWithStreamingResponse:
-        from .resources.auth import AsyncAuthResourceWithStreamingResponse
-
-        return AsyncAuthResourceWithStreamingResponse(self._client.auth)
-
-    @cached_property
-    def automation(self) -> automation.AsyncAutomationResourceWithStreamingResponse:
-        from .resources.automation import AsyncAutomationResourceWithStreamingResponse
-
-        return AsyncAutomationResourceWithStreamingResponse(self._client.automation)
-
-    @cached_property
-    def business_units(self) -> business_units.AsyncBusinessUnitsResourceWithStreamingResponse:
-        from .resources.business_units import AsyncBusinessUnitsResourceWithStreamingResponse
-
-        return AsyncBusinessUnitsResourceWithStreamingResponse(self._client.business_units)
-
-    @cached_property
-    def cms(self) -> cms.AsyncCmsResourceWithStreamingResponse:
-        from .resources.cms import AsyncCmsResourceWithStreamingResponse
-
-        return AsyncCmsResourceWithStreamingResponse(self._client.cms)
-
-    @cached_property
-    def conversations(self) -> conversations.AsyncConversationsResourceWithStreamingResponse:
-        from .resources.conversations import AsyncConversationsResourceWithStreamingResponse
-
-        return AsyncConversationsResourceWithStreamingResponse(self._client.conversations)
-
-    @cached_property
     def crm(self) -> crm.AsyncCrmResourceWithStreamingResponse:
         from .resources.crm import AsyncCrmResourceWithStreamingResponse
 
         return AsyncCrmResourceWithStreamingResponse(self._client.crm)
-
-    @cached_property
-    def events(self) -> events.AsyncEventsResourceWithStreamingResponse:
-        from .resources.events import AsyncEventsResourceWithStreamingResponse
-
-        return AsyncEventsResourceWithStreamingResponse(self._client.events)
-
-    @cached_property
-    def files(self) -> files.AsyncFilesResourceWithStreamingResponse:
-        from .resources.files import AsyncFilesResourceWithStreamingResponse
-
-        return AsyncFilesResourceWithStreamingResponse(self._client.files)
-
-    @cached_property
-    def marketing(self) -> marketing.AsyncMarketingResourceWithStreamingResponse:
-        from .resources.marketing import AsyncMarketingResourceWithStreamingResponse
-
-        return AsyncMarketingResourceWithStreamingResponse(self._client.marketing)
-
-    @cached_property
-    def scheduler(self) -> scheduler.AsyncSchedulerResourceWithStreamingResponse:
-        from .resources.scheduler import AsyncSchedulerResourceWithStreamingResponse
-
-        return AsyncSchedulerResourceWithStreamingResponse(self._client.scheduler)
-
-    @cached_property
-    def settings(self) -> settings.AsyncSettingsResourceWithStreamingResponse:
-        from .resources.settings import AsyncSettingsResourceWithStreamingResponse
-
-        return AsyncSettingsResourceWithStreamingResponse(self._client.settings)
-
-    @cached_property
-    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:
-        from .resources.webhooks import AsyncWebhooksResourceWithStreamingResponse
-
-        return AsyncWebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
 Client = Hubspot

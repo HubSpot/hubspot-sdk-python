@@ -7,8 +7,8 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from .standard_error import StandardError
 from .simple_public_object import SimplePublicObject
-from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponseSimplePublicObject"]
 
@@ -25,10 +25,7 @@ class BatchResponseSimplePublicObject(BaseModel):
     """The timestamp when the batch processing began, in ISO 8601 format."""
 
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
-    """
-    The status of the batch processing request: "PENDING", "PROCESSING",
-    "CANCELLED", or "COMPLETE"
-    """
+    """The status of the batch processing request. The expected value is "COMPLETE"."""
 
     errors: Optional[List[StandardError]] = None
 
@@ -36,7 +33,7 @@ class BatchResponseSimplePublicObject(BaseModel):
     """An object containing relevant links related to the batch request."""
 
     num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
-    """The number of errors encountered during the batch processing."""
+    """The total number of errors that occurred during the batch operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The timestamp when the batch request was initially made, in ISO 8601 format."""
