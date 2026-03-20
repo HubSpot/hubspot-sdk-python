@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.standard_error import StandardError
+from .standard_error import StandardError
 from .simple_public_upsert_object import SimplePublicUpsertObject
 
 __all__ = ["BatchResponseSimplePublicUpsertObject"]
@@ -38,7 +38,7 @@ class BatchResponseSimplePublicUpsertObject(BaseModel):
     """An object containing relevant links related to the batch request."""
 
     num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
-    """The number of errors"""
+    """The total number of errors that occurred during the operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The timestamp when the batch process was initiated, in ISO 8601 format."""

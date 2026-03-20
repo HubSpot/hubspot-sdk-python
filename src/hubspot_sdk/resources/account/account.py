@@ -2,22 +2,6 @@
 
 from __future__ import annotations
 
-from .usage import (
-    UsageResource,
-    AsyncUsageResource,
-    UsageResourceWithRawResponse,
-    AsyncUsageResourceWithRawResponse,
-    UsageResourceWithStreamingResponse,
-    AsyncUsageResourceWithStreamingResponse,
-)
-from .details import (
-    DetailsResource,
-    AsyncDetailsResource,
-    DetailsResourceWithRawResponse,
-    AsyncDetailsResourceWithRawResponse,
-    DetailsResourceWithStreamingResponse,
-    AsyncDetailsResourceWithStreamingResponse,
-)
 from .activity import (
     ActivityResource,
     AsyncActivityResource,
@@ -36,14 +20,6 @@ class AccountResource(SyncAPIResource):
     @cached_property
     def activity(self) -> ActivityResource:
         return ActivityResource(self._client)
-
-    @cached_property
-    def details(self) -> DetailsResource:
-        return DetailsResource(self._client)
-
-    @cached_property
-    def usage(self) -> UsageResource:
-        return UsageResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AccountResourceWithRawResponse:
@@ -69,14 +45,6 @@ class AsyncAccountResource(AsyncAPIResource):
     @cached_property
     def activity(self) -> AsyncActivityResource:
         return AsyncActivityResource(self._client)
-
-    @cached_property
-    def details(self) -> AsyncDetailsResource:
-        return AsyncDetailsResource(self._client)
-
-    @cached_property
-    def usage(self) -> AsyncUsageResource:
-        return AsyncUsageResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncAccountResourceWithRawResponse:
@@ -106,14 +74,6 @@ class AccountResourceWithRawResponse:
     def activity(self) -> ActivityResourceWithRawResponse:
         return ActivityResourceWithRawResponse(self._account.activity)
 
-    @cached_property
-    def details(self) -> DetailsResourceWithRawResponse:
-        return DetailsResourceWithRawResponse(self._account.details)
-
-    @cached_property
-    def usage(self) -> UsageResourceWithRawResponse:
-        return UsageResourceWithRawResponse(self._account.usage)
-
 
 class AsyncAccountResourceWithRawResponse:
     def __init__(self, account: AsyncAccountResource) -> None:
@@ -122,14 +82,6 @@ class AsyncAccountResourceWithRawResponse:
     @cached_property
     def activity(self) -> AsyncActivityResourceWithRawResponse:
         return AsyncActivityResourceWithRawResponse(self._account.activity)
-
-    @cached_property
-    def details(self) -> AsyncDetailsResourceWithRawResponse:
-        return AsyncDetailsResourceWithRawResponse(self._account.details)
-
-    @cached_property
-    def usage(self) -> AsyncUsageResourceWithRawResponse:
-        return AsyncUsageResourceWithRawResponse(self._account.usage)
 
 
 class AccountResourceWithStreamingResponse:
@@ -140,14 +92,6 @@ class AccountResourceWithStreamingResponse:
     def activity(self) -> ActivityResourceWithStreamingResponse:
         return ActivityResourceWithStreamingResponse(self._account.activity)
 
-    @cached_property
-    def details(self) -> DetailsResourceWithStreamingResponse:
-        return DetailsResourceWithStreamingResponse(self._account.details)
-
-    @cached_property
-    def usage(self) -> UsageResourceWithStreamingResponse:
-        return UsageResourceWithStreamingResponse(self._account.usage)
-
 
 class AsyncAccountResourceWithStreamingResponse:
     def __init__(self, account: AsyncAccountResource) -> None:
@@ -156,11 +100,3 @@ class AsyncAccountResourceWithStreamingResponse:
     @cached_property
     def activity(self) -> AsyncActivityResourceWithStreamingResponse:
         return AsyncActivityResourceWithStreamingResponse(self._account.activity)
-
-    @cached_property
-    def details(self) -> AsyncDetailsResourceWithStreamingResponse:
-        return AsyncDetailsResourceWithStreamingResponse(self._account.details)
-
-    @cached_property
-    def usage(self) -> AsyncUsageResourceWithStreamingResponse:
-        return AsyncUsageResourceWithStreamingResponse(self._account.usage)

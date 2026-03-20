@@ -14,7 +14,6 @@ __all__ = ["ActivityListAuditLogsParams"]
 
 class ActivityListAuditLogsParams(TypedDict, total=False):
     acting_user_id: Annotated[Iterable[int], PropertyInfo(alias="actingUserId")]
-    """The ID of a user, for retrieving user-specific logs."""
 
     after: str
     """
@@ -23,17 +22,13 @@ class ActivityListAuditLogsParams(TypedDict, total=False):
     results.
     """
 
+    fill_final_timestamp: Annotated[bool, PropertyInfo(alias="fillFinalTimestamp")]
+
     limit: int
     """The maximum number of results to display per page."""
 
     occurred_after: Annotated[Union[str, datetime], PropertyInfo(alias="occurredAfter", format="iso8601")]
-    """A timestamp, as a starting point for retrieving activity logs."""
 
     occurred_before: Annotated[Union[str, datetime], PropertyInfo(alias="occurredBefore", format="iso8601")]
-    """A timestamp, as an end point for retrieving activity logs."""
 
     sort: SequenceNotStr[str]
-    """Set to `occurredAt` to order results by the time of the event.
-
-    By default, events are ordered from oldest to newest.
-    """

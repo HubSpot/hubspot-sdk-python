@@ -17,15 +17,16 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestBatch:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create(self, client: Hubspot) -> None:
         batch = client.crm.objects.tasks.batch.create(
+            object_type="objectType",
             inputs=[
                 {
                     "associations": [
                         {
-                            "to": {"id": "37295"},
+                            "to": {"id": "id"},
                             "types": [
                                 {
                                     "association_category": "HUBSPOT_DEFINED",
@@ -40,15 +41,16 @@ class TestBatch:
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.objects.tasks.batch.with_raw_response.create(
+            object_type="objectType",
             inputs=[
                 {
                     "associations": [
                         {
-                            "to": {"id": "37295"},
+                            "to": {"id": "id"},
                             "types": [
                                 {
                                     "association_category": "HUBSPOT_DEFINED",
@@ -67,15 +69,16 @@ class TestBatch:
         batch = response.parse()
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.objects.tasks.batch.with_streaming_response.create(
+            object_type="objectType",
             inputs=[
                 {
                     "associations": [
                         {
-                            "to": {"id": "37295"},
+                            "to": {"id": "id"},
                             "types": [
                                 {
                                     "association_category": "HUBSPOT_DEFINED",
@@ -96,10 +99,35 @@ class TestBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_create(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            client.crm.objects.tasks.batch.with_raw_response.create(
+                object_type="",
+                inputs=[
+                    {
+                        "associations": [
+                            {
+                                "to": {"id": "id"},
+                                "types": [
+                                    {
+                                        "association_category": "HUBSPOT_DEFINED",
+                                        "association_type_id": 0,
+                                    }
+                                ],
+                            }
+                        ],
+                        "properties": {"foo": "string"},
+                    }
+                ],
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update(self, client: Hubspot) -> None:
         batch = client.crm.objects.tasks.batch.update(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -109,10 +137,11 @@ class TestBatch:
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.crm.objects.tasks.batch.with_raw_response.update(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -126,10 +155,11 @@ class TestBatch:
         batch = response.parse()
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.crm.objects.tasks.batch.with_streaming_response.update(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -145,19 +175,35 @@ class TestBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_update(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            client.crm.objects.tasks.batch.with_raw_response.update(
+                object_type="",
+                inputs=[
+                    {
+                        "id": "id",
+                        "properties": {"foo": "string"},
+                    }
+                ],
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_delete(self, client: Hubspot) -> None:
         batch = client.crm.objects.tasks.batch.delete(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
         )
         assert batch is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.crm.objects.tasks.batch.with_raw_response.delete(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
         )
 
         assert response.is_closed is True
@@ -165,11 +211,12 @@ class TestBatch:
         batch = response.parse()
         assert batch is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.crm.objects.tasks.batch.with_streaming_response.delete(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -179,21 +226,32 @@ class TestBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_delete(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            client.crm.objects.tasks.batch.with_raw_response.delete(
+                object_type="",
+                inputs=[{"id": "430001"}],
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get(self, client: Hubspot) -> None:
         batch = client.crm.objects.tasks.batch.get(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
             properties=["string"],
             properties_with_history=["string"],
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_with_all_params(self, client: Hubspot) -> None:
         batch = client.crm.objects.tasks.batch.get(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
             properties=["string"],
             properties_with_history=["string"],
             archived=True,
@@ -201,11 +259,12 @@ class TestBatch:
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.objects.tasks.batch.with_raw_response.get(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
             properties=["string"],
             properties_with_history=["string"],
         )
@@ -215,11 +274,12 @@ class TestBatch:
         batch = response.parse()
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.objects.tasks.batch.with_streaming_response.get(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
             properties=["string"],
             properties_with_history=["string"],
         ) as response:
@@ -231,10 +291,22 @@ class TestBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_get(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            client.crm.objects.tasks.batch.with_raw_response.get(
+                object_type="",
+                inputs=[{"id": "430001"}],
+                properties=["string"],
+                properties_with_history=["string"],
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_upsert(self, client: Hubspot) -> None:
         batch = client.crm.objects.tasks.batch.upsert(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -244,10 +316,11 @@ class TestBatch:
         )
         assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_upsert(self, client: Hubspot) -> None:
         response = client.crm.objects.tasks.batch.with_raw_response.upsert(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -261,10 +334,11 @@ class TestBatch:
         batch = response.parse()
         assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_upsert(self, client: Hubspot) -> None:
         with client.crm.objects.tasks.batch.with_streaming_response.upsert(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -279,6 +353,20 @@ class TestBatch:
             assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_upsert(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            client.crm.objects.tasks.batch.with_raw_response.upsert(
+                object_type="",
+                inputs=[
+                    {
+                        "id": "id",
+                        "properties": {"foo": "string"},
+                    }
+                ],
+            )
 
 
 class TestAsyncBatch:
@@ -286,15 +374,16 @@ class TestAsyncBatch:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.tasks.batch.create(
+            object_type="objectType",
             inputs=[
                 {
                     "associations": [
                         {
-                            "to": {"id": "37295"},
+                            "to": {"id": "id"},
                             "types": [
                                 {
                                     "association_category": "HUBSPOT_DEFINED",
@@ -309,15 +398,16 @@ class TestAsyncBatch:
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.tasks.batch.with_raw_response.create(
+            object_type="objectType",
             inputs=[
                 {
                     "associations": [
                         {
-                            "to": {"id": "37295"},
+                            "to": {"id": "id"},
                             "types": [
                                 {
                                     "association_category": "HUBSPOT_DEFINED",
@@ -336,15 +426,16 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.tasks.batch.with_streaming_response.create(
+            object_type="objectType",
             inputs=[
                 {
                     "associations": [
                         {
-                            "to": {"id": "37295"},
+                            "to": {"id": "id"},
                             "types": [
                                 {
                                     "association_category": "HUBSPOT_DEFINED",
@@ -365,10 +456,35 @@ class TestAsyncBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            await async_client.crm.objects.tasks.batch.with_raw_response.create(
+                object_type="",
+                inputs=[
+                    {
+                        "associations": [
+                            {
+                                "to": {"id": "id"},
+                                "types": [
+                                    {
+                                        "association_category": "HUBSPOT_DEFINED",
+                                        "association_type_id": 0,
+                                    }
+                                ],
+                            }
+                        ],
+                        "properties": {"foo": "string"},
+                    }
+                ],
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.tasks.batch.update(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -378,10 +494,11 @@ class TestAsyncBatch:
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.tasks.batch.with_raw_response.update(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -395,10 +512,11 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.tasks.batch.with_streaming_response.update(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -414,19 +532,35 @@ class TestAsyncBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            await async_client.crm.objects.tasks.batch.with_raw_response.update(
+                object_type="",
+                inputs=[
+                    {
+                        "id": "id",
+                        "properties": {"foo": "string"},
+                    }
+                ],
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.tasks.batch.delete(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
         )
         assert batch is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.tasks.batch.with_raw_response.delete(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
         )
 
         assert response.is_closed is True
@@ -434,11 +568,12 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert batch is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.tasks.batch.with_streaming_response.delete(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -448,21 +583,32 @@ class TestAsyncBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            await async_client.crm.objects.tasks.batch.with_raw_response.delete(
+                object_type="",
+                inputs=[{"id": "430001"}],
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.tasks.batch.get(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
             properties=["string"],
             properties_with_history=["string"],
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.tasks.batch.get(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
             properties=["string"],
             properties_with_history=["string"],
             archived=True,
@@ -470,11 +616,12 @@ class TestAsyncBatch:
         )
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.tasks.batch.with_raw_response.get(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
             properties=["string"],
             properties_with_history=["string"],
         )
@@ -484,11 +631,12 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.tasks.batch.with_streaming_response.get(
-            inputs=[{"id": "id"}],
+            object_type="objectType",
+            inputs=[{"id": "430001"}],
             properties=["string"],
             properties_with_history=["string"],
         ) as response:
@@ -500,10 +648,22 @@ class TestAsyncBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            await async_client.crm.objects.tasks.batch.with_raw_response.get(
+                object_type="",
+                inputs=[{"id": "430001"}],
+                properties=["string"],
+                properties_with_history=["string"],
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_upsert(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.crm.objects.tasks.batch.upsert(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -513,10 +673,11 @@ class TestAsyncBatch:
         )
         assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_upsert(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.tasks.batch.with_raw_response.upsert(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -530,10 +691,11 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_upsert(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.tasks.batch.with_streaming_response.upsert(
+            object_type="objectType",
             inputs=[
                 {
                     "id": "id",
@@ -548,3 +710,17 @@ class TestAsyncBatch:
             assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_upsert(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            await async_client.crm.objects.tasks.batch.with_raw_response.upsert(
+                object_type="",
+                inputs=[
+                    {
+                        "id": "id",
+                        "properties": {"foo": "string"},
+                    }
+                ],
+            )

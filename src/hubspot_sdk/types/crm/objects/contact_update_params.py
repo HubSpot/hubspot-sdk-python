@@ -11,8 +11,10 @@ __all__ = ["ContactUpdateParams"]
 
 
 class ContactUpdateParams(TypedDict, total=False):
+    object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
+
     properties: Required[Dict[str, str]]
     """Key value pairs representing the properties of the object."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
-    """The name of a property whose values are unique for this object."""
+    """The name of a property whose values are unique for this object"""

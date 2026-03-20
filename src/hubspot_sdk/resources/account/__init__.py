@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .usage import (
-    UsageResource,
-    AsyncUsageResource,
-    UsageResourceWithRawResponse,
-    AsyncUsageResourceWithRawResponse,
-    UsageResourceWithStreamingResponse,
-    AsyncUsageResourceWithStreamingResponse,
-)
 from .account import (
     AccountResource,
     AsyncAccountResource,
@@ -15,14 +7,6 @@ from .account import (
     AsyncAccountResourceWithRawResponse,
     AccountResourceWithStreamingResponse,
     AsyncAccountResourceWithStreamingResponse,
-)
-from .details import (
-    DetailsResource,
-    AsyncDetailsResource,
-    DetailsResourceWithRawResponse,
-    AsyncDetailsResourceWithRawResponse,
-    DetailsResourceWithStreamingResponse,
-    AsyncDetailsResourceWithStreamingResponse,
 )
 from .activity import (
     ActivityResource,
@@ -40,18 +24,6 @@ __all__ = [
     "AsyncActivityResourceWithRawResponse",
     "ActivityResourceWithStreamingResponse",
     "AsyncActivityResourceWithStreamingResponse",
-    "DetailsResource",
-    "AsyncDetailsResource",
-    "DetailsResourceWithRawResponse",
-    "AsyncDetailsResourceWithRawResponse",
-    "DetailsResourceWithStreamingResponse",
-    "AsyncDetailsResourceWithStreamingResponse",
-    "UsageResource",
-    "AsyncUsageResource",
-    "UsageResourceWithRawResponse",
-    "AsyncUsageResourceWithRawResponse",
-    "UsageResourceWithStreamingResponse",
-    "AsyncUsageResourceWithStreamingResponse",
     "AccountResource",
     "AsyncAccountResource",
     "AccountResourceWithRawResponse",

@@ -2,19 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict
-from typing_extensions import Required, Annotated, TypedDict
+from typing import Iterable
+from typing_extensions import Required, TypedDict
 
-from ...._utils import PropertyInfo
+from ..simple_public_object_batch_input_param import SimplePublicObjectBatchInputParam
 
 __all__ = ["CustomUpdateParams"]
 
 
 class CustomUpdateParams(TypedDict, total=False):
-    object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
-
-    properties: Required[Dict[str, str]]
-    """Key value pairs representing the properties of the object."""
-
-    id_property: Annotated[str, PropertyInfo(alias="idProperty")]
-    """The name of a property whose values are unique for this object"""
+    inputs: Required[Iterable[SimplePublicObjectBatchInputParam]]

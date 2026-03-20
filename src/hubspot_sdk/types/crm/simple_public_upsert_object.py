@@ -36,7 +36,7 @@ class SimplePublicUpsertObject(BaseModel):
     """The timestamp when the object was archived, in ISO 8601 format."""
 
     object_write_trace_id: Optional[str] = FieldInfo(alias="objectWriteTraceId", default=None)
-    """A unique identifier for tracing the creation or update request."""
+    """An identifier for tracing the creation request."""
 
     properties_with_history: Optional[Dict[str, List[ValueWithTimestamp]]] = FieldInfo(
         alias="propertiesWithHistory", default=None
@@ -47,3 +47,4 @@ class SimplePublicUpsertObject(BaseModel):
     """
 
     url: Optional[str] = None
+    """The URL associated with the object."""

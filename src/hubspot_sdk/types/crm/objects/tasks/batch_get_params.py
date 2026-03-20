@@ -25,4 +25,7 @@ class BatchGetParams(TypedDict, total=False):
     """Whether to return only results that have been archived."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
-    """A unique property used to identify objects instead of the default ID."""
+    """
+    When using a custom unique value property to retrieve records, the name of the
+    property. Do not include this parameter if retrieving by record ID.
+    """

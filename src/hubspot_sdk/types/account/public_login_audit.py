@@ -11,8 +11,6 @@ __all__ = ["PublicLoginAudit"]
 
 
 class PublicLoginAudit(BaseModel):
-    """Details about the a particular login activity for a HubSpot account."""
-
     id: str
     """The login activity's unique ID."""
 
@@ -32,6 +30,7 @@ class PublicLoginAudit(BaseModel):
     """IP address where the activity originated."""
 
     location: Optional[str] = None
+    """The approximate location where the login activity originated."""
 
     region_code: Optional[str] = FieldInfo(alias="regionCode", default=None)
     """The approximate region code of the login."""
