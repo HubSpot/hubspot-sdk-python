@@ -34,8 +34,21 @@ client = Hubspot(
     access_token="pat-na1-xxxxxxxx-xxxx",
 )
 
-portal_information_response = client.account.get()
-print(portal_information_response.account_type)
+result = client.crm.objects.contacts.create(
+    associations=[
+        {
+            "to": {"id": "id"},
+            "types": [
+                {
+                    "association_category": "HUBSPOT_DEFINED",
+                    "association_type_id": 0,
+                }
+            ],
+        }
+    ],
+    properties={"email": "mark.s@lumon.industries"},
+)
+print(result.id)
 ```
 
 ## Async usage
@@ -52,8 +65,21 @@ client = AsyncHubspot(
 
 
 async def main() -> None:
-    portal_information_response = await client.account.get()
-    print(portal_information_response.account_type)
+    result = await client.crm.objects.contacts.create(
+        associations=[
+            {
+                "to": {"id": "id"},
+                "types": [
+                    {
+                        "association_category": "HUBSPOT_DEFINED",
+                        "association_type_id": 0,
+                    }
+                ],
+            }
+        ],
+        properties={"email": "mark.s@lumon.industries"},
+    )
+    print(result.id)
 
 
 asyncio.run(main())
@@ -85,8 +111,21 @@ async def main() -> None:
         access_token="pat-na1-xxxxxxxx-xxxx",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        portal_information_response = await client.account.get()
-        print(portal_information_response.account_type)
+        result = await client.crm.objects.contacts.create(
+            associations=[
+                {
+                    "to": {"id": "id"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
+            properties={"email": "mark.s@lumon.industries"},
+        )
+        print(result.id)
 
 
 asyncio.run(main())
@@ -112,12 +151,14 @@ from hubspot_sdk import Hubspot
 
 client = Hubspot()
 
-all_activities = []
+all_contacts = []
 # Automatically fetches more pages as needed.
-for activity in client.account.activity.list_audit_logs():
-    # Do something with activity here
-    all_activities.append(activity)
-print(all_activities)
+for contact in client.crm.objects.contacts.list(
+    limit=100,
+):
+    # Do something with contact here
+    all_contacts.append(contact)
+print(all_contacts)
 ```
 
 Or, asynchronously:
@@ -130,11 +171,13 @@ client = AsyncHubspot()
 
 
 async def main() -> None:
-    all_activities = []
+    all_contacts = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for activity in client.account.activity.list_audit_logs():
-        all_activities.append(activity)
-    print(all_activities)
+    async for contact in client.crm.objects.contacts.list(
+        limit=100,
+    ):
+        all_contacts.append(contact)
+    print(all_contacts)
 
 
 asyncio.run(main())
@@ -143,7 +186,9 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await client.account.activity.list_audit_logs()
+first_page = await client.crm.objects.contacts.list(
+    limit=100,
+)
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
@@ -155,11 +200,13 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await client.account.activity.list_audit_logs()
+first_page = await client.crm.objects.contacts.list(
+    limit=100,
+)
 
 print(f"next page cursor: {first_page.paging.next.after}")  # => "next page cursor: ..."
-for activity in first_page.results:
-    print(activity.id)
+for contact in first_page.results:
+    print(contact.id)
 
 # Remove `await` for non-async usage.
 ```
@@ -216,7 +263,20 @@ from hubspot_sdk import Hubspot
 client = Hubspot()
 
 try:
-    client.account.get()
+    client.crm.objects.contacts.create(
+        associations=[
+            {
+                "to": {"id": "id"},
+                "types": [
+                    {
+                        "association_category": "HUBSPOT_DEFINED",
+                        "association_type_id": 0,
+                    }
+                ],
+            }
+        ],
+        properties={"email": "mark.s@lumon.industries"},
+    )
 except hubspot_sdk.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -259,7 +319,20 @@ client = Hubspot(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).account.get()
+client.with_options(max_retries=5).crm.objects.contacts.create(
+    associations=[
+        {
+            "to": {"id": "id"},
+            "types": [
+                {
+                    "association_category": "HUBSPOT_DEFINED",
+                    "association_type_id": 0,
+                }
+            ],
+        }
+    ],
+    properties={"email": "mark.s@lumon.industries"},
+)
 ```
 
 ### Timeouts
@@ -282,7 +355,20 @@ client = Hubspot(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).account.get()
+client.with_options(timeout=5.0).crm.objects.contacts.create(
+    associations=[
+        {
+            "to": {"id": "id"},
+            "types": [
+                {
+                    "association_category": "HUBSPOT_DEFINED",
+                    "association_type_id": 0,
+                }
+            ],
+        }
+    ],
+    properties={"email": "mark.s@lumon.industries"},
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -323,11 +409,24 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from hubspot_sdk import Hubspot
 
 client = Hubspot()
-response = client.account.with_raw_response.get()
+response = client.crm.objects.contacts.with_raw_response.create(
+    associations=[{
+        "to": {
+            "id": "id"
+        },
+        "types": [{
+            "association_category": "HUBSPOT_DEFINED",
+            "association_type_id": 0,
+        }],
+    }],
+    properties={
+        "email": "mark.s@lumon.industries"
+    },
+)
 print(response.headers.get('X-My-Header'))
 
-account = response.parse()  # get the object that `account.get()` would have returned
-print(account.account_type)
+contact = response.parse()  # get the object that `crm.objects.contacts.create()` would have returned
+print(contact.id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/hubspot-sdk-python/tree/main/src/hubspot_sdk/_response.py) object.
@@ -341,7 +440,20 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.account.with_streaming_response.get() as response:
+with client.crm.objects.contacts.with_streaming_response.create(
+    associations=[
+        {
+            "to": {"id": "id"},
+            "types": [
+                {
+                    "association_category": "HUBSPOT_DEFINED",
+                    "association_type_id": 0,
+                }
+            ],
+        }
+    ],
+    properties={"email": "mark.s@lumon.industries"},
+) as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
