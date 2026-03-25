@@ -46,10 +46,7 @@ result = client.crm.objects.contacts.create(
             ],
         }
     ],
-    properties={
-        "associations": "string",
-        "email": "mark.s@lumon.industries",
-    },
+    properties={"email": "mark.s@lumon.industries"},
 )
 print(result.id)
 ```
@@ -80,10 +77,7 @@ async def main() -> None:
                 ],
             }
         ],
-        properties={
-            "associations": "string",
-            "email": "mark.s@lumon.industries",
-        },
+        properties={"email": "mark.s@lumon.industries"},
     )
     print(result.id)
 
@@ -129,10 +123,7 @@ async def main() -> None:
                     ],
                 }
             ],
-            properties={
-                "associations": "string",
-                "email": "mark.s@lumon.industries",
-            },
+            properties={"email": "mark.s@lumon.industries"},
         )
         print(result.id)
 
@@ -284,10 +275,7 @@ try:
                 ],
             }
         ],
-        properties={
-            "associations": "string",
-            "email": "mark.s@lumon.industries",
-        },
+        properties={"email": "mark.s@lumon.industries"},
     )
 except hubspot_sdk.APIConnectionError as e:
     print("The server could not be reached")
@@ -343,10 +331,7 @@ client.with_options(max_retries=5).crm.objects.contacts.create(
             ],
         }
     ],
-    properties={
-        "associations": "string",
-        "email": "mark.s@lumon.industries",
-    },
+    properties={"email": "mark.s@lumon.industries"},
 )
 ```
 
@@ -382,10 +367,7 @@ client.with_options(timeout=5.0).crm.objects.contacts.create(
             ],
         }
     ],
-    properties={
-        "associations": "string",
-        "email": "mark.s@lumon.industries",
-    },
+    properties={"email": "mark.s@lumon.industries"},
 )
 ```
 
@@ -438,8 +420,7 @@ response = client.crm.objects.contacts.with_raw_response.create(
         }],
     }],
     properties={
-        "associations": "string",
-        "email": "mark.s@lumon.industries",
+        "email": "mark.s@lumon.industries"
     },
 )
 print(response.headers.get('X-My-Header'))
@@ -471,10 +452,7 @@ with client.crm.objects.contacts.with_streaming_response.create(
             ],
         }
     ],
-    properties={
-        "associations": "string",
-        "email": "mark.s@lumon.industries",
-    },
+    properties={"email": "mark.s@lumon.industries"},
 ) as response:
     print(response.headers.get("X-My-Header"))
 
