@@ -1,0 +1,17 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Required, TypedDict
+
+__all__ = ["SourceCodeGetMetadataParams"]
+
+
+class SourceCodeGetMetadataParams(TypedDict, total=False):
+    environment: Required[str]
+
+    properties: str
+    """
+    A comma-separated list of specific metadata properties to include in the
+    response.
+    """

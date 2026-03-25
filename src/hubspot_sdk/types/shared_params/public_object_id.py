@@ -11,4 +11,4 @@ class PublicObjectID(TypedDict, total=False):
     """Contains the Id of a Public Object"""
 
     id: Required[str]
-    """The unique ID of the object."""
+    """ID of the object"""

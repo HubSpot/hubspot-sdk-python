@@ -2,24 +2,126 @@
 
 from __future__ import annotations
 
+from .app_info import AppInfo as AppInfo
+from .interval import Interval as Interval
+from .public_list import PublicList as PublicList
+from .public_email import PublicEmail as PublicEmail
+from .event_id_view import EventIDView as EventIDView
 from .public_campaign import PublicCampaign as PublicCampaign
+from .email_get_params import EmailGetParams as EmailGetParams
 from .metrics_counters import MetricsCounters as MetricsCounters
 from .contact_reference import ContactReference as ContactReference
+from .email_list_params import EmailListParams as EmailListParams
+from .public_font_style import PublicFontStyle as PublicFontStyle
 from .public_spend_item import PublicSpendItem as PublicSpendItem
+from .email_clone_params import EmailCloneParams as EmailCloneParams
 from .public_budget_item import PublicBudgetItem as PublicBudgetItem
+from .attendance_counters import AttendanceCounters as AttendanceCounters
 from .campaign_get_params import CampaignGetParams as CampaignGetParams
+from .contact_association import ContactAssociation as ContactAssociation
+from .email_create_params import EmailCreateParams as EmailCreateParams
+from .email_delete_params import EmailDeleteParams as EmailDeleteParams
+from .email_update_params import EmailUpdateParams as EmailUpdateParams
+from .event_create_params import EventCreateParams as EventCreateParams
+from .event_update_params import EventUpdateParams as EventUpdateParams
+from .crm_property_wrapper import CrmPropertyWrapper as CrmPropertyWrapper
 from .public_budget_totals import PublicBudgetTotals as PublicBudgetTotals
 from .public_business_unit import PublicBusinessUnit as PublicBusinessUnit
+from .public_email_content import PublicEmailContent as PublicEmailContent
+from .public_email_version import PublicEmailVersion as PublicEmailVersion
+from .version_public_email import VersionPublicEmail as VersionPublicEmail
+from .email_statistics_data import EmailStatisticsData as EmailStatisticsData
+from .event_detail_settings import EventDetailSettings as EventDetailSettings
 from .public_campaign_asset import PublicCampaignAsset as PublicCampaignAsset
 from .campaign_update_params import CampaignUpdateParams as CampaignUpdateParams
+from .email_send_status_view import EmailSendStatusView as EmailSendStatusView
+from .participation_breakdown import ParticipationBreakdown as ParticipationBreakdown
+from .public_email_recipients import PublicEmailRecipients as PublicEmailRecipients
+from .public_email_to_details import PublicEmailToDetails as PublicEmailToDetails
+from .public_font_style_param import PublicFontStyleParam as PublicFontStyleParam
+from .smart_email_field_param import SmartEmailFieldParam as SmartEmailFieldParam
+from .subscriber_vid_response import SubscriberVidResponse as SubscriberVidResponse
+from .email_statistic_interval import EmailStatisticInterval as EmailStatisticInterval
+from .participation_properties import ParticipationProperties as ParticipationProperties
+from .public_rss_email_details import PublicRssEmailDetails as PublicRssEmailDetails
+from .email_update_draft_params import EmailUpdateDraftParams as EmailUpdateDraftParams
+from .event_delete_batch_params import EventDeleteBatchParams as EventDeleteBatchParams
+from .event_update_batch_params import EventUpdateBatchParams as EventUpdateBatchParams
+from .event_upsert_batch_params import EventUpsertBatchParams as EventUpsertBatchParams
+from .public_email_from_details import PublicEmailFromDetails as PublicEmailFromDetails
+from .public_webversion_details import PublicWebversionDetails as PublicWebversionDetails
+from .subscriber_email_response import SubscriberEmailResponse as SubscriberEmailResponse
+from .transactional_send_params import TransactionalSendParams as TransactionalSendParams
+from .aggregate_email_statistics import AggregateEmailStatistics as AggregateEmailStatistics
+from .email_get_histogram_params import EmailGetHistogramParams as EmailGetHistogramParams
+from .participation_associations import ParticipationAssociations as ParticipationAssociations
+from .public_email_content_param import PublicEmailContentParam as PublicEmailContentParam
+from .email_list_revisions_params import EmailListRevisionsParams as EmailListRevisionsParams
+from .marketing_event_association import MarketingEventAssociation as MarketingEventAssociation
 from .public_campaign_input_param import PublicCampaignInputParam as PublicCampaignInputParam
 from .public_campaign_with_assets import PublicCampaignWithAssets as PublicCampaignWithAssets
+from .public_email_style_settings import PublicEmailStyleSettings as PublicEmailStyleSettings
+from .public_button_style_settings import PublicButtonStyleSettings as PublicButtonStyleSettings
+from .public_email_testing_details import PublicEmailTestingDetails as PublicEmailTestingDetails
+from .public_divider_style_settings import PublicDividerStyleSettings as PublicDividerStyleSettings
+from .public_email_recipients_param import PublicEmailRecipientsParam as PublicEmailRecipientsParam
+from .public_email_to_details_param import PublicEmailToDetailsParam as PublicEmailToDetailsParam
 from .revenue_attribution_aggregate import RevenueAttributionAggregate as RevenueAttributionAggregate
 from .batch_response_public_campaign import BatchResponsePublicCampaign as BatchResponsePublicCampaign
+from .public_rss_email_details_param import PublicRssEmailDetailsParam as PublicRssEmailDetailsParam
+from .public_single_send_email_param import PublicSingleSendEmailParam as PublicSingleSendEmailParam
+from .search_public_response_wrapper import SearchPublicResponseWrapper as SearchPublicResponseWrapper
+from .public_email_from_details_param import PublicEmailFromDetailsParam as PublicEmailFromDetailsParam
+from .public_webversion_details_param import PublicWebversionDetailsParam as PublicWebversionDetailsParam
+from .marketing_event_default_response import MarketingEventDefaultResponse as MarketingEventDefaultResponse
+from .marketing_event_subscriber_param import MarketingEventSubscriberParam as MarketingEventSubscriberParam
 from .public_campaign_read_input_param import PublicCampaignReadInputParam as PublicCampaignReadInputParam
+from .public_email_style_settings_param import PublicEmailStyleSettingsParam as PublicEmailStyleSettingsParam
+from .public_email_subscription_details import PublicEmailSubscriptionDetails as PublicEmailSubscriptionDetails
+from .email_get_ab_test_variation_params import EmailGetAbTestVariationParams as EmailGetAbTestVariationParams
+from .public_button_style_settings_param import PublicButtonStyleSettingsParam as PublicButtonStyleSettingsParam
 from .public_campaign_delete_input_param import PublicCampaignDeleteInputParam as PublicCampaignDeleteInputParam
+from .public_email_testing_details_param import PublicEmailTestingDetailsParam as PublicEmailTestingDetailsParam
+from .public_divider_style_settings_param import PublicDividerStyleSettingsParam as PublicDividerStyleSettingsParam
+from .marketing_event_identifiers_response import MarketingEventIdentifiersResponse as MarketingEventIdentifiersResponse
+from .marketing_event_public_read_response import MarketingEventPublicReadResponse as MarketingEventPublicReadResponse
+from .email_create_ab_test_variation_params import EmailCreateAbTestVariationParams as EmailCreateAbTestVariationParams
+from .event_get_by_external_event_id_params import EventGetByExternalEventIDParams as EventGetByExternalEventIDParams
+from .marketing_event_create_request_params import (
+    MarketingEventCreateRequestParams as MarketingEventCreateRequestParams,
+)
+from .batch_response_subscriber_vid_response import (
+    BatchResponseSubscriberVidResponse as BatchResponseSubscriberVidResponse,
+)
+from .marketing_event_email_subscriber_param import (
+    MarketingEventEmailSubscriberParam as MarketingEventEmailSubscriberParam,
+)
+from .marketing_event_public_default_response import (
+    MarketingEventPublicDefaultResponse as MarketingEventPublicDefaultResponse,
+)
+from .marketing_event_public_read_response_v2 import (
+    MarketingEventPublicReadResponseV2 as MarketingEventPublicReadResponseV2,
+)
 from .public_campaign_batch_update_item_param import (
     PublicCampaignBatchUpdateItemParam as PublicCampaignBatchUpdateItemParam,
+)
+from .public_email_subscription_details_param import (
+    PublicEmailSubscriptionDetailsParam as PublicEmailSubscriptionDetailsParam,
+)
+from .batch_response_subscriber_email_response import (
+    BatchResponseSubscriberEmailResponse as BatchResponseSubscriberEmailResponse,
+)
+from .event_delete_by_external_event_id_params import (
+    EventDeleteByExternalEventIDParams as EventDeleteByExternalEventIDParams,
+)
+from .event_search_by_external_event_id_params import (
+    EventSearchByExternalEventIDParams as EventSearchByExternalEventIDParams,
+)
+from .event_update_by_external_event_id_params import (
+    EventUpdateByExternalEventIDParams as EventUpdateByExternalEventIDParams,
+)
+from .event_upsert_by_external_event_id_params import (
+    EventUpsertByExternalEventIDParams as EventUpsertByExternalEventIDParams,
 )
 from .collection_response_public_campaign_asset import (
     CollectionResponsePublicCampaignAsset as CollectionResponsePublicCampaignAsset,
@@ -27,9 +129,57 @@ from .collection_response_public_campaign_asset import (
 from .batch_response_public_campaign_with_assets import (
     BatchResponsePublicCampaignWithAssets as BatchResponsePublicCampaignWithAssets,
 )
+from .collection_response_with_total_public_list import (
+    CollectionResponseWithTotalPublicList as CollectionResponseWithTotalPublicList,
+)
+from .event_upsert_subscriber_state_by_id_params import (
+    EventUpsertSubscriberStateByIDParams as EventUpsertSubscriberStateByIDParams,
+)
+from .marketing_event_public_default_response_v2 import (
+    MarketingEventPublicDefaultResponseV2 as MarketingEventPublicDefaultResponseV2,
+)
+from .collection_response_with_total_public_email import (
+    CollectionResponseWithTotalPublicEmail as CollectionResponseWithTotalPublicEmail,
+)
+from .event_upsert_subscriber_state_by_email_params import (
+    EventUpsertSubscriberStateByEmailParams as EventUpsertSubscriberStateByEmailParams,
+)
+from .event_delete_batch_by_external_event_id_params import (
+    EventDeleteBatchByExternalEventIDParams as EventDeleteBatchByExternalEventIDParams,
+)
+from .marketing_event_external_unique_identifier_param import (
+    MarketingEventExternalUniqueIdentifierParam as MarketingEventExternalUniqueIdentifierParam,
+)
+from .collection_response_with_total_public_email_version import (
+    CollectionResponseWithTotalPublicEmailVersion as CollectionResponseWithTotalPublicEmailVersion,
+)
+from .marketing_event_public_update_request_full_v2_param import (
+    MarketingEventPublicUpdateRequestFullV2Param as MarketingEventPublicUpdateRequestFullV2Param,
+)
 from .collection_response_contact_reference_forward_paging import (
     CollectionResponseContactReferenceForwardPaging as CollectionResponseContactReferenceForwardPaging,
 )
+from .marketing_event_public_object_id_delete_request_param import (
+    MarketingEventPublicObjectIDDeleteRequestParam as MarketingEventPublicObjectIDDeleteRequestParam,
+)
+from .batch_response_marketing_event_public_default_response import (
+    BatchResponseMarketingEventPublicDefaultResponse as BatchResponseMarketingEventPublicDefaultResponse,
+)
+from .collection_response_with_total_participation_breakdown import (
+    CollectionResponseWithTotalParticipationBreakdown as CollectionResponseWithTotalParticipationBreakdown,
+)
+from .collection_response_with_total_email_statistic_interval import (
+    CollectionResponseWithTotalEmailStatisticInterval as CollectionResponseWithTotalEmailStatisticInterval,
+)
 from .collection_response_public_campaign_asset_forward_paging import (
     CollectionResponsePublicCampaignAssetForwardPaging as CollectionResponsePublicCampaignAssetForwardPaging,
+)
+from .batch_response_marketing_event_public_default_response_v2 import (
+    BatchResponseMarketingEventPublicDefaultResponseV2 as BatchResponseMarketingEventPublicDefaultResponseV2,
+)
+from .collection_response_search_public_response_wrapper_no_paging import (
+    CollectionResponseSearchPublicResponseWrapperNoPaging as CollectionResponseSearchPublicResponseWrapperNoPaging,
+)
+from .collection_response_with_total_marketing_event_identifiers_response import (
+    CollectionResponseWithTotalMarketingEventIdentifiersResponse as CollectionResponseWithTotalMarketingEventIdentifiersResponse,
 )

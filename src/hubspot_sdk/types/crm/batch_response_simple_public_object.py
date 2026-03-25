@@ -25,7 +25,10 @@ class BatchResponseSimplePublicObject(BaseModel):
     """The timestamp when the batch processing began, in ISO 8601 format."""
 
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
-    """The status of the batch processing request. The expected value is "COMPLETE"."""
+    """
+    The status of the batch processing request: "PENDING", "PROCESSING",
+    "CANCELLED", or "COMPLETE"
+    """
 
     errors: Optional[List[StandardError]] = None
 

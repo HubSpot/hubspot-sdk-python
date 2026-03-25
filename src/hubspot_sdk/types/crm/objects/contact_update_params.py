@@ -11,8 +11,6 @@ __all__ = ["ContactUpdateParams"]
 
 
 class ContactUpdateParams(TypedDict, total=False):
-    object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
-
     properties: Required[Dict[str, str]]
     """Key value pairs representing the properties of the object."""
 

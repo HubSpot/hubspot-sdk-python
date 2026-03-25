@@ -12,11 +12,35 @@ from .send import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .definitions import (
+    DefinitionsResource,
+    AsyncDefinitionsResource,
+    DefinitionsResourceWithRawResponse,
+    AsyncDefinitionsResourceWithRawResponse,
+    DefinitionsResourceWithStreamingResponse,
+    AsyncDefinitionsResourceWithStreamingResponse,
+)
+from .occurrences import (
+    OccurrencesResource,
+    AsyncOccurrencesResource,
+    OccurrencesResourceWithRawResponse,
+    AsyncOccurrencesResourceWithRawResponse,
+    OccurrencesResourceWithStreamingResponse,
+    AsyncOccurrencesResourceWithStreamingResponse,
+)
 
 __all__ = ["EventsResource", "AsyncEventsResource"]
 
 
 class EventsResource(SyncAPIResource):
+    @cached_property
+    def definitions(self) -> DefinitionsResource:
+        return DefinitionsResource(self._client)
+
+    @cached_property
+    def occurrences(self) -> OccurrencesResource:
+        return OccurrencesResource(self._client)
+
     @cached_property
     def send(self) -> SendResource:
         return SendResource(self._client)
@@ -42,6 +66,14 @@ class EventsResource(SyncAPIResource):
 
 
 class AsyncEventsResource(AsyncAPIResource):
+    @cached_property
+    def definitions(self) -> AsyncDefinitionsResource:
+        return AsyncDefinitionsResource(self._client)
+
+    @cached_property
+    def occurrences(self) -> AsyncOccurrencesResource:
+        return AsyncOccurrencesResource(self._client)
+
     @cached_property
     def send(self) -> AsyncSendResource:
         return AsyncSendResource(self._client)
@@ -71,6 +103,14 @@ class EventsResourceWithRawResponse:
         self._events = events
 
     @cached_property
+    def definitions(self) -> DefinitionsResourceWithRawResponse:
+        return DefinitionsResourceWithRawResponse(self._events.definitions)
+
+    @cached_property
+    def occurrences(self) -> OccurrencesResourceWithRawResponse:
+        return OccurrencesResourceWithRawResponse(self._events.occurrences)
+
+    @cached_property
     def send(self) -> SendResourceWithRawResponse:
         return SendResourceWithRawResponse(self._events.send)
 
@@ -78,6 +118,14 @@ class EventsResourceWithRawResponse:
 class AsyncEventsResourceWithRawResponse:
     def __init__(self, events: AsyncEventsResource) -> None:
         self._events = events
+
+    @cached_property
+    def definitions(self) -> AsyncDefinitionsResourceWithRawResponse:
+        return AsyncDefinitionsResourceWithRawResponse(self._events.definitions)
+
+    @cached_property
+    def occurrences(self) -> AsyncOccurrencesResourceWithRawResponse:
+        return AsyncOccurrencesResourceWithRawResponse(self._events.occurrences)
 
     @cached_property
     def send(self) -> AsyncSendResourceWithRawResponse:
@@ -89,6 +137,14 @@ class EventsResourceWithStreamingResponse:
         self._events = events
 
     @cached_property
+    def definitions(self) -> DefinitionsResourceWithStreamingResponse:
+        return DefinitionsResourceWithStreamingResponse(self._events.definitions)
+
+    @cached_property
+    def occurrences(self) -> OccurrencesResourceWithStreamingResponse:
+        return OccurrencesResourceWithStreamingResponse(self._events.occurrences)
+
+    @cached_property
     def send(self) -> SendResourceWithStreamingResponse:
         return SendResourceWithStreamingResponse(self._events.send)
 
@@ -96,6 +152,14 @@ class EventsResourceWithStreamingResponse:
 class AsyncEventsResourceWithStreamingResponse:
     def __init__(self, events: AsyncEventsResource) -> None:
         self._events = events
+
+    @cached_property
+    def definitions(self) -> AsyncDefinitionsResourceWithStreamingResponse:
+        return AsyncDefinitionsResourceWithStreamingResponse(self._events.definitions)
+
+    @cached_property
+    def occurrences(self) -> AsyncOccurrencesResourceWithStreamingResponse:
+        return AsyncOccurrencesResourceWithStreamingResponse(self._events.occurrences)
 
     @cached_property
     def send(self) -> AsyncSendResourceWithStreamingResponse:

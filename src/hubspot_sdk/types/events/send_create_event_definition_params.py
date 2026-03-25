@@ -16,7 +16,7 @@ class SendCreateEventDefinitionParams(TypedDict, total=False):
     include_default_properties: Required[Annotated[bool, PropertyInfo(alias="includeDefaultProperties")]]
 
     label: Required[str]
-    """Human readable label for the event for display in HubSpot's UI."""
+    """Human readable label for the event. Used in HubSpot UI"""
 
     property_definitions: Required[
         Annotated[Iterable[ExternalBehavioralEventPropertyCreateParam], PropertyInfo(alias="propertyDefinitions")]
@@ -29,16 +29,17 @@ class SendCreateEventDefinitionParams(TypedDict, total=False):
     """A description of the event that will be shown as help text in HubSpot."""
 
     name: str
-    """Internal event name, which must be used when referencing the event from the API.
-
-    If a name is not supplied, one will be generated based on the label. The name
-    does not include the `pe<PORTAL_ID>_` prefix used when sending event
-    completions.
+    """
+    Internal event name, which must be used when referencing the event from this
+    event definitions API. If a name is not supplied, one will be generated based on
+    the label. The `name` value will also be used to automatically generate a
+    `fullyQualifiedName` for the event definition, which you'll use when sending
+    event completions to this event.
     """
 
     primary_object: Annotated[str, PropertyInfo(alias="primaryObject")]
     """The object type to associate this event to.
 
-    Can be one of `CONTACT`, `COMPANY`, `DEAL`, `TICKET`. If no value is supplied,
-    will default to `CONTACT`.
+    Can be one of CONTACT, COMPANY, DEAL, TICKET. If no primaryObject is supplied,
+    we will default to associating the event to CONTACT objects.
     """

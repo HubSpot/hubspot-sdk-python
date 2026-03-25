@@ -8,6 +8,14 @@ from .actions import (
     ActionsResourceWithStreamingResponse,
     AsyncActionsResourceWithStreamingResponse,
 )
+from .sequences import (
+    SequencesResource,
+    AsyncSequencesResource,
+    SequencesResourceWithRawResponse,
+    AsyncSequencesResourceWithRawResponse,
+    SequencesResourceWithStreamingResponse,
+    AsyncSequencesResourceWithStreamingResponse,
+)
 from .automation import (
     AutomationResource,
     AsyncAutomationResource,
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncActionsResourceWithRawResponse",
     "ActionsResourceWithStreamingResponse",
     "AsyncActionsResourceWithStreamingResponse",
+    "SequencesResource",
+    "AsyncSequencesResource",
+    "SequencesResourceWithRawResponse",
+    "AsyncSequencesResourceWithRawResponse",
+    "SequencesResourceWithStreamingResponse",
+    "AsyncSequencesResourceWithStreamingResponse",
     "AutomationResource",
     "AsyncAutomationResource",
     "AutomationResourceWithRawResponse",

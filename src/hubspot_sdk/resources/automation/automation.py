@@ -11,6 +11,14 @@ from .actions import (
     AsyncActionsResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
+from .sequences import (
+    SequencesResource,
+    AsyncSequencesResource,
+    SequencesResourceWithRawResponse,
+    AsyncSequencesResourceWithRawResponse,
+    SequencesResourceWithStreamingResponse,
+    AsyncSequencesResourceWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 
 __all__ = ["AutomationResource", "AsyncAutomationResource"]
@@ -20,6 +28,10 @@ class AutomationResource(SyncAPIResource):
     @cached_property
     def actions(self) -> ActionsResource:
         return ActionsResource(self._client)
+
+    @cached_property
+    def sequences(self) -> SequencesResource:
+        return SequencesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AutomationResourceWithRawResponse:
@@ -45,6 +57,10 @@ class AsyncAutomationResource(AsyncAPIResource):
     @cached_property
     def actions(self) -> AsyncActionsResource:
         return AsyncActionsResource(self._client)
+
+    @cached_property
+    def sequences(self) -> AsyncSequencesResource:
+        return AsyncSequencesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncAutomationResourceWithRawResponse:
@@ -74,6 +90,10 @@ class AutomationResourceWithRawResponse:
     def actions(self) -> ActionsResourceWithRawResponse:
         return ActionsResourceWithRawResponse(self._automation.actions)
 
+    @cached_property
+    def sequences(self) -> SequencesResourceWithRawResponse:
+        return SequencesResourceWithRawResponse(self._automation.sequences)
+
 
 class AsyncAutomationResourceWithRawResponse:
     def __init__(self, automation: AsyncAutomationResource) -> None:
@@ -82,6 +102,10 @@ class AsyncAutomationResourceWithRawResponse:
     @cached_property
     def actions(self) -> AsyncActionsResourceWithRawResponse:
         return AsyncActionsResourceWithRawResponse(self._automation.actions)
+
+    @cached_property
+    def sequences(self) -> AsyncSequencesResourceWithRawResponse:
+        return AsyncSequencesResourceWithRawResponse(self._automation.sequences)
 
 
 class AutomationResourceWithStreamingResponse:
@@ -92,6 +116,10 @@ class AutomationResourceWithStreamingResponse:
     def actions(self) -> ActionsResourceWithStreamingResponse:
         return ActionsResourceWithStreamingResponse(self._automation.actions)
 
+    @cached_property
+    def sequences(self) -> SequencesResourceWithStreamingResponse:
+        return SequencesResourceWithStreamingResponse(self._automation.sequences)
+
 
 class AsyncAutomationResourceWithStreamingResponse:
     def __init__(self, automation: AsyncAutomationResource) -> None:
@@ -100,3 +128,7 @@ class AsyncAutomationResourceWithStreamingResponse:
     @cached_property
     def actions(self) -> AsyncActionsResourceWithStreamingResponse:
         return AsyncActionsResourceWithStreamingResponse(self._automation.actions)
+
+    @cached_property
+    def sequences(self) -> AsyncSequencesResourceWithStreamingResponse:
+        return AsyncSequencesResourceWithStreamingResponse(self._automation.sequences)

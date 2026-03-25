@@ -32,7 +32,7 @@ class FilterParam(TypedDict, total=False):
             "NOT_IN",
         ]
     ]
-    """null"""
+    """The comparison operator used in the filter, such as "EQ" or "GT"."""
 
     property_name: Required[Annotated[str, PropertyInfo(alias="propertyName")]]
     """The name of the property to apply the filter to."""

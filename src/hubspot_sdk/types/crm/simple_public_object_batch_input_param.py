@@ -16,17 +16,17 @@ class SimplePublicObjectBatchInputParam(TypedDict, total=False):
     """
 
     id: Required[str]
-    """The ID of the contact to update.
+    """The id to be updated.
 
-    This can be the object ID, or the unique property value of the `idProperty`
-    property.
+    This can be the object id, or the unique property value of the idProperty
+    property
     """
 
     properties: Required[Dict[str, str]]
     """Key-value pairs representing the properties of the object."""
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
-    """The name of a unique property, when identifying records by property."""
+    """The name of a property whose values are unique for this object"""
 
     object_write_trace_id: Annotated[str, PropertyInfo(alias="objectWriteTraceId")]
     """A unique identifier for tracing the request."""

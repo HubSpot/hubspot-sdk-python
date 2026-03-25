@@ -6,7 +6,7 @@ from typing import Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from ..._utils import PropertyInfo
-from ..events.option_param import OptionParam
+from ..shared_params.option import Option
 from .long_field_schema_param import LongFieldSchemaParam
 from .double_field_schema_param import DoubleFieldSchemaParam
 from .object_field_schema_param import ObjectFieldSchemaParam
@@ -32,7 +32,7 @@ class FieldTypeDefinitionParam(TypedDict, total=False):
 
     name: Required[str]
 
-    options: Required[Iterable[OptionParam]]
+    options: Required[Iterable[Option]]
 
     schema: Required[Schema]
 

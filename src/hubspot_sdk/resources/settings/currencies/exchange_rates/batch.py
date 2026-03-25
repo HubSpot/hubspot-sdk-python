@@ -119,6 +119,8 @@ class BatchResource(SyncAPIResource):
     ) -> BatchResponseExchangeRate:
         """
         Args:
+          inputs: An array of deal split inputs
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -230,6 +232,8 @@ class AsyncBatchResource(AsyncAPIResource):
     ) -> BatchResponseExchangeRate:
         """
         Args:
+          inputs: An array of deal split inputs
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

@@ -10,6 +10,7 @@ from .array_field_schema import ArrayFieldSchema as ArrayFieldSchema
 from .double_field_schema import DoubleFieldSchema as DoubleFieldSchema
 from .object_field_schema import ObjectFieldSchema as ObjectFieldSchema
 from .public_option_param import PublicOptionParam as PublicOptionParam
+from .sequence_get_params import SequenceGetParams as SequenceGetParams
 from .string_field_schema import StringFieldSchema as StringFieldSchema
 from .action_create_params import ActionCreateParams as ActionCreateParams
 from .action_update_params import ActionUpdateParams as ActionUpdateParams
@@ -17,6 +18,7 @@ from .boolean_field_schema import BooleanFieldSchema as BooleanFieldSchema
 from .compliance_ids_param import ComplianceIDsParam as ComplianceIDsParam
 from .integer_field_schema import IntegerFieldSchema as IntegerFieldSchema
 from .public_action_labels import PublicActionLabels as PublicActionLabels
+from .sequence_list_params import SequenceListParams as SequenceListParams
 from .field_type_definition import FieldTypeDefinition as FieldTypeDefinition
 from .action_complete_params import ActionCompleteParams as ActionCompleteParams
 from .public_action_function import PublicActionFunction as PublicActionFunction
@@ -25,6 +27,7 @@ from .long_field_schema_param import LongFieldSchemaParam as LongFieldSchemaPara
 from .output_field_definition import OutputFieldDefinition as OutputFieldDefinition
 from .array_field_schema_param import ArrayFieldSchemaParam as ArrayFieldSchemaParam
 from .public_action_definition import PublicActionDefinition as PublicActionDefinition
+from .public_sequence_response import PublicSequenceResponse as PublicSequenceResponse
 from .double_field_schema_param import DoubleFieldSchemaParam as DoubleFieldSchemaParam
 from .object_field_schema_param import ObjectFieldSchemaParam as ObjectFieldSchemaParam
 from .string_field_schema_param import StringFieldSchemaParam as StringFieldSchemaParam
@@ -37,20 +40,27 @@ from .field_type_definition_param import FieldTypeDefinitionParam as FieldTypeDe
 from .action_complete_batch_params import ActionCompleteBatchParams as ActionCompleteBatchParams
 from .public_action_function_param import PublicActionFunctionParam as PublicActionFunctionParam
 from .public_field_type_definition import PublicFieldTypeDefinition as PublicFieldTypeDefinition
+from .public_task_pattern_response import PublicTaskPatternResponse as PublicTaskPatternResponse
 from .chirp_ai_context_object_param import ChirpAIContextObjectParam as ChirpAIContextObjectParam
 from .copilot_request_context_param import CopilotRequestContextParam as CopilotRequestContextParam
 from .output_field_definition_param import OutputFieldDefinitionParam as OutputFieldDefinitionParam
+from .public_email_pattern_response import PublicEmailPatternResponse as PublicEmailPatternResponse
 from .public_input_field_definition import PublicInputFieldDefinition as PublicInputFieldDefinition
 from .public_object_request_options import PublicObjectRequestOptions as PublicObjectRequestOptions
+from .public_sequence_lite_response import PublicSequenceLiteResponse as PublicSequenceLiteResponse
+from .public_sequence_step_response import PublicSequenceStepResponse as PublicSequenceStepResponse
 from .public_single_field_dependency import PublicSingleFieldDependency as PublicSingleFieldDependency
 from .action_create_or_replace_params import ActionCreateOrReplaceParams as ActionCreateOrReplaceParams
 from .workflows_request_context_param import WorkflowsRequestContextParam as WorkflowsRequestContextParam
 from .standalone_request_context_param import StandaloneRequestContextParam as StandaloneRequestContextParam
 from .public_action_function_identifier import PublicActionFunctionIdentifier as PublicActionFunctionIdentifier
 from .public_execution_translation_rule import PublicExecutionTranslationRule as PublicExecutionTranslationRule
+from .public_sequence_settings_response import PublicSequenceSettingsResponse as PublicSequenceSettingsResponse
+from .sequence_create_enrollment_params import SequenceCreateEnrollmentParams as SequenceCreateEnrollmentParams
 from .public_field_type_definition_param import PublicFieldTypeDefinitionParam as PublicFieldTypeDefinitionParam
 from .public_input_field_definition_param import PublicInputFieldDefinitionParam as PublicInputFieldDefinitionParam
 from .public_object_request_options_param import PublicObjectRequestOptionsParam as PublicObjectRequestOptionsParam
+from .public_sequence_enrollment_response import PublicSequenceEnrollmentResponse as PublicSequenceEnrollmentResponse
 from .action_create_requires_object_params import ActionCreateRequiresObjectParams as ActionCreateRequiresObjectParams
 from .public_single_field_dependency_param import PublicSingleFieldDependencyParam as PublicSingleFieldDependencyParam
 from .action_execution_index_identifier_param import (
@@ -61,6 +71,12 @@ from .callback_completion_batch_request_param import (
 )
 from .public_execution_translation_rule_param import (
     PublicExecutionTranslationRuleParam as PublicExecutionTranslationRuleParam,
+)
+from .public_sequence_enrollment_lite_response import (
+    PublicSequenceEnrollmentLiteResponse as PublicSequenceEnrollmentLiteResponse,
+)
+from .public_sequence_step_dependency_response import (
+    PublicSequenceStepDependencyResponse as PublicSequenceStepDependencyResponse,
 )
 from .public_conditional_single_field_dependency import (
     PublicConditionalSingleFieldDependency as PublicConditionalSingleFieldDependency,
@@ -76,4 +92,7 @@ from .public_action_definition_requires_object_response import (
 )
 from .collection_response_public_action_revision_forward_paging import (
     CollectionResponsePublicActionRevisionForwardPaging as CollectionResponsePublicActionRevisionForwardPaging,
+)
+from .collection_response_with_total_public_sequence_lite_response import (
+    CollectionResponseWithTotalPublicSequenceLiteResponse as CollectionResponseWithTotalPublicSequenceLiteResponse,
 )

@@ -14,25 +14,25 @@ class StandardError(BaseModel):
     """Ye olde error"""
 
     category: str
-    """Error category."""
+    """The main category of the error."""
 
     context: Dict[str, List[str]]
-    """Error context."""
+    """Additional context-specific information related to the error."""
 
     errors: List[ErrorDetail]
-    """List of error details."""
+    """The detailed error objects."""
 
     links: Dict[str, str]
-    """Error links."""
+    """URLs linking to documentation or resources associated with the error."""
 
     message: str
-    """Error message."""
+    """A human-readable string describing the error and possible remediation steps."""
 
     status: str
-    """Error status."""
+    """The HTTP status code associated with the error."""
 
     id: Optional[str] = None
-    """Error ID."""
+    """A unique ID for the error instance."""
 
     sub_category: Optional[object] = FieldInfo(alias="subCategory", default=None)
-    """Error subcategory."""
+    """A more specific error category within each main category."""

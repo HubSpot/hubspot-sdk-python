@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
@@ -11,8 +11,6 @@ __all__ = ["ContactGetParams"]
 
 
 class ContactGetParams(TypedDict, total=False):
-    object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
-
     archived: bool
     """Whether to return only results that have been archived."""
 

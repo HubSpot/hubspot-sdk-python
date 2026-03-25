@@ -173,37 +173,32 @@ from hubspot_sdk import Hubspot
 
 client = Hubspot()
 
-public_action_definition = client.automation.actions.create(
+settings_response = client.app_webhooks.update_settings(
     app_id=0,
-    action_url="actionUrl",
-    functions=[
-        {
-            "function_source": "functionSource",
-            "function_type": "POST_ACTION_EXECUTION",
-        }
-    ],
-    input_fields=[
-        {
-            "is_required": True,
-            "type_definition": {
-                "name": "name",
-                "options": [
-                    {
-                        "label": "label",
-                        "value": "value",
-                    }
-                ],
-                "type": "bool",
-            },
-        }
-    ],
-    labels={"foo": {"action_name": "actionName"}},
-    object_types=["string"],
-    published=True,
-    object_request_options={"properties": ["string"]},
+    target_url="targetUrl",
+    throttling={"max_concurrent_requests": 0},
 )
-print(public_action_definition.object_request_options)
+print(settings_response.throttling)
 ```
+
+## File uploads
+
+Request parameters that correspond to file uploads can be passed as `bytes`, or a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance or a tuple of `(filename, contents, media type)`.
+
+```python
+from pathlib import Path
+from hubspot_sdk import Hubspot
+
+client = Hubspot()
+
+client.cms.source_code.create(
+    path="path",
+    environment="environment",
+    file=Path("/path/to/file"),
+)
+```
+
+The async client uses the exact same interface. If you pass a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance, the file contents will be read asynchronously automatically.
 
 ## Handling errors
 

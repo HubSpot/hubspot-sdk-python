@@ -3,6 +3,14 @@
 from __future__ import annotations
 
 from ..._compat import cached_property
+from .tax_rates import (
+    TaxRatesResource,
+    AsyncTaxRatesResource,
+    TaxRatesResourceWithRawResponse,
+    AsyncTaxRatesResourceWithRawResponse,
+    TaxRatesResourceWithStreamingResponse,
+    AsyncTaxRatesResourceWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .currencies.currencies import (
     CurrenciesResource,
@@ -20,6 +28,10 @@ class SettingsResource(SyncAPIResource):
     @cached_property
     def currencies(self) -> CurrenciesResource:
         return CurrenciesResource(self._client)
+
+    @cached_property
+    def tax_rates(self) -> TaxRatesResource:
+        return TaxRatesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> SettingsResourceWithRawResponse:
@@ -45,6 +57,10 @@ class AsyncSettingsResource(AsyncAPIResource):
     @cached_property
     def currencies(self) -> AsyncCurrenciesResource:
         return AsyncCurrenciesResource(self._client)
+
+    @cached_property
+    def tax_rates(self) -> AsyncTaxRatesResource:
+        return AsyncTaxRatesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncSettingsResourceWithRawResponse:
@@ -74,6 +90,10 @@ class SettingsResourceWithRawResponse:
     def currencies(self) -> CurrenciesResourceWithRawResponse:
         return CurrenciesResourceWithRawResponse(self._settings.currencies)
 
+    @cached_property
+    def tax_rates(self) -> TaxRatesResourceWithRawResponse:
+        return TaxRatesResourceWithRawResponse(self._settings.tax_rates)
+
 
 class AsyncSettingsResourceWithRawResponse:
     def __init__(self, settings: AsyncSettingsResource) -> None:
@@ -82,6 +102,10 @@ class AsyncSettingsResourceWithRawResponse:
     @cached_property
     def currencies(self) -> AsyncCurrenciesResourceWithRawResponse:
         return AsyncCurrenciesResourceWithRawResponse(self._settings.currencies)
+
+    @cached_property
+    def tax_rates(self) -> AsyncTaxRatesResourceWithRawResponse:
+        return AsyncTaxRatesResourceWithRawResponse(self._settings.tax_rates)
 
 
 class SettingsResourceWithStreamingResponse:
@@ -92,6 +116,10 @@ class SettingsResourceWithStreamingResponse:
     def currencies(self) -> CurrenciesResourceWithStreamingResponse:
         return CurrenciesResourceWithStreamingResponse(self._settings.currencies)
 
+    @cached_property
+    def tax_rates(self) -> TaxRatesResourceWithStreamingResponse:
+        return TaxRatesResourceWithStreamingResponse(self._settings.tax_rates)
+
 
 class AsyncSettingsResourceWithStreamingResponse:
     def __init__(self, settings: AsyncSettingsResource) -> None:
@@ -100,3 +128,7 @@ class AsyncSettingsResourceWithStreamingResponse:
     @cached_property
     def currencies(self) -> AsyncCurrenciesResourceWithStreamingResponse:
         return AsyncCurrenciesResourceWithStreamingResponse(self._settings.currencies)
+
+    @cached_property
+    def tax_rates(self) -> AsyncTaxRatesResourceWithStreamingResponse:
+        return AsyncTaxRatesResourceWithStreamingResponse(self._settings.tax_rates)

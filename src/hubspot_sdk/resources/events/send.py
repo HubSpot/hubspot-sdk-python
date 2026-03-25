@@ -28,8 +28,8 @@ from ...types.events import (
     send_create_event_definition_property_params,
     send_update_event_definition_property_params,
 )
-from ...types.events.property import Property
-from ...types.events.option_input_param import OptionInputParam
+from ...types.shared.property import Property
+from ...types.shared_params.option_input import OptionInput
 from ...types.events.external_behavioral_event_type_definition import ExternalBehavioralEventTypeDefinition
 from ...types.events.behavioral_event_http_completion_request_param import BehavioralEventHTTPCompletionRequestParam
 from ...types.events.external_behavioral_event_property_create_param import ExternalBehavioralEventPropertyCreateParam
@@ -75,21 +75,24 @@ class SendResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalBehavioralEventTypeDefinition:
-        """
-        Args:
-          label: Human readable label for the event for display in HubSpot's UI.
+        """Args:
+          label: Human readable label for the event.
+
+        Used in HubSpot UI
 
           property_definitions: List of custom properties on event
 
           description: A description of the event that will be shown as help text in HubSpot.
 
-          name: Internal event name, which must be used when referencing the event from the API.
-              If a name is not supplied, one will be generated based on the label. The name
-              does not include the `pe<PORTAL_ID>_` prefix used when sending event
-              completions.
+          name: Internal event name, which must be used when referencing the event from this
+              event definitions API. If a name is not supplied, one will be generated based on
+              the label. The `name` value will also be used to automatically generate a
+              `fullyQualifiedName` for the event definition, which you'll use when sending
+              event completions to this event.
 
-          primary_object: The object type to associate this event to. Can be one of `CONTACT`, `COMPANY`,
-              `DEAL`, `TICKET`. If no value is supplied, will default to `CONTACT`.
+          primary_object: The object type to associate this event to. Can be one of CONTACT, COMPANY,
+              DEAL, TICKET. If no primaryObject is supplied, we will default to associating
+              the event to CONTACT objects.
 
           extra_headers: Send extra headers
 
@@ -127,7 +130,7 @@ class SendResource(SyncAPIResource):
         type: str,
         description: str | Omit = omit,
         name: str | Omit = omit,
-        options: Iterable[OptionInputParam] | Omit = omit,
+        options: Iterable[OptionInput] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -351,33 +354,22 @@ class SendResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Args:
-          event_name: The event's fully qualified name.
+        """
+        Args:
+          event_name: Internal name of the event-type to trigger
 
-        This value (formatted as `pe{HubID}_{name}`)
-              can be retrieved through the
-              [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions)
-              or in
-              [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
+          properties: Map of properties for the event in the format property internal name - property
+              value
 
-          properties: The event properties to update. Takes the format of key-value pairs (property
-              internal name and property value). Learn more about
-              [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+          email: Email of visitor
 
-          email: The visitor's email address. Used for associating the event data with a CRM
-              record.
+          object_id: The object id that this event occurred on. Could be a contact id or a visitor
+              id.
 
-          object_id: The ID of the record for which the event occurred (e.g., contact ID or visitor
-              ID).
+          occurred_at: The time when this event occurred (if any). If this isn't set, the current time
+              will be used
 
-          occurred_at: The time when this event occurred. If this isn't set, the current time will be
-              used.
-
-          utk: The visitor's usertoken. Used for associating the event data with a CRM record.
-
-          uuid: Include a universally unique identifier to assign a unique ID to the event
-              occurrence. Can be useful for matching data between HubSpot and other external
-              systems.
+          utk: User token
 
           extra_headers: Send extra headers
 
@@ -490,7 +482,7 @@ class SendResource(SyncAPIResource):
         event_name: str,
         description: str | Omit = omit,
         label: str | Omit = omit,
-        options: Iterable[OptionInputParam] | Omit = omit,
+        options: Iterable[OptionInput] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -577,21 +569,24 @@ class AsyncSendResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalBehavioralEventTypeDefinition:
-        """
-        Args:
-          label: Human readable label for the event for display in HubSpot's UI.
+        """Args:
+          label: Human readable label for the event.
+
+        Used in HubSpot UI
 
           property_definitions: List of custom properties on event
 
           description: A description of the event that will be shown as help text in HubSpot.
 
-          name: Internal event name, which must be used when referencing the event from the API.
-              If a name is not supplied, one will be generated based on the label. The name
-              does not include the `pe<PORTAL_ID>_` prefix used when sending event
-              completions.
+          name: Internal event name, which must be used when referencing the event from this
+              event definitions API. If a name is not supplied, one will be generated based on
+              the label. The `name` value will also be used to automatically generate a
+              `fullyQualifiedName` for the event definition, which you'll use when sending
+              event completions to this event.
 
-          primary_object: The object type to associate this event to. Can be one of `CONTACT`, `COMPANY`,
-              `DEAL`, `TICKET`. If no value is supplied, will default to `CONTACT`.
+          primary_object: The object type to associate this event to. Can be one of CONTACT, COMPANY,
+              DEAL, TICKET. If no primaryObject is supplied, we will default to associating
+              the event to CONTACT objects.
 
           extra_headers: Send extra headers
 
@@ -629,7 +624,7 @@ class AsyncSendResource(AsyncAPIResource):
         type: str,
         description: str | Omit = omit,
         name: str | Omit = omit,
-        options: Iterable[OptionInputParam] | Omit = omit,
+        options: Iterable[OptionInput] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -853,33 +848,22 @@ class AsyncSendResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Args:
-          event_name: The event's fully qualified name.
+        """
+        Args:
+          event_name: Internal name of the event-type to trigger
 
-        This value (formatted as `pe{HubID}_{name}`)
-              can be retrieved through the
-              [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions)
-              or in
-              [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
+          properties: Map of properties for the event in the format property internal name - property
+              value
 
-          properties: The event properties to update. Takes the format of key-value pairs (property
-              internal name and property value). Learn more about
-              [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+          email: Email of visitor
 
-          email: The visitor's email address. Used for associating the event data with a CRM
-              record.
+          object_id: The object id that this event occurred on. Could be a contact id or a visitor
+              id.
 
-          object_id: The ID of the record for which the event occurred (e.g., contact ID or visitor
-              ID).
+          occurred_at: The time when this event occurred (if any). If this isn't set, the current time
+              will be used
 
-          occurred_at: The time when this event occurred. If this isn't set, the current time will be
-              used.
-
-          utk: The visitor's usertoken. Used for associating the event data with a CRM record.
-
-          uuid: Include a universally unique identifier to assign a unique ID to the event
-              occurrence. Can be useful for matching data between HubSpot and other external
-              systems.
+          utk: User token
 
           extra_headers: Send extra headers
 
@@ -992,7 +976,7 @@ class AsyncSendResource(AsyncAPIResource):
         event_name: str,
         description: str | Omit = omit,
         label: str | Omit = omit,
-        options: Iterable[OptionInputParam] | Omit = omit,
+        options: Iterable[OptionInput] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

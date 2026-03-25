@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .tags import (
+    TagsResource,
+    AsyncTagsResource,
+    TagsResourceWithRawResponse,
+    AsyncTagsResourceWithRawResponse,
+    TagsResourceWithStreamingResponse,
+    AsyncTagsResourceWithStreamingResponse,
+)
 from .blogs import (
     BlogsResource,
     AsyncBlogsResource,
@@ -16,6 +24,14 @@ from .posts import (
     PostsResourceWithStreamingResponse,
     AsyncPostsResourceWithStreamingResponse,
 )
+from .authors import (
+    AuthorsResource,
+    AsyncAuthorsResource,
+    AuthorsResourceWithRawResponse,
+    AsyncAuthorsResourceWithRawResponse,
+    AuthorsResourceWithStreamingResponse,
+    AsyncAuthorsResourceWithStreamingResponse,
+)
 from .settings import (
     SettingsResource,
     AsyncSettingsResource,
@@ -26,6 +42,12 @@ from .settings import (
 )
 
 __all__ = [
+    "AuthorsResource",
+    "AsyncAuthorsResource",
+    "AuthorsResourceWithRawResponse",
+    "AsyncAuthorsResourceWithRawResponse",
+    "AuthorsResourceWithStreamingResponse",
+    "AsyncAuthorsResourceWithStreamingResponse",
     "PostsResource",
     "AsyncPostsResource",
     "PostsResourceWithRawResponse",
@@ -38,6 +60,12 @@ __all__ = [
     "AsyncSettingsResourceWithRawResponse",
     "SettingsResourceWithStreamingResponse",
     "AsyncSettingsResourceWithStreamingResponse",
+    "TagsResource",
+    "AsyncTagsResource",
+    "TagsResourceWithRawResponse",
+    "AsyncTagsResourceWithRawResponse",
+    "TagsResourceWithStreamingResponse",
+    "AsyncTagsResourceWithStreamingResponse",
     "BlogsResource",
     "AsyncBlogsResource",
     "BlogsResourceWithRawResponse",
