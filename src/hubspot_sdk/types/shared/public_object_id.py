@@ -9,4 +9,4 @@ class PublicObjectID(BaseModel):
     """Contains the Id of a Public Object"""
 
     id: str
-    """The unique ID of the object."""
+    """ID of the object"""

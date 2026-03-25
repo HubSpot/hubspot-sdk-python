@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from .option_input_param import OptionInputParam
+from ..shared_params.option_input import OptionInput
 
 __all__ = ["SendUpdateEventDefinitionPropertyParams"]
 
@@ -20,7 +20,7 @@ class SendUpdateEventDefinitionPropertyParams(TypedDict, total=False):
     label: str
     """Human readable label for the property. Used in HubSpot UI"""
 
-    options: Iterable[OptionInputParam]
+    options: Iterable[OptionInput]
     """A list of available options for the property if it is an enumeration.
 
     NOTE: This field is only applicable for enumerated properties.

@@ -2,7 +2,23 @@
 
 from __future__ import annotations
 
+from .domains import (
+    DomainsResource,
+    AsyncDomainsResource,
+    DomainsResourceWithRawResponse,
+    AsyncDomainsResourceWithRawResponse,
+    DomainsResourceWithStreamingResponse,
+    AsyncDomainsResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
+from .audit_logs import (
+    AuditLogsResource,
+    AsyncAuditLogsResource,
+    AuditLogsResourceWithRawResponse,
+    AsyncAuditLogsResourceWithRawResponse,
+    AuditLogsResourceWithStreamingResponse,
+    AsyncAuditLogsResourceWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .blogs.blogs import (
     BlogsResource,
@@ -12,14 +28,82 @@ from .blogs.blogs import (
     BlogsResourceWithStreamingResponse,
     AsyncBlogsResourceWithStreamingResponse,
 )
+from .site_search import (
+    SiteSearchResource,
+    AsyncSiteSearchResource,
+    SiteSearchResourceWithRawResponse,
+    AsyncSiteSearchResourceWithRawResponse,
+    SiteSearchResourceWithStreamingResponse,
+    AsyncSiteSearchResourceWithStreamingResponse,
+)
+from .source_code import (
+    SourceCodeResource,
+    AsyncSourceCodeResource,
+    SourceCodeResourceWithRawResponse,
+    AsyncSourceCodeResourceWithRawResponse,
+    SourceCodeResourceWithStreamingResponse,
+    AsyncSourceCodeResourceWithStreamingResponse,
+)
+from .url_mappings import (
+    URLMappingsResource,
+    AsyncURLMappingsResource,
+    URLMappingsResourceWithRawResponse,
+    AsyncURLMappingsResourceWithRawResponse,
+    URLMappingsResourceWithStreamingResponse,
+    AsyncURLMappingsResourceWithStreamingResponse,
+)
+from .url_redirects import (
+    URLRedirectsResource,
+    AsyncURLRedirectsResource,
+    URLRedirectsResourceWithRawResponse,
+    AsyncURLRedirectsResourceWithRawResponse,
+    URLRedirectsResourceWithStreamingResponse,
+    AsyncURLRedirectsResourceWithStreamingResponse,
+)
+from .media_bridge.media_bridge import (
+    MediaBridgeResource,
+    AsyncMediaBridgeResource,
+    MediaBridgeResourceWithRawResponse,
+    AsyncMediaBridgeResourceWithRawResponse,
+    MediaBridgeResourceWithStreamingResponse,
+    AsyncMediaBridgeResourceWithStreamingResponse,
+)
 
 __all__ = ["CmsResource", "AsyncCmsResource"]
 
 
 class CmsResource(SyncAPIResource):
     @cached_property
+    def audit_logs(self) -> AuditLogsResource:
+        return AuditLogsResource(self._client)
+
+    @cached_property
     def blogs(self) -> BlogsResource:
         return BlogsResource(self._client)
+
+    @cached_property
+    def domains(self) -> DomainsResource:
+        return DomainsResource(self._client)
+
+    @cached_property
+    def media_bridge(self) -> MediaBridgeResource:
+        return MediaBridgeResource(self._client)
+
+    @cached_property
+    def site_search(self) -> SiteSearchResource:
+        return SiteSearchResource(self._client)
+
+    @cached_property
+    def source_code(self) -> SourceCodeResource:
+        return SourceCodeResource(self._client)
+
+    @cached_property
+    def url_mappings(self) -> URLMappingsResource:
+        return URLMappingsResource(self._client)
+
+    @cached_property
+    def url_redirects(self) -> URLRedirectsResource:
+        return URLRedirectsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> CmsResourceWithRawResponse:
@@ -43,8 +127,36 @@ class CmsResource(SyncAPIResource):
 
 class AsyncCmsResource(AsyncAPIResource):
     @cached_property
+    def audit_logs(self) -> AsyncAuditLogsResource:
+        return AsyncAuditLogsResource(self._client)
+
+    @cached_property
     def blogs(self) -> AsyncBlogsResource:
         return AsyncBlogsResource(self._client)
+
+    @cached_property
+    def domains(self) -> AsyncDomainsResource:
+        return AsyncDomainsResource(self._client)
+
+    @cached_property
+    def media_bridge(self) -> AsyncMediaBridgeResource:
+        return AsyncMediaBridgeResource(self._client)
+
+    @cached_property
+    def site_search(self) -> AsyncSiteSearchResource:
+        return AsyncSiteSearchResource(self._client)
+
+    @cached_property
+    def source_code(self) -> AsyncSourceCodeResource:
+        return AsyncSourceCodeResource(self._client)
+
+    @cached_property
+    def url_mappings(self) -> AsyncURLMappingsResource:
+        return AsyncURLMappingsResource(self._client)
+
+    @cached_property
+    def url_redirects(self) -> AsyncURLRedirectsResource:
+        return AsyncURLRedirectsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncCmsResourceWithRawResponse:
@@ -71,8 +183,36 @@ class CmsResourceWithRawResponse:
         self._cms = cms
 
     @cached_property
+    def audit_logs(self) -> AuditLogsResourceWithRawResponse:
+        return AuditLogsResourceWithRawResponse(self._cms.audit_logs)
+
+    @cached_property
     def blogs(self) -> BlogsResourceWithRawResponse:
         return BlogsResourceWithRawResponse(self._cms.blogs)
+
+    @cached_property
+    def domains(self) -> DomainsResourceWithRawResponse:
+        return DomainsResourceWithRawResponse(self._cms.domains)
+
+    @cached_property
+    def media_bridge(self) -> MediaBridgeResourceWithRawResponse:
+        return MediaBridgeResourceWithRawResponse(self._cms.media_bridge)
+
+    @cached_property
+    def site_search(self) -> SiteSearchResourceWithRawResponse:
+        return SiteSearchResourceWithRawResponse(self._cms.site_search)
+
+    @cached_property
+    def source_code(self) -> SourceCodeResourceWithRawResponse:
+        return SourceCodeResourceWithRawResponse(self._cms.source_code)
+
+    @cached_property
+    def url_mappings(self) -> URLMappingsResourceWithRawResponse:
+        return URLMappingsResourceWithRawResponse(self._cms.url_mappings)
+
+    @cached_property
+    def url_redirects(self) -> URLRedirectsResourceWithRawResponse:
+        return URLRedirectsResourceWithRawResponse(self._cms.url_redirects)
 
 
 class AsyncCmsResourceWithRawResponse:
@@ -80,8 +220,36 @@ class AsyncCmsResourceWithRawResponse:
         self._cms = cms
 
     @cached_property
+    def audit_logs(self) -> AsyncAuditLogsResourceWithRawResponse:
+        return AsyncAuditLogsResourceWithRawResponse(self._cms.audit_logs)
+
+    @cached_property
     def blogs(self) -> AsyncBlogsResourceWithRawResponse:
         return AsyncBlogsResourceWithRawResponse(self._cms.blogs)
+
+    @cached_property
+    def domains(self) -> AsyncDomainsResourceWithRawResponse:
+        return AsyncDomainsResourceWithRawResponse(self._cms.domains)
+
+    @cached_property
+    def media_bridge(self) -> AsyncMediaBridgeResourceWithRawResponse:
+        return AsyncMediaBridgeResourceWithRawResponse(self._cms.media_bridge)
+
+    @cached_property
+    def site_search(self) -> AsyncSiteSearchResourceWithRawResponse:
+        return AsyncSiteSearchResourceWithRawResponse(self._cms.site_search)
+
+    @cached_property
+    def source_code(self) -> AsyncSourceCodeResourceWithRawResponse:
+        return AsyncSourceCodeResourceWithRawResponse(self._cms.source_code)
+
+    @cached_property
+    def url_mappings(self) -> AsyncURLMappingsResourceWithRawResponse:
+        return AsyncURLMappingsResourceWithRawResponse(self._cms.url_mappings)
+
+    @cached_property
+    def url_redirects(self) -> AsyncURLRedirectsResourceWithRawResponse:
+        return AsyncURLRedirectsResourceWithRawResponse(self._cms.url_redirects)
 
 
 class CmsResourceWithStreamingResponse:
@@ -89,8 +257,36 @@ class CmsResourceWithStreamingResponse:
         self._cms = cms
 
     @cached_property
+    def audit_logs(self) -> AuditLogsResourceWithStreamingResponse:
+        return AuditLogsResourceWithStreamingResponse(self._cms.audit_logs)
+
+    @cached_property
     def blogs(self) -> BlogsResourceWithStreamingResponse:
         return BlogsResourceWithStreamingResponse(self._cms.blogs)
+
+    @cached_property
+    def domains(self) -> DomainsResourceWithStreamingResponse:
+        return DomainsResourceWithStreamingResponse(self._cms.domains)
+
+    @cached_property
+    def media_bridge(self) -> MediaBridgeResourceWithStreamingResponse:
+        return MediaBridgeResourceWithStreamingResponse(self._cms.media_bridge)
+
+    @cached_property
+    def site_search(self) -> SiteSearchResourceWithStreamingResponse:
+        return SiteSearchResourceWithStreamingResponse(self._cms.site_search)
+
+    @cached_property
+    def source_code(self) -> SourceCodeResourceWithStreamingResponse:
+        return SourceCodeResourceWithStreamingResponse(self._cms.source_code)
+
+    @cached_property
+    def url_mappings(self) -> URLMappingsResourceWithStreamingResponse:
+        return URLMappingsResourceWithStreamingResponse(self._cms.url_mappings)
+
+    @cached_property
+    def url_redirects(self) -> URLRedirectsResourceWithStreamingResponse:
+        return URLRedirectsResourceWithStreamingResponse(self._cms.url_redirects)
 
 
 class AsyncCmsResourceWithStreamingResponse:
@@ -98,5 +294,33 @@ class AsyncCmsResourceWithStreamingResponse:
         self._cms = cms
 
     @cached_property
+    def audit_logs(self) -> AsyncAuditLogsResourceWithStreamingResponse:
+        return AsyncAuditLogsResourceWithStreamingResponse(self._cms.audit_logs)
+
+    @cached_property
     def blogs(self) -> AsyncBlogsResourceWithStreamingResponse:
         return AsyncBlogsResourceWithStreamingResponse(self._cms.blogs)
+
+    @cached_property
+    def domains(self) -> AsyncDomainsResourceWithStreamingResponse:
+        return AsyncDomainsResourceWithStreamingResponse(self._cms.domains)
+
+    @cached_property
+    def media_bridge(self) -> AsyncMediaBridgeResourceWithStreamingResponse:
+        return AsyncMediaBridgeResourceWithStreamingResponse(self._cms.media_bridge)
+
+    @cached_property
+    def site_search(self) -> AsyncSiteSearchResourceWithStreamingResponse:
+        return AsyncSiteSearchResourceWithStreamingResponse(self._cms.site_search)
+
+    @cached_property
+    def source_code(self) -> AsyncSourceCodeResourceWithStreamingResponse:
+        return AsyncSourceCodeResourceWithStreamingResponse(self._cms.source_code)
+
+    @cached_property
+    def url_mappings(self) -> AsyncURLMappingsResourceWithStreamingResponse:
+        return AsyncURLMappingsResourceWithStreamingResponse(self._cms.url_mappings)
+
+    @cached_property
+    def url_redirects(self) -> AsyncURLRedirectsResourceWithStreamingResponse:
+        return AsyncURLRedirectsResourceWithStreamingResponse(self._cms.url_redirects)

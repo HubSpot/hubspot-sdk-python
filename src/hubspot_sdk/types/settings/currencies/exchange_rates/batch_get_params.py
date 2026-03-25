@@ -12,3 +12,4 @@ __all__ = ["BatchGetParams"]
 
 class BatchGetParams(TypedDict, total=False):
     inputs: Required[Iterable[PublicObjectID]]
+    """An array of deal split inputs"""

@@ -12,9 +12,9 @@ from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.events import (
-    Property,
     ExternalBehavioralEventTypeDefinition,
 )
+from hubspot_sdk.types.shared import Property
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -376,7 +376,7 @@ class TestSend:
             properties={"foo": "string"},
             email="email",
             object_id="objectId",
-            occurred_at=parse_datetime("2026-01-20T21:14:16.512Z"),
+            occurred_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             utk="utk",
             uuid="uuid",
         )
@@ -943,7 +943,7 @@ class TestAsyncSend:
             properties={"foo": "string"},
             email="email",
             object_id="objectId",
-            occurred_at=parse_datetime("2026-01-20T21:14:16.512Z"),
+            occurred_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             utk="utk",
             uuid="uuid",
         )

@@ -13,7 +13,10 @@ class PreviousPage(BaseModel):
     """
 
     before: str
-    """A paging cursor token for retrieving previous pages."""
+    """
+    A string token used to identify the position before the current page in the
+    pagination sequence.
+    """
 
     link: Optional[str] = None
-    """A URL that can be used to retrieve the previous pages' results."""
+    """A URL string that provides a direct link to the previous page of results."""

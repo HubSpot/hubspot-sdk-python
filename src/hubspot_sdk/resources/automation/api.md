@@ -25,7 +25,6 @@ from hubspot_sdk.types.automation import (
     IntegerFieldSchema,
     LongFieldSchema,
     ObjectFieldSchema,
-    Option,
     OutputFieldDefinition,
     PublicActionDefinition,
     PublicActionDefinitionEgg,
@@ -65,3 +64,30 @@ Methods:
 - <code title="get /automation/actions/2026-03/{appId}/{definitionId}/revisions/{revisionId}">client.automation.actions.<a href="./src/hubspot_sdk/resources/automation/actions.py">get</a>(revision_id, \*, app_id, definition_id) -> <a href="./src/hubspot_sdk/types/automation/public_action_revision.py">PublicActionRevision</a></code>
 - <code title="get /automation/actions/2026-03/{appId}/{definitionId}/functions/{functionType}">client.automation.actions.<a href="./src/hubspot_sdk/resources/automation/actions.py">get_by_function_type</a>(function_type, \*, app_id, definition_id) -> <a href="./src/hubspot_sdk/types/automation/public_action_function.py">PublicActionFunction</a></code>
 - <code title="get /automation/actions/2026-03/{appId}/{definitionId}/requires-object">client.automation.actions.<a href="./src/hubspot_sdk/resources/automation/actions.py">get_requires_object</a>(definition_id, \*, app_id) -> <a href="./src/hubspot_sdk/types/automation/public_action_definition_requires_object_response.py">PublicActionDefinitionRequiresObjectResponse</a></code>
+
+## Sequences
+
+Types:
+
+```python
+from hubspot_sdk.types.automation import (
+    CollectionResponseWithTotalPublicSequenceLiteResponse,
+    PublicEmailPatternResponse,
+    PublicSequenceEnrollmentLiteResponse,
+    PublicSequenceEnrollmentRequest,
+    PublicSequenceEnrollmentResponse,
+    PublicSequenceLiteResponse,
+    PublicSequenceResponse,
+    PublicSequenceSettingsResponse,
+    PublicSequenceStepDependencyResponse,
+    PublicSequenceStepResponse,
+    PublicTaskPatternResponse,
+)
+```
+
+Methods:
+
+- <code title="get /automation/sequences/2026-03">client.automation.sequences.<a href="./src/hubspot_sdk/resources/automation/sequences.py">list</a>(\*\*<a href="src/hubspot_sdk/types/automation/sequence_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/automation/public_sequence_lite_response.py">SyncPage[PublicSequenceLiteResponse]</a></code>
+- <code title="post /automation/sequences/2026-03/enrollments">client.automation.sequences.<a href="./src/hubspot_sdk/resources/automation/sequences.py">create_enrollment</a>(\*\*<a href="src/hubspot_sdk/types/automation/sequence_create_enrollment_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/automation/public_sequence_enrollment_lite_response.py">PublicSequenceEnrollmentLiteResponse</a></code>
+- <code title="get /automation/sequences/2026-03/{sequenceId}">client.automation.sequences.<a href="./src/hubspot_sdk/resources/automation/sequences.py">get</a>(sequence_id, \*\*<a href="src/hubspot_sdk/types/automation/sequence_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/automation/public_sequence_response.py">PublicSequenceResponse</a></code>
+- <code title="get /automation/sequences/2026-03/enrollments/contact/{contactId}">client.automation.sequences.<a href="./src/hubspot_sdk/resources/automation/sequences.py">get_enrollment_by_contact_id</a>(contact_id) -> <a href="./src/hubspot_sdk/types/automation/public_sequence_enrollment_response.py">PublicSequenceEnrollmentResponse</a></code>

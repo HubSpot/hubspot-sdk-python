@@ -8,7 +8,7 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..events.option import Option
+from ..shared.option import Option
 from .long_field_schema import LongFieldSchema
 from .double_field_schema import DoubleFieldSchema
 from .object_field_schema import ObjectFieldSchema

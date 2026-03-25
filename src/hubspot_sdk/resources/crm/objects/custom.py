@@ -329,11 +329,9 @@ class CustomResource(SyncAPIResource):
         and the other as the object to be merged into it.
 
         Args:
-          object_id_to_merge: The object ID of the record that the merge will not set as the current value
-              after the merge.
+          object_id_to_merge: The ID of the company to merge into the primary.
 
-          primary_object_id: The object ID of the record that the merge will generally set as the current
-              value after the merge.
+          primary_object_id: The ID of the primary company, which the other will merge into.
 
           extra_headers: Send extra headers
 
@@ -747,11 +745,9 @@ class AsyncCustomResource(AsyncAPIResource):
         and the other as the object to be merged into it.
 
         Args:
-          object_id_to_merge: The object ID of the record that the merge will not set as the current value
-              after the merge.
+          object_id_to_merge: The ID of the company to merge into the primary.
 
-          primary_object_id: The object ID of the record that the merge will generally set as the current
-              value after the merge.
+          primary_object_id: The ID of the primary company, which the other will merge into.
 
           extra_headers: Send extra headers
 

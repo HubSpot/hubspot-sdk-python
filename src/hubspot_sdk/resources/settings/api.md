@@ -8,7 +8,6 @@ Types:
 from hubspot_sdk.types.settings import (
     BatchInputExchangeRateCreateRequest,
     BatchInputExchangeRateUpdateRequest,
-    BatchInputPublicObjectID,
     BatchResponseExchangeRate,
     CentralExchangeRatesInformation,
     CollectionResponseCurrencyCodeInfoNoPaging,
@@ -58,3 +57,19 @@ Methods:
 - <code title="post /settings/currencies/2026-03/exchange-rates/batch/create">client.settings.currencies.exchange_rates.batch.<a href="./src/hubspot_sdk/resources/settings/currencies/exchange_rates/batch.py">create</a>(\*\*<a href="src/hubspot_sdk/types/settings/currencies/exchange_rates/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/batch_response_exchange_rate.py">BatchResponseExchangeRate</a></code>
 - <code title="post /settings/currencies/2026-03/exchange-rates/batch/update">client.settings.currencies.exchange_rates.batch.<a href="./src/hubspot_sdk/resources/settings/currencies/exchange_rates/batch.py">update</a>(\*\*<a href="src/hubspot_sdk/types/settings/currencies/exchange_rates/batch_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/batch_response_exchange_rate.py">BatchResponseExchangeRate</a></code>
 - <code title="post /settings/currencies/2026-03/exchange-rates/batch/read">client.settings.currencies.exchange_rates.batch.<a href="./src/hubspot_sdk/resources/settings/currencies/exchange_rates/batch.py">get</a>(\*\*<a href="src/hubspot_sdk/types/settings/currencies/exchange_rates/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/batch_response_exchange_rate.py">BatchResponseExchangeRate</a></code>
+
+## TaxRates
+
+Types:
+
+```python
+from hubspot_sdk.types.settings import (
+    CollectionResponsePublicTaxRateGroupForwardPaging,
+    PublicTaxRateGroup,
+)
+```
+
+Methods:
+
+- <code title="get /tax-rates/2026-03/tax-rates">client.settings.tax_rates.<a href="./src/hubspot_sdk/resources/settings/tax_rates.py">list</a>(\*\*<a href="src/hubspot_sdk/types/settings/tax_rate_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/public_tax_rate_group.py">SyncPage[PublicTaxRateGroup]</a></code>
+- <code title="get /tax-rates/2026-03/tax-rates/{taxRateGroupId}">client.settings.tax_rates.<a href="./src/hubspot_sdk/resources/settings/tax_rates.py">get</a>(tax_rate_group_id) -> <a href="./src/hubspot_sdk/types/settings/public_tax_rate_group.py">PublicTaxRateGroup</a></code>

@@ -5,6 +5,8 @@ from __future__ import annotations
 from .exchange_rate import ExchangeRate as ExchangeRate
 from .company_currency import CompanyCurrency as CompanyCurrency
 from .currency_code_info import CurrencyCodeInfo as CurrencyCodeInfo
+from .tax_rate_list_params import TaxRateListParams as TaxRateListParams
+from .public_tax_rate_group import PublicTaxRateGroup as PublicTaxRateGroup
 from .batch_response_exchange_rate import BatchResponseExchangeRate as BatchResponseExchangeRate
 from .central_exchange_rates_information import CentralExchangeRatesInformation as CentralExchangeRatesInformation
 from .exchange_rate_create_request_param import ExchangeRateCreateRequestParam as ExchangeRateCreateRequestParam
@@ -20,4 +22,7 @@ from .collection_response_currency_code_info_no_paging import (
 )
 from .collection_response_exchange_rate_forward_paging import (
     CollectionResponseExchangeRateForwardPaging as CollectionResponseExchangeRateForwardPaging,
+)
+from .collection_response_public_tax_rate_group_forward_paging import (
+    CollectionResponsePublicTaxRateGroupForwardPaging as CollectionResponsePublicTaxRateGroupForwardPaging,
 )

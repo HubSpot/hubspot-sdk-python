@@ -2,13 +2,10 @@
 
 from __future__ import annotations
 
-from .option import Option as Option
-from .property import Property as Property
 from .date_point import DatePoint as DatePoint
 from .fiscal_year import FiscalYear as FiscalYear
 from .time_offset import TimeOffset as TimeOffset
 from .index_offset import IndexOffset as IndexOffset
-from .option_param import OptionParam as OptionParam
 from .now_reference import NowReference as NowReference
 from .fiscal_quarter import FiscalQuarter as FiscalQuarter
 from .week_reference import WeekReference as WeekReference
@@ -19,16 +16,21 @@ from .today_reference import TodayReference as TodayReference
 from .combo_event_rule import ComboEventRule as ComboEventRule
 from .quarter_reference import QuarterReference as QuarterReference
 from .indexed_time_point import IndexedTimePoint as IndexedTimePoint
-from .option_input_param import OptionInputParam as OptionInputParam
 from .time_point_operation import TimePointOperation as TimePointOperation
 from .all_history_refine_by import AllHistoryRefineBy as AllHistoryRefineBy
 from .ranged_time_operation import RangedTimeOperation as RangedTimeOperation
 from .association_definition import AssociationDefinition as AssociationDefinition
+from .definition_list_params import DefinitionListParams as DefinitionListParams
+from .definition_send_params import DefinitionSendParams as DefinitionSendParams
+from .external_unified_event import ExternalUnifiedEvent as ExternalUnifiedEvent
+from .occurrence_list_params import OccurrenceListParams as OccurrenceListParams
 from .send_send_event_params import SendSendEventParams as SendSendEventParams
 from .bool_property_operation import BoolPropertyOperation as BoolPropertyOperation
 from .combo_event_rule_branch import ComboEventRuleBranch as ComboEventRuleBranch
 from .date_property_operation import DatePropertyOperation as DatePropertyOperation
 from .property_filter_context import PropertyFilterContext as PropertyFilterContext
+from .definition_create_params import DefinitionCreateParams as DefinitionCreateParams
+from .definition_update_params import DefinitionUpdateParams as DefinitionUpdateParams
 from .property_referenced_time import PropertyReferencedTime as PropertyReferencedTime
 from .regex_property_operation import RegexPropertyOperation as RegexPropertyOperation
 from .num_occurrences_refine_by import NumOccurrencesRefineBy as NumOccurrencesRefineBy
@@ -37,13 +39,16 @@ from .set_occurrences_refine_by import SetOccurrencesRefineBy as SetOccurrencesR
 from .string_property_operation import StringPropertyOperation as StringPropertyOperation
 from .all_property_types_operation import AllPropertyTypesOperation as AllPropertyTypesOperation
 from .date_time_property_operation import DateTimePropertyOperation as DateTimePropertyOperation
+from .definition_send_batch_params import DefinitionSendBatchParams as DefinitionSendBatchParams
 from .send_send_event_batch_params import SendSendEventBatchParams as SendSendEventBatchParams
 from .enumeration_property_operation import EnumerationPropertyOperation as EnumerationPropertyOperation
-from .property_modification_metadata import PropertyModificationMetadata as PropertyModificationMetadata
 from .ranged_date_property_operation import RangedDatePropertyOperation as RangedDatePropertyOperation
 from .multi_string_property_operation import MultiStringPropertyOperation as MultiStringPropertyOperation
 from .calendar_date_property_operation import CalendarDatePropertyOperation as CalendarDatePropertyOperation
 from .ranged_number_property_operation import RangedNumberPropertyOperation as RangedNumberPropertyOperation
+from .definition_create_property_params import DefinitionCreatePropertyParams as DefinitionCreatePropertyParams
+from .definition_update_property_params import DefinitionUpdatePropertyParams as DefinitionUpdatePropertyParams
+from .visible_external_event_type_names import VisibleExternalEventTypeNames as VisibleExternalEventTypeNames
 from .rolling_property_updated_operation import RollingPropertyUpdatedOperation as RollingPropertyUpdatedOperation
 from .send_list_event_definitions_params import SendListEventDefinitionsParams as SendListEventDefinitionsParams
 from .absolute_ranged_timestamp_refine_by import AbsoluteRangedTimestampRefineBy as AbsoluteRangedTimestampRefineBy
@@ -78,6 +83,9 @@ from .relative_comparative_timestamp_refine_by import (
 )
 from .external_behavioral_event_type_definition import (
     ExternalBehavioralEventTypeDefinition as ExternalBehavioralEventTypeDefinition,
+)
+from .collection_response_external_unified_event import (
+    CollectionResponseExternalUnifiedEvent as CollectionResponseExternalUnifiedEvent,
 )
 from .external_object_resolution_mapping_response import (
     ExternalObjectResolutionMappingResponse as ExternalObjectResolutionMappingResponse,

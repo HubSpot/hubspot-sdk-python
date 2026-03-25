@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from .blog import Blog as Blog
+from .tag_param import TagParam as TagParam
 from .size_param import SizeParam as SizeParam
 from .angle_param import AngleParam as AngleParam
 from .blog_version import BlogVersion as BlogVersion
@@ -11,32 +12,59 @@ from .styles_param import StylesParam as StylesParam
 from .version_blog import VersionBlog as VersionBlog
 from .padding_param import PaddingParam as PaddingParam
 from .gradient_param import GradientParam as GradientParam
+from .tag_get_params import TagGetParams as TagGetParams
 from .blog_post_param import BlogPostParam as BlogPostParam
 from .post_get_params import PostGetParams as PostGetParams
+from .tag_list_params import TagListParams as TagListParams
 from .color_stop_param import ColorStopParam as ColorStopParam
 from .post_list_params import PostListParams as PostListParams
 from .rgba_color_param import RgbaColorParam as RgbaColorParam
+from .author_get_params import AuthorGetParams as AuthorGetParams
+from .blog_author_param import BlogAuthorParam as BlogAuthorParam
 from .post_clone_params import PostCloneParams as PostCloneParams
+from .tag_create_params import TagCreateParams as TagCreateParams
+from .tag_delete_params import TagDeleteParams as TagDeleteParams
+from .tag_update_params import TagUpdateParams as TagUpdateParams
+from .author_list_params import AuthorListParams as AuthorListParams
 from .post_create_params import PostCreateParams as PostCreateParams
 from .post_delete_params import PostDeleteParams as PostDeleteParams
 from .post_update_params import PostUpdateParams as PostUpdateParams
 from .row_meta_data_param import RowMetaDataParam as RowMetaDataParam
 from .setting_list_params import SettingListParams as SettingListParams
+from .author_create_params import AuthorCreateParams as AuthorCreateParams
+from .author_delete_params import AuthorDeleteParams as AuthorDeleteParams
+from .author_update_params import AuthorUpdateParams as AuthorUpdateParams
 from .layout_section_param import LayoutSectionParam as LayoutSectionParam
 from .post_schedule_params import PostScheduleParams as PostScheduleParams
 from .side_or_corner_param import SideOrCornerParam as SideOrCornerParam
+from .tag_get_batch_params import TagGetBatchParams as TagGetBatchParams
 from .background_image_param import BackgroundImageParam as BackgroundImageParam
 from .breakpoint_styles_param import BreakpointStylesParam as BreakpointStylesParam
+from .tag_create_batch_params import TagCreateBatchParams as TagCreateBatchParams
+from .tag_delete_batch_params import TagDeleteBatchParams as TagDeleteBatchParams
+from .tag_update_batch_params import TagUpdateBatchParams as TagUpdateBatchParams
+from .tag_update_langs_params import TagUpdateLangsParams as TagUpdateLangsParams
 from .post_update_draft_params import PostUpdateDraftParams as PostUpdateDraftParams
 from .post_update_langs_params import PostUpdateLangsParams as PostUpdateLangsParams
+from .tag_set_lang_primary_params import TagSetLangPrimaryParams as TagSetLangPrimaryParams
 from .post_set_lang_primary_params import PostSetLangPrimaryParams as PostSetLangPrimaryParams
 from .setting_list_revisions_params import SettingListRevisionsParams as SettingListRevisionsParams
+from .author_update_languages_params import AuthorUpdateLanguagesParams as AuthorUpdateLanguagesParams
+from .tag_attach_to_lang_group_params import TagAttachToLangGroupParams as TagAttachToLangGroupParams
 from .content_language_variation_param import ContentLanguageVariationParam as ContentLanguageVariationParam
 from .post_attach_to_lang_group_params import PostAttachToLangGroupParams as PostAttachToLangGroupParams
+from .tag_create_lang_variation_params import TagCreateLangVariationParams as TagCreateLangVariationParams
 from .post_create_lang_variation_params import PostCreateLangVariationParams as PostCreateLangVariationParams
 from .post_get_previous_versions_params import PostGetPreviousVersionsParams as PostGetPreviousVersionsParams
+from .tag_detach_from_lang_group_params import TagDetachFromLangGroupParams as TagDetachFromLangGroupParams
+from .author_attach_to_lang_group_params import AuthorAttachToLangGroupParams as AuthorAttachToLangGroupParams
+from .author_set_new_lang_primary_params import AuthorSetNewLangPrimaryParams as AuthorSetNewLangPrimaryParams
 from .post_detach_from_lang_group_params import PostDetachFromLangGroupParams as PostDetachFromLangGroupParams
 from .collection_response_with_total_blog import CollectionResponseWithTotalBlog as CollectionResponseWithTotalBlog
+from .author_detach_from_lang_group_params import AuthorDetachFromLangGroupParams as AuthorDetachFromLangGroupParams
+from .author_create_language_variation_params import (
+    AuthorCreateLanguageVariationParams as AuthorCreateLanguageVariationParams,
+)
 from .collection_response_with_total_blog_version import (
     CollectionResponseWithTotalBlogVersion as CollectionResponseWithTotalBlogVersion,
 )

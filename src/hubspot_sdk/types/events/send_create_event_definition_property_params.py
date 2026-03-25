@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Required, TypedDict
 
-from .option_input_param import OptionInputParam
+from ..shared_params.option_input import OptionInput
 
 __all__ = ["SendCreateEventDefinitionPropertyParams"]
 
@@ -29,7 +29,7 @@ class SendCreateEventDefinitionPropertyParams(TypedDict, total=False):
     the API
     """
 
-    options: Iterable[OptionInputParam]
+    options: Iterable[OptionInput]
     """A list of available options for the property if it is an enumeration.
 
     NOTE: This field is only applicable for enumerated properties.

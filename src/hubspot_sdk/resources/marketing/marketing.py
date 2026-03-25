@@ -2,8 +2,32 @@
 
 from __future__ import annotations
 
+from .emails import (
+    EmailsResource,
+    AsyncEmailsResource,
+    EmailsResourceWithRawResponse,
+    AsyncEmailsResourceWithRawResponse,
+    EmailsResourceWithStreamingResponse,
+    AsyncEmailsResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .events.events import (
+    EventsResource,
+    AsyncEventsResource,
+    EventsResourceWithRawResponse,
+    AsyncEventsResourceWithRawResponse,
+    EventsResourceWithStreamingResponse,
+    AsyncEventsResourceWithStreamingResponse,
+)
+from .transactional import (
+    TransactionalResource,
+    AsyncTransactionalResource,
+    TransactionalResourceWithRawResponse,
+    AsyncTransactionalResourceWithRawResponse,
+    TransactionalResourceWithStreamingResponse,
+    AsyncTransactionalResourceWithStreamingResponse,
+)
 from .campaigns.campaigns import (
     CampaignsResource,
     AsyncCampaignsResource,
@@ -20,6 +44,18 @@ class MarketingResource(SyncAPIResource):
     @cached_property
     def campaigns(self) -> CampaignsResource:
         return CampaignsResource(self._client)
+
+    @cached_property
+    def emails(self) -> EmailsResource:
+        return EmailsResource(self._client)
+
+    @cached_property
+    def events(self) -> EventsResource:
+        return EventsResource(self._client)
+
+    @cached_property
+    def transactional(self) -> TransactionalResource:
+        return TransactionalResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> MarketingResourceWithRawResponse:
@@ -45,6 +81,18 @@ class AsyncMarketingResource(AsyncAPIResource):
     @cached_property
     def campaigns(self) -> AsyncCampaignsResource:
         return AsyncCampaignsResource(self._client)
+
+    @cached_property
+    def emails(self) -> AsyncEmailsResource:
+        return AsyncEmailsResource(self._client)
+
+    @cached_property
+    def events(self) -> AsyncEventsResource:
+        return AsyncEventsResource(self._client)
+
+    @cached_property
+    def transactional(self) -> AsyncTransactionalResource:
+        return AsyncTransactionalResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncMarketingResourceWithRawResponse:
@@ -74,6 +122,18 @@ class MarketingResourceWithRawResponse:
     def campaigns(self) -> CampaignsResourceWithRawResponse:
         return CampaignsResourceWithRawResponse(self._marketing.campaigns)
 
+    @cached_property
+    def emails(self) -> EmailsResourceWithRawResponse:
+        return EmailsResourceWithRawResponse(self._marketing.emails)
+
+    @cached_property
+    def events(self) -> EventsResourceWithRawResponse:
+        return EventsResourceWithRawResponse(self._marketing.events)
+
+    @cached_property
+    def transactional(self) -> TransactionalResourceWithRawResponse:
+        return TransactionalResourceWithRawResponse(self._marketing.transactional)
+
 
 class AsyncMarketingResourceWithRawResponse:
     def __init__(self, marketing: AsyncMarketingResource) -> None:
@@ -82,6 +142,18 @@ class AsyncMarketingResourceWithRawResponse:
     @cached_property
     def campaigns(self) -> AsyncCampaignsResourceWithRawResponse:
         return AsyncCampaignsResourceWithRawResponse(self._marketing.campaigns)
+
+    @cached_property
+    def emails(self) -> AsyncEmailsResourceWithRawResponse:
+        return AsyncEmailsResourceWithRawResponse(self._marketing.emails)
+
+    @cached_property
+    def events(self) -> AsyncEventsResourceWithRawResponse:
+        return AsyncEventsResourceWithRawResponse(self._marketing.events)
+
+    @cached_property
+    def transactional(self) -> AsyncTransactionalResourceWithRawResponse:
+        return AsyncTransactionalResourceWithRawResponse(self._marketing.transactional)
 
 
 class MarketingResourceWithStreamingResponse:
@@ -92,6 +164,18 @@ class MarketingResourceWithStreamingResponse:
     def campaigns(self) -> CampaignsResourceWithStreamingResponse:
         return CampaignsResourceWithStreamingResponse(self._marketing.campaigns)
 
+    @cached_property
+    def emails(self) -> EmailsResourceWithStreamingResponse:
+        return EmailsResourceWithStreamingResponse(self._marketing.emails)
+
+    @cached_property
+    def events(self) -> EventsResourceWithStreamingResponse:
+        return EventsResourceWithStreamingResponse(self._marketing.events)
+
+    @cached_property
+    def transactional(self) -> TransactionalResourceWithStreamingResponse:
+        return TransactionalResourceWithStreamingResponse(self._marketing.transactional)
+
 
 class AsyncMarketingResourceWithStreamingResponse:
     def __init__(self, marketing: AsyncMarketingResource) -> None:
@@ -100,3 +184,15 @@ class AsyncMarketingResourceWithStreamingResponse:
     @cached_property
     def campaigns(self) -> AsyncCampaignsResourceWithStreamingResponse:
         return AsyncCampaignsResourceWithStreamingResponse(self._marketing.campaigns)
+
+    @cached_property
+    def emails(self) -> AsyncEmailsResourceWithStreamingResponse:
+        return AsyncEmailsResourceWithStreamingResponse(self._marketing.emails)
+
+    @cached_property
+    def events(self) -> AsyncEventsResourceWithStreamingResponse:
+        return AsyncEventsResourceWithStreamingResponse(self._marketing.events)
+
+    @cached_property
+    def transactional(self) -> AsyncTransactionalResourceWithStreamingResponse:
+        return AsyncTransactionalResourceWithStreamingResponse(self._marketing.transactional)

@@ -13,46 +13,30 @@ __all__ = ["BehavioralEventHTTPCompletionRequestParam"]
 
 class BehavioralEventHTTPCompletionRequestParam(TypedDict, total=False):
     event_name: Required[Annotated[str, PropertyInfo(alias="eventName")]]
-    """The event's fully qualified name.
-
-    This value (formatted as `pe{HubID}_{name}`) can be retrieved through the
-    [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions)
-    or in
-    [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
-    """
+    """Internal name of the event-type to trigger"""
 
     properties: Required[Dict[str, str]]
-    """The event properties to update.
-
-    Takes the format of key-value pairs (property internal name and property value).
-    Learn more about
-    [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+    """
+    Map of properties for the event in the format property internal name - property
+    value
     """
 
     email: str
-    """The visitor's email address.
-
-    Used for associating the event data with a CRM record.
-    """
+    """Email of visitor"""
 
     object_id: Annotated[str, PropertyInfo(alias="objectId")]
-    """
-    The ID of the record for which the event occurred (e.g., contact ID or visitor
-    ID).
+    """The object id that this event occurred on.
+
+    Could be a contact id or a visitor id.
     """
 
     occurred_at: Annotated[Union[str, datetime], PropertyInfo(alias="occurredAt", format="iso8601")]
-    """The time when this event occurred.
+    """The time when this event occurred (if any).
 
-    If this isn't set, the current time will be used.
+    If this isn't set, the current time will be used
     """
 
     utk: str
-    """The visitor's usertoken. Used for associating the event data with a CRM record."""
+    """User token"""
 
     uuid: str
-    """
-    Include a universally unique identifier to assign a unique ID to the event
-    occurrence. Can be useful for matching data between HubSpot and other external
-    systems.
-    """
