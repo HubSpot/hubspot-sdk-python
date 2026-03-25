@@ -77,9 +77,8 @@ class CustomResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create multiple tasks in a single request by providing a batch of task
-        properties and associations. This endpoint allows for efficient task creation by
-        processing multiple tasks together.
+        Create multiple CRM objects in a single request by specifying the object type
+        and providing the necessary properties and associations for each object.
 
         Args:
           extra_headers: Send extra headers
@@ -114,9 +113,8 @@ class CustomResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update multiple tasks in a single request using their internal IDs or unique
-        property values. This operation allows you to modify the properties of each task
-        in the batch, ensuring efficient management of task data.
+        Update a batch of CRM objects by their internal IDs or unique property values,
+        allowing for efficient modifications of multiple records in a single request.
 
         Args:
           extra_headers: Send extra headers
@@ -155,9 +153,10 @@ class CustomResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
-        """Read a page of tasks.
+        """Read a page of objects.
 
-        Control what is returned via the `properties` query param.
+        Control what is returned via the `properties` query
+        param.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -178,7 +177,7 @@ class CustomResource(SyncAPIResource):
           properties_with_history: A comma separated list of the properties to be returned along with their history
               of previous values. If any of the specified properties are not present on the
               requested object(s), they will be ignored. Usage of this parameter will reduce
-              the maximum number of tasks that can be read by a single request.
+              the maximum number of objects that can be read by a single request.
 
           extra_headers: Send extra headers
 
@@ -225,10 +224,10 @@ class CustomResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Archive a batch of tasks by their IDs, moving them to the recycling bin.
+        """Archive a batch of objects by their unique IDs.
 
-        This
-        operation requires a list of task IDs to be provided in the request body.
+        This operation moves the
+        specified objects to the recycling bin, effectively marking them as archived.
 
         Args:
           extra_headers: Send extra headers
@@ -326,6 +325,9 @@ class CustomResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
+        Merge two CRM objects of the same type by specifying one as the primary object
+        and the other as the object to be merged into it.
+
         Args:
           object_id_to_merge: The object ID of the record that the merge will not set as the current value
               after the merge.
@@ -376,9 +378,9 @@ class CustomResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
-        Execute a search for tasks based on the provided criteria, including filters,
-        properties, and sorting options. This allows for retrieving tasks that match
-        specific conditions or property values.
+        Execute a search query to find CRM objects of a given type, using specified
+        filters and properties. The search can be customized with filters, sorting, and
+        pagination options.
 
         Args:
           after: A paging cursor token for retrieving subsequent pages.
@@ -493,9 +495,8 @@ class AsyncCustomResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create multiple tasks in a single request by providing a batch of task
-        properties and associations. This endpoint allows for efficient task creation by
-        processing multiple tasks together.
+        Create multiple CRM objects in a single request by specifying the object type
+        and providing the necessary properties and associations for each object.
 
         Args:
           extra_headers: Send extra headers
@@ -530,9 +531,8 @@ class AsyncCustomResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update multiple tasks in a single request using their internal IDs or unique
-        property values. This operation allows you to modify the properties of each task
-        in the batch, ensuring efficient management of task data.
+        Update a batch of CRM objects by their internal IDs or unique property values,
+        allowing for efficient modifications of multiple records in a single request.
 
         Args:
           extra_headers: Send extra headers
@@ -571,9 +571,10 @@ class AsyncCustomResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
-        """Read a page of tasks.
+        """Read a page of objects.
 
-        Control what is returned via the `properties` query param.
+        Control what is returned via the `properties` query
+        param.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -594,7 +595,7 @@ class AsyncCustomResource(AsyncAPIResource):
           properties_with_history: A comma separated list of the properties to be returned along with their history
               of previous values. If any of the specified properties are not present on the
               requested object(s), they will be ignored. Usage of this parameter will reduce
-              the maximum number of tasks that can be read by a single request.
+              the maximum number of objects that can be read by a single request.
 
           extra_headers: Send extra headers
 
@@ -641,10 +642,10 @@ class AsyncCustomResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Archive a batch of tasks by their IDs, moving them to the recycling bin.
+        """Archive a batch of objects by their unique IDs.
 
-        This
-        operation requires a list of task IDs to be provided in the request body.
+        This operation moves the
+        specified objects to the recycling bin, effectively marking them as archived.
 
         Args:
           extra_headers: Send extra headers
@@ -742,6 +743,9 @@ class AsyncCustomResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
+        Merge two CRM objects of the same type by specifying one as the primary object
+        and the other as the object to be merged into it.
+
         Args:
           object_id_to_merge: The object ID of the record that the merge will not set as the current value
               after the merge.
@@ -792,9 +796,9 @@ class AsyncCustomResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
-        Execute a search for tasks based on the provided criteria, including filters,
-        properties, and sorting options. This allows for retrieving tasks that match
-        specific conditions or property values.
+        Execute a search query to find CRM objects of a given type, using specified
+        filters and properties. The search can be customized with filters, sorting, and
+        pagination options.
 
         Args:
           after: A paging cursor token for retrieving subsequent pages.

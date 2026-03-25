@@ -1,0 +1,15 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from pydantic import Field as FieldInfo
+
+from ..._models import BaseModel
+
+__all__ = ["ExternalLegalConsentResponse"]
+
+
+class ExternalLegalConsentResponse(BaseModel):
+    communication_type_id: str = FieldInfo(alias="communicationTypeId")
+    """The ID of communication consent form being recorded."""
+
+    consented: bool
+    """Whether the user has given consent for the specified communication type."""

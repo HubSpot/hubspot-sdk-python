@@ -23,7 +23,7 @@ class ContactGetParams(TypedDict, total=False):
     """
 
     id_property: Annotated[str, PropertyInfo(alias="idProperty")]
-    """The name of a property whose values are unique for this object"""
+    """The name of a property whose values are unique for this object type"""
 
     properties: SequenceNotStr[str]
     """A comma separated list of the properties to be returned in the response.

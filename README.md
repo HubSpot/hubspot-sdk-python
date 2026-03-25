@@ -34,8 +34,8 @@ client = Hubspot(
     access_token="pat-na1-xxxxxxxx-xxxx",
 )
 
-page = client.account.activity.list_audit_logs()
-print(page.results)
+portal_information_response = client.account.get()
+print(portal_information_response.account_type)
 ```
 
 ## Async usage
@@ -52,8 +52,8 @@ client = AsyncHubspot(
 
 
 async def main() -> None:
-    page = await client.account.activity.list_audit_logs()
-    print(page.results)
+    portal_information_response = await client.account.get()
+    print(portal_information_response.account_type)
 
 
 asyncio.run(main())
@@ -85,8 +85,8 @@ async def main() -> None:
         access_token="pat-na1-xxxxxxxx-xxxx",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        page = await client.account.activity.list_audit_logs()
-        print(page.results)
+        portal_information_response = await client.account.get()
+        print(portal_information_response.account_type)
 
 
 asyncio.run(main())
@@ -164,6 +164,47 @@ for activity in first_page.results:
 # Remove `await` for non-async usage.
 ```
 
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
+
+```python
+from hubspot_sdk import Hubspot
+
+client = Hubspot()
+
+public_action_definition = client.automation.actions.create(
+    app_id=0,
+    action_url="actionUrl",
+    functions=[
+        {
+            "function_source": "functionSource",
+            "function_type": "POST_ACTION_EXECUTION",
+        }
+    ],
+    input_fields=[
+        {
+            "is_required": True,
+            "type_definition": {
+                "name": "name",
+                "options": [
+                    {
+                        "label": "label",
+                        "value": "value",
+                    }
+                ],
+                "type": "bool",
+            },
+        }
+    ],
+    labels={"foo": {"action_name": "actionName"}},
+    object_types=["string"],
+    published=True,
+    object_request_options={"properties": ["string"]},
+)
+print(public_action_definition.object_request_options)
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `hubspot_sdk.APIConnectionError` is raised.
@@ -180,7 +221,7 @@ from hubspot_sdk import Hubspot
 client = Hubspot()
 
 try:
-    client.account.activity.list_audit_logs()
+    client.account.get()
 except hubspot_sdk.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -223,7 +264,7 @@ client = Hubspot(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).account.activity.list_audit_logs()
+client.with_options(max_retries=5).account.get()
 ```
 
 ### Timeouts
@@ -246,7 +287,7 @@ client = Hubspot(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).account.activity.list_audit_logs()
+client.with_options(timeout=5.0).account.get()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -287,11 +328,11 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from hubspot_sdk import Hubspot
 
 client = Hubspot()
-response = client.account.activity.with_raw_response.list_audit_logs()
+response = client.account.with_raw_response.get()
 print(response.headers.get('X-My-Header'))
 
-activity = response.parse()  # get the object that `account.activity.list_audit_logs()` would have returned
-print(activity.id)
+account = response.parse()  # get the object that `account.get()` would have returned
+print(account.account_type)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/hubspot-sdk-python/tree/main/src/hubspot_sdk/_response.py) object.
@@ -305,7 +346,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.account.activity.with_streaming_response.list_audit_logs() as response:
+with client.account.with_streaming_response.get() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():

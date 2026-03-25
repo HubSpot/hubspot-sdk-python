@@ -1,0 +1,21 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Required, TypedDict
+
+__all__ = ["RgbaColorParam"]
+
+
+class RgbaColorParam(TypedDict, total=False):
+    a: Required[float]
+    """Alpha."""
+
+    b: Required[int]
+    """Blue."""
+
+    g: Required[int]
+    """Green."""
+
+    r: Required[int]
+    """Red."""

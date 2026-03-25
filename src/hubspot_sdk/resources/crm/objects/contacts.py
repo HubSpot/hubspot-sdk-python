@@ -72,8 +72,8 @@ class ContactsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Create a task with the given properties and return a copy of the object,
-        including the ID. Documentation and examples for creating standard tasks is
+        Create a CRM object with the given properties and return a copy of the object,
+        including the ID. Documentation and examples for creating standard objects is
         provided.
 
         Args:
@@ -119,8 +119,8 @@ class ContactsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Perform a partial update of an Object identified by `{taskId}`or optionally a
-        unique property value as specified by the `idProperty` query param. `{taskId}`
+        Perform a partial update of an Object identified by `{objectId}`or optionally a
+        unique property value as specified by the `idProperty` query param. `{objectId}`
         refers to the internal object ID by default, and the `idProperty` query param
         refers to a property whose values are unique for the object. Provided property
         values will be overwritten. Read-only and non-existent properties will result in
@@ -129,7 +129,7 @@ class ContactsResource(SyncAPIResource):
         Args:
           properties: Key value pairs representing the properties of the object.
 
-          id_property: The name of a property whose values are unique for this object
+          id_property: The name of a property whose values are unique for this object type
 
           extra_headers: Send extra headers
 
@@ -175,9 +175,10 @@ class ContactsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
-        """Read a page of tasks.
+        """Read a page of objects.
 
-        Control what is returned via the `properties` query param.
+        Control what is returned via the `properties` query
+        param.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -198,7 +199,7 @@ class ContactsResource(SyncAPIResource):
           properties_with_history: A comma separated list of the properties to be returned along with their history
               of previous values. If any of the specified properties are not present on the
               requested object(s), they will be ignored. Usage of this parameter will reduce
-              the maximum number of tasks that can be read by a single request.
+              the maximum number of objects that can be read by a single request.
 
           extra_headers: Send extra headers
 
@@ -246,7 +247,7 @@ class ContactsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Move an Object identified by `{taskId}` to the recycling bin.
+        Move an Object identified by `{objectId}` to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -285,7 +286,14 @@ class ContactsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Permanently delete a contact and all associated content to follow GDPR.
+
+        Use
+        optional property `idProperty` set to `email` to identify contact by email
+        address. If email address is not found, the email address will be added to a
+        blocklist and prevent it from being used in the future. Learn more about
+        [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
+
         Args:
           object_id: The ID of the contact to permanently delete.
 
@@ -335,9 +343,9 @@ class ContactsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """Read an Object identified by `{taskId}`.
+        """Read an Object identified by `{objectId}`.
 
-        `{taskId}` refers to the internal
+        `{objectId}` refers to the internal
         object ID by default, or optionally any unique property value as specified by
         the `idProperty` query param. Control what is returned via the `properties`
         query param.
@@ -348,7 +356,7 @@ class ContactsResource(SyncAPIResource):
           associations: A comma separated list of object types to retrieve associated IDs for. If any of
               the specified associations do not exist, they will be ignored.
 
-          id_property: The name of a property whose values are unique for this object
+          id_property: The name of a property whose values are unique for this object type
 
           properties: A comma separated list of the properties to be returned in the response. If any
               of the specified properties are not present on the requested object(s), they
@@ -407,6 +415,9 @@ class ContactsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
+        Merge two CRM objects of the same type by specifying one as the primary object
+        and the other as the object to be merged into it.
+
         Args:
           object_id_to_merge: The object ID of the record that the merge will not set as the current value
               after the merge.
@@ -457,9 +468,9 @@ class ContactsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
-        Execute a search for tasks based on the provided criteria, including filters,
-        properties, and sorting options. This allows for retrieving tasks that match
-        specific conditions or property values.
+        Execute a search query to find CRM objects of a given type, using specified
+        filters and properties. The search can be customized with filters, sorting, and
+        pagination options.
 
         Args:
           after: A paging cursor token for retrieving subsequent pages.
@@ -538,8 +549,8 @@ class AsyncContactsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Create a task with the given properties and return a copy of the object,
-        including the ID. Documentation and examples for creating standard tasks is
+        Create a CRM object with the given properties and return a copy of the object,
+        including the ID. Documentation and examples for creating standard objects is
         provided.
 
         Args:
@@ -585,8 +596,8 @@ class AsyncContactsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Perform a partial update of an Object identified by `{taskId}`or optionally a
-        unique property value as specified by the `idProperty` query param. `{taskId}`
+        Perform a partial update of an Object identified by `{objectId}`or optionally a
+        unique property value as specified by the `idProperty` query param. `{objectId}`
         refers to the internal object ID by default, and the `idProperty` query param
         refers to a property whose values are unique for the object. Provided property
         values will be overwritten. Read-only and non-existent properties will result in
@@ -595,7 +606,7 @@ class AsyncContactsResource(AsyncAPIResource):
         Args:
           properties: Key value pairs representing the properties of the object.
 
-          id_property: The name of a property whose values are unique for this object
+          id_property: The name of a property whose values are unique for this object type
 
           extra_headers: Send extra headers
 
@@ -643,9 +654,10 @@ class AsyncContactsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
-        """Read a page of tasks.
+        """Read a page of objects.
 
-        Control what is returned via the `properties` query param.
+        Control what is returned via the `properties` query
+        param.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -666,7 +678,7 @@ class AsyncContactsResource(AsyncAPIResource):
           properties_with_history: A comma separated list of the properties to be returned along with their history
               of previous values. If any of the specified properties are not present on the
               requested object(s), they will be ignored. Usage of this parameter will reduce
-              the maximum number of tasks that can be read by a single request.
+              the maximum number of objects that can be read by a single request.
 
           extra_headers: Send extra headers
 
@@ -714,7 +726,7 @@ class AsyncContactsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Move an Object identified by `{taskId}` to the recycling bin.
+        Move an Object identified by `{objectId}` to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -753,7 +765,14 @@ class AsyncContactsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Permanently delete a contact and all associated content to follow GDPR.
+
+        Use
+        optional property `idProperty` set to `email` to identify contact by email
+        address. If email address is not found, the email address will be added to a
+        blocklist and prevent it from being used in the future. Learn more about
+        [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
+
         Args:
           object_id: The ID of the contact to permanently delete.
 
@@ -803,9 +822,9 @@ class AsyncContactsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """Read an Object identified by `{taskId}`.
+        """Read an Object identified by `{objectId}`.
 
-        `{taskId}` refers to the internal
+        `{objectId}` refers to the internal
         object ID by default, or optionally any unique property value as specified by
         the `idProperty` query param. Control what is returned via the `properties`
         query param.
@@ -816,7 +835,7 @@ class AsyncContactsResource(AsyncAPIResource):
           associations: A comma separated list of object types to retrieve associated IDs for. If any of
               the specified associations do not exist, they will be ignored.
 
-          id_property: The name of a property whose values are unique for this object
+          id_property: The name of a property whose values are unique for this object type
 
           properties: A comma separated list of the properties to be returned in the response. If any
               of the specified properties are not present on the requested object(s), they
@@ -875,6 +894,9 @@ class AsyncContactsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
+        Merge two CRM objects of the same type by specifying one as the primary object
+        and the other as the object to be merged into it.
+
         Args:
           object_id_to_merge: The object ID of the record that the merge will not set as the current value
               after the merge.
@@ -925,9 +947,9 @@ class AsyncContactsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
-        Execute a search for tasks based on the provided criteria, including filters,
-        properties, and sorting options. This allows for retrieving tasks that match
-        specific conditions or property values.
+        Execute a search query to find CRM objects of a given type, using specified
+        filters and properties. The search can be customized with filters, sorting, and
+        pagination options.
 
         Args:
           after: A paging cursor token for retrieving subsequent pages.

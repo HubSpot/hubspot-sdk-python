@@ -5,14 +5,14 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Required, TypedDict
 
-from .association_spec_param import AssociationSpecParam
-from .public_object_id_param import PublicObjectIDParam
+from ..shared_params.association_spec import AssociationSpec
+from ..shared_params.public_object_id import PublicObjectID
 
 __all__ = ["PublicAssociationsForObjectParam"]
 
 
 class PublicAssociationsForObjectParam(TypedDict, total=False):
-    to: Required[PublicObjectIDParam]
+    to: Required[PublicObjectID]
     """Contains the Id of a Public Object"""
 
-    types: Required[Iterable[AssociationSpecParam]]
+    types: Required[Iterable[AssociationSpec]]

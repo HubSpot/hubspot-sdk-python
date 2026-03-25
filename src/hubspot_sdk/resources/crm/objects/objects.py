@@ -19,14 +19,6 @@ from .contacts import (
     AsyncContactsResourceWithStreamingResponse,
 )
 from ...._compat import cached_property
-from .tasks.tasks import (
-    TasksResource,
-    AsyncTasksResource,
-    TasksResourceWithRawResponse,
-    AsyncTasksResourceWithRawResponse,
-    TasksResourceWithStreamingResponse,
-    AsyncTasksResourceWithStreamingResponse,
-)
 from ...._resource import SyncAPIResource, AsyncAPIResource
 
 __all__ = ["ObjectsResource", "AsyncObjectsResource"]
@@ -40,10 +32,6 @@ class ObjectsResource(SyncAPIResource):
     @cached_property
     def custom(self) -> CustomResource:
         return CustomResource(self._client)
-
-    @cached_property
-    def tasks(self) -> TasksResource:
-        return TasksResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> ObjectsResourceWithRawResponse:
@@ -73,10 +61,6 @@ class AsyncObjectsResource(AsyncAPIResource):
     @cached_property
     def custom(self) -> AsyncCustomResource:
         return AsyncCustomResource(self._client)
-
-    @cached_property
-    def tasks(self) -> AsyncTasksResource:
-        return AsyncTasksResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncObjectsResourceWithRawResponse:
@@ -110,10 +94,6 @@ class ObjectsResourceWithRawResponse:
     def custom(self) -> CustomResourceWithRawResponse:
         return CustomResourceWithRawResponse(self._objects.custom)
 
-    @cached_property
-    def tasks(self) -> TasksResourceWithRawResponse:
-        return TasksResourceWithRawResponse(self._objects.tasks)
-
 
 class AsyncObjectsResourceWithRawResponse:
     def __init__(self, objects: AsyncObjectsResource) -> None:
@@ -126,10 +106,6 @@ class AsyncObjectsResourceWithRawResponse:
     @cached_property
     def custom(self) -> AsyncCustomResourceWithRawResponse:
         return AsyncCustomResourceWithRawResponse(self._objects.custom)
-
-    @cached_property
-    def tasks(self) -> AsyncTasksResourceWithRawResponse:
-        return AsyncTasksResourceWithRawResponse(self._objects.tasks)
 
 
 class ObjectsResourceWithStreamingResponse:
@@ -144,10 +120,6 @@ class ObjectsResourceWithStreamingResponse:
     def custom(self) -> CustomResourceWithStreamingResponse:
         return CustomResourceWithStreamingResponse(self._objects.custom)
 
-    @cached_property
-    def tasks(self) -> TasksResourceWithStreamingResponse:
-        return TasksResourceWithStreamingResponse(self._objects.tasks)
-
 
 class AsyncObjectsResourceWithStreamingResponse:
     def __init__(self, objects: AsyncObjectsResource) -> None:
@@ -160,7 +132,3 @@ class AsyncObjectsResourceWithStreamingResponse:
     @cached_property
     def custom(self) -> AsyncCustomResourceWithStreamingResponse:
         return AsyncCustomResourceWithStreamingResponse(self._objects.custom)
-
-    @cached_property
-    def tasks(self) -> AsyncTasksResourceWithStreamingResponse:
-        return AsyncTasksResourceWithStreamingResponse(self._objects.tasks)
