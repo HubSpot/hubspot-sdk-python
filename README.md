@@ -46,7 +46,10 @@ result = client.crm.objects.contacts.create(
             ],
         }
     ],
-    properties={"email": "mark.s@lumon.industries"},
+    properties={
+        "associations": "string",
+        "email": "mark.s@lumon.industries",
+    },
 )
 print(result.id)
 ```
@@ -77,7 +80,10 @@ async def main() -> None:
                 ],
             }
         ],
-        properties={"email": "mark.s@lumon.industries"},
+        properties={
+            "associations": "string",
+            "email": "mark.s@lumon.industries",
+        },
     )
     print(result.id)
 
@@ -123,7 +129,10 @@ async def main() -> None:
                     ],
                 }
             ],
-            properties={"email": "mark.s@lumon.industries"},
+            properties={
+                "associations": "string",
+                "email": "mark.s@lumon.industries",
+            },
         )
         print(result.id)
 
