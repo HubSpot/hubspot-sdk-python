@@ -42,5 +42,5 @@ class CustomListParams(TypedDict, total=False):
     A comma separated list of the properties to be returned along with their history
     of previous values. If any of the specified properties are not present on the
     requested object(s), they will be ignored. Usage of this parameter will reduce
-    the maximum number of tasks that can be read by a single request.
+    the maximum number of objects that can be read by a single request.
     """

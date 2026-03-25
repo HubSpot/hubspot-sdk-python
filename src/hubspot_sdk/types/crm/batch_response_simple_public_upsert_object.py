@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from .standard_error import StandardError
+from ..shared.standard_error import StandardError
 from .simple_public_upsert_object import SimplePublicUpsertObject
 
 __all__ = ["BatchResponseSimplePublicUpsertObject"]

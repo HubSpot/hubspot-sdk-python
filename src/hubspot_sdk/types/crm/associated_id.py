@@ -12,4 +12,4 @@ class AssociatedID(BaseModel):
     """The ID for the association type."""
 
     type: str
-    """The type of association."""
+    """The type of associations."""

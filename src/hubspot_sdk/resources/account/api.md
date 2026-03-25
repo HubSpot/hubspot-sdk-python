@@ -1,5 +1,20 @@
 # Account
 
+Types:
+
+```python
+from hubspot_sdk.types.account import (
+    APIUsage,
+    CollectionResponseAPIUsageNoPaging,
+    PortalInformationResponse,
+)
+```
+
+Methods:
+
+- <code title="get /account-info/2026-03/details">client.account.<a href="./src/hubspot_sdk/resources/account/account.py">get</a>() -> <a href="./src/hubspot_sdk/types/account/portal_information_response.py">PortalInformationResponse</a></code>
+- <code title="get /account-info/2026-03/api-usage/daily/private-apps">client.account.<a href="./src/hubspot_sdk/resources/account/account.py">get_daily_private_apps_usage</a>() -> <a href="./src/hubspot_sdk/types/account/collection_response_api_usage_no_paging.py">CollectionResponseAPIUsageNoPaging</a></code>
+
 ## Activity
 
 Types:
@@ -7,13 +22,10 @@ Types:
 ```python
 from hubspot_sdk.types.account import (
     ActingUser,
-    APIUsage,
-    CollectionResponseAPIUsageNoPaging,
     CollectionResponseHydratedCriticalActionForwardPaging,
     CollectionResponsePublicAPIUserActionEventForwardPaging,
     CollectionResponsePublicLoginAuditForwardPaging,
     HydratedCriticalAction,
-    PortalInformationResponse,
     PublicAPIUserActionEvent,
     PublicLoginAudit,
 )
