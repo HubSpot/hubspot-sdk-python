@@ -2,30 +2,37 @@
 
 from __future__ import annotations
 
-from typing import Iterable
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
-from ..simple_public_object_id_param import SimplePublicObjectIDParam
 
 __all__ = ["TaxGetParams"]
 
 
 class TaxGetParams(TypedDict, total=False):
-    inputs: Required[Iterable[SimplePublicObjectIDParam]]
-
-    properties: Required[SequenceNotStr[str]]
-    """Key-value pairs for setting properties for the new object."""
-
-    properties_with_history: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="propertiesWithHistory")]]
-    """Key-value pairs for setting properties for the new object and their histories."""
-
     archived: bool
     """Whether to return only results that have been archived."""
 
-    id_property: Annotated[str, PropertyInfo(alias="idProperty")]
+    associations: SequenceNotStr[str]
+    """A comma separated list of object types to retrieve associated IDs for.
+
+    If any of the specified associations do not exist, they will be ignored.
     """
-    When using a custom unique value property to retrieve records, the name of the
-    property. Do not include this parameter if retrieving by record ID.
+
+    id_property: Annotated[str, PropertyInfo(alias="idProperty")]
+    """The name of a property whose values are unique for this object type"""
+
+    properties: SequenceNotStr[str]
+    """A comma separated list of the properties to be returned in the response.
+
+    If any of the specified properties are not present on the requested object(s),
+    they will be ignored.
+    """
+
+    properties_with_history: Annotated[SequenceNotStr[str], PropertyInfo(alias="propertiesWithHistory")]
+    """
+    A comma separated list of the properties to be returned along with their history
+    of previous values. If any of the specified properties are not present on the
+    requested object(s), they will be ignored.
     """

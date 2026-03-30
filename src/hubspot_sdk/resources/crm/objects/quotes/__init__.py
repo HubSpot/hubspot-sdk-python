@@ -1,12 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .basic import (
-    BasicResource,
-    AsyncBasicResource,
-    BasicResourceWithRawResponse,
-    AsyncBasicResourceWithRawResponse,
-    BasicResourceWithStreamingResponse,
-    AsyncBasicResourceWithStreamingResponse,
+from .batch import (
+    BatchResource,
+    AsyncBatchResource,
+    BatchResourceWithRawResponse,
+    AsyncBatchResourceWithRawResponse,
+    BatchResourceWithStreamingResponse,
+    AsyncBatchResourceWithStreamingResponse,
 )
 from .quotes import (
     QuotesResource,
@@ -18,12 +18,12 @@ from .quotes import (
 )
 
 __all__ = [
-    "BasicResource",
-    "AsyncBasicResource",
-    "BasicResourceWithRawResponse",
-    "AsyncBasicResourceWithRawResponse",
-    "BasicResourceWithStreamingResponse",
-    "AsyncBasicResourceWithStreamingResponse",
+    "BatchResource",
+    "AsyncBatchResource",
+    "BatchResourceWithRawResponse",
+    "AsyncBatchResourceWithRawResponse",
+    "BatchResourceWithStreamingResponse",
+    "AsyncBatchResourceWithStreamingResponse",
     "QuotesResource",
     "AsyncQuotesResource",
     "QuotesResourceWithRawResponse",

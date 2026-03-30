@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from typing import Dict, Iterable
 from typing_extensions import Required, TypedDict
 
-from ..simple_public_object_batch_input_for_create_param import SimplePublicObjectBatchInputForCreateParam
+from ..public_associations_for_object_param import PublicAssociationsForObjectParam
 
 __all__ = ["PostalMailCreateParams"]
 
 
 class PostalMailCreateParams(TypedDict, total=False):
-    inputs: Required[Iterable[SimplePublicObjectBatchInputForCreateParam]]
+    associations: Required[Iterable[PublicAssociationsForObjectParam]]
+
+    properties: Required[Dict[str, str]]
+    """Key-value pairs for setting properties for the new object."""
