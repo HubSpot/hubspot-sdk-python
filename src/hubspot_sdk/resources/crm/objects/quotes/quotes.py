@@ -6,13 +6,13 @@ from typing import Dict, Iterable
 
 import httpx
 
-from .basic import (
-    BasicResource,
-    AsyncBasicResource,
-    BasicResourceWithRawResponse,
-    AsyncBasicResourceWithRawResponse,
-    BasicResourceWithStreamingResponse,
-    AsyncBasicResourceWithStreamingResponse,
+from .batch import (
+    BatchResource,
+    AsyncBatchResource,
+    BatchResourceWithRawResponse,
+    AsyncBatchResourceWithRawResponse,
+    BatchResourceWithStreamingResponse,
+    AsyncBatchResourceWithStreamingResponse,
 )
 from ....._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ....._utils import path_template, maybe_transform, async_maybe_transform
@@ -46,8 +46,8 @@ __all__ = ["QuotesResource", "AsyncQuotesResource"]
 
 class QuotesResource(SyncAPIResource):
     @cached_property
-    def basic(self) -> BasicResource:
-        return BasicResource(self._client)
+    def batch(self) -> BatchResource:
+        return BatchResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> QuotesResourceWithRawResponse:
@@ -401,8 +401,8 @@ class QuotesResource(SyncAPIResource):
 
 class AsyncQuotesResource(AsyncAPIResource):
     @cached_property
-    def basic(self) -> AsyncBasicResource:
-        return AsyncBasicResource(self._client)
+    def batch(self) -> AsyncBatchResource:
+        return AsyncBatchResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQuotesResourceWithRawResponse:
@@ -778,8 +778,8 @@ class QuotesResourceWithRawResponse:
         )
 
     @cached_property
-    def basic(self) -> BasicResourceWithRawResponse:
-        return BasicResourceWithRawResponse(self._quotes.basic)
+    def batch(self) -> BatchResourceWithRawResponse:
+        return BatchResourceWithRawResponse(self._quotes.batch)
 
 
 class AsyncQuotesResourceWithRawResponse:
@@ -806,8 +806,8 @@ class AsyncQuotesResourceWithRawResponse:
         )
 
     @cached_property
-    def basic(self) -> AsyncBasicResourceWithRawResponse:
-        return AsyncBasicResourceWithRawResponse(self._quotes.basic)
+    def batch(self) -> AsyncBatchResourceWithRawResponse:
+        return AsyncBatchResourceWithRawResponse(self._quotes.batch)
 
 
 class QuotesResourceWithStreamingResponse:
@@ -834,8 +834,8 @@ class QuotesResourceWithStreamingResponse:
         )
 
     @cached_property
-    def basic(self) -> BasicResourceWithStreamingResponse:
-        return BasicResourceWithStreamingResponse(self._quotes.basic)
+    def batch(self) -> BatchResourceWithStreamingResponse:
+        return BatchResourceWithStreamingResponse(self._quotes.batch)
 
 
 class AsyncQuotesResourceWithStreamingResponse:
@@ -862,5 +862,5 @@ class AsyncQuotesResourceWithStreamingResponse:
         )
 
     @cached_property
-    def basic(self) -> AsyncBasicResourceWithStreamingResponse:
-        return AsyncBasicResourceWithStreamingResponse(self._quotes.basic)
+    def batch(self) -> AsyncBatchResourceWithStreamingResponse:
+        return AsyncBatchResourceWithStreamingResponse(self._quotes.batch)

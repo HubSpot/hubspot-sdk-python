@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-from .actions import (
-    ActionsResource,
-    AsyncActionsResource,
-    ActionsResourceWithRawResponse,
-    AsyncActionsResourceWithRawResponse,
-    ActionsResourceWithStreamingResponse,
-    AsyncActionsResourceWithStreamingResponse,
-)
 from ..._compat import cached_property
 from .sequences import (
     SequencesResource,
@@ -20,6 +12,14 @@ from .sequences import (
     AsyncSequencesResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .actions.actions import (
+    ActionsResource,
+    AsyncActionsResource,
+    ActionsResourceWithRawResponse,
+    AsyncActionsResourceWithRawResponse,
+    ActionsResourceWithStreamingResponse,
+    AsyncActionsResourceWithStreamingResponse,
+)
 
 __all__ = ["AutomationResource", "AsyncAutomationResource"]
 

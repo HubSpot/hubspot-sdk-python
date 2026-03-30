@@ -220,7 +220,7 @@ from hubspot_sdk import Hubspot
 
 client = Hubspot()
 
-public_action_definition = client.automation.actions.create(
+public_action_definition = client.automation.actions.definitions.create(
     app_id=0,
     action_url="actionUrl",
     functions=[

@@ -2,63 +2,7 @@
 
 from __future__ import annotations
 
-from .taxes import (
-    TaxesResource,
-    AsyncTaxesResource,
-    TaxesResourceWithRawResponse,
-    AsyncTaxesResourceWithRawResponse,
-    TaxesResourceWithStreamingResponse,
-    AsyncTaxesResourceWithStreamingResponse,
-)
-from .users import (
-    UsersResource,
-    AsyncUsersResource,
-    UsersResourceWithRawResponse,
-    AsyncUsersResourceWithRawResponse,
-    UsersResourceWithStreamingResponse,
-    AsyncUsersResourceWithStreamingResponse,
-)
-from .custom import (
-    CustomResource,
-    AsyncCustomResource,
-    CustomResourceWithRawResponse,
-    AsyncCustomResourceWithRawResponse,
-    CustomResourceWithStreamingResponse,
-    AsyncCustomResourceWithStreamingResponse,
-)
-from .orders import (
-    OrdersResource,
-    AsyncOrdersResource,
-    OrdersResourceWithRawResponse,
-    AsyncOrdersResourceWithRawResponse,
-    OrdersResourceWithStreamingResponse,
-    AsyncOrdersResourceWithStreamingResponse,
-)
-from .invoices import (
-    InvoicesResource,
-    AsyncInvoicesResource,
-    InvoicesResourceWithRawResponse,
-    AsyncInvoicesResourceWithRawResponse,
-    InvoicesResourceWithStreamingResponse,
-    AsyncInvoicesResourceWithStreamingResponse,
-)
 from .objects_ import objects_ as objects
-from .products import (
-    ProductsResource,
-    AsyncProductsResource,
-    ProductsResourceWithRawResponse,
-    AsyncProductsResourceWithRawResponse,
-    ProductsResourceWithStreamingResponse,
-    AsyncProductsResourceWithStreamingResponse,
-)
-from .services import (
-    ServicesResource,
-    AsyncServicesResource,
-    ServicesResourceWithRawResponse,
-    AsyncServicesResourceWithRawResponse,
-    ServicesResourceWithStreamingResponse,
-    AsyncServicesResourceWithStreamingResponse,
-)
 from .fees.fees import (
     FeesResource,
     AsyncFeesResource,
@@ -108,14 +52,6 @@ from .notes.notes import (
     NotesResourceWithStreamingResponse,
     AsyncNotesResourceWithStreamingResponse,
 )
-from .postal_mail import (
-    PostalMailResource,
-    AsyncPostalMailResource,
-    PostalMailResourceWithRawResponse,
-    AsyncPostalMailResourceWithRawResponse,
-    PostalMailResourceWithStreamingResponse,
-    AsyncPostalMailResourceWithStreamingResponse,
-)
 from .tasks.tasks import (
     TasksResource,
     AsyncTasksResource,
@@ -124,7 +60,31 @@ from .tasks.tasks import (
     TasksResourceWithStreamingResponse,
     AsyncTasksResourceWithStreamingResponse,
 )
+from .taxes.taxes import (
+    TaxesResource,
+    AsyncTaxesResource,
+    TaxesResourceWithRawResponse,
+    AsyncTaxesResourceWithRawResponse,
+    TaxesResourceWithStreamingResponse,
+    AsyncTaxesResourceWithStreamingResponse,
+)
+from .users.users import (
+    UsersResource,
+    AsyncUsersResource,
+    UsersResourceWithRawResponse,
+    AsyncUsersResourceWithRawResponse,
+    UsersResourceWithStreamingResponse,
+    AsyncUsersResourceWithStreamingResponse,
+)
 from ...._resource import SyncAPIResource, AsyncAPIResource
+from .custom.custom import (
+    CustomResource,
+    AsyncCustomResource,
+    CustomResourceWithRawResponse,
+    AsyncCustomResourceWithRawResponse,
+    CustomResourceWithStreamingResponse,
+    AsyncCustomResourceWithStreamingResponse,
+)
 from .emails.emails import (
     EmailsResource,
     AsyncEmailsResource,
@@ -132,6 +92,14 @@ from .emails.emails import (
     AsyncEmailsResourceWithRawResponse,
     EmailsResourceWithStreamingResponse,
     AsyncEmailsResourceWithStreamingResponse,
+)
+from .orders.orders import (
+    OrdersResource,
+    AsyncOrdersResource,
+    OrdersResourceWithRawResponse,
+    AsyncOrdersResourceWithRawResponse,
+    OrdersResourceWithStreamingResponse,
+    AsyncOrdersResourceWithStreamingResponse,
 )
 from .quotes.quotes import (
     QuotesResource,
@@ -157,14 +125,6 @@ from .tickets.tickets import (
     TicketsResourceWithStreamingResponse,
     AsyncTicketsResourceWithStreamingResponse,
 )
-from .partner_services import (
-    PartnerServicesResource,
-    AsyncPartnerServicesResource,
-    PartnerServicesResourceWithRawResponse,
-    AsyncPartnerServicesResourceWithRawResponse,
-    PartnerServicesResourceWithStreamingResponse,
-    AsyncPartnerServicesResourceWithStreamingResponse,
-)
 from .contacts.contacts import (
     ContactsResource,
     AsyncContactsResource,
@@ -172,6 +132,14 @@ from .contacts.contacts import (
     AsyncContactsResourceWithRawResponse,
     ContactsResourceWithStreamingResponse,
     AsyncContactsResourceWithStreamingResponse,
+)
+from .invoices.invoices import (
+    InvoicesResource,
+    AsyncInvoicesResource,
+    InvoicesResourceWithRawResponse,
+    AsyncInvoicesResourceWithRawResponse,
+    InvoicesResourceWithStreamingResponse,
+    AsyncInvoicesResourceWithStreamingResponse,
 )
 from .listings.listings import (
     ListingsResource,
@@ -189,6 +157,14 @@ from .meetings.meetings import (
     MeetingsResourceWithStreamingResponse,
     AsyncMeetingsResourceWithStreamingResponse,
 )
+from .products.products import (
+    ProductsResource,
+    AsyncProductsResource,
+    ProductsResourceWithRawResponse,
+    AsyncProductsResourceWithRawResponse,
+    ProductsResourceWithStreamingResponse,
+    AsyncProductsResourceWithStreamingResponse,
+)
 from .projects.projects import (
     ProjectsResource,
     AsyncProjectsResource,
@@ -196,6 +172,14 @@ from .projects.projects import (
     AsyncProjectsResourceWithRawResponse,
     ProjectsResourceWithStreamingResponse,
     AsyncProjectsResourceWithStreamingResponse,
+)
+from .services.services import (
+    ServicesResource,
+    AsyncServicesResource,
+    ServicesResourceWithRawResponse,
+    AsyncServicesResourceWithRawResponse,
+    ServicesResourceWithStreamingResponse,
+    AsyncServicesResourceWithStreamingResponse,
 )
 from .companies.companies import (
     CompaniesResource,
@@ -229,6 +213,14 @@ from .line_items.line_items import (
     LineItemsResourceWithStreamingResponse,
     AsyncLineItemsResourceWithStreamingResponse,
 )
+from .postal_mail.postal_mail import (
+    PostalMailResource,
+    AsyncPostalMailResource,
+    PostalMailResourceWithRawResponse,
+    AsyncPostalMailResourceWithRawResponse,
+    PostalMailResourceWithStreamingResponse,
+    AsyncPostalMailResourceWithStreamingResponse,
+)
 from .goal_targets.goal_targets import (
     GoalTargetsResource,
     AsyncGoalTargetsResource,
@@ -260,6 +252,14 @@ from .partner_clients.partner_clients import (
     AsyncPartnerClientsResourceWithRawResponse,
     PartnerClientsResourceWithStreamingResponse,
     AsyncPartnerClientsResourceWithStreamingResponse,
+)
+from .partner_services.partner_services import (
+    PartnerServicesResource,
+    AsyncPartnerServicesResource,
+    PartnerServicesResourceWithRawResponse,
+    AsyncPartnerServicesResourceWithRawResponse,
+    PartnerServicesResourceWithStreamingResponse,
+    AsyncPartnerServicesResourceWithStreamingResponse,
 )
 from .commerce_payments.commerce_payments import (
     CommercePaymentsResource,

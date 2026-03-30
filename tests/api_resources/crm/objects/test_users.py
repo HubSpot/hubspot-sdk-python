@@ -10,9 +10,8 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
-    BatchResponseSimplePublicObject,
+    SimplePublicObject,
     SimplePublicObjectWithAssociations,
-    BatchResponseSimplePublicUpsertObject,
     CollectionResponseWithTotalSimplePublicObject,
 )
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -27,78 +26,66 @@ class TestUsers:
     @parametrize
     def test_method_create(self, client: Hubspot) -> None:
         user = client.crm.objects.users.create(
-            inputs=[
+            associations=[
                 {
-                    "associations": [
+                    "to": {"id": "id"},
+                    "types": [
                         {
-                            "to": {"id": "id"},
-                            "types": [
-                                {
-                                    "association_category": "HUBSPOT_DEFINED",
-                                    "association_type_id": 0,
-                                }
-                            ],
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
                         }
                     ],
-                    "properties": {"foo": "string"},
                 }
             ],
+            properties={"foo": "string"},
         )
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObject, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.crm.objects.users.with_raw_response.create(
-            inputs=[
+            associations=[
                 {
-                    "associations": [
+                    "to": {"id": "id"},
+                    "types": [
                         {
-                            "to": {"id": "id"},
-                            "types": [
-                                {
-                                    "association_category": "HUBSPOT_DEFINED",
-                                    "association_type_id": 0,
-                                }
-                            ],
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
                         }
                     ],
-                    "properties": {"foo": "string"},
                 }
             ],
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         user = response.parse()
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObject, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.crm.objects.users.with_streaming_response.create(
-            inputs=[
+            associations=[
                 {
-                    "associations": [
+                    "to": {"id": "id"},
+                    "types": [
                         {
-                            "to": {"id": "id"},
-                            "types": [
-                                {
-                                    "association_category": "HUBSPOT_DEFINED",
-                                    "association_type_id": 0,
-                                }
-                            ],
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
                         }
                     ],
-                    "properties": {"foo": "string"},
                 }
             ],
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             user = response.parse()
-            assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+            assert_matches_type(SimplePublicObject, user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -106,50 +93,57 @@ class TestUsers:
     @parametrize
     def test_method_update(self, client: Hubspot) -> None:
         user = client.crm.objects.users.update(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
+            user_id="userId",
+            properties={"foo": "string"},
         )
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObject, user, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+        user = client.crm.objects.users.update(
+            user_id="userId",
+            properties={"foo": "string"},
+            id_property="idProperty",
+        )
+        assert_matches_type(SimplePublicObject, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.crm.objects.users.with_raw_response.update(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
+            user_id="userId",
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         user = response.parse()
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObject, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.crm.objects.users.with_streaming_response.update(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
+            user_id="userId",
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             user = response.parse()
-            assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+            assert_matches_type(SimplePublicObject, user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_update(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
+            client.crm.objects.users.with_raw_response.update(
+                user_id="",
+                properties={"foo": "string"},
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -196,7 +190,7 @@ class TestUsers:
     @parametrize
     def test_method_delete(self, client: Hubspot) -> None:
         user = client.crm.objects.users.delete(
-            inputs=[{"id": "430001"}],
+            "userId",
         )
         assert user is None
 
@@ -204,7 +198,7 @@ class TestUsers:
     @parametrize
     def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.crm.objects.users.with_raw_response.delete(
-            inputs=[{"id": "430001"}],
+            "userId",
         )
 
         assert response.is_closed is True
@@ -216,7 +210,7 @@ class TestUsers:
     @parametrize
     def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.crm.objects.users.with_streaming_response.delete(
-            inputs=[{"id": "430001"}],
+            "userId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -228,55 +222,66 @@ class TestUsers:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_path_params_delete(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
+            client.crm.objects.users.with_raw_response.delete(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_method_get(self, client: Hubspot) -> None:
         user = client.crm.objects.users.get(
-            inputs=[{"id": "430001"}],
-            properties=["string"],
-            properties_with_history=["string"],
+            user_id="userId",
         )
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObjectWithAssociations, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_with_all_params(self, client: Hubspot) -> None:
         user = client.crm.objects.users.get(
-            inputs=[{"id": "430001"}],
+            user_id="userId",
+            archived=True,
+            associations=["string"],
+            id_property="idProperty",
             properties=["string"],
             properties_with_history=["string"],
-            archived=True,
-            id_property="idProperty",
         )
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObjectWithAssociations, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.crm.objects.users.with_raw_response.get(
-            inputs=[{"id": "430001"}],
-            properties=["string"],
-            properties_with_history=["string"],
+            user_id="userId",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         user = response.parse()
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObjectWithAssociations, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.crm.objects.users.with_streaming_response.get(
-            inputs=[{"id": "430001"}],
-            properties=["string"],
-            properties_with_history=["string"],
+            user_id="userId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             user = response.parse()
-            assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+            assert_matches_type(SimplePublicObjectWithAssociations, user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_get(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
+            client.crm.objects.users.with_raw_response.get(
+                user_id="",
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -376,55 +381,6 @@ class TestUsers:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_upsert(self, client: Hubspot) -> None:
-        user = client.crm.objects.users.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-        assert_matches_type(BatchResponseSimplePublicUpsertObject, user, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_upsert(self, client: Hubspot) -> None:
-        response = client.crm.objects.users.with_raw_response.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        user = response.parse()
-        assert_matches_type(BatchResponseSimplePublicUpsertObject, user, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_upsert(self, client: Hubspot) -> None:
-        with client.crm.objects.users.with_streaming_response.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            user = response.parse()
-            assert_matches_type(BatchResponseSimplePublicUpsertObject, user, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
 
 class TestAsyncUsers:
     parametrize = pytest.mark.parametrize(
@@ -435,78 +391,66 @@ class TestAsyncUsers:
     @parametrize
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         user = await async_client.crm.objects.users.create(
-            inputs=[
+            associations=[
                 {
-                    "associations": [
+                    "to": {"id": "id"},
+                    "types": [
                         {
-                            "to": {"id": "id"},
-                            "types": [
-                                {
-                                    "association_category": "HUBSPOT_DEFINED",
-                                    "association_type_id": 0,
-                                }
-                            ],
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
                         }
                     ],
-                    "properties": {"foo": "string"},
                 }
             ],
+            properties={"foo": "string"},
         )
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObject, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.users.with_raw_response.create(
-            inputs=[
+            associations=[
                 {
-                    "associations": [
+                    "to": {"id": "id"},
+                    "types": [
                         {
-                            "to": {"id": "id"},
-                            "types": [
-                                {
-                                    "association_category": "HUBSPOT_DEFINED",
-                                    "association_type_id": 0,
-                                }
-                            ],
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
                         }
                     ],
-                    "properties": {"foo": "string"},
                 }
             ],
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         user = await response.parse()
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObject, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.users.with_streaming_response.create(
-            inputs=[
+            associations=[
                 {
-                    "associations": [
+                    "to": {"id": "id"},
+                    "types": [
                         {
-                            "to": {"id": "id"},
-                            "types": [
-                                {
-                                    "association_category": "HUBSPOT_DEFINED",
-                                    "association_type_id": 0,
-                                }
-                            ],
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
                         }
                     ],
-                    "properties": {"foo": "string"},
                 }
             ],
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             user = await response.parse()
-            assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+            assert_matches_type(SimplePublicObject, user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -514,50 +458,57 @@ class TestAsyncUsers:
     @parametrize
     async def test_method_update(self, async_client: AsyncHubspot) -> None:
         user = await async_client.crm.objects.users.update(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
+            user_id="userId",
+            properties={"foo": "string"},
         )
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObject, user, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+        user = await async_client.crm.objects.users.update(
+            user_id="userId",
+            properties={"foo": "string"},
+            id_property="idProperty",
+        )
+        assert_matches_type(SimplePublicObject, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.users.with_raw_response.update(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
+            user_id="userId",
+            properties={"foo": "string"},
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         user = await response.parse()
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObject, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.users.with_streaming_response.update(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
+            user_id="userId",
+            properties={"foo": "string"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             user = await response.parse()
-            assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+            assert_matches_type(SimplePublicObject, user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
+            await async_client.crm.objects.users.with_raw_response.update(
+                user_id="",
+                properties={"foo": "string"},
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -604,7 +555,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         user = await async_client.crm.objects.users.delete(
-            inputs=[{"id": "430001"}],
+            "userId",
         )
         assert user is None
 
@@ -612,7 +563,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.users.with_raw_response.delete(
-            inputs=[{"id": "430001"}],
+            "userId",
         )
 
         assert response.is_closed is True
@@ -624,7 +575,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.users.with_streaming_response.delete(
-            inputs=[{"id": "430001"}],
+            "userId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -636,55 +587,66 @@ class TestAsyncUsers:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
+            await async_client.crm.objects.users.with_raw_response.delete(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_method_get(self, async_client: AsyncHubspot) -> None:
         user = await async_client.crm.objects.users.get(
-            inputs=[{"id": "430001"}],
-            properties=["string"],
-            properties_with_history=["string"],
+            user_id="userId",
         )
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObjectWithAssociations, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
         user = await async_client.crm.objects.users.get(
-            inputs=[{"id": "430001"}],
+            user_id="userId",
+            archived=True,
+            associations=["string"],
+            id_property="idProperty",
             properties=["string"],
             properties_with_history=["string"],
-            archived=True,
-            id_property="idProperty",
         )
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObjectWithAssociations, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.objects.users.with_raw_response.get(
-            inputs=[{"id": "430001"}],
-            properties=["string"],
-            properties_with_history=["string"],
+            user_id="userId",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         user = await response.parse()
-        assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+        assert_matches_type(SimplePublicObjectWithAssociations, user, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.objects.users.with_streaming_response.get(
-            inputs=[{"id": "430001"}],
-            properties=["string"],
-            properties_with_history=["string"],
+            user_id="userId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             user = await response.parse()
-            assert_matches_type(BatchResponseSimplePublicObject, user, path=["response"])
+            assert_matches_type(SimplePublicObjectWithAssociations, user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
+            await async_client.crm.objects.users.with_raw_response.get(
+                user_id="",
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -781,54 +743,5 @@ class TestAsyncUsers:
 
             user = await response.parse()
             assert_matches_type(CollectionResponseWithTotalSimplePublicObject, user, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_upsert(self, async_client: AsyncHubspot) -> None:
-        user = await async_client.crm.objects.users.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-        assert_matches_type(BatchResponseSimplePublicUpsertObject, user, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_upsert(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.objects.users.with_raw_response.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        user = await response.parse()
-        assert_matches_type(BatchResponseSimplePublicUpsertObject, user, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_upsert(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.objects.users.with_streaming_response.upsert(
-            inputs=[
-                {
-                    "id": "id",
-                    "properties": {"foo": "string"},
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            user = await response.parse()
-            assert_matches_type(BatchResponseSimplePublicUpsertObject, user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
