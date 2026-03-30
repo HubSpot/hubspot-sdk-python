@@ -122,6 +122,8 @@ class DomainsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Domain:
         """
+        Returns a single domains with the id specified.
+
         Args:
           extra_headers: Send extra headers
 
@@ -239,6 +241,8 @@ class AsyncDomainsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Domain:
         """
+        Returns a single domains with the id specified.
+
         Args:
           extra_headers: Send extra headers
 

@@ -14,7 +14,11 @@ class PublicListConversionInactivity(BaseModel):
     """Specifies the type of conversion (INACTIVITY)."""
 
     offset: int
-    """The number of time units for the inactivity period."""
+    """Value used to paginate through lists.
+
+    The `offset` provided in the response can be used in the next request to fetch
+    the next page of results. Defaults to `0` if no offset is provided.
+    """
 
     time_unit: Literal["DAY", "MONTH", "WEEK"] = FieldInfo(alias="timeUnit")
     """The unit of time for the inactivity period, such as (DAY, MONTH, WEEK)."""

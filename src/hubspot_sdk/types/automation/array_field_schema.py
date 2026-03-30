@@ -43,5 +43,10 @@ else:
 
 class ArrayFieldSchema(BaseModel):
     items: Items
+    """
+    Defines the type of elements contained within the array, which can be an
+    integer, long, double, string, boolean, another array, or an object.
+    """
 
     type: Literal["ARRAY"]
+    """Specifies that the field is of type 'ARRAY'."""

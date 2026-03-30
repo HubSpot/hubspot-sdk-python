@@ -34,7 +34,7 @@ class ContentSearchResult(BaseModel):
     """Name of the author."""
 
     category: Optional[str] = None
-    """For knowledge articles, the category of the article."""
+    """The error category"""
 
     combined_id: Optional[str] = FieldInfo(alias="combinedId", default=None)
     """The ID of the document in HubSpot."""

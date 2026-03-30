@@ -21,6 +21,7 @@ class ActionUpdateParams(TypedDict, total=False):
     app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     action_url: Annotated[str, PropertyInfo(alias="actionUrl")]
+    """The URL endpoint where the action is executed."""
 
     execution_rules: Annotated[Iterable[PublicExecutionTranslationRuleParam], PropertyInfo(alias="executionRules")]
 
@@ -29,6 +30,7 @@ class ActionUpdateParams(TypedDict, total=False):
     input_fields: Annotated[Iterable[PublicInputFieldDefinitionParam], PropertyInfo(alias="inputFields")]
 
     labels: Dict[str, PublicActionLabelsParam]
+    """Contains labels for the action, including names and descriptions."""
 
     object_request_options: Annotated[PublicObjectRequestOptionsParam, PropertyInfo(alias="objectRequestOptions")]
 
@@ -37,6 +39,7 @@ class ActionUpdateParams(TypedDict, total=False):
     output_fields: Annotated[Iterable["OutputFieldDefinitionParam"], PropertyInfo(alias="outputFields")]
 
     published: bool
+    """Indicates whether the action is published and available for use."""
 
 
 InputFieldDependency: TypeAlias = Union[PublicSingleFieldDependencyParam, PublicConditionalSingleFieldDependencyParam]

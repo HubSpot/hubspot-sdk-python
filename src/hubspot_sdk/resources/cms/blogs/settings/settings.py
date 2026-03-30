@@ -79,7 +79,11 @@ class SettingsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Blog]:
-        """
+        """Get the list of blogs.
+
+        Results can be limited and filtered by creation or
+        updated date.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -136,6 +140,8 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Blog:
         """
+        Retrieve a specific blog by its ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -168,6 +174,8 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BlogVersion:
         """
+        Get a specific blog revision.
+
         Args:
           extra_headers: Send extra headers
 
@@ -207,7 +215,11 @@ class SettingsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[VersionBlog]:
-        """
+        """Get the list of blog revisions.
+
+        Results can be limited and filtered by creation
+        or updated date.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -290,7 +302,11 @@ class AsyncSettingsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Blog, AsyncPage[Blog]]:
-        """
+        """Get the list of blogs.
+
+        Results can be limited and filtered by creation or
+        updated date.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -347,6 +363,8 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Blog:
         """
+        Retrieve a specific blog by its ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -379,6 +397,8 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BlogVersion:
         """
+        Get a specific blog revision.
+
         Args:
           extra_headers: Send extra headers
 
@@ -418,7 +438,11 @@ class AsyncSettingsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[VersionBlog, AsyncPage[VersionBlog]]:
-        """
+        """Get the list of blog revisions.
+
+        Results can be limited and filtered by creation
+        or updated date.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more

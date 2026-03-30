@@ -12,7 +12,10 @@ from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     ReportCreationResponse,
     LabelsBetweenObjectPair,
+    MultiAssociatedObjectWithLabel,
+    CollectionResponseWithTotalSimplePublicObject,
 )
+from hubspot_sdk.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,8 +25,84 @@ class TestAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_associations(self, client: Hubspot) -> None:
-        association = client.crm.associations.delete_associations(
+    def test_method_list(self, client: Hubspot) -> None:
+        association = client.crm.associations.list(
+            to_object_type="toObjectType",
+            object_type="objectType",
+            object_id="objectId",
+        )
+        assert_matches_type(SyncPage[MultiAssociatedObjectWithLabel], association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+        association = client.crm.associations.list(
+            to_object_type="toObjectType",
+            object_type="objectType",
+            object_id="objectId",
+            after="after",
+            limit=0,
+        )
+        assert_matches_type(SyncPage[MultiAssociatedObjectWithLabel], association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_list(self, client: Hubspot) -> None:
+        response = client.crm.associations.with_raw_response.list(
+            to_object_type="toObjectType",
+            object_type="objectType",
+            object_id="objectId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        association = response.parse()
+        assert_matches_type(SyncPage[MultiAssociatedObjectWithLabel], association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_list(self, client: Hubspot) -> None:
+        with client.crm.associations.with_streaming_response.list(
+            to_object_type="toObjectType",
+            object_type="objectType",
+            object_id="objectId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            association = response.parse()
+            assert_matches_type(SyncPage[MultiAssociatedObjectWithLabel], association, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_list(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            client.crm.associations.with_raw_response.list(
+                to_object_type="toObjectType",
+                object_type="",
+                object_id="objectId",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
+            client.crm.associations.with_raw_response.list(
+                to_object_type="toObjectType",
+                object_type="objectType",
+                object_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
+            client.crm.associations.with_raw_response.list(
+                to_object_type="",
+                object_type="objectType",
+                object_id="objectId",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete(self, client: Hubspot) -> None:
+        association = client.crm.associations.delete(
             to_object_id="toObjectId",
             object_type="objectType",
             object_id="objectId",
@@ -33,8 +112,8 @@ class TestAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_associations(self, client: Hubspot) -> None:
-        response = client.crm.associations.with_raw_response.delete_associations(
+    def test_raw_response_delete(self, client: Hubspot) -> None:
+        response = client.crm.associations.with_raw_response.delete(
             to_object_id="toObjectId",
             object_type="objectType",
             object_id="objectId",
@@ -48,8 +127,8 @@ class TestAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_associations(self, client: Hubspot) -> None:
-        with client.crm.associations.with_streaming_response.delete_associations(
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
+        with client.crm.associations.with_streaming_response.delete(
             to_object_id="toObjectId",
             object_type="objectType",
             object_id="objectId",
@@ -65,9 +144,9 @@ class TestAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_associations(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
-            client.crm.associations.with_raw_response.delete_associations(
+            client.crm.associations.with_raw_response.delete(
                 to_object_id="toObjectId",
                 object_type="",
                 object_id="objectId",
@@ -75,7 +154,7 @@ class TestAssociations:
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            client.crm.associations.with_raw_response.delete_associations(
+            client.crm.associations.with_raw_response.delete(
                 to_object_id="toObjectId",
                 object_type="objectType",
                 object_id="",
@@ -83,7 +162,7 @@ class TestAssociations:
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
-            client.crm.associations.with_raw_response.delete_associations(
+            client.crm.associations.with_raw_response.delete(
                 to_object_id="toObjectId",
                 object_type="objectType",
                 object_id="objectId",
@@ -91,7 +170,7 @@ class TestAssociations:
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_id` but received ''"):
-            client.crm.associations.with_raw_response.delete_associations(
+            client.crm.associations.with_raw_response.delete(
                 to_object_id="",
                 object_type="objectType",
                 object_id="objectId",
@@ -131,6 +210,130 @@ class TestAssociations:
             assert_matches_type(ReportCreationResponse, association, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_search(self, client: Hubspot) -> None:
+        association = client.crm.associations.search(
+            object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "BETWEEN",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        )
+        assert_matches_type(CollectionResponseWithTotalSimplePublicObject, association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_search_with_all_params(self, client: Hubspot) -> None:
+        association = client.crm.associations.search(
+            object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "BETWEEN",
+                            "property_name": "propertyName",
+                            "high_value": "highValue",
+                            "value": "value",
+                            "values": ["string"],
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+            query="query",
+        )
+        assert_matches_type(CollectionResponseWithTotalSimplePublicObject, association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_search(self, client: Hubspot) -> None:
+        response = client.crm.associations.with_raw_response.search(
+            object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "BETWEEN",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        association = response.parse()
+        assert_matches_type(CollectionResponseWithTotalSimplePublicObject, association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_search(self, client: Hubspot) -> None:
+        with client.crm.associations.with_streaming_response.search(
+            object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "BETWEEN",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            association = response.parse()
+            assert_matches_type(CollectionResponseWithTotalSimplePublicObject, association, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_search(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            client.crm.associations.with_raw_response.search(
+                object_type="",
+                after="after",
+                filter_groups=[
+                    {
+                        "filters": [
+                            {
+                                "operator": "BETWEEN",
+                                "property_name": "propertyName",
+                            }
+                        ]
+                    }
+                ],
+                limit=0,
+                properties=["string"],
+                sorts=["string"],
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -260,8 +463,84 @@ class TestAsyncAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_associations(self, async_client: AsyncHubspot) -> None:
-        association = await async_client.crm.associations.delete_associations(
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+        association = await async_client.crm.associations.list(
+            to_object_type="toObjectType",
+            object_type="objectType",
+            object_id="objectId",
+        )
+        assert_matches_type(AsyncPage[MultiAssociatedObjectWithLabel], association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+        association = await async_client.crm.associations.list(
+            to_object_type="toObjectType",
+            object_type="objectType",
+            object_id="objectId",
+            after="after",
+            limit=0,
+        )
+        assert_matches_type(AsyncPage[MultiAssociatedObjectWithLabel], association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.associations.with_raw_response.list(
+            to_object_type="toObjectType",
+            object_type="objectType",
+            object_id="objectId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        association = await response.parse()
+        assert_matches_type(AsyncPage[MultiAssociatedObjectWithLabel], association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.associations.with_streaming_response.list(
+            to_object_type="toObjectType",
+            object_type="objectType",
+            object_id="objectId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            association = await response.parse()
+            assert_matches_type(AsyncPage[MultiAssociatedObjectWithLabel], association, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            await async_client.crm.associations.with_raw_response.list(
+                to_object_type="toObjectType",
+                object_type="",
+                object_id="objectId",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
+            await async_client.crm.associations.with_raw_response.list(
+                to_object_type="toObjectType",
+                object_type="objectType",
+                object_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
+            await async_client.crm.associations.with_raw_response.list(
+                to_object_type="",
+                object_type="objectType",
+                object_id="objectId",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+        association = await async_client.crm.associations.delete(
             to_object_id="toObjectId",
             object_type="objectType",
             object_id="objectId",
@@ -271,8 +550,8 @@ class TestAsyncAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_associations(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.associations.with_raw_response.delete_associations(
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.associations.with_raw_response.delete(
             to_object_id="toObjectId",
             object_type="objectType",
             object_id="objectId",
@@ -286,8 +565,8 @@ class TestAsyncAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_associations(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.associations.with_streaming_response.delete_associations(
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.associations.with_streaming_response.delete(
             to_object_id="toObjectId",
             object_type="objectType",
             object_id="objectId",
@@ -303,9 +582,9 @@ class TestAsyncAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_associations(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
-            await async_client.crm.associations.with_raw_response.delete_associations(
+            await async_client.crm.associations.with_raw_response.delete(
                 to_object_id="toObjectId",
                 object_type="",
                 object_id="objectId",
@@ -313,7 +592,7 @@ class TestAsyncAssociations:
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            await async_client.crm.associations.with_raw_response.delete_associations(
+            await async_client.crm.associations.with_raw_response.delete(
                 to_object_id="toObjectId",
                 object_type="objectType",
                 object_id="",
@@ -321,7 +600,7 @@ class TestAsyncAssociations:
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
-            await async_client.crm.associations.with_raw_response.delete_associations(
+            await async_client.crm.associations.with_raw_response.delete(
                 to_object_id="toObjectId",
                 object_type="objectType",
                 object_id="objectId",
@@ -329,7 +608,7 @@ class TestAsyncAssociations:
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_id` but received ''"):
-            await async_client.crm.associations.with_raw_response.delete_associations(
+            await async_client.crm.associations.with_raw_response.delete(
                 to_object_id="",
                 object_type="objectType",
                 object_id="objectId",
@@ -369,6 +648,130 @@ class TestAsyncAssociations:
             assert_matches_type(ReportCreationResponse, association, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_search(self, async_client: AsyncHubspot) -> None:
+        association = await async_client.crm.associations.search(
+            object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "BETWEEN",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        )
+        assert_matches_type(CollectionResponseWithTotalSimplePublicObject, association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
+        association = await async_client.crm.associations.search(
+            object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "BETWEEN",
+                            "property_name": "propertyName",
+                            "high_value": "highValue",
+                            "value": "value",
+                            "values": ["string"],
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+            query="query",
+        )
+        assert_matches_type(CollectionResponseWithTotalSimplePublicObject, association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.associations.with_raw_response.search(
+            object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "BETWEEN",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        association = await response.parse()
+        assert_matches_type(CollectionResponseWithTotalSimplePublicObject, association, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.associations.with_streaming_response.search(
+            object_type="objectType",
+            after="after",
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "operator": "BETWEEN",
+                            "property_name": "propertyName",
+                        }
+                    ]
+                }
+            ],
+            limit=0,
+            properties=["string"],
+            sorts=["string"],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            association = await response.parse()
+            assert_matches_type(CollectionResponseWithTotalSimplePublicObject, association, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_search(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
+            await async_client.crm.associations.with_raw_response.search(
+                object_type="",
+                after="after",
+                filter_groups=[
+                    {
+                        "filters": [
+                            {
+                                "operator": "BETWEEN",
+                                "property_name": "propertyName",
+                            }
+                        ]
+                    }
+                ],
+                limit=0,
+                properties=["string"],
+                sorts=["string"],
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

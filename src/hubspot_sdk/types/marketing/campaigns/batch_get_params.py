@@ -20,10 +20,7 @@ class BatchGetParams(TypedDict, total=False):
     """
 
     end_date: Annotated[str, PropertyInfo(alias="endDate")]
-    """The end date for filtering campaigns, in YYYY-MM-DD format."""
 
     properties: SequenceNotStr[str]
-    """A comma-separated list of property names to include in the response."""
 
     start_date: Annotated[str, PropertyInfo(alias="startDate")]
-    """The start date for filtering campaigns, in YYYY-MM-DD format."""

@@ -67,15 +67,11 @@ class SequencesResource(SyncAPIResource):
         effectively.
 
         Args:
-          user_id: The unique identifier of the user whose sequences are to be retrieved. This
-              parameter is required.
-
-          after: The paging cursor token of the last successfully read resource. Use this for
-              pagination to retrieve the next set of results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
           limit: The maximum number of results to display per page.
-
-          name: The name of the sequence to filter results by.
 
           extra_headers: Send extra headers
 
@@ -122,16 +118,10 @@ class SequencesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSequenceEnrollmentLiteResponse:
         """
-        Enroll a contact into a sequence using the specified sequence ID and sender
-        email. This endpoint requires the user ID to be provided as a query parameter
-        and a valid JSON body with the necessary enrollment details. It is used to
-        automate the process of enrolling contacts into predefined sequences for
-        streamlined communication.
+        Enroll a contact into a sequence using the specified user ID and sequence
+        details.
 
         Args:
-          user_id: The unique identifier of the user performing the enrollment. This parameter is
-              required.
-
           contact_id: The unique identifier of the contact to be enrolled in the sequence.
 
           sender_email: The email address of the sender enrolling the contact in the sequence.
@@ -184,15 +174,9 @@ class SequencesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSequenceResponse:
         """
-        Retrieve details of a specific sequence in your HubSpot account using the
-        sequence ID. This endpoint requires the user ID to be specified and provides
-        comprehensive information about the sequence, including its steps and
-        dependencies.
+        Retrieve details of a specific sequence by its ID.
 
         Args:
-          user_id: The unique identifier of the user requesting the sequence details. This
-              parameter is required.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -227,10 +211,7 @@ class SequencesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSequenceEnrollmentResponse:
         """
-        Retrieve the sequence enrollment details for a specific contact in your HubSpot
-        account. This endpoint provides information about the sequence a contact is
-        enrolled in, including enrollment timestamps and the sequence's name. It is
-        useful for tracking the progress and status of a contact within a sequence.
+        Get the enrollment status of a contact in sequences by their contact ID.
 
         Args:
           extra_headers: Send extra headers
@@ -294,15 +275,11 @@ class AsyncSequencesResource(AsyncAPIResource):
         effectively.
 
         Args:
-          user_id: The unique identifier of the user whose sequences are to be retrieved. This
-              parameter is required.
-
-          after: The paging cursor token of the last successfully read resource. Use this for
-              pagination to retrieve the next set of results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
           limit: The maximum number of results to display per page.
-
-          name: The name of the sequence to filter results by.
 
           extra_headers: Send extra headers
 
@@ -349,16 +326,10 @@ class AsyncSequencesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSequenceEnrollmentLiteResponse:
         """
-        Enroll a contact into a sequence using the specified sequence ID and sender
-        email. This endpoint requires the user ID to be provided as a query parameter
-        and a valid JSON body with the necessary enrollment details. It is used to
-        automate the process of enrolling contacts into predefined sequences for
-        streamlined communication.
+        Enroll a contact into a sequence using the specified user ID and sequence
+        details.
 
         Args:
-          user_id: The unique identifier of the user performing the enrollment. This parameter is
-              required.
-
           contact_id: The unique identifier of the contact to be enrolled in the sequence.
 
           sender_email: The email address of the sender enrolling the contact in the sequence.
@@ -411,15 +382,9 @@ class AsyncSequencesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSequenceResponse:
         """
-        Retrieve details of a specific sequence in your HubSpot account using the
-        sequence ID. This endpoint requires the user ID to be specified and provides
-        comprehensive information about the sequence, including its steps and
-        dependencies.
+        Retrieve details of a specific sequence by its ID.
 
         Args:
-          user_id: The unique identifier of the user requesting the sequence details. This
-              parameter is required.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -454,10 +419,7 @@ class AsyncSequencesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSequenceEnrollmentResponse:
         """
-        Retrieve the sequence enrollment details for a specific contact in your HubSpot
-        account. This endpoint provides information about the sequence a contact is
-        enrolled in, including enrollment timestamps and the sequence's name. It is
-        useful for tracking the progress and status of a contact within a sequence.
+        Get the enrollment status of a contact in sequences by their contact ID.
 
         Args:
           extra_headers: Send extra headers

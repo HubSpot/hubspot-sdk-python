@@ -176,8 +176,10 @@ class CoursesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
-        """
-        Retrieve all courses.
+        """Read a page of courses.
+
+        Control what is returned via the `properties` query
+        param.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -243,7 +245,7 @@ class CoursesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a course by ID.
+        Move an Object identified by `{courseId}` to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -529,8 +531,10 @@ class AsyncCoursesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
-        """
-        Retrieve all courses.
+        """Read a page of courses.
+
+        Control what is returned via the `properties` query
+        param.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -596,7 +600,7 @@ class AsyncCoursesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a course by ID.
+        Move an Object identified by `{courseId}` to the recycling bin.
 
         Args:
           extra_headers: Send extra headers

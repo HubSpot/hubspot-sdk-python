@@ -1762,6 +1762,8 @@ class MultiLanguageResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Attach a blog to a multi-language group.
+
         Args:
           id: ID of the object to add to a multi-language group.
 
@@ -1812,7 +1814,17 @@ class MultiLanguageResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Blog:
         """
+        Create a new language variation from an existing blog.
+
         Args:
+          id: ID of blog to clone.
+
+          language: Target language of new variant.
+
+          primary_language: Language of primary blog to clone.
+
+          slug: Path to this blog.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1850,6 +1862,8 @@ class MultiLanguageResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Detaches a blog from a multi-language group.
+
         Args:
           id: ID of the object to remove from a multi-language group.
 
@@ -1885,6 +1899,8 @@ class MultiLanguageResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Set a blog as the primary language of a multi-language group.
+
         Args:
           id: ID of object to set as primary in multi-language group.
 
@@ -2768,6 +2784,8 @@ class MultiLanguageResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Explicitly set new languages for each blog in a multi-language group.
+
         Args:
           languages: Map of object IDs to associated languages of object in the multi-language group.
 
@@ -4522,6 +4540,8 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Attach a blog to a multi-language group.
+
         Args:
           id: ID of the object to add to a multi-language group.
 
@@ -4572,7 +4592,17 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Blog:
         """
+        Create a new language variation from an existing blog.
+
         Args:
+          id: ID of blog to clone.
+
+          language: Target language of new variant.
+
+          primary_language: Language of primary blog to clone.
+
+          slug: Path to this blog.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -4610,6 +4640,8 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Detaches a blog from a multi-language group.
+
         Args:
           id: ID of the object to remove from a multi-language group.
 
@@ -4645,6 +4677,8 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Set a blog as the primary language of a multi-language group.
+
         Args:
           id: ID of object to set as primary in multi-language group.
 
@@ -5528,6 +5562,8 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Explicitly set new languages for each blog in a multi-language group.
+
         Args:
           languages: Map of object IDs to associated languages of object in the multi-language group.
 

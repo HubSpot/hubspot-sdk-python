@@ -9,3 +9,4 @@ __all__ = ["PublicActionDefinitionRequiresObjectResponse"]
 
 class PublicActionDefinitionRequiresObjectResponse(BaseModel):
     requires_object: bool = FieldInfo(alias="requiresObject")
+    """Indicates whether a custom action definition requires an object."""

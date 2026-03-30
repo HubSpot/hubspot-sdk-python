@@ -13,3 +13,4 @@ class ActionCreateRequiresObjectParams(TypedDict, total=False):
     app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     requires_object: Required[Annotated[bool, PropertyInfo(alias="requiresObject")]]
+    """Indicates whether a custom action definition requires an associated object."""

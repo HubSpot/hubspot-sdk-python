@@ -26,4 +26,4 @@ class ErrorDetail(BaseModel):
     """The name of the field or parameter in which the error was found."""
 
     sub_category: Optional[str] = FieldInfo(alias="subCategory", default=None)
-    """A specific category that contains more specific detail about the error."""
+    """A specific category that contains more specific detail about the error"""

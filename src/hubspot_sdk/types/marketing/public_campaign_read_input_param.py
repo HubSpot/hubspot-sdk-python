@@ -9,4 +9,4 @@ __all__ = ["PublicCampaignReadInputParam"]
 
 class PublicCampaignReadInputParam(TypedDict, total=False):
     id: Required[str]
-    """The unique identifier for the campaign, represented as a string."""
+    """The unique identifier for a campaign."""

@@ -13,21 +13,25 @@ __all__ = ["Blog"]
 
 class Blog(BaseModel):
     id: str
+    """The unique ID of the Blog."""
 
     absolute_url: str = FieldInfo(alias="absoluteUrl")
     """Blog's root URL"""
 
     allow_comments: bool = FieldInfo(alias="allowComments")
+    """Boolean determining whether or not this blog allows public comments."""
 
     created: datetime
     """The timestamp (ISO8601 format) when this blog was created."""
 
     deleted_at: datetime = FieldInfo(alias="deletedAt")
-    """The timestamp (ISO8601 format) when this blog was deleted."""
+    """The timestamp (ISO8601 format) when this Blog was deleted."""
 
     description: str
+    """The Description of this Blog."""
 
     html_title: str = FieldInfo(alias="htmlTitle")
+    """The html title of this Blog."""
 
     language: Literal[
         "aa",
@@ -874,20 +878,33 @@ class Blog(BaseModel):
         "zu",
         "zu-za",
     ]
+    """The explicitly defined language of the Blog.
+
+    If null, the Blog will default to the language of the Domain.
+    """
 
     listing_page_id: str = FieldInfo(alias="listingPageId")
 
     name: str
+    """The internal name of the blog."""
 
     public_access_rules: List[object] = FieldInfo(alias="publicAccessRules")
+    """Rules for require member registration to access private content."""
 
     public_access_rules_enabled: bool = FieldInfo(alias="publicAccessRulesEnabled")
+    """Boolean to determine whether or not to respect publicAccessRules."""
 
     public_title: str = FieldInfo(alias="publicTitle")
+    """The public title of this Blog."""
 
     slug: str
+    """The path of the this blog.
+
+    This field is appended to the domain to construct the url of this blog.
+    """
 
     translated_from_id: str = FieldInfo(alias="translatedFromId")
+    """ID of the primary Blog this object was translated from."""
 
     updated: datetime
     """The timestamp (ISO8601 format) when this blog was updated."""

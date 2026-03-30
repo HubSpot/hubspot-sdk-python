@@ -56,6 +56,14 @@ from .objects import (
     ObjectsResourceWithStreamingResponse,
     AsyncObjectsResourceWithStreamingResponse,
 )
+from .timeline import (
+    TimelineResource,
+    AsyncTimelineResource,
+    TimelineResourceWithRawResponse,
+    AsyncTimelineResourceWithRawResponse,
+    TimelineResourceWithStreamingResponse,
+    AsyncTimelineResourceWithStreamingResponse,
+)
 from .pipelines import (
     PipelinesResource,
     AsyncPipelinesResource,
@@ -95,6 +103,14 @@ from .associations import (
     AsyncAssociationsResourceWithRawResponse,
     AssociationsResourceWithStreamingResponse,
     AsyncAssociationsResourceWithStreamingResponse,
+)
+from .feature_flags import (
+    FeatureFlagsResource,
+    AsyncFeatureFlagsResource,
+    FeatureFlagsResourceWithRawResponse,
+    AsyncFeatureFlagsResourceWithRawResponse,
+    FeatureFlagsResourceWithStreamingResponse,
+    AsyncFeatureFlagsResourceWithStreamingResponse,
 )
 from .app_uninstalls import (
     AppUninstallsResource,
@@ -174,6 +190,12 @@ __all__ = [
     "AsyncExtensionsResourceWithRawResponse",
     "ExtensionsResourceWithStreamingResponse",
     "AsyncExtensionsResourceWithStreamingResponse",
+    "FeatureFlagsResource",
+    "AsyncFeatureFlagsResource",
+    "FeatureFlagsResourceWithRawResponse",
+    "AsyncFeatureFlagsResourceWithRawResponse",
+    "FeatureFlagsResourceWithStreamingResponse",
+    "AsyncFeatureFlagsResourceWithStreamingResponse",
     "ImportsResource",
     "AsyncImportsResource",
     "ImportsResourceWithRawResponse",
@@ -234,6 +256,12 @@ __all__ = [
     "AsyncPropertiesValidationsResourceWithRawResponse",
     "PropertiesValidationsResourceWithStreamingResponse",
     "AsyncPropertiesValidationsResourceWithStreamingResponse",
+    "TimelineResource",
+    "AsyncTimelineResource",
+    "TimelineResourceWithRawResponse",
+    "AsyncTimelineResourceWithRawResponse",
+    "TimelineResourceWithStreamingResponse",
+    "AsyncTimelineResourceWithStreamingResponse",
     "CrmResource",
     "AsyncCrmResource",
     "CrmResourceWithRawResponse",

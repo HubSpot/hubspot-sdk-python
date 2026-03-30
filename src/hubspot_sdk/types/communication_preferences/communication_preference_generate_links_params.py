@@ -11,7 +11,6 @@ __all__ = ["CommunicationPreferenceGenerateLinksParams"]
 
 class CommunicationPreferenceGenerateLinksParams(TypedDict, total=False):
     channel: Required[Literal["EMAIL"]]
-    """The communication channel for which the links are generated. Must be 'EMAIL'."""
 
     subscriber_id_string: Required[Annotated[str, PropertyInfo(alias="subscriberIdString")]]
     """A string representing the unique identifier of the subscriber.
@@ -20,7 +19,6 @@ class CommunicationPreferenceGenerateLinksParams(TypedDict, total=False):
     """
 
     business_unit_id: Annotated[int, PropertyInfo(alias="businessUnitId")]
-    """The ID of the business unit associated with the request. Defaults to 0."""
 
     language: str
     """

@@ -15,6 +15,10 @@ __all__ = ["ObjectSchemaCreateParams"]
 
 class ObjectSchemaCreateParams(TypedDict, total=False):
     allows_sensitive_properties: Required[Annotated[bool, PropertyInfo(alias="allowsSensitiveProperties")]]
+    """
+    Determines if the object type can include properties that are marked as
+    sensitive.
+    """
 
     associated_objects: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="associatedObjects")]]
     """Associations defined for this object type."""
@@ -49,6 +53,7 @@ class ObjectSchemaCreateParams(TypedDict, total=False):
     """
 
     description: str
+    """A brief explanation of the object type."""
 
     primary_display_property: Annotated[str, PropertyInfo(alias="primaryDisplayProperty")]
     """The name of the primary property for this object.

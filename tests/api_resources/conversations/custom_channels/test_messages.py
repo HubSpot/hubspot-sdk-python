@@ -73,6 +73,7 @@ class TestMessages:
                         "value": "value",
                     },
                     "name": "name",
+                    "sender_actor_id": "senderActorId",
                 }
             ],
             senders=[
@@ -82,6 +83,7 @@ class TestMessages:
                         "value": "value",
                     },
                     "name": "name",
+                    "sender_actor_id": "senderActorId",
                 }
             ],
             text="text",
@@ -348,6 +350,7 @@ class TestAsyncMessages:
                         "value": "value",
                     },
                     "name": "name",
+                    "sender_actor_id": "senderActorId",
                 }
             ],
             senders=[
@@ -357,6 +360,7 @@ class TestAsyncMessages:
                         "value": "value",
                     },
                     "name": "name",
+                    "sender_actor_id": "senderActorId",
                 }
             ],
             text="text",

@@ -11,7 +11,10 @@ __all__ = ["ContactIDParam"]
 
 class ContactIDParam(TypedDict, total=False):
     portal_id: Required[Annotated[int, PropertyInfo(alias="portalId")]]
+    """The ID of the portal associated with the contact."""
 
     email: str
+    """The email address of the contact."""
 
     vid: int
+    """The unique identifier for the contact."""

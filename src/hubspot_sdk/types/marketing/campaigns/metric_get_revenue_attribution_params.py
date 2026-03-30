@@ -11,10 +11,9 @@ __all__ = ["MetricGetRevenueAttributionParams"]
 
 class MetricGetRevenueAttributionParams(TypedDict, total=False):
     attribution_model: Annotated[str, PropertyInfo(alias="attributionModel")]
-    """The model used to attribute revenue to the campaign."""
 
     end_date: Annotated[str, PropertyInfo(alias="endDate")]
-    """End date to fetch attribution data, YYYY-MM-DD."""
+    """End date to fetch attribution data, YYYY-MM-DD"""
 
     start_date: Annotated[str, PropertyInfo(alias="startDate")]
-    """Start date to fetch attribution data, YYYY-MM-DD."""
+    """Start date to fetch attribution data, YYYY-MM-DD"""

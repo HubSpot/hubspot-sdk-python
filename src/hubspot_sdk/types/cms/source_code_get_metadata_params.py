@@ -11,7 +11,3 @@ class SourceCodeGetMetadataParams(TypedDict, total=False):
     environment: Required[str]
 
     properties: str
-    """
-    A comma-separated list of specific metadata properties to include in the
-    response.
-    """

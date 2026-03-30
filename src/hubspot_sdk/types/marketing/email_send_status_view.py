@@ -25,6 +25,10 @@ class EmailSendStatusView(BaseModel):
     event_id: Optional[EventIDView] = FieldInfo(alias="eventId", default=None)
 
     message: Optional[str] = None
+    """
+    A human readable message describing the error along with remediation steps where
+    appropriate
+    """
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """Time when the send was requested."""

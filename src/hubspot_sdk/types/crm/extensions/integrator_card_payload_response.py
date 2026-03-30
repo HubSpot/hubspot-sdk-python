@@ -20,18 +20,19 @@ class IntegratorCardPayloadResponse(BaseModel):
     """A list of up to five valid card sub categories."""
 
     total_count: int = FieldInfo(alias="totalCount")
-    """The total number of cards that are sent in this response."""
+    """The total number of card properties that will be sent in this response."""
 
     all_items_link_url: Optional[str] = FieldInfo(alias="allItemsLinkUrl", default=None)
-    """
-    URL to a page the integrator has built that displays all details for the object
-    cards. This URL will be displayed to users on the title of the card.
+    """URL to a page the integrator has built that displays all details for this card.
+
+    This URL will be displayed to users under a `See more [x]` link if there are
+    more than five items in your response, where `[x]` is the value of `itemLabel`.
     """
 
     card_label: Optional[str] = FieldInfo(alias="cardLabel", default=None)
     """The label to be used for the `allItemsLinkUrl` link (e.g.
 
-    'See more tickets') and the title of the card.
+    'See more tickets'). If not provided, this falls back to the card's title.
     """
 
     top_level_actions: Optional[TopLevelActions] = FieldInfo(alias="topLevelActions", default=None)

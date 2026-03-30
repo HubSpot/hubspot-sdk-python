@@ -58,6 +58,8 @@ class VideoConferencingResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalSettings:
         """
+        Create or update video conference extension settings for your app
+
         Args:
           extra_headers: Send extra headers
 
@@ -97,6 +99,8 @@ class VideoConferencingResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete video conference extension settings for your app
+
         Args:
           extra_headers: Send extra headers
 
@@ -127,6 +131,8 @@ class VideoConferencingResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalSettings:
         """
+        Fetch video conference extension settings for your app
+
         Args:
           extra_headers: Send extra headers
 
@@ -182,6 +188,8 @@ class AsyncVideoConferencingResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalSettings:
         """
+        Create or update video conference extension settings for your app
+
         Args:
           extra_headers: Send extra headers
 
@@ -221,6 +229,8 @@ class AsyncVideoConferencingResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete video conference extension settings for your app
+
         Args:
           extra_headers: Send extra headers
 
@@ -251,6 +261,8 @@ class AsyncVideoConferencingResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalSettings:
         """
+        Fetch video conference extension settings for your app
+
         Args:
           extra_headers: Send extra headers
 

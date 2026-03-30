@@ -57,6 +57,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseDealToDealSplits:
         """
+        Read a batch of deal split objects by their associated deal object internal ID
+
         Args:
           inputs: An array of deal split inputs
 
@@ -88,7 +90,12 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseDealToDealSplits:
-        """
+        """Create or replace deal splits for deals with the provided IDs.
+
+        Deal split
+        percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal
+        places
+
         Args:
           inputs: An array of deal split inputs
 
@@ -142,6 +149,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseDealToDealSplits:
         """
+        Read a batch of deal split objects by their associated deal object internal ID
+
         Args:
           inputs: An array of deal split inputs
 
@@ -173,7 +182,12 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseDealToDealSplits:
-        """
+        """Create or replace deal splits for deals with the provided IDs.
+
+        Deal split
+        percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal
+        places
+
         Args:
           inputs: An array of deal split inputs
 

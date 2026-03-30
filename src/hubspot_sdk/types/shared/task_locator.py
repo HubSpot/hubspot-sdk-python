@@ -12,4 +12,7 @@ class TaskLocator(BaseModel):
     """The unique identifier for the task."""
 
     links: Optional[Dict[str, str]] = None
-    """A collection of link names mapped to their corresponding URIs."""
+    """
+    A map of link names to associated URIs containing documentation about the error
+    or recommended remediation steps
+    """

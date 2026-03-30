@@ -18,6 +18,7 @@ from hubspot_sdk._response import (
     StreamedBinaryAPIResponse,
     AsyncStreamedBinaryAPIResponse,
 )
+from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.marketing import (
     MarketingEventDefaultResponse,
     MarketingEventPublicReadResponse,
@@ -361,6 +362,43 @@ class TestEvents:
                     }
                 ],
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list(self, client: Hubspot) -> None:
+        event = client.marketing.events.list()
+        assert_matches_type(SyncPage[MarketingEventPublicReadResponseV2], event, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+        event = client.marketing.events.list(
+            after="after",
+            limit=0,
+        )
+        assert_matches_type(SyncPage[MarketingEventPublicReadResponseV2], event, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_list(self, client: Hubspot) -> None:
+        response = client.marketing.events.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
+        assert_matches_type(SyncPage[MarketingEventPublicReadResponseV2], event, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_list(self, client: Hubspot) -> None:
+        with client.marketing.events.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event = response.parse()
+            assert_matches_type(SyncPage[MarketingEventPublicReadResponseV2], event, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1342,223 +1380,6 @@ class TestEvents:
                 body_external_event_id="externalEventId",
             )
 
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_upsert_subscriber_state_by_email(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        event = client.marketing.events.upsert_subscriber_state_by_email(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "contact_properties": {"foo": "string"},
-                    "email": "email",
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-        assert event.is_closed
-        assert event.json() == {"foo": "bar"}
-        assert cast(Any, event.is_closed) is True
-        assert isinstance(event, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_upsert_subscriber_state_by_email(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        event = client.marketing.events.with_raw_response.upsert_subscriber_state_by_email(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "contact_properties": {"foo": "string"},
-                    "email": "email",
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-
-        assert event.is_closed is True
-        assert event.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert event.json() == {"foo": "bar"}
-        assert isinstance(event, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_upsert_subscriber_state_by_email(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.marketing.events.with_streaming_response.upsert_subscriber_state_by_email(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "contact_properties": {"foo": "string"},
-                    "email": "email",
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                }
-            ],
-        ) as event:
-            assert not event.is_closed
-            assert event.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert event.json() == {"foo": "bar"}
-            assert cast(Any, event.is_closed) is True
-            assert isinstance(event, StreamedBinaryAPIResponse)
-
-        assert cast(Any, event.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_path_params_upsert_subscriber_state_by_email(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
-            client.marketing.events.with_raw_response.upsert_subscriber_state_by_email(
-                subscriber_state="subscriberState",
-                external_event_id="",
-                external_account_id="externalAccountId",
-                inputs=[
-                    {
-                        "contact_properties": {"foo": "string"},
-                        "email": "email",
-                        "interaction_date_time": 0,
-                        "properties": {"foo": "string"},
-                    }
-                ],
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
-            client.marketing.events.with_raw_response.upsert_subscriber_state_by_email(
-                subscriber_state="",
-                external_event_id="externalEventId",
-                external_account_id="externalAccountId",
-                inputs=[
-                    {
-                        "contact_properties": {"foo": "string"},
-                        "email": "email",
-                        "interaction_date_time": 0,
-                        "properties": {"foo": "string"},
-                    }
-                ],
-            )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_upsert_subscriber_state_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        event = client.marketing.events.upsert_subscriber_state_by_id(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                    "vid": 0,
-                }
-            ],
-        )
-        assert event.is_closed
-        assert event.json() == {"foo": "bar"}
-        assert cast(Any, event.is_closed) is True
-        assert isinstance(event, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_upsert_subscriber_state_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        event = client.marketing.events.with_raw_response.upsert_subscriber_state_by_id(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                    "vid": 0,
-                }
-            ],
-        )
-
-        assert event.is_closed is True
-        assert event.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert event.json() == {"foo": "bar"}
-        assert isinstance(event, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_upsert_subscriber_state_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.marketing.events.with_streaming_response.upsert_subscriber_state_by_id(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                    "vid": 0,
-                }
-            ],
-        ) as event:
-            assert not event.is_closed
-            assert event.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert event.json() == {"foo": "bar"}
-            assert cast(Any, event.is_closed) is True
-            assert isinstance(event, StreamedBinaryAPIResponse)
-
-        assert cast(Any, event.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_path_params_upsert_subscriber_state_by_id(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
-            client.marketing.events.with_raw_response.upsert_subscriber_state_by_id(
-                subscriber_state="subscriberState",
-                external_event_id="",
-                external_account_id="externalAccountId",
-                inputs=[
-                    {
-                        "interaction_date_time": 0,
-                        "properties": {"foo": "string"},
-                        "vid": 0,
-                    }
-                ],
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
-            client.marketing.events.with_raw_response.upsert_subscriber_state_by_id(
-                subscriber_state="",
-                external_event_id="externalEventId",
-                external_account_id="externalAccountId",
-                inputs=[
-                    {
-                        "interaction_date_time": 0,
-                        "properties": {"foo": "string"},
-                        "vid": 0,
-                    }
-                ],
-            )
-
 
 class TestAsyncEvents:
     parametrize = pytest.mark.parametrize(
@@ -1890,6 +1711,43 @@ class TestAsyncEvents:
                     }
                 ],
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+        event = await async_client.marketing.events.list()
+        assert_matches_type(AsyncPage[MarketingEventPublicReadResponseV2], event, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+        event = await async_client.marketing.events.list(
+            after="after",
+            limit=0,
+        )
+        assert_matches_type(AsyncPage[MarketingEventPublicReadResponseV2], event, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.marketing.events.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = await response.parse()
+        assert_matches_type(AsyncPage[MarketingEventPublicReadResponseV2], event, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+        async with async_client.marketing.events.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event = await response.parse()
+            assert_matches_type(AsyncPage[MarketingEventPublicReadResponseV2], event, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2873,233 +2731,4 @@ class TestAsyncEvents:
                 event_organizer="eventOrganizer",
                 external_account_id="externalAccountId",
                 body_external_event_id="externalEventId",
-            )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_upsert_subscriber_state_by_email(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        event = await async_client.marketing.events.upsert_subscriber_state_by_email(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "contact_properties": {"foo": "string"},
-                    "email": "email",
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-        assert event.is_closed
-        assert await event.json() == {"foo": "bar"}
-        assert cast(Any, event.is_closed) is True
-        assert isinstance(event, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_upsert_subscriber_state_by_email(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        event = await async_client.marketing.events.with_raw_response.upsert_subscriber_state_by_email(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "contact_properties": {"foo": "string"},
-                    "email": "email",
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                }
-            ],
-        )
-
-        assert event.is_closed is True
-        assert event.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await event.json() == {"foo": "bar"}
-        assert isinstance(event, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_upsert_subscriber_state_by_email(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.marketing.events.with_streaming_response.upsert_subscriber_state_by_email(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "contact_properties": {"foo": "string"},
-                    "email": "email",
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                }
-            ],
-        ) as event:
-            assert not event.is_closed
-            assert event.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await event.json() == {"foo": "bar"}
-            assert cast(Any, event.is_closed) is True
-            assert isinstance(event, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, event.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_upsert_subscriber_state_by_email(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
-            await async_client.marketing.events.with_raw_response.upsert_subscriber_state_by_email(
-                subscriber_state="subscriberState",
-                external_event_id="",
-                external_account_id="externalAccountId",
-                inputs=[
-                    {
-                        "contact_properties": {"foo": "string"},
-                        "email": "email",
-                        "interaction_date_time": 0,
-                        "properties": {"foo": "string"},
-                    }
-                ],
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
-            await async_client.marketing.events.with_raw_response.upsert_subscriber_state_by_email(
-                subscriber_state="",
-                external_event_id="externalEventId",
-                external_account_id="externalAccountId",
-                inputs=[
-                    {
-                        "contact_properties": {"foo": "string"},
-                        "email": "email",
-                        "interaction_date_time": 0,
-                        "properties": {"foo": "string"},
-                    }
-                ],
-            )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_upsert_subscriber_state_by_id(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        event = await async_client.marketing.events.upsert_subscriber_state_by_id(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                    "vid": 0,
-                }
-            ],
-        )
-        assert event.is_closed
-        assert await event.json() == {"foo": "bar"}
-        assert cast(Any, event.is_closed) is True
-        assert isinstance(event, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_upsert_subscriber_state_by_id(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        event = await async_client.marketing.events.with_raw_response.upsert_subscriber_state_by_id(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                    "vid": 0,
-                }
-            ],
-        )
-
-        assert event.is_closed is True
-        assert event.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await event.json() == {"foo": "bar"}
-        assert isinstance(event, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_upsert_subscriber_state_by_id(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.marketing.events.with_streaming_response.upsert_subscriber_state_by_id(
-            subscriber_state="subscriberState",
-            external_event_id="externalEventId",
-            external_account_id="externalAccountId",
-            inputs=[
-                {
-                    "interaction_date_time": 0,
-                    "properties": {"foo": "string"},
-                    "vid": 0,
-                }
-            ],
-        ) as event:
-            assert not event.is_closed
-            assert event.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await event.json() == {"foo": "bar"}
-            assert cast(Any, event.is_closed) is True
-            assert isinstance(event, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, event.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_upsert_subscriber_state_by_id(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
-            await async_client.marketing.events.with_raw_response.upsert_subscriber_state_by_id(
-                subscriber_state="subscriberState",
-                external_event_id="",
-                external_account_id="externalAccountId",
-                inputs=[
-                    {
-                        "interaction_date_time": 0,
-                        "properties": {"foo": "string"},
-                        "vid": 0,
-                    }
-                ],
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_state` but received ''"):
-            await async_client.marketing.events.with_raw_response.upsert_subscriber_state_by_id(
-                subscriber_state="",
-                external_event_id="externalEventId",
-                external_account_id="externalAccountId",
-                inputs=[
-                    {
-                        "interaction_date_time": 0,
-                        "properties": {"foo": "string"},
-                        "vid": 0,
-                    }
-                ],
             )

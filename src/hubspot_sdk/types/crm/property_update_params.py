@@ -22,9 +22,9 @@ class PropertyUpdateParams(TypedDict, total=False):
 
     display_order: Annotated[int, PropertyInfo(alias="displayOrder")]
     """
-    Property groups are displayed in order starting with the lowest positive integer
-    value. Values of -1 will cause the property group to be displayed after any
-    positive values.
+    Properties are displayed in order starting with the lowest positive integer
+    value. Values of -1 will cause the Property to be displayed after any positive
+    values.
     """
 
     field_type: Annotated[
@@ -56,13 +56,10 @@ class PropertyUpdateParams(TypedDict, total=False):
     """If true, the property won't be visible and can't be used in HubSpot."""
 
     label: str
-    """A human-readable label that will be shown in HubSpot."""
+    """A human-readable property label that will be shown in HubSpot."""
 
     options: Iterable[OptionInput]
-    """A list of valid options for the property.
-
-    This field is required for enumerated properties.
-    """
+    """A list of valid options for the property."""
 
     type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"]
     """The data type of the property."""

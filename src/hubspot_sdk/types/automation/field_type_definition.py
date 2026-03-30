@@ -8,13 +8,13 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.option import Option
 from .long_field_schema import LongFieldSchema
 from .double_field_schema import DoubleFieldSchema
 from .object_field_schema import ObjectFieldSchema
 from .string_field_schema import StringFieldSchema
 from .boolean_field_schema import BooleanFieldSchema
 from .integer_field_schema import IntegerFieldSchema
+from ..shared.automation_actions_option import AutomationActionsOption
 
 __all__ = ["FieldTypeDefinition", "Schema"]
 
@@ -31,12 +31,15 @@ Schema: TypeAlias = Union[
 
 class FieldTypeDefinition(BaseModel):
     external_options: bool = FieldInfo(alias="externalOptions")
+    """Indicates whether the field's options are sourced externally."""
 
     name: str
+    """The unique identifier for the field."""
 
-    options: List[Option]
+    options: List[AutomationActionsOption]
 
     schema_: Schema = FieldInfo(alias="schema")
+    """Defines the structure and constraints of the field."""
 
     type: Literal[
         "bool",
@@ -50,12 +53,19 @@ class FieldTypeDefinition(BaseModel):
         "phone_number",
         "string",
     ]
+    """
+    Specifies the data type of the field, with accepted values like bool, date,
+    datetime, enumeration, json, number, object_coordinates, phone_number, string.
+    """
 
     use_chirp: bool = FieldInfo(alias="useChirp")
+    """Specifies whether the field uses the Chirp feature."""
 
     description: Optional[str] = None
+    """A detailed explanation of the field's purpose and usage."""
 
     external_options_reference_type: Optional[str] = FieldInfo(alias="externalOptionsReferenceType", default=None)
+    """Specifies the type of external reference for options."""
 
     field_type: Optional[
         Literal[
@@ -77,12 +87,20 @@ class FieldTypeDefinition(BaseModel):
             "unknown",
         ]
     ] = FieldInfo(alias="fieldType", default=None)
+    """
+    Describes the field's type in the UI, with accepted values like booleancheckbox,
+    calculation_equation, checkbox, date, file, html, number, phonenumber, radio,
+    select, text, textarea, unknown.
+    """
 
     help_text: Optional[str] = FieldInfo(alias="helpText", default=None)
+    """Additional information or guidance about the field."""
 
     label: Optional[str] = None
+    """The user-friendly label for the field."""
 
     options_url: Optional[str] = FieldInfo(alias="optionsUrl", default=None)
+    """A URL that provides options for the field."""
 
     referenced_object_type: Optional[
         Literal[
@@ -249,6 +267,10 @@ class FieldTypeDefinition(BaseModel):
             "WEB_INTERACTIVE",
         ]
     ] = FieldInfo(alias="referencedObjectType", default=None)
+    """
+    Indicates the type of object that the field references, with accepted values
+    like OWNER.
+    """
 
 
 from .array_field_schema import ArrayFieldSchema

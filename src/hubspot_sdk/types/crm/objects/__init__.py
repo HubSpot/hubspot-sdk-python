@@ -30,6 +30,7 @@ from .email_list_params import EmailListParams as EmailListParams
 from .fee_create_params import FeeCreateParams as FeeCreateParams
 from .fee_search_params import FeeSearchParams as FeeSearchParams
 from .fee_update_params import FeeUpdateParams as FeeUpdateParams
+from .object_get_params import ObjectGetParams as ObjectGetParams
 from .order_list_params import OrderListParams as OrderListParams
 from .quote_list_params import QuoteListParams as QuoteListParams
 from .tax_create_params import TaxCreateParams as TaxCreateParams
@@ -60,7 +61,9 @@ from .meeting_get_params import MeetingGetParams as MeetingGetParams
 from .note_create_params import NoteCreateParams as NoteCreateParams
 from .note_search_params import NoteSearchParams as NoteSearchParams
 from .note_update_params import NoteUpdateParams as NoteUpdateParams
+from .object_list_params import ObjectListParams as ObjectListParams
 from .product_get_params import ProductGetParams as ProductGetParams
+from .project_get_params import ProjectGetParams as ProjectGetParams
 from .service_get_params import ServiceGetParams as ServiceGetParams
 from .task_create_params import TaskCreateParams as TaskCreateParams
 from .task_search_params import TaskSearchParams as TaskSearchParams
@@ -88,6 +91,7 @@ from .order_search_params import OrderSearchParams as OrderSearchParams
 from .order_update_params import OrderUpdateParams as OrderUpdateParams
 from .order_upsert_params import OrderUpsertParams as OrderUpsertParams
 from .product_list_params import ProductListParams as ProductListParams
+from .project_list_params import ProjectListParams as ProjectListParams
 from .quote_create_params import QuoteCreateParams as QuoteCreateParams
 from .quote_search_params import QuoteSearchParams as QuoteSearchParams
 from .quote_update_params import QuoteUpdateParams as QuoteUpdateParams
@@ -106,6 +110,10 @@ from .custom_update_params import CustomUpdateParams as CustomUpdateParams
 from .custom_upsert_params import CustomUpsertParams as CustomUpsertParams
 from .discount_list_params import DiscountListParams as DiscountListParams
 from .line_item_get_params import LineItemGetParams as LineItemGetParams
+from .object_create_params import ObjectCreateParams as ObjectCreateParams
+from .object_search_params import ObjectSearchParams as ObjectSearchParams
+from .object_update_params import ObjectUpdateParams as ObjectUpdateParams
+from .project_merge_params import ProjectMergeParams as ProjectMergeParams
 from .ticket_create_params import TicketCreateParams as TicketCreateParams
 from .ticket_search_params import TicketSearchParams as TicketSearchParams
 from .ticket_update_params import TicketUpdateParams as TicketUpdateParams
@@ -122,10 +130,8 @@ from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
 from .invoice_upsert_params import InvoiceUpsertParams as InvoiceUpsertParams
 from .line_item_list_params import LineItemListParams as LineItemListParams
 from .listing_create_params import ListingCreateParams as ListingCreateParams
-from .listing_delete_params import ListingDeleteParams as ListingDeleteParams
 from .listing_search_params import ListingSearchParams as ListingSearchParams
 from .listing_update_params import ListingUpdateParams as ListingUpdateParams
-from .listing_upsert_params import ListingUpsertParams as ListingUpsertParams
 from .meeting_create_params import MeetingCreateParams as MeetingCreateParams
 from .meeting_search_params import MeetingSearchParams as MeetingSearchParams
 from .meeting_update_params import MeetingUpdateParams as MeetingUpdateParams
@@ -134,6 +140,9 @@ from .product_delete_params import ProductDeleteParams as ProductDeleteParams
 from .product_search_params import ProductSearchParams as ProductSearchParams
 from .product_update_params import ProductUpdateParams as ProductUpdateParams
 from .product_upsert_params import ProductUpsertParams as ProductUpsertParams
+from .project_create_params import ProjectCreateParams as ProjectCreateParams
+from .project_search_params import ProjectSearchParams as ProjectSearchParams
+from .project_update_params import ProjectUpdateParams as ProjectUpdateParams
 from .service_create_params import ServiceCreateParams as ServiceCreateParams
 from .service_delete_params import ServiceDeleteParams as ServiceDeleteParams
 from .service_search_params import ServiceSearchParams as ServiceSearchParams
@@ -187,6 +196,3 @@ from .commerce_payment_update_params import CommercePaymentUpdateParams as Comme
 from .feedback_submission_get_params import FeedbackSubmissionGetParams as FeedbackSubmissionGetParams
 from .feedback_submission_list_params import FeedbackSubmissionListParams as FeedbackSubmissionListParams
 from .feedback_submission_search_params import FeedbackSubmissionSearchParams as FeedbackSubmissionSearchParams
-from .collection_response_multi_associated_object_with_label_forward_paging import (
-    CollectionResponseMultiAssociatedObjectWithLabelForwardPaging as CollectionResponseMultiAssociatedObjectWithLabelForwardPaging,
-)

@@ -82,13 +82,8 @@ class ContactsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
-        """Create a single contact.
-
-        Include a `properties` object to define
-        [property values](https://developers.hubspot.com/docs/guides/api/crm/properties)
-        for the contact, along with an `associations` array to define
-        [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4)
-        with other CRM records.
+        """
+        Create a contact
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -184,9 +179,6 @@ class ContactsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
         """
-        Retrieve all contacts, using query parameters to specify the information that
-        gets returned.
-
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -290,14 +282,7 @@ class ContactsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Permanently delete a contact and all associated content to follow GDPR.
-
-        Use
-        optional property `idProperty` set to `email` to identify contact by email
-        address. If email address is not found, the email address will be added to a
-        blocklist and prevent it from being used in the future. Learn more about
-        [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
-
+        """
         Args:
           object_id: The ID of the contact to permanently delete.
 
@@ -345,10 +330,6 @@ class ContactsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
         """
-        Retrieve a contact by its ID (`contactId`) or by a unique property
-        (`idProperty`). You can specify what is returned using the `properties` query
-        parameter.
-
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -408,10 +389,8 @@ class ContactsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
-        """Merge two contact records.
-
-        Learn more about
-        [merging records](https://knowledge.hubspot.com/records/merge-records).
+        """
+        Merge two contacts
 
         Args:
           object_id_to_merge: The ID of the company to merge into the primary.
@@ -539,13 +518,8 @@ class AsyncContactsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
-        """Create a single contact.
-
-        Include a `properties` object to define
-        [property values](https://developers.hubspot.com/docs/guides/api/crm/properties)
-        for the contact, along with an `associations` array to define
-        [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4)
-        with other CRM records.
+        """
+        Create a contact
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -643,9 +617,6 @@ class AsyncContactsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
         """
-        Retrieve all contacts, using query parameters to specify the information that
-        gets returned.
-
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -749,14 +720,7 @@ class AsyncContactsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Permanently delete a contact and all associated content to follow GDPR.
-
-        Use
-        optional property `idProperty` set to `email` to identify contact by email
-        address. If email address is not found, the email address will be added to a
-        blocklist and prevent it from being used in the future. Learn more about
-        [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
-
+        """
         Args:
           object_id: The ID of the contact to permanently delete.
 
@@ -804,10 +768,6 @@ class AsyncContactsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
         """
-        Retrieve a contact by its ID (`contactId`) or by a unique property
-        (`idProperty`). You can specify what is returned using the `properties` query
-        parameter.
-
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -867,10 +827,8 @@ class AsyncContactsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
-        """Merge two contact records.
-
-        Learn more about
-        [merging records](https://knowledge.hubspot.com/records/merge-records).
+        """
+        Merge two contacts
 
         Args:
           object_id_to_merge: The ID of the company to merge into the primary.

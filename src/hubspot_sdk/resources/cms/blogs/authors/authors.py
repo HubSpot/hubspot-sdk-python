@@ -41,7 +41,12 @@ from .....types.cms.blogs import (
     author_create_params,
     author_delete_params,
     author_update_params,
+    author_list_tags_params,
+    author_list_posts_params,
+    author_list_by_query_params,
     author_update_languages_params,
+    author_list_tags_by_query_params,
+    author_list_posts_by_query_params,
     author_attach_to_lang_group_params,
     author_set_new_lang_primary_params,
     author_detach_from_lang_group_params,
@@ -948,6 +953,8 @@ class AuthorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Create a new Blog Author.
+
         Args:
           id: The unique ID of the Blog Author.
 
@@ -1900,7 +1907,12 @@ class AuthorsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
-        """
+        """Sparse updates a single Blog Author object identified by the id in the path.
+
+        All
+        the column values need not be specified. Only the that need to be modified can
+        be specified.
+
         Args:
           id: The unique ID of the Blog Author.
 
@@ -2029,7 +2041,7 @@ class AuthorsResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
-            "/cms/blogs/2026-03/authors",
+            "/cms/blogs/2026-03/authors/cursor",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2068,6 +2080,8 @@ class AuthorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete the Blog Author object identified by the id in the path.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -3798,6 +3812,8 @@ class AuthorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Attach a Blog Author to a multi-language group.
+
         Args:
           id: ID of the object to add to a multi-language group.
 
@@ -3848,6 +3864,8 @@ class AuthorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Create a new language variation from an existing Blog Author.
+
         Args:
           id: ID of the object to be cloned.
 
@@ -3893,6 +3911,8 @@ class AuthorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Detach a Blog Author from a multi-language group.
+
         Args:
           id: ID of the object to remove from a multi-language group.
 
@@ -3928,6 +3948,8 @@ class AuthorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Retrieve the Blog Author object identified by the id in the path.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -3960,6 +3982,341 @@ class AuthorsResource(SyncAPIResource):
             cast_to=BinaryAPIResponse,
         )
 
+    def list_by_query(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/cms/blogs/2026-03/authors/cursor/query",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_by_query_params.AuthorListByQueryParams,
+                ),
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def list_posts(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/cms/blogs/2026-03/posts/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_posts_params.AuthorListPostsParams,
+                ),
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def list_posts_by_query(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/cms/blogs/2026-03/posts/cursor/query",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_posts_by_query_params.AuthorListPostsByQueryParams,
+                ),
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def list_tags(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/cms/blogs/2026-03/tags/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_tags_params.AuthorListTagsParams,
+                ),
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def list_tags_by_query(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/cms/blogs/2026-03/tags/cursor/query",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_tags_by_query_params.AuthorListTagsByQueryParams,
+                ),
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
     def set_new_lang_primary(
         self,
         *,
@@ -3972,6 +4329,8 @@ class AuthorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Set a Blog Author as the primary language of a multi-language group.
+
         Args:
           id: ID of object to set as primary in multi-language group.
 
@@ -4853,6 +5212,8 @@ class AuthorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Explicitly set new languages for each Blog Author in a multi-language group.
+
         Args:
           languages: Map of object IDs to associated languages of object in the multi-language group.
 
@@ -5779,6 +6140,8 @@ class AsyncAuthorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Create a new Blog Author.
+
         Args:
           id: The unique ID of the Blog Author.
 
@@ -6731,7 +7094,12 @@ class AsyncAuthorsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
-        """
+        """Sparse updates a single Blog Author object identified by the id in the path.
+
+        All
+        the column values need not be specified. Only the that need to be modified can
+        be specified.
+
         Args:
           id: The unique ID of the Blog Author.
 
@@ -6860,7 +7228,7 @@ class AsyncAuthorsResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
-            "/cms/blogs/2026-03/authors",
+            "/cms/blogs/2026-03/authors/cursor",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -6899,6 +7267,8 @@ class AsyncAuthorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete the Blog Author object identified by the id in the path.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -8629,6 +8999,8 @@ class AsyncAuthorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Attach a Blog Author to a multi-language group.
+
         Args:
           id: ID of the object to add to a multi-language group.
 
@@ -8679,6 +9051,8 @@ class AsyncAuthorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Create a new language variation from an existing Blog Author.
+
         Args:
           id: ID of the object to be cloned.
 
@@ -8724,6 +9098,8 @@ class AsyncAuthorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Detach a Blog Author from a multi-language group.
+
         Args:
           id: ID of the object to remove from a multi-language group.
 
@@ -8761,6 +9137,8 @@ class AsyncAuthorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Retrieve the Blog Author object identified by the id in the path.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -8793,6 +9171,341 @@ class AsyncAuthorsResource(AsyncAPIResource):
             cast_to=AsyncBinaryAPIResponse,
         )
 
+    async def list_by_query(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/cms/blogs/2026-03/authors/cursor/query",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_by_query_params.AuthorListByQueryParams,
+                ),
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def list_posts(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/cms/blogs/2026-03/posts/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_posts_params.AuthorListPostsParams,
+                ),
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def list_posts_by_query(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/cms/blogs/2026-03/posts/cursor/query",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_posts_by_query_params.AuthorListPostsByQueryParams,
+                ),
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def list_tags(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/cms/blogs/2026-03/tags/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_tags_params.AuthorListTagsParams,
+                ),
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def list_tags_by_query(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/cms/blogs/2026-03/tags/cursor/query",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_list_tags_by_query_params.AuthorListTagsByQueryParams,
+                ),
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
     async def set_new_lang_primary(
         self,
         *,
@@ -8805,6 +9518,8 @@ class AsyncAuthorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Set a Blog Author as the primary language of a multi-language group.
+
         Args:
           id: ID of object to set as primary in multi-language group.
 
@@ -9688,6 +10403,8 @@ class AsyncAuthorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Explicitly set new languages for each Blog Author in a multi-language group.
+
         Args:
           languages: Map of object IDs to associated languages of object in the multi-language group.
 
@@ -9753,6 +10470,26 @@ class AuthorsResourceWithRawResponse:
             authors.get,
             BinaryAPIResponse,
         )
+        self.list_by_query = to_custom_raw_response_wrapper(
+            authors.list_by_query,
+            BinaryAPIResponse,
+        )
+        self.list_posts = to_custom_raw_response_wrapper(
+            authors.list_posts,
+            BinaryAPIResponse,
+        )
+        self.list_posts_by_query = to_custom_raw_response_wrapper(
+            authors.list_posts_by_query,
+            BinaryAPIResponse,
+        )
+        self.list_tags = to_custom_raw_response_wrapper(
+            authors.list_tags,
+            BinaryAPIResponse,
+        )
+        self.list_tags_by_query = to_custom_raw_response_wrapper(
+            authors.list_tags_by_query,
+            BinaryAPIResponse,
+        )
         self.set_new_lang_primary = to_raw_response_wrapper(
             authors.set_new_lang_primary,
         )
@@ -9799,6 +10536,26 @@ class AsyncAuthorsResourceWithRawResponse:
         )
         self.get = async_to_custom_raw_response_wrapper(
             authors.get,
+            AsyncBinaryAPIResponse,
+        )
+        self.list_by_query = async_to_custom_raw_response_wrapper(
+            authors.list_by_query,
+            AsyncBinaryAPIResponse,
+        )
+        self.list_posts = async_to_custom_raw_response_wrapper(
+            authors.list_posts,
+            AsyncBinaryAPIResponse,
+        )
+        self.list_posts_by_query = async_to_custom_raw_response_wrapper(
+            authors.list_posts_by_query,
+            AsyncBinaryAPIResponse,
+        )
+        self.list_tags = async_to_custom_raw_response_wrapper(
+            authors.list_tags,
+            AsyncBinaryAPIResponse,
+        )
+        self.list_tags_by_query = async_to_custom_raw_response_wrapper(
+            authors.list_tags_by_query,
             AsyncBinaryAPIResponse,
         )
         self.set_new_lang_primary = async_to_raw_response_wrapper(
@@ -9849,6 +10606,26 @@ class AuthorsResourceWithStreamingResponse:
             authors.get,
             StreamedBinaryAPIResponse,
         )
+        self.list_by_query = to_custom_streamed_response_wrapper(
+            authors.list_by_query,
+            StreamedBinaryAPIResponse,
+        )
+        self.list_posts = to_custom_streamed_response_wrapper(
+            authors.list_posts,
+            StreamedBinaryAPIResponse,
+        )
+        self.list_posts_by_query = to_custom_streamed_response_wrapper(
+            authors.list_posts_by_query,
+            StreamedBinaryAPIResponse,
+        )
+        self.list_tags = to_custom_streamed_response_wrapper(
+            authors.list_tags,
+            StreamedBinaryAPIResponse,
+        )
+        self.list_tags_by_query = to_custom_streamed_response_wrapper(
+            authors.list_tags_by_query,
+            StreamedBinaryAPIResponse,
+        )
         self.set_new_lang_primary = to_streamed_response_wrapper(
             authors.set_new_lang_primary,
         )
@@ -9895,6 +10672,26 @@ class AsyncAuthorsResourceWithStreamingResponse:
         )
         self.get = async_to_custom_streamed_response_wrapper(
             authors.get,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.list_by_query = async_to_custom_streamed_response_wrapper(
+            authors.list_by_query,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.list_posts = async_to_custom_streamed_response_wrapper(
+            authors.list_posts,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.list_posts_by_query = async_to_custom_streamed_response_wrapper(
+            authors.list_posts_by_query,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.list_tags = async_to_custom_streamed_response_wrapper(
+            authors.list_tags,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.list_tags_by_query = async_to_custom_streamed_response_wrapper(
+            authors.list_tags_by_query,
             AsyncStreamedBinaryAPIResponse,
         )
         self.set_new_lang_primary = async_to_streamed_response_wrapper(

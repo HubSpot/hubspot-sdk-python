@@ -228,10 +228,10 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Create and update a batch of notes by a unique property.
-
-        Notes that don't exist
-        will be created, while existing notes will be updated.
+        """
+        Create or update records identified by a unique property value as specified by
+        the `idProperty` query param. `idProperty` query param refers to a property
+        whose values are unique for the object.
 
         Args:
           extra_headers: Send extra headers
@@ -446,10 +446,10 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Create and update a batch of notes by a unique property.
-
-        Notes that don't exist
-        will be created, while existing notes will be updated.
+        """
+        Create or update records identified by a unique property value as specified by
+        the `idProperty` query param. `idProperty` query param refers to a property
+        whose values are unique for the object.
 
         Args:
           extra_headers: Send extra headers

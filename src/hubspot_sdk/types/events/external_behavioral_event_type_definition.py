@@ -57,6 +57,7 @@ class ExternalBehavioralEventTypeDefinition(BaseModel):
             "CLICKED_ELEMENT",
             "COMBO_EVENT",
             "CUSTOM_SCRIPT",
+            "CUSTOM_SIGNAL",
             "IMPORT",
             "MANUAL",
             "PROPERTY_CHANGE",

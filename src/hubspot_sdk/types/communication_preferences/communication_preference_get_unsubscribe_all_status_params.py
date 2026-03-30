@@ -11,13 +11,7 @@ __all__ = ["CommunicationPreferenceGetUnsubscribeAllStatusParams"]
 
 class CommunicationPreferenceGetUnsubscribeAllStatusParams(TypedDict, total=False):
     channel: Required[Literal["EMAIL"]]
-    """The communication channel to unsubscribe from. Must be 'EMAIL'."""
 
     business_unit_id: Annotated[int, PropertyInfo(alias="businessUnitId")]
-    """The ID of the business unit associated with the communication preferences."""
 
     verbose: bool
-    """A boolean indicating whether to include detailed information in the response.
-
-    Defaults to false.
-    """

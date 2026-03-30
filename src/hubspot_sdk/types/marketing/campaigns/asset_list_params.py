@@ -20,10 +20,8 @@ class AssetListParams(TypedDict, total=False):
     """
 
     end_date: Annotated[str, PropertyInfo(alias="endDate")]
-    """The end date for filtering assets, in YYYY-MM-DD format."""
 
     limit: str
     """The maximum number of results to display per page."""
 
     start_date: Annotated[str, PropertyInfo(alias="startDate")]
-    """The start date for filtering assets, in YYYY-MM-DD format."""

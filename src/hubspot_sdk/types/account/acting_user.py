@@ -11,7 +11,7 @@ __all__ = ["ActingUser"]
 
 class ActingUser(BaseModel):
     user_id: int = FieldInfo(alias="userId")
-    """The ID of the user who performed the action."""
+    """The user's unique ID."""
 
     user_email: Optional[str] = FieldInfo(alias="userEmail", default=None)
     """The email address of the user who performed the action."""

@@ -9,7 +9,10 @@ __all__ = ["IntegerFieldSchemaParam"]
 
 class IntegerFieldSchemaParam(TypedDict, total=False):
     type: Required[Literal["INTEGER"]]
+    """The type of the field, which is set to INTEGER."""
 
     maximum: int
+    """The maximum value allowed for the integer field."""
 
     minimum: int
+    """The minimum value allowed for the integer field."""

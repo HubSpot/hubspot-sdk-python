@@ -63,6 +63,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Create a batch of blog posts, specifying their content in the request body.
+
         Args:
           inputs: Blog posts to input.
 
@@ -97,6 +99,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Update a batch of blog posts.
+
         Args:
           inputs: JSON nodes to input.
 
@@ -135,7 +139,12 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Delete a blog post by ID.
+
+        Note: This is not the same as the in-app `archive`
+        function. To perform a dashboard `archive` send an normal update with the
+        `archivedInDashboard` field set to `true`.
+
         Args:
           inputs: Strings to input.
 
@@ -169,7 +178,10 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
-        """
+        """Retrieve a batch of blog posts by ID.
+
+        identified in the request body.
+
         Args:
           inputs: Strings to input.
 
@@ -230,6 +242,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Create a batch of blog posts, specifying their content in the request body.
+
         Args:
           inputs: Blog posts to input.
 
@@ -264,6 +278,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Update a batch of blog posts.
+
         Args:
           inputs: JSON nodes to input.
 
@@ -302,7 +318,12 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Delete a blog post by ID.
+
+        Note: This is not the same as the in-app `archive`
+        function. To perform a dashboard `archive` send an normal update with the
+        `archivedInDashboard` field set to `true`.
+
         Args:
           inputs: Strings to input.
 
@@ -336,7 +357,10 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
-        """
+        """Retrieve a batch of blog posts by ID.
+
+        identified in the request body.
+
         Args:
           inputs: Strings to input.
 

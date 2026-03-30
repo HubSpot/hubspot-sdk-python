@@ -29,7 +29,11 @@ class PublicListConversionInactivity(TypedDict, total=False):
     """Specifies the type of conversion (INACTIVITY)."""
 
     offset: Required[int]
-    """The number of time units for the inactivity period."""
+    """Value used to paginate through lists.
+
+    The `offset` provided in the response can be used in the next request to fetch
+    the next page of results. Defaults to `0` if no offset is provided.
+    """
 
     time_unit: Required[Annotated[Literal["DAY", "MONTH", "WEEK"], PropertyInfo(alias="timeUnit")]]
     """The unit of time for the inactivity period, such as (DAY, MONTH, WEEK)."""

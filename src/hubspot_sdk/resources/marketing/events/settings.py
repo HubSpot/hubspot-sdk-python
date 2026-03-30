@@ -54,6 +54,8 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventDetailSettings:
         """
+        Create or update the current settings for the application.
+
         Args:
           event_details_url: The url that will be used to fetch marketing event details by id. Must contain a
               `%s` character sequence that will be substituted with the event id. For example:
@@ -90,6 +92,8 @@ class SettingsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventDetailSettings:
         """
+        Retrieve the current settings for the application.
+
         Args:
           extra_headers: Send extra headers
 
@@ -141,6 +145,8 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventDetailSettings:
         """
+        Create or update the current settings for the application.
+
         Args:
           event_details_url: The url that will be used to fetch marketing event details by id. Must contain a
               `%s` character sequence that will be substituted with the event id. For example:
@@ -177,6 +183,8 @@ class AsyncSettingsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventDetailSettings:
         """
+        Retrieve the current settings for the application.
+
         Args:
           extra_headers: Send extra headers
 

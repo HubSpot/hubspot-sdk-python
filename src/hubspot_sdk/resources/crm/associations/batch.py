@@ -158,8 +158,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicDefaultAssociation:
         """
-        Batch create the default (most generic) association type between two object
-        types.
+        Create the default (most generic) association type between two object types
 
         Args:
           extra_headers: Send extra headers
@@ -200,11 +199,10 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseVoid:
-        """Batch remove specific labelled associations between records in bulk.
+        """Batch delete specific association labels for objects.
 
-        Deleting an
-        unlabeled association will also delete all labeled associations between those
-        two objects
+        Deleting an unlabeled
+        association will also delete all labeled associations between those two objects
 
         Args:
           extra_headers: Send extra headers
@@ -402,8 +400,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicDefaultAssociation:
         """
-        Batch create the default (most generic) association type between two object
-        types.
+        Create the default (most generic) association type between two object types
 
         Args:
           extra_headers: Send extra headers
@@ -444,11 +441,10 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseVoid:
-        """Batch remove specific labelled associations between records in bulk.
+        """Batch delete specific association labels for objects.
 
-        Deleting an
-        unlabeled association will also delete all labeled associations between those
-        two objects
+        Deleting an unlabeled
+        association will also delete all labeled associations between those two objects
 
         Args:
           extra_headers: Send extra headers

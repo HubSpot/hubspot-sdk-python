@@ -226,10 +226,10 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Create and update a batch of tasks by a unique property.
-
-        Tasks that don't exist
-        will be created, while existing tasks will be updated.
+        """
+        Create or update records identified by a unique property value as specified by
+        the `idProperty` query param. `idProperty` query param refers to a property
+        whose values are unique for the object.
 
         Args:
           extra_headers: Send extra headers
@@ -442,10 +442,10 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Create and update a batch of tasks by a unique property.
-
-        Tasks that don't exist
-        will be created, while existing tasks will be updated.
+        """
+        Create or update records identified by a unique property value as specified by
+        the `idProperty` query param. `idProperty` query param refers to a property
+        whose values are unique for the object.
 
         Args:
           extra_headers: Send extra headers

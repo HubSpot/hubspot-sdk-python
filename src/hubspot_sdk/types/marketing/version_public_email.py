@@ -18,5 +18,6 @@ class VersionPublicEmail(BaseModel):
     object: PublicEmail
 
     updated_at: datetime = FieldInfo(alias="updatedAt")
+    """The date and time of the last update to the email, in ISO8601 representation."""
 
     user: VersionUser

@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Iterable
-from datetime import datetime
+from typing import Iterable
 
 import httpx
 
@@ -21,7 +20,6 @@ from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.events import (
     definition_list_params,
-    definition_send_params,
     definition_create_params,
     definition_update_params,
     definition_send_batch_params,
@@ -75,10 +73,11 @@ class DefinitionsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalBehavioralEventTypeDefinition:
-        """Args:
-          label: Human readable label for the event.
+        """
+        Create a custom event definition.
 
-        Used in HubSpot UI
+        Args:
+          label: Human readable label for the event. Used in HubSpot UI
 
           property_definitions: List of custom properties on event
 
@@ -103,7 +102,7 @@ class DefinitionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/events/custom/2026-03/event-definitions",
+            "/events/2026-03/event-definitions",
             body=maybe_transform(
                 {
                     "include_default_properties": include_default_properties,
@@ -136,6 +135,8 @@ class DefinitionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalBehavioralEventTypeDefinition:
         """
+        Update a specific custom event definition by name.
+
         Args:
           description: A description of the event that will be shown as help text in HubSpot.
 
@@ -152,7 +153,7 @@ class DefinitionsResource(SyncAPIResource):
         if not event_name:
             raise ValueError(f"Expected a non-empty value for `event_name` but received {event_name!r}")
         return self._patch(
-            path_template("/events/custom/2026-03/event-definitions/{event_name}", event_name=event_name),
+            path_template("/events/2026-03/event-definitions/{event_name}", event_name=event_name),
             body=maybe_transform(
                 {
                     "description": description,
@@ -182,6 +183,8 @@ class DefinitionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[ExternalBehavioralEventTypeDefinition]:
         """
+        Retrieve existing custom event definitions.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -198,7 +201,7 @@ class DefinitionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/events/custom/2026-03/event-definitions",
+            "/events/2026-03/event-definitions",
             page=SyncPage[ExternalBehavioralEventTypeDefinition],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -231,6 +234,8 @@ class DefinitionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete a custom event definition by name.
+
         Args:
           extra_headers: Send extra headers
 
@@ -244,7 +249,7 @@ class DefinitionsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `event_name` but received {event_name!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            path_template("/events/custom/2026-03/event-definitions/{event_name}", event_name=event_name),
+            path_template("/events/2026-03/event-definitions/{event_name}", event_name=event_name),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -267,10 +272,11 @@ class DefinitionsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Property:
-        """Args:
-          label: Human readable label for the property.
+        """
+        Create a new property for an existing event definition.
 
-        Used in HubSpot UI
+        Args:
+          label: Human readable label for the property. Used in HubSpot UI
 
           type: The data type of the property. Can be one of the following: [string, number,
               enumeration, datetime]
@@ -294,7 +300,7 @@ class DefinitionsResource(SyncAPIResource):
         if not event_name:
             raise ValueError(f"Expected a non-empty value for `event_name` but received {event_name!r}")
         return self._post(
-            path_template("/events/custom/2026-03/event-definitions/{event_name}/property", event_name=event_name),
+            path_template("/events/2026-03/event-definitions/{event_name}/property", event_name=event_name),
             body=maybe_transform(
                 {
                     "label": label,
@@ -324,6 +330,8 @@ class DefinitionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete an existing property from a custom event definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -340,7 +348,7 @@ class DefinitionsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             path_template(
-                "/events/custom/2026-03/event-definitions/{event_name}/property/{property_name}",
+                "/events/2026-03/event-definitions/{event_name}/property/{property_name}",
                 event_name=event_name,
                 property_name=property_name,
             ),
@@ -362,6 +370,8 @@ class DefinitionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalBehavioralEventTypeDefinition:
         """
+        Fetch a single custom event definition by name.
+
         Args:
           extra_headers: Send extra headers
 
@@ -374,74 +384,11 @@ class DefinitionsResource(SyncAPIResource):
         if not event_name:
             raise ValueError(f"Expected a non-empty value for `event_name` but received {event_name!r}")
         return self._get(
-            path_template("/events/custom/2026-03/event-definitions/{event_name}", event_name=event_name),
+            path_template("/events/2026-03/event-definitions/{event_name}", event_name=event_name),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ExternalBehavioralEventTypeDefinition,
-        )
-
-    def send(
-        self,
-        *,
-        event_name: str,
-        properties: Dict[str, str],
-        email: str | Omit = omit,
-        object_id: str | Omit = omit,
-        occurred_at: Union[str, datetime] | Omit = omit,
-        utk: str | Omit = omit,
-        uuid: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Args:
-          event_name: Internal name of the event-type to trigger
-
-          properties: Map of properties for the event in the format property internal name - property
-              value
-
-          email: Email of visitor
-
-          object_id: The object id that this event occurred on. Could be a contact id or a visitor
-              id.
-
-          occurred_at: The time when this event occurred (if any). If this isn't set, the current time
-              will be used
-
-          utk: User token
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/events/custom/2026-03/send",
-            body=maybe_transform(
-                {
-                    "event_name": event_name,
-                    "properties": properties,
-                    "email": email,
-                    "object_id": object_id,
-                    "occurred_at": occurred_at,
-                    "utk": utk,
-                    "uuid": uuid,
-                },
-                definition_send_params.DefinitionSendParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     def send_batch(
@@ -456,6 +403,8 @@ class DefinitionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Send multiple event occurrences at once.
+
         Args:
           extra_headers: Send extra headers
 
@@ -467,7 +416,7 @@ class DefinitionsResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            "/events/custom/2026-03/send/batch",
+            "/events/2026-03/send/batch",
             body=maybe_transform({"inputs": inputs}, definition_send_batch_params.DefinitionSendBatchParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -491,6 +440,8 @@ class DefinitionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Property:
         """
+        Update an existing property in a custom event definition.
+
         Args:
           description: A description of the property that will be shown as help text in HubSpot.
 
@@ -513,7 +464,7 @@ class DefinitionsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `property_name` but received {property_name!r}")
         return self._patch(
             path_template(
-                "/events/custom/2026-03/event-definitions/{event_name}/property/{property_name}",
+                "/events/2026-03/event-definitions/{event_name}/property/{property_name}",
                 event_name=event_name,
                 property_name=property_name,
             ),
@@ -569,10 +520,11 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalBehavioralEventTypeDefinition:
-        """Args:
-          label: Human readable label for the event.
+        """
+        Create a custom event definition.
 
-        Used in HubSpot UI
+        Args:
+          label: Human readable label for the event. Used in HubSpot UI
 
           property_definitions: List of custom properties on event
 
@@ -597,7 +549,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/events/custom/2026-03/event-definitions",
+            "/events/2026-03/event-definitions",
             body=await async_maybe_transform(
                 {
                     "include_default_properties": include_default_properties,
@@ -630,6 +582,8 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalBehavioralEventTypeDefinition:
         """
+        Update a specific custom event definition by name.
+
         Args:
           description: A description of the event that will be shown as help text in HubSpot.
 
@@ -646,7 +600,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         if not event_name:
             raise ValueError(f"Expected a non-empty value for `event_name` but received {event_name!r}")
         return await self._patch(
-            path_template("/events/custom/2026-03/event-definitions/{event_name}", event_name=event_name),
+            path_template("/events/2026-03/event-definitions/{event_name}", event_name=event_name),
             body=await async_maybe_transform(
                 {
                     "description": description,
@@ -676,6 +630,8 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ExternalBehavioralEventTypeDefinition, AsyncPage[ExternalBehavioralEventTypeDefinition]]:
         """
+        Retrieve existing custom event definitions.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -692,7 +648,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/events/custom/2026-03/event-definitions",
+            "/events/2026-03/event-definitions",
             page=AsyncPage[ExternalBehavioralEventTypeDefinition],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -725,6 +681,8 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete a custom event definition by name.
+
         Args:
           extra_headers: Send extra headers
 
@@ -738,7 +696,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `event_name` but received {event_name!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            path_template("/events/custom/2026-03/event-definitions/{event_name}", event_name=event_name),
+            path_template("/events/2026-03/event-definitions/{event_name}", event_name=event_name),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -761,10 +719,11 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Property:
-        """Args:
-          label: Human readable label for the property.
+        """
+        Create a new property for an existing event definition.
 
-        Used in HubSpot UI
+        Args:
+          label: Human readable label for the property. Used in HubSpot UI
 
           type: The data type of the property. Can be one of the following: [string, number,
               enumeration, datetime]
@@ -788,7 +747,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         if not event_name:
             raise ValueError(f"Expected a non-empty value for `event_name` but received {event_name!r}")
         return await self._post(
-            path_template("/events/custom/2026-03/event-definitions/{event_name}/property", event_name=event_name),
+            path_template("/events/2026-03/event-definitions/{event_name}/property", event_name=event_name),
             body=await async_maybe_transform(
                 {
                     "label": label,
@@ -818,6 +777,8 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete an existing property from a custom event definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -834,7 +795,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             path_template(
-                "/events/custom/2026-03/event-definitions/{event_name}/property/{property_name}",
+                "/events/2026-03/event-definitions/{event_name}/property/{property_name}",
                 event_name=event_name,
                 property_name=property_name,
             ),
@@ -856,6 +817,8 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalBehavioralEventTypeDefinition:
         """
+        Fetch a single custom event definition by name.
+
         Args:
           extra_headers: Send extra headers
 
@@ -868,74 +831,11 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         if not event_name:
             raise ValueError(f"Expected a non-empty value for `event_name` but received {event_name!r}")
         return await self._get(
-            path_template("/events/custom/2026-03/event-definitions/{event_name}", event_name=event_name),
+            path_template("/events/2026-03/event-definitions/{event_name}", event_name=event_name),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ExternalBehavioralEventTypeDefinition,
-        )
-
-    async def send(
-        self,
-        *,
-        event_name: str,
-        properties: Dict[str, str],
-        email: str | Omit = omit,
-        object_id: str | Omit = omit,
-        occurred_at: Union[str, datetime] | Omit = omit,
-        utk: str | Omit = omit,
-        uuid: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Args:
-          event_name: Internal name of the event-type to trigger
-
-          properties: Map of properties for the event in the format property internal name - property
-              value
-
-          email: Email of visitor
-
-          object_id: The object id that this event occurred on. Could be a contact id or a visitor
-              id.
-
-          occurred_at: The time when this event occurred (if any). If this isn't set, the current time
-              will be used
-
-          utk: User token
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/events/custom/2026-03/send",
-            body=await async_maybe_transform(
-                {
-                    "event_name": event_name,
-                    "properties": properties,
-                    "email": email,
-                    "object_id": object_id,
-                    "occurred_at": occurred_at,
-                    "utk": utk,
-                    "uuid": uuid,
-                },
-                definition_send_params.DefinitionSendParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     async def send_batch(
@@ -950,6 +850,8 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Send multiple event occurrences at once.
+
         Args:
           extra_headers: Send extra headers
 
@@ -961,7 +863,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            "/events/custom/2026-03/send/batch",
+            "/events/2026-03/send/batch",
             body=await async_maybe_transform(
                 {"inputs": inputs}, definition_send_batch_params.DefinitionSendBatchParams
             ),
@@ -987,6 +889,8 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Property:
         """
+        Update an existing property in a custom event definition.
+
         Args:
           description: A description of the property that will be shown as help text in HubSpot.
 
@@ -1009,7 +913,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `property_name` but received {property_name!r}")
         return await self._patch(
             path_template(
-                "/events/custom/2026-03/event-definitions/{event_name}/property/{property_name}",
+                "/events/2026-03/event-definitions/{event_name}/property/{property_name}",
                 event_name=event_name,
                 property_name=property_name,
             ),
@@ -1053,9 +957,6 @@ class DefinitionsResourceWithRawResponse:
         self.get = to_raw_response_wrapper(
             definitions.get,
         )
-        self.send = to_raw_response_wrapper(
-            definitions.send,
-        )
         self.send_batch = to_raw_response_wrapper(
             definitions.send_batch,
         )
@@ -1088,9 +989,6 @@ class AsyncDefinitionsResourceWithRawResponse:
         )
         self.get = async_to_raw_response_wrapper(
             definitions.get,
-        )
-        self.send = async_to_raw_response_wrapper(
-            definitions.send,
         )
         self.send_batch = async_to_raw_response_wrapper(
             definitions.send_batch,
@@ -1125,9 +1023,6 @@ class DefinitionsResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             definitions.get,
         )
-        self.send = to_streamed_response_wrapper(
-            definitions.send,
-        )
         self.send_batch = to_streamed_response_wrapper(
             definitions.send_batch,
         )
@@ -1160,9 +1055,6 @@ class AsyncDefinitionsResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             definitions.get,
-        )
-        self.send = async_to_streamed_response_wrapper(
-            definitions.send,
         )
         self.send_batch = async_to_streamed_response_wrapper(
             definitions.send_batch,

@@ -255,6 +255,8 @@ class ExchangeRatesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExchangeRate:
         """
+        Create a new exchange rate with specified conversion rate and currency codes.
+
         Args:
           conversion_rate: The conversion rate between the to and from currency code of this exchange rate.
 
@@ -299,6 +301,8 @@ class ExchangeRatesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExchangeRate:
         """
+        Retrieve the details for a specific exchange rate specified by its ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -330,6 +334,7 @@ class ExchangeRatesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseExchangeRateNoPaging:
+        """Retrieve all current exchange rates for all currency pairs."""
         return self._get(
             "/settings/currencies/2026-03/exchange-rates/current",
             options=make_request_options(
@@ -709,6 +714,8 @@ class ExchangeRatesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[ExchangeRate]:
         """
+        Get a list of exchange rates
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -759,6 +766,8 @@ class ExchangeRatesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExchangeRate:
         """
+        Update an existing conversion rate, specified by its ID.
+
         Args:
           conversion_rate: The updated conversion rate between the to and from currency code of this
               exchange rate.
@@ -1159,7 +1168,11 @@ class ExchangeRatesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Change the visibility setting for a currency pair.
+
+        This will hide or display a
+        currency pair for users in the HubSpot app.
+
         Args:
           from_currency_code: This represents the three-letter currency code (such as USD for US Dollar) of
               the currency you want to convert from.
@@ -1411,6 +1424,8 @@ class AsyncExchangeRatesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExchangeRate:
         """
+        Create a new exchange rate with specified conversion rate and currency codes.
+
         Args:
           conversion_rate: The conversion rate between the to and from currency code of this exchange rate.
 
@@ -1455,6 +1470,8 @@ class AsyncExchangeRatesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExchangeRate:
         """
+        Retrieve the details for a specific exchange rate specified by its ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -1486,6 +1503,7 @@ class AsyncExchangeRatesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseExchangeRateNoPaging:
+        """Retrieve all current exchange rates for all currency pairs."""
         return await self._get(
             "/settings/currencies/2026-03/exchange-rates/current",
             options=make_request_options(
@@ -1865,6 +1883,8 @@ class AsyncExchangeRatesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ExchangeRate, AsyncPage[ExchangeRate]]:
         """
+        Get a list of exchange rates
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -1915,6 +1935,8 @@ class AsyncExchangeRatesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExchangeRate:
         """
+        Update an existing conversion rate, specified by its ID.
+
         Args:
           conversion_rate: The updated conversion rate between the to and from currency code of this
               exchange rate.
@@ -2315,7 +2337,11 @@ class AsyncExchangeRatesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Change the visibility setting for a currency pair.
+
+        This will hide or display a
+        currency pair for users in the HubSpot app.
+
         Args:
           from_currency_code: This represents the three-letter currency code (such as USD for US Dollar) of
               the currency you want to convert from.

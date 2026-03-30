@@ -66,10 +66,6 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create multiple discounts in a single request by providing the necessary
-        properties and associations for each discount. This operation returns a list of
-        the created discounts, including their unique identifiers.
-
         Args:
           extra_headers: Send extra headers
 
@@ -100,7 +96,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update discounts
+        Update a batch of discounts by internal ID, or unique property values
 
         Args:
           extra_headers: Send extra headers
@@ -132,8 +128,6 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Batch delete discounts
-
         Args:
           extra_headers: Send extra headers
 
@@ -169,7 +163,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Batch retrieve discounts.
+        Retrieve records by record ID or include the `idProperty` parameter to retrieve
+        records by a custom unique value property.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -221,11 +216,7 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Create and update a batch of discounts by a unique property.
-
-        Discounts that
-        don't exist will be created, while existing discounts will be updated.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -277,10 +268,6 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create multiple discounts in a single request by providing the necessary
-        properties and associations for each discount. This operation returns a list of
-        the created discounts, including their unique identifiers.
-
         Args:
           extra_headers: Send extra headers
 
@@ -311,7 +298,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update discounts
+        Update a batch of discounts by internal ID, or unique property values
 
         Args:
           extra_headers: Send extra headers
@@ -343,8 +330,6 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Batch delete discounts
-
         Args:
           extra_headers: Send extra headers
 
@@ -380,7 +365,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Batch retrieve discounts.
+        Retrieve records by record ID or include the `idProperty` parameter to retrieve
+        records by a custom unique value property.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -432,11 +418,7 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Create and update a batch of discounts by a unique property.
-
-        Discounts that
-        don't exist will be created, while existing discounts will be updated.
-
+        """
         Args:
           extra_headers: Send extra headers
 

@@ -32,6 +32,14 @@ from .marketing import (
     MarketingResourceWithStreamingResponse,
     AsyncMarketingResourceWithStreamingResponse,
 )
+from .single_send import (
+    SingleSendResource,
+    AsyncSingleSendResource,
+    SingleSendResourceWithRawResponse,
+    AsyncSingleSendResourceWithRawResponse,
+    SingleSendResourceWithStreamingResponse,
+    AsyncSingleSendResourceWithStreamingResponse,
+)
 from .transactional import (
     TransactionalResource,
     AsyncTransactionalResource,
@@ -60,6 +68,12 @@ __all__ = [
     "AsyncEventsResourceWithRawResponse",
     "EventsResourceWithStreamingResponse",
     "AsyncEventsResourceWithStreamingResponse",
+    "SingleSendResource",
+    "AsyncSingleSendResource",
+    "SingleSendResourceWithRawResponse",
+    "AsyncSingleSendResourceWithRawResponse",
+    "SingleSendResourceWithStreamingResponse",
+    "AsyncSingleSendResourceWithStreamingResponse",
     "TransactionalResource",
     "AsyncTransactionalResource",
     "TransactionalResourceWithRawResponse",

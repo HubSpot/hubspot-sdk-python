@@ -11,7 +11,9 @@ __all__ = ["CollectionResponseWithTotalDomain"]
 
 class CollectionResponseWithTotalDomain(BaseModel):
     results: List[Domain]
+    """The results of the query."""
 
     total: int
+    """The number of available results."""
 
     paging: Optional[Paging] = None

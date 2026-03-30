@@ -64,11 +64,11 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicCampaign:
-        """Create a batch of campaigns with specified properties.
+        """This endpoint creates a batch of campaigns.
 
-        This endpoint allows for
-        the creation of multiple campaigns in a single request. Note that the 'hs_goal'
-        property is deprecated and will be ignored if provided.
+        The maximum number of items in a
+        batch request is 50. The campaigns in the response are not guaranteed to be in
+        the same order as they were provided in the request.
 
         Args:
           inputs: An array of PublicCampaignInput objects, each representing the properties of a
@@ -102,11 +102,12 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicCampaign:
-        """Update a batch of marketing campaigns with specified properties.
+        """This endpoint updates a batch of campaigns based on the provided input data.
 
-        This endpoint
-        allows you to modify multiple campaigns in one request. Note that the 'hs_goal'
-        property is deprecated and will be ignored if provided.
+        The
+        maximum number of items in a batch request is 50. If an empty string ("") is
+        passed for any property in the Batch Update, it will reset that property's
+        value.
 
         Args:
           inputs: An array of PublicCampaignBatchUpdateItem objects, each containing the ID and
@@ -140,11 +141,12 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Archive a batch of marketing campaigns in your HubSpot account.
+        """This endpoint deletes a batch of campaigns.
 
-        This operation
-        permanently removes the specified campaigns, making them inaccessible. It is
-        useful for cleaning up outdated or unnecessary campaigns in bulk.
+        The maximum number of items in a
+        batch request is 50. The response will always be 204 No Content, regardless of
+        whether the campaigns exist or not, whether they were successfully deleted or
+        not, or if only some of the campaigns in the batch were deleted.
 
         Args:
           inputs: An array of PublicCampaignDeleteInput objects, each specifying a campaign to be
@@ -182,21 +184,17 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicCampaignWithAssets:
-        """Retrieve a batch of campaigns with specified properties and date range.
-
-        This
-        endpoint allows you to filter campaigns by start and end dates and specify which
-        properties to include in the response.
+        """
+        This endpoint reads a batch of campaigns based on the provided input data and
+        returns the campaigns along with their associated assets. The maximum number of
+        items in a batch request is 50. The campaigns in the response are not guaranteed
+        to be in the same order as they were provided in the request. If duplicate
+        campaign IDs are provided in the request, duplicates will be ignored. The
+        response will include only unique IDs and will be returned without duplicates.
 
         Args:
           inputs: An array of PublicCampaignReadInput objects, each containing the ID of a
               campaign to be read. This property is required.
-
-          end_date: The end date for filtering campaigns, in YYYY-MM-DD format.
-
-          properties: A comma-separated list of property names to include in the response.
-
-          start_date: The start date for filtering campaigns, in YYYY-MM-DD format.
 
           extra_headers: Send extra headers
 
@@ -258,11 +256,11 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicCampaign:
-        """Create a batch of campaigns with specified properties.
+        """This endpoint creates a batch of campaigns.
 
-        This endpoint allows for
-        the creation of multiple campaigns in a single request. Note that the 'hs_goal'
-        property is deprecated and will be ignored if provided.
+        The maximum number of items in a
+        batch request is 50. The campaigns in the response are not guaranteed to be in
+        the same order as they were provided in the request.
 
         Args:
           inputs: An array of PublicCampaignInput objects, each representing the properties of a
@@ -296,11 +294,12 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicCampaign:
-        """Update a batch of marketing campaigns with specified properties.
+        """This endpoint updates a batch of campaigns based on the provided input data.
 
-        This endpoint
-        allows you to modify multiple campaigns in one request. Note that the 'hs_goal'
-        property is deprecated and will be ignored if provided.
+        The
+        maximum number of items in a batch request is 50. If an empty string ("") is
+        passed for any property in the Batch Update, it will reset that property's
+        value.
 
         Args:
           inputs: An array of PublicCampaignBatchUpdateItem objects, each containing the ID and
@@ -334,11 +333,12 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Archive a batch of marketing campaigns in your HubSpot account.
+        """This endpoint deletes a batch of campaigns.
 
-        This operation
-        permanently removes the specified campaigns, making them inaccessible. It is
-        useful for cleaning up outdated or unnecessary campaigns in bulk.
+        The maximum number of items in a
+        batch request is 50. The response will always be 204 No Content, regardless of
+        whether the campaigns exist or not, whether they were successfully deleted or
+        not, or if only some of the campaigns in the batch were deleted.
 
         Args:
           inputs: An array of PublicCampaignDeleteInput objects, each specifying a campaign to be
@@ -376,21 +376,17 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicCampaignWithAssets:
-        """Retrieve a batch of campaigns with specified properties and date range.
-
-        This
-        endpoint allows you to filter campaigns by start and end dates and specify which
-        properties to include in the response.
+        """
+        This endpoint reads a batch of campaigns based on the provided input data and
+        returns the campaigns along with their associated assets. The maximum number of
+        items in a batch request is 50. The campaigns in the response are not guaranteed
+        to be in the same order as they were provided in the request. If duplicate
+        campaign IDs are provided in the request, duplicates will be ignored. The
+        response will include only unique IDs and will be returned without duplicates.
 
         Args:
           inputs: An array of PublicCampaignReadInput objects, each containing the ID of a
               campaign to be read. This property is required.
-
-          end_date: The end date for filtering campaigns, in YYYY-MM-DD format.
-
-          properties: A comma-separated list of property names to include in the response.
-
-          start_date: The start date for filtering campaigns, in YYYY-MM-DD format.
 
           extra_headers: Send extra headers
 

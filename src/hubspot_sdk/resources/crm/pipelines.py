@@ -62,7 +62,15 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
+        Create a pipeline stage
+
         Args:
+          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
+              matching `displayOrder`, they will be sorted alphabetically by label.
+
+          label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
+              label must be unique within that pipeline.
+
           metadata: A JSON object containing properties that are not present on all object
               pipelines.
 
@@ -127,7 +135,22 @@ class PipelinesResource(SyncAPIResource):
     ) -> PipelineStage:
         """
         Args:
+          metadata: A JSON object containing properties that are not present on all object
+              pipelines.
+
+              For `deals` pipelines, the `probability` field is required
+              (`{ "probability": 0.5 }`), and represents the likelihood a deal will close.
+              Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+              For `tickets` pipelines, the `ticketState` field is optional
+              (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
+              has been closed by a member of your Support team. Possible values are `OPEN` or
+              `CLOSED`.
+
           archived: Whether the pipeline is archived.
+
+          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
+              matching `displayOrder`, they will be sorted alphabetically by label.
 
           label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
               label must be unique within that pipeline.
@@ -181,6 +204,8 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePipelineStageNoPaging:
         """
+        Return all the stages associated with the pipeline identified by `{pipelineId}`.
+
         Args:
           extra_headers: Send extra headers
 
@@ -220,6 +245,8 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete a pipeline stage
+
         Args:
           extra_headers: Send extra headers
 
@@ -263,6 +290,8 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
+        Return a pipeline stage by ID
+
         Args:
           extra_headers: Send extra headers
 
@@ -305,6 +334,9 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicAuditInfoNoPaging:
         """
+        Return a reverse chronological list of all mutations that have occurred on the
+        pipeline stage identified by `{stageId}`.
+
         Args:
           extra_headers: Send extra headers
 
@@ -350,7 +382,28 @@ class PipelinesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
+        Replace all the properties of an existing pipeline stage with the values
+        provided. The updated stage will be returned in the response.
+
         Args:
+          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
+              matching `displayOrder`, they will be sorted alphabetically by label.
+
+          label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
+              label must be unique within that pipeline.
+
+          metadata: A JSON object containing properties that are not present on all object
+              pipelines.
+
+              For `deals` pipelines, the `probability` field is required
+              (`{ "probability": 0.5 }`), and represents the likelihood a deal will close.
+              Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+              For `tickets` pipelines, the `ticketState` field is optional
+              (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
+              has been closed by a member of your Support team. Possible values are `OPEN` or
+              `CLOSED`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -424,7 +477,15 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
+        Create a pipeline stage
+
         Args:
+          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
+              matching `displayOrder`, they will be sorted alphabetically by label.
+
+          label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
+              label must be unique within that pipeline.
+
           metadata: A JSON object containing properties that are not present on all object
               pipelines.
 
@@ -489,7 +550,22 @@ class AsyncPipelinesResource(AsyncAPIResource):
     ) -> PipelineStage:
         """
         Args:
+          metadata: A JSON object containing properties that are not present on all object
+              pipelines.
+
+              For `deals` pipelines, the `probability` field is required
+              (`{ "probability": 0.5 }`), and represents the likelihood a deal will close.
+              Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+              For `tickets` pipelines, the `ticketState` field is optional
+              (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
+              has been closed by a member of your Support team. Possible values are `OPEN` or
+              `CLOSED`.
+
           archived: Whether the pipeline is archived.
+
+          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
+              matching `displayOrder`, they will be sorted alphabetically by label.
 
           label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
               label must be unique within that pipeline.
@@ -543,6 +619,8 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePipelineStageNoPaging:
         """
+        Return all the stages associated with the pipeline identified by `{pipelineId}`.
+
         Args:
           extra_headers: Send extra headers
 
@@ -582,6 +660,8 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete a pipeline stage
+
         Args:
           extra_headers: Send extra headers
 
@@ -625,6 +705,8 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
+        Return a pipeline stage by ID
+
         Args:
           extra_headers: Send extra headers
 
@@ -667,6 +749,9 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicAuditInfoNoPaging:
         """
+        Return a reverse chronological list of all mutations that have occurred on the
+        pipeline stage identified by `{stageId}`.
+
         Args:
           extra_headers: Send extra headers
 
@@ -712,7 +797,28 @@ class AsyncPipelinesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineStage:
         """
+        Replace all the properties of an existing pipeline stage with the values
+        provided. The updated stage will be returned in the response.
+
         Args:
+          display_order: The order for displaying this pipeline stage. If two pipeline stages have a
+              matching `displayOrder`, they will be sorted alphabetically by label.
+
+          label: A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's
+              label must be unique within that pipeline.
+
+          metadata: A JSON object containing properties that are not present on all object
+              pipelines.
+
+              For `deals` pipelines, the `probability` field is required
+              (`{ "probability": 0.5 }`), and represents the likelihood a deal will close.
+              Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+              For `tickets` pipelines, the `ticketState` field is optional
+              (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
+              has been closed by a member of your Support team. Possible values are `OPEN` or
+              `CLOSED`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

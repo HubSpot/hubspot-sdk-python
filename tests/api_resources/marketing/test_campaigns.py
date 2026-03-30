@@ -9,6 +9,7 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
+from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.marketing import (
     PublicCampaign,
     PublicCampaignWithAssets,
@@ -19,6 +20,40 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 class TestCampaigns:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create(self, client: Hubspot) -> None:
+        campaign = client.marketing.campaigns.create(
+            properties={"foo": "string"},
+        )
+        assert_matches_type(PublicCampaign, campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create(self, client: Hubspot) -> None:
+        response = client.marketing.campaigns.with_raw_response.create(
+            properties={"foo": "string"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        campaign = response.parse()
+        assert_matches_type(PublicCampaign, campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create(self, client: Hubspot) -> None:
+        with client.marketing.campaigns.with_streaming_response.create(
+            properties={"foo": "string"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            campaign = response.parse()
+            assert_matches_type(PublicCampaign, campaign, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -65,6 +100,46 @@ class TestCampaigns:
                 campaign_guid="",
                 properties={"foo": "string"},
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list(self, client: Hubspot) -> None:
+        campaign = client.marketing.campaigns.list()
+        assert_matches_type(SyncPage[PublicCampaign], campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+        campaign = client.marketing.campaigns.list(
+            after="after",
+            limit=0,
+            name="name",
+            properties=["string"],
+            sort="sort",
+        )
+        assert_matches_type(SyncPage[PublicCampaign], campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_list(self, client: Hubspot) -> None:
+        response = client.marketing.campaigns.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        campaign = response.parse()
+        assert_matches_type(SyncPage[PublicCampaign], campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_list(self, client: Hubspot) -> None:
+        with client.marketing.campaigns.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            campaign = response.parse()
+            assert_matches_type(SyncPage[PublicCampaign], campaign, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -169,6 +244,40 @@ class TestAsyncCampaigns:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+        campaign = await async_client.marketing.campaigns.create(
+            properties={"foo": "string"},
+        )
+        assert_matches_type(PublicCampaign, campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.marketing.campaigns.with_raw_response.create(
+            properties={"foo": "string"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        campaign = await response.parse()
+        assert_matches_type(PublicCampaign, campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+        async with async_client.marketing.campaigns.with_streaming_response.create(
+            properties={"foo": "string"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            campaign = await response.parse()
+            assert_matches_type(PublicCampaign, campaign, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_method_update(self, async_client: AsyncHubspot) -> None:
         campaign = await async_client.marketing.campaigns.update(
             campaign_guid="campaignGuid",
@@ -212,6 +321,46 @@ class TestAsyncCampaigns:
                 campaign_guid="",
                 properties={"foo": "string"},
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+        campaign = await async_client.marketing.campaigns.list()
+        assert_matches_type(AsyncPage[PublicCampaign], campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+        campaign = await async_client.marketing.campaigns.list(
+            after="after",
+            limit=0,
+            name="name",
+            properties=["string"],
+            sort="sort",
+        )
+        assert_matches_type(AsyncPage[PublicCampaign], campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.marketing.campaigns.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        campaign = await response.parse()
+        assert_matches_type(AsyncPage[PublicCampaign], campaign, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+        async with async_client.marketing.campaigns.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            campaign = await response.parse()
+            assert_matches_type(AsyncPage[PublicCampaign], campaign, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

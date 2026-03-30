@@ -9,11 +9,11 @@ from pydantic import Field as FieldInfo
 
 from .now import Now
 from .euler import Euler
+from .property import Property
 from ..._models import BaseModel
 from .extension_data import ExtensionData
 from .constant_number import ConstantNumber
 from .constant_string import ConstantString
-from ..shared.property import Property
 from .constant_boolean import ConstantBoolean
 from .definition_source import DefinitionSource
 from .is_engagement_type import IsEngagementType

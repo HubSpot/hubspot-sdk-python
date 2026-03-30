@@ -13,6 +13,7 @@ __all__ = ["PublicInputFieldDefinition"]
 
 class PublicInputFieldDefinition(BaseModel):
     is_required: bool = FieldInfo(alias="isRequired")
+    """Indicates whether the input field is mandatory."""
 
     type_definition: PublicFieldTypeDefinition = FieldInfo(alias="typeDefinition")
 

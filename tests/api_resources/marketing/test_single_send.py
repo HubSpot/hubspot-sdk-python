@@ -1,0 +1,170 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+import os
+from typing import Any, cast
+
+import pytest
+
+from hubspot_sdk import Hubspot, AsyncHubspot
+from tests.utils import assert_matches_type
+from hubspot_sdk.types.marketing import EmailSendStatusView
+
+base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
+
+
+class TestSingleSend:
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create(self, client: Hubspot) -> None:
+        single_send = client.marketing.single_send.create(
+            contact_properties={"foo": "string"},
+            custom_properties={"foo": {}},
+            email_id=0,
+            message={
+                "bcc": ["string"],
+                "cc": ["string"],
+                "reply_to": ["string"],
+            },
+        )
+        assert_matches_type(EmailSendStatusView, single_send, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
+        single_send = client.marketing.single_send.create(
+            contact_properties={"foo": "string"},
+            custom_properties={"foo": {}},
+            email_id=0,
+            message={
+                "bcc": ["string"],
+                "cc": ["string"],
+                "reply_to": ["string"],
+                "from": "from",
+                "send_id": "sendId",
+                "to": "to",
+            },
+        )
+        assert_matches_type(EmailSendStatusView, single_send, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create(self, client: Hubspot) -> None:
+        response = client.marketing.single_send.with_raw_response.create(
+            contact_properties={"foo": "string"},
+            custom_properties={"foo": {}},
+            email_id=0,
+            message={
+                "bcc": ["string"],
+                "cc": ["string"],
+                "reply_to": ["string"],
+            },
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        single_send = response.parse()
+        assert_matches_type(EmailSendStatusView, single_send, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create(self, client: Hubspot) -> None:
+        with client.marketing.single_send.with_streaming_response.create(
+            contact_properties={"foo": "string"},
+            custom_properties={"foo": {}},
+            email_id=0,
+            message={
+                "bcc": ["string"],
+                "cc": ["string"],
+                "reply_to": ["string"],
+            },
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            single_send = response.parse()
+            assert_matches_type(EmailSendStatusView, single_send, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+
+class TestAsyncSingleSend:
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+        single_send = await async_client.marketing.single_send.create(
+            contact_properties={"foo": "string"},
+            custom_properties={"foo": {}},
+            email_id=0,
+            message={
+                "bcc": ["string"],
+                "cc": ["string"],
+                "reply_to": ["string"],
+            },
+        )
+        assert_matches_type(EmailSendStatusView, single_send, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
+        single_send = await async_client.marketing.single_send.create(
+            contact_properties={"foo": "string"},
+            custom_properties={"foo": {}},
+            email_id=0,
+            message={
+                "bcc": ["string"],
+                "cc": ["string"],
+                "reply_to": ["string"],
+                "from": "from",
+                "send_id": "sendId",
+                "to": "to",
+            },
+        )
+        assert_matches_type(EmailSendStatusView, single_send, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.marketing.single_send.with_raw_response.create(
+            contact_properties={"foo": "string"},
+            custom_properties={"foo": {}},
+            email_id=0,
+            message={
+                "bcc": ["string"],
+                "cc": ["string"],
+                "reply_to": ["string"],
+            },
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        single_send = await response.parse()
+        assert_matches_type(EmailSendStatusView, single_send, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+        async with async_client.marketing.single_send.with_streaming_response.create(
+            contact_properties={"foo": "string"},
+            custom_properties={"foo": {}},
+            email_id=0,
+            message={
+                "bcc": ["string"],
+                "cc": ["string"],
+                "reply_to": ["string"],
+            },
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            single_send = await response.parse()
+            assert_matches_type(EmailSendStatusView, single_send, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

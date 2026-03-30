@@ -60,6 +60,9 @@ class ParticipationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttendanceCounters:
         """
+        Read Marketing event's participations counters by externalAccountId and
+        externalEventId pair.
+
         Args:
           extra_headers: Send extra headers
 
@@ -99,6 +102,9 @@ class ParticipationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttendanceCounters:
         """
+        Read Marketing event's participations counters by internal identifier
+        marketingEventId.
+
         Args:
           extra_headers: Send extra headers
 
@@ -134,6 +140,8 @@ class ParticipationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[ParticipationBreakdown]:
         """
+        Read Contact's participations by identifier - email or internal id.
+
         Args:
           after: The cursor indicating the position of the last retrieved item.
 
@@ -192,6 +200,9 @@ class ParticipationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[ParticipationBreakdown]:
         """
+        Read Marketing event's participations breakdown with optional filters by
+        externalAccountId and externalEventId pair.
+
         Args:
           after: The cursor indicating the position of the last retrieved item.
 
@@ -257,6 +268,9 @@ class ParticipationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[ParticipationBreakdown]:
         """
+        Read Marketing event's participations breakdown with optional filters by
+        internal identifier marketingEventId.
+
         Args:
           after: The cursor indicating the position of the last retrieved item.
 
@@ -333,6 +347,9 @@ class AsyncParticipationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttendanceCounters:
         """
+        Read Marketing event's participations counters by externalAccountId and
+        externalEventId pair.
+
         Args:
           extra_headers: Send extra headers
 
@@ -372,6 +389,9 @@ class AsyncParticipationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttendanceCounters:
         """
+        Read Marketing event's participations counters by internal identifier
+        marketingEventId.
+
         Args:
           extra_headers: Send extra headers
 
@@ -407,6 +427,8 @@ class AsyncParticipationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ParticipationBreakdown, AsyncPage[ParticipationBreakdown]]:
         """
+        Read Contact's participations by identifier - email or internal id.
+
         Args:
           after: The cursor indicating the position of the last retrieved item.
 
@@ -465,6 +487,9 @@ class AsyncParticipationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ParticipationBreakdown, AsyncPage[ParticipationBreakdown]]:
         """
+        Read Marketing event's participations breakdown with optional filters by
+        externalAccountId and externalEventId pair.
+
         Args:
           after: The cursor indicating the position of the last retrieved item.
 
@@ -530,6 +555,9 @@ class AsyncParticipationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ParticipationBreakdown, AsyncPage[ParticipationBreakdown]]:
         """
+        Read Marketing event's participations breakdown with optional filters by
+        internal identifier marketingEventId.
+
         Args:
           after: The cursor indicating the position of the last retrieved item.
 

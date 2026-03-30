@@ -58,6 +58,10 @@ class SiteSearchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IndexedData:
         """
+        Return all indexed data for an asset (e.g., page, blog post, HubDB table),
+        specified by ID. This is useful when debugging why a particular asset is not
+        returned from a custom search.
+
         Args:
           extra_headers: Send extra headers
 
@@ -961,6 +965,11 @@ class SiteSearchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSearchResults:
         """
+        Returns any website content matching the given search criteria for a given
+        HubSpot account. Searches can be filtered by content type, domain, or URL path.
+        Includes options for weighing results by recency and popularity, along with
+        language support.
+
         Args:
           limit: The maximum number of results to display per page.
 
@@ -1041,6 +1050,10 @@ class AsyncSiteSearchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IndexedData:
         """
+        Return all indexed data for an asset (e.g., page, blog post, HubDB table),
+        specified by ID. This is useful when debugging why a particular asset is not
+        returned from a custom search.
+
         Args:
           extra_headers: Send extra headers
 
@@ -1944,6 +1957,11 @@ class AsyncSiteSearchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSearchResults:
         """
+        Returns any website content matching the given search criteria for a given
+        HubSpot account. Searches can be filtered by content type, domain, or URL path.
+        Includes options for weighing results by recency and popularity, along with
+        language support.
+
         Args:
           limit: The maximum number of results to display per page.
 

@@ -18,8 +18,8 @@ class PublicCampaignWithAssets(BaseModel):
 
     assets: Dict[str, CollectionResponsePublicCampaignAsset]
     """
-    A map of asset types to their corresponding collection of campaign assets,
-    represented by CollectionResponsePublicCampaignAsset objects.
+    Contains the assets associated with the campaign, each represented as a
+    collection of campaign assets.
     """
 
     business_units: List[PublicBusinessUnit] = FieldInfo(alias="businessUnits")
@@ -29,10 +29,16 @@ class PublicCampaignWithAssets(BaseModel):
     """
 
     created_at: datetime = FieldInfo(alias="createdAt")
-    """The date and time when the campaign was created, in ISO 8601 format."""
+    """
+    The date and time when the campaign was created, formatted as a date-time
+    string.
+    """
 
     properties: Dict[str, str]
-    """A map of custom property names to their values for the campaign."""
+    """A map of key-value pairs representing the properties of the campaign."""
 
     updated_at: datetime = FieldInfo(alias="updatedAt")
-    """The date and time when the campaign was last updated, in ISO 8601 format."""
+    """
+    The date and time when the campaign was last updated, formatted as a date-time
+    string.
+    """

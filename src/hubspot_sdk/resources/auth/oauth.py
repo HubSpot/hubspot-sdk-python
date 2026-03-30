@@ -161,6 +161,8 @@ class OAuthResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Deletes/Revokes provided Refresh Token
+
         Args:
           extra_headers: Send extra headers
 
@@ -319,6 +321,8 @@ class AsyncOAuthResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Deletes/Revokes provided Refresh Token
+
         Args:
           extra_headers: Send extra headers
 

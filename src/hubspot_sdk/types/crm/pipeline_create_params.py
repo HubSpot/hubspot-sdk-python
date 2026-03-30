@@ -14,8 +14,17 @@ class PipelineCreateParams(TypedDict, total=False):
     object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
 
     display_order: Required[Annotated[int, PropertyInfo(alias="displayOrder")]]
+    """The order for displaying this pipeline stage.
+
+    If two pipeline stages have a matching `displayOrder`, they will be sorted
+    alphabetically by label.
+    """
 
     label: Required[str]
+    """A label used to organize pipeline stages in HubSpot's UI.
+
+    Each pipeline stage's label must be unique within that pipeline.
+    """
 
     metadata: Required[Dict[str, str]]
     """

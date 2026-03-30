@@ -40,11 +40,10 @@ if TYPE_CHECKING:
         events,
         account,
         settings,
+        webhooks,
         marketing,
         scheduler,
         automation,
-        data_studio,
-        app_webhooks,
         conversations,
         business_units,
         communication_preferences,
@@ -57,11 +56,10 @@ if TYPE_CHECKING:
     from .resources.events.events import EventsResource, AsyncEventsResource
     from .resources.account.account import AccountResource, AsyncAccountResource
     from .resources.settings.settings import SettingsResource, AsyncSettingsResource
+    from .resources.webhooks.webhooks import WebhooksResource, AsyncWebhooksResource
     from .resources.marketing.marketing import MarketingResource, AsyncMarketingResource
     from .resources.scheduler.scheduler import SchedulerResource, AsyncSchedulerResource
     from .resources.automation.automation import AutomationResource, AsyncAutomationResource
-    from .resources.data_studio.data_studio import DataStudioResource, AsyncDataStudioResource
-    from .resources.app_webhooks.app_webhooks import AppWebhooksResource, AsyncAppWebhooksResource
     from .resources.conversations.conversations import ConversationsResource, AsyncConversationsResource
     from .resources.business_units.business_units import BusinessUnitsResource, AsyncBusinessUnitsResource
     from .resources.communication_preferences.communication_preferences import (
@@ -129,12 +127,6 @@ class Hubspot(SyncAPIClient):
         return AccountResource(self)
 
     @cached_property
-    def app_webhooks(self) -> AppWebhooksResource:
-        from .resources.app_webhooks import AppWebhooksResource
-
-        return AppWebhooksResource(self)
-
-    @cached_property
     def auth(self) -> AuthResource:
         from .resources.auth import AuthResource
 
@@ -177,12 +169,6 @@ class Hubspot(SyncAPIClient):
         return CrmResource(self)
 
     @cached_property
-    def data_studio(self) -> DataStudioResource:
-        from .resources.data_studio import DataStudioResource
-
-        return DataStudioResource(self)
-
-    @cached_property
     def events(self) -> EventsResource:
         from .resources.events import EventsResource
 
@@ -217,6 +203,12 @@ class Hubspot(SyncAPIClient):
         from .resources.settings import SettingsResource
 
         return SettingsResource(self)
+
+    @cached_property
+    def webhooks(self) -> WebhooksResource:
+        from .resources.webhooks import WebhooksResource
+
+        return WebhooksResource(self)
 
     @cached_property
     def with_raw_response(self) -> HubspotWithRawResponse:
@@ -404,12 +396,6 @@ class AsyncHubspot(AsyncAPIClient):
         return AsyncAccountResource(self)
 
     @cached_property
-    def app_webhooks(self) -> AsyncAppWebhooksResource:
-        from .resources.app_webhooks import AsyncAppWebhooksResource
-
-        return AsyncAppWebhooksResource(self)
-
-    @cached_property
     def auth(self) -> AsyncAuthResource:
         from .resources.auth import AsyncAuthResource
 
@@ -452,12 +438,6 @@ class AsyncHubspot(AsyncAPIClient):
         return AsyncCrmResource(self)
 
     @cached_property
-    def data_studio(self) -> AsyncDataStudioResource:
-        from .resources.data_studio import AsyncDataStudioResource
-
-        return AsyncDataStudioResource(self)
-
-    @cached_property
     def events(self) -> AsyncEventsResource:
         from .resources.events import AsyncEventsResource
 
@@ -492,6 +472,12 @@ class AsyncHubspot(AsyncAPIClient):
         from .resources.settings import AsyncSettingsResource
 
         return AsyncSettingsResource(self)
+
+    @cached_property
+    def webhooks(self) -> AsyncWebhooksResource:
+        from .resources.webhooks import AsyncWebhooksResource
+
+        return AsyncWebhooksResource(self)
 
     @cached_property
     def with_raw_response(self) -> AsyncHubspotWithRawResponse:
@@ -635,12 +621,6 @@ class HubspotWithRawResponse:
         return AccountResourceWithRawResponse(self._client.account)
 
     @cached_property
-    def app_webhooks(self) -> app_webhooks.AppWebhooksResourceWithRawResponse:
-        from .resources.app_webhooks import AppWebhooksResourceWithRawResponse
-
-        return AppWebhooksResourceWithRawResponse(self._client.app_webhooks)
-
-    @cached_property
     def auth(self) -> auth.AuthResourceWithRawResponse:
         from .resources.auth import AuthResourceWithRawResponse
 
@@ -683,12 +663,6 @@ class HubspotWithRawResponse:
         return CrmResourceWithRawResponse(self._client.crm)
 
     @cached_property
-    def data_studio(self) -> data_studio.DataStudioResourceWithRawResponse:
-        from .resources.data_studio import DataStudioResourceWithRawResponse
-
-        return DataStudioResourceWithRawResponse(self._client.data_studio)
-
-    @cached_property
     def events(self) -> events.EventsResourceWithRawResponse:
         from .resources.events import EventsResourceWithRawResponse
 
@@ -724,6 +698,12 @@ class HubspotWithRawResponse:
 
         return SettingsResourceWithRawResponse(self._client.settings)
 
+    @cached_property
+    def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
+        from .resources.webhooks import WebhooksResourceWithRawResponse
+
+        return WebhooksResourceWithRawResponse(self._client.webhooks)
+
 
 class AsyncHubspotWithRawResponse:
     _client: AsyncHubspot
@@ -736,12 +716,6 @@ class AsyncHubspotWithRawResponse:
         from .resources.account import AsyncAccountResourceWithRawResponse
 
         return AsyncAccountResourceWithRawResponse(self._client.account)
-
-    @cached_property
-    def app_webhooks(self) -> app_webhooks.AsyncAppWebhooksResourceWithRawResponse:
-        from .resources.app_webhooks import AsyncAppWebhooksResourceWithRawResponse
-
-        return AsyncAppWebhooksResourceWithRawResponse(self._client.app_webhooks)
 
     @cached_property
     def auth(self) -> auth.AsyncAuthResourceWithRawResponse:
@@ -788,12 +762,6 @@ class AsyncHubspotWithRawResponse:
         return AsyncCrmResourceWithRawResponse(self._client.crm)
 
     @cached_property
-    def data_studio(self) -> data_studio.AsyncDataStudioResourceWithRawResponse:
-        from .resources.data_studio import AsyncDataStudioResourceWithRawResponse
-
-        return AsyncDataStudioResourceWithRawResponse(self._client.data_studio)
-
-    @cached_property
     def events(self) -> events.AsyncEventsResourceWithRawResponse:
         from .resources.events import AsyncEventsResourceWithRawResponse
 
@@ -829,6 +797,12 @@ class AsyncHubspotWithRawResponse:
 
         return AsyncSettingsResourceWithRawResponse(self._client.settings)
 
+    @cached_property
+    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
+        from .resources.webhooks import AsyncWebhooksResourceWithRawResponse
+
+        return AsyncWebhooksResourceWithRawResponse(self._client.webhooks)
+
 
 class HubspotWithStreamedResponse:
     _client: Hubspot
@@ -841,12 +815,6 @@ class HubspotWithStreamedResponse:
         from .resources.account import AccountResourceWithStreamingResponse
 
         return AccountResourceWithStreamingResponse(self._client.account)
-
-    @cached_property
-    def app_webhooks(self) -> app_webhooks.AppWebhooksResourceWithStreamingResponse:
-        from .resources.app_webhooks import AppWebhooksResourceWithStreamingResponse
-
-        return AppWebhooksResourceWithStreamingResponse(self._client.app_webhooks)
 
     @cached_property
     def auth(self) -> auth.AuthResourceWithStreamingResponse:
@@ -893,12 +861,6 @@ class HubspotWithStreamedResponse:
         return CrmResourceWithStreamingResponse(self._client.crm)
 
     @cached_property
-    def data_studio(self) -> data_studio.DataStudioResourceWithStreamingResponse:
-        from .resources.data_studio import DataStudioResourceWithStreamingResponse
-
-        return DataStudioResourceWithStreamingResponse(self._client.data_studio)
-
-    @cached_property
     def events(self) -> events.EventsResourceWithStreamingResponse:
         from .resources.events import EventsResourceWithStreamingResponse
 
@@ -934,6 +896,12 @@ class HubspotWithStreamedResponse:
 
         return SettingsResourceWithStreamingResponse(self._client.settings)
 
+    @cached_property
+    def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
+        from .resources.webhooks import WebhooksResourceWithStreamingResponse
+
+        return WebhooksResourceWithStreamingResponse(self._client.webhooks)
+
 
 class AsyncHubspotWithStreamedResponse:
     _client: AsyncHubspot
@@ -946,12 +914,6 @@ class AsyncHubspotWithStreamedResponse:
         from .resources.account import AsyncAccountResourceWithStreamingResponse
 
         return AsyncAccountResourceWithStreamingResponse(self._client.account)
-
-    @cached_property
-    def app_webhooks(self) -> app_webhooks.AsyncAppWebhooksResourceWithStreamingResponse:
-        from .resources.app_webhooks import AsyncAppWebhooksResourceWithStreamingResponse
-
-        return AsyncAppWebhooksResourceWithStreamingResponse(self._client.app_webhooks)
 
     @cached_property
     def auth(self) -> auth.AsyncAuthResourceWithStreamingResponse:
@@ -998,12 +960,6 @@ class AsyncHubspotWithStreamedResponse:
         return AsyncCrmResourceWithStreamingResponse(self._client.crm)
 
     @cached_property
-    def data_studio(self) -> data_studio.AsyncDataStudioResourceWithStreamingResponse:
-        from .resources.data_studio import AsyncDataStudioResourceWithStreamingResponse
-
-        return AsyncDataStudioResourceWithStreamingResponse(self._client.data_studio)
-
-    @cached_property
     def events(self) -> events.AsyncEventsResourceWithStreamingResponse:
         from .resources.events import AsyncEventsResourceWithStreamingResponse
 
@@ -1038,6 +994,12 @@ class AsyncHubspotWithStreamedResponse:
         from .resources.settings import AsyncSettingsResourceWithStreamingResponse
 
         return AsyncSettingsResourceWithStreamingResponse(self._client.settings)
+
+    @cached_property
+    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:
+        from .resources.webhooks import AsyncWebhooksResourceWithStreamingResponse
+
+        return AsyncWebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
 Client = Hubspot

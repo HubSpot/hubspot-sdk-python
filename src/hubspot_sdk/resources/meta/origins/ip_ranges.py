@@ -48,7 +48,7 @@ class IPRangesResource(SyncAPIResource):
         self,
         *,
         direction: List[Literal["INGRESS", "EGRESS"]] | Omit = omit,
-        service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING"]] | Omit = omit,
+        service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING", "TEST_SERVICE"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -63,12 +63,6 @@ class IPRangesResource(SyncAPIResource):
         traffic.
 
         Args:
-          direction: An array of traffic directions to filter the IP ranges. Valid values are
-              `INGRESS` and `EGRESS`.
-
-          service: An array of service types to filter the IP ranges. Valid values include `EMAIL`,
-              `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -99,7 +93,7 @@ class IPRangesResource(SyncAPIResource):
         self,
         *,
         direction: List[Literal["INGRESS", "EGRESS"]] | Omit = omit,
-        service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING"]] | Omit = omit,
+        service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING", "TEST_SERVICE"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -113,12 +107,6 @@ class IPRangesResource(SyncAPIResource):
         ranges without additional metadata.
 
         Args:
-          direction: An array of directions to filter the IP ranges by. Valid values are `INGRESS`
-              and `EGRESS`.
-
-          service: An array specifying the service types to filter by. Valid values include
-              `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -171,7 +159,7 @@ class AsyncIPRangesResource(AsyncAPIResource):
         self,
         *,
         direction: List[Literal["INGRESS", "EGRESS"]] | Omit = omit,
-        service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING"]] | Omit = omit,
+        service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING", "TEST_SERVICE"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -186,12 +174,6 @@ class AsyncIPRangesResource(AsyncAPIResource):
         traffic.
 
         Args:
-          direction: An array of traffic directions to filter the IP ranges. Valid values are
-              `INGRESS` and `EGRESS`.
-
-          service: An array of service types to filter the IP ranges. Valid values include `EMAIL`,
-              `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -222,7 +204,7 @@ class AsyncIPRangesResource(AsyncAPIResource):
         self,
         *,
         direction: List[Literal["INGRESS", "EGRESS"]] | Omit = omit,
-        service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING"]] | Omit = omit,
+        service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING", "TEST_SERVICE"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -236,12 +218,6 @@ class AsyncIPRangesResource(AsyncAPIResource):
         ranges without additional metadata.
 
         Args:
-          direction: An array of directions to filter the IP ranges by. Valid values are `INGRESS`
-              and `EGRESS`.
-
-          service: An array specifying the service types to filter by. Valid values include
-              `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

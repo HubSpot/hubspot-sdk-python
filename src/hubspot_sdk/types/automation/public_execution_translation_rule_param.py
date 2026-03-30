@@ -12,5 +12,7 @@ __all__ = ["PublicExecutionTranslationRuleParam"]
 
 class PublicExecutionTranslationRuleParam(TypedDict, total=False):
     conditions: Required[Dict[str, object]]
+    """Defines the conditions that must be met for the execution rule to apply."""
 
     label_name: Required[Annotated[str, PropertyInfo(alias="labelName")]]
+    """Specifies the name of the label associated with the execution rule."""

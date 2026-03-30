@@ -14,3 +14,5 @@ class ChannelIntegrationParticipantParam(TypedDict, total=False):
     delivery_identifier: Required[Annotated[PublicDeliveryIdentifierParam, PropertyInfo(alias="deliveryIdentifier")]]
 
     name: str
+
+    sender_actor_id: Annotated[str, PropertyInfo(alias="senderActorId")]

@@ -11,13 +11,5 @@ __all__ = ["CommunicationPreferenceGetStatusesParams"]
 
 class CommunicationPreferenceGetStatusesParams(TypedDict, total=False):
     channel: Required[Literal["EMAIL"]]
-    """
-    A required string indicating the communication channel to retrieve the status
-    for. Valid value is 'EMAIL'.
-    """
 
     business_unit_id: Annotated[int, PropertyInfo(alias="businessUnitId")]
-    """
-    An optional integer representing the business unit ID to filter the subscription
-    status.
-    """

@@ -9,3 +9,7 @@ __all__ = ["TestRequestContextParam"]
 
 class TestRequestContextParam(TypedDict, total=False):
     source: Required[Literal["TEST"]]
+    """
+    Indicates the source of the test request, with the only accepted value being
+    'TEST'.
+    """

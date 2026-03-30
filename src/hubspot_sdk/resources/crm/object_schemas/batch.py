@@ -16,7 +16,7 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.crm.object_schemas import batch_get_params
-from ....types.shared.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
+from ....types.crm.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
 
 __all__ = ["BatchResource", "AsyncBatchResource"]
 
@@ -56,7 +56,18 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectSchemaNoPaging:
         """
+        Retrieve details of multiple custom object schemas by providing a batch request
+        with specified inputs. This operation allows you to fetch schema information,
+        including properties and associations, for multiple custom objects in a single
+        API call.
+
         Args:
+          include_association_definitions: Indicates whether to include association definitions in the response.
+
+          include_audit_metadata: Indicates whether to include audit metadata in the response.
+
+          include_property_definitions: Indicates whether to include property definitions in the response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -118,7 +129,18 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectSchemaNoPaging:
         """
+        Retrieve details of multiple custom object schemas by providing a batch request
+        with specified inputs. This operation allows you to fetch schema information,
+        including properties and associations, for multiple custom objects in a single
+        API call.
+
         Args:
+          include_association_definitions: Indicates whether to include association definitions in the response.
+
+          include_audit_metadata: Indicates whether to include audit metadata in the response.
+
+          include_property_definitions: Indicates whether to include property definitions in the response.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

@@ -17,6 +17,6 @@ class CollectionResponseWithTotalSimplePublicObject(BaseModel):
     results: List[SimplePublicObject]
 
     total: int
-    """The total number of objects included into response."""
+    """The total number of objects in the collection."""
 
     paging: Optional[Paging] = None

@@ -9,5 +9,7 @@ __all__ = ["ObjectFieldSchemaParam"]
 
 class ObjectFieldSchemaParam(TypedDict, total=False):
     properties: Required[object]
+    """Contains the properties of the object."""
 
     type: Required[Literal["OBJECT"]]
+    """Specifies the type of the field, which is 'OBJECT' by default."""

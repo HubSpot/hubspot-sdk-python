@@ -55,11 +55,11 @@ class VisitorIdentificationResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IdentificationTokenResponse:
         """
-        This endpoint generates an identification token for a website visitor who has
-        been authenticated using your own system. An identification token returned from
-        this API can be used to pass information about your already-authenticated
-        visitor to the chat widget, so that it treats the visitor as a known contact.
-        This allows support agents to recognize and assist the visitor more effectively.
+        Generate an identification token for a website visitor who has been
+        authenticated using your own system. An identification token returned from this
+        API can be used to pass information about your already-authenticated visitor to
+        the chat widget, so that it treats the visitor as a known contact. This allows
+        support agents to recognize and assist the visitor more effectively.
 
         Args:
           email: The email of the visitor that you wish to identify
@@ -131,11 +131,11 @@ class AsyncVisitorIdentificationResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IdentificationTokenResponse:
         """
-        This endpoint generates an identification token for a website visitor who has
-        been authenticated using your own system. An identification token returned from
-        this API can be used to pass information about your already-authenticated
-        visitor to the chat widget, so that it treats the visitor as a known contact.
-        This allows support agents to recognize and assist the visitor more effectively.
+        Generate an identification token for a website visitor who has been
+        authenticated using your own system. An identification token returned from this
+        API can be used to pass information about your already-authenticated visitor to
+        the chat widget, so that it treats the visitor as a known contact. This allows
+        support agents to recognize and assist the visitor more effectively.
 
         Args:
           email: The email of the visitor that you wish to identify

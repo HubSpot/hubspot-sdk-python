@@ -14,12 +14,12 @@ class PublicCardFetchBody(BaseModel):
     object_types: List[CardObjectTypeBody] = FieldInfo(alias="objectTypes")
     """An array of CRM object types where this card should be displayed.
 
-    HubSpot will call your data fetch URL whenever a user visits a record page of
-    the types defined here.
+    HubSpot will call your target URL whenever a user visits a record page of the
+    types defined here.
     """
 
     target_url: str = FieldInfo(alias="targetUrl")
-    """URL to a service endpoint that will respond with card details.
+    """URL to a service endpoint that will respond with details for this card.
 
     HubSpot will call this endpoint each time a user visits a CRM record page where
     this card should be displayed.

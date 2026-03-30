@@ -72,6 +72,8 @@ class MessagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicConversationsMessage:
         """
+        Publish a message over your custom channel
+
         Args:
           extra_headers: Send extra headers
 
@@ -122,6 +124,10 @@ class MessagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicConversationsMessage:
         """
+        Update a message's status to indicate if it was successfully sent, failed to
+        send, or was read. For failed messages, this can also include the error message
+        for the failure.
+
         Args:
           status_type: Valid status are SENT, FAILED, and READ
 
@@ -167,6 +173,8 @@ class MessagesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicConversationsMessage:
         """
+        Get the details for a specific message sent over a custom channel
+
         Args:
           extra_headers: Send extra headers
 
@@ -236,6 +244,8 @@ class AsyncMessagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicConversationsMessage:
         """
+        Publish a message over your custom channel
+
         Args:
           extra_headers: Send extra headers
 
@@ -286,6 +296,10 @@ class AsyncMessagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicConversationsMessage:
         """
+        Update a message's status to indicate if it was successfully sent, failed to
+        send, or was read. For failed messages, this can also include the error message
+        for the failure.
+
         Args:
           status_type: Valid status are SENT, FAILED, and READ
 
@@ -331,6 +345,8 @@ class AsyncMessagesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicConversationsMessage:
         """
+        Get the details for a specific message sent over a custom channel
+
         Args:
           extra_headers: Send extra headers
 

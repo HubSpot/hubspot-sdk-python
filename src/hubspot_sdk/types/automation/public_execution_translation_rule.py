@@ -11,5 +11,7 @@ __all__ = ["PublicExecutionTranslationRule"]
 
 class PublicExecutionTranslationRule(BaseModel):
     conditions: Dict[str, object]
+    """Defines the conditions that must be met for the execution rule to apply."""
 
     label_name: str = FieldInfo(alias="labelName")
+    """Specifies the name of the label associated with the execution rule."""

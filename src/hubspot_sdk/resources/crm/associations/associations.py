@@ -14,7 +14,7 @@ from .batch import (
     BatchResourceWithStreamingResponse,
     AsyncBatchResourceWithStreamingResponse,
 )
-from ...._types import Body, Query, Headers, NoneType, NotGiven, not_given
+from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -24,10 +24,20 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....types.crm import (
+    association_list_params,
+    association_search_params,
+)
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.crm.filter_group_param import FilterGroupParam
 from ....types.crm.report_creation_response import ReportCreationResponse
 from ....types.crm.labels_between_object_pair import LabelsBetweenObjectPair
 from ....types.shared_params.association_spec import AssociationSpec
+from ....types.crm.multi_associated_object_with_label import MultiAssociatedObjectWithLabel
+from ....types.crm.collection_response_with_total_simple_public_object import (
+    CollectionResponseWithTotalSimplePublicObject,
+)
 
 __all__ = ["AssociationsResource", "AsyncAssociationsResource"]
 
@@ -56,7 +66,72 @@ class AssociationsResource(SyncAPIResource):
         """
         return AssociationsResourceWithStreamingResponse(self)
 
-    def delete_associations(
+    def list(
+        self,
+        to_object_type: str,
+        *,
+        object_type: str,
+        object_id: str,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[MultiAssociatedObjectWithLabel]:
+        """Retrieve all associations between a specific record and an object type.
+
+        Limit
+        500 per call.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not to_object_type:
+            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        return self._get_api_list(
+            path_template(
+                "/crm/objects/2026-03/{object_type}/{object_id}/associations/{to_object_type}",
+                object_type=object_type,
+                object_id=object_id,
+                to_object_type=to_object_type,
+            ),
+            page=SyncPage[MultiAssociatedObjectWithLabel],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                    },
+                    association_list_params.AssociationListParams,
+                ),
+            ),
+            model=MultiAssociatedObjectWithLabel,
+        )
+
+    def delete(
         self,
         to_object_id: str,
         *,
@@ -135,6 +210,66 @@ class AssociationsResource(SyncAPIResource):
             cast_to=ReportCreationResponse,
         )
 
+    def search(
+        self,
+        object_type: str,
+        *,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
+        query: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CollectionResponseWithTotalSimplePublicObject:
+        """
+        Args:
+          after: A paging cursor token for retrieving subsequent pages.
+
+          filter_groups: Up to 6 groups of filters defining additional query criteria.
+
+          limit: The maximum results to return, up to 200 objects.
+
+          properties: A list of property names to include in the response.
+
+          sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        return self._post(
+            path_template("/crm/objects/2026-03/{object_type}/search", object_type=object_type),
+            body=maybe_transform(
+                {
+                    "after": after,
+                    "filter_groups": filter_groups,
+                    "limit": limit,
+                    "properties": properties,
+                    "sorts": sorts,
+                    "query": query,
+                },
+                association_search_params.AssociationSearchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CollectionResponseWithTotalSimplePublicObject,
+        )
+
     def update_association_labels(
         self,
         to_object_id: str,
@@ -208,7 +343,72 @@ class AsyncAssociationsResource(AsyncAPIResource):
         """
         return AsyncAssociationsResourceWithStreamingResponse(self)
 
-    async def delete_associations(
+    def list(
+        self,
+        to_object_type: str,
+        *,
+        object_type: str,
+        object_id: str,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[MultiAssociatedObjectWithLabel, AsyncPage[MultiAssociatedObjectWithLabel]]:
+        """Retrieve all associations between a specific record and an object type.
+
+        Limit
+        500 per call.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not to_object_type:
+            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        return self._get_api_list(
+            path_template(
+                "/crm/objects/2026-03/{object_type}/{object_id}/associations/{to_object_type}",
+                object_type=object_type,
+                object_id=object_id,
+                to_object_type=to_object_type,
+            ),
+            page=AsyncPage[MultiAssociatedObjectWithLabel],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                    },
+                    association_list_params.AssociationListParams,
+                ),
+            ),
+            model=MultiAssociatedObjectWithLabel,
+        )
+
+    async def delete(
         self,
         to_object_id: str,
         *,
@@ -287,6 +487,66 @@ class AsyncAssociationsResource(AsyncAPIResource):
             cast_to=ReportCreationResponse,
         )
 
+    async def search(
+        self,
+        object_type: str,
+        *,
+        after: str,
+        filter_groups: Iterable[FilterGroupParam],
+        limit: int,
+        properties: SequenceNotStr[str],
+        sorts: SequenceNotStr[str],
+        query: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CollectionResponseWithTotalSimplePublicObject:
+        """
+        Args:
+          after: A paging cursor token for retrieving subsequent pages.
+
+          filter_groups: Up to 6 groups of filters defining additional query criteria.
+
+          limit: The maximum results to return, up to 200 objects.
+
+          properties: A list of property names to include in the response.
+
+          sorts: Specifies sorting order based on object properties.
+
+          query: The search query string, up to 3000 characters.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_type:
+            raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
+        return await self._post(
+            path_template("/crm/objects/2026-03/{object_type}/search", object_type=object_type),
+            body=await async_maybe_transform(
+                {
+                    "after": after,
+                    "filter_groups": filter_groups,
+                    "limit": limit,
+                    "properties": properties,
+                    "sorts": sorts,
+                    "query": query,
+                },
+                association_search_params.AssociationSearchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CollectionResponseWithTotalSimplePublicObject,
+        )
+
     async def update_association_labels(
         self,
         to_object_id: str,
@@ -340,11 +600,17 @@ class AssociationsResourceWithRawResponse:
     def __init__(self, associations: AssociationsResource) -> None:
         self._associations = associations
 
-        self.delete_associations = to_raw_response_wrapper(
-            associations.delete_associations,
+        self.list = to_raw_response_wrapper(
+            associations.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            associations.delete,
         )
         self.request_high_usage_report = to_raw_response_wrapper(
             associations.request_high_usage_report,
+        )
+        self.search = to_raw_response_wrapper(
+            associations.search,
         )
         self.update_association_labels = to_raw_response_wrapper(
             associations.update_association_labels,
@@ -359,11 +625,17 @@ class AsyncAssociationsResourceWithRawResponse:
     def __init__(self, associations: AsyncAssociationsResource) -> None:
         self._associations = associations
 
-        self.delete_associations = async_to_raw_response_wrapper(
-            associations.delete_associations,
+        self.list = async_to_raw_response_wrapper(
+            associations.list,
+        )
+        self.delete = async_to_raw_response_wrapper(
+            associations.delete,
         )
         self.request_high_usage_report = async_to_raw_response_wrapper(
             associations.request_high_usage_report,
+        )
+        self.search = async_to_raw_response_wrapper(
+            associations.search,
         )
         self.update_association_labels = async_to_raw_response_wrapper(
             associations.update_association_labels,
@@ -378,11 +650,17 @@ class AssociationsResourceWithStreamingResponse:
     def __init__(self, associations: AssociationsResource) -> None:
         self._associations = associations
 
-        self.delete_associations = to_streamed_response_wrapper(
-            associations.delete_associations,
+        self.list = to_streamed_response_wrapper(
+            associations.list,
+        )
+        self.delete = to_streamed_response_wrapper(
+            associations.delete,
         )
         self.request_high_usage_report = to_streamed_response_wrapper(
             associations.request_high_usage_report,
+        )
+        self.search = to_streamed_response_wrapper(
+            associations.search,
         )
         self.update_association_labels = to_streamed_response_wrapper(
             associations.update_association_labels,
@@ -397,11 +675,17 @@ class AsyncAssociationsResourceWithStreamingResponse:
     def __init__(self, associations: AsyncAssociationsResource) -> None:
         self._associations = associations
 
-        self.delete_associations = async_to_streamed_response_wrapper(
-            associations.delete_associations,
+        self.list = async_to_streamed_response_wrapper(
+            associations.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            associations.delete,
         )
         self.request_high_usage_report = async_to_streamed_response_wrapper(
             associations.request_high_usage_report,
+        )
+        self.search = async_to_streamed_response_wrapper(
+            associations.search,
         )
         self.update_association_labels = async_to_streamed_response_wrapper(
             associations.update_association_labels,

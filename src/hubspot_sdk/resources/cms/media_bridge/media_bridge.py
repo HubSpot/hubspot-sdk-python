@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import typing_extensions
 from typing import Dict, List, Iterable
-from typing_extensions import Literal, overload
+from typing_extensions import Literal
 
 import httpx
 
@@ -21,21 +21,12 @@ from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
-    BinaryAPIResponse,
-    AsyncBinaryAPIResponse,
-    StreamedBinaryAPIResponse,
-    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
-    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
-    to_custom_streamed_response_wrapper,
-    async_to_custom_raw_response_wrapper,
-    async_to_custom_streamed_response_wrapper,
 )
 from ....types.cms import (
-    media_bridge_list_params,
     media_bridge_get_property_params,
     media_bridge_list_schemas_params,
     media_bridge_update_schema_params,
@@ -58,27 +49,28 @@ from ....types.cms import (
     media_bridge_update_event_visibility_settings_params,
     media_bridge_create_media_played_percent_event_params,
 )
-from ....pagination import SyncPage, AsyncPage
-from ...._base_client import AsyncPaginator, make_request_options
-from ....types.shared.property import Property
+from ...._base_client import make_request_options
+from ....types.cms.property import Property
+from ....types.cms.object_schema import ObjectSchema
 from ....types.cms.endpoints_param import EndpointsParam
-from ....types.shared.object_schema import ObjectSchema
 from ....types.shared.property_group import PropertyGroup
-from ....types.cms.media_bridge_object import MediaBridgeObject
+from ....types.cms.media_played_event import MediaPlayedEvent
+from ....types.cms.attention_span_event import AttentionSpanEvent
 from ....types.shared_params.option_input import OptionInput
 from ....types.cms.event_visibility_change import EventVisibilityChange
 from ....types.cms.event_visibility_response import EventVisibilityResponse
-from ....types.events.association_definition import AssociationDefinition
+from ....types.shared.association_definition import AssociationDefinition
 from ....types.shared.object_type_definition import ObjectTypeDefinition
 from ....types.cms.object_definition_response import ObjectDefinitionResponse
+from ....types.cms.media_played_percentage_event import MediaPlayedPercentageEvent
 from ....types.cms.integrator_o_embed_domain_model import IntegratorOEmbedDomainModel
 from ....types.cms.o_embed_domains_collection_response import OEmbedDomainsCollectionResponse
 from ....types.cms.attention_span_calculated_values_param import AttentionSpanCalculatedValuesParam
+from ....types.cms.collection_response_property_no_paging import CollectionResponsePropertyNoPaging
 from ....types.shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
 from ....types.cms.bulk_integrator_object_creation_response import BulkIntegratorObjectCreationResponse
-from ....types.shared.collection_response_property_no_paging import CollectionResponsePropertyNoPaging
+from ....types.cms.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
 from ....types.cms.media_bridge_provider_registration_response import MediaBridgeProviderRegistrationResponse
-from ....types.shared.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
 from ....types.shared.collection_response_property_group_no_paging import CollectionResponsePropertyGroupNoPaging
 
 __all__ = ["MediaBridgeResource", "AsyncMediaBridgeResource"]
@@ -108,308 +100,11 @@ class MediaBridgeResource(SyncAPIResource):
         """
         return MediaBridgeResourceWithStreamingResponse(self)
 
-    @overload
-    def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    @overload
-    def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    @overload
-    def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    @overload
-    def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    @overload
-    def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        return self._post(
-            "/media-bridge/2026-03/objects",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MediaBridgeObject,
-        )
-
-    @overload
-    def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    @overload
-    def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    @overload
-    def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    @overload
-    def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    @overload
-    def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        return self._patch(
-            path_template("/media-bridge/2026-03/objects/{object_id}", object_id=object_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MediaBridgeObject,
-        )
-
-    def list(
-        self,
-        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
-        *,
-        after: str | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[MediaBridgeObject]:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not media_type:
-            raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
-        return self._get_api_list(
-            path_template("/media-bridge/2026-03/objects/{media_type}", media_type=media_type),
-            page=SyncPage[MediaBridgeObject],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "limit": limit,
-                    },
-                    media_bridge_list_params.MediaBridgeListParams,
-                ),
-            ),
-            model=MediaBridgeObject,
-        )
-
-    def delete(
-        self,
-        object_id: int,
-        *,
-        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not media_type:
-            raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            path_template(
-                "/media-bridge/2026-03/objects/{media_type}/{object_id}", media_type=media_type, object_id=object_id
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def create_association(
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         from_object_type_id: str,
         to_object_type_id: str,
         name: str | Omit = omit,
@@ -432,8 +127,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -482,7 +175,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BinaryAPIResponse:
+    ) -> AttentionSpanEvent:
         """
         Create an event containing the viewers attention span details for the media.
 
@@ -495,7 +188,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/media-bridge/2026-03/events/attention-span",
             body=maybe_transform(
@@ -523,7 +215,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BinaryAPIResponse,
+            cast_to=AttentionSpanEvent,
         )
 
     def create_media_played_event(
@@ -551,7 +243,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BinaryAPIResponse:
+    ) -> MediaPlayedEvent:
         """
         Create an event for when a user begins playing a piece of media.
 
@@ -564,7 +256,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/media-bridge/2026-03/events/media-played",
             body=maybe_transform(
@@ -591,7 +282,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BinaryAPIResponse,
+            cast_to=MediaPlayedEvent,
         )
 
     def create_media_played_percent_event(
@@ -618,7 +309,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BinaryAPIResponse:
+    ) -> MediaPlayedPercentageEvent:
         """
         Create an event representing a user reaching quarterly milestones in a piece of
         media they're viewing.
@@ -632,7 +323,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/media-bridge/2026-03/events/media-played-percent",
             body=maybe_transform(
@@ -658,12 +348,12 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BinaryAPIResponse,
+            cast_to=MediaPlayedPercentageEvent,
         )
 
     def create_object_type(
         self,
-        app_id: str,
+        app_id: int,
         *,
         media_types: List[Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"]],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -685,8 +375,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._post(
             path_template("/media-bridge/2026-03/{app_id}/settings/object-definitions", app_id=app_id),
             body=maybe_transform(
@@ -700,7 +388,7 @@ class MediaBridgeResource(SyncAPIResource):
 
     def create_oembed_domain(
         self,
-        app_id: str,
+        app_id: int,
         *,
         endpoints: EndpointsParam,
         portal_id: int | Omit = omit,
@@ -723,8 +411,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._post(
             path_template("/media-bridge/2026-03/{app_id}/settings/oembed-domains", app_id=app_id),
             body=maybe_transform(
@@ -744,7 +430,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         field_type: Literal[
             "booleancheckbox",
             "calculation_equation",
@@ -792,8 +478,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -830,7 +514,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         label: str,
         name: str,
         display_order: int | Omit = omit,
@@ -853,8 +537,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -877,7 +559,7 @@ class MediaBridgeResource(SyncAPIResource):
 
     def create_video_association_definition(
         self,
-        app_id: str,
+        app_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -896,8 +578,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._post(
             path_template("/media-bridge/2026-03/{app_id}/settings/video-association-definition", app_id=app_id),
             options=make_request_options(
@@ -910,7 +590,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         association_id: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -931,8 +611,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not association_id:
@@ -953,7 +631,7 @@ class MediaBridgeResource(SyncAPIResource):
 
     def delete_oembed_domain(
         self,
-        app_id: str,
+        app_id: int,
         *,
         id: int | Omit = omit,
         domain_portal_id: int | Omit = omit,
@@ -976,8 +654,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             path_template("/media-bridge/2026-03/{app_id}/settings/oembed-domains", app_id=app_id),
@@ -1001,7 +677,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1022,8 +698,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -1046,7 +720,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1067,8 +741,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -1087,43 +759,9 @@ class MediaBridgeResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def get(
-        self,
-        object_id: int,
-        *,
-        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not media_type:
-            raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
-        return self._get(
-            path_template(
-                "/media-bridge/2026-03/objects/{media_type}/{object_id}", media_type=media_type, object_id=object_id
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MediaBridgeObject,
-        )
-
     def get_event_visibility_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1144,8 +782,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._get(
             path_template("/media-bridge/2026-03/{app_id}/settings/event-visibility", app_id=app_id),
             options=make_request_options(
@@ -1158,7 +794,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         o_embed_domain_id: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1178,8 +814,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not o_embed_domain_id:
             raise ValueError(f"Expected a non-empty value for `o_embed_domain_id` but received {o_embed_domain_id!r}")
         return self._get(
@@ -1198,7 +832,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         archived: bool | Omit = omit,
         properties: str | Omit = omit,
@@ -1223,8 +857,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -1256,7 +888,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1277,8 +909,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -1300,7 +930,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1320,8 +950,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._get(
@@ -1338,7 +966,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         *,
-        app_id: str,
+        app_id: int,
         include_full_definition: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1359,8 +987,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not media_type:
             raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
         return self._get(
@@ -1384,7 +1010,7 @@ class MediaBridgeResource(SyncAPIResource):
 
     def list_oembed_domains(
         self,
-        app_id: str,
+        app_id: int,
         *,
         domain_portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1406,8 +1032,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._get(
             path_template("/media-bridge/2026-03/{app_id}/settings/oembed-domains", app_id=app_id),
             options=make_request_options(
@@ -1427,7 +1051,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         archived: bool | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1451,8 +1075,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._get(
@@ -1479,7 +1101,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1499,8 +1121,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._get(
@@ -1515,7 +1135,7 @@ class MediaBridgeResource(SyncAPIResource):
 
     def list_schemas(
         self,
-        app_id: str,
+        app_id: int,
         *,
         archived: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1539,8 +1159,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._get(
             path_template("/media-bridge/2026-03/{app_id}/schemas", app_id=app_id),
             options=make_request_options(
@@ -1558,7 +1176,7 @@ class MediaBridgeResource(SyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     def register_app_name(
         self,
-        app_id: str,
+        app_id: int,
         *,
         updated_at: int,
         allow_import_on_disconnect: bool | Omit = omit,
@@ -1584,8 +1202,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._post(
             path_template("/media-bridge/2026-03/{app_id}/settings/register", app_id=app_id),
             body=maybe_transform(
@@ -1605,7 +1221,7 @@ class MediaBridgeResource(SyncAPIResource):
 
     def update_event_visibility_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         event_type: Literal["ALL", "ATTENTION_SPAN", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT"],
         updated_at: int,
@@ -1631,8 +1247,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._patch(
             path_template("/media-bridge/2026-03/{app_id}/settings/event-visibility", app_id=app_id),
             body=maybe_transform(
@@ -1655,7 +1269,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         o_embed_domain_id: str,
         *,
-        app_id: str,
+        app_id: int,
         endpoints: EndpointsParam,
         portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1677,8 +1291,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not o_embed_domain_id:
             raise ValueError(f"Expected a non-empty value for `o_embed_domain_id` but received {o_embed_domain_id!r}")
         return self._patch(
@@ -1704,7 +1316,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         calculation_formula: str | Omit = omit,
         description: str | Omit = omit,
@@ -1750,8 +1362,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -1789,7 +1399,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         display_order: int | Omit = omit,
         label: str | Omit = omit,
@@ -1812,8 +1422,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -1842,7 +1450,7 @@ class MediaBridgeResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         clear_description: bool,
         allows_sensitive_properties: bool | Omit = omit,
         description: str | Omit = omit,
@@ -1871,8 +1479,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._patch(
@@ -1901,7 +1507,7 @@ class MediaBridgeResource(SyncAPIResource):
 
     def update_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         updated_at: int,
         allow_import_on_disconnect: bool | Omit = omit,
@@ -1927,8 +1533,6 @@ class MediaBridgeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return self._put(
             path_template("/media-bridge/2026-03/{app_id}/settings", app_id=app_id),
             body=maybe_transform(
@@ -1971,308 +1575,11 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         """
         return AsyncMediaBridgeResourceWithStreamingResponse(self)
 
-    @overload
-    async def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    @overload
-    async def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    @overload
-    async def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    @overload
-    async def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    @overload
-    async def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject: ...
-    async def create(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        return await self._post(
-            "/media-bridge/2026-03/objects",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MediaBridgeObject,
-        )
-
-    @overload
-    async def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    @overload
-    async def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    @overload
-    async def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    @overload
-    async def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    @overload
-    async def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        ...
-
-    async def update(
-        self,
-        object_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        return await self._patch(
-            path_template("/media-bridge/2026-03/objects/{object_id}", object_id=object_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MediaBridgeObject,
-        )
-
-    def list(
-        self,
-        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
-        *,
-        after: str | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[MediaBridgeObject, AsyncPage[MediaBridgeObject]]:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not media_type:
-            raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
-        return self._get_api_list(
-            path_template("/media-bridge/2026-03/objects/{media_type}", media_type=media_type),
-            page=AsyncPage[MediaBridgeObject],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "limit": limit,
-                    },
-                    media_bridge_list_params.MediaBridgeListParams,
-                ),
-            ),
-            model=MediaBridgeObject,
-        )
-
-    async def delete(
-        self,
-        object_id: int,
-        *,
-        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not media_type:
-            raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            path_template(
-                "/media-bridge/2026-03/objects/{media_type}/{object_id}", media_type=media_type, object_id=object_id
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def create_association(
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         from_object_type_id: str,
         to_object_type_id: str,
         name: str | Omit = omit,
@@ -2295,8 +1602,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -2345,7 +1650,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncBinaryAPIResponse:
+    ) -> AttentionSpanEvent:
         """
         Create an event containing the viewers attention span details for the media.
 
@@ -2358,7 +1663,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/media-bridge/2026-03/events/attention-span",
             body=await async_maybe_transform(
@@ -2386,7 +1690,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AsyncBinaryAPIResponse,
+            cast_to=AttentionSpanEvent,
         )
 
     async def create_media_played_event(
@@ -2414,7 +1718,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncBinaryAPIResponse:
+    ) -> MediaPlayedEvent:
         """
         Create an event for when a user begins playing a piece of media.
 
@@ -2427,7 +1731,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/media-bridge/2026-03/events/media-played",
             body=await async_maybe_transform(
@@ -2454,7 +1757,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AsyncBinaryAPIResponse,
+            cast_to=MediaPlayedEvent,
         )
 
     async def create_media_played_percent_event(
@@ -2481,7 +1784,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncBinaryAPIResponse:
+    ) -> MediaPlayedPercentageEvent:
         """
         Create an event representing a user reaching quarterly milestones in a piece of
         media they're viewing.
@@ -2495,7 +1798,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/media-bridge/2026-03/events/media-played-percent",
             body=await async_maybe_transform(
@@ -2521,12 +1823,12 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AsyncBinaryAPIResponse,
+            cast_to=MediaPlayedPercentageEvent,
         )
 
     async def create_object_type(
         self,
-        app_id: str,
+        app_id: int,
         *,
         media_types: List[Literal["VIDEO", "AUDIO", "DOCUMENT", "OTHER", "IMAGE"]],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -2548,8 +1850,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._post(
             path_template("/media-bridge/2026-03/{app_id}/settings/object-definitions", app_id=app_id),
             body=await async_maybe_transform(
@@ -2563,7 +1863,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
     async def create_oembed_domain(
         self,
-        app_id: str,
+        app_id: int,
         *,
         endpoints: EndpointsParam,
         portal_id: int | Omit = omit,
@@ -2586,8 +1886,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._post(
             path_template("/media-bridge/2026-03/{app_id}/settings/oembed-domains", app_id=app_id),
             body=await async_maybe_transform(
@@ -2607,7 +1905,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         field_type: Literal[
             "booleancheckbox",
             "calculation_equation",
@@ -2655,8 +1953,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -2693,7 +1989,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         label: str,
         name: str,
         display_order: int | Omit = omit,
@@ -2716,8 +2012,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -2740,7 +2034,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
     async def create_video_association_definition(
         self,
-        app_id: str,
+        app_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2759,8 +2053,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._post(
             path_template("/media-bridge/2026-03/{app_id}/settings/video-association-definition", app_id=app_id),
             options=make_request_options(
@@ -2773,7 +2065,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         association_id: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2794,8 +2086,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not association_id:
@@ -2816,7 +2106,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
     async def delete_oembed_domain(
         self,
-        app_id: str,
+        app_id: int,
         *,
         id: int | Omit = omit,
         domain_portal_id: int | Omit = omit,
@@ -2839,8 +2129,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             path_template("/media-bridge/2026-03/{app_id}/settings/oembed-domains", app_id=app_id),
@@ -2864,7 +2152,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2885,8 +2173,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -2909,7 +2195,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2930,8 +2216,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -2950,43 +2234,9 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def get(
-        self,
-        object_id: int,
-        *,
-        media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> MediaBridgeObject:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not media_type:
-            raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
-        return await self._get(
-            path_template(
-                "/media-bridge/2026-03/objects/{media_type}/{object_id}", media_type=media_type, object_id=object_id
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MediaBridgeObject,
-        )
-
     async def get_event_visibility_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3007,8 +2257,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._get(
             path_template("/media-bridge/2026-03/{app_id}/settings/event-visibility", app_id=app_id),
             options=make_request_options(
@@ -3021,7 +2269,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         o_embed_domain_id: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3041,8 +2289,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not o_embed_domain_id:
             raise ValueError(f"Expected a non-empty value for `o_embed_domain_id` but received {o_embed_domain_id!r}")
         return await self._get(
@@ -3061,7 +2307,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         archived: bool | Omit = omit,
         properties: str | Omit = omit,
@@ -3086,8 +2332,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -3119,7 +2363,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3140,8 +2384,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -3163,7 +2405,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3183,8 +2425,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._get(
@@ -3201,7 +2441,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         media_type: Literal["AUDIO", "DOCUMENT", "IMAGE", "OTHER", "VIDEO"],
         *,
-        app_id: str,
+        app_id: int,
         include_full_definition: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3222,8 +2462,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not media_type:
             raise ValueError(f"Expected a non-empty value for `media_type` but received {media_type!r}")
         return await self._get(
@@ -3247,7 +2485,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
     async def list_oembed_domains(
         self,
-        app_id: str,
+        app_id: int,
         *,
         domain_portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3269,8 +2507,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._get(
             path_template("/media-bridge/2026-03/{app_id}/settings/oembed-domains", app_id=app_id),
             options=make_request_options(
@@ -3290,7 +2526,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         archived: bool | Omit = omit,
         properties: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3314,8 +2550,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._get(
@@ -3342,7 +2576,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3362,8 +2596,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._get(
@@ -3378,7 +2610,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
     async def list_schemas(
         self,
-        app_id: str,
+        app_id: int,
         *,
         archived: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3402,8 +2634,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._get(
             path_template("/media-bridge/2026-03/{app_id}/schemas", app_id=app_id),
             options=make_request_options(
@@ -3421,7 +2651,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     async def register_app_name(
         self,
-        app_id: str,
+        app_id: int,
         *,
         updated_at: int,
         allow_import_on_disconnect: bool | Omit = omit,
@@ -3447,8 +2677,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._post(
             path_template("/media-bridge/2026-03/{app_id}/settings/register", app_id=app_id),
             body=await async_maybe_transform(
@@ -3468,7 +2696,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
     async def update_event_visibility_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         event_type: Literal["ALL", "ATTENTION_SPAN", "MEDIA_PLAYS", "MEDIA_PLAYS_PERCENT"],
         updated_at: int,
@@ -3494,8 +2722,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._patch(
             path_template("/media-bridge/2026-03/{app_id}/settings/event-visibility", app_id=app_id),
             body=await async_maybe_transform(
@@ -3518,7 +2744,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         o_embed_domain_id: str,
         *,
-        app_id: str,
+        app_id: int,
         endpoints: EndpointsParam,
         portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3540,8 +2766,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not o_embed_domain_id:
             raise ValueError(f"Expected a non-empty value for `o_embed_domain_id` but received {o_embed_domain_id!r}")
         return await self._patch(
@@ -3567,7 +2791,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         property_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         calculation_formula: str | Omit = omit,
         description: str | Omit = omit,
@@ -3613,8 +2837,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not property_name:
@@ -3652,7 +2874,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         group_name: str,
         *,
-        app_id: str,
+        app_id: int,
         object_type: str,
         display_order: int | Omit = omit,
         label: str | Omit = omit,
@@ -3675,8 +2897,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         if not group_name:
@@ -3705,7 +2925,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         clear_description: bool,
         allows_sensitive_properties: bool | Omit = omit,
         description: str | Omit = omit,
@@ -3734,8 +2954,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._patch(
@@ -3764,7 +2982,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
     async def update_settings(
         self,
-        app_id: str,
+        app_id: int,
         *,
         updated_at: int,
         allow_import_on_disconnect: bool | Omit = omit,
@@ -3790,8 +3008,6 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         return await self._put(
             path_template("/media-bridge/2026-03/{app_id}/settings", app_id=app_id),
             body=await async_maybe_transform(
@@ -3814,32 +3030,17 @@ class MediaBridgeResourceWithRawResponse:
     def __init__(self, media_bridge: MediaBridgeResource) -> None:
         self._media_bridge = media_bridge
 
-        self.create = to_raw_response_wrapper(
-            media_bridge.create,
-        )
-        self.update = to_raw_response_wrapper(
-            media_bridge.update,
-        )
-        self.list = to_raw_response_wrapper(
-            media_bridge.list,
-        )
-        self.delete = to_raw_response_wrapper(
-            media_bridge.delete,
-        )
         self.create_association = to_raw_response_wrapper(
             media_bridge.create_association,
         )
-        self.create_attention_span_event = to_custom_raw_response_wrapper(
+        self.create_attention_span_event = to_raw_response_wrapper(
             media_bridge.create_attention_span_event,
-            BinaryAPIResponse,
         )
-        self.create_media_played_event = to_custom_raw_response_wrapper(
+        self.create_media_played_event = to_raw_response_wrapper(
             media_bridge.create_media_played_event,
-            BinaryAPIResponse,
         )
-        self.create_media_played_percent_event = to_custom_raw_response_wrapper(
+        self.create_media_played_percent_event = to_raw_response_wrapper(
             media_bridge.create_media_played_percent_event,
-            BinaryAPIResponse,
         )
         self.create_object_type = to_raw_response_wrapper(
             media_bridge.create_object_type,
@@ -3867,9 +3068,6 @@ class MediaBridgeResourceWithRawResponse:
         )
         self.delete_property_group = to_raw_response_wrapper(
             media_bridge.delete_property_group,
-        )
-        self.get = to_raw_response_wrapper(
-            media_bridge.get,
         )
         self.get_event_visibility_settings = to_raw_response_wrapper(
             media_bridge.get_event_visibility_settings,
@@ -3934,32 +3132,17 @@ class AsyncMediaBridgeResourceWithRawResponse:
     def __init__(self, media_bridge: AsyncMediaBridgeResource) -> None:
         self._media_bridge = media_bridge
 
-        self.create = async_to_raw_response_wrapper(
-            media_bridge.create,
-        )
-        self.update = async_to_raw_response_wrapper(
-            media_bridge.update,
-        )
-        self.list = async_to_raw_response_wrapper(
-            media_bridge.list,
-        )
-        self.delete = async_to_raw_response_wrapper(
-            media_bridge.delete,
-        )
         self.create_association = async_to_raw_response_wrapper(
             media_bridge.create_association,
         )
-        self.create_attention_span_event = async_to_custom_raw_response_wrapper(
+        self.create_attention_span_event = async_to_raw_response_wrapper(
             media_bridge.create_attention_span_event,
-            AsyncBinaryAPIResponse,
         )
-        self.create_media_played_event = async_to_custom_raw_response_wrapper(
+        self.create_media_played_event = async_to_raw_response_wrapper(
             media_bridge.create_media_played_event,
-            AsyncBinaryAPIResponse,
         )
-        self.create_media_played_percent_event = async_to_custom_raw_response_wrapper(
+        self.create_media_played_percent_event = async_to_raw_response_wrapper(
             media_bridge.create_media_played_percent_event,
-            AsyncBinaryAPIResponse,
         )
         self.create_object_type = async_to_raw_response_wrapper(
             media_bridge.create_object_type,
@@ -3987,9 +3170,6 @@ class AsyncMediaBridgeResourceWithRawResponse:
         )
         self.delete_property_group = async_to_raw_response_wrapper(
             media_bridge.delete_property_group,
-        )
-        self.get = async_to_raw_response_wrapper(
-            media_bridge.get,
         )
         self.get_event_visibility_settings = async_to_raw_response_wrapper(
             media_bridge.get_event_visibility_settings,
@@ -4054,32 +3234,17 @@ class MediaBridgeResourceWithStreamingResponse:
     def __init__(self, media_bridge: MediaBridgeResource) -> None:
         self._media_bridge = media_bridge
 
-        self.create = to_streamed_response_wrapper(
-            media_bridge.create,
-        )
-        self.update = to_streamed_response_wrapper(
-            media_bridge.update,
-        )
-        self.list = to_streamed_response_wrapper(
-            media_bridge.list,
-        )
-        self.delete = to_streamed_response_wrapper(
-            media_bridge.delete,
-        )
         self.create_association = to_streamed_response_wrapper(
             media_bridge.create_association,
         )
-        self.create_attention_span_event = to_custom_streamed_response_wrapper(
+        self.create_attention_span_event = to_streamed_response_wrapper(
             media_bridge.create_attention_span_event,
-            StreamedBinaryAPIResponse,
         )
-        self.create_media_played_event = to_custom_streamed_response_wrapper(
+        self.create_media_played_event = to_streamed_response_wrapper(
             media_bridge.create_media_played_event,
-            StreamedBinaryAPIResponse,
         )
-        self.create_media_played_percent_event = to_custom_streamed_response_wrapper(
+        self.create_media_played_percent_event = to_streamed_response_wrapper(
             media_bridge.create_media_played_percent_event,
-            StreamedBinaryAPIResponse,
         )
         self.create_object_type = to_streamed_response_wrapper(
             media_bridge.create_object_type,
@@ -4107,9 +3272,6 @@ class MediaBridgeResourceWithStreamingResponse:
         )
         self.delete_property_group = to_streamed_response_wrapper(
             media_bridge.delete_property_group,
-        )
-        self.get = to_streamed_response_wrapper(
-            media_bridge.get,
         )
         self.get_event_visibility_settings = to_streamed_response_wrapper(
             media_bridge.get_event_visibility_settings,
@@ -4174,32 +3336,17 @@ class AsyncMediaBridgeResourceWithStreamingResponse:
     def __init__(self, media_bridge: AsyncMediaBridgeResource) -> None:
         self._media_bridge = media_bridge
 
-        self.create = async_to_streamed_response_wrapper(
-            media_bridge.create,
-        )
-        self.update = async_to_streamed_response_wrapper(
-            media_bridge.update,
-        )
-        self.list = async_to_streamed_response_wrapper(
-            media_bridge.list,
-        )
-        self.delete = async_to_streamed_response_wrapper(
-            media_bridge.delete,
-        )
         self.create_association = async_to_streamed_response_wrapper(
             media_bridge.create_association,
         )
-        self.create_attention_span_event = async_to_custom_streamed_response_wrapper(
+        self.create_attention_span_event = async_to_streamed_response_wrapper(
             media_bridge.create_attention_span_event,
-            AsyncStreamedBinaryAPIResponse,
         )
-        self.create_media_played_event = async_to_custom_streamed_response_wrapper(
+        self.create_media_played_event = async_to_streamed_response_wrapper(
             media_bridge.create_media_played_event,
-            AsyncStreamedBinaryAPIResponse,
         )
-        self.create_media_played_percent_event = async_to_custom_streamed_response_wrapper(
+        self.create_media_played_percent_event = async_to_streamed_response_wrapper(
             media_bridge.create_media_played_percent_event,
-            AsyncStreamedBinaryAPIResponse,
         )
         self.create_object_type = async_to_streamed_response_wrapper(
             media_bridge.create_object_type,
@@ -4227,9 +3374,6 @@ class AsyncMediaBridgeResourceWithStreamingResponse:
         )
         self.delete_property_group = async_to_streamed_response_wrapper(
             media_bridge.delete_property_group,
-        )
-        self.get = async_to_streamed_response_wrapper(
-            media_bridge.get,
         )
         self.get_event_visibility_settings = async_to_streamed_response_wrapper(
             media_bridge.get_event_visibility_settings,

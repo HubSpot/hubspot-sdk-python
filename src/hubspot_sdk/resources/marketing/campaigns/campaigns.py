@@ -56,8 +56,14 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
-from ....types.marketing import campaign_get_params, campaign_update_params
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.marketing import (
+    campaign_get_params,
+    campaign_list_params,
+    campaign_create_params,
+    campaign_update_params,
+)
 from ....types.marketing.public_campaign import PublicCampaign
 from ....types.marketing.public_campaign_with_assets import PublicCampaignWithAssets
 
@@ -104,6 +110,44 @@ class CampaignsResource(SyncAPIResource):
         """
         return CampaignsResourceWithStreamingResponse(self)
 
+    def create(
+        self,
+        *,
+        properties: Dict[str, str],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PublicCampaign:
+        """
+        Create a campaign with the specified properties and receive a copy of the
+        campaign object, including its ID. Note that the 'hs_goal' property is
+        deprecated and will be ignored if provided.
+
+        Args:
+          properties: A collection of key-value pairs representing the properties of the campaign.
+              Each key is a property name, and the corresponding value is the property's
+              value.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/marketing/campaigns/2026-03",
+            body=maybe_transform({"properties": properties}, campaign_create_params.CampaignCreateParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PublicCampaign,
+        )
+
     def update(
         self,
         campaign_guid: str,
@@ -116,12 +160,11 @@ class CampaignsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCampaign:
-        """Perform a partial update of a campaign identified by the specified ID.
-
-        Provided
-        property values will be overwritten. Read-only and non-existent properties will
-        be ignored. Properties values can be cleared by passing an empty string. Note:
-        The 'hs_goal' property is deprecated and will be ignored if provided.
+        """
+        Perform a partial update of a campaign identified by the specified campaignGuid.
+        Provided property values will be overwritten. Read-only and non-existent
+        properties will cause 400 error. If an empty string is passed for any property
+        in the Batch Update, it will reset that property's value.
 
         Args:
           properties: A collection of key-value pairs representing the properties of the campaign.
@@ -147,6 +190,64 @@ class CampaignsResource(SyncAPIResource):
             cast_to=PublicCampaign,
         )
 
+    def list(
+        self,
+        *,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        name: str | Omit = omit,
+        properties: SequenceNotStr[str] | Omit = omit,
+        sort: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[PublicCampaign]:
+        """Retrieve a paginated list of campaigns from your HubSpot account.
+
+        This endpoint
+        allows you to specify sorting, pagination, and filtering options to tailor the
+        results to your needs.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/marketing/campaigns/2026-03",
+            page=SyncPage[PublicCampaign],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                        "name": name,
+                        "properties": properties,
+                        "sort": sort,
+                    },
+                    campaign_list_params.CampaignListParams,
+                ),
+            ),
+            model=PublicCampaign,
+        )
+
     def delete(
         self,
         campaign_guid: str,
@@ -160,8 +261,9 @@ class CampaignsResource(SyncAPIResource):
     ) -> None:
         """Delete a specified campaign from the system.
 
-        This operation removes the campaign
-        identified by the provided campaignGuid from your HubSpot account.
+        This call will return a 204 No
+        Content response regardless of whether the campaignGuid provided corresponds to
+        an existing campaign or not.
 
         Args:
           extra_headers: Send extra headers
@@ -197,20 +299,14 @@ class CampaignsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCampaignWithAssets:
-        """Read a campaign identified by a specified internal ID.
-
-        This endpoint allows you
-        to retrieve detailed information about a specific marketing campaign using its
-        unique identifier. It supports filtering the response by specific properties and
-        date ranges.
+        """
+        Get a campaign identified by a specific campaignGuid with the given properties.
+        Along with the campaign information, it also returns information about assets.
+        Depending on the query parameters used, this can also be used to return
+        information about the corresponding assets' metrics. Metrics are available only
+        if startDate and endDate are provided.
 
         Args:
-          end_date: The end date for filtering campaign data, in YYYY-MM-DD format.
-
-          properties: A comma-separated list of property names to include in the response.
-
-          start_date: The start date for filtering campaign data, in YYYY-MM-DD format.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -281,6 +377,44 @@ class AsyncCampaignsResource(AsyncAPIResource):
         """
         return AsyncCampaignsResourceWithStreamingResponse(self)
 
+    async def create(
+        self,
+        *,
+        properties: Dict[str, str],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PublicCampaign:
+        """
+        Create a campaign with the specified properties and receive a copy of the
+        campaign object, including its ID. Note that the 'hs_goal' property is
+        deprecated and will be ignored if provided.
+
+        Args:
+          properties: A collection of key-value pairs representing the properties of the campaign.
+              Each key is a property name, and the corresponding value is the property's
+              value.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/marketing/campaigns/2026-03",
+            body=await async_maybe_transform({"properties": properties}, campaign_create_params.CampaignCreateParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PublicCampaign,
+        )
+
     async def update(
         self,
         campaign_guid: str,
@@ -293,12 +427,11 @@ class AsyncCampaignsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCampaign:
-        """Perform a partial update of a campaign identified by the specified ID.
-
-        Provided
-        property values will be overwritten. Read-only and non-existent properties will
-        be ignored. Properties values can be cleared by passing an empty string. Note:
-        The 'hs_goal' property is deprecated and will be ignored if provided.
+        """
+        Perform a partial update of a campaign identified by the specified campaignGuid.
+        Provided property values will be overwritten. Read-only and non-existent
+        properties will cause 400 error. If an empty string is passed for any property
+        in the Batch Update, it will reset that property's value.
 
         Args:
           properties: A collection of key-value pairs representing the properties of the campaign.
@@ -324,6 +457,64 @@ class AsyncCampaignsResource(AsyncAPIResource):
             cast_to=PublicCampaign,
         )
 
+    def list(
+        self,
+        *,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        name: str | Omit = omit,
+        properties: SequenceNotStr[str] | Omit = omit,
+        sort: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[PublicCampaign, AsyncPage[PublicCampaign]]:
+        """Retrieve a paginated list of campaigns from your HubSpot account.
+
+        This endpoint
+        allows you to specify sorting, pagination, and filtering options to tailor the
+        results to your needs.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/marketing/campaigns/2026-03",
+            page=AsyncPage[PublicCampaign],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                        "name": name,
+                        "properties": properties,
+                        "sort": sort,
+                    },
+                    campaign_list_params.CampaignListParams,
+                ),
+            ),
+            model=PublicCampaign,
+        )
+
     async def delete(
         self,
         campaign_guid: str,
@@ -337,8 +528,9 @@ class AsyncCampaignsResource(AsyncAPIResource):
     ) -> None:
         """Delete a specified campaign from the system.
 
-        This operation removes the campaign
-        identified by the provided campaignGuid from your HubSpot account.
+        This call will return a 204 No
+        Content response regardless of whether the campaignGuid provided corresponds to
+        an existing campaign or not.
 
         Args:
           extra_headers: Send extra headers
@@ -374,20 +566,14 @@ class AsyncCampaignsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCampaignWithAssets:
-        """Read a campaign identified by a specified internal ID.
-
-        This endpoint allows you
-        to retrieve detailed information about a specific marketing campaign using its
-        unique identifier. It supports filtering the response by specific properties and
-        date ranges.
+        """
+        Get a campaign identified by a specific campaignGuid with the given properties.
+        Along with the campaign information, it also returns information about assets.
+        Depending on the query parameters used, this can also be used to return
+        information about the corresponding assets' metrics. Metrics are available only
+        if startDate and endDate are provided.
 
         Args:
-          end_date: The end date for filtering campaign data, in YYYY-MM-DD format.
-
-          properties: A comma-separated list of property names to include in the response.
-
-          start_date: The start date for filtering campaign data, in YYYY-MM-DD format.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -422,8 +608,14 @@ class CampaignsResourceWithRawResponse:
     def __init__(self, campaigns: CampaignsResource) -> None:
         self._campaigns = campaigns
 
+        self.create = to_raw_response_wrapper(
+            campaigns.create,
+        )
         self.update = to_raw_response_wrapper(
             campaigns.update,
+        )
+        self.list = to_raw_response_wrapper(
+            campaigns.list,
         )
         self.delete = to_raw_response_wrapper(
             campaigns.delete,
@@ -457,8 +649,14 @@ class AsyncCampaignsResourceWithRawResponse:
     def __init__(self, campaigns: AsyncCampaignsResource) -> None:
         self._campaigns = campaigns
 
+        self.create = async_to_raw_response_wrapper(
+            campaigns.create,
+        )
         self.update = async_to_raw_response_wrapper(
             campaigns.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            campaigns.list,
         )
         self.delete = async_to_raw_response_wrapper(
             campaigns.delete,
@@ -492,8 +690,14 @@ class CampaignsResourceWithStreamingResponse:
     def __init__(self, campaigns: CampaignsResource) -> None:
         self._campaigns = campaigns
 
+        self.create = to_streamed_response_wrapper(
+            campaigns.create,
+        )
         self.update = to_streamed_response_wrapper(
             campaigns.update,
+        )
+        self.list = to_streamed_response_wrapper(
+            campaigns.list,
         )
         self.delete = to_streamed_response_wrapper(
             campaigns.delete,
@@ -527,8 +731,14 @@ class AsyncCampaignsResourceWithStreamingResponse:
     def __init__(self, campaigns: AsyncCampaignsResource) -> None:
         self._campaigns = campaigns
 
+        self.create = async_to_streamed_response_wrapper(
+            campaigns.create,
+        )
         self.update = async_to_streamed_response_wrapper(
             campaigns.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            campaigns.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             campaigns.delete,

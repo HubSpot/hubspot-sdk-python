@@ -28,6 +28,22 @@ from .blogs.blogs import (
     BlogsResourceWithStreamingResponse,
     AsyncBlogsResourceWithStreamingResponse,
 )
+from .hubdb.hubdb import (
+    HubdbResource,
+    AsyncHubdbResource,
+    HubdbResourceWithRawResponse,
+    AsyncHubdbResourceWithRawResponse,
+    HubdbResourceWithStreamingResponse,
+    AsyncHubdbResourceWithStreamingResponse,
+)
+from .pages.pages import (
+    PagesResource,
+    AsyncPagesResource,
+    PagesResourceWithRawResponse,
+    AsyncPagesResourceWithRawResponse,
+    PagesResourceWithStreamingResponse,
+    AsyncPagesResourceWithStreamingResponse,
+)
 from .site_search import (
     SiteSearchResource,
     AsyncSiteSearchResource,
@@ -86,8 +102,16 @@ class CmsResource(SyncAPIResource):
         return DomainsResource(self._client)
 
     @cached_property
+    def hubdb(self) -> HubdbResource:
+        return HubdbResource(self._client)
+
+    @cached_property
     def media_bridge(self) -> MediaBridgeResource:
         return MediaBridgeResource(self._client)
+
+    @cached_property
+    def pages(self) -> PagesResource:
+        return PagesResource(self._client)
 
     @cached_property
     def site_search(self) -> SiteSearchResource:
@@ -139,8 +163,16 @@ class AsyncCmsResource(AsyncAPIResource):
         return AsyncDomainsResource(self._client)
 
     @cached_property
+    def hubdb(self) -> AsyncHubdbResource:
+        return AsyncHubdbResource(self._client)
+
+    @cached_property
     def media_bridge(self) -> AsyncMediaBridgeResource:
         return AsyncMediaBridgeResource(self._client)
+
+    @cached_property
+    def pages(self) -> AsyncPagesResource:
+        return AsyncPagesResource(self._client)
 
     @cached_property
     def site_search(self) -> AsyncSiteSearchResource:
@@ -195,8 +227,16 @@ class CmsResourceWithRawResponse:
         return DomainsResourceWithRawResponse(self._cms.domains)
 
     @cached_property
+    def hubdb(self) -> HubdbResourceWithRawResponse:
+        return HubdbResourceWithRawResponse(self._cms.hubdb)
+
+    @cached_property
     def media_bridge(self) -> MediaBridgeResourceWithRawResponse:
         return MediaBridgeResourceWithRawResponse(self._cms.media_bridge)
+
+    @cached_property
+    def pages(self) -> PagesResourceWithRawResponse:
+        return PagesResourceWithRawResponse(self._cms.pages)
 
     @cached_property
     def site_search(self) -> SiteSearchResourceWithRawResponse:
@@ -232,8 +272,16 @@ class AsyncCmsResourceWithRawResponse:
         return AsyncDomainsResourceWithRawResponse(self._cms.domains)
 
     @cached_property
+    def hubdb(self) -> AsyncHubdbResourceWithRawResponse:
+        return AsyncHubdbResourceWithRawResponse(self._cms.hubdb)
+
+    @cached_property
     def media_bridge(self) -> AsyncMediaBridgeResourceWithRawResponse:
         return AsyncMediaBridgeResourceWithRawResponse(self._cms.media_bridge)
+
+    @cached_property
+    def pages(self) -> AsyncPagesResourceWithRawResponse:
+        return AsyncPagesResourceWithRawResponse(self._cms.pages)
 
     @cached_property
     def site_search(self) -> AsyncSiteSearchResourceWithRawResponse:
@@ -269,8 +317,16 @@ class CmsResourceWithStreamingResponse:
         return DomainsResourceWithStreamingResponse(self._cms.domains)
 
     @cached_property
+    def hubdb(self) -> HubdbResourceWithStreamingResponse:
+        return HubdbResourceWithStreamingResponse(self._cms.hubdb)
+
+    @cached_property
     def media_bridge(self) -> MediaBridgeResourceWithStreamingResponse:
         return MediaBridgeResourceWithStreamingResponse(self._cms.media_bridge)
+
+    @cached_property
+    def pages(self) -> PagesResourceWithStreamingResponse:
+        return PagesResourceWithStreamingResponse(self._cms.pages)
 
     @cached_property
     def site_search(self) -> SiteSearchResourceWithStreamingResponse:
@@ -306,8 +362,16 @@ class AsyncCmsResourceWithStreamingResponse:
         return AsyncDomainsResourceWithStreamingResponse(self._cms.domains)
 
     @cached_property
+    def hubdb(self) -> AsyncHubdbResourceWithStreamingResponse:
+        return AsyncHubdbResourceWithStreamingResponse(self._cms.hubdb)
+
+    @cached_property
     def media_bridge(self) -> AsyncMediaBridgeResourceWithStreamingResponse:
         return AsyncMediaBridgeResourceWithStreamingResponse(self._cms.media_bridge)
+
+    @cached_property
+    def pages(self) -> AsyncPagesResourceWithStreamingResponse:
+        return AsyncPagesResourceWithStreamingResponse(self._cms.pages)
 
     @cached_property
     def site_search(self) -> AsyncSiteSearchResourceWithStreamingResponse:

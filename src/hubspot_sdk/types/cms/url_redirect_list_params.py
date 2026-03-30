@@ -14,34 +14,28 @@ __all__ = ["URLRedirectListParams"]
 
 class URLRedirectListParams(TypedDict, total=False):
     after: str
-    """A cursor token for pagination.
-
-    Use the value from the previous response's paging.next.after field.
+    """
+    The paging cursor token of the last successfully read resource will be returned
+    as the `paging.next.after` JSON property of a paged response containing more
+    results.
     """
 
     archived: bool
     """Whether to return only results that have been archived."""
 
     created_after: Annotated[Union[str, datetime], PropertyInfo(alias="createdAfter", format="iso8601")]
-    """Filter redirects created after a specific timestamp. Format must be date-time."""
 
     created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Filter redirects by their exact creation timestamp. Format must be date-time."""
 
     created_before: Annotated[Union[str, datetime], PropertyInfo(alias="createdBefore", format="iso8601")]
-    """Filter redirects created before a specific timestamp. Format must be date-time."""
 
     limit: int
     """The maximum number of results to display per page."""
 
     sort: SequenceNotStr[str]
-    """Specify the order in which to sort the results. Accepts an array of strings."""
 
     updated_after: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAfter", format="iso8601")]
-    """Filter redirects updated after a specific timestamp. Format must be date-time."""
 
     updated_at: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAt", format="iso8601")]
-    """Filter redirects by their exact update timestamp. Format must be date-time."""
 
     updated_before: Annotated[Union[str, datetime], PropertyInfo(alias="updatedBefore", format="iso8601")]
-    """Filter redirects updated before a specific timestamp. Format must be date-time."""

@@ -12,7 +12,7 @@ __all__ = ["Error"]
 
 class Error(BaseModel):
     category: str
-    """The error category."""
+    """The error category"""
 
     correlation_id: str = FieldInfo(alias="correlationId")
     """A unique identifier for the request.
@@ -39,4 +39,4 @@ class Error(BaseModel):
     """
 
     sub_category: Optional[str] = FieldInfo(alias="subCategory", default=None)
-    """A specific category that contains more specific detail about the error."""
+    """A specific category that contains more specific detail about the error"""

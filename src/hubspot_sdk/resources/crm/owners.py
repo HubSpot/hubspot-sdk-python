@@ -113,6 +113,8 @@ class OwnersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicOwner:
         """
+        Retrieve details of a specific owner using either their 'id' or 'userId'.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -232,6 +234,8 @@ class AsyncOwnersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicOwner:
         """
+        Retrieve details of a specific owner using either their 'id' or 'userId'.
+
         Args:
           archived: Whether to return only results that have been archived.
 

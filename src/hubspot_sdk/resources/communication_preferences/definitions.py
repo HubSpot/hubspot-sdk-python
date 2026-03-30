@@ -59,12 +59,6 @@ class DefinitionsResource(SyncAPIResource):
         Get a list of subscription status definitions from the account.
 
         Args:
-          business_unit_id: The unique identifier of the business unit for which to retrieve the
-              subscription definitions.
-
-          include_translations: A boolean indicating whether to include translations of the subscription
-              definitions. Defaults to false if not specified.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -128,12 +122,6 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         Get a list of subscription status definitions from the account.
 
         Args:
-          business_unit_id: The unique identifier of the business unit for which to retrieve the
-              subscription definitions.
-
-          include_translations: A boolean indicating whether to include translations of the subscription
-              definitions. Defaults to false if not specified.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

@@ -19,7 +19,10 @@ class ComplianceIDsParam(TypedDict, total=False):
     user_ids: Required[Annotated[Iterable[int], PropertyInfo(alias="userIds")]]
 
     no_contact_id_reason: Annotated[str, PropertyInfo(alias="noContactIdReason")]
+    """The reason why no contact ID is available."""
 
     no_portal_id_reason: Annotated[str, PropertyInfo(alias="noPortalIdReason")]
+    """The reason why no portal ID is available."""
 
     no_user_id_reason: Annotated[str, PropertyInfo(alias="noUserIdReason")]
+    """The reason why no user ID is available."""

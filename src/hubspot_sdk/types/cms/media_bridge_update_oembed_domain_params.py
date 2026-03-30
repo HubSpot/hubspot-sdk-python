@@ -11,7 +11,7 @@ __all__ = ["MediaBridgeUpdateOembedDomainParams"]
 
 
 class MediaBridgeUpdateOembedDomainParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     endpoints: Required[EndpointsParam]
 

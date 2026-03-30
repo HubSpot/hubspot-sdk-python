@@ -220,12 +220,36 @@ from hubspot_sdk import Hubspot
 
 client = Hubspot()
 
-settings_response = client.app_webhooks.update_settings(
+public_action_definition = client.automation.actions.create(
     app_id=0,
-    target_url="targetUrl",
-    throttling={"max_concurrent_requests": 0},
+    action_url="actionUrl",
+    functions=[
+        {
+            "function_source": "functionSource",
+            "function_type": "POST_ACTION_EXECUTION",
+        }
+    ],
+    input_fields=[
+        {
+            "is_required": True,
+            "type_definition": {
+                "name": "name",
+                "options": [
+                    {
+                        "label": "label",
+                        "value": "value",
+                    }
+                ],
+                "type": "bool",
+            },
+        }
+    ],
+    labels={"foo": {"action_name": "actionName"}},
+    object_types=["string"],
+    published=True,
+    object_request_options={"properties": ["string"]},
 )
-print(settings_response.throttling)
+print(public_action_definition.object_request_options)
 ```
 
 ## File uploads
@@ -238,9 +262,8 @@ from hubspot_sdk import Hubspot
 
 client = Hubspot()
 
-client.cms.source_code.create(
-    path="path",
-    environment="environment",
+client.cms.hubdb.tables.import_draft(
+    table_id_or_name="tableIdOrName",
     file=Path("/path/to/file"),
 )
 ```

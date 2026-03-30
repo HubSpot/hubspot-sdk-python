@@ -25,7 +25,10 @@ class ActionResponse(BaseModel):
     """
 
     links: Optional[Dict[str, str]] = None
-    """A collection of related links associated with the action."""
+    """
+    A map of link names to associated URIs containing documentation about the error
+    or recommended remediation steps
+    """
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The timestamp indicating when the action was requested."""

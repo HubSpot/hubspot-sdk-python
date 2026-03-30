@@ -32,19 +32,19 @@ class Domain(BaseModel):
     """Indicates whether the domain is accessible only via SSL."""
 
     is_used_for_blog_post: bool = FieldInfo(alias="isUsedForBlogPost")
-    """Whether the domain is used for CMS blog posts. Deprecated"""
+    """Whether the domain is used for CMS blog posts."""
 
     is_used_for_email: bool = FieldInfo(alias="isUsedForEmail")
-    """Whether the domain is used for CMS email web pages. Deprecated"""
+    """Whether the domain is used for CMS email web pages."""
 
     is_used_for_knowledge: bool = FieldInfo(alias="isUsedForKnowledge")
-    """Whether the domain is used for CMS knowledge pages. Deprecated"""
+    """Whether the domain is used for CMS knowledge pages."""
 
     is_used_for_landing_page: bool = FieldInfo(alias="isUsedForLandingPage")
-    """Whether the domain is used for CMS landing pages. Deprecated"""
+    """Whether the domain is used for CMS landing pages."""
 
     is_used_for_site_page: bool = FieldInfo(alias="isUsedForSitePage")
-    """Whether the domain is used for CMS site pages. Deprecated"""
+    """Whether the domain is used for CMS site pages."""
 
     manually_marked_as_resolving: bool = FieldInfo(alias="manuallyMarkedAsResolving")
     """Indicates whether the domain has been manually marked as resolving."""

@@ -16,6 +16,22 @@ from .posts import (
     PostsResourceWithStreamingResponse,
     AsyncPostsResourceWithStreamingResponse,
 )
+from .revisions import (
+    RevisionsResource,
+    AsyncRevisionsResource,
+    RevisionsResourceWithRawResponse,
+    AsyncRevisionsResourceWithRawResponse,
+    RevisionsResourceWithStreamingResponse,
+    AsyncRevisionsResourceWithStreamingResponse,
+)
+from .multi_language import (
+    MultiLanguageResource,
+    AsyncMultiLanguageResource,
+    MultiLanguageResourceWithRawResponse,
+    AsyncMultiLanguageResourceWithRawResponse,
+    MultiLanguageResourceWithStreamingResponse,
+    AsyncMultiLanguageResourceWithStreamingResponse,
+)
 
 __all__ = [
     "BatchResource",
@@ -24,6 +40,18 @@ __all__ = [
     "AsyncBatchResourceWithRawResponse",
     "BatchResourceWithStreamingResponse",
     "AsyncBatchResourceWithStreamingResponse",
+    "MultiLanguageResource",
+    "AsyncMultiLanguageResource",
+    "MultiLanguageResourceWithRawResponse",
+    "AsyncMultiLanguageResourceWithRawResponse",
+    "MultiLanguageResourceWithStreamingResponse",
+    "AsyncMultiLanguageResourceWithStreamingResponse",
+    "RevisionsResource",
+    "AsyncRevisionsResource",
+    "RevisionsResourceWithRawResponse",
+    "AsyncRevisionsResourceWithRawResponse",
+    "RevisionsResourceWithStreamingResponse",
+    "AsyncRevisionsResourceWithStreamingResponse",
     "PostsResource",
     "AsyncPostsResource",
     "PostsResourceWithRawResponse",

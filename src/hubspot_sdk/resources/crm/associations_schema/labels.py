@@ -69,8 +69,7 @@ class LabelsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociationDefinitionUserConfiguration:
         """
-        Create multiple association definitions between two specified CRM object types
-        in a single request.
+        Batch configure association limits between two object types.
 
         Args:
           extra_headers: Send extra headers
@@ -339,8 +338,7 @@ class AsyncLabelsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociationDefinitionUserConfiguration:
         """
-        Create multiple association definitions between two specified CRM object types
-        in a single request.
+        Batch configure association limits between two object types.
 
         Args:
           extra_headers: Send extra headers

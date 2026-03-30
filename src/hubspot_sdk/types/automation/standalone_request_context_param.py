@@ -14,5 +14,7 @@ class StandaloneRequestContextParam(TypedDict, total=False):
     chirp_ai_context_object: Required[Annotated[ChirpAIContextObjectParam, PropertyInfo(alias="chirpAiContextObject")]]
 
     source: Required[Literal["STANDALONE"]]
+    """Indicates the source of the request, with the default value being 'STANDALONE'."""
 
     trajectory_id: Annotated[str, PropertyInfo(alias="trajectoryId")]
+    """A unique identifier for tracking the trajectory of the request."""

@@ -1572,7 +1572,7 @@ class TestPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.list()
         assert post.is_closed
         assert post.json() == {"foo": "bar"}
@@ -1582,7 +1582,7 @@ class TestPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_list_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.list(
             after="after",
             archived=True,
@@ -1604,7 +1604,7 @@ class TestPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = client.cms.blogs.posts.with_raw_response.list()
 
@@ -1616,7 +1616,7 @@ class TestPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_streaming_response_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.posts.with_streaming_response.list() as post:
             assert not post.is_closed
             assert post.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1680,77 +1680,6 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_attach_to_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/attach-to-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.attach_to_lang_group(
-            id="id",
-            language="aa",
-            primary_id="primaryId",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_attach_to_lang_group_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/attach-to-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.attach_to_lang_group(
-            id="id",
-            language="aa",
-            primary_id="primaryId",
-            primary_language="aa",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_attach_to_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/attach-to-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = client.cms.blogs.posts.with_raw_response.attach_to_lang_group(
-            id="id",
-            language="aa",
-            primary_id="primaryId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert post.json() == {"foo": "bar"}
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_attach_to_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/attach-to-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.posts.with_streaming_response.attach_to_lang_group(
-            id="id",
-            language="aa",
-            primary_id="primaryId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, StreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
     def test_method_clone(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.clone(
@@ -1793,117 +1722,6 @@ class TestPosts:
     def test_streaming_response_clone(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.posts.with_streaming_response.clone(
-            id="id",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, StreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_lang_variation(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/create-language-variation").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.create_lang_variation(
-            id="id",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_lang_variation_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/create-language-variation").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.create_lang_variation(
-            id="id",
-            language="language",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_create_lang_variation(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/create-language-variation").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = client.cms.blogs.posts.with_raw_response.create_lang_variation(
-            id="id",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert post.json() == {"foo": "bar"}
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_create_lang_variation(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/create-language-variation").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.posts.with_streaming_response.create_lang_variation(
-            id="id",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, StreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_detach_from_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/detach-from-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.detach_from_lang_group(
-            id="id",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_detach_from_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/detach-from-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = client.cms.blogs.posts.with_raw_response.detach_from_lang_group(
-            id="id",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert post.json() == {"foo": "bar"}
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_detach_from_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/detach-from-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.posts.with_streaming_response.detach_from_lang_group(
             id="id",
         ) as post:
             assert not post.is_closed
@@ -2037,14 +1855,9 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.get_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        )
+    def test_method_list_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        post = client.cms.blogs.posts.list_authors()
         assert post.is_closed
         assert post.json() == {"foo": "bar"}
         assert cast(Any, post.is_closed) is True
@@ -2052,80 +1865,20 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = client.cms.blogs.posts.with_raw_response.get_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert post.json() == {"foo": "bar"}
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.posts.with_streaming_response.get_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, StreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_path_params_get_previous_version(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            client.cms.blogs.posts.with_raw_response.get_previous_version(
-                revision_id="revisionId",
-                object_id="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `revision_id` but received ''"):
-            client.cms.blogs.posts.with_raw_response.get_previous_version(
-                revision_id="",
-                object_id="objectId",
-            )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_get_previous_versions(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.get_previous_versions(
-            object_id="objectId",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_get_previous_versions_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.get_previous_versions(
-            object_id="objectId",
+    def test_method_list_authors_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        post = client.cms.blogs.posts.list_authors(
             after="after",
-            before="before",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
             limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert post.is_closed
         assert post.json() == {"foo": "bar"}
@@ -2134,14 +1887,10 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get_previous_versions(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
+    def test_raw_response_list_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        post = client.cms.blogs.posts.with_raw_response.get_previous_versions(
-            object_id="objectId",
-        )
+        post = client.cms.blogs.posts.with_raw_response.list_authors()
 
         assert post.is_closed is True
         assert post.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2150,13 +1899,9 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get_previous_versions(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.posts.with_streaming_response.get_previous_versions(
-            object_id="objectId",
-        ) as post:
+    def test_streaming_response_list_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        with client.cms.blogs.posts.with_streaming_response.list_authors() as post:
             assert not post.is_closed
             assert post.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -2168,11 +1913,61 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_get_previous_versions(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            client.cms.blogs.posts.with_raw_response.get_previous_versions(
-                object_id="",
-            )
+    def test_method_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        post = client.cms.blogs.posts.list_tags()
+        assert post.is_closed
+        assert post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_list_tags_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        post = client.cms.blogs.posts.list_tags(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert post.is_closed
+        assert post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        post = client.cms.blogs.posts.with_raw_response.list_tags()
+
+        assert post.is_closed is True
+        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert post.json() == {"foo": "bar"}
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        with client.cms.blogs.posts.with_streaming_response.list_tags() as post:
+            assert not post.is_closed
+            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert post.json() == {"foo": "bar"}
+            assert cast(Any, post.is_closed) is True
+            assert isinstance(post, StreamedBinaryAPIResponse)
+
+        assert cast(Any, post.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2216,6 +2011,204 @@ class TestPosts:
                 "",
             )
 
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = client.cms.blogs.posts.query()
+        assert post.is_closed
+        assert post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_query_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = client.cms.blogs.posts.query(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert post.is_closed
+        assert post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        post = client.cms.blogs.posts.with_raw_response.query()
+
+        assert post.is_closed is True
+        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert post.json() == {"foo": "bar"}
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.blogs.posts.with_streaming_response.query() as post:
+            assert not post.is_closed
+            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert post.json() == {"foo": "bar"}
+            assert cast(Any, post.is_closed) is True
+            assert isinstance(post, StreamedBinaryAPIResponse)
+
+        assert cast(Any, post.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_query_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = client.cms.blogs.posts.query_authors()
+        assert post.is_closed
+        assert post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_query_authors_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = client.cms.blogs.posts.query_authors(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert post.is_closed
+        assert post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_query_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        post = client.cms.blogs.posts.with_raw_response.query_authors()
+
+        assert post.is_closed is True
+        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert post.json() == {"foo": "bar"}
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_query_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.blogs.posts.with_streaming_response.query_authors() as post:
+            assert not post.is_closed
+            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert post.json() == {"foo": "bar"}
+            assert cast(Any, post.is_closed) is True
+            assert isinstance(post, StreamedBinaryAPIResponse)
+
+        assert cast(Any, post.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_query_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = client.cms.blogs.posts.query_tags()
+        assert post.is_closed
+        assert post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_query_tags_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = client.cms.blogs.posts.query_tags(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert post.is_closed
+        assert post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_query_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        post = client.cms.blogs.posts.with_raw_response.query_tags()
+
+        assert post.is_closed is True
+        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert post.json() == {"foo": "bar"}
+        assert isinstance(post, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_query_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.blogs.posts.with_streaming_response.query_tags() as post:
+            assert not post.is_closed
+            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert post.json() == {"foo": "bar"}
+            assert cast(Any, post.is_closed) is True
+            assert isinstance(post, StreamedBinaryAPIResponse)
+
+        assert cast(Any, post.is_closed) is True
+
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_reset_draft(self, client: Hubspot) -> None:
@@ -2258,134 +2251,6 @@ class TestPosts:
                 "",
             )
 
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_restore_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.restore_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_restore_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = client.cms.blogs.posts.with_raw_response.restore_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert post.json() == {"foo": "bar"}
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_restore_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.posts.with_streaming_response.restore_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, StreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_path_params_restore_previous_version(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            client.cms.blogs.posts.with_raw_response.restore_previous_version(
-                revision_id="revisionId",
-                object_id="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `revision_id` but received ''"):
-            client.cms.blogs.posts.with_raw_response.restore_previous_version(
-                revision_id="",
-                object_id="objectId",
-            )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_restore_previous_version_to_draft(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.restore_previous_version_to_draft(
-            revision_id=0,
-            object_id="objectId",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_restore_previous_version_to_draft(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = client.cms.blogs.posts.with_raw_response.restore_previous_version_to_draft(
-            revision_id=0,
-            object_id="objectId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert post.json() == {"foo": "bar"}
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_restore_previous_version_to_draft(
-        self, client: Hubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.posts.with_streaming_response.restore_previous_version_to_draft(
-            revision_id=0,
-            object_id="objectId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, StreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_path_params_restore_previous_version_to_draft(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            client.cms.blogs.posts.with_raw_response.restore_previous_version_to_draft(
-                revision_id=0,
-                object_id="",
-            )
-
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_schedule(self, client: Hubspot) -> None:
@@ -2414,40 +2279,6 @@ class TestPosts:
         with client.cms.blogs.posts.with_streaming_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            post = response.parse()
-            assert post is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_set_lang_primary(self, client: Hubspot) -> None:
-        post = client.cms.blogs.posts.set_lang_primary(
-            id="id",
-        )
-        assert post is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_set_lang_primary(self, client: Hubspot) -> None:
-        response = client.cms.blogs.posts.with_raw_response.set_lang_primary(
-            id="id",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        post = response.parse()
-        assert post is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_set_lang_primary(self, client: Hubspot) -> None:
-        with client.cms.blogs.posts.with_streaming_response.set_lang_primary(
-            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -3196,57 +3027,6 @@ class TestPosts:
                 widget_containers={"foo": {}},
                 widgets={"foo": {}},
             )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_update_langs(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/update-languages").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = client.cms.blogs.posts.update_langs(
-            languages={"foo": "aa"},
-            primary_id="primaryId",
-        )
-        assert post.is_closed
-        assert post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_update_langs(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/update-languages").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = client.cms.blogs.posts.with_raw_response.update_langs(
-            languages={"foo": "aa"},
-            primary_id="primaryId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert post.json() == {"foo": "bar"}
-        assert isinstance(post, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_update_langs(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/update-languages").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.posts.with_streaming_response.update_langs(
-            languages={"foo": "aa"},
-            primary_id="primaryId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, StreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
 
 
 class TestAsyncPosts:
@@ -4802,7 +4582,7 @@ class TestAsyncPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.list()
         assert post.is_closed
         assert await post.json() == {"foo": "bar"}
@@ -4812,7 +4592,7 @@ class TestAsyncPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_list_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.list(
             after="after",
             archived=True,
@@ -4834,7 +4614,7 @@ class TestAsyncPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = await async_client.cms.blogs.posts.with_raw_response.list()
 
@@ -4846,7 +4626,7 @@ class TestAsyncPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.posts.with_streaming_response.list() as post:
             assert not post.is_closed
             assert post.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4910,81 +4690,6 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_attach_to_lang_group(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/attach-to-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.attach_to_lang_group(
-            id="id",
-            language="aa",
-            primary_id="primaryId",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_attach_to_lang_group_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/attach-to-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.attach_to_lang_group(
-            id="id",
-            language="aa",
-            primary_id="primaryId",
-            primary_language="aa",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/attach-to-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = await async_client.cms.blogs.posts.with_raw_response.attach_to_lang_group(
-            id="id",
-            language="aa",
-            primary_id="primaryId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await post.json() == {"foo": "bar"}
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_attach_to_lang_group(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/attach-to-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.posts.with_streaming_response.attach_to_lang_group(
-            id="id",
-            language="aa",
-            primary_id="primaryId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
     async def test_method_clone(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.clone(
@@ -5027,125 +4732,6 @@ class TestAsyncPosts:
     async def test_streaming_response_clone(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.posts.with_streaming_response.clone(
-            id="id",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_lang_variation(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/create-language-variation").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.create_lang_variation(
-            id="id",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_lang_variation_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/create-language-variation").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.create_lang_variation(
-            id="id",
-            language="language",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_create_lang_variation(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/create-language-variation").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = await async_client.cms.blogs.posts.with_raw_response.create_lang_variation(
-            id="id",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await post.json() == {"foo": "bar"}
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_create_lang_variation(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/create-language-variation").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.posts.with_streaming_response.create_lang_variation(
-            id="id",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_detach_from_lang_group(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/detach-from-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.detach_from_lang_group(
-            id="id",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_detach_from_lang_group(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/detach-from-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = await async_client.cms.blogs.posts.with_raw_response.detach_from_lang_group(
-            id="id",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await post.json() == {"foo": "bar"}
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_detach_from_lang_group(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/detach-from-lang-group").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.posts.with_streaming_response.detach_from_lang_group(
             id="id",
         ) as post:
             assert not post.is_closed
@@ -5279,14 +4865,9 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_previous_version(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.get_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        )
+    async def test_method_list_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        post = await async_client.cms.blogs.posts.list_authors()
         assert post.is_closed
         assert await post.json() == {"foo": "bar"}
         assert cast(Any, post.is_closed) is True
@@ -5294,84 +4875,22 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get_previous_version(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = await async_client.cms.blogs.posts.with_raw_response.get_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await post.json() == {"foo": "bar"}
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_get_previous_version(
+    async def test_method_list_authors_with_all_params(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.posts.with_streaming_response.get_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_get_previous_version(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            await async_client.cms.blogs.posts.with_raw_response.get_previous_version(
-                revision_id="revisionId",
-                object_id="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `revision_id` but received ''"):
-            await async_client.cms.blogs.posts.with_raw_response.get_previous_version(
-                revision_id="",
-                object_id="objectId",
-            )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_previous_versions(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.get_previous_versions(
-            object_id="objectId",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_previous_versions_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.get_previous_versions(
-            object_id="objectId",
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        post = await async_client.cms.blogs.posts.list_authors(
             after="after",
-            before="before",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
             limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert post.is_closed
         assert await post.json() == {"foo": "bar"}
@@ -5380,14 +4899,10 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get_previous_versions(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
+    async def test_raw_response_list_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        post = await async_client.cms.blogs.posts.with_raw_response.get_previous_versions(
-            object_id="objectId",
-        )
+        post = await async_client.cms.blogs.posts.with_raw_response.list_authors()
 
         assert post.is_closed is True
         assert post.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -5396,15 +4911,9 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_get_previous_versions(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.posts.with_streaming_response.get_previous_versions(
-            object_id="objectId",
-        ) as post:
+    async def test_streaming_response_list_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        async with async_client.cms.blogs.posts.with_streaming_response.list_authors() as post:
             assert not post.is_closed
             assert post.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -5416,11 +4925,61 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_get_previous_versions(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            await async_client.cms.blogs.posts.with_raw_response.get_previous_versions(
-                object_id="",
-            )
+    async def test_method_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        post = await async_client.cms.blogs.posts.list_tags()
+        assert post.is_closed
+        assert await post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_list_tags_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        post = await async_client.cms.blogs.posts.list_tags(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert post.is_closed
+        assert await post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        post = await async_client.cms.blogs.posts.with_raw_response.list_tags()
+
+        assert post.is_closed is True
+        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await post.json() == {"foo": "bar"}
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        async with async_client.cms.blogs.posts.with_streaming_response.list_tags() as post:
+            assert not post.is_closed
+            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await post.json() == {"foo": "bar"}
+            assert cast(Any, post.is_closed) is True
+            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, post.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -5464,6 +5023,206 @@ class TestAsyncPosts:
                 "",
             )
 
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = await async_client.cms.blogs.posts.query()
+        assert post.is_closed
+        assert await post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_query_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = await async_client.cms.blogs.posts.query(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert post.is_closed
+        assert await post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        post = await async_client.cms.blogs.posts.with_raw_response.query()
+
+        assert post.is_closed is True
+        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await post.json() == {"foo": "bar"}
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.blogs.posts.with_streaming_response.query() as post:
+            assert not post.is_closed
+            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await post.json() == {"foo": "bar"}
+            assert cast(Any, post.is_closed) is True
+            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, post.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_query_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = await async_client.cms.blogs.posts.query_authors()
+        assert post.is_closed
+        assert await post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_query_authors_with_all_params(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = await async_client.cms.blogs.posts.query_authors(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert post.is_closed
+        assert await post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_query_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        post = await async_client.cms.blogs.posts.with_raw_response.query_authors()
+
+        assert post.is_closed is True
+        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await post.json() == {"foo": "bar"}
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_query_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.blogs.posts.with_streaming_response.query_authors() as post:
+            assert not post.is_closed
+            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await post.json() == {"foo": "bar"}
+            assert cast(Any, post.is_closed) is True
+            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, post.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_query_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = await async_client.cms.blogs.posts.query_tags()
+        assert post.is_closed
+        assert await post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_query_tags_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        post = await async_client.cms.blogs.posts.query_tags(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert post.is_closed
+        assert await post.json() == {"foo": "bar"}
+        assert cast(Any, post.is_closed) is True
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_query_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        post = await async_client.cms.blogs.posts.with_raw_response.query_tags()
+
+        assert post.is_closed is True
+        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await post.json() == {"foo": "bar"}
+        assert isinstance(post, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_query_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.blogs.posts.with_streaming_response.query_tags() as post:
+            assert not post.is_closed
+            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await post.json() == {"foo": "bar"}
+            assert cast(Any, post.is_closed) is True
+            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, post.is_closed) is True
+
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_reset_draft(self, async_client: AsyncHubspot) -> None:
@@ -5506,142 +5265,6 @@ class TestAsyncPosts:
                 "",
             )
 
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_restore_previous_version(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.restore_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_restore_previous_version(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = await async_client.cms.blogs.posts.with_raw_response.restore_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await post.json() == {"foo": "bar"}
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_restore_previous_version(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.posts.with_streaming_response.restore_previous_version(
-            revision_id="revisionId",
-            object_id="objectId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_restore_previous_version(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            await async_client.cms.blogs.posts.with_raw_response.restore_previous_version(
-                revision_id="revisionId",
-                object_id="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `revision_id` but received ''"):
-            await async_client.cms.blogs.posts.with_raw_response.restore_previous_version(
-                revision_id="",
-                object_id="objectId",
-            )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_restore_previous_version_to_draft(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.restore_previous_version_to_draft(
-            revision_id=0,
-            object_id="objectId",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_restore_previous_version_to_draft(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = await async_client.cms.blogs.posts.with_raw_response.restore_previous_version_to_draft(
-            revision_id=0,
-            object_id="objectId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await post.json() == {"foo": "bar"}
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_restore_previous_version_to_draft(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.posts.with_streaming_response.restore_previous_version_to_draft(
-            revision_id=0,
-            object_id="objectId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_restore_previous_version_to_draft(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            await async_client.cms.blogs.posts.with_raw_response.restore_previous_version_to_draft(
-                revision_id=0,
-                object_id="",
-            )
-
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_schedule(self, async_client: AsyncHubspot) -> None:
@@ -5670,40 +5293,6 @@ class TestAsyncPosts:
         async with async_client.cms.blogs.posts.with_streaming_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            post = await response.parse()
-            assert post is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_set_lang_primary(self, async_client: AsyncHubspot) -> None:
-        post = await async_client.cms.blogs.posts.set_lang_primary(
-            id="id",
-        )
-        assert post is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_set_lang_primary(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.cms.blogs.posts.with_raw_response.set_lang_primary(
-            id="id",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        post = await response.parse()
-        assert post is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_set_lang_primary(self, async_client: AsyncHubspot) -> None:
-        async with async_client.cms.blogs.posts.with_streaming_response.set_lang_primary(
-            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -6452,54 +6041,3 @@ class TestAsyncPosts:
                 widget_containers={"foo": {}},
                 widgets={"foo": {}},
             )
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_langs(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/update-languages").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        post = await async_client.cms.blogs.posts.update_langs(
-            languages={"foo": "aa"},
-            primary_id="primaryId",
-        )
-        assert post.is_closed
-        assert await post.json() == {"foo": "bar"}
-        assert cast(Any, post.is_closed) is True
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_update_langs(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/update-languages").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-
-        post = await async_client.cms.blogs.posts.with_raw_response.update_langs(
-            languages={"foo": "aa"},
-            primary_id="primaryId",
-        )
-
-        assert post.is_closed is True
-        assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await post.json() == {"foo": "bar"}
-        assert isinstance(post, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_update_langs(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/cms/blogs/2026-03/posts/multi-language/update-languages").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.posts.with_streaming_response.update_langs(
-            languages={"foo": "aa"},
-            primary_id="primaryId",
-        ) as post:
-            assert not post.is_closed
-            assert post.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            assert await post.json() == {"foo": "bar"}
-            assert cast(Any, post.is_closed) is True
-            assert isinstance(post, AsyncStreamedBinaryAPIResponse)
-
-        assert cast(Any, post.is_closed) is True

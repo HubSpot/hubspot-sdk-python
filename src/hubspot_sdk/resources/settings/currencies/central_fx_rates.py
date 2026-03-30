@@ -235,7 +235,11 @@ class CentralFxRatesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExchangeRate:
-        """
+        """Create a new currency with central exchange rates in the portal.
+
+        Unsupported
+        currencies cannot be added here.
+
         Args:
           currency_code: The currency code being added to the HubSpot portal for use with central
               exchange rates.
@@ -270,6 +274,10 @@ class CentralFxRatesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CentralExchangeRatesInformation:
+        """
+        Retrieve details on whether the central exchange rates feature is enabled for
+        the portal.
+        """
         return self._get(
             "/settings/currencies/2026-03/central-fx-rates/information",
             options=make_request_options(
@@ -288,6 +296,10 @@ class CentralFxRatesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseCurrencyCodeInfoNoPaging:
+        """
+        Retrieve a list of currency codes that are not supported by the central exchange
+        rates. Unsupported currencies will need to be manually updated.
+        """
         return self._get(
             "/settings/currencies/2026-03/central-fx-rates/unsupported-currencies",
             options=make_request_options(
@@ -505,7 +517,11 @@ class AsyncCentralFxRatesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExchangeRate:
-        """
+        """Create a new currency with central exchange rates in the portal.
+
+        Unsupported
+        currencies cannot be added here.
+
         Args:
           currency_code: The currency code being added to the HubSpot portal for use with central
               exchange rates.
@@ -540,6 +556,10 @@ class AsyncCentralFxRatesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CentralExchangeRatesInformation:
+        """
+        Retrieve details on whether the central exchange rates feature is enabled for
+        the portal.
+        """
         return await self._get(
             "/settings/currencies/2026-03/central-fx-rates/information",
             options=make_request_options(
@@ -558,6 +578,10 @@ class AsyncCentralFxRatesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseCurrencyCodeInfoNoPaging:
+        """
+        Retrieve a list of currency codes that are not supported by the central exchange
+        rates. Unsupported currencies will need to be manually updated.
+        """
         return await self._get(
             "/settings/currencies/2026-03/central-fx-rates/unsupported-currencies",
             options=make_request_options(
