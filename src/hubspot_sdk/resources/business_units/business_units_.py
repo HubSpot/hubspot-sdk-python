@@ -57,6 +57,8 @@ class BusinessUnitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicBusinessUnitNoPaging:
         """
+        Retrieve the brands that a specific user can access.
+
         Args:
           extra_headers: Send extra headers
 
@@ -121,6 +123,8 @@ class AsyncBusinessUnitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicBusinessUnitNoPaging:
         """
+        Retrieve the brands that a specific user can access.
+
         Args:
           extra_headers: Send extra headers
 

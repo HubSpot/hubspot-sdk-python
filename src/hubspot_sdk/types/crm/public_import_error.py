@@ -62,6 +62,7 @@ class PublicImportError(BaseModel):
         "INVALID_FILE_TYPE",
         "INVALID_NUMBER_SIZE",
         "INVALID_OBJECT_ID",
+        "INVALID_PROPERTY_VALUE_FORMAT",
         "INVALID_RECORD_ID",
         "INVALID_REQUIRED_PROPERTY",
         "INVALID_SHEET_COUNT",

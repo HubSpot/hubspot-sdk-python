@@ -11,7 +11,5 @@ __all__ = ["MetricGetAttributionMetricsParams"]
 
 class MetricGetAttributionMetricsParams(TypedDict, total=False):
     end_date: Annotated[str, PropertyInfo(alias="endDate")]
-    """The end date for fetching metrics, in YYYY-MM-DD format."""
 
     start_date: Annotated[str, PropertyInfo(alias="startDate")]
-    """The start date for fetching metrics, in YYYY-MM-DD format."""

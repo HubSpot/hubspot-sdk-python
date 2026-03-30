@@ -11,13 +11,14 @@ __all__ = ["ActivityListLoginActivitiesParams"]
 
 class ActivityListLoginActivitiesParams(TypedDict, total=False):
     after: str
-    """
-    The paging cursor token of the last successfully read resource will be returned
-    as the `paging.next.after` JSON property of a paged response containing more
-    results.
+    """The cursor token value to get the next set of results.
+
+    You can get this from the `paging.next.after` JSON property of a paged response
+    containing more results.
     """
 
     limit: int
-    """The maximum number of results to display per page."""
+    """The maximum number of results to display per page. Max value of limit is 200."""
 
     user_id: Annotated[int, PropertyInfo(alias="userId")]
+    """Identifier of user to retrieve activities for"""

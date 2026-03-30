@@ -2,14 +2,25 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable
+from typing import Union, Mapping, Iterable, cast
 from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import path_template, maybe_transform, async_maybe_transform
+from ..._types import (
+    Body,
+    Omit,
+    Query,
+    Headers,
+    NoneType,
+    NotGiven,
+    FileTypes,
+    SequenceNotStr,
+    omit,
+    not_given,
+)
+from ..._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -19,9 +30,22 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...pagination import SyncPage, AsyncPage
-from ...types.files import file_search_params, file_import_from_url_async_params
+from ...types.files import (
+    file_get_params,
+    file_create_params,
+    file_search_params,
+    file_update_params,
+    file_upload_params,
+    file_replace_params,
+    file_get_by_path_params,
+    file_get_signed_url_params,
+    file_import_from_url_async_params,
+)
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.files.file import File
+from ...types.files.folder import Folder
+from ...types.files.file_stat import FileStat
+from ...types.files.signed_url import SignedURL
 from ...types.files.file_action_response import FileActionResponse
 from ...types.files.import_from_url_task_locator import ImportFromURLTaskLocator
 
@@ -47,6 +71,277 @@ class FilesResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return FilesResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        *,
+        name: str,
+        parent_folder_id: str | Omit = omit,
+        parent_path: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Folder:
+        """
+        Creates a folder.
+
+        Args:
+          name: Desired name for the folder.
+
+          parent_folder_id: FolderId of the parent of the created folder. If not specified, the folder will
+              be created at the root level. parentFolderId and parentFolderPath cannot be set
+              at the same time.
+
+          parent_path: Path of the parent of the created folder. If not specified the folder will be
+              created at the root level. parentFolderPath and parentFolderId cannot be set at
+              the same time.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/files/2026-03/folders",
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "parent_folder_id": parent_folder_id,
+                    "parent_path": parent_path,
+                },
+                file_create_params.FileCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Folder,
+        )
+
+    def update(
+        self,
+        file_id: str,
+        *,
+        clear_expires: bool,
+        access: Literal[
+            "HIDDEN_INDEXABLE",
+            "HIDDEN_NOT_INDEXABLE",
+            "HIDDEN_PRIVATE",
+            "HIDDEN_SENSITIVE",
+            "PRIVATE",
+            "PUBLIC_INDEXABLE",
+            "PUBLIC_NOT_INDEXABLE",
+            "SENSITIVE",
+        ]
+        | Omit = omit,
+        expires_at: Union[str, datetime] | Omit = omit,
+        is_usable_in_content: bool | Omit = omit,
+        name: str | Omit = omit,
+        parent_folder_id: str | Omit = omit,
+        parent_folder_path: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> File:
+        """
+        Update properties of file by ID.
+
+        Args:
+          access: NONE: Do not run any duplicate validation. REJECT: Reject the upload if a
+              duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload
+              a new file and return the found duplicate instead.
+
+          is_usable_in_content: Mark whether the file should be used in new content or not.
+
+          name: New name for the file.
+
+          parent_folder_id: FolderId where the file should be moved to. folderId and folderPath parameters
+              cannot be set at the same time.
+
+          parent_folder_path: Folder path where the file should be moved to. folderId and folderPath
+              parameters cannot be set at the same time.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        return self._patch(
+            path_template("/files/2026-03/files/{file_id}", file_id=file_id),
+            body=maybe_transform(
+                {
+                    "clear_expires": clear_expires,
+                    "access": access,
+                    "expires_at": expires_at,
+                    "is_usable_in_content": is_usable_in_content,
+                    "name": name,
+                    "parent_folder_id": parent_folder_id,
+                    "parent_folder_path": parent_folder_path,
+                },
+                file_update_params.FileUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=File,
+        )
+
+    def delete(
+        self,
+        file_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete a file by ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/files/2026-03/files/{file_id}", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def gdpr_delete(
+        self,
+        file_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete a file in accordance with GDPR regulations.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/files/2026-03/files/{file_id}/gdpr-delete", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def get(
+        self,
+        file_id: str,
+        *,
+        properties: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> File:
+        """
+        Retrieve a file by its ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        return self._get(
+            path_template("/files/2026-03/files/{file_id}", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"properties": properties}, file_get_params.FileGetParams),
+            ),
+            cast_to=File,
+        )
+
+    def get_by_path(
+        self,
+        path: str,
+        *,
+        properties: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FileStat:
+        """
+        Retrieve a file by its path.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not path:
+            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        return self._get(
+            path_template("/files/2026-03/files/stat/{path}", path=path),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"properties": properties}, file_get_by_path_params.FileGetByPathParams),
+            ),
+            cast_to=FileStat,
+        )
 
     def get_import_task_status(
         self,
@@ -79,6 +374,60 @@ class FilesResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=FileActionResponse,
+        )
+
+    def get_signed_url(
+        self,
+        file_id: str,
+        *,
+        expiration_seconds: int | Omit = omit,
+        size: Literal["icon", "medium", "preview", "thumb"] | Omit = omit,
+        upscale: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SignedURL:
+        """
+        Generates signed URL that allows temporary access to a private file.
+
+        Args:
+          expiration_seconds: How long in seconds the link will provide access to the file.
+
+          size: For image files. This will resize the image to the desired size before sharing.
+              Does not affect the original file, just the file served by this signed URL.
+
+          upscale: If size is provided, this will upscale the image to fit the size dimensions.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        return self._get(
+            path_template("/files/2026-03/files/{file_id}/signed-url", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "expiration_seconds": expiration_seconds,
+                        "size": size,
+                        "upscale": upscale,
+                    },
+                    file_get_signed_url_params.FileGetSignedURLParams,
+                ),
+            ),
+            cast_to=SignedURL,
         )
 
     def import_from_url_async(
@@ -181,6 +530,58 @@ class FilesResource(SyncAPIResource):
             cast_to=ImportFromURLTaskLocator,
         )
 
+    def replace(
+        self,
+        file_id: str,
+        *,
+        charset_hunch: str | Omit = omit,
+        file: FileTypes | Omit = omit,
+        options: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> File:
+        """Replace existing file data with new file data.
+
+        Can be used to change image
+        content without having to upload a new file and update all references.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        body = deepcopy_minimal(
+            {
+                "charset_hunch": charset_hunch,
+                "file": file,
+                "options": options,
+            }
+        )
+        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+        return self._put(
+            path_template("/files/2026-03/files/{file_id}", file_id=file_id),
+            body=maybe_transform(body, file_replace_params.FileReplaceParams),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=File,
+        )
+
     def search(
         self,
         *,
@@ -233,11 +634,93 @@ class FilesResource(SyncAPIResource):
         files.
 
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
+          after: Offset search results by this value. The default offset is 0 and the maximum
+              offset of items for a given search is 10,000. Narrow your search down if you are
+              reaching this limit.
 
-          limit: The maximum number of results to display per page.
+          allows_anonymous_access: Search files by access. If 'true' will show only public files; if 'false' will
+              show only private files
+
+          before: Search files updated before this timestamp. Time must be epoch time in
+              milliseconds.
+
+          created_at: Search files by exact time of creation. Time must be epoch time in milliseconds.
+
+          created_at_gte: Search files by greater than or equal to time of creation. Can be used with
+              createdAtLte to create a range.
+
+          created_at_lte: Search files by less than or equal to time of creation. Can be used with
+              createdAtGte to create a range.
+
+          encoding: Search files by specified encoding.
+
+          expires_at: Search files by exact expires time. Time must be epoch time in milliseconds.
+
+          expires_at_gte: Search files by greater than or equal to expires time. Can be used with
+              expiresAtLte to create a range.
+
+          expires_at_lte: Search files by less than or equal to expires time. Can be used with
+              expiresAtGte to create a range.
+
+          extension: Search files by given extension.
+
+          file_md5: Search files by specific md5 hash.
+
+          height: Search files by height of image or video.
+
+          height_gte: Search files by greater than or equal to height of image or video. Can be used
+              with heightLte to create a range.
+
+          height_lte: Search files by less than or equal to height of image or video. Can be used with
+              heightGte to create a range.
+
+          id_gte: Search files by greater than or equal to ID. Can be used with idLte to create a
+              range.
+
+          id_lte: Search files by less than or equal to ID. Can be used with idGte to create a
+              range.
+
+          is_usable_in_content: If true shows files that have been marked to be used in new content. It false
+              shows files that should not be used in new content.
+
+          limit: Number of items to return. Default limit is 10, maximum limit is 100.
+
+          name: Search for files containing the given name.
+
+          path: Search files by path.
+
+          properties: Desired file properties in the return object.
+
+          size: Search files by exact file size in bytes.
+
+          size_gte: Search files by greater than or equal to file size. Can be used with sizeLte to
+              create a range.
+
+          size_lte: Search files by less than or equal to file size. Can be used with sizeGte to
+              create a range.
+
+          sort: Sort files by a given field.
+
+          type: Search files by file type.
+
+          updated_at: Search files by exact time of latest updated. Time must be epoch time in
+              milliseconds.
+
+          updated_at_gte: Search files by greater than or equal to time of latest update. Can be used with
+              updatedAtLte to create a range.
+
+          updated_at_lte: Search files by less than or equal to time of latest update. Can be used with
+              updatedAtGte to create a range.
+
+          url: Search for given URL
+
+          width: Search files by width of image or video.
+
+          width_gte: Search files by greater than or equal to width of image or video. Can be used
+              with widthLte to create a range.
+
+          width_lte: Search files by less than or equal to width of image or video. Can be used with
+              widthGte to create a range.
 
           extra_headers: Send extra headers
 
@@ -300,6 +783,59 @@ class FilesResource(SyncAPIResource):
             model=File,
         )
 
+    def upload(
+        self,
+        *,
+        charset_hunch: str | Omit = omit,
+        file: FileTypes | Omit = omit,
+        file_name: str | Omit = omit,
+        folder_id: str | Omit = omit,
+        folder_path: str | Omit = omit,
+        options: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> File:
+        """
+        Upload a single file with content specified in request body.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        body = deepcopy_minimal(
+            {
+                "charset_hunch": charset_hunch,
+                "file": file,
+                "file_name": file_name,
+                "folder_id": folder_id,
+                "folder_path": folder_path,
+                "options": options,
+            }
+        )
+        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+        return self._post(
+            "/files/2026-03/files",
+            body=maybe_transform(body, file_upload_params.FileUploadParams),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=File,
+        )
+
 
 class AsyncFilesResource(AsyncAPIResource):
     @cached_property
@@ -320,6 +856,279 @@ class AsyncFilesResource(AsyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return AsyncFilesResourceWithStreamingResponse(self)
+
+    async def create(
+        self,
+        *,
+        name: str,
+        parent_folder_id: str | Omit = omit,
+        parent_path: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Folder:
+        """
+        Creates a folder.
+
+        Args:
+          name: Desired name for the folder.
+
+          parent_folder_id: FolderId of the parent of the created folder. If not specified, the folder will
+              be created at the root level. parentFolderId and parentFolderPath cannot be set
+              at the same time.
+
+          parent_path: Path of the parent of the created folder. If not specified the folder will be
+              created at the root level. parentFolderPath and parentFolderId cannot be set at
+              the same time.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/files/2026-03/folders",
+            body=await async_maybe_transform(
+                {
+                    "name": name,
+                    "parent_folder_id": parent_folder_id,
+                    "parent_path": parent_path,
+                },
+                file_create_params.FileCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Folder,
+        )
+
+    async def update(
+        self,
+        file_id: str,
+        *,
+        clear_expires: bool,
+        access: Literal[
+            "HIDDEN_INDEXABLE",
+            "HIDDEN_NOT_INDEXABLE",
+            "HIDDEN_PRIVATE",
+            "HIDDEN_SENSITIVE",
+            "PRIVATE",
+            "PUBLIC_INDEXABLE",
+            "PUBLIC_NOT_INDEXABLE",
+            "SENSITIVE",
+        ]
+        | Omit = omit,
+        expires_at: Union[str, datetime] | Omit = omit,
+        is_usable_in_content: bool | Omit = omit,
+        name: str | Omit = omit,
+        parent_folder_id: str | Omit = omit,
+        parent_folder_path: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> File:
+        """
+        Update properties of file by ID.
+
+        Args:
+          access: NONE: Do not run any duplicate validation. REJECT: Reject the upload if a
+              duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload
+              a new file and return the found duplicate instead.
+
+          is_usable_in_content: Mark whether the file should be used in new content or not.
+
+          name: New name for the file.
+
+          parent_folder_id: FolderId where the file should be moved to. folderId and folderPath parameters
+              cannot be set at the same time.
+
+          parent_folder_path: Folder path where the file should be moved to. folderId and folderPath
+              parameters cannot be set at the same time.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        return await self._patch(
+            path_template("/files/2026-03/files/{file_id}", file_id=file_id),
+            body=await async_maybe_transform(
+                {
+                    "clear_expires": clear_expires,
+                    "access": access,
+                    "expires_at": expires_at,
+                    "is_usable_in_content": is_usable_in_content,
+                    "name": name,
+                    "parent_folder_id": parent_folder_id,
+                    "parent_folder_path": parent_folder_path,
+                },
+                file_update_params.FileUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=File,
+        )
+
+    async def delete(
+        self,
+        file_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete a file by ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/files/2026-03/files/{file_id}", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def gdpr_delete(
+        self,
+        file_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete a file in accordance with GDPR regulations.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/files/2026-03/files/{file_id}/gdpr-delete", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def get(
+        self,
+        file_id: str,
+        *,
+        properties: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> File:
+        """
+        Retrieve a file by its ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        return await self._get(
+            path_template("/files/2026-03/files/{file_id}", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"properties": properties}, file_get_params.FileGetParams),
+            ),
+            cast_to=File,
+        )
+
+    async def get_by_path(
+        self,
+        path: str,
+        *,
+        properties: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FileStat:
+        """
+        Retrieve a file by its path.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not path:
+            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
+        return await self._get(
+            path_template("/files/2026-03/files/stat/{path}", path=path),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"properties": properties}, file_get_by_path_params.FileGetByPathParams
+                ),
+            ),
+            cast_to=FileStat,
+        )
 
     async def get_import_task_status(
         self,
@@ -352,6 +1161,60 @@ class AsyncFilesResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=FileActionResponse,
+        )
+
+    async def get_signed_url(
+        self,
+        file_id: str,
+        *,
+        expiration_seconds: int | Omit = omit,
+        size: Literal["icon", "medium", "preview", "thumb"] | Omit = omit,
+        upscale: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SignedURL:
+        """
+        Generates signed URL that allows temporary access to a private file.
+
+        Args:
+          expiration_seconds: How long in seconds the link will provide access to the file.
+
+          size: For image files. This will resize the image to the desired size before sharing.
+              Does not affect the original file, just the file served by this signed URL.
+
+          upscale: If size is provided, this will upscale the image to fit the size dimensions.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        return await self._get(
+            path_template("/files/2026-03/files/{file_id}/signed-url", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "expiration_seconds": expiration_seconds,
+                        "size": size,
+                        "upscale": upscale,
+                    },
+                    file_get_signed_url_params.FileGetSignedURLParams,
+                ),
+            ),
+            cast_to=SignedURL,
         )
 
     async def import_from_url_async(
@@ -454,6 +1317,58 @@ class AsyncFilesResource(AsyncAPIResource):
             cast_to=ImportFromURLTaskLocator,
         )
 
+    async def replace(
+        self,
+        file_id: str,
+        *,
+        charset_hunch: str | Omit = omit,
+        file: FileTypes | Omit = omit,
+        options: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> File:
+        """Replace existing file data with new file data.
+
+        Can be used to change image
+        content without having to upload a new file and update all references.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        body = deepcopy_minimal(
+            {
+                "charset_hunch": charset_hunch,
+                "file": file,
+                "options": options,
+            }
+        )
+        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+        return await self._put(
+            path_template("/files/2026-03/files/{file_id}", file_id=file_id),
+            body=await async_maybe_transform(body, file_replace_params.FileReplaceParams),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=File,
+        )
+
     def search(
         self,
         *,
@@ -506,11 +1421,93 @@ class AsyncFilesResource(AsyncAPIResource):
         files.
 
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
+          after: Offset search results by this value. The default offset is 0 and the maximum
+              offset of items for a given search is 10,000. Narrow your search down if you are
+              reaching this limit.
 
-          limit: The maximum number of results to display per page.
+          allows_anonymous_access: Search files by access. If 'true' will show only public files; if 'false' will
+              show only private files
+
+          before: Search files updated before this timestamp. Time must be epoch time in
+              milliseconds.
+
+          created_at: Search files by exact time of creation. Time must be epoch time in milliseconds.
+
+          created_at_gte: Search files by greater than or equal to time of creation. Can be used with
+              createdAtLte to create a range.
+
+          created_at_lte: Search files by less than or equal to time of creation. Can be used with
+              createdAtGte to create a range.
+
+          encoding: Search files by specified encoding.
+
+          expires_at: Search files by exact expires time. Time must be epoch time in milliseconds.
+
+          expires_at_gte: Search files by greater than or equal to expires time. Can be used with
+              expiresAtLte to create a range.
+
+          expires_at_lte: Search files by less than or equal to expires time. Can be used with
+              expiresAtGte to create a range.
+
+          extension: Search files by given extension.
+
+          file_md5: Search files by specific md5 hash.
+
+          height: Search files by height of image or video.
+
+          height_gte: Search files by greater than or equal to height of image or video. Can be used
+              with heightLte to create a range.
+
+          height_lte: Search files by less than or equal to height of image or video. Can be used with
+              heightGte to create a range.
+
+          id_gte: Search files by greater than or equal to ID. Can be used with idLte to create a
+              range.
+
+          id_lte: Search files by less than or equal to ID. Can be used with idGte to create a
+              range.
+
+          is_usable_in_content: If true shows files that have been marked to be used in new content. It false
+              shows files that should not be used in new content.
+
+          limit: Number of items to return. Default limit is 10, maximum limit is 100.
+
+          name: Search for files containing the given name.
+
+          path: Search files by path.
+
+          properties: Desired file properties in the return object.
+
+          size: Search files by exact file size in bytes.
+
+          size_gte: Search files by greater than or equal to file size. Can be used with sizeLte to
+              create a range.
+
+          size_lte: Search files by less than or equal to file size. Can be used with sizeGte to
+              create a range.
+
+          sort: Sort files by a given field.
+
+          type: Search files by file type.
+
+          updated_at: Search files by exact time of latest updated. Time must be epoch time in
+              milliseconds.
+
+          updated_at_gte: Search files by greater than or equal to time of latest update. Can be used with
+              updatedAtLte to create a range.
+
+          updated_at_lte: Search files by less than or equal to time of latest update. Can be used with
+              updatedAtGte to create a range.
+
+          url: Search for given URL
+
+          width: Search files by width of image or video.
+
+          width_gte: Search files by greater than or equal to width of image or video. Can be used
+              with widthLte to create a range.
+
+          width_lte: Search files by less than or equal to width of image or video. Can be used with
+              widthGte to create a range.
 
           extra_headers: Send extra headers
 
@@ -573,19 +1570,99 @@ class AsyncFilesResource(AsyncAPIResource):
             model=File,
         )
 
+    async def upload(
+        self,
+        *,
+        charset_hunch: str | Omit = omit,
+        file: FileTypes | Omit = omit,
+        file_name: str | Omit = omit,
+        folder_id: str | Omit = omit,
+        folder_path: str | Omit = omit,
+        options: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> File:
+        """
+        Upload a single file with content specified in request body.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        body = deepcopy_minimal(
+            {
+                "charset_hunch": charset_hunch,
+                "file": file,
+                "file_name": file_name,
+                "folder_id": folder_id,
+                "folder_path": folder_path,
+                "options": options,
+            }
+        )
+        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+        return await self._post(
+            "/files/2026-03/files",
+            body=await async_maybe_transform(body, file_upload_params.FileUploadParams),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=File,
+        )
+
 
 class FilesResourceWithRawResponse:
     def __init__(self, files: FilesResource) -> None:
         self._files = files
 
+        self.create = to_raw_response_wrapper(
+            files.create,
+        )
+        self.update = to_raw_response_wrapper(
+            files.update,
+        )
+        self.delete = to_raw_response_wrapper(
+            files.delete,
+        )
+        self.gdpr_delete = to_raw_response_wrapper(
+            files.gdpr_delete,
+        )
+        self.get = to_raw_response_wrapper(
+            files.get,
+        )
+        self.get_by_path = to_raw_response_wrapper(
+            files.get_by_path,
+        )
         self.get_import_task_status = to_raw_response_wrapper(
             files.get_import_task_status,
+        )
+        self.get_signed_url = to_raw_response_wrapper(
+            files.get_signed_url,
         )
         self.import_from_url_async = to_raw_response_wrapper(
             files.import_from_url_async,
         )
+        self.replace = to_raw_response_wrapper(
+            files.replace,
+        )
         self.search = to_raw_response_wrapper(
             files.search,
+        )
+        self.upload = to_raw_response_wrapper(
+            files.upload,
         )
 
 
@@ -593,14 +1670,41 @@ class AsyncFilesResourceWithRawResponse:
     def __init__(self, files: AsyncFilesResource) -> None:
         self._files = files
 
+        self.create = async_to_raw_response_wrapper(
+            files.create,
+        )
+        self.update = async_to_raw_response_wrapper(
+            files.update,
+        )
+        self.delete = async_to_raw_response_wrapper(
+            files.delete,
+        )
+        self.gdpr_delete = async_to_raw_response_wrapper(
+            files.gdpr_delete,
+        )
+        self.get = async_to_raw_response_wrapper(
+            files.get,
+        )
+        self.get_by_path = async_to_raw_response_wrapper(
+            files.get_by_path,
+        )
         self.get_import_task_status = async_to_raw_response_wrapper(
             files.get_import_task_status,
+        )
+        self.get_signed_url = async_to_raw_response_wrapper(
+            files.get_signed_url,
         )
         self.import_from_url_async = async_to_raw_response_wrapper(
             files.import_from_url_async,
         )
+        self.replace = async_to_raw_response_wrapper(
+            files.replace,
+        )
         self.search = async_to_raw_response_wrapper(
             files.search,
+        )
+        self.upload = async_to_raw_response_wrapper(
+            files.upload,
         )
 
 
@@ -608,14 +1712,41 @@ class FilesResourceWithStreamingResponse:
     def __init__(self, files: FilesResource) -> None:
         self._files = files
 
+        self.create = to_streamed_response_wrapper(
+            files.create,
+        )
+        self.update = to_streamed_response_wrapper(
+            files.update,
+        )
+        self.delete = to_streamed_response_wrapper(
+            files.delete,
+        )
+        self.gdpr_delete = to_streamed_response_wrapper(
+            files.gdpr_delete,
+        )
+        self.get = to_streamed_response_wrapper(
+            files.get,
+        )
+        self.get_by_path = to_streamed_response_wrapper(
+            files.get_by_path,
+        )
         self.get_import_task_status = to_streamed_response_wrapper(
             files.get_import_task_status,
+        )
+        self.get_signed_url = to_streamed_response_wrapper(
+            files.get_signed_url,
         )
         self.import_from_url_async = to_streamed_response_wrapper(
             files.import_from_url_async,
         )
+        self.replace = to_streamed_response_wrapper(
+            files.replace,
+        )
         self.search = to_streamed_response_wrapper(
             files.search,
+        )
+        self.upload = to_streamed_response_wrapper(
+            files.upload,
         )
 
 
@@ -623,12 +1754,39 @@ class AsyncFilesResourceWithStreamingResponse:
     def __init__(self, files: AsyncFilesResource) -> None:
         self._files = files
 
+        self.create = async_to_streamed_response_wrapper(
+            files.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            files.update,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            files.delete,
+        )
+        self.gdpr_delete = async_to_streamed_response_wrapper(
+            files.gdpr_delete,
+        )
+        self.get = async_to_streamed_response_wrapper(
+            files.get,
+        )
+        self.get_by_path = async_to_streamed_response_wrapper(
+            files.get_by_path,
+        )
         self.get_import_task_status = async_to_streamed_response_wrapper(
             files.get_import_task_status,
+        )
+        self.get_signed_url = async_to_streamed_response_wrapper(
+            files.get_signed_url,
         )
         self.import_from_url_async = async_to_streamed_response_wrapper(
             files.import_from_url_async,
         )
+        self.replace = async_to_streamed_response_wrapper(
+            files.replace,
+        )
         self.search = async_to_streamed_response_wrapper(
             files.search,
+        )
+        self.upload = async_to_streamed_response_wrapper(
+            files.upload,
         )

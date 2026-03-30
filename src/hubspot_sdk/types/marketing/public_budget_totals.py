@@ -197,9 +197,9 @@ class PublicBudgetTotals(BaseModel):
         "ZMW",
         "ZWL",
     ] = FieldInfo(alias="currencyCode")
-    """The currency code used for budget and spending amounts.
-
-    Valid values include standard currency codes such as 'USD', 'EUR', 'JPY', etc.
+    """
+    The currency code used for the budget and spend amounts, following ISO 4217
+    standards.
     """
 
     spend_items: List[PublicSpendItem] = FieldInfo(alias="spendItems")
@@ -209,10 +209,13 @@ class PublicBudgetTotals(BaseModel):
     """
 
     budget_total: Optional[float] = FieldInfo(alias="budgetTotal", default=None)
-    """The total budget amount for the campaign, represented as a number."""
+    """The total budget allocated for the campaign."""
 
     remaining_budget: Optional[float] = FieldInfo(alias="remainingBudget", default=None)
-    """The remaining budget for the campaign after spending, represented as a number."""
+    """
+    The remaining budget available for the campaign after accounting for all spend
+    items.
+    """
 
     spend_total: Optional[float] = FieldInfo(alias="spendTotal", default=None)
-    """The total amount spent for the campaign, represented as a number."""
+    """The total amount spent across all spend items in the campaign."""

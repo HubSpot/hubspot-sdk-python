@@ -17,13 +17,10 @@ class ObjectToken(BaseModel):
     data_type: Optional[
         Literal["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STATUS", "STRING"]
     ] = FieldInfo(alias="dataType", default=None)
-    """The type of the property.
-
-    Can be one of CURRENCY, DATE, DATETIME, EMAIL, LINK, NUMERIC, STATUS
-    """
+    """Type of data represented by this property."""
 
     label: Optional[str] = None
-    """The label of the property as it will be displayed to users"""
+    """The label for this property as you'd like it displayed to users."""
 
     name: Optional[str] = None
-    """The name of the property"""
+    """An internal identifier for this property. This value must be unique TODO."""

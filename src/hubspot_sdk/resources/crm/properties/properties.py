@@ -37,7 +37,7 @@ from ....types.crm import property_get_params, property_list_params, property_cr
 from ...._base_client import make_request_options
 from ....types.shared.property import Property
 from ....types.shared_params.option_input import OptionInput
-from ....types.shared.collection_response_property_no_paging import CollectionResponsePropertyNoPaging
+from ....types.crm.collection_response_property_no_paging import CollectionResponsePropertyNoPaging
 
 __all__ = ["PropertiesResource", "AsyncPropertiesResource"]
 
@@ -197,9 +197,9 @@ class PropertiesResource(SyncAPIResource):
 
           description: A description of the property that will be shown as help text in HubSpot.
 
-          display_order: Property groups are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property group to be displayed after any
-              positive values.
+          display_order: Properties are displayed in order starting with the lowest positive integer
+              value. Values of -1 will cause the Property to be displayed after any positive
+              values.
 
           field_type: Controls how the property appears in HubSpot.
 
@@ -209,10 +209,9 @@ class PropertiesResource(SyncAPIResource):
 
           hidden: If true, the property won't be visible and can't be used in HubSpot.
 
-          label: A human-readable label that will be shown in HubSpot.
+          label: A human-readable property label that will be shown in HubSpot.
 
-          options: A list of valid options for the property. This field is required for enumerated
-              properties.
+          options: A list of valid options for the property.
 
           type: The data type of the property.
 
@@ -319,7 +318,7 @@ class PropertiesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete an existing property.
+        Move a property identified by {propertyName} to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -561,9 +560,9 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           description: A description of the property that will be shown as help text in HubSpot.
 
-          display_order: Property groups are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property group to be displayed after any
-              positive values.
+          display_order: Properties are displayed in order starting with the lowest positive integer
+              value. Values of -1 will cause the Property to be displayed after any positive
+              values.
 
           field_type: Controls how the property appears in HubSpot.
 
@@ -573,10 +572,9 @@ class AsyncPropertiesResource(AsyncAPIResource):
 
           hidden: If true, the property won't be visible and can't be used in HubSpot.
 
-          label: A human-readable label that will be shown in HubSpot.
+          label: A human-readable property label that will be shown in HubSpot.
 
-          options: A list of valid options for the property. This field is required for enumerated
-              properties.
+          options: A list of valid options for the property.
 
           type: The data type of the property.
 
@@ -683,7 +681,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete an existing property.
+        Move a property identified by {propertyName} to the recycling bin.
 
         Args:
           extra_headers: Send extra headers

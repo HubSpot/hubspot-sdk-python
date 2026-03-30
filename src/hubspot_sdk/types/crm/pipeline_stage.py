@@ -19,6 +19,7 @@ class PipelineStage(BaseModel):
     """
 
     archived: bool
+    """Whether the pipeline is archived."""
 
     created_at: datetime = FieldInfo(alias="createdAt")
     """The date the pipeline stage was created.

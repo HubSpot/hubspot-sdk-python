@@ -39,6 +39,7 @@ class ObjectTypePropertyCreateParam(TypedDict, total=False):
     """
 
     external_options_reference_type: Annotated[str, PropertyInfo(alias="externalOptionsReferenceType")]
+    """Specifies the reference type for external options associated with the property."""
 
     form_field: Annotated[bool, PropertyInfo(alias="formField")]
     """Whether the property can be used in a HubSpot form."""
@@ -53,6 +54,7 @@ class ObjectTypePropertyCreateParam(TypedDict, total=False):
     """
 
     hidden: bool
+    """Hidden options won't be shown in HubSpot."""
 
     number_display_hint: Annotated[
         Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"],

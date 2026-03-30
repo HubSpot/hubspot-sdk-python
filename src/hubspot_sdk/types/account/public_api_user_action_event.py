@@ -13,7 +13,7 @@ __all__ = ["PublicAPIUserActionEvent"]
 
 class PublicAPIUserActionEvent(BaseModel):
     id: str
-    """The unique ID of the activity."""
+    """The login activity's unique ID."""
 
     acting_user: ActingUser = FieldInfo(alias="actingUser")
 

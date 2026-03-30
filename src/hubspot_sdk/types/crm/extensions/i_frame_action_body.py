@@ -18,7 +18,7 @@ class IFrameActionBody(BaseModel):
     """A list of property names that will be included on the url of the iframe."""
 
     type: Literal["IFRAME"]
-    """Specifies the type of action, which is 'IFRAME' for iframe actions."""
+    """The type of status."""
 
     url: str
     """The URL endpoint that will be loaded in the iframe when triggered."""
@@ -27,7 +27,4 @@ class IFrameActionBody(BaseModel):
     """The width of the iframe in pixels."""
 
     label: Optional[str] = None
-    """
-    The label for the button that opens the iframen as it will be displayed to
-    users.
-    """
+    """The label for this property as you'd like it displayed to users."""

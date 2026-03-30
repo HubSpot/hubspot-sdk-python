@@ -1,5 +1,16 @@
 # Marketing
 
+Types:
+
+```python
+from hubspot_sdk.types.marketing import (
+    EmailSendStatusView,
+    EventIDView,
+    PublicSingleSendEmail,
+    PublicSingleSendRequestEgg,
+)
+```
+
 ## Campaigns
 
 Types:
@@ -37,7 +48,9 @@ from hubspot_sdk.types.marketing import (
 
 Methods:
 
+- <code title="post /marketing/campaigns/2026-03">client.marketing.campaigns.<a href="./src/hubspot_sdk/resources/marketing/campaigns/campaigns.py">create</a>(\*\*<a href="src/hubspot_sdk/types/marketing/campaign_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_campaign.py">PublicCampaign</a></code>
 - <code title="patch /marketing/campaigns/2026-03/{campaignGuid}">client.marketing.campaigns.<a href="./src/hubspot_sdk/resources/marketing/campaigns/campaigns.py">update</a>(campaign_guid, \*\*<a href="src/hubspot_sdk/types/marketing/campaign_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_campaign.py">PublicCampaign</a></code>
+- <code title="get /marketing/campaigns/2026-03">client.marketing.campaigns.<a href="./src/hubspot_sdk/resources/marketing/campaigns/campaigns.py">list</a>(\*\*<a href="src/hubspot_sdk/types/marketing/campaign_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_campaign.py">SyncPage[PublicCampaign]</a></code>
 - <code title="delete /marketing/campaigns/2026-03/{campaignGuid}">client.marketing.campaigns.<a href="./src/hubspot_sdk/resources/marketing/campaigns/campaigns.py">delete</a>(campaign_guid) -> None</code>
 - <code title="get /marketing/campaigns/2026-03/{campaignGuid}">client.marketing.campaigns.<a href="./src/hubspot_sdk/resources/marketing/campaigns/campaigns.py">get</a>(campaign_guid, \*\*<a href="src/hubspot_sdk/types/marketing/campaign_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/public_campaign_with_assets.py">PublicCampaignWithAssets</a></code>
 
@@ -91,7 +104,6 @@ Types:
 
 ```python
 from hubspot_sdk.types.marketing import (
-    AbTestCreateRequestVNext,
     AggregateEmailStatistics,
     CollectionResponseWithTotalEmailStatisticInterval,
     CollectionResponseWithTotalPublicEmail,
@@ -199,6 +211,7 @@ Methods:
 
 - <code title="post /marketing/marketing-events/2026-03/events">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">create</a>(\*\*<a href="src/hubspot_sdk/types/marketing/event_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/marketing_event_default_response.py">MarketingEventDefaultResponse</a></code>
 - <code title="patch /marketing/marketing-events/2026-03/{objectId}">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">update</a>(object_id, \*\*<a href="src/hubspot_sdk/types/marketing/event_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/marketing_event_public_default_response_v2.py">MarketingEventPublicDefaultResponseV2</a></code>
+- <code title="get /marketing/marketing-events/2026-03">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">list</a>(\*\*<a href="src/hubspot_sdk/types/marketing/event_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/marketing_event_public_read_response_v2.py">SyncPage[MarketingEventPublicReadResponseV2]</a></code>
 - <code title="delete /marketing/marketing-events/2026-03/{objectId}">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">delete</a>(object_id) -> None</code>
 - <code title="post /marketing/marketing-events/2026-03/batch/archive">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">delete_batch</a>(\*\*<a href="src/hubspot_sdk/types/marketing/event_delete_batch_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="post /marketing/marketing-events/2026-03/events/delete">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">delete_batch_by_external_event_id</a>(\*\*<a href="src/hubspot_sdk/types/marketing/event_delete_batch_by_external_event_id_params.py">params</a>) -> BinaryAPIResponse</code>
@@ -211,8 +224,6 @@ Methods:
 - <code title="patch /marketing/marketing-events/2026-03/events/{externalEventId}">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">update_by_external_event_id</a>(external_event_id, \*\*<a href="src/hubspot_sdk/types/marketing/event_update_by_external_event_id_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/marketing_event_public_default_response.py">MarketingEventPublicDefaultResponse</a></code>
 - <code title="post /marketing/marketing-events/2026-03/events/upsert">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">upsert_batch</a>(\*\*<a href="src/hubspot_sdk/types/marketing/event_upsert_batch_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/batch_response_marketing_event_public_default_response.py">BatchResponseMarketingEventPublicDefaultResponse</a></code>
 - <code title="put /marketing/marketing-events/2026-03/events/{externalEventId}">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">upsert_by_external_event_id</a>(path_external_event_id, \*\*<a href="src/hubspot_sdk/types/marketing/event_upsert_by_external_event_id_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/marketing_event_public_default_response.py">MarketingEventPublicDefaultResponse</a></code>
-- <code title="post /marketing/marketing-events/2026-03/events/{externalEventId}/{subscriberState}/email-upsert">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">upsert_subscriber_state_by_email</a>(subscriber_state, \*, external_event_id, \*\*<a href="src/hubspot_sdk/types/marketing/event_upsert_subscriber_state_by_email_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="post /marketing/marketing-events/2026-03/events/{externalEventId}/{subscriberState}/upsert">client.marketing.events.<a href="./src/hubspot_sdk/resources/marketing/events/events.py">upsert_subscriber_state_by_id</a>(subscriber_state, \*, external_event_id, \*\*<a href="src/hubspot_sdk/types/marketing/event_upsert_subscriber_state_by_id_params.py">params</a>) -> BinaryAPIResponse</code>
 
 ### Attendance
 
@@ -258,19 +269,43 @@ Methods:
 - <code title="post /marketing/marketing-events/2026-03/{appId}/settings">client.marketing.events.settings.<a href="./src/hubspot_sdk/resources/marketing/events/settings.py">create_or_update</a>(app_id, \*\*<a href="src/hubspot_sdk/types/marketing/events/setting_create_or_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/event_detail_settings.py">EventDetailSettings</a></code>
 - <code title="get /marketing/marketing-events/2026-03/{appId}/settings">client.marketing.events.settings.<a href="./src/hubspot_sdk/resources/marketing/events/settings.py">get</a>(app_id) -> <a href="./src/hubspot_sdk/types/marketing/event_detail_settings.py">EventDetailSettings</a></code>
 
+### SubscriberState
+
+Methods:
+
+- <code title="post /marketing/marketing-events/2026-03/events/{externalEventId}/{subscriberState}/email-upsert">client.marketing.events.subscriber_state.<a href="./src/hubspot_sdk/resources/marketing/events/subscriber_state.py">record_by_email</a>(subscriber_state, \*, external_event_id, \*\*<a href="src/hubspot_sdk/types/marketing/events/subscriber_state_record_by_email_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /marketing/marketing-events/2026-03/events/{externalEventId}/{subscriberState}/upsert">client.marketing.events.subscriber_state.<a href="./src/hubspot_sdk/resources/marketing/events/subscriber_state.py">record_by_id</a>(subscriber_state, \*, external_event_id, \*\*<a href="src/hubspot_sdk/types/marketing/events/subscriber_state_record_by_id_params.py">params</a>) -> BinaryAPIResponse</code>
+
+## SingleSend
+
+Methods:
+
+- <code title="post /marketing/email-campaigns/2026-03/single-send">client.marketing.single_send.<a href="./src/hubspot_sdk/resources/marketing/single_send.py">create</a>(\*\*<a href="src/hubspot_sdk/types/marketing/single_send_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/email_send_status_view.py">EmailSendStatusView</a></code>
+
 ## Transactional
 
 Types:
 
 ```python
 from hubspot_sdk.types.marketing import (
-    EmailSendStatusView,
-    EventIDView,
-    PublicSingleSendEmail,
-    PublicSingleSendRequestEgg,
+    CollectionResponseSmtpAPITokenViewForwardPaging,
+    SmtpAPITokenRequestEgg,
+    SmtpAPITokenView,
 )
 ```
 
+### SingleEmail
+
 Methods:
 
-- <code title="post /marketing/transactional/2026-03/single-email/send">client.marketing.transactional.<a href="./src/hubspot_sdk/resources/marketing/transactional.py">send</a>(\*\*<a href="src/hubspot_sdk/types/marketing/transactional_send_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/email_send_status_view.py">EmailSendStatusView</a></code>
+- <code title="post /marketing/transactional/2026-03/single-email/send">client.marketing.transactional.single_email.<a href="./src/hubspot_sdk/resources/marketing/transactional/single_email.py">send</a>(\*\*<a href="src/hubspot_sdk/types/marketing/transactional/single_email_send_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/email_send_status_view.py">EmailSendStatusView</a></code>
+
+### SmtpTokens
+
+Methods:
+
+- <code title="post /marketing/transactional/2026-03/smtp-tokens">client.marketing.transactional.smtp_tokens.<a href="./src/hubspot_sdk/resources/marketing/transactional/smtp_tokens.py">create</a>(\*\*<a href="src/hubspot_sdk/types/marketing/transactional/smtp_token_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/smtp_api_token_view.py">SmtpAPITokenView</a></code>
+- <code title="get /marketing/transactional/2026-03/smtp-tokens">client.marketing.transactional.smtp_tokens.<a href="./src/hubspot_sdk/resources/marketing/transactional/smtp_tokens.py">list</a>(\*\*<a href="src/hubspot_sdk/types/marketing/transactional/smtp_token_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/marketing/smtp_api_token_view.py">SyncPage[SmtpAPITokenView]</a></code>
+- <code title="delete /marketing/transactional/2026-03/smtp-tokens/{tokenId}">client.marketing.transactional.smtp_tokens.<a href="./src/hubspot_sdk/resources/marketing/transactional/smtp_tokens.py">delete</a>(token_id) -> None</code>
+- <code title="get /marketing/transactional/2026-03/smtp-tokens/{tokenId}">client.marketing.transactional.smtp_tokens.<a href="./src/hubspot_sdk/resources/marketing/transactional/smtp_tokens.py">get</a>(token_id) -> <a href="./src/hubspot_sdk/types/marketing/smtp_api_token_view.py">SmtpAPITokenView</a></code>
+- <code title="post /marketing/transactional/2026-03/smtp-tokens/{tokenId}/password-reset">client.marketing.transactional.smtp_tokens.<a href="./src/hubspot_sdk/resources/marketing/transactional/smtp_tokens.py">reset_password</a>(token_id) -> <a href="./src/hubspot_sdk/types/marketing/smtp_api_token_view.py">SmtpAPITokenView</a></code>

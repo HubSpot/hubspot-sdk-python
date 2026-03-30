@@ -37,7 +37,7 @@ class PublicEmail(BaseModel):
     business_unit_id: Optional[str] = FieldInfo(alias="businessUnitId", default=None)
 
     campaign: Optional[str] = None
-    """The campaign GUID on the email."""
+    """The ID of the campaign this email is associated to."""
 
     campaign_name: Optional[str] = FieldInfo(alias="campaignName", default=None)
     """The name of the campaign."""
@@ -1062,7 +1062,7 @@ class PublicEmail(BaseModel):
     """The date and time of the last update to the email, in ISO8601 representation."""
 
     updated_by_id: Optional[str] = FieldInfo(alias="updatedById", default=None)
-    """The ID of the user who last updated the email."""
+    """The id of the user who last updated the email."""
 
     users_with_access: Optional[List[str]] = FieldInfo(alias="usersWithAccess", default=None)
 

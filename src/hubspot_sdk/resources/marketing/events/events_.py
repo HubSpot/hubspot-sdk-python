@@ -60,6 +60,8 @@ class EventsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MarketingEventDefaultResponse:
         """
+        Mark a marketing event as cancelled.
+
         Args:
           extra_headers: Send extra headers
 
@@ -104,6 +106,8 @@ class EventsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MarketingEventDefaultResponse:
         """
+        Mark a marketing event as completed
+
         Args:
           end_date_time: The end date and time of the marketing event in ISO 8601 format
 
@@ -178,6 +182,8 @@ class AsyncEventsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MarketingEventDefaultResponse:
         """
+        Mark a marketing event as cancelled.
+
         Args:
           extra_headers: Send extra headers
 
@@ -222,6 +228,8 @@ class AsyncEventsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MarketingEventDefaultResponse:
         """
+        Mark a marketing event as completed
+
         Args:
           end_date_time: The end date and time of the marketing event in ISO 8601 format
 

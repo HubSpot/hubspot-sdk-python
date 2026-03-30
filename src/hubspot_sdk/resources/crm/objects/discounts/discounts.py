@@ -81,7 +81,9 @@ class DiscountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Create a discount
+        Create a discount with the given properties and return a copy of the object,
+        including the ID. Documentation and examples for creating standard discounts is
+        provided.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -176,8 +178,7 @@ class DiscountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
         """
-        Retrieve all discounts, using query parameters to specify the information that
-        gets returned.
+        List
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -243,7 +244,7 @@ class DiscountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a discount.
+        Archive
 
         Args:
           extra_headers: Send extra headers
@@ -281,10 +282,12 @@ class DiscountsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """
-        Retrieve a discount by its ID (`objectId`) or by a unique property
-        (`idProperty`). You can specify what is returned using the `properties` query
-        parameter.
+        """Read an Object identified by `{discountId}`.
+
+        `{discountId}` refers to the
+        internal object ID by default, or optionally any unique property value as
+        specified by the `idProperty` query param. Control what is returned via the
+        `properties` query param.
 
         Args:
           archived: Whether to return only results that have been archived.
@@ -350,8 +353,6 @@ class DiscountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
-        Search for a discount
-
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 
@@ -430,7 +431,9 @@ class AsyncDiscountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Create a discount
+        Create a discount with the given properties and return a copy of the object,
+        including the ID. Documentation and examples for creating standard discounts is
+        provided.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -527,8 +530,7 @@ class AsyncDiscountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
         """
-        Retrieve all discounts, using query parameters to specify the information that
-        gets returned.
+        List
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -594,7 +596,7 @@ class AsyncDiscountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a discount.
+        Archive
 
         Args:
           extra_headers: Send extra headers
@@ -632,10 +634,12 @@ class AsyncDiscountsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """
-        Retrieve a discount by its ID (`objectId`) or by a unique property
-        (`idProperty`). You can specify what is returned using the `properties` query
-        parameter.
+        """Read an Object identified by `{discountId}`.
+
+        `{discountId}` refers to the
+        internal object ID by default, or optionally any unique property value as
+        specified by the `idProperty` query param. Control what is returned via the
+        `properties` query param.
 
         Args:
           archived: Whether to return only results that have been archived.
@@ -701,8 +705,6 @@ class AsyncDiscountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
-        Search for a discount
-
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 

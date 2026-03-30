@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .tags import (
+from .tags.tags import (
     TagsResource,
     AsyncTagsResource,
     TagsResourceWithRawResponse,

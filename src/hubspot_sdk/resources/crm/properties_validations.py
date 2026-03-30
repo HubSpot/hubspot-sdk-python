@@ -61,6 +61,8 @@ class PropertiesValidationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicPropertyValidationRuleMapNoPaging:
         """
+        Read all properties with validation rules for a given object.
+
         Args:
           extra_headers: Send extra headers
 
@@ -93,6 +95,8 @@ class PropertiesValidationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicPropertyValidationRuleNoPaging:
         """
+        Read a property's validation rules identified by {propertyName}.
+
         Args:
           extra_headers: Send extra headers
 
@@ -160,6 +164,9 @@ class PropertiesValidationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicPropertyValidationRule:
         """
+        Retrieve a specific validation rule for a property identified by its name and
+        rule type.
+
         Args:
           extra_headers: Send extra headers
 
@@ -232,6 +239,9 @@ class PropertiesValidationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Update a specific validation rule for a property identified by its name and rule
+        type.
+
         Args:
           rule_arguments: A list of arguments that define the constraints for the validation rule.
 
@@ -303,6 +313,8 @@ class AsyncPropertiesValidationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicPropertyValidationRuleMapNoPaging:
         """
+        Read all properties with validation rules for a given object.
+
         Args:
           extra_headers: Send extra headers
 
@@ -335,6 +347,8 @@ class AsyncPropertiesValidationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicPropertyValidationRuleNoPaging:
         """
+        Read a property's validation rules identified by {propertyName}.
+
         Args:
           extra_headers: Send extra headers
 
@@ -402,6 +416,9 @@ class AsyncPropertiesValidationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicPropertyValidationRule:
         """
+        Retrieve a specific validation rule for a property identified by its name and
+        rule type.
+
         Args:
           extra_headers: Send extra headers
 
@@ -474,6 +491,9 @@ class AsyncPropertiesValidationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Update a specific validation rule for a property identified by its name and rule
+        type.
+
         Args:
           rule_arguments: A list of arguments that define the constraints for the validation rule.
 

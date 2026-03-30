@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -54,19 +53,94 @@ class URLMappingsResource(SyncAPIResource):
     def create(
         self,
         *,
-        id: str,
-        created: Union[str, datetime],
+        id: int,
+        cdn_purge_embargo_time: int,
+        content_group_id: int,
+        cos_object_type: Literal[
+            "ACCESS_GROUP_MEMBERSHIP",
+            "APP_PAGE",
+            "BLOCK",
+            "BLOG",
+            "BLOG_AUTHOR",
+            "BRAND_BUSINESS_UNIT",
+            "BRAND_SETTINGS",
+            "CONTACT_MEMBERSHIP",
+            "CONTENT",
+            "CONTENT_EMBED",
+            "CONTENT_FOLDER",
+            "CONTENT_GROUP",
+            "CRM_OBJECT",
+            "CRM_OBJECT_TYPE",
+            "CUSTOM_WIDGET",
+            "CUSTOMER_PORTAL",
+            "DATA_QUERY",
+            "DESIGN_FOLDER",
+            "DOMAIN",
+            "DOMAIN_SETTINGS",
+            "EMAIL_ADDRESS",
+            "EXTENSION_RESOURCE",
+            "FILE",
+            "FOLDER",
+            "FOLLOW_ME",
+            "FORM",
+            "GLOBAL_CONTENT",
+            "HUBDB_TABLE",
+            "HUBDB_TABLE_ROW",
+            "IMAGE",
+            "JS_PROJECT_COMPONENT",
+            "KNOWLEDGE_BASE",
+            "KNOWLEDGE_CATEGORY",
+            "KNOWLEDGE_CATEGORY_TRANSLATION",
+            "KNOWLEDGE_HOMEPAGE_CATEGORY",
+            "LAYOUT",
+            "LAYOUT_SECTION",
+            "LIST_MEMBERSHIP",
+            "MARKETPLACE_LISTING",
+            "PASSWORD_PROTECTED",
+            "PAYMENT",
+            "PERSONALIZATION_TOKEN",
+            "PLACEMENT",
+            "PROJECT",
+            "QUOTE_TEMPLATE",
+            "RAW_ASSET",
+            "REDIRECT_URL",
+            "SECTION",
+            "SERVERLESS_FUNCTION",
+            "SITE_MAP",
+            "SITE_MENU",
+            "SITE_SETTINGS",
+            "SUBSCRIPTIONS_SETTINGS",
+            "TAG",
+            "THEME",
+            "THEME_SETTINGS",
+            "UNRESTRICTED_ACCESS",
+            "URL_MAPPING",
+            "VIDEO_PLAYER",
+            "WIDGET",
+            "WORKFLOW",
+        ],
+        created: int,
+        created_by_id: int,
+        deleted_at: int,
         destination: str,
+        internally_created: bool,
+        is_active: bool,
         is_match_full_url: bool,
         is_match_query_string: bool,
         is_only_after_not_found: bool,
         is_pattern: bool,
         is_protocol_agnostic: bool,
+        is_regex: bool,
         is_trailing_slash_optional: bool,
+        label: str,
+        name: str,
+        note: str,
+        portal_id: int,
         precedence: int,
         redirect_style: int,
         route_prefix: str,
-        updated: Union[str, datetime],
+        updated: int,
+        updated_by_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -82,38 +156,64 @@ class URLMappingsResource(SyncAPIResource):
         UrlMapping schema.
 
         Args:
-          id: The unique ID of this URL redirect.
+          id: The unique identifier for the URL mapping, represented as a 64-bit integer.
 
-          created: The date and time when the URL mapping was initially created.
+          cdn_purge_embargo_time: A Unix timestamp in milliseconds indicating the embargo time for CDN purge
+              related to the URL mapping.
 
-          destination: The destination URL, where the target URL should be redirected if it matches the
-              `routePrefix`.
+          content_group_id: A 64-bit integer representing the content group associated with the URL mapping.
 
-          is_match_full_url: Whether the `routePrefix` should match on the entire URL, including the domain.
+          cos_object_type: A string representing the type of content object associated with the URL
+              mapping. Valid values include various content types such as 'CONTENT', 'LAYOUT',
+              'FILE', etc.
 
-          is_match_query_string: Whether the `routePrefix` should match on the entire URL path, including the
-              query string.
+          created: A Unix timestamp in milliseconds indicating when the URL mapping was created.
 
-          is_only_after_not_found: Whether the URL redirect mapping should apply only if a live page on the URL
-              isn't found. If False, the URL redirect mapping will take precedence over any
-              existing page.
+          created_by_id: The identifier of the user who created the URL mapping.
 
-          is_pattern: Whether the `routePrefix` should match based on pattern.
+          deleted_at: A Unix timestamp in milliseconds indicating when the URL mapping was deleted.
 
-          is_protocol_agnostic: Whether the `routePrefix` should match both HTTP and HTTPS protocols.
+          destination: The destination URL to which the routePrefix is redirected.
 
-          is_trailing_slash_optional: Whether a trailing slash will be ignored.
+          internally_created: A boolean indicating if the URL mapping was created internally by the system.
 
-          precedence: Used to prioritize URL redirection. If a given URL matches more than one
-              redirect, the one with the **lower** precedence will be used.
+          is_active: A boolean indicating if the URL mapping is currently active.
 
-          redirect_style: The type of redirect to create. Options include: 301 (permanent), 302
-              (temporary), or 305 (proxy). Find more details
-              [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+          is_match_full_url: A boolean indicating if the full URL should be matched.
 
-          route_prefix: The target incoming URL, path, or pattern to match for redirection.
+          is_match_query_string: A boolean indicating if the query string should be matched.
 
-          updated: The date and time when the URL mapping was last modified.
+          is_only_after_not_found: A boolean indicating if the mapping should only be applied after a 404 Not Found
+              response.
+
+          is_pattern: A boolean indicating if the routePrefix is a pattern.
+
+          is_protocol_agnostic: A boolean indicating if the mapping should ignore the URL protocol (http/https).
+
+          is_regex: A boolean indicating if the routePrefix should be treated as a regular
+              expression.
+
+          is_trailing_slash_optional: A boolean indicating if the trailing slash in the URL is optional.
+
+          label: A label for the URL mapping.
+
+          name: The name of the URL mapping.
+
+          note: A string containing notes about the URL mapping.
+
+          portal_id: The identifier for the HubSpot portal associated with this URL mapping.
+
+          precedence: An integer representing the precedence of the URL mapping, used to determine
+              order of evaluation.
+
+          redirect_style: An integer representing the style of redirection used.
+
+          route_prefix: The prefix of the URL path that is being mapped.
+
+          updated: A Unix timestamp in milliseconds indicating when the URL mapping was last
+              updated.
+
+          updated_by_id: The identifier of the user who last updated the URL mapping.
 
           extra_headers: Send extra headers
 
@@ -129,18 +229,31 @@ class URLMappingsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "id": id,
+                    "cdn_purge_embargo_time": cdn_purge_embargo_time,
+                    "content_group_id": content_group_id,
+                    "cos_object_type": cos_object_type,
                     "created": created,
+                    "created_by_id": created_by_id,
+                    "deleted_at": deleted_at,
                     "destination": destination,
+                    "internally_created": internally_created,
+                    "is_active": is_active,
                     "is_match_full_url": is_match_full_url,
                     "is_match_query_string": is_match_query_string,
                     "is_only_after_not_found": is_only_after_not_found,
                     "is_pattern": is_pattern,
                     "is_protocol_agnostic": is_protocol_agnostic,
+                    "is_regex": is_regex,
                     "is_trailing_slash_optional": is_trailing_slash_optional,
+                    "label": label,
+                    "name": name,
+                    "note": note,
+                    "portal_id": portal_id,
                     "precedence": precedence,
                     "redirect_style": redirect_style,
                     "route_prefix": route_prefix,
                     "updated": updated,
+                    "updated_by_id": updated_by_id,
                 },
                 url_mapping_create_params.URLMappingCreateParams,
             ),
@@ -269,19 +382,94 @@ class AsyncURLMappingsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        id: str,
-        created: Union[str, datetime],
+        id: int,
+        cdn_purge_embargo_time: int,
+        content_group_id: int,
+        cos_object_type: Literal[
+            "ACCESS_GROUP_MEMBERSHIP",
+            "APP_PAGE",
+            "BLOCK",
+            "BLOG",
+            "BLOG_AUTHOR",
+            "BRAND_BUSINESS_UNIT",
+            "BRAND_SETTINGS",
+            "CONTACT_MEMBERSHIP",
+            "CONTENT",
+            "CONTENT_EMBED",
+            "CONTENT_FOLDER",
+            "CONTENT_GROUP",
+            "CRM_OBJECT",
+            "CRM_OBJECT_TYPE",
+            "CUSTOM_WIDGET",
+            "CUSTOMER_PORTAL",
+            "DATA_QUERY",
+            "DESIGN_FOLDER",
+            "DOMAIN",
+            "DOMAIN_SETTINGS",
+            "EMAIL_ADDRESS",
+            "EXTENSION_RESOURCE",
+            "FILE",
+            "FOLDER",
+            "FOLLOW_ME",
+            "FORM",
+            "GLOBAL_CONTENT",
+            "HUBDB_TABLE",
+            "HUBDB_TABLE_ROW",
+            "IMAGE",
+            "JS_PROJECT_COMPONENT",
+            "KNOWLEDGE_BASE",
+            "KNOWLEDGE_CATEGORY",
+            "KNOWLEDGE_CATEGORY_TRANSLATION",
+            "KNOWLEDGE_HOMEPAGE_CATEGORY",
+            "LAYOUT",
+            "LAYOUT_SECTION",
+            "LIST_MEMBERSHIP",
+            "MARKETPLACE_LISTING",
+            "PASSWORD_PROTECTED",
+            "PAYMENT",
+            "PERSONALIZATION_TOKEN",
+            "PLACEMENT",
+            "PROJECT",
+            "QUOTE_TEMPLATE",
+            "RAW_ASSET",
+            "REDIRECT_URL",
+            "SECTION",
+            "SERVERLESS_FUNCTION",
+            "SITE_MAP",
+            "SITE_MENU",
+            "SITE_SETTINGS",
+            "SUBSCRIPTIONS_SETTINGS",
+            "TAG",
+            "THEME",
+            "THEME_SETTINGS",
+            "UNRESTRICTED_ACCESS",
+            "URL_MAPPING",
+            "VIDEO_PLAYER",
+            "WIDGET",
+            "WORKFLOW",
+        ],
+        created: int,
+        created_by_id: int,
+        deleted_at: int,
         destination: str,
+        internally_created: bool,
+        is_active: bool,
         is_match_full_url: bool,
         is_match_query_string: bool,
         is_only_after_not_found: bool,
         is_pattern: bool,
         is_protocol_agnostic: bool,
+        is_regex: bool,
         is_trailing_slash_optional: bool,
+        label: str,
+        name: str,
+        note: str,
+        portal_id: int,
         precedence: int,
         redirect_style: int,
         route_prefix: str,
-        updated: Union[str, datetime],
+        updated: int,
+        updated_by_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -297,38 +485,64 @@ class AsyncURLMappingsResource(AsyncAPIResource):
         UrlMapping schema.
 
         Args:
-          id: The unique ID of this URL redirect.
+          id: The unique identifier for the URL mapping, represented as a 64-bit integer.
 
-          created: The date and time when the URL mapping was initially created.
+          cdn_purge_embargo_time: A Unix timestamp in milliseconds indicating the embargo time for CDN purge
+              related to the URL mapping.
 
-          destination: The destination URL, where the target URL should be redirected if it matches the
-              `routePrefix`.
+          content_group_id: A 64-bit integer representing the content group associated with the URL mapping.
 
-          is_match_full_url: Whether the `routePrefix` should match on the entire URL, including the domain.
+          cos_object_type: A string representing the type of content object associated with the URL
+              mapping. Valid values include various content types such as 'CONTENT', 'LAYOUT',
+              'FILE', etc.
 
-          is_match_query_string: Whether the `routePrefix` should match on the entire URL path, including the
-              query string.
+          created: A Unix timestamp in milliseconds indicating when the URL mapping was created.
 
-          is_only_after_not_found: Whether the URL redirect mapping should apply only if a live page on the URL
-              isn't found. If False, the URL redirect mapping will take precedence over any
-              existing page.
+          created_by_id: The identifier of the user who created the URL mapping.
 
-          is_pattern: Whether the `routePrefix` should match based on pattern.
+          deleted_at: A Unix timestamp in milliseconds indicating when the URL mapping was deleted.
 
-          is_protocol_agnostic: Whether the `routePrefix` should match both HTTP and HTTPS protocols.
+          destination: The destination URL to which the routePrefix is redirected.
 
-          is_trailing_slash_optional: Whether a trailing slash will be ignored.
+          internally_created: A boolean indicating if the URL mapping was created internally by the system.
 
-          precedence: Used to prioritize URL redirection. If a given URL matches more than one
-              redirect, the one with the **lower** precedence will be used.
+          is_active: A boolean indicating if the URL mapping is currently active.
 
-          redirect_style: The type of redirect to create. Options include: 301 (permanent), 302
-              (temporary), or 305 (proxy). Find more details
-              [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+          is_match_full_url: A boolean indicating if the full URL should be matched.
 
-          route_prefix: The target incoming URL, path, or pattern to match for redirection.
+          is_match_query_string: A boolean indicating if the query string should be matched.
 
-          updated: The date and time when the URL mapping was last modified.
+          is_only_after_not_found: A boolean indicating if the mapping should only be applied after a 404 Not Found
+              response.
+
+          is_pattern: A boolean indicating if the routePrefix is a pattern.
+
+          is_protocol_agnostic: A boolean indicating if the mapping should ignore the URL protocol (http/https).
+
+          is_regex: A boolean indicating if the routePrefix should be treated as a regular
+              expression.
+
+          is_trailing_slash_optional: A boolean indicating if the trailing slash in the URL is optional.
+
+          label: A label for the URL mapping.
+
+          name: The name of the URL mapping.
+
+          note: A string containing notes about the URL mapping.
+
+          portal_id: The identifier for the HubSpot portal associated with this URL mapping.
+
+          precedence: An integer representing the precedence of the URL mapping, used to determine
+              order of evaluation.
+
+          redirect_style: An integer representing the style of redirection used.
+
+          route_prefix: The prefix of the URL path that is being mapped.
+
+          updated: A Unix timestamp in milliseconds indicating when the URL mapping was last
+              updated.
+
+          updated_by_id: The identifier of the user who last updated the URL mapping.
 
           extra_headers: Send extra headers
 
@@ -344,18 +558,31 @@ class AsyncURLMappingsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "id": id,
+                    "cdn_purge_embargo_time": cdn_purge_embargo_time,
+                    "content_group_id": content_group_id,
+                    "cos_object_type": cos_object_type,
                     "created": created,
+                    "created_by_id": created_by_id,
+                    "deleted_at": deleted_at,
                     "destination": destination,
+                    "internally_created": internally_created,
+                    "is_active": is_active,
                     "is_match_full_url": is_match_full_url,
                     "is_match_query_string": is_match_query_string,
                     "is_only_after_not_found": is_only_after_not_found,
                     "is_pattern": is_pattern,
                     "is_protocol_agnostic": is_protocol_agnostic,
+                    "is_regex": is_regex,
                     "is_trailing_slash_optional": is_trailing_slash_optional,
+                    "label": label,
+                    "name": name,
+                    "note": note,
+                    "portal_id": portal_id,
                     "precedence": precedence,
                     "redirect_style": redirect_style,
                     "route_prefix": route_prefix,
                     "updated": updated,
+                    "updated_by_id": updated_by_id,
                 },
                 url_mapping_create_params.URLMappingCreateParams,
             ),

@@ -63,6 +63,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Create the Blog Author objects detailed in the request body.
+
         Args:
           inputs: Blog authors to input.
 
@@ -97,6 +99,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Update the Blog Author objects identified in the request body.
+
         Args:
           inputs: JSON nodes to input.
 
@@ -136,6 +140,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete the Blog Author objects identified in the request body.
+
         Args:
           inputs: Strings to input.
 
@@ -170,6 +176,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
+        Retrieve the Blog Author objects identified in the request body.
+
         Args:
           inputs: Strings to input.
 
@@ -230,6 +238,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Create the Blog Author objects detailed in the request body.
+
         Args:
           inputs: Blog authors to input.
 
@@ -264,6 +274,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Update the Blog Author objects identified in the request body.
+
         Args:
           inputs: JSON nodes to input.
 
@@ -303,6 +315,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete the Blog Author objects identified in the request body.
+
         Args:
           inputs: Strings to input.
 
@@ -337,6 +351,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
+        Retrieve the Blog Author objects identified in the request body.
+
         Args:
           inputs: Strings to input.
 

@@ -80,13 +80,10 @@ class CartsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
-        """Create a single cart.
-
-        Include a `properties` object to define
-        [property values](https://developers.hubspot.com/docs/guides/api/crm/properties)
-        for the {objectName}, along with an `associations` array to define
-        [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4)
-        with other records.
+        """
+        Create a cart with the given properties and return a copy of the object,
+        including the ID. Documentation and examples for creating standard carts is
+        provided.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -127,11 +124,13 @@ class CartsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
-        """
-        Update a cart by ID (`objectId`) or unique property value (`idProperty`).
-        Provided property values will be overwritten. Read-only and non-existent
-        properties will result in an error. Properties values can be cleared by passing
-        an empty string.
+        """Perform a partial update of a cart, specified by its ID.
+
+        Alternatively, you can
+        specify a cart by a unique property value using the `idProperty` query
+        parameter. Provided property values will be overwritten. Read-only and
+        non-existent properties will result in an error. Properties values can be
+        cleared by passing an empty string.
 
         Args:
           properties: Key value pairs representing the properties of the object.
@@ -179,7 +178,8 @@ class CartsResource(SyncAPIResource):
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
         """Retrieve all carts.
 
-        Control what is returned via the `properties` query param.
+        You can control what is returned via the `properties` query
+        parameter.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -244,11 +244,8 @@ class CartsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Archive a cart by ID.
-
-        Deleted carts can be restored within 90 days of deletion.
-        Learn more about
-        [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
+        """
+        Delete a cart by its ID, moving it to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -286,9 +283,9 @@ class CartsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """
-        Retrieve a cart by its ID (`objectId`) or by a unique property (`idProperty`).
-        Includes options for specifying what gets returned, such as the `properties`
+        """Retrieve a cart by its ID.
+
+        You can control what is returned via the `properties`
         query parameter.
 
         Args:
@@ -435,13 +432,10 @@ class AsyncCartsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
-        """Create a single cart.
-
-        Include a `properties` object to define
-        [property values](https://developers.hubspot.com/docs/guides/api/crm/properties)
-        for the {objectName}, along with an `associations` array to define
-        [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4)
-        with other records.
+        """
+        Create a cart with the given properties and return a copy of the object,
+        including the ID. Documentation and examples for creating standard carts is
+        provided.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -482,11 +476,13 @@ class AsyncCartsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
-        """
-        Update a cart by ID (`objectId`) or unique property value (`idProperty`).
-        Provided property values will be overwritten. Read-only and non-existent
-        properties will result in an error. Properties values can be cleared by passing
-        an empty string.
+        """Perform a partial update of a cart, specified by its ID.
+
+        Alternatively, you can
+        specify a cart by a unique property value using the `idProperty` query
+        parameter. Provided property values will be overwritten. Read-only and
+        non-existent properties will result in an error. Properties values can be
+        cleared by passing an empty string.
 
         Args:
           properties: Key value pairs representing the properties of the object.
@@ -534,7 +530,8 @@ class AsyncCartsResource(AsyncAPIResource):
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
         """Retrieve all carts.
 
-        Control what is returned via the `properties` query param.
+        You can control what is returned via the `properties` query
+        parameter.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -599,11 +596,8 @@ class AsyncCartsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Archive a cart by ID.
-
-        Deleted carts can be restored within 90 days of deletion.
-        Learn more about
-        [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
+        """
+        Delete a cart by its ID, moving it to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -641,9 +635,9 @@ class AsyncCartsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """
-        Retrieve a cart by its ID (`objectId`) or by a unique property (`idProperty`).
-        Includes options for specifying what gets returned, such as the `properties`
+        """Retrieve a cart by its ID.
+
+        You can control what is returned via the `properties`
         query parameter.
 
         Args:

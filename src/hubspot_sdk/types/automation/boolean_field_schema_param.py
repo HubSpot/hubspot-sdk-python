@@ -9,3 +9,7 @@ __all__ = ["BooleanFieldSchemaParam"]
 
 class BooleanFieldSchemaParam(TypedDict, total=False):
     type: Required[Literal["BOOLEAN"]]
+    """
+    Specifies the field type as BOOLEAN, indicating that the field can hold a true
+    or false value.
+    """

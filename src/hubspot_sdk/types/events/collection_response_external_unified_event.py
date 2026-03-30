@@ -13,7 +13,7 @@ class CollectionResponseExternalUnifiedEvent(BaseModel):
     results: List[ExternalUnifiedEvent]
     """
     An array of ExternalUnifiedEvent objects, each representing an individual event
-    occurrence.
+    with its associated details.
     """
 
     paging: Optional[Paging] = None

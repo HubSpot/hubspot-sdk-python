@@ -17,7 +17,7 @@ class IPRange(BaseModel):
     direction: Literal["EGRESS", "INGRESS"]
     """The direction of the IP traffic, which can be INGRESS or EGRESS."""
 
-    service: Literal["API", "DNS", "EMAIL", "WEB_SCRAPING"]
+    service: Literal["API", "DNS", "EMAIL", "TEST_SERVICE", "WEB_SCRAPING"]
     """
     The service associated with the IP range, such as EMAIL, API, DNS, or
     WEB_SCRAPING.

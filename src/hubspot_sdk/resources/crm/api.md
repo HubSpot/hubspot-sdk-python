@@ -7,11 +7,14 @@ from hubspot_sdk.types.crm import (
     AssociationSpecWithLabel,
     BatchResponsePublicDefaultAssociation,
     BatchResponseVoid,
+    CollectionResponseMultiAssociatedObjectWithLabelForwardPaging,
+    CollectionResponseWithTotalSimplePublicObject,
     Filter,
     FilterGroup,
     LabelsBetweenObjectPair,
     MultiAssociatedObjectWithLabel,
     PublicDefaultAssociation,
+    PublicObjectSearchRequest,
     SimplePublicObject,
     ValueWithTimestamp,
 )
@@ -47,8 +50,10 @@ from hubspot_sdk.types.crm import (
 
 Methods:
 
-- <code title="delete /crm/objects/2026-03/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}">client.crm.associations.<a href="./src/hubspot_sdk/resources/crm/associations/associations.py">delete_associations</a>(to_object_id, \*, object_type, object_id, to_object_type) -> None</code>
+- <code title="get /crm/objects/2026-03/{objectType}/{objectId}/associations/{toObjectType}">client.crm.associations.<a href="./src/hubspot_sdk/resources/crm/associations/associations.py">list</a>(to_object_type, \*, object_type, object_id, \*\*<a href="src/hubspot_sdk/types/crm/association_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/multi_associated_object_with_label.py">SyncPage[MultiAssociatedObjectWithLabel]</a></code>
+- <code title="delete /crm/objects/2026-03/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}">client.crm.associations.<a href="./src/hubspot_sdk/resources/crm/associations/associations.py">delete</a>(to_object_id, \*, object_type, object_id, to_object_type) -> None</code>
 - <code title="post /crm/associations/2026-03/usage/high-usage-report/{userId}">client.crm.associations.<a href="./src/hubspot_sdk/resources/crm/associations/associations.py">request_high_usage_report</a>(user_id) -> <a href="./src/hubspot_sdk/types/crm/report_creation_response.py">ReportCreationResponse</a></code>
+- <code title="post /crm/objects/2026-03/{objectType}/search">client.crm.associations.<a href="./src/hubspot_sdk/resources/crm/associations/associations.py">search</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/association_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_with_total_simple_public_object.py">CollectionResponseWithTotalSimplePublicObject</a></code>
 - <code title="put /crm/objects/2026-03/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}">client.crm.associations.<a href="./src/hubspot_sdk/resources/crm/associations/associations.py">update_association_labels</a>(to_object_id, \*, object_type, object_id, to_object_type, \*\*<a href="src/hubspot_sdk/types/crm/association_update_association_labels_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/labels_between_object_pair.py">LabelsBetweenObjectPair</a></code>
 
 ### Batch
@@ -177,6 +182,7 @@ Methods:
 - <code title="post /crm/extensions/calling/2026-03/{appId}/settings/recording">client.crm.extensions.calling.<a href="./src/hubspot_sdk/resources/crm/extensions/calling/calling.py">create</a>(app_id, \*\*<a href="src/hubspot_sdk/types/crm/extensions/calling_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/extensions/recording_settings_response.py">RecordingSettingsResponse</a></code>
 - <code title="patch /crm/extensions/calling/2026-03/{appId}/settings/recording">client.crm.extensions.calling.<a href="./src/hubspot_sdk/resources/crm/extensions/calling/calling.py">update</a>(app_id, \*\*<a href="src/hubspot_sdk/types/crm/extensions/calling_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/extensions/recording_settings_response.py">RecordingSettingsResponse</a></code>
 - <code title="delete /crm/extensions/calling/2026-03/{appId}/settings/channel-connection">client.crm.extensions.calling.<a href="./src/hubspot_sdk/resources/crm/extensions/calling/calling.py">delete</a>(app_id) -> None</code>
+- <code title="post /crm/extensions/calling/2026-03/inbound-call">client.crm.extensions.calling.<a href="./src/hubspot_sdk/resources/crm/extensions/calling/calling.py">create_inbound_call</a>(\*\*<a href="src/hubspot_sdk/types/crm/extensions/calling_create_inbound_call_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/extensions/completed_third_party_call_response.py">CompletedThirdPartyCallResponse</a></code>
 - <code title="get /crm/extensions/calling/2026-03/{appId}/settings/recording">client.crm.extensions.calling.<a href="./src/hubspot_sdk/resources/crm/extensions/calling/calling.py">get</a>(app_id) -> <a href="./src/hubspot_sdk/types/crm/extensions/recording_settings_response.py">RecordingSettingsResponse</a></code>
 - <code title="post /crm/extensions/calling/2026-03/recordings/ready">client.crm.extensions.calling.<a href="./src/hubspot_sdk/resources/crm/extensions/calling/calling.py">mark_ready</a>(\*\*<a href="src/hubspot_sdk/types/crm/extensions/calling_mark_ready_params.py">params</a>) -> None</code>
 
@@ -257,6 +263,39 @@ Methods:
 - <code title="delete /crm/extensions/videoconferencing/2026-03/settings/{appId}">client.crm.extensions.video_conferencing.<a href="./src/hubspot_sdk/resources/crm/extensions/video_conferencing.py">delete</a>(app_id) -> None</code>
 - <code title="get /crm/extensions/videoconferencing/2026-03/settings/{appId}">client.crm.extensions.video_conferencing.<a href="./src/hubspot_sdk/resources/crm/extensions/video_conferencing.py">get</a>(app_id) -> <a href="./src/hubspot_sdk/types/crm/extensions/external_settings.py">ExternalSettings</a></code>
 
+## FeatureFlags
+
+Types:
+
+```python
+from hubspot_sdk.types.crm import (
+    BatchPortalEntry,
+    FlagPutRequest,
+    FlagResponse,
+    FlagsForAppResponse,
+    PortalFlagStateBatchDeleteRequest,
+    PortalFlagStateBatchPutRequest,
+    PortalFlagStateBatchResponse,
+    PortalFlagStatePutRequest,
+    PortalFlagStateResponse,
+)
+```
+
+Methods:
+
+- <code title="put /feature-flags/2026-03/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.<a href="./src/hubspot_sdk/resources/crm/feature_flags/feature_flags.py">update</a>(portal_id, \*, app_id, flag_name, \*\*<a href="src/hubspot_sdk/types/crm/feature_flag_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_response.py">PortalFlagStateResponse</a></code>
+- <code title="delete /feature-flags/2026-03/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.<a href="./src/hubspot_sdk/resources/crm/feature_flags/feature_flags.py">delete</a>(portal_id, \*, app_id, flag_name) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_response.py">PortalFlagStateResponse</a></code>
+- <code title="get /feature-flags/2026-03/{appId}/flags/{flagName}/portals/{portalId}">client.crm.feature_flags.<a href="./src/hubspot_sdk/resources/crm/feature_flags/feature_flags.py">get</a>(portal_id, \*, app_id, flag_name) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_response.py">PortalFlagStateResponse</a></code>
+- <code title="get /feature-flags/2026-03/{appId}/flags/all">client.crm.feature_flags.<a href="./src/hubspot_sdk/resources/crm/feature_flags/feature_flags.py">list_all</a>(app_id) -> <a href="./src/hubspot_sdk/types/crm/flags_for_app_response.py">FlagsForAppResponse</a></code>
+- <code title="get /feature-flags/2026-03/{appId}/flags/{flagName}/portals">client.crm.feature_flags.<a href="./src/hubspot_sdk/resources/crm/feature_flags/feature_flags.py">list_portals</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flag_list_portals_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_batch_response.py">PortalFlagStateBatchResponse</a></code>
+
+### Batch
+
+Methods:
+
+- <code title="post /feature-flags/2026-03/{appId}/flags/{flagName}/portals/batch/delete">client.crm.feature_flags.batch.<a href="./src/hubspot_sdk/resources/crm/feature_flags/batch.py">delete</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/batch_delete_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_batch_response.py">PortalFlagStateBatchResponse</a></code>
+- <code title="post /feature-flags/2026-03/{appId}/flags/{flagName}/portals/batch/upsert">client.crm.feature_flags.batch.<a href="./src/hubspot_sdk/resources/crm/feature_flags/batch.py">upsert</a>(flag_name, \*, app_id, \*\*<a href="src/hubspot_sdk/types/crm/feature_flags/batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/portal_flag_state_batch_response.py">PortalFlagStateBatchResponse</a></code>
+
 ## Imports
 
 Types:
@@ -298,8 +337,8 @@ from hubspot_sdk.types.crm import (
     CustomObjectRecordLimitResponse,
     CustomPropertyLimitResponse,
     LimitAndUsageForObjectType,
-    LimitsObjectTypeDefinition,
     NearLimitRecordSample,
+    ObjectTypeDefinition,
     ObjectTypeNearOrAtAssociationLimit,
     PipelineLimitResponse,
     RecordLimitResponse,
@@ -487,6 +526,8 @@ Types:
 
 ```python
 from hubspot_sdk.types.crm import (
+    CollectionResponseObjectSchemaNoPaging,
+    ObjectSchema,
     ObjectSchemaBatchReadRequest,
     ObjectSchemaEgg,
     ObjectTypePropertyCreate,
@@ -495,19 +536,19 @@ from hubspot_sdk.types.crm import (
 
 Methods:
 
-- <code title="post /crm-object-schemas/2026-03/schemas">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/object_schema_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/object_schema.py">ObjectSchema</a></code>
+- <code title="post /crm-object-schemas/2026-03/schemas">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/object_schema_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/object_schema.py">ObjectSchema</a></code>
 - <code title="patch /crm-object-schemas/2026-03/schemas/{objectType}">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">update</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/object_schema_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/object_type_definition.py">ObjectTypeDefinition</a></code>
-- <code title="get /crm-object-schemas/2026-03/schemas">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/object_schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
+- <code title="get /crm-object-schemas/2026-03/schemas">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/object_schema_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
 - <code title="delete /crm-object-schemas/2026-03/schemas/{objectType}">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">delete</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/object_schema_delete_params.py">params</a>) -> None</code>
-- <code title="post /crm-object-schemas/2026-03/schemas/{objectType}/associations">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">create_association</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/object_schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/events/association_definition.py">AssociationDefinition</a></code>
+- <code title="post /crm-object-schemas/2026-03/schemas/{objectType}/associations">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">create_association</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/object_schema_create_association_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/association_definition.py">AssociationDefinition</a></code>
 - <code title="delete /crm-object-schemas/2026-03/schemas/{objectType}/associations/{associationIdentifier}">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">delete_association</a>(association_identifier, \*, object_type) -> None</code>
-- <code title="get /crm-object-schemas/2026-03/schemas/{objectType}">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">get</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/object_schema_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/object_schema.py">ObjectSchema</a></code>
+- <code title="get /crm-object-schemas/2026-03/schemas/{objectType}">client.crm.object_schemas.<a href="./src/hubspot_sdk/resources/crm/object_schemas/object_schemas.py">get</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/object_schema_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/object_schema.py">ObjectSchema</a></code>
 
 ### Batch
 
 Methods:
 
-- <code title="post /crm-object-schemas/2026-03/schemas/batch/read">client.crm.object_schemas.batch.<a href="./src/hubspot_sdk/resources/crm/object_schemas/batch.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/object_schemas/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
+- <code title="post /crm-object-schemas/2026-03/schemas/batch/read">client.crm.object_schemas.batch.<a href="./src/hubspot_sdk/resources/crm/object_schemas/batch.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/object_schemas/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_object_schema_no_paging.py">CollectionResponseObjectSchemaNoPaging</a></code>
 
 ## Objects
 
@@ -525,10 +566,8 @@ from hubspot_sdk.types.crm import (
     BatchResponseSimplePublicUpsertObject,
     CollectionResponseAssociatedID,
     CollectionResponseSimplePublicObjectWithAssociationsForwardPaging,
-    CollectionResponseWithTotalSimplePublicObject,
     PublicAssociationsForObject,
     PublicMergeInput,
-    PublicObjectSearchRequest,
     SimplePublicObjectBatchInput,
     SimplePublicObjectBatchInputForCreate,
     SimplePublicObjectBatchInputUpsert,
@@ -906,13 +945,22 @@ Methods:
 
 Methods:
 
-- <code title="post /crm/objects/2026-03/0-420/batch/create">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
-- <code title="post /crm/objects/2026-03/0-420/batch/update">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings.py">update</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
-- <code title="get /crm/objects/2026-03/0-420">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SyncPage[SimplePublicObjectWithAssociations]</a></code>
-- <code title="post /crm/objects/2026-03/0-420/batch/archive">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings.py">delete</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_delete_params.py">params</a>) -> None</code>
-- <code title="post /crm/objects/2026-03/0-420/batch/read">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
-- <code title="post /crm/objects/2026-03/0-420/search">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings.py">search</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_with_total_simple_public_object.py">CollectionResponseWithTotalSimplePublicObject</a></code>
-- <code title="post /crm/objects/2026-03/0-420/batch/upsert">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings.py">upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
+- <code title="post /crm/objects/2026-03/0-420">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings/listings.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
+- <code title="patch /crm/objects/2026-03/0-420/{listingId}">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings/listings.py">update</a>(listing_id, \*\*<a href="src/hubspot_sdk/types/crm/objects/listing_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
+- <code title="get /crm/objects/2026-03/0-420">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings/listings.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SyncPage[SimplePublicObjectWithAssociations]</a></code>
+- <code title="delete /crm/objects/2026-03/0-420/{listingId}">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings/listings.py">delete</a>(listing_id) -> None</code>
+- <code title="get /crm/objects/2026-03/0-420/{listingId}">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings/listings.py">get</a>(listing_id, \*\*<a href="src/hubspot_sdk/types/crm/objects/listing_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SimplePublicObjectWithAssociations</a></code>
+- <code title="post /crm/objects/2026-03/0-420/search">client.crm.objects.listings.<a href="./src/hubspot_sdk/resources/crm/objects/listings/listings.py">search</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listing_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_with_total_simple_public_object.py">CollectionResponseWithTotalSimplePublicObject</a></code>
+
+#### Batch
+
+Methods:
+
+- <code title="post /crm/objects/2026-03/0-420/batch/create">client.crm.objects.listings.batch.<a href="./src/hubspot_sdk/resources/crm/objects/listings/batch.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listings/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/0-420/batch/update">client.crm.objects.listings.batch.<a href="./src/hubspot_sdk/resources/crm/objects/listings/batch.py">update</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listings/batch_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/0-420/batch/archive">client.crm.objects.listings.batch.<a href="./src/hubspot_sdk/resources/crm/objects/listings/batch.py">delete</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listings/batch_delete_params.py">params</a>) -> None</code>
+- <code title="post /crm/objects/2026-03/0-420/batch/read">client.crm.objects.listings.batch.<a href="./src/hubspot_sdk/resources/crm/objects/listings/batch.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listings/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/0-420/batch/upsert">client.crm.objects.listings.batch.<a href="./src/hubspot_sdk/resources/crm/objects/listings/batch.py">upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/listings/batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
 
 ### Meetings
 
@@ -956,6 +1004,27 @@ Methods:
 - <code title="post /crm/objects/2026-03/notes/batch/read">client.crm.objects.notes.batch.<a href="./src/hubspot_sdk/resources/crm/objects/notes/batch.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/notes/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
 - <code title="post /crm/objects/2026-03/notes/batch/upsert">client.crm.objects.notes.batch.<a href="./src/hubspot_sdk/resources/crm/objects/notes/batch.py">upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/notes/batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
 
+### Objects
+
+Methods:
+
+- <code title="post /crm/objects/2026-03/{objectType}">client.crm.objects.objects.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/objects_.py">create</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/object_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
+- <code title="patch /crm/objects/2026-03/{objectType}/{objectId}">client.crm.objects.objects.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/objects_.py">update</a>(object_id, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/object_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
+- <code title="get /crm/objects/2026-03/{objectType}">client.crm.objects.objects.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/objects_.py">list</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/object_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SyncPage[SimplePublicObjectWithAssociations]</a></code>
+- <code title="delete /crm/objects/2026-03/{objectType}/{objectId}">client.crm.objects.objects.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/objects_.py">delete</a>(object_id, \*, object_type) -> None</code>
+- <code title="get /crm/objects/2026-03/{objectType}/{objectId}">client.crm.objects.objects.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/objects_.py">get</a>(object_id, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/object_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SimplePublicObjectWithAssociations</a></code>
+- <code title="post /crm/objects/2026-03/{objectType}/search">client.crm.objects.objects.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/objects_.py">search</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/objects/object_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_with_total_simple_public_object.py">CollectionResponseWithTotalSimplePublicObject</a></code>
+
+#### Batch
+
+Methods:
+
+- <code title="post /crm/objects/2026-03/{objectType}/batch/create">client.crm.objects.objects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/batch.py">create</a>(object*type, \*\*<a href="src/hubspot_sdk/types/crm/objects/objects*/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/{objectType}/batch/update">client.crm.objects.objects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/batch.py">update</a>(object*type, \*\*<a href="src/hubspot_sdk/types/crm/objects/objects*/batch_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/{objectType}/batch/archive">client.crm.objects.objects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/batch.py">delete</a>(object*type, \*\*<a href="src/hubspot_sdk/types/crm/objects/objects*/batch_delete_params.py">params</a>) -> None</code>
+- <code title="post /crm/objects/2026-03/{objectType}/batch/read">client.crm.objects.objects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/batch.py">get</a>(object*type, \*\*<a href="src/hubspot_sdk/types/crm/objects/objects*/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/{objectType}/batch/upsert">client.crm.objects.objects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/objects_/batch.py">upsert</a>(object*type, \*\*<a href="src/hubspot_sdk/types/crm/objects/objects*/batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
+
 ### Orders
 
 Methods:
@@ -984,14 +1053,6 @@ Methods:
 - <code title="post /crm/objects/2026-03/partner_clients/batch/update">client.crm.objects.partner_clients.batch.<a href="./src/hubspot_sdk/resources/crm/objects/partner_clients/batch.py">update</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/partner_clients/batch_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
 
 ### PartnerServices
-
-Types:
-
-```python
-from hubspot_sdk.types.crm.objects import (
-    CollectionResponseMultiAssociatedObjectWithLabelForwardPaging,
-)
-```
 
 Methods:
 
@@ -1023,6 +1084,28 @@ Methods:
 - <code title="post /crm/objects/2026-03/products/batch/read">client.crm.objects.products.<a href="./src/hubspot_sdk/resources/crm/objects/products.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/product_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
 - <code title="post /crm/objects/2026-03/products/search">client.crm.objects.products.<a href="./src/hubspot_sdk/resources/crm/objects/products.py">search</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/product_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_with_total_simple_public_object.py">CollectionResponseWithTotalSimplePublicObject</a></code>
 - <code title="post /crm/objects/2026-03/products/batch/upsert">client.crm.objects.products.<a href="./src/hubspot_sdk/resources/crm/objects/products.py">upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/product_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
+
+### Projects
+
+Methods:
+
+- <code title="post /crm/objects/2026-03/projects">client.crm.objects.projects.<a href="./src/hubspot_sdk/resources/crm/objects/projects/projects.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/project_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
+- <code title="patch /crm/objects/2026-03/projects/{projectId}">client.crm.objects.projects.<a href="./src/hubspot_sdk/resources/crm/objects/projects/projects.py">update</a>(project_id, \*\*<a href="src/hubspot_sdk/types/crm/objects/project_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
+- <code title="get /crm/objects/2026-03/projects">client.crm.objects.projects.<a href="./src/hubspot_sdk/resources/crm/objects/projects/projects.py">list</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/project_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SyncPage[SimplePublicObjectWithAssociations]</a></code>
+- <code title="delete /crm/objects/2026-03/projects/{projectId}">client.crm.objects.projects.<a href="./src/hubspot_sdk/resources/crm/objects/projects/projects.py">delete</a>(project_id) -> None</code>
+- <code title="get /crm/objects/2026-03/projects/{projectId}">client.crm.objects.projects.<a href="./src/hubspot_sdk/resources/crm/objects/projects/projects.py">get</a>(project_id, \*\*<a href="src/hubspot_sdk/types/crm/objects/project_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object_with_associations.py">SimplePublicObjectWithAssociations</a></code>
+- <code title="post /crm/objects/2026-03/projects/merge">client.crm.objects.projects.<a href="./src/hubspot_sdk/resources/crm/objects/projects/projects.py">merge</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/project_merge_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/simple_public_object.py">SimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/projects/search">client.crm.objects.projects.<a href="./src/hubspot_sdk/resources/crm/objects/projects/projects.py">search</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/project_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_with_total_simple_public_object.py">CollectionResponseWithTotalSimplePublicObject</a></code>
+
+#### Batch
+
+Methods:
+
+- <code title="post /crm/objects/2026-03/projects/batch/create">client.crm.objects.projects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/projects/batch.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/projects/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/projects/batch/update">client.crm.objects.projects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/projects/batch.py">update</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/projects/batch_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/projects/batch/archive">client.crm.objects.projects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/projects/batch.py">delete</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/projects/batch_delete_params.py">params</a>) -> None</code>
+- <code title="post /crm/objects/2026-03/projects/batch/read">client.crm.objects.projects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/projects/batch.py">get</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/projects/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_object.py">BatchResponseSimplePublicObject</a></code>
+- <code title="post /crm/objects/2026-03/projects/batch/upsert">client.crm.objects.projects.batch.<a href="./src/hubspot_sdk/resources/crm/objects/projects/batch.py">upsert</a>(\*\*<a href="src/hubspot_sdk/types/crm/objects/projects/batch_upsert_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_simple_public_upsert_object.py">BatchResponseSimplePublicUpsertObject</a></code>
 
 ### Quotes
 
@@ -1198,14 +1281,18 @@ Methods:
 Types:
 
 ```python
-from hubspot_sdk.types.crm import PropertyUpdate
+from hubspot_sdk.types.crm import (
+    BatchResponseProperty,
+    CollectionResponsePropertyNoPaging,
+    PropertyUpdate,
+)
 ```
 
 Methods:
 
 - <code title="post /crm/properties/2026-03/{objectType}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">create</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 - <code title="patch /crm/properties/2026-03/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">update</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
-- <code title="get /crm/properties/2026-03/{objectType}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">list</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/collection_response_property_no_paging.py">CollectionResponsePropertyNoPaging</a></code>
+- <code title="get /crm/properties/2026-03/{objectType}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">list</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_property_no_paging.py">CollectionResponsePropertyNoPaging</a></code>
 - <code title="delete /crm/properties/2026-03/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">delete</a>(property_name, \*, object_type) -> None</code>
 - <code title="get /crm/properties/2026-03/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">get</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 
@@ -1213,9 +1300,9 @@ Methods:
 
 Methods:
 
-- <code title="post /crm/properties/2026-03/{objectType}/batch/create">client.crm.properties.batch.<a href="./src/hubspot_sdk/resources/crm/properties/batch.py">create</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/properties/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/batch_response_property.py">BatchResponseProperty</a></code>
+- <code title="post /crm/properties/2026-03/{objectType}/batch/create">client.crm.properties.batch.<a href="./src/hubspot_sdk/resources/crm/properties/batch.py">create</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/properties/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_property.py">BatchResponseProperty</a></code>
 - <code title="post /crm/properties/2026-03/{objectType}/batch/archive">client.crm.properties.batch.<a href="./src/hubspot_sdk/resources/crm/properties/batch.py">delete</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/properties/batch_delete_params.py">params</a>) -> None</code>
-- <code title="post /crm/properties/2026-03/{objectType}/batch/read">client.crm.properties.batch.<a href="./src/hubspot_sdk/resources/crm/properties/batch.py">get</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/properties/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/batch_response_property.py">BatchResponseProperty</a></code>
+- <code title="post /crm/properties/2026-03/{objectType}/batch/read">client.crm.properties.batch.<a href="./src/hubspot_sdk/resources/crm/properties/batch.py">get</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/properties/batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_property.py">BatchResponseProperty</a></code>
 
 ### Groups
 
@@ -1247,3 +1334,30 @@ Methods:
 - <code title="get /crm/property-validations/2026-03/{objectTypeId}/{propertyName}">client.crm.properties_validations.<a href="./src/hubspot_sdk/resources/crm/properties_validations.py">get_by_object_type_id_and_property_name</a>(property_name, \*, object_type_id) -> <a href="./src/hubspot_sdk/types/crm/collection_response_public_property_validation_rule_no_paging.py">CollectionResponsePublicPropertyValidationRuleNoPaging</a></code>
 - <code title="get /crm/property-validations/2026-03/{objectTypeId}/{propertyName}/rule-type/{ruleType}">client.crm.properties_validations.<a href="./src/hubspot_sdk/resources/crm/properties_validations.py">get_by_object_type_id_property_name_and_rule_type</a>(rule_type, \*, object_type_id, property_name) -> <a href="./src/hubspot_sdk/types/crm/public_property_validation_rule.py">PublicPropertyValidationRule</a></code>
 - <code title="put /crm/property-validations/2026-03/{objectTypeId}/{propertyName}/rule-type/{ruleType}">client.crm.properties_validations.<a href="./src/hubspot_sdk/resources/crm/properties_validations.py">update_by_object_type_id_property_name_and_rule_type</a>(rule_type, \*, object_type_id, property_name, \*\*<a href="src/hubspot_sdk/types/crm/properties_validation_update_by_object_type_id_property_name_and_rule_type_params.py">params</a>) -> None</code>
+
+## Timeline
+
+Types:
+
+```python
+from hubspot_sdk.types.crm import (
+    AppEventOccurrence,
+    AppEventResolutionResponse,
+    BatchInputAppEventOccurrence,
+    BatchResponseAppEventOccurrence,
+    DeveloperQualifiedSymbol,
+    ExternalAppEventResolutionRequest,
+    TimelineEventIFrame,
+)
+```
+
+Methods:
+
+- <code title="post /integrators/timeline/2026-03/events">client.crm.timeline.<a href="./src/hubspot_sdk/resources/crm/timeline/timeline.py">create_event</a>(\*\*<a href="src/hubspot_sdk/types/crm/timeline_create_event_params.py">params</a>) -> None</code>
+- <code title="post /integrators/timeline/2026-03/types/projects">client.crm.timeline.<a href="./src/hubspot_sdk/resources/crm/timeline/timeline.py">create_project_type</a>(\*\*<a href="src/hubspot_sdk/types/crm/timeline_create_project_type_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/app_event_resolution_response.py">AppEventResolutionResponse</a></code>
+
+### Batch
+
+Methods:
+
+- <code title="post /integrators/timeline/2026-03/events/batch">client.crm.timeline.batch.<a href="./src/hubspot_sdk/resources/crm/timeline/batch.py">create</a>(\*\*<a href="src/hubspot_sdk/types/crm/timeline/batch_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/batch_response_app_event_occurrence.py">BatchResponseAppEventOccurrence</a></code>

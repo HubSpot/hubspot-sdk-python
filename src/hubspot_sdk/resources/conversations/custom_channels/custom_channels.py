@@ -136,7 +136,11 @@ class CustomChannelsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelIntegrationChannel:
-        """
+        """Update the capabilities for an existing.
+
+        You can also use it to update the
+        channel's webhookUri and its channelAccountConnectionRedirectUrl.
+
         Args:
           extra_headers: Send extra headers
 
@@ -228,6 +232,8 @@ class CustomChannelsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Archive an existing registered custom channel
+
         Args:
           extra_headers: Send extra headers
 
@@ -259,7 +265,12 @@ class CustomChannelsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelAccount:
-        """
+        """Retrieve the details for a specific channel account.
+
+        This contains all the
+        metadata about your channel account, including its channel, associated inbox id,
+        and delivery identifier information.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -378,7 +389,11 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelIntegrationChannel:
-        """
+        """Update the capabilities for an existing.
+
+        You can also use it to update the
+        channel's webhookUri and its channelAccountConnectionRedirectUrl.
+
         Args:
           extra_headers: Send extra headers
 
@@ -470,6 +485,8 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Archive an existing registered custom channel
+
         Args:
           extra_headers: Send extra headers
 
@@ -501,7 +518,12 @@ class AsyncCustomChannelsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelAccount:
-        """
+        """Retrieve the details for a specific channel account.
+
+        This contains all the
+        metadata about your channel account, including its channel, associated inbox id,
+        and delivery identifier information.
+
         Args:
           archived: Whether to return only results that have been archived.
 

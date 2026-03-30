@@ -125,7 +125,7 @@ class TasksResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Perform a partial update of a task identified by `{taskId}`or optionally a
+        Perform a partial update of an Object identified by `{taskId}`or optionally a
         unique property value as specified by the `idProperty` query param. `{taskId}`
         refers to the internal object ID by default, and the `idProperty` query param
         refers to a property whose values are unique for the object. Provided property
@@ -479,7 +479,7 @@ class AsyncTasksResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Perform a partial update of a task identified by `{taskId}`or optionally a
+        Perform a partial update of an Object identified by `{taskId}`or optionally a
         unique property value as specified by the `idProperty` query param. `{taskId}`
         refers to the internal object ID by default, and the `idProperty` query param
         refers to a property whose values are unique for the object. Provided property

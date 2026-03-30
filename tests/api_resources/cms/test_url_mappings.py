@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from hubspot_sdk import Hubspot, AsyncHubspot
-from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -31,19 +30,32 @@ class TestURLMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         url_mapping = client.cms.url_mappings.create(
-            id="id",
-            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            id=0,
+            cdn_purge_embargo_time=0,
+            content_group_id=0,
+            cos_object_type="ACCESS_GROUP_MEMBERSHIP",
+            created=0,
+            created_by_id=0,
+            deleted_at=0,
             destination="destination",
+            internally_created=True,
+            is_active=True,
             is_match_full_url=True,
             is_match_query_string=True,
             is_only_after_not_found=True,
             is_pattern=True,
             is_protocol_agnostic=True,
+            is_regex=True,
             is_trailing_slash_optional=True,
+            label="label",
+            name="name",
+            note="note",
+            portal_id=0,
             precedence=0,
             redirect_style=0,
             route_prefix="routePrefix",
-            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated=0,
+            updated_by_id=0,
         )
         assert url_mapping.is_closed
         assert url_mapping.json() == {"foo": "bar"}
@@ -58,19 +70,32 @@ class TestURLMappings:
         )
 
         url_mapping = client.cms.url_mappings.with_raw_response.create(
-            id="id",
-            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            id=0,
+            cdn_purge_embargo_time=0,
+            content_group_id=0,
+            cos_object_type="ACCESS_GROUP_MEMBERSHIP",
+            created=0,
+            created_by_id=0,
+            deleted_at=0,
             destination="destination",
+            internally_created=True,
+            is_active=True,
             is_match_full_url=True,
             is_match_query_string=True,
             is_only_after_not_found=True,
             is_pattern=True,
             is_protocol_agnostic=True,
+            is_regex=True,
             is_trailing_slash_optional=True,
+            label="label",
+            name="name",
+            note="note",
+            portal_id=0,
             precedence=0,
             redirect_style=0,
             route_prefix="routePrefix",
-            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated=0,
+            updated_by_id=0,
         )
 
         assert url_mapping.is_closed is True
@@ -85,19 +110,32 @@ class TestURLMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.cms.url_mappings.with_streaming_response.create(
-            id="id",
-            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            id=0,
+            cdn_purge_embargo_time=0,
+            content_group_id=0,
+            cos_object_type="ACCESS_GROUP_MEMBERSHIP",
+            created=0,
+            created_by_id=0,
+            deleted_at=0,
             destination="destination",
+            internally_created=True,
+            is_active=True,
             is_match_full_url=True,
             is_match_query_string=True,
             is_only_after_not_found=True,
             is_pattern=True,
             is_protocol_agnostic=True,
+            is_regex=True,
             is_trailing_slash_optional=True,
+            label="label",
+            name="name",
+            note="note",
+            portal_id=0,
             precedence=0,
             redirect_style=0,
             route_prefix="routePrefix",
-            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated=0,
+            updated_by_id=0,
         ) as url_mapping:
             assert not url_mapping.is_closed
             assert url_mapping.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -239,19 +277,32 @@ class TestAsyncURLMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         url_mapping = await async_client.cms.url_mappings.create(
-            id="id",
-            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            id=0,
+            cdn_purge_embargo_time=0,
+            content_group_id=0,
+            cos_object_type="ACCESS_GROUP_MEMBERSHIP",
+            created=0,
+            created_by_id=0,
+            deleted_at=0,
             destination="destination",
+            internally_created=True,
+            is_active=True,
             is_match_full_url=True,
             is_match_query_string=True,
             is_only_after_not_found=True,
             is_pattern=True,
             is_protocol_agnostic=True,
+            is_regex=True,
             is_trailing_slash_optional=True,
+            label="label",
+            name="name",
+            note="note",
+            portal_id=0,
             precedence=0,
             redirect_style=0,
             route_prefix="routePrefix",
-            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated=0,
+            updated_by_id=0,
         )
         assert url_mapping.is_closed
         assert await url_mapping.json() == {"foo": "bar"}
@@ -266,19 +317,32 @@ class TestAsyncURLMappings:
         )
 
         url_mapping = await async_client.cms.url_mappings.with_raw_response.create(
-            id="id",
-            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            id=0,
+            cdn_purge_embargo_time=0,
+            content_group_id=0,
+            cos_object_type="ACCESS_GROUP_MEMBERSHIP",
+            created=0,
+            created_by_id=0,
+            deleted_at=0,
             destination="destination",
+            internally_created=True,
+            is_active=True,
             is_match_full_url=True,
             is_match_query_string=True,
             is_only_after_not_found=True,
             is_pattern=True,
             is_protocol_agnostic=True,
+            is_regex=True,
             is_trailing_slash_optional=True,
+            label="label",
+            name="name",
+            note="note",
+            portal_id=0,
             precedence=0,
             redirect_style=0,
             route_prefix="routePrefix",
-            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated=0,
+            updated_by_id=0,
         )
 
         assert url_mapping.is_closed is True
@@ -293,19 +357,32 @@ class TestAsyncURLMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.cms.url_mappings.with_streaming_response.create(
-            id="id",
-            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            id=0,
+            cdn_purge_embargo_time=0,
+            content_group_id=0,
+            cos_object_type="ACCESS_GROUP_MEMBERSHIP",
+            created=0,
+            created_by_id=0,
+            deleted_at=0,
             destination="destination",
+            internally_created=True,
+            is_active=True,
             is_match_full_url=True,
             is_match_query_string=True,
             is_only_after_not_found=True,
             is_pattern=True,
             is_protocol_agnostic=True,
+            is_regex=True,
             is_trailing_slash_optional=True,
+            label="label",
+            name="name",
+            note="note",
+            portal_id=0,
             precedence=0,
             redirect_style=0,
             route_prefix="routePrefix",
-            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated=0,
+            updated_by_id=0,
         ) as url_mapping:
             assert not url_mapping.is_closed
             assert url_mapping.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -67,10 +67,12 @@ class CardsDevResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCardResponse:
-        """Args:
-          title: The top-level title for this card.
+        """
+        Defines a new card that will become active on an account when this app is
+        installed.
 
-        Displayed to users in the CRM UI.
+        Args:
+          title: The top-level title for this card. Displayed to users in the CRM UI.
 
           extra_headers: Send extra headers
 
@@ -113,10 +115,11 @@ class CardsDevResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCardResponse:
-        """Args:
-          title: The top-level title for this card.
+        """
+        Update a card definition with new details.
 
-        Displayed to users in the CRM UI.
+        Args:
+          title: The top-level title for this card. Displayed to users in the CRM UI.
 
           extra_headers: Send extra headers
 
@@ -157,7 +160,12 @@ class CardsDevResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Permanently deletes a card definition with the given ID.
+
+        Once deleted, data
+        fetch requests for this card will no longer be sent to your service. This can't
+        be undone.
+
         Args:
           extra_headers: Send extra headers
 
@@ -190,6 +198,8 @@ class CardsDevResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCardListResponse:
         """
+        Returns a list of cards for a given app.
+
         Args:
           extra_headers: Send extra headers
 
@@ -220,6 +230,8 @@ class CardsDevResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCardResponse:
         """
+        Returns the definition for a card with the given ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -249,6 +261,12 @@ class CardsDevResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegratorCardPayloadResponse:
+        """Returns an example card detail response.
+
+        This is the payload with displayed
+        details for a card that will be shown to a user. An app should send this in
+        response to the data fetch request.
+        """
         return self._get(
             "/crm/extensions/cards-dev/2026-03/sample-response",
             options=make_request_options(
@@ -333,10 +351,12 @@ class AsyncCardsDevResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCardResponse:
-        """Args:
-          title: The top-level title for this card.
+        """
+        Defines a new card that will become active on an account when this app is
+        installed.
 
-        Displayed to users in the CRM UI.
+        Args:
+          title: The top-level title for this card. Displayed to users in the CRM UI.
 
           extra_headers: Send extra headers
 
@@ -379,10 +399,11 @@ class AsyncCardsDevResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCardResponse:
-        """Args:
-          title: The top-level title for this card.
+        """
+        Update a card definition with new details.
 
-        Displayed to users in the CRM UI.
+        Args:
+          title: The top-level title for this card. Displayed to users in the CRM UI.
 
           extra_headers: Send extra headers
 
@@ -423,7 +444,12 @@ class AsyncCardsDevResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Permanently deletes a card definition with the given ID.
+
+        Once deleted, data
+        fetch requests for this card will no longer be sent to your service. This can't
+        be undone.
+
         Args:
           extra_headers: Send extra headers
 
@@ -456,6 +482,8 @@ class AsyncCardsDevResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCardListResponse:
         """
+        Returns a list of cards for a given app.
+
         Args:
           extra_headers: Send extra headers
 
@@ -486,6 +514,8 @@ class AsyncCardsDevResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicCardResponse:
         """
+        Returns the definition for a card with the given ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -515,6 +545,12 @@ class AsyncCardsDevResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegratorCardPayloadResponse:
+        """Returns an example card detail response.
+
+        This is the payload with displayed
+        details for a card that will be shown to a user. An app should send this in
+        response to the data fetch request.
+        """
         return await self._get(
             "/crm/extensions/cards-dev/2026-03/sample-response",
             options=make_request_options(

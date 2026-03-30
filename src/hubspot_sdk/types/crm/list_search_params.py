@@ -23,13 +23,9 @@ class ListSearchParams(TypedDict, total=False):
     """
 
     list_ids: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="listIds")]]
-    """The `listIds` that will be used to filter results by `listId`.
+    """ILS list ids to be included in search results.
 
-    If values are provided, then the response will only include results that have a
-    `listId` in this array.
-
-    If no value is provided, or if an empty list is provided, then the results will
-    not be filtered by `listId`.
+    If not specified, all lists matching other criteria will be included
     """
 
     offset: Required[int]
@@ -40,15 +36,9 @@ class ListSearchParams(TypedDict, total=False):
     """
 
     processing_types: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="processingTypes")]]
-    """The `processingTypes` that will be used to filter results by `processingType`.
+    """List processing types to be included in search results.
 
-    If values are provided, then the response will only include results that have a
-    `processingType` in this array.
-
-    If no value is provided, or if an empty list is provided, then results will not
-    be filtered by `processingType`.
-
-    Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.
+    If not specified, all lists with all processing types will be included.
     """
 
     count: int

@@ -12,6 +12,14 @@ from .emails import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .single_send import (
+    SingleSendResource,
+    AsyncSingleSendResource,
+    SingleSendResourceWithRawResponse,
+    AsyncSingleSendResourceWithRawResponse,
+    SingleSendResourceWithStreamingResponse,
+    AsyncSingleSendResourceWithStreamingResponse,
+)
 from .events.events import (
     EventsResource,
     AsyncEventsResource,
@@ -20,14 +28,6 @@ from .events.events import (
     EventsResourceWithStreamingResponse,
     AsyncEventsResourceWithStreamingResponse,
 )
-from .transactional import (
-    TransactionalResource,
-    AsyncTransactionalResource,
-    TransactionalResourceWithRawResponse,
-    AsyncTransactionalResourceWithRawResponse,
-    TransactionalResourceWithStreamingResponse,
-    AsyncTransactionalResourceWithStreamingResponse,
-)
 from .campaigns.campaigns import (
     CampaignsResource,
     AsyncCampaignsResource,
@@ -35,6 +35,14 @@ from .campaigns.campaigns import (
     AsyncCampaignsResourceWithRawResponse,
     CampaignsResourceWithStreamingResponse,
     AsyncCampaignsResourceWithStreamingResponse,
+)
+from .transactional.transactional import (
+    TransactionalResource,
+    AsyncTransactionalResource,
+    TransactionalResourceWithRawResponse,
+    AsyncTransactionalResourceWithRawResponse,
+    TransactionalResourceWithStreamingResponse,
+    AsyncTransactionalResourceWithStreamingResponse,
 )
 
 __all__ = ["MarketingResource", "AsyncMarketingResource"]
@@ -52,6 +60,10 @@ class MarketingResource(SyncAPIResource):
     @cached_property
     def events(self) -> EventsResource:
         return EventsResource(self._client)
+
+    @cached_property
+    def single_send(self) -> SingleSendResource:
+        return SingleSendResource(self._client)
 
     @cached_property
     def transactional(self) -> TransactionalResource:
@@ -89,6 +101,10 @@ class AsyncMarketingResource(AsyncAPIResource):
     @cached_property
     def events(self) -> AsyncEventsResource:
         return AsyncEventsResource(self._client)
+
+    @cached_property
+    def single_send(self) -> AsyncSingleSendResource:
+        return AsyncSingleSendResource(self._client)
 
     @cached_property
     def transactional(self) -> AsyncTransactionalResource:
@@ -131,6 +147,10 @@ class MarketingResourceWithRawResponse:
         return EventsResourceWithRawResponse(self._marketing.events)
 
     @cached_property
+    def single_send(self) -> SingleSendResourceWithRawResponse:
+        return SingleSendResourceWithRawResponse(self._marketing.single_send)
+
+    @cached_property
     def transactional(self) -> TransactionalResourceWithRawResponse:
         return TransactionalResourceWithRawResponse(self._marketing.transactional)
 
@@ -150,6 +170,10 @@ class AsyncMarketingResourceWithRawResponse:
     @cached_property
     def events(self) -> AsyncEventsResourceWithRawResponse:
         return AsyncEventsResourceWithRawResponse(self._marketing.events)
+
+    @cached_property
+    def single_send(self) -> AsyncSingleSendResourceWithRawResponse:
+        return AsyncSingleSendResourceWithRawResponse(self._marketing.single_send)
 
     @cached_property
     def transactional(self) -> AsyncTransactionalResourceWithRawResponse:
@@ -173,6 +197,10 @@ class MarketingResourceWithStreamingResponse:
         return EventsResourceWithStreamingResponse(self._marketing.events)
 
     @cached_property
+    def single_send(self) -> SingleSendResourceWithStreamingResponse:
+        return SingleSendResourceWithStreamingResponse(self._marketing.single_send)
+
+    @cached_property
     def transactional(self) -> TransactionalResourceWithStreamingResponse:
         return TransactionalResourceWithStreamingResponse(self._marketing.transactional)
 
@@ -192,6 +220,10 @@ class AsyncMarketingResourceWithStreamingResponse:
     @cached_property
     def events(self) -> AsyncEventsResourceWithStreamingResponse:
         return AsyncEventsResourceWithStreamingResponse(self._marketing.events)
+
+    @cached_property
+    def single_send(self) -> AsyncSingleSendResourceWithStreamingResponse:
+        return AsyncSingleSendResourceWithStreamingResponse(self._marketing.single_send)
 
     @cached_property
     def transactional(self) -> AsyncTransactionalResourceWithStreamingResponse:

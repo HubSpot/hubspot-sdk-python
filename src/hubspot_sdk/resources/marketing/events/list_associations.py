@@ -52,6 +52,8 @@ class ListAssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalPublicList:
         """
+        Gets lists associated with a marketing event by marketing event id
+
         Args:
           extra_headers: Send extra headers
 
@@ -87,6 +89,9 @@ class ListAssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Disassociates a list from a marketing event by marketing event id and ILS list
+        id
+
         Args:
           extra_headers: Send extra headers
 
@@ -126,6 +131,8 @@ class ListAssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Associates a list with a marketing event by marketing event id and ILS list id
+
         Args:
           extra_headers: Send extra headers
 
@@ -166,6 +173,9 @@ class ListAssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Associates a list with a marketing event by external account id, external event
+        id, and ILS list id
+
         Args:
           extra_headers: Send extra headers
 
@@ -211,6 +221,9 @@ class ListAssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Disassociates a list from a marketing event by external account id, external
+        event id, and ILS list id
+
         Args:
           extra_headers: Send extra headers
 
@@ -255,6 +268,9 @@ class ListAssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalPublicList:
         """
+        Gets lists associated with a marketing event by external account id and external
+        event id
+
         Args:
           extra_headers: Send extra headers
 
@@ -315,6 +331,8 @@ class AsyncListAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalPublicList:
         """
+        Gets lists associated with a marketing event by marketing event id
+
         Args:
           extra_headers: Send extra headers
 
@@ -350,6 +368,9 @@ class AsyncListAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Disassociates a list from a marketing event by marketing event id and ILS list
+        id
+
         Args:
           extra_headers: Send extra headers
 
@@ -389,6 +410,8 @@ class AsyncListAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Associates a list with a marketing event by marketing event id and ILS list id
+
         Args:
           extra_headers: Send extra headers
 
@@ -429,6 +452,9 @@ class AsyncListAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Associates a list with a marketing event by external account id, external event
+        id, and ILS list id
+
         Args:
           extra_headers: Send extra headers
 
@@ -474,6 +500,9 @@ class AsyncListAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Disassociates a list from a marketing event by external account id, external
+        event id, and ILS list id
+
         Args:
           extra_headers: Send extra headers
 
@@ -518,6 +547,9 @@ class AsyncListAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalPublicList:
         """
+        Gets lists associated with a marketing event by external account id and external
+        event id
+
         Args:
           extra_headers: Send extra headers
 

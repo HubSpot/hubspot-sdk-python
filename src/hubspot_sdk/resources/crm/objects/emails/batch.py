@@ -168,8 +168,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Retrieve a batch of emails by record ID or include the `idProperty` parameter to
-        retrieve records by a custom unique value property.
+        Retrieve records by record ID or include the `idProperty` parameter to retrieve
+        records by a custom unique value property.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -221,10 +221,10 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Create and update a batch of emails by a unique property.
-
-        Emails that don't
-        exist will be created, while existing emails will be updated.
+        """
+        Create or update records identified by a unique property value as specified by
+        the `idProperty` query param. `idProperty` query param refers to a property
+        whose values are unique for the object.
 
         Args:
           extra_headers: Send extra headers
@@ -379,8 +379,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Retrieve a batch of emails by record ID or include the `idProperty` parameter to
-        retrieve records by a custom unique value property.
+        Retrieve records by record ID or include the `idProperty` parameter to retrieve
+        records by a custom unique value property.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -432,10 +432,10 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Create and update a batch of emails by a unique property.
-
-        Emails that don't
-        exist will be created, while existing emails will be updated.
+        """
+        Create or update records identified by a unique property value as specified by
+        the `idProperty` query param. `idProperty` query param refers to a property
+        whose values are unique for the object.
 
         Args:
           extra_headers: Send extra headers

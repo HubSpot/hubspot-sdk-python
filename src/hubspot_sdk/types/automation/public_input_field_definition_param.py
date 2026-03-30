@@ -13,6 +13,7 @@ __all__ = ["PublicInputFieldDefinitionParam"]
 
 class PublicInputFieldDefinitionParam(TypedDict, total=False):
     is_required: Required[Annotated[bool, PropertyInfo(alias="isRequired")]]
+    """Indicates whether the input field is mandatory."""
 
     type_definition: Required[Annotated[PublicFieldTypeDefinitionParam, PropertyInfo(alias="typeDefinition")]]
 

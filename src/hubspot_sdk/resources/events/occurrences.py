@@ -76,28 +76,11 @@ class OccurrencesResource(SyncAPIResource):
         time. It supports pagination and sorting of results.
 
         Args:
-          id: An array of event IDs to filter by.
-
-          after: A cursor token for pagination. Use the value from the previous response's
-              paging.next.after field.
-
-          before: A cursor token to retrieve results before a specific point.
-
-          event_type: The type of event to filter by.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
           limit: The maximum number of results to display per page.
-
-          object_id: The unique identifier of the object associated with the events.
-
-          object_type: The type of object associated with the events.
-
-          occurred_after: Filter events that occurred after this date-time.
-
-          occurred_before: Filter events that occurred before this date-time.
-
-          properties: An array of property names to include in the response.
-
-          sort: An array of fields to sort the results by.
 
           extra_headers: Send extra headers
 
@@ -147,10 +130,13 @@ class OccurrencesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VisibleExternalEventTypeNames:
-        """
-        Retrieve a list of visible external event type names for the specified event
-        occurrences in March 2026. This endpoint is useful for identifying the types of
-        events that are available for analysis or reporting within your HubSpot account.
+        """Retrieve a list of event type names.
+
+        You may use these event types to query the
+        API for event occurrences of a desired type.
+
+        Note: the `get_types` method is only supported in the Python SDK version
+        `12.0.0-beta.1` or later.
         """
         return self._get(
             "/events/event-occurrences/2026-03/event-types",
@@ -211,28 +197,11 @@ class AsyncOccurrencesResource(AsyncAPIResource):
         time. It supports pagination and sorting of results.
 
         Args:
-          id: An array of event IDs to filter by.
-
-          after: A cursor token for pagination. Use the value from the previous response's
-              paging.next.after field.
-
-          before: A cursor token to retrieve results before a specific point.
-
-          event_type: The type of event to filter by.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
           limit: The maximum number of results to display per page.
-
-          object_id: The unique identifier of the object associated with the events.
-
-          object_type: The type of object associated with the events.
-
-          occurred_after: Filter events that occurred after this date-time.
-
-          occurred_before: Filter events that occurred before this date-time.
-
-          properties: An array of property names to include in the response.
-
-          sort: An array of fields to sort the results by.
 
           extra_headers: Send extra headers
 
@@ -282,10 +251,13 @@ class AsyncOccurrencesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VisibleExternalEventTypeNames:
-        """
-        Retrieve a list of visible external event type names for the specified event
-        occurrences in March 2026. This endpoint is useful for identifying the types of
-        events that are available for analysis or reporting within your HubSpot account.
+        """Retrieve a list of event type names.
+
+        You may use these event types to query the
+        API for event occurrences of a desired type.
+
+        Note: the `get_types` method is only supported in the Python SDK version
+        `12.0.0-beta.1` or later.
         """
         return await self._get(
             "/events/event-occurrences/2026-03/event-types",

@@ -19,9 +19,9 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.cms.media_bridge import batch_get_params, batch_create_params, batch_delete_params
+from ....types.cms.batch_response_property import BatchResponseProperty
 from ....types.shared_params.property_name import PropertyName
 from ....types.shared_params.property_create import PropertyCreate
-from ....types.shared.batch_response_property import BatchResponseProperty
 
 __all__ = ["BatchResource", "AsyncBatchResource"]
 
@@ -50,7 +50,7 @@ class BatchResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         inputs: Iterable[PropertyCreate],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -71,8 +71,6 @@ class BatchResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -92,7 +90,7 @@ class BatchResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         inputs: Iterable[PropertyName],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -113,8 +111,6 @@ class BatchResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
@@ -135,7 +131,7 @@ class BatchResource(SyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         archived: bool,
         data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"],
         inputs: Iterable[PropertyName],
@@ -158,8 +154,6 @@ class BatchResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return self._post(
@@ -207,7 +201,7 @@ class AsyncBatchResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         inputs: Iterable[PropertyCreate],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -228,8 +222,6 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(
@@ -249,7 +241,7 @@ class AsyncBatchResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         inputs: Iterable[PropertyName],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -270,8 +262,6 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
@@ -292,7 +282,7 @@ class AsyncBatchResource(AsyncAPIResource):
         self,
         object_type: str,
         *,
-        app_id: str,
+        app_id: int,
         archived: bool,
         data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"],
         inputs: Iterable[PropertyName],
@@ -315,8 +305,6 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not app_id:
-            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
         if not object_type:
             raise ValueError(f"Expected a non-empty value for `object_type` but received {object_type!r}")
         return await self._post(

@@ -11,6 +11,7 @@ __all__ = ["PublicActionFunctionParam"]
 
 class PublicActionFunctionParam(TypedDict, total=False):
     function_source: Required[Annotated[str, PropertyInfo(alias="functionSource")]]
+    """The source code or script that defines the function's behavior."""
 
     function_type: Required[
         Annotated[
@@ -18,5 +19,10 @@ class PublicActionFunctionParam(TypedDict, total=False):
             PropertyInfo(alias="functionType"),
         ]
     ]
+    """
+    The type of function, with accepted values: POST_ACTION_EXECUTION,
+    POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS.
+    """
 
     id: str
+    """The unique identifier for the action function."""

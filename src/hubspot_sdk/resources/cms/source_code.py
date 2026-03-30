@@ -74,11 +74,11 @@ class SourceCodeResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetFileMetadata:
-        """
-        Upload a content file to a specified environment and path in the HubSpot CMS.
-        This endpoint allows you to add new content files to your HubSpot account by
-        specifying the environment and path where the file should be stored. The request
-        must include a file in binary format.
+        """Creates a file at the specified path in the specified environment.
+
+        Accepts
+        multipart/form-data content type. Throws an error if a file already exists at
+        the specified path.
 
         Args:
           extra_headers: Send extra headers
@@ -122,10 +122,7 @@ class SourceCodeResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a specific content file from the specified environment in your HubSpot
-        CMS. This operation is useful for removing outdated or unnecessary files from
-        your source code repository. Ensure you have the necessary permissions to
-        perform this action.
+        Deletes the file at the specified path in the specified environment.
 
         Args:
           extra_headers: Send extra headers
@@ -160,11 +157,10 @@ class SourceCodeResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TaskLocator:
-        """
-        Initiate an asynchronous extraction of source code files in the HubSpot CMS.
-        This endpoint is useful for handling large file extractions without blocking the
-        client application. Upon acceptance, it returns a task locator that can be used
-        to check the status of the extraction process.
+        """Extract a zip file in the developer file system.
+
+        Extraction status can be
+        checked with the `/extract/async/tasks/taskId/status` endpoint below.
 
         Args:
           path: The file system location where the zip file is to be extracted.
@@ -199,10 +195,8 @@ class SourceCodeResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
-        Retrieve content from the specified environment and path in your HubSpot CMS.
-        This endpoint allows you to access specific content files based on the
-        environment and path parameters, which can be useful for managing and displaying
-        content in different environments.
+        Downloads the byte contents of the file at the specified path in the specified
+        environment.
 
         Args:
           extra_headers: Send extra headers
@@ -238,9 +232,8 @@ class SourceCodeResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ActionResponse:
         """
-        Retrieve the status of an asynchronous task related to source code extraction.
-        This endpoint is useful for checking the progress or completion of a task
-        initiated through the asynchronous file extraction process.
+        Get the status of an extraction by the `taskId` returned from the initial
+        `extract/async` request.
 
         Args:
           extra_headers: Send extra headers
@@ -273,15 +266,10 @@ class SourceCodeResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetFileMetadata:
         """
-        Retrieve metadata for a specific file or folder within a specified environment
-        in the HubSpot CMS. This endpoint is useful for obtaining detailed information
-        about content files, such as their creation and update timestamps, and other
-        metadata attributes.
+        Gets the metadata object for the file at the specified path in the specified
+        environment.
 
         Args:
-          properties: A comma-separated list of specific metadata properties to include in the
-              response.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -321,11 +309,10 @@ class SourceCodeResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetFileMetadata:
-        """
-        Update the content file in the specified environment and path within the HubSpot
-        CMS. This operation allows you to upload a new file to replace the existing
-        content at the given path. It is useful for managing and updating your website's
-        source code files directly through the API.
+        """Upserts a file at the specified path in the specified environment.
+
+        Accepts
+        multipart/form-data content type.
 
         Args:
           extra_headers: Send extra headers
@@ -370,10 +357,8 @@ class SourceCodeResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
-        Validate a source code file within a specified environment in your HubSpot
-        account. This endpoint is useful for checking the correctness of code files
-        before deployment or further processing. The validation process requires the
-        file to be uploaded in a multipart/form-data request.
+        Validates the file contents passed to the endpoint given a specified path and
+        environment. Accepts multipart/form-data content type.
 
         Args:
           extra_headers: Send extra headers
@@ -440,11 +425,11 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetFileMetadata:
-        """
-        Upload a content file to a specified environment and path in the HubSpot CMS.
-        This endpoint allows you to add new content files to your HubSpot account by
-        specifying the environment and path where the file should be stored. The request
-        must include a file in binary format.
+        """Creates a file at the specified path in the specified environment.
+
+        Accepts
+        multipart/form-data content type. Throws an error if a file already exists at
+        the specified path.
 
         Args:
           extra_headers: Send extra headers
@@ -488,10 +473,7 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a specific content file from the specified environment in your HubSpot
-        CMS. This operation is useful for removing outdated or unnecessary files from
-        your source code repository. Ensure you have the necessary permissions to
-        perform this action.
+        Deletes the file at the specified path in the specified environment.
 
         Args:
           extra_headers: Send extra headers
@@ -526,11 +508,10 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TaskLocator:
-        """
-        Initiate an asynchronous extraction of source code files in the HubSpot CMS.
-        This endpoint is useful for handling large file extractions without blocking the
-        client application. Upon acceptance, it returns a task locator that can be used
-        to check the status of the extraction process.
+        """Extract a zip file in the developer file system.
+
+        Extraction status can be
+        checked with the `/extract/async/tasks/taskId/status` endpoint below.
 
         Args:
           path: The file system location where the zip file is to be extracted.
@@ -567,10 +548,8 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
-        Retrieve content from the specified environment and path in your HubSpot CMS.
-        This endpoint allows you to access specific content files based on the
-        environment and path parameters, which can be useful for managing and displaying
-        content in different environments.
+        Downloads the byte contents of the file at the specified path in the specified
+        environment.
 
         Args:
           extra_headers: Send extra headers
@@ -606,9 +585,8 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ActionResponse:
         """
-        Retrieve the status of an asynchronous task related to source code extraction.
-        This endpoint is useful for checking the progress or completion of a task
-        initiated through the asynchronous file extraction process.
+        Get the status of an extraction by the `taskId` returned from the initial
+        `extract/async` request.
 
         Args:
           extra_headers: Send extra headers
@@ -641,15 +619,10 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetFileMetadata:
         """
-        Retrieve metadata for a specific file or folder within a specified environment
-        in the HubSpot CMS. This endpoint is useful for obtaining detailed information
-        about content files, such as their creation and update timestamps, and other
-        metadata attributes.
+        Gets the metadata object for the file at the specified path in the specified
+        environment.
 
         Args:
-          properties: A comma-separated list of specific metadata properties to include in the
-              response.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -689,11 +662,10 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetFileMetadata:
-        """
-        Update the content file in the specified environment and path within the HubSpot
-        CMS. This operation allows you to upload a new file to replace the existing
-        content at the given path. It is useful for managing and updating your website's
-        source code files directly through the API.
+        """Upserts a file at the specified path in the specified environment.
+
+        Accepts
+        multipart/form-data content type.
 
         Args:
           extra_headers: Send extra headers
@@ -738,10 +710,8 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
-        Validate a source code file within a specified environment in your HubSpot
-        account. This endpoint is useful for checking the correctness of code files
-        before deployment or further processing. The validation process requires the
-        file to be uploaded in a multipart/form-data request.
+        Validates the file contents passed to the endpoint given a specified path and
+        environment. Accepts multipart/form-data content type.
 
         Args:
           extra_headers: Send extra headers

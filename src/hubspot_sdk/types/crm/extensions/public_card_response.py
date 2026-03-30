@@ -31,7 +31,7 @@ class PublicCardResponse(BaseModel):
     fetch: PublicCardFetchBody
 
     title: str
-    """The top-level title for this card, displayed to users in the CRM UI."""
+    """The top-level title for this card. Displayed to users in the CRM UI."""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """The date and time when the card was created."""

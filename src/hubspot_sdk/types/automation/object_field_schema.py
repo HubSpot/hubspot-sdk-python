@@ -9,5 +9,7 @@ __all__ = ["ObjectFieldSchema"]
 
 class ObjectFieldSchema(BaseModel):
     properties: object
+    """Contains the properties of the object."""
 
     type: Literal["OBJECT"]
+    """Specifies the type of the field, which is 'OBJECT' by default."""

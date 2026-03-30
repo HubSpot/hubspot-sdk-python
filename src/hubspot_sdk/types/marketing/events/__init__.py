@@ -3,6 +3,10 @@
 from __future__ import annotations
 
 from .setting_create_or_update_params import SettingCreateOrUpdateParams as SettingCreateOrUpdateParams
+from .subscriber_state_record_by_id_params import SubscriberStateRecordByIDParams as SubscriberStateRecordByIDParams
+from .subscriber_state_record_by_email_params import (
+    SubscriberStateRecordByEmailParams as SubscriberStateRecordByEmailParams,
+)
 from .event_cancel_by_external_event_id_params import (
     EventCancelByExternalEventIDParams as EventCancelByExternalEventIDParams,
 )

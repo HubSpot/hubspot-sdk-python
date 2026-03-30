@@ -10,7 +10,7 @@ __all__ = ["MediaBridgeListPropertiesParams"]
 
 
 class MediaBridgeListPropertiesParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     archived: bool
     """Whether to return only results that have been archived."""

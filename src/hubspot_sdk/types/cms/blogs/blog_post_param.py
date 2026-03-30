@@ -8,14 +8,14 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
 from ..public_access_rule_param import PublicAccessRuleParam
-from .content_language_variation_param import ContentLanguageVariationParam
+from ..content_language_variation_param import ContentLanguageVariationParam
 
 __all__ = ["BlogPostParam"]
 
 
 class BlogPostParam(TypedDict, total=False):
     id: Required[str]
-    """The unique ID of the blog post."""
+    """The unique ID of the Blog Post."""
 
     ab_status: Required[
         Annotated[
@@ -58,23 +58,19 @@ class BlogPostParam(TypedDict, total=False):
     """
 
     author_name: Required[Annotated[str, PropertyInfo(alias="authorName")]]
-    """The name of the user who last published the blog post.
-
-    For posts that haven't been published yet, this property will reflect the user
-    who initially created the draft.
-    """
+    """The name of the user that updated this Blog Post."""
 
     blog_author_id: Required[Annotated[str, PropertyInfo(alias="blogAuthorId")]]
-    """The ID of the blog author associated with this post."""
+    """The ID of the Blog Author associated with this Blog Post."""
 
     campaign: Required[str]
-    """The GUID of the marketing campaign the post is associated with."""
+    """The GUID of the marketing campaign this Blog Post is a part of."""
 
     category_id: Required[Annotated[int, PropertyInfo(alias="categoryId")]]
-    """ID of the object type."""
+    """ID of the type of object this is. Should always ."""
 
     content_group_id: Required[Annotated[str, PropertyInfo(alias="contentGroupId")]]
-    """The ID of the post's parent blog."""
+    """The ID of the parent Blog this Blog Post is associated with."""
 
     content_type_category: Required[
         Annotated[
@@ -112,7 +108,7 @@ class BlogPostParam(TypedDict, total=False):
     """The timestamp (ISO8601 format) when this Blog Post was created."""
 
     created_by_id: Required[Annotated[str, PropertyInfo(alias="createdById")]]
-    """The ID of the user that created the post."""
+    """The ID of the user that created this Blog Post."""
 
     currently_published: Required[Annotated[bool, PropertyInfo(alias="currentlyPublished")]]
     """Whether the post is published (true or false)"""
@@ -162,9 +158,9 @@ class BlogPostParam(TypedDict, total=False):
     """
 
     domain: Required[str]
-    """The domain that the post lives on.
+    """The domain this Blog Post will resolve to.
 
-    If null, the post will default to the domain of the parent blog.
+    If null, the Blog Post will default to the domain of the ParentBlog.
     """
 
     dynamic_page_data_source_id: Required[Annotated[str, PropertyInfo(alias="dynamicPageDataSourceId")]]
@@ -174,7 +170,7 @@ class BlogPostParam(TypedDict, total=False):
     """The type of data source used by the dynamic page."""
 
     dynamic_page_hub_db_table_id: Required[Annotated[str, PropertyInfo(alias="dynamicPageHubDbTableId")]]
-    """For dynamic HubDB pages, the ID of the HubDB table this post references."""
+    """The ID of the HubDB table this Blog Post references, if applicable"""
 
     enable_domain_stylesheets: Required[Annotated[bool, PropertyInfo(alias="enableDomainStylesheets")]]
     """
@@ -213,7 +209,7 @@ class BlogPostParam(TypedDict, total=False):
     """
 
     html_title: Required[Annotated[str, PropertyInfo(alias="htmlTitle")]]
-    """The HTML title of the post."""
+    """The html title of this Blog Post."""
 
     include_default_custom_css: Required[Annotated[bool, PropertyInfo(alias="includeDefaultCustomCss")]]
     """Boolean to determine whether or not the Primary CSS Files should be applied."""
@@ -1065,9 +1061,9 @@ class BlogPostParam(TypedDict, total=False):
             "zu-za",
         ]
     ]
-    """The explicitly defined ISO 639 language code of the post.
+    """The explicitly defined ISO 639 language code of the Blog Post.
 
-    If null, the post will default to the language of the parent blog.
+    If null, the Blog Post will default to the language of the ParentBlog.
     """
 
     layout_sections: Required[Annotated[Dict[str, "LayoutSectionParam"], PropertyInfo(alias="layoutSections")]]
@@ -1086,7 +1082,7 @@ class BlogPostParam(TypedDict, total=False):
     """A description that goes in <meta> tag on the page."""
 
     name: Required[str]
-    """The internal name of the post."""
+    """The internal name of the Blog Post."""
 
     page_expiry_date: Required[Annotated[int, PropertyInfo(alias="pageExpiryDate")]]
     """
@@ -1114,7 +1110,7 @@ class BlogPostParam(TypedDict, total=False):
     password: Required[str]
     """Set this to create a password protected page.
 
-    Entering the password will be required to view the blog post.
+    Entering the password will be required to view the page.
     """
 
     post_body: Required[Annotated[str, PropertyInfo(alias="postBody")]]
@@ -1145,22 +1141,22 @@ class BlogPostParam(TypedDict, total=False):
     """The contents of the RSS summary for this Blog Post."""
 
     slug: Required[str]
-    """The URL slug of the blog post.
+    """The path of the this blog post.
 
     This field is appended to the domain to construct the url of this post.
     """
 
     state: Required[str]
-    """An enumeration describing the current publish state of the post."""
+    """An ENUM descibing the current state of this Blog Post."""
 
     tag_ids: Required[Annotated[Iterable[int], PropertyInfo(alias="tagIds")]]
-    """The IDs of the tags associated with this post."""
+    """List of IDs for the tags associated with this Blog Post."""
 
     theme_settings_values: Required[Annotated[Dict[str, object], PropertyInfo(alias="themeSettingsValues")]]
     """A collection of settings specific to the theme applied to the blog post."""
 
     translated_from_id: Required[Annotated[str, PropertyInfo(alias="translatedFromId")]]
-    """ID of the primary blog post that this post was translated from."""
+    """ID of the primary blog post this object was translated from."""
 
     translations: Required[Dict[str, ContentLanguageVariationParam]]
     """
@@ -1172,13 +1168,13 @@ class BlogPostParam(TypedDict, total=False):
     """The timestamp (ISO8601 format) when this Blog Post was updated."""
 
     updated_by_id: Required[Annotated[str, PropertyInfo(alias="updatedById")]]
-    """The ID of the user that updated the post."""
+    """The ID of the user that updated this Blog Post."""
 
     url: Required[str]
     """A generated field representing the URL of this blog post."""
 
     use_featured_image: Required[Annotated[bool, PropertyInfo(alias="useFeaturedImage")]]
-    """Boolean to determine if this post should use a featured image."""
+    """Boolean to determine if this post should use a featuredImage."""
 
     widget_containers: Required[Annotated[Dict[str, object], PropertyInfo(alias="widgetContainers")]]
     """
@@ -1190,4 +1186,4 @@ class BlogPostParam(TypedDict, total=False):
     """A data structure containing the data for all the modules for this page."""
 
 
-from .layout_section_param import LayoutSectionParam
+from ..layout_section_param import LayoutSectionParam

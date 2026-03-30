@@ -42,14 +42,7 @@ from .invoices import (
     InvoicesResourceWithStreamingResponse,
     AsyncInvoicesResourceWithStreamingResponse,
 )
-from .listings import (
-    ListingsResource,
-    AsyncListingsResource,
-    ListingsResourceWithRawResponse,
-    AsyncListingsResourceWithRawResponse,
-    ListingsResourceWithStreamingResponse,
-    AsyncListingsResourceWithStreamingResponse,
-)
+from .objects_ import objects_ as objects
 from .products import (
     ProductsResource,
     AsyncProductsResource,
@@ -180,6 +173,14 @@ from .contacts.contacts import (
     ContactsResourceWithStreamingResponse,
     AsyncContactsResourceWithStreamingResponse,
 )
+from .listings.listings import (
+    ListingsResource,
+    AsyncListingsResource,
+    ListingsResourceWithRawResponse,
+    AsyncListingsResourceWithRawResponse,
+    ListingsResourceWithStreamingResponse,
+    AsyncListingsResourceWithStreamingResponse,
+)
 from .meetings.meetings import (
     MeetingsResource,
     AsyncMeetingsResource,
@@ -187,6 +188,14 @@ from .meetings.meetings import (
     AsyncMeetingsResourceWithRawResponse,
     MeetingsResourceWithStreamingResponse,
     AsyncMeetingsResourceWithStreamingResponse,
+)
+from .projects.projects import (
+    ProjectsResource,
+    AsyncProjectsResource,
+    ProjectsResourceWithRawResponse,
+    AsyncProjectsResourceWithRawResponse,
+    ProjectsResourceWithStreamingResponse,
+    AsyncProjectsResourceWithStreamingResponse,
 )
 from .companies.companies import (
     CompaniesResource,
@@ -358,6 +367,10 @@ class ObjectsResource(SyncAPIResource):
         return NotesResource(self._client)
 
     @cached_property
+    def objects(self) -> objects.ObjectsResource:
+        return objects.ObjectsResource(self._client)
+
+    @cached_property
     def orders(self) -> OrdersResource:
         return OrdersResource(self._client)
 
@@ -376,6 +389,10 @@ class ObjectsResource(SyncAPIResource):
     @cached_property
     def products(self) -> ProductsResource:
         return ProductsResource(self._client)
+
+    @cached_property
+    def projects(self) -> ProjectsResource:
+        return ProjectsResource(self._client)
 
     @cached_property
     def quotes(self) -> QuotesResource:
@@ -511,6 +528,10 @@ class AsyncObjectsResource(AsyncAPIResource):
         return AsyncNotesResource(self._client)
 
     @cached_property
+    def objects(self) -> objects.AsyncObjectsResource:
+        return objects.AsyncObjectsResource(self._client)
+
+    @cached_property
     def orders(self) -> AsyncOrdersResource:
         return AsyncOrdersResource(self._client)
 
@@ -529,6 +550,10 @@ class AsyncObjectsResource(AsyncAPIResource):
     @cached_property
     def products(self) -> AsyncProductsResource:
         return AsyncProductsResource(self._client)
+
+    @cached_property
+    def projects(self) -> AsyncProjectsResource:
+        return AsyncProjectsResource(self._client)
 
     @cached_property
     def quotes(self) -> AsyncQuotesResource:
@@ -667,6 +692,10 @@ class ObjectsResourceWithRawResponse:
         return NotesResourceWithRawResponse(self._objects.notes)
 
     @cached_property
+    def objects(self) -> objects.ObjectsResourceWithRawResponse:
+        return objects.ObjectsResourceWithRawResponse(self._objects.objects)
+
+    @cached_property
     def orders(self) -> OrdersResourceWithRawResponse:
         return OrdersResourceWithRawResponse(self._objects.orders)
 
@@ -685,6 +714,10 @@ class ObjectsResourceWithRawResponse:
     @cached_property
     def products(self) -> ProductsResourceWithRawResponse:
         return ProductsResourceWithRawResponse(self._objects.products)
+
+    @cached_property
+    def projects(self) -> ProjectsResourceWithRawResponse:
+        return ProjectsResourceWithRawResponse(self._objects.projects)
 
     @cached_property
     def quotes(self) -> QuotesResourceWithRawResponse:
@@ -804,6 +837,10 @@ class AsyncObjectsResourceWithRawResponse:
         return AsyncNotesResourceWithRawResponse(self._objects.notes)
 
     @cached_property
+    def objects(self) -> objects.AsyncObjectsResourceWithRawResponse:
+        return objects.AsyncObjectsResourceWithRawResponse(self._objects.objects)
+
+    @cached_property
     def orders(self) -> AsyncOrdersResourceWithRawResponse:
         return AsyncOrdersResourceWithRawResponse(self._objects.orders)
 
@@ -822,6 +859,10 @@ class AsyncObjectsResourceWithRawResponse:
     @cached_property
     def products(self) -> AsyncProductsResourceWithRawResponse:
         return AsyncProductsResourceWithRawResponse(self._objects.products)
+
+    @cached_property
+    def projects(self) -> AsyncProjectsResourceWithRawResponse:
+        return AsyncProjectsResourceWithRawResponse(self._objects.projects)
 
     @cached_property
     def quotes(self) -> AsyncQuotesResourceWithRawResponse:
@@ -941,6 +982,10 @@ class ObjectsResourceWithStreamingResponse:
         return NotesResourceWithStreamingResponse(self._objects.notes)
 
     @cached_property
+    def objects(self) -> objects.ObjectsResourceWithStreamingResponse:
+        return objects.ObjectsResourceWithStreamingResponse(self._objects.objects)
+
+    @cached_property
     def orders(self) -> OrdersResourceWithStreamingResponse:
         return OrdersResourceWithStreamingResponse(self._objects.orders)
 
@@ -959,6 +1004,10 @@ class ObjectsResourceWithStreamingResponse:
     @cached_property
     def products(self) -> ProductsResourceWithStreamingResponse:
         return ProductsResourceWithStreamingResponse(self._objects.products)
+
+    @cached_property
+    def projects(self) -> ProjectsResourceWithStreamingResponse:
+        return ProjectsResourceWithStreamingResponse(self._objects.projects)
 
     @cached_property
     def quotes(self) -> QuotesResourceWithStreamingResponse:
@@ -1078,6 +1127,10 @@ class AsyncObjectsResourceWithStreamingResponse:
         return AsyncNotesResourceWithStreamingResponse(self._objects.notes)
 
     @cached_property
+    def objects(self) -> objects.AsyncObjectsResourceWithStreamingResponse:
+        return objects.AsyncObjectsResourceWithStreamingResponse(self._objects.objects)
+
+    @cached_property
     def orders(self) -> AsyncOrdersResourceWithStreamingResponse:
         return AsyncOrdersResourceWithStreamingResponse(self._objects.orders)
 
@@ -1096,6 +1149,10 @@ class AsyncObjectsResourceWithStreamingResponse:
     @cached_property
     def products(self) -> AsyncProductsResourceWithStreamingResponse:
         return AsyncProductsResourceWithStreamingResponse(self._objects.products)
+
+    @cached_property
+    def projects(self) -> AsyncProjectsResourceWithStreamingResponse:
+        return AsyncProjectsResourceWithStreamingResponse(self._objects.projects)
 
     @cached_property
     def quotes(self) -> AsyncQuotesResourceWithStreamingResponse:

@@ -11,10 +11,6 @@ __all__ = ["SequenceCreateEnrollmentParams"]
 
 class SequenceCreateEnrollmentParams(TypedDict, total=False):
     user_id: Required[Annotated[str, PropertyInfo(alias="userId")]]
-    """The unique identifier of the user performing the enrollment.
-
-    This parameter is required.
-    """
 
     contact_id: Required[Annotated[str, PropertyInfo(alias="contactId")]]
     """The unique identifier of the contact to be enrolled in the sequence."""

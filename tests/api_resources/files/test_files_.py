@@ -13,6 +13,9 @@ from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.files import (
     File,
+    Folder,
+    FileStat,
+    SignedURL,
     FileActionResponse,
     ImportFromURLTaskLocator,
 )
@@ -22,6 +25,297 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 class TestFiles:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create(self, client: Hubspot) -> None:
+        file = client.files.files.create(
+            name="name",
+        )
+        assert_matches_type(Folder, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_with_all_params(self, client: Hubspot) -> None:
+        file = client.files.files.create(
+            name="name",
+            parent_folder_id="parentFolderId",
+            parent_path="parentPath",
+        )
+        assert_matches_type(Folder, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.create(
+            name="name",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(Folder, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.create(
+            name="name",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert_matches_type(Folder, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update(self, client: Hubspot) -> None:
+        file = client.files.files.update(
+            file_id="321669910225",
+            clear_expires=True,
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+        file = client.files.files.update(
+            file_id="321669910225",
+            clear_expires=True,
+            access="HIDDEN_INDEXABLE",
+            expires_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            is_usable_in_content=True,
+            name="name",
+            parent_folder_id="parentFolderId",
+            parent_folder_path="parentFolderPath",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_update(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.update(
+            file_id="321669910225",
+            clear_expires=True,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_update(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.update(
+            file_id="321669910225",
+            clear_expires=True,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert_matches_type(File, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_update(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            client.files.files.with_raw_response.update(
+                file_id="",
+                clear_expires=True,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete(self, client: Hubspot) -> None:
+        file = client.files.files.delete(
+            "321669910225",
+        )
+        assert file is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_delete(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.delete(
+            "321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert file is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.delete(
+            "321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert file is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_delete(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            client.files.files.with_raw_response.delete(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_gdpr_delete(self, client: Hubspot) -> None:
+        file = client.files.files.gdpr_delete(
+            "321669910225",
+        )
+        assert file is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_gdpr_delete(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.gdpr_delete(
+            "321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert file is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_gdpr_delete(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.gdpr_delete(
+            "321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert file is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_gdpr_delete(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            client.files.files.with_raw_response.gdpr_delete(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get(self, client: Hubspot) -> None:
+        file = client.files.files.get(
+            file_id="321669910225",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+        file = client.files.files.get(
+            file_id="321669910225",
+            properties=["string"],
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.get(
+            file_id="321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.get(
+            file_id="321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert_matches_type(File, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_get(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            client.files.files.with_raw_response.get(
+                file_id="",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_by_path(self, client: Hubspot) -> None:
+        file = client.files.files.get_by_path(
+            path="path",
+        )
+        assert_matches_type(FileStat, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_by_path_with_all_params(self, client: Hubspot) -> None:
+        file = client.files.files.get_by_path(
+            path="path",
+            properties=["string"],
+        )
+        assert_matches_type(FileStat, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_by_path(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.get_by_path(
+            path="path",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(FileStat, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_by_path(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.get_by_path(
+            path="path",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert_matches_type(FileStat, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_get_by_path(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+            client.files.files.with_raw_response.get_by_path(
+                path="",
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -63,6 +357,59 @@ class TestFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
             client.files.files.with_raw_response.get_import_task_status(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_signed_url(self, client: Hubspot) -> None:
+        file = client.files.files.get_signed_url(
+            file_id="321669910225",
+        )
+        assert_matches_type(SignedURL, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_signed_url_with_all_params(self, client: Hubspot) -> None:
+        file = client.files.files.get_signed_url(
+            file_id="321669910225",
+            expiration_seconds=0,
+            size="icon",
+            upscale=True,
+        )
+        assert_matches_type(SignedURL, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_signed_url(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.get_signed_url(
+            file_id="321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(SignedURL, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_signed_url(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.get_signed_url(
+            file_id="321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert_matches_type(SignedURL, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_get_signed_url(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            client.files.files.with_raw_response.get_signed_url(
+                file_id="",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -124,6 +471,59 @@ class TestFiles:
             assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_replace(self, client: Hubspot) -> None:
+        file = client.files.files.replace(
+            file_id="321669910225",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_replace_with_all_params(self, client: Hubspot) -> None:
+        file = client.files.files.replace(
+            file_id="321669910225",
+            charset_hunch="charsetHunch",
+            file=b"Example data",
+            options="options",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_replace(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.replace(
+            file_id="321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_replace(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.replace(
+            file_id="321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert_matches_type(File, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_replace(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            client.files.files.with_raw_response.replace(
+                file_id="",
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -196,11 +596,343 @@ class TestFiles:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_upload(self, client: Hubspot) -> None:
+        file = client.files.files.upload()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_upload_with_all_params(self, client: Hubspot) -> None:
+        file = client.files.files.upload(
+            charset_hunch="charsetHunch",
+            file=b"Example data",
+            file_name="fileName",
+            folder_id="folderId",
+            folder_path="folderPath",
+            options="options",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_upload(self, client: Hubspot) -> None:
+        response = client.files.files.with_raw_response.upload()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_upload(self, client: Hubspot) -> None:
+        with client.files.files.with_streaming_response.upload() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert_matches_type(File, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncFiles:
     parametrize = pytest.mark.parametrize(
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.create(
+            name="name",
+        )
+        assert_matches_type(Folder, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.create(
+            name="name",
+            parent_folder_id="parentFolderId",
+            parent_path="parentPath",
+        )
+        assert_matches_type(Folder, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.create(
+            name="name",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert_matches_type(Folder, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.create(
+            name="name",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert_matches_type(Folder, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.update(
+            file_id="321669910225",
+            clear_expires=True,
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.update(
+            file_id="321669910225",
+            clear_expires=True,
+            access="HIDDEN_INDEXABLE",
+            expires_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            is_usable_in_content=True,
+            name="name",
+            parent_folder_id="parentFolderId",
+            parent_folder_path="parentFolderPath",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.update(
+            file_id="321669910225",
+            clear_expires=True,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.update(
+            file_id="321669910225",
+            clear_expires=True,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert_matches_type(File, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            await async_client.files.files.with_raw_response.update(
+                file_id="",
+                clear_expires=True,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.delete(
+            "321669910225",
+        )
+        assert file is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.delete(
+            "321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert file is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.delete(
+            "321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert file is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            await async_client.files.files.with_raw_response.delete(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_gdpr_delete(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.gdpr_delete(
+            "321669910225",
+        )
+        assert file is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.gdpr_delete(
+            "321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert file is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.gdpr_delete(
+            "321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert file is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_gdpr_delete(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            await async_client.files.files.with_raw_response.gdpr_delete(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.get(
+            file_id="321669910225",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.get(
+            file_id="321669910225",
+            properties=["string"],
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.get(
+            file_id="321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.get(
+            file_id="321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert_matches_type(File, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            await async_client.files.files.with_raw_response.get(
+                file_id="",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_by_path(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.get_by_path(
+            path="path",
+        )
+        assert_matches_type(FileStat, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.get_by_path(
+            path="path",
+            properties=["string"],
+        )
+        assert_matches_type(FileStat, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_by_path(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.get_by_path(
+            path="path",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert_matches_type(FileStat, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_by_path(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.get_by_path(
+            path="path",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert_matches_type(FileStat, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_get_by_path(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
+            await async_client.files.files.with_raw_response.get_by_path(
+                path="",
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -242,6 +974,59 @@ class TestAsyncFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
             await async_client.files.files.with_raw_response.get_import_task_status(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_signed_url(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.get_signed_url(
+            file_id="321669910225",
+        )
+        assert_matches_type(SignedURL, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_signed_url_with_all_params(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.get_signed_url(
+            file_id="321669910225",
+            expiration_seconds=0,
+            size="icon",
+            upscale=True,
+        )
+        assert_matches_type(SignedURL, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_signed_url(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.get_signed_url(
+            file_id="321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert_matches_type(SignedURL, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_signed_url(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.get_signed_url(
+            file_id="321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert_matches_type(SignedURL, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_get_signed_url(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            await async_client.files.files.with_raw_response.get_signed_url(
+                file_id="",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -303,6 +1088,59 @@ class TestAsyncFiles:
             assert_matches_type(ImportFromURLTaskLocator, file, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_replace(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.replace(
+            file_id="321669910225",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_replace_with_all_params(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.replace(
+            file_id="321669910225",
+            charset_hunch="charsetHunch",
+            file=b"Example data",
+            options="options",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_replace(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.replace(
+            file_id="321669910225",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_replace(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.replace(
+            file_id="321669910225",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert_matches_type(File, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_replace(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
+            await async_client.files.files.with_raw_response.replace(
+                file_id="",
+            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -372,5 +1210,46 @@ class TestAsyncFiles:
 
             file = await response.parse()
             assert_matches_type(AsyncPage[File], file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_upload(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.upload()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_upload_with_all_params(self, async_client: AsyncHubspot) -> None:
+        file = await async_client.files.files.upload(
+            charset_hunch="charsetHunch",
+            file=b"Example data",
+            file_name="fileName",
+            folder_id="folderId",
+            folder_path="folderPath",
+            options="options",
+        )
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_upload(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.files.files.with_raw_response.upload()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_upload(self, async_client: AsyncHubspot) -> None:
+        async with async_client.files.files.with_streaming_response.upload() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert_matches_type(File, file, path=["response"])
 
         assert cast(Any, response.is_closed) is True

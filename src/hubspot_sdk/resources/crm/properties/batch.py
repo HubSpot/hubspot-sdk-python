@@ -19,9 +19,9 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.crm.properties import batch_get_params, batch_create_params, batch_delete_params
+from ....types.crm.batch_response_property import BatchResponseProperty
 from ....types.shared_params.property_name import PropertyName
 from ....types.shared_params.property_create import PropertyCreate
-from ....types.shared.batch_response_property import BatchResponseProperty
 
 __all__ = ["BatchResource", "AsyncBatchResource"]
 
@@ -94,11 +94,11 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete multiple properties in a single request.
+        """Archive a provided list of properties.
 
-        This method will return a 204 No
-        Content response on success regardless of the initial state of the property
-        (e.g. active, already archived, non-existent).
+        This method will return a 204 No Content
+        response on success regardless of the initial state of the property (e.g.
+        active, already archived, non-existent).
 
         Args:
           extra_headers: Send extra headers
@@ -137,7 +137,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseProperty:
         """
-        Read a batch of properties.
+        Read a provided list of properties.
 
         Args:
           extra_headers: Send extra headers
@@ -239,11 +239,11 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete multiple properties in a single request.
+        """Archive a provided list of properties.
 
-        This method will return a 204 No
-        Content response on success regardless of the initial state of the property
-        (e.g. active, already archived, non-existent).
+        This method will return a 204 No Content
+        response on success regardless of the initial state of the property (e.g.
+        active, already archived, non-existent).
 
         Args:
           extra_headers: Send extra headers
@@ -282,7 +282,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseProperty:
         """
-        Read a batch of properties.
+        Read a provided list of properties.
 
         Args:
           extra_headers: Send extra headers

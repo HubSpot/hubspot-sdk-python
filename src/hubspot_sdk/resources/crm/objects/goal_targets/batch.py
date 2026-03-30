@@ -164,10 +164,9 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
-        """Retrieve multiple goal targets with a single request.
-
-        Goal targets are specified
-        by ID.
+        """
+        Retrieve records by record ID or include the `idProperty` parameter to retrieve
+        records by a custom unique value property.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -342,10 +341,9 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
-        """Retrieve multiple goal targets with a single request.
-
-        Goal targets are specified
-        by ID.
+        """
+        Retrieve records by record ID or include the `idProperty` parameter to retrieve
+        records by a custom unique value property.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.

@@ -58,6 +58,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseExchangeRate:
         """
+        Create multiple exchange rates in a single request.
+
         Args:
           extra_headers: Send extra headers
 
@@ -88,6 +90,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseExchangeRate:
         """
+        Update the conversion rates for multiple exchange rates in a batch operation.
+
         Args:
           extra_headers: Send extra headers
 
@@ -118,6 +122,9 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseExchangeRate:
         """
+        Retrieve the details of multiple exchange rates in a single request, specified
+        by their IDs.
+
         Args:
           inputs: An array of deal split inputs
 
@@ -171,6 +178,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseExchangeRate:
         """
+        Create multiple exchange rates in a single request.
+
         Args:
           extra_headers: Send extra headers
 
@@ -201,6 +210,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseExchangeRate:
         """
+        Update the conversion rates for multiple exchange rates in a batch operation.
+
         Args:
           extra_headers: Send extra headers
 
@@ -231,6 +242,9 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseExchangeRate:
         """
+        Retrieve the details of multiple exchange rates in a single request, specified
+        by their IDs.
+
         Args:
           inputs: An array of deal split inputs
 

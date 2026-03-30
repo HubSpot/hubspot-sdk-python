@@ -12,11 +12,14 @@ __all__ = ["WorkflowsRequestContextParam"]
 
 class WorkflowsRequestContextParam(TypedDict, total=False):
     source: Required[Literal["WORKFLOWS"]]
+    """Indicates the source of the request, with the default value being WORKFLOWS."""
 
     workflow_id: Required[Annotated[int, PropertyInfo(alias="workflowId")]]
+    """The ID of the workflow associated with the request context."""
 
     action_execution_index_identifier: Annotated[
         ActionExecutionIndexIdentifierParam, PropertyInfo(alias="actionExecutionIndexIdentifier")
     ]
 
     action_id: Annotated[int, PropertyInfo(alias="actionId")]
+    """The ID of the action within the workflow context."""

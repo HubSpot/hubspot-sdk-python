@@ -17,6 +17,7 @@ class AutomationActionsOption(BaseModel):
     """The position of the item relative to others in the list."""
 
     double_data: float = FieldInfo(alias="doubleData")
+    """A numerical value associated with the option."""
 
     hidden: bool
     """Whether the option is displayed in HubSpot's UI."""

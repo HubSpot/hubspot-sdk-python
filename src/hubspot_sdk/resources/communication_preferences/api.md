@@ -19,10 +19,7 @@ from hubspot_sdk.types.communication_preferences import (
     PublicStatus,
     PublicStatusBulkResponse,
     PublicStatusRequest,
-    PublicSubscriptionStatus,
-    PublicSubscriptionStatusesResponse,
     PublicSubscriptionTranslation,
-    PublicUpdateSubscriptionStatusRequest,
     PublicWideStatus,
     PublicWideStatusBulkResponse,
     SubscriptionDefinition,
@@ -32,11 +29,8 @@ from hubspot_sdk.types.communication_preferences import (
 Methods:
 
 - <code title="post /communication-preferences/2026-03/links/generate">client.communication_preferences.<a href="./src/hubspot_sdk/resources/communication_preferences/communication_preferences.py">generate_links</a>(\*\*<a href="src/hubspot_sdk/types/communication_preferences/communication_preference_generate_links_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/communication_preferences/link_generation_response.py">LinkGenerationResponse</a></code>
-- <code title="get /communication-preferences/2026-03/status/email/{emailAddress}">client.communication_preferences.<a href="./src/hubspot_sdk/resources/communication_preferences/communication_preferences.py">get_status_by_email</a>(email_address) -> <a href="./src/hubspot_sdk/types/communication_preferences/public_subscription_statuses_response.py">PublicSubscriptionStatusesResponse</a></code>
 - <code title="get /communication-preferences/2026-03/statuses/{subscriberIdString}">client.communication_preferences.<a href="./src/hubspot_sdk/resources/communication_preferences/communication_preferences.py">get_statuses</a>(subscriber_id_string, \*\*<a href="src/hubspot_sdk/types/communication_preferences/communication_preference_get_statuses_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/communication_preferences/action_response_with_results_public_status.py">ActionResponseWithResultsPublicStatus</a></code>
 - <code title="get /communication-preferences/2026-03/statuses/{subscriberIdString}/unsubscribe-all">client.communication_preferences.<a href="./src/hubspot_sdk/resources/communication_preferences/communication_preferences.py">get_unsubscribe_all_status</a>(subscriber_id_string, \*\*<a href="src/hubspot_sdk/types/communication_preferences/communication_preference_get_unsubscribe_all_status_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/communication_preferences/action_response_with_results_public_wide_status.py">ActionResponseWithResultsPublicWideStatus</a></code>
-- <code title="post /communication-preferences/2026-03/subscribe">client.communication_preferences.<a href="./src/hubspot_sdk/resources/communication_preferences/communication_preferences.py">subscribe</a>(\*\*<a href="src/hubspot_sdk/types/communication_preferences/communication_preference_subscribe_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/communication_preferences/public_subscription_status.py">PublicSubscriptionStatus</a></code>
-- <code title="post /communication-preferences/2026-03/unsubscribe">client.communication_preferences.<a href="./src/hubspot_sdk/resources/communication_preferences/communication_preferences.py">unsubscribe</a>(\*\*<a href="src/hubspot_sdk/types/communication_preferences/communication_preference_unsubscribe_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/communication_preferences/public_subscription_status.py">PublicSubscriptionStatus</a></code>
 - <code title="post /communication-preferences/2026-03/statuses/{subscriberIdString}/unsubscribe-all">client.communication_preferences.<a href="./src/hubspot_sdk/resources/communication_preferences/communication_preferences.py">unsubscribe_all</a>(subscriber_id_string, \*\*<a href="src/hubspot_sdk/types/communication_preferences/communication_preference_unsubscribe_all_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/communication_preferences/action_response_with_results_public_status.py">ActionResponseWithResultsPublicStatus</a></code>
 - <code title="post /communication-preferences/2026-03/statuses/{subscriberIdString}">client.communication_preferences.<a href="./src/hubspot_sdk/resources/communication_preferences/communication_preferences.py">update_status</a>(subscriber_id_string, \*\*<a href="src/hubspot_sdk/types/communication_preferences/communication_preference_update_status_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/communication_preferences/action_response_with_results_public_status.py">ActionResponseWithResultsPublicStatus</a></code>
 

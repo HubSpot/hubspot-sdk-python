@@ -9,7 +9,6 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.events import (
     ExternalBehavioralEventTypeDefinition,
@@ -410,57 +409,6 @@ class TestDefinitions:
             client.events.definitions.with_raw_response.get(
                 "",
             )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_send(self, client: Hubspot) -> None:
-        definition = client.events.definitions.send(
-            event_name="eventName",
-            properties={"foo": "string"},
-        )
-        assert definition is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_send_with_all_params(self, client: Hubspot) -> None:
-        definition = client.events.definitions.send(
-            event_name="eventName",
-            properties={"foo": "string"},
-            email="email",
-            object_id="objectId",
-            occurred_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            utk="utk",
-            uuid="uuid",
-        )
-        assert definition is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_send(self, client: Hubspot) -> None:
-        response = client.events.definitions.with_raw_response.send(
-            event_name="eventName",
-            properties={"foo": "string"},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        definition = response.parse()
-        assert definition is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_send(self, client: Hubspot) -> None:
-        with client.events.definitions.with_streaming_response.send(
-            event_name="eventName",
-            properties={"foo": "string"},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            definition = response.parse()
-            assert definition is None
-
-        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -977,57 +925,6 @@ class TestAsyncDefinitions:
             await async_client.events.definitions.with_raw_response.get(
                 "",
             )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_send(self, async_client: AsyncHubspot) -> None:
-        definition = await async_client.events.definitions.send(
-            event_name="eventName",
-            properties={"foo": "string"},
-        )
-        assert definition is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_send_with_all_params(self, async_client: AsyncHubspot) -> None:
-        definition = await async_client.events.definitions.send(
-            event_name="eventName",
-            properties={"foo": "string"},
-            email="email",
-            object_id="objectId",
-            occurred_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            utk="utk",
-            uuid="uuid",
-        )
-        assert definition is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_send(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.events.definitions.with_raw_response.send(
-            event_name="eventName",
-            properties={"foo": "string"},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        definition = await response.parse()
-        assert definition is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_send(self, async_client: AsyncHubspot) -> None:
-        async with async_client.events.definitions.with_streaming_response.send(
-            event_name="eventName",
-            properties={"foo": "string"},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            definition = await response.parse()
-            assert definition is None
-
-        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

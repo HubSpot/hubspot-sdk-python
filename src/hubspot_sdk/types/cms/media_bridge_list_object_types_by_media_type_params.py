@@ -10,6 +10,6 @@ __all__ = ["MediaBridgeListObjectTypesByMediaTypeParams"]
 
 
 class MediaBridgeListObjectTypesByMediaTypeParams(TypedDict, total=False):
-    app_id: Required[Annotated[str, PropertyInfo(alias="appId")]]
+    app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     include_full_definition: Annotated[bool, PropertyInfo(alias="includeFullDefinition")]

@@ -99,8 +99,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Batch update multiple subscription objects in a single batch operation, allowing
-        for efficient modifications of CRM subscription records.
+        Update multiple subscription objects in a single batch operation, allowing for
+        efficient modifications of CRM subscription records.
 
         Args:
           extra_headers: Send extra headers
@@ -170,7 +170,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Retrieve a batch of commerce subscriptions by their IDs, including specified
+        Retrieve a batch of CRM subscription objects by their IDs, including specified
         properties and their histories.
 
         Args:
@@ -313,8 +313,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Batch update multiple subscription objects in a single batch operation, allowing
-        for efficient modifications of CRM subscription records.
+        Update multiple subscription objects in a single batch operation, allowing for
+        efficient modifications of CRM subscription records.
 
         Args:
           extra_headers: Send extra headers
@@ -384,7 +384,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Retrieve a batch of commerce subscriptions by their IDs, including specified
+        Retrieve a batch of CRM subscription objects by their IDs, including specified
         properties and their histories.
 
         Args:

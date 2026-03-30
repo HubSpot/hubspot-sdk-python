@@ -65,6 +65,8 @@ class LimitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseAssociationLabelLimitResponseNoPaging:
         """
+        Returns limits and usage for custom association labels
+
         Args:
           extra_headers: Send extra headers
 
@@ -105,6 +107,8 @@ class LimitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssociationRecordLimitResponse:
         """
+        Returns records approaching or at association limits between two objects
+
         Args:
           extra_headers: Send extra headers
 
@@ -142,6 +146,7 @@ class LimitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging:
+        """Returns objects with records approaching or at association limits"""
         return self._get(
             "/crm/limits/2026-03/associations/records/from",
             options=make_request_options(
@@ -162,6 +167,9 @@ class LimitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging:
         """
+        Returns objects for which the from object has records approaching or at
+        association limits
+
         Args:
           extra_headers: Send extra headers
 
@@ -196,6 +204,7 @@ class LimitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalculatedPropertyLimitResponse:
+        """Returns overall limit and per object usage for calculated properties"""
         return self._get(
             "/crm/limits/2026-03/calculated-properties",
             options=make_request_options(
@@ -214,6 +223,7 @@ class LimitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CustomObjectLimitResponse:
+        """Returns limits and usage for custom object schemas"""
         return self._get(
             "/crm/limits/2026-03/custom-object-types",
             options=make_request_options(
@@ -232,6 +242,7 @@ class LimitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CustomPropertyLimitResponse:
+        """Returns limits and usage per object for custom properties"""
         return self._get(
             "/crm/limits/2026-03/custom-properties",
             options=make_request_options(
@@ -250,6 +261,7 @@ class LimitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineLimitResponse:
+        """Returns limits and usage per object for pipelines"""
         return self._get(
             "/crm/limits/2026-03/pipelines",
             options=make_request_options(
@@ -268,6 +280,7 @@ class LimitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordLimitResponse:
+        """Returns limits and usage per object for records"""
         return self._get(
             "/crm/limits/2026-03/records",
             options=make_request_options(
@@ -310,6 +323,8 @@ class AsyncLimitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseAssociationLabelLimitResponseNoPaging:
         """
+        Returns limits and usage for custom association labels
+
         Args:
           extra_headers: Send extra headers
 
@@ -350,6 +365,8 @@ class AsyncLimitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssociationRecordLimitResponse:
         """
+        Returns records approaching or at association limits between two objects
+
         Args:
           extra_headers: Send extra headers
 
@@ -387,6 +404,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging:
+        """Returns objects with records approaching or at association limits"""
         return await self._get(
             "/crm/limits/2026-03/associations/records/from",
             options=make_request_options(
@@ -407,6 +425,9 @@ class AsyncLimitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging:
         """
+        Returns objects for which the from object has records approaching or at
+        association limits
+
         Args:
           extra_headers: Send extra headers
 
@@ -441,6 +462,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalculatedPropertyLimitResponse:
+        """Returns overall limit and per object usage for calculated properties"""
         return await self._get(
             "/crm/limits/2026-03/calculated-properties",
             options=make_request_options(
@@ -459,6 +481,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CustomObjectLimitResponse:
+        """Returns limits and usage for custom object schemas"""
         return await self._get(
             "/crm/limits/2026-03/custom-object-types",
             options=make_request_options(
@@ -477,6 +500,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CustomPropertyLimitResponse:
+        """Returns limits and usage per object for custom properties"""
         return await self._get(
             "/crm/limits/2026-03/custom-properties",
             options=make_request_options(
@@ -495,6 +519,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PipelineLimitResponse:
+        """Returns limits and usage per object for pipelines"""
         return await self._get(
             "/crm/limits/2026-03/pipelines",
             options=make_request_options(
@@ -513,6 +538,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordLimitResponse:
+        """Returns limits and usage per object for records"""
         return await self._get(
             "/crm/limits/2026-03/records",
             options=make_request_options(

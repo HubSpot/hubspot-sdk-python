@@ -12,6 +12,7 @@ from .email_get_params import EmailGetParams as EmailGetParams
 from .metrics_counters import MetricsCounters as MetricsCounters
 from .contact_reference import ContactReference as ContactReference
 from .email_list_params import EmailListParams as EmailListParams
+from .event_list_params import EventListParams as EventListParams
 from .public_font_style import PublicFontStyle as PublicFontStyle
 from .public_spend_item import PublicSpendItem as PublicSpendItem
 from .email_clone_params import EmailCloneParams as EmailCloneParams
@@ -24,6 +25,8 @@ from .email_delete_params import EmailDeleteParams as EmailDeleteParams
 from .email_update_params import EmailUpdateParams as EmailUpdateParams
 from .event_create_params import EventCreateParams as EventCreateParams
 from .event_update_params import EventUpdateParams as EventUpdateParams
+from .smtp_api_token_view import SmtpAPITokenView as SmtpAPITokenView
+from .campaign_list_params import CampaignListParams as CampaignListParams
 from .crm_property_wrapper import CrmPropertyWrapper as CrmPropertyWrapper
 from .public_budget_totals import PublicBudgetTotals as PublicBudgetTotals
 from .public_business_unit import PublicBusinessUnit as PublicBusinessUnit
@@ -33,6 +36,7 @@ from .version_public_email import VersionPublicEmail as VersionPublicEmail
 from .email_statistics_data import EmailStatisticsData as EmailStatisticsData
 from .event_detail_settings import EventDetailSettings as EventDetailSettings
 from .public_campaign_asset import PublicCampaignAsset as PublicCampaignAsset
+from .campaign_create_params import CampaignCreateParams as CampaignCreateParams
 from .campaign_update_params import CampaignUpdateParams as CampaignUpdateParams
 from .email_send_status_view import EmailSendStatusView as EmailSendStatusView
 from .participation_breakdown import ParticipationBreakdown as ParticipationBreakdown
@@ -50,8 +54,8 @@ from .event_update_batch_params import EventUpdateBatchParams as EventUpdateBatc
 from .event_upsert_batch_params import EventUpsertBatchParams as EventUpsertBatchParams
 from .public_email_from_details import PublicEmailFromDetails as PublicEmailFromDetails
 from .public_webversion_details import PublicWebversionDetails as PublicWebversionDetails
+from .single_send_create_params import SingleSendCreateParams as SingleSendCreateParams
 from .subscriber_email_response import SubscriberEmailResponse as SubscriberEmailResponse
-from .transactional_send_params import TransactionalSendParams as TransactionalSendParams
 from .aggregate_email_statistics import AggregateEmailStatistics as AggregateEmailStatistics
 from .email_get_histogram_params import EmailGetHistogramParams as EmailGetHistogramParams
 from .participation_associations import ParticipationAssociations as ParticipationAssociations
@@ -132,17 +136,14 @@ from .batch_response_public_campaign_with_assets import (
 from .collection_response_with_total_public_list import (
     CollectionResponseWithTotalPublicList as CollectionResponseWithTotalPublicList,
 )
-from .event_upsert_subscriber_state_by_id_params import (
-    EventUpsertSubscriberStateByIDParams as EventUpsertSubscriberStateByIDParams,
-)
 from .marketing_event_public_default_response_v2 import (
     MarketingEventPublicDefaultResponseV2 as MarketingEventPublicDefaultResponseV2,
 )
 from .collection_response_with_total_public_email import (
     CollectionResponseWithTotalPublicEmail as CollectionResponseWithTotalPublicEmail,
 )
-from .event_upsert_subscriber_state_by_email_params import (
-    EventUpsertSubscriberStateByEmailParams as EventUpsertSubscriberStateByEmailParams,
+from .collection_response_with_total_public_campaign import (
+    CollectionResponseWithTotalPublicCampaign as CollectionResponseWithTotalPublicCampaign,
 )
 from .event_delete_batch_by_external_event_id_params import (
     EventDeleteBatchByExternalEventIDParams as EventDeleteBatchByExternalEventIDParams,
@@ -165,6 +166,9 @@ from .marketing_event_public_object_id_delete_request_param import (
 from .batch_response_marketing_event_public_default_response import (
     BatchResponseMarketingEventPublicDefaultResponse as BatchResponseMarketingEventPublicDefaultResponse,
 )
+from .collection_response_smtp_api_token_view_forward_paging import (
+    CollectionResponseSmtpAPITokenViewForwardPaging as CollectionResponseSmtpAPITokenViewForwardPaging,
+)
 from .collection_response_with_total_participation_breakdown import (
     CollectionResponseWithTotalParticipationBreakdown as CollectionResponseWithTotalParticipationBreakdown,
 )
@@ -182,4 +186,7 @@ from .collection_response_search_public_response_wrapper_no_paging import (
 )
 from .collection_response_with_total_marketing_event_identifiers_response import (
     CollectionResponseWithTotalMarketingEventIdentifiersResponse as CollectionResponseWithTotalMarketingEventIdentifiersResponse,
+)
+from .collection_response_marketing_event_public_read_response_v2_forward_paging import (
+    CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging as CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging,
 )

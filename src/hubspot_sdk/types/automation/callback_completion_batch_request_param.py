@@ -25,11 +25,19 @@ RequestContext: TypeAlias = Union[
 
 class CallbackCompletionBatchRequestParam(TypedDict, total=False):
     callback_id: Required[Annotated[str, PropertyInfo(alias="callbackId")]]
+    """The unique identifier for the callback."""
 
     output_fields: Required[Annotated[Dict[str, str], PropertyInfo(alias="outputFields")]]
+    """Holds the output fields for the callback completion."""
 
     typed_outputs: Required[Annotated[object, PropertyInfo(alias="typedOutputs")]]
+    """Contains the typed outputs for the callback completion."""
 
     failure_reason_type: Annotated[str, PropertyInfo(alias="failureReasonType")]
+    """Specifies the type of failure reason for the callback completion."""
 
     request_context: Annotated[RequestContext, PropertyInfo(alias="requestContext")]
+    """
+    Defines the context of the request, which can be one of several predefined
+    types.
+    """

@@ -11,5 +11,7 @@ __all__ = ["ActionExecutionIndexIdentifierParam"]
 
 class ActionExecutionIndexIdentifierParam(TypedDict, total=False):
     action_execution_index: Required[Annotated[int, PropertyInfo(alias="actionExecutionIndex")]]
+    """The index number representing the execution order of the action."""
 
     enrollment_id: Required[Annotated[int, PropertyInfo(alias="enrollmentId")]]
+    """The ID associated with the enrollment process."""

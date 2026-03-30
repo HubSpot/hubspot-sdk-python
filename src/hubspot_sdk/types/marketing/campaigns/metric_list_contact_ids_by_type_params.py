@@ -14,15 +14,14 @@ class MetricListContactIDsByTypeParams(TypedDict, total=False):
 
     after: str
     """
-    The paging cursor token of the last successfully read resource, used for
-    pagination.
+    The paging cursor token of the last successfully read resource will be returned
+    as the `paging.next.after` JSON property of a paged response containing more
+    results.
     """
 
     end_date: Annotated[str, PropertyInfo(alias="endDate")]
-    """The end date for filtering contacts, formatted as a string."""
 
     limit: int
     """The maximum number of results to display per page."""
 
     start_date: Annotated[str, PropertyInfo(alias="startDate")]
-    """The start date for filtering contacts, formatted as a string."""

@@ -154,6 +154,22 @@ class TranscriptsResource(SyncAPIResource):
     ) -> CompletedThirdPartyCallResponse:
         """
         Args:
+          create_engagement: Indicates whether an engagement should be created for the call.
+
+          engagement_properties: Contains additional properties related to the engagement.
+
+          external_call_id: The unique identifier for the call from an external system.
+
+          final_call_status: The final status of the call, with accepted values including: BUSY,
+              CALLING_CRM_USER, CANCELED, COMPLETED, CONNECTING, FAILED, HOLD, IN_PROGRESS,
+              MISSED, NO_ANSWER, QUEUED, RINGING, UNKNOWN.
+
+          call_started_timestamp: The timestamp indicating when the call started, formatted as a date-time string.
+
+          duration_seconds: The duration of the call in seconds.
+
+          user_id: The ID of the user associated with the call.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -342,6 +358,22 @@ class AsyncTranscriptsResource(AsyncAPIResource):
     ) -> CompletedThirdPartyCallResponse:
         """
         Args:
+          create_engagement: Indicates whether an engagement should be created for the call.
+
+          engagement_properties: Contains additional properties related to the engagement.
+
+          external_call_id: The unique identifier for the call from an external system.
+
+          final_call_status: The final status of the call, with accepted values including: BUSY,
+              CALLING_CRM_USER, CANCELED, COMPLETED, CONNECTING, FAILED, HOLD, IN_PROGRESS,
+              MISSED, NO_ANSWER, QUEUED, RINGING, UNKNOWN.
+
+          call_started_timestamp: The timestamp indicating when the call started, formatted as a date-time string.
+
+          duration_seconds: The duration of the call in seconds.
+
+          user_id: The ID of the user associated with the call.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

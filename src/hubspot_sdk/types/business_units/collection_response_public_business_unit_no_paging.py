@@ -3,7 +3,7 @@
 from typing import List
 
 from ..._models import BaseModel
-from ..marketing.public_business_unit import PublicBusinessUnit
+from .public_business_unit import PublicBusinessUnit
 
 __all__ = ["CollectionResponsePublicBusinessUnitNoPaging"]
 

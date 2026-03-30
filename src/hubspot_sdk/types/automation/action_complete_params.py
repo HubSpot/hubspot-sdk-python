@@ -17,12 +17,22 @@ __all__ = ["ActionCompleteParams", "RequestContext"]
 
 class ActionCompleteParams(TypedDict, total=False):
     output_fields: Required[Annotated[Dict[str, str], PropertyInfo(alias="outputFields")]]
+    """
+    Contains the output fields associated with the callback, with each field
+    represented as a key-value pair.
+    """
 
     typed_outputs: Required[Annotated[object, PropertyInfo(alias="typedOutputs")]]
+    """Holds the typed outputs related to the callback, structured as an object."""
 
     failure_reason_type: Annotated[str, PropertyInfo(alias="failureReasonType")]
+    """Indicates the reason for the failure of a callback completion."""
 
     request_context: Annotated[RequestContext, PropertyInfo(alias="requestContext")]
+    """
+    Specifies the context in which the request is made, which can be one of several
+    predefined contexts.
+    """
 
 
 RequestContext: TypeAlias = Union[

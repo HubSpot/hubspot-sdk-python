@@ -15,7 +15,10 @@ __all__ = ["BatchResponsePublicCampaign"]
 
 class BatchResponsePublicCampaign(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
-    """The date and time when the batch operation was completed, in ISO 8601 format."""
+    """
+    The date and time when the batch operation was completed, formatted as a
+    date-time string.
+    """
 
     results: List[PublicCampaign]
     """
@@ -24,12 +27,15 @@ class BatchResponsePublicCampaign(BaseModel):
     """
 
     started_at: datetime = FieldInfo(alias="startedAt")
-    """The date and time when the batch operation started, in ISO 8601 format."""
+    """
+    The date and time when the batch operation started, formatted as a date-time
+    string.
+    """
 
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
-    """The current status of the batch operation.
-
-    Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+    """
+    The current status of the batch operation, with possible values: CANCELED,
+    COMPLETE, PENDING, PROCESSING.
     """
 
     errors: Optional[List[StandardError]] = None
@@ -39,10 +45,13 @@ class BatchResponsePublicCampaign(BaseModel):
     """
 
     links: Optional[Dict[str, str]] = None
-    """A map of link names to associated URIs related to the batch operation."""
+    """A map of related links associated with the batch operation."""
 
     num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
     """The number of errors that occurred during the batch operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
-    """The date and time when the batch operation was requested, in ISO 8601 format."""
+    """
+    The date and time when the batch operation was requested, formatted as a
+    date-time string.
+    """

@@ -6,13 +6,13 @@ from typing import Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from ..._utils import PropertyInfo
-from ..shared_params.option import Option
 from .long_field_schema_param import LongFieldSchemaParam
 from .double_field_schema_param import DoubleFieldSchemaParam
 from .object_field_schema_param import ObjectFieldSchemaParam
 from .string_field_schema_param import StringFieldSchemaParam
 from .boolean_field_schema_param import BooleanFieldSchemaParam
 from .integer_field_schema_param import IntegerFieldSchemaParam
+from ..shared_params.automation_actions_option import AutomationActionsOption
 
 __all__ = ["FieldTypeDefinitionParam", "Schema"]
 
@@ -29,12 +29,15 @@ Schema: TypeAlias = Union[
 
 class FieldTypeDefinitionParam(TypedDict, total=False):
     external_options: Required[Annotated[bool, PropertyInfo(alias="externalOptions")]]
+    """Indicates whether the field's options are sourced externally."""
 
     name: Required[str]
+    """The unique identifier for the field."""
 
-    options: Required[Iterable[Option]]
+    options: Required[Iterable[AutomationActionsOption]]
 
     schema: Required[Schema]
+    """Defines the structure and constraints of the field."""
 
     type: Required[
         Literal[
@@ -50,12 +53,19 @@ class FieldTypeDefinitionParam(TypedDict, total=False):
             "string",
         ]
     ]
+    """
+    Specifies the data type of the field, with accepted values like bool, date,
+    datetime, enumeration, json, number, object_coordinates, phone_number, string.
+    """
 
     use_chirp: Required[Annotated[bool, PropertyInfo(alias="useChirp")]]
+    """Specifies whether the field uses the Chirp feature."""
 
     description: str
+    """A detailed explanation of the field's purpose and usage."""
 
     external_options_reference_type: Annotated[str, PropertyInfo(alias="externalOptionsReferenceType")]
+    """Specifies the type of external reference for options."""
 
     field_type: Annotated[
         Literal[
@@ -78,12 +88,20 @@ class FieldTypeDefinitionParam(TypedDict, total=False):
         ],
         PropertyInfo(alias="fieldType"),
     ]
+    """
+    Describes the field's type in the UI, with accepted values like booleancheckbox,
+    calculation_equation, checkbox, date, file, html, number, phonenumber, radio,
+    select, text, textarea, unknown.
+    """
 
     help_text: Annotated[str, PropertyInfo(alias="helpText")]
+    """Additional information or guidance about the field."""
 
     label: str
+    """The user-friendly label for the field."""
 
     options_url: Annotated[str, PropertyInfo(alias="optionsUrl")]
+    """A URL that provides options for the field."""
 
     referenced_object_type: Annotated[
         Literal[
@@ -251,6 +269,10 @@ class FieldTypeDefinitionParam(TypedDict, total=False):
         ],
         PropertyInfo(alias="referencedObjectType"),
     ]
+    """
+    Indicates the type of object that the field references, with accepted values
+    like OWNER.
+    """
 
 
 from .array_field_schema_param import ArrayFieldSchemaParam

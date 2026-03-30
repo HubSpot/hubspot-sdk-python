@@ -21,7 +21,7 @@ class PublicLoginAudit(BaseModel):
     """Whether the login was successful or not."""
 
     country_code: Optional[str] = FieldInfo(alias="countryCode", default=None)
-    """The approximate country code of the login."""
+    """The approximate country code of the login"""
 
     email: Optional[str] = None
     """Email address of the user associated with the login."""
@@ -33,7 +33,7 @@ class PublicLoginAudit(BaseModel):
     """The approximate location where the login activity originated."""
 
     region_code: Optional[str] = FieldInfo(alias="regionCode", default=None)
-    """The approximate region code of the login."""
+    """The approximate region code of the login"""
 
     user_agent: Optional[str] = FieldInfo(alias="userAgent", default=None)
     """Information about the device used for logging in."""

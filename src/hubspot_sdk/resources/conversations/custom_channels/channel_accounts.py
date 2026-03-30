@@ -67,7 +67,11 @@ class ChannelAccountsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelAccount:
-        """
+        """Create a new account for a channel.
+
+        Multiple accounts can communicate over a
+        single channel using different delivery identifiers.
+
         Args:
           extra_headers: Send extra headers
 
@@ -111,6 +115,9 @@ class ChannelAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelAccount:
         """
+        This API is used to update the name of the channel account and it's isAuthorized
+        status. Setting to isAuthorized flag to False disables the channel account.
+
         Args:
           extra_headers: Send extra headers
 
@@ -161,6 +168,8 @@ class ChannelAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[PublicChannelAccount]:
         """
+        Retrieve a list of accounts for a custom channel.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -219,6 +228,10 @@ class ChannelAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelAccountStagingToken:
         """
+        Update a channel account staging token's account name and delivery identifier.
+        This information will be applied to the channel account created from this
+        staging token. This is used for public apps.
+
         Args:
           extra_headers: Send extra headers
 
@@ -285,7 +298,11 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelAccount:
-        """
+        """Create a new account for a channel.
+
+        Multiple accounts can communicate over a
+        single channel using different delivery identifiers.
+
         Args:
           extra_headers: Send extra headers
 
@@ -329,6 +346,9 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelAccount:
         """
+        This API is used to update the name of the channel account and it's isAuthorized
+        status. Setting to isAuthorized flag to False disables the channel account.
+
         Args:
           extra_headers: Send extra headers
 
@@ -379,6 +399,8 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PublicChannelAccount, AsyncPage[PublicChannelAccount]]:
         """
+        Retrieve a list of accounts for a custom channel.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -437,6 +459,10 @@ class AsyncChannelAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicChannelAccountStagingToken:
         """
+        Update a channel account staging token's account name and delivery identifier.
+        This information will be applied to the channel account created from this
+        staging token. This is used for public apps.
+
         Args:
           extra_headers: Send extra headers
 

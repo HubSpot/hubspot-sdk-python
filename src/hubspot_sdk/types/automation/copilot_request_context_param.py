@@ -11,5 +11,7 @@ __all__ = ["CopilotRequestContextParam"]
 
 class CopilotRequestContextParam(TypedDict, total=False):
     source: Required[Literal["COPILOT"]]
+    """Indicates the source of the request, with the default value being 'COPILOT'."""
 
     trajectory_id: Annotated[str, PropertyInfo(alias="trajectoryId")]
+    """The unique identifier for the trajectory."""

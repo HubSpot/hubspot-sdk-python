@@ -2127,6 +2127,8 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
         """
+        Change properties of a marketing email.
+
         Args:
           query_archived: Whether to return only results that have been archived.
 
@@ -2339,6 +2341,8 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete a marketing email by its ID
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -2379,8 +2383,11 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
         """
+        This will create a duplicate email with the same properties as the original,
+        with the exception of a unique ID.
+
         Args:
-          id: The unique identifier of the email to be cloned.
+          id: The email ID.
 
           clone_name: The name to assign to the cloned email.
 
@@ -2422,11 +2429,16 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
-        Args:
-          content_id: ID of the email to test.
+        """Create a variation of a marketing email for an A/B test.
 
-          variation_name: Name of the variation to be created.
+        The new variation will
+        be created as a draft. If an active variation already exists, a new one won't be
+        created.
+
+        Args:
+          content_id: ID of the object to test.
+
+          variation_name: Name of A/B test variation.
 
           extra_headers: Send extra headers
 
@@ -2466,6 +2478,10 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AggregateEmailStatistics:
         """
+        Use this endpoint to get aggregated statistics of emails sent in a specified
+        time span. It also returns the list of emails that were sent during the time
+        span.
+
         Args:
           extra_headers: Send extra headers
 
@@ -2512,7 +2528,12 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
+        """This endpoint lets you obtain the variation of an A/B marketing email.
+
+        If the
+        email is variation A (master) it will return variation B (variant) and vice
+        versa.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -2559,7 +2580,11 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
+        """Get the draft version of an email (if it exists).
+
+        If no draft version exists,
+        the published email is returned.
+
         Args:
           extra_headers: Send extra headers
 
@@ -2594,7 +2619,11 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalEmailStatisticInterval:
-        """
+        """Get aggregated statistics in intervals for a specified time span.
+
+        Each interval
+        contains aggregated statistics of the emails that were sent in that time.
+
         Args:
           extra_headers: Send extra headers
 
@@ -2637,6 +2666,8 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmailVersion:
         """
+        Get a specific revision of a marketing email.
+
         Args:
           extra_headers: Send extra headers
 
@@ -2677,6 +2708,10 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[VersionPublicEmail]:
         """
+        Get a list of all versions of a marketing email, with each entry including the
+        full state of that particular version. To view the most recent version, sort by
+        the updatedAt parameter.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -2726,6 +2761,10 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        If you have a Marketing Hub Enterprise account or the transactional email
+        add-on, you can use this endpoint to publish an automated email or send/schedule
+        a regular email.
+
         Args:
           extra_headers: Send extra headers
 
@@ -2758,6 +2797,8 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Resets the draft back to a copy of the live object.
+
         Args:
           extra_headers: Send extra headers
 
@@ -2790,7 +2831,11 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Restores a previous revision of a marketing email.
+
+        The current revision becomes
+        old, and the restored revision is given a new version number.
+
         Args:
           extra_headers: Send extra headers
 
@@ -2829,7 +2874,11 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
+        """Restores a previous revision of a marketing email to DRAFT state.
+
+        If there is
+        currently something in the draft for that object, it is overwritten.
+
         Args:
           extra_headers: Send extra headers
 
@@ -2865,6 +2914,11 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        If you have a Marketing Hub Enterprise account or the transactional email
+        add-on, you can use this endpoint to unpublish an automated email or cancel a
+        regular email. If the email is already in the process of being sent, canceling
+        might not be possible.
+
         Args:
           extra_headers: Send extra headers
 
@@ -3875,7 +3929,13 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
+        """Create or update the draft version of a marketing email.
+
+        If no draft exists, the
+        system creates a draft from the current “live” email then applies the request
+        body to that draft. The draft version only lives on the buffer—the email is not
+        cloned.
+
         Args:
           active_domain: The active domain of the email.
 
@@ -6025,6 +6085,8 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
         """
+        Change properties of a marketing email.
+
         Args:
           query_archived: Whether to return only results that have been archived.
 
@@ -6239,6 +6301,8 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete a marketing email by its ID
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -6279,8 +6343,11 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
         """
+        This will create a duplicate email with the same properties as the original,
+        with the exception of a unique ID.
+
         Args:
-          id: The unique identifier of the email to be cloned.
+          id: The email ID.
 
           clone_name: The name to assign to the cloned email.
 
@@ -6322,11 +6389,16 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
-        Args:
-          content_id: ID of the email to test.
+        """Create a variation of a marketing email for an A/B test.
 
-          variation_name: Name of the variation to be created.
+        The new variation will
+        be created as a draft. If an active variation already exists, a new one won't be
+        created.
+
+        Args:
+          content_id: ID of the object to test.
+
+          variation_name: Name of A/B test variation.
 
           extra_headers: Send extra headers
 
@@ -6366,6 +6438,10 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AggregateEmailStatistics:
         """
+        Use this endpoint to get aggregated statistics of emails sent in a specified
+        time span. It also returns the list of emails that were sent during the time
+        span.
+
         Args:
           extra_headers: Send extra headers
 
@@ -6412,7 +6488,12 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
+        """This endpoint lets you obtain the variation of an A/B marketing email.
+
+        If the
+        email is variation A (master) it will return variation B (variant) and vice
+        versa.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -6459,7 +6540,11 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
+        """Get the draft version of an email (if it exists).
+
+        If no draft version exists,
+        the published email is returned.
+
         Args:
           extra_headers: Send extra headers
 
@@ -6494,7 +6579,11 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalEmailStatisticInterval:
-        """
+        """Get aggregated statistics in intervals for a specified time span.
+
+        Each interval
+        contains aggregated statistics of the emails that were sent in that time.
+
         Args:
           extra_headers: Send extra headers
 
@@ -6537,6 +6626,8 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmailVersion:
         """
+        Get a specific revision of a marketing email.
+
         Args:
           extra_headers: Send extra headers
 
@@ -6577,6 +6668,10 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[VersionPublicEmail, AsyncPage[VersionPublicEmail]]:
         """
+        Get a list of all versions of a marketing email, with each entry including the
+        full state of that particular version. To view the most recent version, sort by
+        the updatedAt parameter.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -6626,6 +6721,10 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        If you have a Marketing Hub Enterprise account or the transactional email
+        add-on, you can use this endpoint to publish an automated email or send/schedule
+        a regular email.
+
         Args:
           extra_headers: Send extra headers
 
@@ -6658,6 +6757,8 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Resets the draft back to a copy of the live object.
+
         Args:
           extra_headers: Send extra headers
 
@@ -6690,7 +6791,11 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """Restores a previous revision of a marketing email.
+
+        The current revision becomes
+        old, and the restored revision is given a new version number.
+
         Args:
           extra_headers: Send extra headers
 
@@ -6729,7 +6834,11 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
+        """Restores a previous revision of a marketing email to DRAFT state.
+
+        If there is
+        currently something in the draft for that object, it is overwritten.
+
         Args:
           extra_headers: Send extra headers
 
@@ -6765,6 +6874,11 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        If you have a Marketing Hub Enterprise account or the transactional email
+        add-on, you can use this endpoint to unpublish an automated email or cancel a
+        regular email. If the email is already in the process of being sent, canceling
+        might not be possible.
+
         Args:
           extra_headers: Send extra headers
 
@@ -7775,7 +7889,13 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicEmail:
-        """
+        """Create or update the draft version of a marketing email.
+
+        If no draft exists, the
+        system creates a draft from the current “live” email then applies the request
+        body to that draft. The draft version only lives on the buffer—the email is not
+        cloned.
+
         Args:
           active_domain: The active domain of the email.
 

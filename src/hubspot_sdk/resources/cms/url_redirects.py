@@ -74,30 +74,31 @@ class URLRedirectsResource(SyncAPIResource):
 
         Args:
           destination: The destination URL, where the target URL should be redirected if it matches the
-              routePrefix.
+              `routePrefix`.
 
           redirect_style: The type of redirect to create. Options include: 301 (permanent), 302
-              (temporary), or 305 (proxy).
+              (temporary), or 305 (proxy). Find more details
+              [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
 
           route_prefix: The target incoming URL, path, or pattern to match for redirection.
 
-          is_match_full_url: Whether the routePrefix should match on the entire URL, including the domain.
+          is_match_full_url: Whether the `routePrefix` should match on the entire URL, including the domain.
 
-          is_match_query_string: Whether the routePrefix should match on the entire URL path, including the query
-              string.
+          is_match_query_string: Whether the `routePrefix` should match on the entire URL path, including the
+              query string.
 
           is_only_after_not_found: Whether the URL redirect mapping should apply only if a live page on the URL
               isn't found. If False, the URL redirect mapping will take precedence over any
               existing page.
 
-          is_pattern: Whether the routePrefix should match based on pattern.
+          is_pattern: Whether the `routePrefix` should match based on pattern.
 
-          is_protocol_agnostic: Whether the routePrefix should match both HTTP and HTTPS protocols.
+          is_protocol_agnostic: Whether the `routePrefix` should match both HTTP and HTTPS protocols.
 
           is_trailing_slash_optional: Whether a trailing slash will be ignored.
 
           precedence: Used to prioritize URL redirection. If a given URL matches more than one
-              redirect, the one with the lower precedence will be used.
+              redirect, the one with the **lower** precedence will be used.
 
           extra_headers: Send extra headers
 
@@ -154,12 +155,8 @@ class URLRedirectsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> URLMapping:
-        """Update the details of an existing URL redirect in your HubSpot account.
-
-        This
-        operation allows you to modify properties such as the destination URL, route
-        prefix, and other redirect settings. Use this endpoint to ensure your URL
-        redirects are up-to-date and functioning as intended.
+        """
+        Updates the settings for an existing URL redirect.
 
         Args:
           id: The unique ID of this URL redirect.
@@ -259,26 +256,13 @@ class URLRedirectsResource(SyncAPIResource):
         archived redirects if specified.
 
         Args:
-          after: A cursor token for pagination. Use the value from the previous response's
-              paging.next.after field.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
           archived: Whether to return only results that have been archived.
 
-          created_after: Filter redirects created after a specific timestamp. Format must be date-time.
-
-          created_at: Filter redirects by their exact creation timestamp. Format must be date-time.
-
-          created_before: Filter redirects created before a specific timestamp. Format must be date-time.
-
           limit: The maximum number of results to display per page.
-
-          sort: Specify the order in which to sort the results. Accepts an array of strings.
-
-          updated_after: Filter redirects updated after a specific timestamp. Format must be date-time.
-
-          updated_at: Filter redirects by their exact update timestamp. Format must be date-time.
-
-          updated_before: Filter redirects updated before a specific timestamp. Format must be date-time.
 
           extra_headers: Send extra headers
 
@@ -327,9 +311,7 @@ class URLRedirectsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a specific URL redirect in your HubSpot account using its unique
-        identifier. This operation is useful for removing outdated or incorrect URL
-        redirects, ensuring that your URL mappings remain current and accurate.
+        Delete one existing redirect, so it is no longer mapped.
 
         Args:
           extra_headers: Send extra headers
@@ -363,10 +345,7 @@ class URLRedirectsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> URLMapping:
         """
-        Retrieve detailed information about a specific URL redirect in your HubSpot
-        account using its unique identifier. This endpoint is useful for obtaining the
-        configuration and properties of a URL redirect, such as its destination, route
-        prefix, and other settings.
+        Returns the details for a single existing URL redirect by ID.
 
         Args:
           extra_headers: Send extra headers
@@ -437,30 +416,31 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
 
         Args:
           destination: The destination URL, where the target URL should be redirected if it matches the
-              routePrefix.
+              `routePrefix`.
 
           redirect_style: The type of redirect to create. Options include: 301 (permanent), 302
-              (temporary), or 305 (proxy).
+              (temporary), or 305 (proxy). Find more details
+              [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
 
           route_prefix: The target incoming URL, path, or pattern to match for redirection.
 
-          is_match_full_url: Whether the routePrefix should match on the entire URL, including the domain.
+          is_match_full_url: Whether the `routePrefix` should match on the entire URL, including the domain.
 
-          is_match_query_string: Whether the routePrefix should match on the entire URL path, including the query
-              string.
+          is_match_query_string: Whether the `routePrefix` should match on the entire URL path, including the
+              query string.
 
           is_only_after_not_found: Whether the URL redirect mapping should apply only if a live page on the URL
               isn't found. If False, the URL redirect mapping will take precedence over any
               existing page.
 
-          is_pattern: Whether the routePrefix should match based on pattern.
+          is_pattern: Whether the `routePrefix` should match based on pattern.
 
-          is_protocol_agnostic: Whether the routePrefix should match both HTTP and HTTPS protocols.
+          is_protocol_agnostic: Whether the `routePrefix` should match both HTTP and HTTPS protocols.
 
           is_trailing_slash_optional: Whether a trailing slash will be ignored.
 
           precedence: Used to prioritize URL redirection. If a given URL matches more than one
-              redirect, the one with the lower precedence will be used.
+              redirect, the one with the **lower** precedence will be used.
 
           extra_headers: Send extra headers
 
@@ -517,12 +497,8 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> URLMapping:
-        """Update the details of an existing URL redirect in your HubSpot account.
-
-        This
-        operation allows you to modify properties such as the destination URL, route
-        prefix, and other redirect settings. Use this endpoint to ensure your URL
-        redirects are up-to-date and functioning as intended.
+        """
+        Updates the settings for an existing URL redirect.
 
         Args:
           id: The unique ID of this URL redirect.
@@ -622,26 +598,13 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         archived redirects if specified.
 
         Args:
-          after: A cursor token for pagination. Use the value from the previous response's
-              paging.next.after field.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
           archived: Whether to return only results that have been archived.
 
-          created_after: Filter redirects created after a specific timestamp. Format must be date-time.
-
-          created_at: Filter redirects by their exact creation timestamp. Format must be date-time.
-
-          created_before: Filter redirects created before a specific timestamp. Format must be date-time.
-
           limit: The maximum number of results to display per page.
-
-          sort: Specify the order in which to sort the results. Accepts an array of strings.
-
-          updated_after: Filter redirects updated after a specific timestamp. Format must be date-time.
-
-          updated_at: Filter redirects by their exact update timestamp. Format must be date-time.
-
-          updated_before: Filter redirects updated before a specific timestamp. Format must be date-time.
 
           extra_headers: Send extra headers
 
@@ -690,9 +653,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a specific URL redirect in your HubSpot account using its unique
-        identifier. This operation is useful for removing outdated or incorrect URL
-        redirects, ensuring that your URL mappings remain current and accurate.
+        Delete one existing redirect, so it is no longer mapped.
 
         Args:
           extra_headers: Send extra headers
@@ -726,10 +687,7 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> URLMapping:
         """
-        Retrieve detailed information about a specific URL redirect in your HubSpot
-        account using its unique identifier. This endpoint is useful for obtaining the
-        configuration and properties of a URL redirect, such as its destination, route
-        prefix, and other settings.
+        Returns the details for a single existing URL redirect by ID.
 
         Args:
           extra_headers: Send extra headers

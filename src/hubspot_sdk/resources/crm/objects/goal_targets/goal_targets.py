@@ -125,8 +125,11 @@ class GoalTargetsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Update a goal target by ID (`objectId`) or unique property value (`idProperty`).
-        Provided property values will be overwritten. Read-only and non-existent
+        Perform a partial update of an Object identified by `{goalTargetId}`or
+        optionally a unique property value as specified by the `idProperty` query param.
+        `{goalTargetId}` refers to the internal object ID by default, and the
+        `idProperty` query param refers to a property whose values are unique for the
+        object. Provided property values will be overwritten. Read-only and non-existent
         properties will result in an error. Properties values can be cleared by passing
         an empty string.
 
@@ -174,7 +177,7 @@ class GoalTargetsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
-        """Retrieve all goal targets.
+        """Read a page of goal targets.
 
         Control what is returned via the `properties` query
         param.
@@ -243,7 +246,7 @@ class GoalTargetsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a goal target by ID.
+        Delete a goal target by `{goalTargetId}` to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -281,12 +284,10 @@ class GoalTargetsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """Read an Object identified by `{goalTargetId}`.
+        """Retrieve a goal target by its ID.
 
-        `{goalTargetId}` refers to the
-        internal object ID by default, or optionally any unique property value as
-        specified by the `idProperty` query param. Control what is returned via the
-        `properties` query param.
+        You can specify what is returned using the
+        `properties` query parameter.
 
         Args:
           archived: Whether to return only results that have been archived.
@@ -476,8 +477,11 @@ class AsyncGoalTargetsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObject:
         """
-        Update a goal target by ID (`objectId`) or unique property value (`idProperty`).
-        Provided property values will be overwritten. Read-only and non-existent
+        Perform a partial update of an Object identified by `{goalTargetId}`or
+        optionally a unique property value as specified by the `idProperty` query param.
+        `{goalTargetId}` refers to the internal object ID by default, and the
+        `idProperty` query param refers to a property whose values are unique for the
+        object. Provided property values will be overwritten. Read-only and non-existent
         properties will result in an error. Properties values can be cleared by passing
         an empty string.
 
@@ -529,7 +533,7 @@ class AsyncGoalTargetsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
-        """Retrieve all goal targets.
+        """Read a page of goal targets.
 
         Control what is returned via the `properties` query
         param.
@@ -598,7 +602,7 @@ class AsyncGoalTargetsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Delete a goal target by ID.
+        Delete a goal target by `{goalTargetId}` to the recycling bin.
 
         Args:
           extra_headers: Send extra headers
@@ -636,12 +640,10 @@ class AsyncGoalTargetsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """Read an Object identified by `{goalTargetId}`.
+        """Retrieve a goal target by its ID.
 
-        `{goalTargetId}` refers to the
-        internal object ID by default, or optionally any unique property value as
-        specified by the `idProperty` query param. Control what is returned via the
-        `properties` query param.
+        You can specify what is returned using the
+        `properties` query parameter.
 
         Args:
           archived: Whether to return only results that have been archived.

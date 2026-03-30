@@ -176,9 +176,10 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[SimplePublicObjectWithAssociations]:
-        """Retrieve all emails.
+        """Read a page of emails.
 
-        Control what is returned via the `properties` query param.
+        Control what is returned via the `properties` query
+        param.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -282,7 +283,7 @@ class EmailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """Retrieve an email identified by `{emailId}`.
+        """Read an Object identified by `{emailId}`.
 
         `{emailId}` refers to the internal
         object ID by default, or optionally any unique property value as specified by
@@ -529,9 +530,10 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SimplePublicObjectWithAssociations, AsyncPage[SimplePublicObjectWithAssociations]]:
-        """Retrieve all emails.
+        """Read a page of emails.
 
-        Control what is returned via the `properties` query param.
+        Control what is returned via the `properties` query
+        param.
 
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
@@ -635,7 +637,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimplePublicObjectWithAssociations:
-        """Retrieve an email identified by `{emailId}`.
+        """Read an Object identified by `{emailId}`.
 
         `{emailId}` refers to the internal
         object ID by default, or optionally any unique property value as specified by

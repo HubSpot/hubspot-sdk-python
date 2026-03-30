@@ -131,11 +131,13 @@ class TestActions:
                         "name": "name",
                         "options": [
                             {
-                                "hidden": True,
-                                "label": "label",
-                                "value": "value",
                                 "description": "description",
                                 "display_order": 0,
+                                "double_data": 0,
+                                "hidden": True,
+                                "label": "label",
+                                "read_only": True,
+                                "value": "value",
                             }
                         ],
                         "schema": {
@@ -309,11 +311,13 @@ class TestActions:
                         "name": "name",
                         "options": [
                             {
-                                "hidden": True,
-                                "label": "label",
-                                "value": "value",
                                 "description": "description",
                                 "display_order": 0,
+                                "double_data": 0,
+                                "hidden": True,
+                                "label": "label",
+                                "read_only": True,
+                                "value": "value",
                             }
                         ],
                         "schema": {
@@ -1102,11 +1106,13 @@ class TestAsyncActions:
                         "name": "name",
                         "options": [
                             {
-                                "hidden": True,
-                                "label": "label",
-                                "value": "value",
                                 "description": "description",
                                 "display_order": 0,
+                                "double_data": 0,
+                                "hidden": True,
+                                "label": "label",
+                                "read_only": True,
+                                "value": "value",
                             }
                         ],
                         "schema": {
@@ -1280,11 +1286,13 @@ class TestAsyncActions:
                         "name": "name",
                         "options": [
                             {
-                                "hidden": True,
-                                "label": "label",
-                                "value": "value",
                                 "description": "description",
                                 "display_order": 0,
+                                "double_data": 0,
+                                "hidden": True,
+                                "label": "label",
+                                "read_only": True,
+                                "value": "value",
                             }
                         ],
                         "schema": {

@@ -73,3 +73,30 @@ Methods:
 
 - <code title="get /tax-rates/2026-03/tax-rates">client.settings.tax_rates.<a href="./src/hubspot_sdk/resources/settings/tax_rates.py">list</a>(\*\*<a href="src/hubspot_sdk/types/settings/tax_rate_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/public_tax_rate_group.py">SyncPage[PublicTaxRateGroup]</a></code>
 - <code title="get /tax-rates/2026-03/tax-rates/{taxRateGroupId}">client.settings.tax_rates.<a href="./src/hubspot_sdk/resources/settings/tax_rates.py">get</a>(tax_rate_group_id) -> <a href="./src/hubspot_sdk/types/settings/public_tax_rate_group.py">PublicTaxRateGroup</a></code>
+
+## Users
+
+Types:
+
+```python
+from hubspot_sdk.types.settings import (
+    CollectionResponsePublicPermissionSetNoPaging,
+    CollectionResponsePublicTeamNoPaging,
+    CollectionResponsePublicUserForwardPaging,
+    PublicPermissionSet,
+    PublicTeam,
+    PublicUser,
+    PublicUserUpdate,
+    UserProvisionRequest,
+)
+```
+
+Methods:
+
+- <code title="post /settings/users/2026-03">client.settings.users.<a href="./src/hubspot_sdk/resources/settings/users.py">create</a>(\*\*<a href="src/hubspot_sdk/types/settings/user_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/public_user.py">PublicUser</a></code>
+- <code title="put /settings/users/2026-03/{userId}">client.settings.users.<a href="./src/hubspot_sdk/resources/settings/users.py">update</a>(user_id, \*\*<a href="src/hubspot_sdk/types/settings/user_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/public_user.py">PublicUser</a></code>
+- <code title="get /settings/users/2026-03">client.settings.users.<a href="./src/hubspot_sdk/resources/settings/users.py">list</a>(\*\*<a href="src/hubspot_sdk/types/settings/user_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/public_user.py">SyncPage[PublicUser]</a></code>
+- <code title="delete /settings/users/2026-03/{userId}">client.settings.users.<a href="./src/hubspot_sdk/resources/settings/users.py">delete</a>(user_id, \*\*<a href="src/hubspot_sdk/types/settings/user_delete_params.py">params</a>) -> None</code>
+- <code title="get /settings/users/2026-03/{userId}">client.settings.users.<a href="./src/hubspot_sdk/resources/settings/users.py">get</a>(user_id, \*\*<a href="src/hubspot_sdk/types/settings/user_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/settings/public_user.py">PublicUser</a></code>
+- <code title="get /settings/users/2026-03/roles">client.settings.users.<a href="./src/hubspot_sdk/resources/settings/users.py">list_roles</a>() -> <a href="./src/hubspot_sdk/types/settings/collection_response_public_permission_set_no_paging.py">CollectionResponsePublicPermissionSetNoPaging</a></code>
+- <code title="get /settings/users/2026-03/teams">client.settings.users.<a href="./src/hubspot_sdk/resources/settings/users.py">list_teams</a>() -> <a href="./src/hubspot_sdk/types/settings/collection_response_public_team_no_paging.py">CollectionResponsePublicTeamNoPaging</a></code>

@@ -80,6 +80,11 @@ class CurrenciesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyCurrency:
+        """Get the details for the company currency.
+
+        The company currency is used in deal
+        totals, reports, and the default currency for new deals.
+        """
         return self._get(
             "/settings/currencies/2026-03/company-currency",
             options=make_request_options(
@@ -98,6 +103,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseCurrencyCodeInfoNoPaging:
+        """Retrieve a list of all available currency codes and their names."""
         return self._get(
             "/settings/currencies/2026-03/codes",
             options=make_request_options(
@@ -295,6 +301,8 @@ class CurrenciesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyCurrency:
         """
+        Set or update the primary company currency.
+
         Args:
           currency_code: The three-letter code representing a specific currency (ex. USD).
 
@@ -357,6 +365,11 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyCurrency:
+        """Get the details for the company currency.
+
+        The company currency is used in deal
+        totals, reports, and the default currency for new deals.
+        """
         return await self._get(
             "/settings/currencies/2026-03/company-currency",
             options=make_request_options(
@@ -375,6 +388,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseCurrencyCodeInfoNoPaging:
+        """Retrieve a list of all available currency codes and their names."""
         return await self._get(
             "/settings/currencies/2026-03/codes",
             options=make_request_options(
@@ -572,6 +586,8 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyCurrency:
         """
+        Set or update the primary company currency.
+
         Args:
           currency_code: The three-letter code representing a specific currency (ex. USD).
 

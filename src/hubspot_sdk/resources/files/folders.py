@@ -7,7 +7,7 @@ from datetime import datetime
 
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -18,7 +18,13 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...pagination import SyncPage, AsyncPage
-from ...types.files import folder_search_params, folder_update_by_id_params, folder_update_async_by_id_params
+from ...types.files import (
+    folder_search_params,
+    folder_get_by_id_params,
+    folder_get_by_path_params,
+    folder_update_by_id_params,
+    folder_update_async_by_id_params,
+)
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.files.folder import Folder
 from ...types.files.folder_action_response import FolderActionResponse
@@ -46,6 +52,154 @@ class FoldersResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
         """
         return FoldersResourceWithStreamingResponse(self)
+
+    def delete_by_id(
+        self,
+        folder_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete folder by ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not folder_id:
+            raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/files/2026-03/folders/{folder_id}", folder_id=folder_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def delete_by_path(
+        self,
+        folder_path: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete a folder, identified by its path.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not folder_path:
+            raise ValueError(f"Expected a non-empty value for `folder_path` but received {folder_path!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/files/2026-03/folders/{folder_path}", folder_path=folder_path),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def get_by_id(
+        self,
+        folder_id: str,
+        *,
+        properties: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Folder:
+        """
+        Retrieve a folder by its ID.
+
+        Args:
+          properties: Properties to set on returned folder.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not folder_id:
+            raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
+        return self._get(
+            path_template("/files/2026-03/folders/{folder_id}", folder_id=folder_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"properties": properties}, folder_get_by_id_params.FolderGetByIDParams),
+            ),
+            cast_to=Folder,
+        )
+
+    def get_by_path(
+        self,
+        folder_path: str,
+        *,
+        properties: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Folder:
+        """
+        Retrieve a folder, identified by its path.
+
+        Args:
+          properties: Properties to set on returned folder.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not folder_path:
+            raise ValueError(f"Expected a non-empty value for `folder_path` but received {folder_path!r}")
+        return self._get(
+            path_template("/files/2026-03/folders/{folder_path}", folder_path=folder_path),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"properties": properties}, folder_get_by_path_params.FolderGetByPathParams),
+            ),
+            cast_to=Folder,
+        )
 
     def get_update_async_status(
         self,
@@ -113,11 +267,49 @@ class FoldersResource(SyncAPIResource):
         Does not contain hidden or archived folders.
 
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
+          after: Offset search results by this value. The default offset is 0 and the maximum
+              offset of items for a given search is 10,000. Narrow your search down if you are
+              reaching this limit.
 
-          limit: The maximum number of results to display per page.
+          before: Search folders updated before this timestamp. Time must be epoch time in
+              milliseconds.
+
+          created_at: Search folders by exact time of creation. Time must be epoch time in
+              milliseconds.
+
+          created_at_gte: Search folders by greater than or equal to time of creation. Can be used with
+              createdAtLte to create a range.
+
+          created_at_lte: Search folders by less than or equal to time of creation. Can be used with
+              createdAtGte to create a range.
+
+          id_gte: Search folders by greater than or equal to ID. Can be used with idLte to create
+              a range.
+
+          id_lte: Search folders by less than or equal to ID. Can be used with idGte to create a
+              range.
+
+          ids: Search folders by multiple IDs. Comma-separated list of folder IDs.
+
+          limit: Number of items to return. Default limit is 10, maximum limit is 100.
+
+          name: Search for folders containing the specified name.
+
+          path: Search folders by path.
+
+          properties: Properties that should be included in the returned folders.
+
+          sort: Sort results by given property. For example -name sorts by name field
+              descending, name sorts by name field ascending.
+
+          updated_at: Search folders by exact time of latest updated. Time must be epoch time in
+              milliseconds.
+
+          updated_at_gte: Search folders by greater than or equal to time of latest update. Can be used
+              with updatedAtLte to create a range.
+
+          updated_at_lte: Search folders by less than or equal to time of latest update. Can be used with
+              updatedAtGte to create a range.
 
           extra_headers: Send extra headers
 
@@ -182,11 +374,12 @@ class FoldersResource(SyncAPIResource):
         Args:
           id: The unique identifier of the folder to be updated.
 
-          name: The new name for the folder, which will also update the fullPath and all
-              children of the folder.
+          name: New name. If specified the folder's name and fullPath will change. All children
+              of the folder will be updated accordingly.
 
-          parent_folder_id: The ID of the new parent folder, which will move the folder and its children
-              into the specified folder.
+          parent_folder_id: New parent folderId. If changed, the folder and all it's children will be moved
+              into the specified folder. parentFolderId and parentFolderPath cannot be
+              specified at the same time.
 
           extra_headers: Send extra headers
 
@@ -283,6 +476,158 @@ class AsyncFoldersResource(AsyncAPIResource):
         """
         return AsyncFoldersResourceWithStreamingResponse(self)
 
+    async def delete_by_id(
+        self,
+        folder_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete folder by ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not folder_id:
+            raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/files/2026-03/folders/{folder_id}", folder_id=folder_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def delete_by_path(
+        self,
+        folder_path: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete a folder, identified by its path.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not folder_path:
+            raise ValueError(f"Expected a non-empty value for `folder_path` but received {folder_path!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/files/2026-03/folders/{folder_path}", folder_path=folder_path),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def get_by_id(
+        self,
+        folder_id: str,
+        *,
+        properties: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Folder:
+        """
+        Retrieve a folder by its ID.
+
+        Args:
+          properties: Properties to set on returned folder.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not folder_id:
+            raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
+        return await self._get(
+            path_template("/files/2026-03/folders/{folder_id}", folder_id=folder_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"properties": properties}, folder_get_by_id_params.FolderGetByIDParams
+                ),
+            ),
+            cast_to=Folder,
+        )
+
+    async def get_by_path(
+        self,
+        folder_path: str,
+        *,
+        properties: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Folder:
+        """
+        Retrieve a folder, identified by its path.
+
+        Args:
+          properties: Properties to set on returned folder.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not folder_path:
+            raise ValueError(f"Expected a non-empty value for `folder_path` but received {folder_path!r}")
+        return await self._get(
+            path_template("/files/2026-03/folders/{folder_path}", folder_path=folder_path),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"properties": properties}, folder_get_by_path_params.FolderGetByPathParams
+                ),
+            ),
+            cast_to=Folder,
+        )
+
     async def get_update_async_status(
         self,
         task_id: str,
@@ -349,11 +694,49 @@ class AsyncFoldersResource(AsyncAPIResource):
         Does not contain hidden or archived folders.
 
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
+          after: Offset search results by this value. The default offset is 0 and the maximum
+              offset of items for a given search is 10,000. Narrow your search down if you are
+              reaching this limit.
 
-          limit: The maximum number of results to display per page.
+          before: Search folders updated before this timestamp. Time must be epoch time in
+              milliseconds.
+
+          created_at: Search folders by exact time of creation. Time must be epoch time in
+              milliseconds.
+
+          created_at_gte: Search folders by greater than or equal to time of creation. Can be used with
+              createdAtLte to create a range.
+
+          created_at_lte: Search folders by less than or equal to time of creation. Can be used with
+              createdAtGte to create a range.
+
+          id_gte: Search folders by greater than or equal to ID. Can be used with idLte to create
+              a range.
+
+          id_lte: Search folders by less than or equal to ID. Can be used with idGte to create a
+              range.
+
+          ids: Search folders by multiple IDs. Comma-separated list of folder IDs.
+
+          limit: Number of items to return. Default limit is 10, maximum limit is 100.
+
+          name: Search for folders containing the specified name.
+
+          path: Search folders by path.
+
+          properties: Properties that should be included in the returned folders.
+
+          sort: Sort results by given property. For example -name sorts by name field
+              descending, name sorts by name field ascending.
+
+          updated_at: Search folders by exact time of latest updated. Time must be epoch time in
+              milliseconds.
+
+          updated_at_gte: Search folders by greater than or equal to time of latest update. Can be used
+              with updatedAtLte to create a range.
+
+          updated_at_lte: Search folders by less than or equal to time of latest update. Can be used with
+              updatedAtGte to create a range.
 
           extra_headers: Send extra headers
 
@@ -418,11 +801,12 @@ class AsyncFoldersResource(AsyncAPIResource):
         Args:
           id: The unique identifier of the folder to be updated.
 
-          name: The new name for the folder, which will also update the fullPath and all
-              children of the folder.
+          name: New name. If specified the folder's name and fullPath will change. All children
+              of the folder will be updated accordingly.
 
-          parent_folder_id: The ID of the new parent folder, which will move the folder and its children
-              into the specified folder.
+          parent_folder_id: New parent folderId. If changed, the folder and all it's children will be moved
+              into the specified folder. parentFolderId and parentFolderPath cannot be
+              specified at the same time.
 
           extra_headers: Send extra headers
 
@@ -503,6 +887,18 @@ class FoldersResourceWithRawResponse:
     def __init__(self, folders: FoldersResource) -> None:
         self._folders = folders
 
+        self.delete_by_id = to_raw_response_wrapper(
+            folders.delete_by_id,
+        )
+        self.delete_by_path = to_raw_response_wrapper(
+            folders.delete_by_path,
+        )
+        self.get_by_id = to_raw_response_wrapper(
+            folders.get_by_id,
+        )
+        self.get_by_path = to_raw_response_wrapper(
+            folders.get_by_path,
+        )
         self.get_update_async_status = to_raw_response_wrapper(
             folders.get_update_async_status,
         )
@@ -521,6 +917,18 @@ class AsyncFoldersResourceWithRawResponse:
     def __init__(self, folders: AsyncFoldersResource) -> None:
         self._folders = folders
 
+        self.delete_by_id = async_to_raw_response_wrapper(
+            folders.delete_by_id,
+        )
+        self.delete_by_path = async_to_raw_response_wrapper(
+            folders.delete_by_path,
+        )
+        self.get_by_id = async_to_raw_response_wrapper(
+            folders.get_by_id,
+        )
+        self.get_by_path = async_to_raw_response_wrapper(
+            folders.get_by_path,
+        )
         self.get_update_async_status = async_to_raw_response_wrapper(
             folders.get_update_async_status,
         )
@@ -539,6 +947,18 @@ class FoldersResourceWithStreamingResponse:
     def __init__(self, folders: FoldersResource) -> None:
         self._folders = folders
 
+        self.delete_by_id = to_streamed_response_wrapper(
+            folders.delete_by_id,
+        )
+        self.delete_by_path = to_streamed_response_wrapper(
+            folders.delete_by_path,
+        )
+        self.get_by_id = to_streamed_response_wrapper(
+            folders.get_by_id,
+        )
+        self.get_by_path = to_streamed_response_wrapper(
+            folders.get_by_path,
+        )
         self.get_update_async_status = to_streamed_response_wrapper(
             folders.get_update_async_status,
         )
@@ -557,6 +977,18 @@ class AsyncFoldersResourceWithStreamingResponse:
     def __init__(self, folders: AsyncFoldersResource) -> None:
         self._folders = folders
 
+        self.delete_by_id = async_to_streamed_response_wrapper(
+            folders.delete_by_id,
+        )
+        self.delete_by_path = async_to_streamed_response_wrapper(
+            folders.delete_by_path,
+        )
+        self.get_by_id = async_to_streamed_response_wrapper(
+            folders.get_by_id,
+        )
+        self.get_by_path = async_to_streamed_response_wrapper(
+            folders.get_by_path,
+        )
         self.get_update_async_status = async_to_streamed_response_wrapper(
             folders.get_update_async_status,
         )

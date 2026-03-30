@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+from typing import Dict, Union, Iterable
+from datetime import datetime
+from typing_extensions import Literal
+
 import httpx
 
 from ....._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
@@ -23,8 +27,15 @@ from ....._response import (
     async_to_streamed_response_wrapper,
 )
 from ....._base_client import make_request_options
-from .....types.crm.extensions import calling_create_params, calling_update_params, calling_mark_ready_params
+from .....types.crm.extensions import (
+    calling_create_params,
+    calling_update_params,
+    calling_mark_ready_params,
+    calling_create_inbound_call_params,
+)
 from .....types.crm.extensions.recording_settings_response import RecordingSettingsResponse
+from .....types.crm.extensions.formatted_phone_number_param import FormattedPhoneNumberParam
+from .....types.crm.extensions.completed_third_party_call_response import CompletedThirdPartyCallResponse
 
 __all__ = ["CallingResource", "AsyncCallingResource"]
 
@@ -66,6 +77,8 @@ class CallingResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
+        Create new recording settings for a specific app using the provided app ID.
+
         Args:
           url_to_retrieve_authed_recording: The URL used to access authenticated call recordings.
 
@@ -102,6 +115,8 @@ class CallingResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
+        Update the recording settings for a specific app using the provided app ID.
+
         Args:
           url_to_retrieve_authed_recording: The URL used to access authenticated call recordings.
 
@@ -137,6 +152,8 @@ class CallingResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete the channel connection settings associated with the specified app.
+
         Args:
           extra_headers: Send extra headers
 
@@ -155,6 +172,89 @@ class CallingResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def create_inbound_call(
+        self,
+        *,
+        create_engagement: bool,
+        engagement_properties: Dict[str, str],
+        external_call_id: str,
+        final_call_status: Literal[
+            "BUSY",
+            "CALLING_CRM_USER",
+            "CANCELED",
+            "COMPLETED",
+            "CONNECTING",
+            "FAILED",
+            "HOLD",
+            "IN_PROGRESS",
+            "MISSED",
+            "NO_ANSWER",
+            "QUEUED",
+            "RINGING",
+            "UNKNOWN",
+        ],
+        from_number: FormattedPhoneNumberParam,
+        potential_recipient_user_ids: Iterable[int],
+        to_number: FormattedPhoneNumberParam,
+        call_started_timestamp: Union[str, datetime] | Omit = omit,
+        duration_seconds: int | Omit = omit,
+        user_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CompletedThirdPartyCallResponse:
+        """
+        Args:
+          create_engagement: Indicates whether an engagement should be created for the call.
+
+          engagement_properties: Contains additional properties related to the engagement.
+
+          external_call_id: The unique identifier for the call from an external system.
+
+          final_call_status: The final status of the call, with accepted values including: BUSY,
+              CALLING_CRM_USER, CANCELED, COMPLETED, CONNECTING, FAILED, HOLD, IN_PROGRESS,
+              MISSED, NO_ANSWER, QUEUED, RINGING, UNKNOWN.
+
+          call_started_timestamp: The timestamp indicating when the call started, formatted as a date-time string.
+
+          duration_seconds: The duration of the call in seconds.
+
+          user_id: The ID of the user associated with the call.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/crm/extensions/calling/2026-03/inbound-call",
+            body=maybe_transform(
+                {
+                    "create_engagement": create_engagement,
+                    "engagement_properties": engagement_properties,
+                    "external_call_id": external_call_id,
+                    "final_call_status": final_call_status,
+                    "from_number": from_number,
+                    "potential_recipient_user_ids": potential_recipient_user_ids,
+                    "to_number": to_number,
+                    "call_started_timestamp": call_started_timestamp,
+                    "duration_seconds": duration_seconds,
+                    "user_id": user_id,
+                },
+                calling_create_inbound_call_params.CallingCreateInboundCallParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompletedThirdPartyCallResponse,
+        )
+
     def get(
         self,
         app_id: int,
@@ -167,6 +267,9 @@ class CallingResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
+        Retrieve the current recording settings for a specific app using the provided
+        app ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -195,7 +298,11 @@ class CallingResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """This endpoint is used to mark a call recording as ready.
+
+        It requires the
+        engagementId to identify the specific recording.
+
         Args:
           engagement_id: The unique identifier for the engagement associated with the call recording.
 
@@ -255,6 +362,8 @@ class AsyncCallingResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
+        Create new recording settings for a specific app using the provided app ID.
+
         Args:
           url_to_retrieve_authed_recording: The URL used to access authenticated call recordings.
 
@@ -291,6 +400,8 @@ class AsyncCallingResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
+        Update the recording settings for a specific app using the provided app ID.
+
         Args:
           url_to_retrieve_authed_recording: The URL used to access authenticated call recordings.
 
@@ -326,6 +437,8 @@ class AsyncCallingResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete the channel connection settings associated with the specified app.
+
         Args:
           extra_headers: Send extra headers
 
@@ -344,6 +457,89 @@ class AsyncCallingResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def create_inbound_call(
+        self,
+        *,
+        create_engagement: bool,
+        engagement_properties: Dict[str, str],
+        external_call_id: str,
+        final_call_status: Literal[
+            "BUSY",
+            "CALLING_CRM_USER",
+            "CANCELED",
+            "COMPLETED",
+            "CONNECTING",
+            "FAILED",
+            "HOLD",
+            "IN_PROGRESS",
+            "MISSED",
+            "NO_ANSWER",
+            "QUEUED",
+            "RINGING",
+            "UNKNOWN",
+        ],
+        from_number: FormattedPhoneNumberParam,
+        potential_recipient_user_ids: Iterable[int],
+        to_number: FormattedPhoneNumberParam,
+        call_started_timestamp: Union[str, datetime] | Omit = omit,
+        duration_seconds: int | Omit = omit,
+        user_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CompletedThirdPartyCallResponse:
+        """
+        Args:
+          create_engagement: Indicates whether an engagement should be created for the call.
+
+          engagement_properties: Contains additional properties related to the engagement.
+
+          external_call_id: The unique identifier for the call from an external system.
+
+          final_call_status: The final status of the call, with accepted values including: BUSY,
+              CALLING_CRM_USER, CANCELED, COMPLETED, CONNECTING, FAILED, HOLD, IN_PROGRESS,
+              MISSED, NO_ANSWER, QUEUED, RINGING, UNKNOWN.
+
+          call_started_timestamp: The timestamp indicating when the call started, formatted as a date-time string.
+
+          duration_seconds: The duration of the call in seconds.
+
+          user_id: The ID of the user associated with the call.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/crm/extensions/calling/2026-03/inbound-call",
+            body=await async_maybe_transform(
+                {
+                    "create_engagement": create_engagement,
+                    "engagement_properties": engagement_properties,
+                    "external_call_id": external_call_id,
+                    "final_call_status": final_call_status,
+                    "from_number": from_number,
+                    "potential_recipient_user_ids": potential_recipient_user_ids,
+                    "to_number": to_number,
+                    "call_started_timestamp": call_started_timestamp,
+                    "duration_seconds": duration_seconds,
+                    "user_id": user_id,
+                },
+                calling_create_inbound_call_params.CallingCreateInboundCallParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompletedThirdPartyCallResponse,
+        )
+
     async def get(
         self,
         app_id: int,
@@ -356,6 +552,9 @@ class AsyncCallingResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RecordingSettingsResponse:
         """
+        Retrieve the current recording settings for a specific app using the provided
+        app ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -384,7 +583,11 @@ class AsyncCallingResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """
+        """This endpoint is used to mark a call recording as ready.
+
+        It requires the
+        engagementId to identify the specific recording.
+
         Args:
           engagement_id: The unique identifier for the engagement associated with the call recording.
 
@@ -422,6 +625,9 @@ class CallingResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             calling.delete,
         )
+        self.create_inbound_call = to_raw_response_wrapper(
+            calling.create_inbound_call,
+        )
         self.get = to_raw_response_wrapper(
             calling.get,
         )
@@ -446,6 +652,9 @@ class AsyncCallingResourceWithRawResponse:
         )
         self.delete = async_to_raw_response_wrapper(
             calling.delete,
+        )
+        self.create_inbound_call = async_to_raw_response_wrapper(
+            calling.create_inbound_call,
         )
         self.get = async_to_raw_response_wrapper(
             calling.get,
@@ -472,6 +681,9 @@ class CallingResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             calling.delete,
         )
+        self.create_inbound_call = to_streamed_response_wrapper(
+            calling.create_inbound_call,
+        )
         self.get = to_streamed_response_wrapper(
             calling.get,
         )
@@ -496,6 +708,9 @@ class AsyncCallingResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             calling.delete,
+        )
+        self.create_inbound_call = async_to_streamed_response_wrapper(
+            calling.create_inbound_call,
         )
         self.get = async_to_streamed_response_wrapper(
             calling.get,

@@ -90,7 +90,18 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionDefinition:
         """
+        Create a new custom workflow action.
+
         Args:
+          action_url: The URL endpoint where the action is executed.
+
+          labels: Holds various labels associated with the action, including names and
+              descriptions.
+
+          published: Indicates whether the action is published and available for use.
+
+          archived_at: The timestamp indicating when the action was archived.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -145,7 +156,15 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionDefinition:
         """
+        Update an existing action definition by ID.
+
         Args:
+          action_url: The URL endpoint where the action is executed.
+
+          labels: Contains labels for the action, including names and descriptions.
+
+          published: Indicates whether the action is published and available for use.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -195,6 +214,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[PublicActionRevision]:
         """
+        Retrieve the versions of a definition by ID.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -252,6 +273,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Archive a function for a specific definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -298,7 +321,19 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Complete a specific blocked action execution by ID.
+
         Args:
+          output_fields: Contains the output fields associated with the callback, with each field
+              represented as a key-value pair.
+
+          typed_outputs: Holds the typed outputs related to the callback, structured as an object.
+
+          failure_reason_type: Indicates the reason for the failure of a callback completion.
+
+          request_context: Specifies the context in which the request is made, which can be one of several
+              predefined contexts.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -339,6 +374,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Complete a batch of blocked action executions.
+
         Args:
           extra_headers: Send extra headers
 
@@ -376,6 +413,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionFunctionIdentifier:
         """
+        Update a function for a given definition by ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -423,6 +462,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionFunctionIdentifier:
         """
+        Add a function for a given definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -466,7 +507,11 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Set whether a custom action definition requires an object.
+
         Args:
+          requires_object: Indicates whether a custom action definition requires an associated object.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -510,6 +555,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete a function within a given definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -551,6 +598,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionRevision:
         """
+        Retrieve a specific revision of a definition by revision ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -593,6 +642,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionFunction:
         """
+        Retrieve functions of a specific type for a given definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -632,6 +683,8 @@ class ActionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionDefinitionRequiresObjectResponse:
         """
+        Retrieve whether a custom action definition requires an object.
+
         Args:
           extra_headers: Send extra headers
 
@@ -699,7 +752,18 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionDefinition:
         """
+        Create a new custom workflow action.
+
         Args:
+          action_url: The URL endpoint where the action is executed.
+
+          labels: Holds various labels associated with the action, including names and
+              descriptions.
+
+          published: Indicates whether the action is published and available for use.
+
+          archived_at: The timestamp indicating when the action was archived.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -754,7 +818,15 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionDefinition:
         """
+        Update an existing action definition by ID.
+
         Args:
+          action_url: The URL endpoint where the action is executed.
+
+          labels: Contains labels for the action, including names and descriptions.
+
+          published: Indicates whether the action is published and available for use.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -804,6 +876,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PublicActionRevision, AsyncPage[PublicActionRevision]]:
         """
+        Retrieve the versions of a definition by ID.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -861,6 +935,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Archive a function for a specific definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -907,7 +983,19 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Complete a specific blocked action execution by ID.
+
         Args:
+          output_fields: Contains the output fields associated with the callback, with each field
+              represented as a key-value pair.
+
+          typed_outputs: Holds the typed outputs related to the callback, structured as an object.
+
+          failure_reason_type: Indicates the reason for the failure of a callback completion.
+
+          request_context: Specifies the context in which the request is made, which can be one of several
+              predefined contexts.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -948,6 +1036,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Complete a batch of blocked action executions.
+
         Args:
           extra_headers: Send extra headers
 
@@ -987,6 +1077,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionFunctionIdentifier:
         """
+        Update a function for a given definition by ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -1034,6 +1126,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionFunctionIdentifier:
         """
+        Add a function for a given definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -1077,7 +1171,11 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Set whether a custom action definition requires an object.
+
         Args:
+          requires_object: Indicates whether a custom action definition requires an associated object.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1121,6 +1219,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Delete a function within a given definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -1162,6 +1262,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionRevision:
         """
+        Retrieve a specific revision of a definition by revision ID.
+
         Args:
           extra_headers: Send extra headers
 
@@ -1204,6 +1306,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionFunction:
         """
+        Retrieve functions of a specific type for a given definition.
+
         Args:
           extra_headers: Send extra headers
 
@@ -1243,6 +1347,8 @@ class AsyncActionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicActionDefinitionRequiresObjectResponse:
         """
+        Retrieve whether a custom action definition requires an object.
+
         Args:
           extra_headers: Send extra headers
 

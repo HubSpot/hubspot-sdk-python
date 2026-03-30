@@ -57,9 +57,7 @@ class SpendResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSpendItem:
         """
-        Create a new campaign spend item for a specific campaign identified by its
-        unique ID. This endpoint allows you to add financial details related to campaign
-        expenditures, which can be useful for budget tracking and financial reporting.
+        Create a new campaign spend item
 
         Args:
           amount: The monetary value of the spend item.
@@ -113,12 +111,8 @@ class SpendResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSpendItem:
-        """Update a specific campaign spend item by its ID.
-
-        This endpoint allows you to
-        modify the details of a spend item associated with a marketing campaign, such as
-        its amount, name, or order. Use this to keep your campaign spend data accurate
-        and up-to-date.
+        """
+        Update a specific campaign spend item by ID
 
         Args:
           amount: The monetary value of the spend item.
@@ -172,11 +166,8 @@ class SpendResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete a specific campaign spend item by its ID.
-
-        This operation is useful for
-        removing spend items that are no longer needed or were added in error. Once
-        deleted, the spend item cannot be recovered.
+        """
+        Delete a specific campaign spend item by ID
 
         Args:
           extra_headers: Send extra headers
@@ -214,11 +205,8 @@ class SpendResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSpendItem:
-        """Retrieve details of a specific campaign spend item using its spendId.
-
-        This
-        endpoint allows you to access information about the spend associated with a
-        particular campaign, identified by the campaignGuid.
+        """
+        Read a campaign spend item by its spendId
 
         Args:
           extra_headers: Send extra headers
@@ -280,9 +268,7 @@ class AsyncSpendResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSpendItem:
         """
-        Create a new campaign spend item for a specific campaign identified by its
-        unique ID. This endpoint allows you to add financial details related to campaign
-        expenditures, which can be useful for budget tracking and financial reporting.
+        Create a new campaign spend item
 
         Args:
           amount: The monetary value of the spend item.
@@ -336,12 +322,8 @@ class AsyncSpendResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSpendItem:
-        """Update a specific campaign spend item by its ID.
-
-        This endpoint allows you to
-        modify the details of a spend item associated with a marketing campaign, such as
-        its amount, name, or order. Use this to keep your campaign spend data accurate
-        and up-to-date.
+        """
+        Update a specific campaign spend item by ID
 
         Args:
           amount: The monetary value of the spend item.
@@ -395,11 +377,8 @@ class AsyncSpendResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete a specific campaign spend item by its ID.
-
-        This operation is useful for
-        removing spend items that are no longer needed or were added in error. Once
-        deleted, the spend item cannot be recovered.
+        """
+        Delete a specific campaign spend item by ID
 
         Args:
           extra_headers: Send extra headers
@@ -437,11 +416,8 @@ class AsyncSpendResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicSpendItem:
-        """Retrieve details of a specific campaign spend item using its spendId.
-
-        This
-        endpoint allows you to access information about the spend associated with a
-        particular campaign, identified by the campaignGuid.
+        """
+        Read a campaign spend item by its spendId
 
         Args:
           extra_headers: Send extra headers

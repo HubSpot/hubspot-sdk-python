@@ -20,18 +20,25 @@ __all__ = ["ActionCreateParams", "InputFieldDependency"]
 
 class ActionCreateParams(TypedDict, total=False):
     action_url: Required[Annotated[str, PropertyInfo(alias="actionUrl")]]
+    """The URL endpoint where the action is executed."""
 
     functions: Required[Iterable[PublicActionFunctionParam]]
 
     input_fields: Required[Annotated[Iterable[PublicInputFieldDefinitionParam], PropertyInfo(alias="inputFields")]]
 
     labels: Required[Dict[str, PublicActionLabelsParam]]
+    """
+    Holds various labels associated with the action, including names and
+    descriptions.
+    """
 
     object_types: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="objectTypes")]]
 
     published: Required[bool]
+    """Indicates whether the action is published and available for use."""
 
     archived_at: Annotated[int, PropertyInfo(alias="archivedAt")]
+    """The timestamp indicating when the action was archived."""
 
     execution_rules: Annotated[Iterable[PublicExecutionTranslationRuleParam], PropertyInfo(alias="executionRules")]
 

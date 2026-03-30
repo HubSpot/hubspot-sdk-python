@@ -10,7 +10,10 @@ __all__ = ["LongFieldSchema"]
 
 class LongFieldSchema(BaseModel):
     type: Literal["LONG"]
+    """The type of the field, which is LONG by default."""
 
     maximum: Optional[int] = None
+    """The maximum value allowed for the long field."""
 
     minimum: Optional[int] = None
+    """The minimum value allowed for the long field."""

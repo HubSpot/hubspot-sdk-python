@@ -98,10 +98,7 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of carts by ID (`objectId`) or unique property value
-        (`idProperty`). Provided property values will be overwritten. Read-only and
-        non-existent properties will result in an error. Properties values can be
-        cleared by passing an empty string.
+        Update a batch of carts using their internal IDs or unique property values.
 
         Args:
           extra_headers: Send extra headers
@@ -132,11 +129,8 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete a batch of carts by ID.
-
-        Deleted carts can be restored within 90 days of
-        deletion. Learn more about
-        [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
+        """
+        Archive a batch of carts identified by their IDs.
 
         Args:
           extra_headers: Send extra headers
@@ -173,8 +167,8 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Retrieve a batch of carts by ID (`objectId`) or unique property value
-        (`idProperty`).
+        Retrieve carts by ID, or include the `idProperty` parameter to retrieve carts by
+        a custom unique value property.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -226,10 +220,9 @@ class BatchResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Batch create and update a batch of carts by a unique property.
-
-        Carts that don't
-        exist will be created, while existing carts will be updated.
+        """
+        Create or update records identified by a unique property value as specified by
+        the `idProperty` query parameter.
 
         Args:
           extra_headers: Send extra headers
@@ -314,10 +307,7 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of carts by ID (`objectId`) or unique property value
-        (`idProperty`). Provided property values will be overwritten. Read-only and
-        non-existent properties will result in an error. Properties values can be
-        cleared by passing an empty string.
+        Update a batch of carts using their internal IDs or unique property values.
 
         Args:
           extra_headers: Send extra headers
@@ -348,11 +338,8 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete a batch of carts by ID.
-
-        Deleted carts can be restored within 90 days of
-        deletion. Learn more about
-        [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
+        """
+        Archive a batch of carts identified by their IDs.
 
         Args:
           extra_headers: Send extra headers
@@ -389,8 +376,8 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Retrieve a batch of carts by ID (`objectId`) or unique property value
-        (`idProperty`).
+        Retrieve carts by ID, or include the `idProperty` parameter to retrieve carts by
+        a custom unique value property.
 
         Args:
           properties: Key-value pairs for setting properties for the new object.
@@ -442,10 +429,9 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicUpsertObject:
-        """Batch create and update a batch of carts by a unique property.
-
-        Carts that don't
-        exist will be created, while existing carts will be updated.
+        """
+        Create or update records identified by a unique property value as specified by
+        the `idProperty` query parameter.
 
         Args:
           extra_headers: Send extra headers

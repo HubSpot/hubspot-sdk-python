@@ -65,6 +65,18 @@ class AttendanceResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSubscriberVidResponse:
         """
+        Records the participation of multiple HubSpot contacts in a Marketing Event
+        using their HubSpot contact IDs.
+
+        Additional Functionality:
+
+        - Adds a timeline event to the contacts.
+
+        Allowed Properties: For the state "attend":
+
+        - joinedAt
+        - leftAt
+
         Args:
           inputs: List of HubSpot contacts to subscribe to the marketing event
 
@@ -110,6 +122,22 @@ class AttendanceResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSubscriberEmailResponse:
         """
+        Records the participation of multiple HubSpot contacts in a Marketing Event
+        using their email addresses.
+
+        If a contact does not exist, it will be automatically created. The
+        contactProperties field is used exclusively for creating new contacts and will
+        not update properties of existing contacts.
+
+        Additional Functionality:
+
+        - Adds a timeline event to the contacts.
+
+        Allowed Properties: For the state "attend":
+
+        - joinedAt
+        - leftAt
+
         Args:
           inputs: List of marketing event details to create or update
 
@@ -156,6 +184,18 @@ class AttendanceResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSubscriberVidResponse:
         """
+        Records the participation of multiple HubSpot contacts in a Marketing Event
+        using their HubSpot contact IDs.
+
+        Additional Functionality:
+
+        - Adds a timeline event to the contacts.
+
+        Allowed Properties: For the state "attend":
+
+        - joinedAt
+        - leftAt
+
         Args:
           inputs: List of HubSpot contacts to subscribe to the marketing event
 
@@ -209,6 +249,22 @@ class AttendanceResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSubscriberEmailResponse:
         """
+        Records the participation of multiple HubSpot contacts in a Marketing Event
+        using their email addresses.
+
+        If a contact does not exist, it will be automatically created. The
+        contactProperties field is used exclusively for creating new contacts and will
+        not update properties of existing contacts.
+
+        Additional Functionality:
+
+        - Adds a timeline event to the contacts.
+
+        Allowed Properties: For the state "attend":
+
+        - joinedAt
+        - leftAt
+
         Args:
           inputs: List of marketing event details to create or update
 
@@ -282,6 +338,18 @@ class AsyncAttendanceResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSubscriberVidResponse:
         """
+        Records the participation of multiple HubSpot contacts in a Marketing Event
+        using their HubSpot contact IDs.
+
+        Additional Functionality:
+
+        - Adds a timeline event to the contacts.
+
+        Allowed Properties: For the state "attend":
+
+        - joinedAt
+        - leftAt
+
         Args:
           inputs: List of HubSpot contacts to subscribe to the marketing event
 
@@ -327,6 +395,22 @@ class AsyncAttendanceResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSubscriberEmailResponse:
         """
+        Records the participation of multiple HubSpot contacts in a Marketing Event
+        using their email addresses.
+
+        If a contact does not exist, it will be automatically created. The
+        contactProperties field is used exclusively for creating new contacts and will
+        not update properties of existing contacts.
+
+        Additional Functionality:
+
+        - Adds a timeline event to the contacts.
+
+        Allowed Properties: For the state "attend":
+
+        - joinedAt
+        - leftAt
+
         Args:
           inputs: List of marketing event details to create or update
 
@@ -373,6 +457,18 @@ class AsyncAttendanceResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSubscriberVidResponse:
         """
+        Records the participation of multiple HubSpot contacts in a Marketing Event
+        using their HubSpot contact IDs.
+
+        Additional Functionality:
+
+        - Adds a timeline event to the contacts.
+
+        Allowed Properties: For the state "attend":
+
+        - joinedAt
+        - leftAt
+
         Args:
           inputs: List of HubSpot contacts to subscribe to the marketing event
 
@@ -426,6 +522,22 @@ class AsyncAttendanceResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSubscriberEmailResponse:
         """
+        Records the participation of multiple HubSpot contacts in a Marketing Event
+        using their email addresses.
+
+        If a contact does not exist, it will be automatically created. The
+        contactProperties field is used exclusively for creating new contacts and will
+        not update properties of existing contacts.
+
+        Additional Functionality:
+
+        - Adds a timeline event to the contacts.
+
+        Allowed Properties: For the state "attend":
+
+        - joinedAt
+        - leftAt
+
         Args:
           inputs: List of marketing event details to create or update
 

@@ -9,7 +9,7 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.shared import BatchResponseProperty
+from hubspot_sdk.types.cms import BatchResponseProperty
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +22,7 @@ class TestBatch:
     def test_method_create(self, client: Hubspot) -> None:
         batch = client.cms.media_bridge.batch.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[
                 {
                     "field_type": "booleancheckbox",
@@ -40,7 +40,7 @@ class TestBatch:
     def test_raw_response_create(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.batch.with_raw_response.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[
                 {
                     "field_type": "booleancheckbox",
@@ -62,7 +62,7 @@ class TestBatch:
     def test_streaming_response_create(self, client: Hubspot) -> None:
         with client.cms.media_bridge.batch.with_streaming_response.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[
                 {
                     "field_type": "booleancheckbox",
@@ -84,25 +84,10 @@ class TestBatch:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_create(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            client.cms.media_bridge.batch.with_raw_response.create(
-                object_type="objectType",
-                app_id="",
-                inputs=[
-                    {
-                        "field_type": "booleancheckbox",
-                        "group_name": "groupName",
-                        "label": "label",
-                        "name": "name",
-                        "type": "bool",
-                    }
-                ],
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.batch.with_raw_response.create(
                 object_type="",
-                app_id="appId",
+                app_id=0,
                 inputs=[
                     {
                         "field_type": "booleancheckbox",
@@ -119,7 +104,7 @@ class TestBatch:
     def test_method_delete(self, client: Hubspot) -> None:
         batch = client.cms.media_bridge.batch.delete(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[{"name": "name"}],
         )
         assert batch is None
@@ -129,7 +114,7 @@ class TestBatch:
     def test_raw_response_delete(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.batch.with_raw_response.delete(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[{"name": "name"}],
         )
 
@@ -143,7 +128,7 @@ class TestBatch:
     def test_streaming_response_delete(self, client: Hubspot) -> None:
         with client.cms.media_bridge.batch.with_streaming_response.delete(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
@@ -157,17 +142,10 @@ class TestBatch:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            client.cms.media_bridge.batch.with_raw_response.delete(
-                object_type="objectType",
-                app_id="",
-                inputs=[{"name": "name"}],
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.batch.with_raw_response.delete(
                 object_type="",
-                app_id="appId",
+                app_id=0,
                 inputs=[{"name": "name"}],
             )
 
@@ -176,7 +154,7 @@ class TestBatch:
     def test_method_get(self, client: Hubspot) -> None:
         batch = client.cms.media_bridge.batch.get(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             archived=True,
             data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
@@ -188,7 +166,7 @@ class TestBatch:
     def test_raw_response_get(self, client: Hubspot) -> None:
         response = client.cms.media_bridge.batch.with_raw_response.get(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             archived=True,
             data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
@@ -204,7 +182,7 @@ class TestBatch:
     def test_streaming_response_get(self, client: Hubspot) -> None:
         with client.cms.media_bridge.batch.with_streaming_response.get(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             archived=True,
             data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
@@ -220,19 +198,10 @@ class TestBatch:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get(self, client: Hubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            client.cms.media_bridge.batch.with_raw_response.get(
-                object_type="objectType",
-                app_id="",
-                archived=True,
-                data_sensitivity="highly_sensitive",
-                inputs=[{"name": "name"}],
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.batch.with_raw_response.get(
                 object_type="",
-                app_id="appId",
+                app_id=0,
                 archived=True,
                 data_sensitivity="highly_sensitive",
                 inputs=[{"name": "name"}],
@@ -249,7 +218,7 @@ class TestAsyncBatch:
     async def test_method_create(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.media_bridge.batch.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[
                 {
                     "field_type": "booleancheckbox",
@@ -267,7 +236,7 @@ class TestAsyncBatch:
     async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.batch.with_raw_response.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[
                 {
                     "field_type": "booleancheckbox",
@@ -289,7 +258,7 @@ class TestAsyncBatch:
     async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.batch.with_streaming_response.create(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[
                 {
                     "field_type": "booleancheckbox",
@@ -311,25 +280,10 @@ class TestAsyncBatch:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            await async_client.cms.media_bridge.batch.with_raw_response.create(
-                object_type="objectType",
-                app_id="",
-                inputs=[
-                    {
-                        "field_type": "booleancheckbox",
-                        "group_name": "groupName",
-                        "label": "label",
-                        "name": "name",
-                        "type": "bool",
-                    }
-                ],
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.batch.with_raw_response.create(
                 object_type="",
-                app_id="appId",
+                app_id=0,
                 inputs=[
                     {
                         "field_type": "booleancheckbox",
@@ -346,7 +300,7 @@ class TestAsyncBatch:
     async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.media_bridge.batch.delete(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[{"name": "name"}],
         )
         assert batch is None
@@ -356,7 +310,7 @@ class TestAsyncBatch:
     async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.batch.with_raw_response.delete(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[{"name": "name"}],
         )
 
@@ -370,7 +324,7 @@ class TestAsyncBatch:
     async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.batch.with_streaming_response.delete(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             inputs=[{"name": "name"}],
         ) as response:
             assert not response.is_closed
@@ -384,17 +338,10 @@ class TestAsyncBatch:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            await async_client.cms.media_bridge.batch.with_raw_response.delete(
-                object_type="objectType",
-                app_id="",
-                inputs=[{"name": "name"}],
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.batch.with_raw_response.delete(
                 object_type="",
-                app_id="appId",
+                app_id=0,
                 inputs=[{"name": "name"}],
             )
 
@@ -403,7 +350,7 @@ class TestAsyncBatch:
     async def test_method_get(self, async_client: AsyncHubspot) -> None:
         batch = await async_client.cms.media_bridge.batch.get(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             archived=True,
             data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
@@ -415,7 +362,7 @@ class TestAsyncBatch:
     async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
         response = await async_client.cms.media_bridge.batch.with_raw_response.get(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             archived=True,
             data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
@@ -431,7 +378,7 @@ class TestAsyncBatch:
     async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
         async with async_client.cms.media_bridge.batch.with_streaming_response.get(
             object_type="objectType",
-            app_id="appId",
+            app_id=0,
             archived=True,
             data_sensitivity="highly_sensitive",
             inputs=[{"name": "name"}],
@@ -447,19 +394,10 @@ class TestAsyncBatch:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
-            await async_client.cms.media_bridge.batch.with_raw_response.get(
-                object_type="objectType",
-                app_id="",
-                archived=True,
-                data_sensitivity="highly_sensitive",
-                inputs=[{"name": "name"}],
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.batch.with_raw_response.get(
                 object_type="",
-                app_id="appId",
+                app_id=0,
                 archived=True,
                 data_sensitivity="highly_sensitive",
                 inputs=[{"name": "name"}],

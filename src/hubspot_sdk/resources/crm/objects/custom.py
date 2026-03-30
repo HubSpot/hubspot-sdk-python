@@ -77,8 +77,7 @@ class CustomResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create multiple CRM objects in a single request by specifying the object type
-        and providing the necessary properties and associations for each object.
+        Create a batch of objects
 
         Args:
           extra_headers: Send extra headers
@@ -113,8 +112,7 @@ class CustomResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of CRM objects by their internal IDs or unique property values,
-        allowing for efficient modifications of multiple records in a single request.
+        Update a batch of objects by internal ID, or unique property values
 
         Args:
           extra_headers: Send extra headers
@@ -224,10 +222,8 @@ class CustomResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Archive a batch of objects by their unique IDs.
-
-        This operation moves the
-        specified objects to the recycling bin, effectively marking them as archived.
+        """
+        Archive a batch of objects by ID
 
         Args:
           extra_headers: Send extra headers
@@ -376,10 +372,6 @@ class CustomResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
-        Execute a search query to find CRM objects of a given type, using specified
-        filters and properties. The search can be customized with filters, sorting, and
-        pagination options.
-
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 
@@ -493,8 +485,7 @@ class AsyncCustomResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Create multiple CRM objects in a single request by specifying the object type
-        and providing the necessary properties and associations for each object.
+        Create a batch of objects
 
         Args:
           extra_headers: Send extra headers
@@ -529,8 +520,7 @@ class AsyncCustomResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of CRM objects by their internal IDs or unique property values,
-        allowing for efficient modifications of multiple records in a single request.
+        Update a batch of objects by internal ID, or unique property values
 
         Args:
           extra_headers: Send extra headers
@@ -640,10 +630,8 @@ class AsyncCustomResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Archive a batch of objects by their unique IDs.
-
-        This operation moves the
-        specified objects to the recycling bin, effectively marking them as archived.
+        """
+        Archive a batch of objects by ID
 
         Args:
           extra_headers: Send extra headers
@@ -792,10 +780,6 @@ class AsyncCustomResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseWithTotalSimplePublicObject:
         """
-        Execute a search query to find CRM objects of a given type, using specified
-        filters and properties. The search can be customized with filters, sorting, and
-        pagination options.
-
         Args:
           after: A paging cursor token for retrieving subsequent pages.
 

@@ -9,8 +9,11 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.events import AssociationDefinition
-from hubspot_sdk.types.shared import ObjectSchema, ObjectTypeDefinition, CollectionResponseObjectSchemaNoPaging
+from hubspot_sdk.types.crm import (
+    ObjectSchema,
+    CollectionResponseObjectSchemaNoPaging,
+)
+from hubspot_sdk.types.shared import ObjectTypeDefinition, AssociationDefinition
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

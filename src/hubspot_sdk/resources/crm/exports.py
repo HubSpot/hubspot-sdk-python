@@ -54,7 +54,10 @@ class ExportsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaskLocator: ...
+    ) -> TaskLocator:
+        """Begins exporting CRM data for the portal as specified in the request body"""
+        ...
+
     @overload
     def create_async(
         self,
@@ -65,7 +68,10 @@ class ExportsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaskLocator: ...
+    ) -> TaskLocator:
+        """Begins exporting CRM data for the portal as specified in the request body"""
+        ...
+
     def create_async(
         self,
         *,
@@ -96,6 +102,9 @@ class ExportsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicExportResponse:
         """
+        Retrieve detailed information about a specific CRM export, including its current
+        state and properties.
+
         Args:
           extra_headers: Send extra headers
 
@@ -125,6 +134,9 @@ class ExportsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ActionResponseWithSingleResultUri:
         """
+        Returns the status of the export with taskId, including the URL of the resulting
+        file if the export status is COMPLETE
+
         Args:
           extra_headers: Send extra headers
 
@@ -173,7 +185,10 @@ class AsyncExportsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaskLocator: ...
+    ) -> TaskLocator:
+        """Begins exporting CRM data for the portal as specified in the request body"""
+        ...
+
     @overload
     async def create_async(
         self,
@@ -184,7 +199,10 @@ class AsyncExportsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaskLocator: ...
+    ) -> TaskLocator:
+        """Begins exporting CRM data for the portal as specified in the request body"""
+        ...
+
     async def create_async(
         self,
         *,
@@ -215,6 +233,9 @@ class AsyncExportsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PublicExportResponse:
         """
+        Retrieve detailed information about a specific CRM export, including its current
+        state and properties.
+
         Args:
           extra_headers: Send extra headers
 
@@ -244,6 +265,9 @@ class AsyncExportsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ActionResponseWithSingleResultUri:
         """
+        Returns the status of the export with taskId, including the URL of the resulting
+        file if the export status is COMPLETE
+
         Args:
           extra_headers: Send extra headers
 

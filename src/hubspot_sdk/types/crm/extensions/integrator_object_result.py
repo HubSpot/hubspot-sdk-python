@@ -26,7 +26,7 @@ class IntegratorObjectResult(BaseModel):
     """
 
     title: str
-    """The title of the object card, displayed to users."""
+    """The top-level title for this card. Displayed to users in the CRM UI."""
 
     tokens: List[ObjectToken]
     """A collection of tokens representing specific properties related to the card."""

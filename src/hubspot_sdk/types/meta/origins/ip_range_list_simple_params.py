@@ -10,13 +10,5 @@ __all__ = ["IPRangeListSimpleParams"]
 
 class IPRangeListSimpleParams(TypedDict, total=False):
     direction: List[Literal["INGRESS", "EGRESS"]]
-    """An array of directions to filter the IP ranges by.
 
-    Valid values are `INGRESS` and `EGRESS`.
-    """
-
-    service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING"]]
-    """An array specifying the service types to filter by.
-
-    Valid values include `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
-    """
+    service: List[Literal["EMAIL", "API", "DNS", "WEB_SCRAPING", "TEST_SERVICE"]]

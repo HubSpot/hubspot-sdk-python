@@ -79,6 +79,10 @@ class Property(BaseModel):
     date_display_hint: Optional[Literal["absolute", "absolute_with_relative", "time_since", "time_until"]] = FieldInfo(
         alias="dateDisplayHint", default=None
     )
+    """
+    Controls how date properties are displayed in the HubSpot UI, with options such
+    as 'absolute', 'absolute_with_relative', 'time_since', and 'time_until'.
+    """
 
     display_order: Optional[int] = FieldInfo(alias="displayOrder", default=None)
     """
@@ -104,10 +108,7 @@ class Property(BaseModel):
     """
 
     hidden: Optional[bool] = None
-    """Whether or not the property will be hidden from the HubSpot UI.
-
-    It's recommended that this be set to false for custom properties.
-    """
+    """Hidden options won't be shown in HubSpot."""
 
     hubspot_defined: Optional[bool] = FieldInfo(alias="hubspotDefined", default=None)
     """This will be true for default object properties built into HubSpot."""
@@ -132,7 +133,7 @@ class Property(BaseModel):
     """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
-    """The timestamp when the property was last updated, in ISO 8601 format."""
+    """When the object type was last updated."""
 
     updated_user_id: Optional[str] = FieldInfo(alias="updatedUserId", default=None)
     """The internal user ID of the user who updated the property in HubSpot.

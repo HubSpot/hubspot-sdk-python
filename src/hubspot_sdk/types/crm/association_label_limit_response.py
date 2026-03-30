@@ -5,7 +5,7 @@ from typing import List
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.object_type_definition import ObjectTypeDefinition
+from .object_type_definition import ObjectTypeDefinition
 
 __all__ = ["AssociationLabelLimitResponse"]
 

@@ -56,10 +56,10 @@ class BatchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of Partner Clients by ID (`objectId`) or unique property value
-        (`idProperty`). Provided property values will be overwritten. Read-only and
-        non-existent properties will result in an error. Properties values can be
-        cleared by passing an empty string.
+        This endpoint allows you to update several partner client records at once by
+        providing a batch of CRM object records with their respective IDs and
+        properties. It is useful for synchronizing data across systems or making bulk
+        updates efficiently.
 
         Args:
           extra_headers: Send extra headers
@@ -112,10 +112,10 @@ class AsyncBatchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseSimplePublicObject:
         """
-        Update a batch of Partner Clients by ID (`objectId`) or unique property value
-        (`idProperty`). Provided property values will be overwritten. Read-only and
-        non-existent properties will result in an error. Properties values can be
-        cleared by passing an empty string.
+        This endpoint allows you to update several partner client records at once by
+        providing a batch of CRM object records with their respective IDs and
+        properties. It is useful for synchronizing data across systems or making bulk
+        updates efficiently.
 
         Args:
           extra_headers: Send extra headers

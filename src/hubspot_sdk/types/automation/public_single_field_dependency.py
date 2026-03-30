@@ -12,7 +12,9 @@ __all__ = ["PublicSingleFieldDependency"]
 
 class PublicSingleFieldDependency(BaseModel):
     controlling_field_name: str = FieldInfo(alias="controllingFieldName")
+    """The name of the field that controls the dependency."""
 
     dependency_type: Literal["SINGLE_FIELD"] = FieldInfo(alias="dependencyType")
+    """The type of dependency, with the default value being 'SINGLE_FIELD'."""
 
     dependent_field_names: List[str] = FieldInfo(alias="dependentFieldNames")

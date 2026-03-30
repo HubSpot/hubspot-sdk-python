@@ -7,3 +7,7 @@ __all__ = ["CardMigrateViewsResponse"]
 
 class CardMigrateViewsResponse(BaseModel):
     message: str
+    """
+    A human readable message describing the error along with remediation steps where
+    appropriate
+    """

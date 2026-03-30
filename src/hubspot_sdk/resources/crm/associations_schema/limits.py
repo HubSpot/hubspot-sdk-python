@@ -64,8 +64,8 @@ class LimitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging:
         """
-        Fetch all limits for CRM associations, which include details about cardinality
-        limits (i.e., one-to-many vs one-to-one).
+        Retrieve all configured association limits between objects, which include
+        details about how different CRM object types are associated with each other.
         """
         return self._get(
             "/crm/associations/2026-03/definitions/configurations/all",
@@ -89,8 +89,8 @@ class LimitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseVoid:
         """
-        Batch delete limits defined for associations between two specified CRM object
-        types.
+        Batch delete limits that have been defined for association types between two
+        object types.
 
         Args:
           extra_headers: Send extra headers
@@ -132,9 +132,8 @@ class LimitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociationDefinitionConfigurationUpdateResult:
         """
-        Update multiple association configurations between two specified CRM object
-        types in a single batch operation. This defines details about cardinality limits
-        (i.e., one-to-many vs one-to-one).
+        Batch update association limits that have been configured between two object
+        types.
 
         Args:
           extra_headers: Send extra headers
@@ -175,8 +174,9 @@ class LimitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging:
         """
-        Retrieve the cardinality limits for associations between two specified CRM
-        object types (i.e., one-to-many vs one-to-one).
+        Retrieve the configuration details for associations between two specified CRM
+        object types. Use this endpoint to understand limits that have been set for
+        specific association types.
 
         Args:
           extra_headers: Send extra headers
@@ -235,8 +235,8 @@ class AsyncLimitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging:
         """
-        Fetch all limits for CRM associations, which include details about cardinality
-        limits (i.e., one-to-many vs one-to-one).
+        Retrieve all configured association limits between objects, which include
+        details about how different CRM object types are associated with each other.
         """
         return await self._get(
             "/crm/associations/2026-03/definitions/configurations/all",
@@ -260,8 +260,8 @@ class AsyncLimitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseVoid:
         """
-        Batch delete limits defined for associations between two specified CRM object
-        types.
+        Batch delete limits that have been defined for association types between two
+        object types.
 
         Args:
           extra_headers: Send extra headers
@@ -303,9 +303,8 @@ class AsyncLimitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponsePublicAssociationDefinitionConfigurationUpdateResult:
         """
-        Update multiple association configurations between two specified CRM object
-        types in a single batch operation. This defines details about cardinality limits
-        (i.e., one-to-many vs one-to-one).
+        Batch update association limits that have been configured between two object
+        types.
 
         Args:
           extra_headers: Send extra headers
@@ -346,8 +345,9 @@ class AsyncLimitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging:
         """
-        Retrieve the cardinality limits for associations between two specified CRM
-        object types (i.e., one-to-many vs one-to-one).
+        Retrieve the configuration details for associations between two specified CRM
+        object types. Use this endpoint to understand limits that have been set for
+        specific association types.
 
         Args:
           extra_headers: Send extra headers

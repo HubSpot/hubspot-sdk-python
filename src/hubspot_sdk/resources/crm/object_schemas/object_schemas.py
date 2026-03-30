@@ -33,12 +33,12 @@ from ....types.crm import (
     object_schema_create_association_params,
 )
 from ...._base_client import make_request_options
-from ....types.shared.object_schema import ObjectSchema
-from ....types.events.association_definition import AssociationDefinition
+from ....types.crm.object_schema import ObjectSchema
+from ....types.shared.association_definition import AssociationDefinition
 from ....types.shared.object_type_definition import ObjectTypeDefinition
 from ....types.crm.object_type_property_create_param import ObjectTypePropertyCreateParam
 from ....types.shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
-from ....types.shared.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
+from ....types.crm.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
 
 __all__ = ["ObjectSchemasResource", "AsyncObjectSchemasResource"]
 
@@ -88,7 +88,12 @@ class ObjectSchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectSchema:
         """
+        Create a new custom object schema by defining its properties and associations.
+
         Args:
+          allows_sensitive_properties: Determines if the object type can include properties that are marked as
+              sensitive.
+
           associated_objects: Associations defined for this object type.
 
           name: A unique name for this object. For internal use only.
@@ -103,6 +108,8 @@ class ObjectSchemasResource(SyncAPIResource):
 
           secondary_display_properties: The names of secondary properties for this object. These will be displayed as
               secondary on the HubSpot record page for this object type.
+
+          description: A brief explanation of the object type.
 
           primary_display_property: The name of the primary property for this object. This will be displayed as
               primary on the HubSpot record page for this object type.
@@ -159,6 +166,9 @@ class ObjectSchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectTypeDefinition:
         """
+        Update attributes of a custom object schema, such as properties and labels,
+        using the object type ID or fully qualified name.
+
         Args:
           extra_headers: Send extra headers
 
@@ -207,6 +217,9 @@ class ObjectSchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectSchemaNoPaging:
         """
+        Retrieve all custom object schemas, with options to include property
+        definitions, association definitions, and audit metadata.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -251,6 +264,9 @@ class ObjectSchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Remove a custom object schema from the account using its object type ID or fully
+        qualified name.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -292,6 +308,10 @@ class ObjectSchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssociationDefinition:
         """
+        Create a new association between the specified object type and another object
+        type. This operation requires the definition of the association attributes, such
+        as the primary and target object type IDs.
+
         Args:
           extra_headers: Send extra headers
 
@@ -332,6 +352,10 @@ class ObjectSchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Remove an association between two object types identified by the association
+        identifier and object type. This operation is irreversible and will permanently
+        delete the specified association.
+
         Args:
           extra_headers: Send extra headers
 
@@ -375,6 +399,9 @@ class ObjectSchemasResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectSchema:
         """
+        Retrieve details of a custom object schema, including its properties and
+        associations, using the object type ID or fully qualified name.
+
         Args:
           extra_headers: Send extra headers
 
@@ -451,7 +478,12 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectSchema:
         """
+        Create a new custom object schema by defining its properties and associations.
+
         Args:
+          allows_sensitive_properties: Determines if the object type can include properties that are marked as
+              sensitive.
+
           associated_objects: Associations defined for this object type.
 
           name: A unique name for this object. For internal use only.
@@ -466,6 +498,8 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
 
           secondary_display_properties: The names of secondary properties for this object. These will be displayed as
               secondary on the HubSpot record page for this object type.
+
+          description: A brief explanation of the object type.
 
           primary_display_property: The name of the primary property for this object. This will be displayed as
               primary on the HubSpot record page for this object type.
@@ -522,6 +556,9 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectTypeDefinition:
         """
+        Update attributes of a custom object schema, such as properties and labels,
+        using the object type ID or fully qualified name.
+
         Args:
           extra_headers: Send extra headers
 
@@ -570,6 +607,9 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectionResponseObjectSchemaNoPaging:
         """
+        Retrieve all custom object schemas, with options to include property
+        definitions, association definitions, and audit metadata.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -614,6 +654,9 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Remove a custom object schema from the account using its object type ID or fully
+        qualified name.
+
         Args:
           archived: Whether to return only results that have been archived.
 
@@ -657,6 +700,10 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssociationDefinition:
         """
+        Create a new association between the specified object type and another object
+        type. This operation requires the definition of the association attributes, such
+        as the primary and target object type IDs.
+
         Args:
           extra_headers: Send extra headers
 
@@ -697,6 +744,10 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        Remove an association between two object types identified by the association
+        identifier and object type. This operation is irreversible and will permanently
+        delete the specified association.
+
         Args:
           extra_headers: Send extra headers
 
@@ -740,6 +791,9 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ObjectSchema:
         """
+        Retrieve details of a custom object schema, including its properties and
+        associations, using the object type ID or fully qualified name.
+
         Args:
           extra_headers: Send extra headers
 

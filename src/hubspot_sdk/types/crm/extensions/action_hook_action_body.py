@@ -27,7 +27,7 @@ class ActionHookActionBody(BaseModel):
     """
 
     type: Literal["ACTION_HOOK"]
-    """Specifies the type of action, which is 'ACTION_HOOK' for action hooks."""
+    """The type of status."""
 
     url: str
     """The URL endpoint that will be called when the action is triggered."""
@@ -35,7 +35,4 @@ class ActionHookActionBody(BaseModel):
     confirmation: Optional[ActionConfirmationBody] = None
 
     label: Optional[str] = None
-    """
-    The label for the button that triggers the action as it will be displayed to
-    users.
-    """
+    """The label for this property as you'd like it displayed to users."""
