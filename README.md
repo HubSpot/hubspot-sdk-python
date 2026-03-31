@@ -31,22 +31,11 @@ The full API of this library can be found in [api.md](api.md).
 from hubspot_sdk import Hubspot
 
 client = Hubspot(
-    access_token="pat-na1-xxxxxxxx-xxxx",
+    access_token="My Access Token",
 )
 
-result = client.crm.objects.contacts.create(
-    associations=[
-        {
-            "to": {"id": "id"},
-            "types": [
-                {
-                    "association_category": "HUBSPOT_DEFINED",
-                    "association_type_id": 0,
-                }
-            ],
-        }
-    ],
-    properties={"email": "mark.s@lumon.industries"},
+result = client.crm.objects.contacts.get(
+    contact_id="contactId",
 )
 print(result.id)
 ```
@@ -60,24 +49,13 @@ import asyncio
 from hubspot_sdk import AsyncHubspot
 
 client = AsyncHubspot(
-    access_token="pat-na1-xxxxxxxx-xxxx",
+    access_token="My Access Token",
 )
 
 
 async def main() -> None:
-    result = await client.crm.objects.contacts.create(
-        associations=[
-            {
-                "to": {"id": "id"},
-                "types": [
-                    {
-                        "association_category": "HUBSPOT_DEFINED",
-                        "association_type_id": 0,
-                    }
-                ],
-            }
-        ],
-        properties={"email": "mark.s@lumon.industries"},
+    result = await client.crm.objects.contacts.get(
+        contact_id="contactId",
     )
     print(result.id)
 
@@ -108,22 +86,11 @@ from hubspot_sdk import AsyncHubspot
 
 async def main() -> None:
     async with AsyncHubspot(
-        access_token="pat-na1-xxxxxxxx-xxxx",
+        access_token="My Access Token",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        result = await client.crm.objects.contacts.create(
-            associations=[
-                {
-                    "to": {"id": "id"},
-                    "types": [
-                        {
-                            "association_category": "HUBSPOT_DEFINED",
-                            "association_type_id": 0,
-                        }
-                    ],
-                }
-            ],
-            properties={"email": "mark.s@lumon.industries"},
+        result = await client.crm.objects.contacts.get(
+            contact_id="contactId",
         )
         print(result.id)
 
@@ -298,7 +265,7 @@ try:
                 ],
             }
         ],
-        properties={"email": "mark.s@lumon.industries"},
+        properties={"foo": "string"},
     )
 except hubspot_sdk.APIConnectionError as e:
     print("The server could not be reached")
@@ -354,7 +321,7 @@ client.with_options(max_retries=5).crm.objects.contacts.create(
             ],
         }
     ],
-    properties={"email": "mark.s@lumon.industries"},
+    properties={"foo": "string"},
 )
 ```
 
@@ -390,7 +357,7 @@ client.with_options(timeout=5.0).crm.objects.contacts.create(
             ],
         }
     ],
-    properties={"email": "mark.s@lumon.industries"},
+    properties={"foo": "string"},
 )
 ```
 
@@ -443,7 +410,7 @@ response = client.crm.objects.contacts.with_raw_response.create(
         }],
     }],
     properties={
-        "email": "mark.s@lumon.industries"
+        "foo": "string"
     },
 )
 print(response.headers.get('X-My-Header'))
@@ -475,7 +442,7 @@ with client.crm.objects.contacts.with_streaming_response.create(
             ],
         }
     ],
-    properties={"email": "mark.s@lumon.industries"},
+    properties={"foo": "string"},
 ) as response:
     print(response.headers.get("X-My-Header"))
 
