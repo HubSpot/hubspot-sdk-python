@@ -9,6 +9,7 @@ from .card_display_body import CardDisplayBody as CardDisplayBody
 from .company_caller_id import CompanyCallerID as CompanyCallerID
 from .contact_caller_id import ContactCallerID as ContactCallerID
 from .external_settings import ExternalSettings as ExternalSettings
+from .settings_response import SettingsResponse as SettingsResponse
 from .top_level_actions import TopLevelActions as TopLevelActions
 from .card_actions_param import CardActionsParam as CardActionsParam
 from .object_coordinates import ObjectCoordinates as ObjectCoordinates
@@ -16,8 +17,6 @@ from .card_audit_response import CardAuditResponse as CardAuditResponse
 from .i_frame_action_body import IFrameActionBody as IFrameActionBody
 from .display_option_param import DisplayOptionParam as DisplayOptionParam
 from .public_card_response import PublicCardResponse as PublicCardResponse
-from .calling_create_params import CallingCreateParams as CallingCreateParams
-from .calling_update_params import CallingUpdateParams as CallingUpdateParams
 from .card_display_property import CardDisplayProperty as CardDisplayProperty
 from .card_fetch_body_param import CardFetchBodyParam as CardFetchBodyParam
 from .card_object_type_body import CardObjectTypeBody as CardObjectTypeBody
@@ -28,7 +27,6 @@ from .cards_dev_create_params import CardsDevCreateParams as CardsDevCreateParam
 from .cards_dev_update_params import CardsDevUpdateParams as CardsDevUpdateParams
 from .action_confirmation_body import ActionConfirmationBody as ActionConfirmationBody
 from .integrator_object_result import IntegratorObjectResult as IntegratorObjectResult
-from .calling_mark_ready_params import CallingMarkReadyParams as CallingMarkReadyParams
 from .public_card_list_response import PublicCardListResponse as PublicCardListResponse
 from .card_display_property_param import CardDisplayPropertyParam as CardDisplayPropertyParam
 from .card_fetch_body_patch_param import CardFetchBodyPatchParam as CardFetchBodyPatchParam
@@ -36,8 +34,26 @@ from .card_migrate_views_response import CardMigrateViewsResponse as CardMigrate
 from .card_object_type_body_param import CardObjectTypeBodyParam as CardObjectTypeBodyParam
 from .recording_settings_response import RecordingSettingsResponse as RecordingSettingsResponse
 from .formatted_phone_number_param import FormattedPhoneNumberParam as FormattedPhoneNumberParam
+from .calling_create_settings_params import CallingCreateSettingsParams as CallingCreateSettingsParams
+from .calling_update_settings_params import CallingUpdateSettingsParams as CallingUpdateSettingsParams
 from .cards_dev_migrate_views_params import CardsDevMigrateViewsParams as CardsDevMigrateViewsParams
 from .integrator_card_payload_response import IntegratorCardPayloadResponse as IntegratorCardPayloadResponse
 from .video_conferencing_update_params import VideoConferencingUpdateParams as VideoConferencingUpdateParams
 from .calling_create_inbound_call_params import CallingCreateInboundCallParams as CallingCreateInboundCallParams
 from .completed_third_party_call_response import CompletedThirdPartyCallResponse as CompletedThirdPartyCallResponse
+from .channel_connection_settings_response import ChannelConnectionSettingsResponse as ChannelConnectionSettingsResponse
+from .calling_create_recording_ready_params import (
+    CallingCreateRecordingReadyParams as CallingCreateRecordingReadyParams,
+)
+from .calling_create_recording_settings_params import (
+    CallingCreateRecordingSettingsParams as CallingCreateRecordingSettingsParams,
+)
+from .calling_update_recording_settings_params import (
+    CallingUpdateRecordingSettingsParams as CallingUpdateRecordingSettingsParams,
+)
+from .calling_create_channel_connection_settings_params import (
+    CallingCreateChannelConnectionSettingsParams as CallingCreateChannelConnectionSettingsParams,
+)
+from .calling_update_channel_connection_settings_params import (
+    CallingUpdateChannelConnectionSettingsParams as CallingUpdateChannelConnectionSettingsParams,
+)

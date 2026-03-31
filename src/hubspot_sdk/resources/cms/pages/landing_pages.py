@@ -2693,7 +2693,7 @@ class LandingPagesResource(SyncAPIResource):
             cast_to=Page,
         )
 
-    def publish_draft(
+    def push_draft_live(
         self,
         object_id: str,
         *,
@@ -6664,7 +6664,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
             cast_to=Page,
         )
 
-    async def publish_draft(
+    async def push_draft_live(
         self,
         object_id: str,
         *,
@@ -8001,8 +8001,8 @@ class LandingPagesResourceWithRawResponse:
         self.get_draft = to_raw_response_wrapper(
             landing_pages.get_draft,
         )
-        self.publish_draft = to_raw_response_wrapper(
-            landing_pages.publish_draft,
+        self.push_draft_live = to_raw_response_wrapper(
+            landing_pages.push_draft_live,
         )
         self.reset_draft = to_raw_response_wrapper(
             landing_pages.reset_draft,
@@ -8040,8 +8040,8 @@ class AsyncLandingPagesResourceWithRawResponse:
         self.get_draft = async_to_raw_response_wrapper(
             landing_pages.get_draft,
         )
-        self.publish_draft = async_to_raw_response_wrapper(
-            landing_pages.publish_draft,
+        self.push_draft_live = async_to_raw_response_wrapper(
+            landing_pages.push_draft_live,
         )
         self.reset_draft = async_to_raw_response_wrapper(
             landing_pages.reset_draft,
@@ -8079,8 +8079,8 @@ class LandingPagesResourceWithStreamingResponse:
         self.get_draft = to_streamed_response_wrapper(
             landing_pages.get_draft,
         )
-        self.publish_draft = to_streamed_response_wrapper(
-            landing_pages.publish_draft,
+        self.push_draft_live = to_streamed_response_wrapper(
+            landing_pages.push_draft_live,
         )
         self.reset_draft = to_streamed_response_wrapper(
             landing_pages.reset_draft,
@@ -8118,8 +8118,8 @@ class AsyncLandingPagesResourceWithStreamingResponse:
         self.get_draft = async_to_streamed_response_wrapper(
             landing_pages.get_draft,
         )
-        self.publish_draft = async_to_streamed_response_wrapper(
-            landing_pages.publish_draft,
+        self.push_draft_live = async_to_streamed_response_wrapper(
+            landing_pages.push_draft_live,
         )
         self.reset_draft = async_to_streamed_response_wrapper(
             landing_pages.reset_draft,

@@ -20,13 +20,13 @@ from ...._response import (
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.cms.pages import (
-    folder_get_folder_params,
-    folder_list_folders_params,
-    folder_create_folder_params,
-    folder_delete_folder_params,
-    folder_update_folder_params,
-    folder_get_folders_batch_params,
-    folder_list_folder_revisions_params,
+    folder_get_params,
+    folder_list_params,
+    folder_create_params,
+    folder_delete_params,
+    folder_update_params,
+    folder_batch_get_params,
+    folder_list_revisions_params,
 )
 from ....types.cms.content_folder import ContentFolder
 from ....types.cms.content_folder_version import ContentFolderVersion
@@ -55,7 +55,7 @@ class FoldersResource(SyncAPIResource):
         """
         return FoldersResourceWithStreamingResponse(self)
 
-    def create_folder(
+    def create(
         self,
         *,
         id: str,
@@ -110,7 +110,7 @@ class FoldersResource(SyncAPIResource):
                     "parent_folder_id": parent_folder_id,
                     "updated": updated,
                 },
-                folder_create_folder_params.FolderCreateFolderParams,
+                folder_create_params.FolderCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -118,53 +118,18 @@ class FoldersResource(SyncAPIResource):
             cast_to=ContentFolder,
         )
 
-    def delete_folder(
+    def update(
         self,
         object_id: str,
         *,
+        id: str,
+        category: int,
+        created: Union[str, datetime],
+        deleted_at: Union[str, datetime],
+        name: str,
+        parent_folder_id: int,
+        updated: Union[str, datetime],
         archived: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Delete a landing page folder, specified by its ID.
-
-        Args:
-          archived: Whether to return only results that have been archived.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"archived": archived}, folder_delete_folder_params.FolderDeleteFolderParams),
-            ),
-            cast_to=NoneType,
-        )
-
-    def get_folder(
-        self,
-        object_id: str,
-        *,
-        archived: bool | Omit = omit,
-        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -172,10 +137,26 @@ class FoldersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContentFolder:
-        """
-        Retrieve a landing page folder, specified by its ID.
+        """Partially update a landing page folder, specified by the folder ID.
+
+        You only
+        need to specify the details values that you are modifying.
 
         Args:
+          id: The unique ID of the content folder.
+
+          category: The type of object this folder applies to. Should always be LANDING_PAGE.
+
+          created: The timestamp indicating when the content folder was created.
+
+          deleted_at: The timestamp (ISO8601 format) when this content folder was deleted.
+
+          name: The name of the folder which will show up in the app dashboard
+
+          parent_folder_id: The ID of the content folder this folder is nested under
+
+          updated: The timestamp indicating when the content folder was last updated.
+
           archived: Whether to return only results that have been archived.
 
           extra_headers: Send extra headers
@@ -188,163 +169,31 @@ class FoldersResource(SyncAPIResource):
         """
         if not object_id:
             raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get(
+        return self._patch(
             path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
+            body=maybe_transform(
+                {
+                    "id": id,
+                    "category": category,
+                    "created": created,
+                    "deleted_at": deleted_at,
+                    "name": name,
+                    "parent_folder_id": parent_folder_id,
+                    "updated": updated,
+                },
+                folder_update_params.FolderUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "archived": archived,
-                        "property": property,
-                    },
-                    folder_get_folder_params.FolderGetFolderParams,
-                ),
+                query=maybe_transform({"archived": archived}, folder_update_params.FolderUpdateParams),
             ),
             cast_to=ContentFolder,
         )
 
-    def get_folder_revision(
-        self,
-        revision_id: str,
-        *,
-        object_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ContentFolderVersion:
-        """
-        Retrieve a previous version of a folder, specified by the folder ID and revision
-        ID.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        if not revision_id:
-            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
-        return self._get(
-            path_template(
-                "/cms/pages/2026-03/landing-pages/folders/{object_id}/revisions/{revision_id}",
-                object_id=object_id,
-                revision_id=revision_id,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ContentFolderVersion,
-        )
-
-    def get_folders_batch(
-        self,
-        *,
-        inputs: SequenceNotStr[str],
-        archived: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseContentFolder:
-        """
-        Retrieve a batch of landing page folders as identified in the request body.
-
-        Args:
-          inputs: Strings to input.
-
-          archived: Whether to return only results that have been archived.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/cms/pages/2026-03/landing-pages/folders/batch/read",
-            body=maybe_transform({"inputs": inputs}, folder_get_folders_batch_params.FolderGetFoldersBatchParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {"archived": archived}, folder_get_folders_batch_params.FolderGetFoldersBatchParams
-                ),
-            ),
-            cast_to=BatchResponseContentFolder,
-        )
-
-    def list_folder_revisions(
-        self,
-        object_id: str,
-        *,
-        after: str | Omit = omit,
-        before: str | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[ContentFolderVersion]:
-        """
-        Retrieves all the previous versions of a landing page folder.
-
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get_api_list(
-            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}/revisions", object_id=object_id),
-            page=SyncPage[ContentFolderVersion],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "before": before,
-                        "limit": limit,
-                    },
-                    folder_list_folder_revisions_params.FolderListFolderRevisionsParams,
-                ),
-            ),
-            model=ContentFolderVersion,
-        )
-
-    def list_folders(
+    def list(
         self,
         *,
         after: str | Omit = omit,
@@ -410,13 +259,237 @@ class FoldersResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    folder_list_folders_params.FolderListFoldersParams,
+                    folder_list_params.FolderListParams,
                 ),
             ),
             model=ContentFolder,
         )
 
-    def restore_folder_revision(
+    def delete(
+        self,
+        object_id: str,
+        *,
+        archived: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete a landing page folder, specified by its ID.
+
+        Args:
+          archived: Whether to return only results that have been archived.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"archived": archived}, folder_delete_params.FolderDeleteParams),
+            ),
+            cast_to=NoneType,
+        )
+
+    def batch_get(
+        self,
+        *,
+        inputs: SequenceNotStr[str],
+        archived: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseContentFolder:
+        """
+        Retrieve a batch of landing page folders as identified in the request body.
+
+        Args:
+          inputs: Strings to input.
+
+          archived: Whether to return only results that have been archived.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/cms/pages/2026-03/landing-pages/folders/batch/read",
+            body=maybe_transform({"inputs": inputs}, folder_batch_get_params.FolderBatchGetParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"archived": archived}, folder_batch_get_params.FolderBatchGetParams),
+            ),
+            cast_to=BatchResponseContentFolder,
+        )
+
+    def get(
+        self,
+        object_id: str,
+        *,
+        archived: bool | Omit = omit,
+        property: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContentFolder:
+        """
+        Retrieve a landing page folder, specified by its ID.
+
+        Args:
+          archived: Whether to return only results that have been archived.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._get(
+            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "archived": archived,
+                        "property": property,
+                    },
+                    folder_get_params.FolderGetParams,
+                ),
+            ),
+            cast_to=ContentFolder,
+        )
+
+    def get_revision(
+        self,
+        revision_id: str,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContentFolderVersion:
+        """
+        Retrieve a previous version of a folder, specified by the folder ID and revision
+        ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not revision_id:
+            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
+        return self._get(
+            path_template(
+                "/cms/pages/2026-03/landing-pages/folders/{object_id}/revisions/{revision_id}",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ContentFolderVersion,
+        )
+
+    def list_revisions(
+        self,
+        object_id: str,
+        *,
+        after: str | Omit = omit,
+        before: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[ContentFolderVersion]:
+        """
+        Retrieves all the previous versions of a landing page folder.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._get_api_list(
+            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}/revisions", object_id=object_id),
+            page=SyncPage[ContentFolderVersion],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "before": before,
+                        "limit": limit,
+                    },
+                    folder_list_revisions_params.FolderListRevisionsParams,
+                ),
+            ),
+            model=ContentFolderVersion,
+        )
+
+    def restore_revision(
         self,
         revision_id: str,
         *,
@@ -456,81 +529,6 @@ class FoldersResource(SyncAPIResource):
             cast_to=ContentFolder,
         )
 
-    def update_folder(
-        self,
-        object_id: str,
-        *,
-        id: str,
-        category: int,
-        created: Union[str, datetime],
-        deleted_at: Union[str, datetime],
-        name: str,
-        parent_folder_id: int,
-        updated: Union[str, datetime],
-        archived: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ContentFolder:
-        """Partially update a landing page folder, specified by the folder ID.
-
-        You only
-        need to specify the details values that you are modifying.
-
-        Args:
-          id: The unique ID of the content folder.
-
-          category: The type of object this folder applies to. Should always be LANDING_PAGE.
-
-          created: The timestamp indicating when the content folder was created.
-
-          deleted_at: The timestamp (ISO8601 format) when this content folder was deleted.
-
-          name: The name of the folder which will show up in the app dashboard
-
-          parent_folder_id: The ID of the content folder this folder is nested under
-
-          updated: The timestamp indicating when the content folder was last updated.
-
-          archived: Whether to return only results that have been archived.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._patch(
-            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
-            body=maybe_transform(
-                {
-                    "id": id,
-                    "category": category,
-                    "created": created,
-                    "deleted_at": deleted_at,
-                    "name": name,
-                    "parent_folder_id": parent_folder_id,
-                    "updated": updated,
-                },
-                folder_update_folder_params.FolderUpdateFolderParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"archived": archived}, folder_update_folder_params.FolderUpdateFolderParams),
-            ),
-            cast_to=ContentFolder,
-        )
-
 
 class AsyncFoldersResource(AsyncAPIResource):
     @cached_property
@@ -552,7 +550,7 @@ class AsyncFoldersResource(AsyncAPIResource):
         """
         return AsyncFoldersResourceWithStreamingResponse(self)
 
-    async def create_folder(
+    async def create(
         self,
         *,
         id: str,
@@ -607,7 +605,7 @@ class AsyncFoldersResource(AsyncAPIResource):
                     "parent_folder_id": parent_folder_id,
                     "updated": updated,
                 },
-                folder_create_folder_params.FolderCreateFolderParams,
+                folder_create_params.FolderCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -615,55 +613,18 @@ class AsyncFoldersResource(AsyncAPIResource):
             cast_to=ContentFolder,
         )
 
-    async def delete_folder(
+    async def update(
         self,
         object_id: str,
         *,
+        id: str,
+        category: int,
+        created: Union[str, datetime],
+        deleted_at: Union[str, datetime],
+        name: str,
+        parent_folder_id: int,
+        updated: Union[str, datetime],
         archived: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Delete a landing page folder, specified by its ID.
-
-        Args:
-          archived: Whether to return only results that have been archived.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"archived": archived}, folder_delete_folder_params.FolderDeleteFolderParams
-                ),
-            ),
-            cast_to=NoneType,
-        )
-
-    async def get_folder(
-        self,
-        object_id: str,
-        *,
-        archived: bool | Omit = omit,
-        property: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -671,10 +632,26 @@ class AsyncFoldersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContentFolder:
-        """
-        Retrieve a landing page folder, specified by its ID.
+        """Partially update a landing page folder, specified by the folder ID.
+
+        You only
+        need to specify the details values that you are modifying.
 
         Args:
+          id: The unique ID of the content folder.
+
+          category: The type of object this folder applies to. Should always be LANDING_PAGE.
+
+          created: The timestamp indicating when the content folder was created.
+
+          deleted_at: The timestamp (ISO8601 format) when this content folder was deleted.
+
+          name: The name of the folder which will show up in the app dashboard
+
+          parent_folder_id: The ID of the content folder this folder is nested under
+
+          updated: The timestamp indicating when the content folder was last updated.
+
           archived: Whether to return only results that have been archived.
 
           extra_headers: Send extra headers
@@ -687,165 +664,31 @@ class AsyncFoldersResource(AsyncAPIResource):
         """
         if not object_id:
             raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return await self._get(
+        return await self._patch(
             path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
+            body=await async_maybe_transform(
+                {
+                    "id": id,
+                    "category": category,
+                    "created": created,
+                    "deleted_at": deleted_at,
+                    "name": name,
+                    "parent_folder_id": parent_folder_id,
+                    "updated": updated,
+                },
+                folder_update_params.FolderUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "archived": archived,
-                        "property": property,
-                    },
-                    folder_get_folder_params.FolderGetFolderParams,
-                ),
+                query=await async_maybe_transform({"archived": archived}, folder_update_params.FolderUpdateParams),
             ),
             cast_to=ContentFolder,
         )
 
-    async def get_folder_revision(
-        self,
-        revision_id: str,
-        *,
-        object_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ContentFolderVersion:
-        """
-        Retrieve a previous version of a folder, specified by the folder ID and revision
-        ID.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        if not revision_id:
-            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
-        return await self._get(
-            path_template(
-                "/cms/pages/2026-03/landing-pages/folders/{object_id}/revisions/{revision_id}",
-                object_id=object_id,
-                revision_id=revision_id,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ContentFolderVersion,
-        )
-
-    async def get_folders_batch(
-        self,
-        *,
-        inputs: SequenceNotStr[str],
-        archived: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseContentFolder:
-        """
-        Retrieve a batch of landing page folders as identified in the request body.
-
-        Args:
-          inputs: Strings to input.
-
-          archived: Whether to return only results that have been archived.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/cms/pages/2026-03/landing-pages/folders/batch/read",
-            body=await async_maybe_transform(
-                {"inputs": inputs}, folder_get_folders_batch_params.FolderGetFoldersBatchParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"archived": archived}, folder_get_folders_batch_params.FolderGetFoldersBatchParams
-                ),
-            ),
-            cast_to=BatchResponseContentFolder,
-        )
-
-    def list_folder_revisions(
-        self,
-        object_id: str,
-        *,
-        after: str | Omit = omit,
-        before: str | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[ContentFolderVersion, AsyncPage[ContentFolderVersion]]:
-        """
-        Retrieves all the previous versions of a landing page folder.
-
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get_api_list(
-            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}/revisions", object_id=object_id),
-            page=AsyncPage[ContentFolderVersion],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "before": before,
-                        "limit": limit,
-                    },
-                    folder_list_folder_revisions_params.FolderListFolderRevisionsParams,
-                ),
-            ),
-            model=ContentFolderVersion,
-        )
-
-    def list_folders(
+    def list(
         self,
         *,
         after: str | Omit = omit,
@@ -911,13 +754,237 @@ class AsyncFoldersResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    folder_list_folders_params.FolderListFoldersParams,
+                    folder_list_params.FolderListParams,
                 ),
             ),
             model=ContentFolder,
         )
 
-    async def restore_folder_revision(
+    async def delete(
+        self,
+        object_id: str,
+        *,
+        archived: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete a landing page folder, specified by its ID.
+
+        Args:
+          archived: Whether to return only results that have been archived.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"archived": archived}, folder_delete_params.FolderDeleteParams),
+            ),
+            cast_to=NoneType,
+        )
+
+    async def batch_get(
+        self,
+        *,
+        inputs: SequenceNotStr[str],
+        archived: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseContentFolder:
+        """
+        Retrieve a batch of landing page folders as identified in the request body.
+
+        Args:
+          inputs: Strings to input.
+
+          archived: Whether to return only results that have been archived.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/cms/pages/2026-03/landing-pages/folders/batch/read",
+            body=await async_maybe_transform({"inputs": inputs}, folder_batch_get_params.FolderBatchGetParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"archived": archived}, folder_batch_get_params.FolderBatchGetParams),
+            ),
+            cast_to=BatchResponseContentFolder,
+        )
+
+    async def get(
+        self,
+        object_id: str,
+        *,
+        archived: bool | Omit = omit,
+        property: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContentFolder:
+        """
+        Retrieve a landing page folder, specified by its ID.
+
+        Args:
+          archived: Whether to return only results that have been archived.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return await self._get(
+            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "archived": archived,
+                        "property": property,
+                    },
+                    folder_get_params.FolderGetParams,
+                ),
+            ),
+            cast_to=ContentFolder,
+        )
+
+    async def get_revision(
+        self,
+        revision_id: str,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContentFolderVersion:
+        """
+        Retrieve a previous version of a folder, specified by the folder ID and revision
+        ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not revision_id:
+            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
+        return await self._get(
+            path_template(
+                "/cms/pages/2026-03/landing-pages/folders/{object_id}/revisions/{revision_id}",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ContentFolderVersion,
+        )
+
+    def list_revisions(
+        self,
+        object_id: str,
+        *,
+        after: str | Omit = omit,
+        before: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[ContentFolderVersion, AsyncPage[ContentFolderVersion]]:
+        """
+        Retrieves all the previous versions of a landing page folder.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._get_api_list(
+            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}/revisions", object_id=object_id),
+            page=AsyncPage[ContentFolderVersion],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "before": before,
+                        "limit": limit,
+                    },
+                    folder_list_revisions_params.FolderListRevisionsParams,
+                ),
+            ),
+            model=ContentFolderVersion,
+        )
+
+    async def restore_revision(
         self,
         revision_id: str,
         *,
@@ -957,114 +1024,37 @@ class AsyncFoldersResource(AsyncAPIResource):
             cast_to=ContentFolder,
         )
 
-    async def update_folder(
-        self,
-        object_id: str,
-        *,
-        id: str,
-        category: int,
-        created: Union[str, datetime],
-        deleted_at: Union[str, datetime],
-        name: str,
-        parent_folder_id: int,
-        updated: Union[str, datetime],
-        archived: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ContentFolder:
-        """Partially update a landing page folder, specified by the folder ID.
-
-        You only
-        need to specify the details values that you are modifying.
-
-        Args:
-          id: The unique ID of the content folder.
-
-          category: The type of object this folder applies to. Should always be LANDING_PAGE.
-
-          created: The timestamp indicating when the content folder was created.
-
-          deleted_at: The timestamp (ISO8601 format) when this content folder was deleted.
-
-          name: The name of the folder which will show up in the app dashboard
-
-          parent_folder_id: The ID of the content folder this folder is nested under
-
-          updated: The timestamp indicating when the content folder was last updated.
-
-          archived: Whether to return only results that have been archived.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return await self._patch(
-            path_template("/cms/pages/2026-03/landing-pages/folders/{object_id}", object_id=object_id),
-            body=await async_maybe_transform(
-                {
-                    "id": id,
-                    "category": category,
-                    "created": created,
-                    "deleted_at": deleted_at,
-                    "name": name,
-                    "parent_folder_id": parent_folder_id,
-                    "updated": updated,
-                },
-                folder_update_folder_params.FolderUpdateFolderParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"archived": archived}, folder_update_folder_params.FolderUpdateFolderParams
-                ),
-            ),
-            cast_to=ContentFolder,
-        )
-
 
 class FoldersResourceWithRawResponse:
     def __init__(self, folders: FoldersResource) -> None:
         self._folders = folders
 
-        self.create_folder = to_raw_response_wrapper(
-            folders.create_folder,
+        self.create = to_raw_response_wrapper(
+            folders.create,
         )
-        self.delete_folder = to_raw_response_wrapper(
-            folders.delete_folder,
+        self.update = to_raw_response_wrapper(
+            folders.update,
         )
-        self.get_folder = to_raw_response_wrapper(
-            folders.get_folder,
+        self.list = to_raw_response_wrapper(
+            folders.list,
         )
-        self.get_folder_revision = to_raw_response_wrapper(
-            folders.get_folder_revision,
+        self.delete = to_raw_response_wrapper(
+            folders.delete,
         )
-        self.get_folders_batch = to_raw_response_wrapper(
-            folders.get_folders_batch,
+        self.batch_get = to_raw_response_wrapper(
+            folders.batch_get,
         )
-        self.list_folder_revisions = to_raw_response_wrapper(
-            folders.list_folder_revisions,
+        self.get = to_raw_response_wrapper(
+            folders.get,
         )
-        self.list_folders = to_raw_response_wrapper(
-            folders.list_folders,
+        self.get_revision = to_raw_response_wrapper(
+            folders.get_revision,
         )
-        self.restore_folder_revision = to_raw_response_wrapper(
-            folders.restore_folder_revision,
+        self.list_revisions = to_raw_response_wrapper(
+            folders.list_revisions,
         )
-        self.update_folder = to_raw_response_wrapper(
-            folders.update_folder,
+        self.restore_revision = to_raw_response_wrapper(
+            folders.restore_revision,
         )
 
 
@@ -1072,32 +1062,32 @@ class AsyncFoldersResourceWithRawResponse:
     def __init__(self, folders: AsyncFoldersResource) -> None:
         self._folders = folders
 
-        self.create_folder = async_to_raw_response_wrapper(
-            folders.create_folder,
+        self.create = async_to_raw_response_wrapper(
+            folders.create,
         )
-        self.delete_folder = async_to_raw_response_wrapper(
-            folders.delete_folder,
+        self.update = async_to_raw_response_wrapper(
+            folders.update,
         )
-        self.get_folder = async_to_raw_response_wrapper(
-            folders.get_folder,
+        self.list = async_to_raw_response_wrapper(
+            folders.list,
         )
-        self.get_folder_revision = async_to_raw_response_wrapper(
-            folders.get_folder_revision,
+        self.delete = async_to_raw_response_wrapper(
+            folders.delete,
         )
-        self.get_folders_batch = async_to_raw_response_wrapper(
-            folders.get_folders_batch,
+        self.batch_get = async_to_raw_response_wrapper(
+            folders.batch_get,
         )
-        self.list_folder_revisions = async_to_raw_response_wrapper(
-            folders.list_folder_revisions,
+        self.get = async_to_raw_response_wrapper(
+            folders.get,
         )
-        self.list_folders = async_to_raw_response_wrapper(
-            folders.list_folders,
+        self.get_revision = async_to_raw_response_wrapper(
+            folders.get_revision,
         )
-        self.restore_folder_revision = async_to_raw_response_wrapper(
-            folders.restore_folder_revision,
+        self.list_revisions = async_to_raw_response_wrapper(
+            folders.list_revisions,
         )
-        self.update_folder = async_to_raw_response_wrapper(
-            folders.update_folder,
+        self.restore_revision = async_to_raw_response_wrapper(
+            folders.restore_revision,
         )
 
 
@@ -1105,32 +1095,32 @@ class FoldersResourceWithStreamingResponse:
     def __init__(self, folders: FoldersResource) -> None:
         self._folders = folders
 
-        self.create_folder = to_streamed_response_wrapper(
-            folders.create_folder,
+        self.create = to_streamed_response_wrapper(
+            folders.create,
         )
-        self.delete_folder = to_streamed_response_wrapper(
-            folders.delete_folder,
+        self.update = to_streamed_response_wrapper(
+            folders.update,
         )
-        self.get_folder = to_streamed_response_wrapper(
-            folders.get_folder,
+        self.list = to_streamed_response_wrapper(
+            folders.list,
         )
-        self.get_folder_revision = to_streamed_response_wrapper(
-            folders.get_folder_revision,
+        self.delete = to_streamed_response_wrapper(
+            folders.delete,
         )
-        self.get_folders_batch = to_streamed_response_wrapper(
-            folders.get_folders_batch,
+        self.batch_get = to_streamed_response_wrapper(
+            folders.batch_get,
         )
-        self.list_folder_revisions = to_streamed_response_wrapper(
-            folders.list_folder_revisions,
+        self.get = to_streamed_response_wrapper(
+            folders.get,
         )
-        self.list_folders = to_streamed_response_wrapper(
-            folders.list_folders,
+        self.get_revision = to_streamed_response_wrapper(
+            folders.get_revision,
         )
-        self.restore_folder_revision = to_streamed_response_wrapper(
-            folders.restore_folder_revision,
+        self.list_revisions = to_streamed_response_wrapper(
+            folders.list_revisions,
         )
-        self.update_folder = to_streamed_response_wrapper(
-            folders.update_folder,
+        self.restore_revision = to_streamed_response_wrapper(
+            folders.restore_revision,
         )
 
 
@@ -1138,30 +1128,30 @@ class AsyncFoldersResourceWithStreamingResponse:
     def __init__(self, folders: AsyncFoldersResource) -> None:
         self._folders = folders
 
-        self.create_folder = async_to_streamed_response_wrapper(
-            folders.create_folder,
+        self.create = async_to_streamed_response_wrapper(
+            folders.create,
         )
-        self.delete_folder = async_to_streamed_response_wrapper(
-            folders.delete_folder,
+        self.update = async_to_streamed_response_wrapper(
+            folders.update,
         )
-        self.get_folder = async_to_streamed_response_wrapper(
-            folders.get_folder,
+        self.list = async_to_streamed_response_wrapper(
+            folders.list,
         )
-        self.get_folder_revision = async_to_streamed_response_wrapper(
-            folders.get_folder_revision,
+        self.delete = async_to_streamed_response_wrapper(
+            folders.delete,
         )
-        self.get_folders_batch = async_to_streamed_response_wrapper(
-            folders.get_folders_batch,
+        self.batch_get = async_to_streamed_response_wrapper(
+            folders.batch_get,
         )
-        self.list_folder_revisions = async_to_streamed_response_wrapper(
-            folders.list_folder_revisions,
+        self.get = async_to_streamed_response_wrapper(
+            folders.get,
         )
-        self.list_folders = async_to_streamed_response_wrapper(
-            folders.list_folders,
+        self.get_revision = async_to_streamed_response_wrapper(
+            folders.get_revision,
         )
-        self.restore_folder_revision = async_to_streamed_response_wrapper(
-            folders.restore_folder_revision,
+        self.list_revisions = async_to_streamed_response_wrapper(
+            folders.list_revisions,
         )
-        self.update_folder = async_to_streamed_response_wrapper(
-            folders.update_folder,
+        self.restore_revision = async_to_streamed_response_wrapper(
+            folders.restore_revision,
         )
