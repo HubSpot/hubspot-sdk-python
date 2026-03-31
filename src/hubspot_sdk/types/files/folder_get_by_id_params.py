@@ -11,4 +11,3 @@ __all__ = ["FolderGetByIDParams"]
 
 class FolderGetByIDParams(TypedDict, total=False):
     properties: SequenceNotStr[str]
-    """Properties to set on returned folder."""

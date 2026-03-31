@@ -131,12 +131,11 @@ class ActivityResource(SyncAPIResource):
         [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
 
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
-          limit: The maximum number of results to display per page. Max value of limit is 200.
-
-          user_id: Identifier of user to retrieve activities for
+          limit: The maximum number of results to display per page.
 
           extra_headers: Send extra headers
 
@@ -186,16 +185,11 @@ class ActivityResource(SyncAPIResource):
         [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
 
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
-          from_timestamp: Limit to activities created after this epoch timestamp.
-
-          limit: The maximum number of results to display per page. Max value of limit is 200.
-
-          to_timestamp: Limit to activities created before this epoch timestamp.
-
-          user_id: Identifier of user to retrieve activities for
+          limit: The maximum number of results to display per page.
 
           extra_headers: Send extra headers
 
@@ -328,12 +322,11 @@ class AsyncActivityResource(AsyncAPIResource):
         [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
 
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
-          limit: The maximum number of results to display per page. Max value of limit is 200.
-
-          user_id: Identifier of user to retrieve activities for
+          limit: The maximum number of results to display per page.
 
           extra_headers: Send extra headers
 
@@ -383,16 +376,11 @@ class AsyncActivityResource(AsyncAPIResource):
         [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
 
         Args:
-          after: The cursor token value to get the next set of results. You can get this from the
-              `paging.next.after` JSON property of a paged response containing more results.
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
 
-          from_timestamp: Limit to activities created after this epoch timestamp.
-
-          limit: The maximum number of results to display per page. Max value of limit is 200.
-
-          to_timestamp: Limit to activities created before this epoch timestamp.
-
-          user_id: Identifier of user to retrieve activities for
+          limit: The maximum number of results to display per page.
 
           extra_headers: Send extra headers
 

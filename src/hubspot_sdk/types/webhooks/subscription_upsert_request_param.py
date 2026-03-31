@@ -1,0 +1,20 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import Union
+from typing_extensions import TypeAlias
+
+from .object_subscription_upsert_request_param import ObjectSubscriptionUpsertRequestParam
+from .association_subscription_upsert_request_param import AssociationSubscriptionUpsertRequestParam
+from .list_membership_subscription_upsert_request_param import ListMembershipSubscriptionUpsertRequestParam
+from .app_lifecycle_event_subscription_upsert_request_param import AppLifecycleEventSubscriptionUpsertRequestParam
+
+__all__ = ["SubscriptionUpsertRequestParam"]
+
+SubscriptionUpsertRequestParam: TypeAlias = Union[
+    ObjectSubscriptionUpsertRequestParam,
+    AssociationSubscriptionUpsertRequestParam,
+    AppLifecycleEventSubscriptionUpsertRequestParam,
+    ListMembershipSubscriptionUpsertRequestParam,
+]

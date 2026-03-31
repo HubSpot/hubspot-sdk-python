@@ -11,8 +11,10 @@ from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.crm.extensions import (
+    SettingsResponse,
     RecordingSettingsResponse,
     CompletedThirdPartyCallResponse,
+    ChannelConnectionSettingsResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -23,115 +25,41 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
-        calling = client.crm.extensions.calling.create(
+    def test_method_create_channel_connection_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.create_channel_connection_settings(
             app_id=0,
-            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+            is_ready=True,
+            url="url",
         )
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
-        response = client.crm.extensions.calling.with_raw_response.create(
+    def test_raw_response_create_channel_connection_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.create_channel_connection_settings(
             app_id=0,
-            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        calling = response.parse()
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
-        with client.crm.extensions.calling.with_streaming_response.create(
-            app_id=0,
-            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            calling = response.parse()
-            assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
-        calling = client.crm.extensions.calling.update(
-            app_id=0,
-        )
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_update_with_all_params(self, client: Hubspot) -> None:
-        calling = client.crm.extensions.calling.update(
-            app_id=0,
-            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
-        )
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
-        response = client.crm.extensions.calling.with_raw_response.update(
-            app_id=0,
+            is_ready=True,
+            url="url",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         calling = response.parse()
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
-        with client.crm.extensions.calling.with_streaming_response.update(
+    def test_streaming_response_create_channel_connection_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.create_channel_connection_settings(
             app_id=0,
+            is_ready=True,
+            url="url",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             calling = response.parse()
-            assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
-        calling = client.crm.extensions.calling.delete(
-            0,
-        )
-        assert calling is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
-        response = client.crm.extensions.calling.with_raw_response.delete(
-            0,
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        calling = response.parse()
-        assert calling is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
-        with client.crm.extensions.calling.with_streaming_response.delete(
-            0,
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            calling = response.parse()
-            assert calling is None
+            assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -232,16 +160,250 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
-        calling = client.crm.extensions.calling.get(
+    def test_method_create_recording_ready(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.create_recording_ready(
+            engagement_id=0,
+        )
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create_recording_ready(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.create_recording_ready(
+            engagement_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create_recording_ready(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.create_recording_ready(
+            engagement_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert calling is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_recording_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.create_recording_settings(
+            app_id=0,
+            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+        )
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create_recording_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.create_recording_settings(
+            app_id=0,
+            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create_recording_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.create_recording_settings(
+            app_id=0,
+            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.create_settings(
+            app_id=0,
+            height=0,
+            is_ready=True,
+            name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
+            url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
+        )
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.create_settings(
+            app_id=0,
+            height=0,
+            is_ready=True,
+            name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
+            url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.create_settings(
+            app_id=0,
+            height=0,
+            is_ready=True,
+            name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
+            url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert_matches_type(SettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete_channel_connection_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.delete_channel_connection_settings(
+            0,
+        )
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_delete_channel_connection_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.delete_channel_connection_settings(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_delete_channel_connection_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.delete_channel_connection_settings(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert calling is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.delete_settings(
+            0,
+        )
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_delete_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.delete_settings(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_delete_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.delete_settings(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert calling is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_channel_connection_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.get_channel_connection_settings(
+            0,
+        )
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_channel_connection_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.get_channel_connection_settings(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_channel_connection_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.get_channel_connection_settings(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_recording_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.get_recording_settings(
             0,
         )
         assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
-        response = client.crm.extensions.calling.with_raw_response.get(
+    def test_raw_response_get_recording_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.get_recording_settings(
             0,
         )
 
@@ -252,8 +414,8 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
-        with client.crm.extensions.calling.with_streaming_response.get(
+    def test_streaming_response_get_recording_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.get_recording_settings(
             0,
         ) as response:
             assert not response.is_closed
@@ -266,35 +428,173 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_mark_ready(self, client: Hubspot) -> None:
-        calling = client.crm.extensions.calling.mark_ready(
-            engagement_id=0,
+    def test_method_get_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.get_settings(
+            0,
         )
-        assert calling is None
+        assert_matches_type(SettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_mark_ready(self, client: Hubspot) -> None:
-        response = client.crm.extensions.calling.with_raw_response.mark_ready(
-            engagement_id=0,
+    def test_raw_response_get_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.get_settings(
+            0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         calling = response.parse()
-        assert calling is None
+        assert_matches_type(SettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_mark_ready(self, client: Hubspot) -> None:
-        with client.crm.extensions.calling.with_streaming_response.mark_ready(
-            engagement_id=0,
+    def test_streaming_response_get_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.get_settings(
+            0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             calling = response.parse()
-            assert calling is None
+            assert_matches_type(SettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_channel_connection_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.update_channel_connection_settings(
+            app_id=0,
+        )
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_channel_connection_settings_with_all_params(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.update_channel_connection_settings(
+            app_id=0,
+            is_ready=True,
+            url="url",
+        )
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_update_channel_connection_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.update_channel_connection_settings(
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_update_channel_connection_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.update_channel_connection_settings(
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_recording_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.update_recording_settings(
+            app_id=0,
+        )
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_recording_settings_with_all_params(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.update_recording_settings(
+            app_id=0,
+            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+        )
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_update_recording_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.update_recording_settings(
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_update_recording_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.update_recording_settings(
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_settings(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.update_settings(
+            app_id=0,
+        )
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_settings_with_all_params(self, client: Hubspot) -> None:
+        calling = client.crm.extensions.calling.update_settings(
+            app_id=0,
+            height=0,
+            is_ready=True,
+            name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
+            url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
+        )
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_update_settings(self, client: Hubspot) -> None:
+        response = client.crm.extensions.calling.with_raw_response.update_settings(
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = response.parse()
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_update_settings(self, client: Hubspot) -> None:
+        with client.crm.extensions.calling.with_streaming_response.update_settings(
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = response.parse()
+            assert_matches_type(SettingsResponse, calling, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -306,115 +606,41 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
-        calling = await async_client.crm.extensions.calling.create(
+    async def test_method_create_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.create_channel_connection_settings(
             app_id=0,
-            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+            is_ready=True,
+            url="url",
         )
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.extensions.calling.with_raw_response.create(
+    async def test_raw_response_create_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.create_channel_connection_settings(
             app_id=0,
-            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        calling = await response.parse()
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.extensions.calling.with_streaming_response.create(
-            app_id=0,
-            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            calling = await response.parse()
-            assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
-        calling = await async_client.crm.extensions.calling.update(
-            app_id=0,
-        )
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
-        calling = await async_client.crm.extensions.calling.update(
-            app_id=0,
-            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
-        )
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.extensions.calling.with_raw_response.update(
-            app_id=0,
+            is_ready=True,
+            url="url",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         calling = await response.parse()
-        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.extensions.calling.with_streaming_response.update(
+    async def test_streaming_response_create_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.create_channel_connection_settings(
             app_id=0,
+            is_ready=True,
+            url="url",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             calling = await response.parse()
-            assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
-        calling = await async_client.crm.extensions.calling.delete(
-            0,
-        )
-        assert calling is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.extensions.calling.with_raw_response.delete(
-            0,
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        calling = await response.parse()
-        assert calling is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.extensions.calling.with_streaming_response.delete(
-            0,
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            calling = await response.parse()
-            assert calling is None
+            assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -515,16 +741,250 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
-        calling = await async_client.crm.extensions.calling.get(
+    async def test_method_create_recording_ready(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.create_recording_ready(
+            engagement_id=0,
+        )
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create_recording_ready(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.create_recording_ready(
+            engagement_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create_recording_ready(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.create_recording_ready(
+            engagement_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert calling is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_recording_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.create_recording_settings(
+            app_id=0,
+            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+        )
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create_recording_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.create_recording_settings(
+            app_id=0,
+            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create_recording_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.create_recording_settings(
+            app_id=0,
+            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.create_settings(
+            app_id=0,
+            height=0,
+            is_ready=True,
+            name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
+            url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
+        )
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.create_settings(
+            app_id=0,
+            height=0,
+            is_ready=True,
+            name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
+            url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.create_settings(
+            app_id=0,
+            height=0,
+            is_ready=True,
+            name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
+            url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert_matches_type(SettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.delete_channel_connection_settings(
+            0,
+        )
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_delete_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.delete_channel_connection_settings(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_delete_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.delete_channel_connection_settings(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert calling is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.delete_settings(
+            0,
+        )
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_delete_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.delete_settings(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert calling is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_delete_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.delete_settings(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert calling is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.get_channel_connection_settings(
+            0,
+        )
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.get_channel_connection_settings(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.get_channel_connection_settings(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_recording_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.get_recording_settings(
             0,
         )
         assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.extensions.calling.with_raw_response.get(
+    async def test_raw_response_get_recording_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.get_recording_settings(
             0,
         )
 
@@ -535,8 +995,8 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.extensions.calling.with_streaming_response.get(
+    async def test_streaming_response_get_recording_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.get_recording_settings(
             0,
         ) as response:
             assert not response.is_closed
@@ -549,34 +1009,172 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_mark_ready(self, async_client: AsyncHubspot) -> None:
-        calling = await async_client.crm.extensions.calling.mark_ready(
-            engagement_id=0,
+    async def test_method_get_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.get_settings(
+            0,
         )
-        assert calling is None
+        assert_matches_type(SettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_mark_ready(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.extensions.calling.with_raw_response.mark_ready(
-            engagement_id=0,
+    async def test_raw_response_get_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.get_settings(
+            0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         calling = await response.parse()
-        assert calling is None
+        assert_matches_type(SettingsResponse, calling, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_mark_ready(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.extensions.calling.with_streaming_response.mark_ready(
-            engagement_id=0,
+    async def test_streaming_response_get_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.get_settings(
+            0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             calling = await response.parse()
-            assert calling is None
+            assert_matches_type(SettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.update_channel_connection_settings(
+            app_id=0,
+        )
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_channel_connection_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.update_channel_connection_settings(
+            app_id=0,
+            is_ready=True,
+            url="url",
+        )
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_update_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.update_channel_connection_settings(
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_update_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.update_channel_connection_settings(
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert_matches_type(ChannelConnectionSettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_recording_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.update_recording_settings(
+            app_id=0,
+        )
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_recording_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.update_recording_settings(
+            app_id=0,
+            url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
+        )
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_update_recording_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.update_recording_settings(
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_update_recording_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.update_recording_settings(
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert_matches_type(RecordingSettingsResponse, calling, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_settings(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.update_settings(
+            app_id=0,
+        )
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
+        calling = await async_client.crm.extensions.calling.update_settings(
+            app_id=0,
+            height=0,
+            is_ready=True,
+            name="name",
+            supports_custom_objects=True,
+            supports_inbound_calling=True,
+            url="url",
+            uses_calling_window=True,
+            uses_remote=True,
+            width=0,
+        )
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_update_settings(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.extensions.calling.with_raw_response.update_settings(
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calling = await response.parse()
+        assert_matches_type(SettingsResponse, calling, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_update_settings(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.extensions.calling.with_streaming_response.update_settings(
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calling = await response.parse()
+            assert_matches_type(SettingsResponse, calling, path=["response"])
 
         assert cast(Any, response.is_closed) is True

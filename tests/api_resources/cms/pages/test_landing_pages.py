@@ -1740,16 +1740,16 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_publish_draft(self, client: Hubspot) -> None:
-        landing_page = client.cms.pages.landing_pages.publish_draft(
+    def test_method_push_draft_live(self, client: Hubspot) -> None:
+        landing_page = client.cms.pages.landing_pages.push_draft_live(
             "objectId",
         )
         assert landing_page is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_publish_draft(self, client: Hubspot) -> None:
-        response = client.cms.pages.landing_pages.with_raw_response.publish_draft(
+    def test_raw_response_push_draft_live(self, client: Hubspot) -> None:
+        response = client.cms.pages.landing_pages.with_raw_response.push_draft_live(
             "objectId",
         )
 
@@ -1760,8 +1760,8 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_publish_draft(self, client: Hubspot) -> None:
-        with client.cms.pages.landing_pages.with_streaming_response.publish_draft(
+    def test_streaming_response_push_draft_live(self, client: Hubspot) -> None:
+        with client.cms.pages.landing_pages.with_streaming_response.push_draft_live(
             "objectId",
         ) as response:
             assert not response.is_closed
@@ -1774,9 +1774,9 @@ class TestLandingPages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_publish_draft(self, client: Hubspot) -> None:
+    def test_path_params_push_draft_live(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            client.cms.pages.landing_pages.with_raw_response.publish_draft(
+            client.cms.pages.landing_pages.with_raw_response.push_draft_live(
                 "",
             )
 
@@ -4296,16 +4296,16 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_publish_draft(self, async_client: AsyncHubspot) -> None:
-        landing_page = await async_client.cms.pages.landing_pages.publish_draft(
+    async def test_method_push_draft_live(self, async_client: AsyncHubspot) -> None:
+        landing_page = await async_client.cms.pages.landing_pages.push_draft_live(
             "objectId",
         )
         assert landing_page is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_publish_draft(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.cms.pages.landing_pages.with_raw_response.publish_draft(
+    async def test_raw_response_push_draft_live(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.cms.pages.landing_pages.with_raw_response.push_draft_live(
             "objectId",
         )
 
@@ -4316,8 +4316,8 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_publish_draft(self, async_client: AsyncHubspot) -> None:
-        async with async_client.cms.pages.landing_pages.with_streaming_response.publish_draft(
+    async def test_streaming_response_push_draft_live(self, async_client: AsyncHubspot) -> None:
+        async with async_client.cms.pages.landing_pages.with_streaming_response.push_draft_live(
             "objectId",
         ) as response:
             assert not response.is_closed
@@ -4330,9 +4330,9 @@ class TestAsyncLandingPages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_publish_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_push_draft_live(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
-            await async_client.cms.pages.landing_pages.with_raw_response.publish_draft(
+            await async_client.cms.pages.landing_pages.with_raw_response.push_draft_live(
                 "",
             )
 

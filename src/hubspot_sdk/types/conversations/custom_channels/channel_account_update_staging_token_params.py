@@ -13,6 +13,6 @@ __all__ = ["ChannelAccountUpdateStagingTokenParams"]
 class ChannelAccountUpdateStagingTokenParams(TypedDict, total=False):
     channel_id: Required[Annotated[int, PropertyInfo(alias="channelId")]]
 
-    account_name: Required[Annotated[str, PropertyInfo(alias="accountName")]]
+    account_name: Annotated[str, PropertyInfo(alias="accountName")]
 
-    delivery_identifier: Required[Annotated[PublicDeliveryIdentifierParam, PropertyInfo(alias="deliveryIdentifier")]]
+    delivery_identifier: Annotated[PublicDeliveryIdentifierParam, PropertyInfo(alias="deliveryIdentifier")]

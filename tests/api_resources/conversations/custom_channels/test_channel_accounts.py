@@ -182,6 +182,15 @@ class TestChannelAccounts:
         channel_account = client.conversations.custom_channels.channel_accounts.update_staging_token(
             account_token="accountToken",
             channel_id=0,
+        )
+        assert_matches_type(PublicChannelAccountStagingToken, channel_account, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_staging_token_with_all_params(self, client: Hubspot) -> None:
+        channel_account = client.conversations.custom_channels.channel_accounts.update_staging_token(
+            account_token="accountToken",
+            channel_id=0,
             account_name="accountName",
             delivery_identifier={
                 "type": "CHANNEL_SPECIFIC_OPAQUE_ID",
@@ -196,11 +205,6 @@ class TestChannelAccounts:
         response = client.conversations.custom_channels.channel_accounts.with_raw_response.update_staging_token(
             account_token="accountToken",
             channel_id=0,
-            account_name="accountName",
-            delivery_identifier={
-                "type": "CHANNEL_SPECIFIC_OPAQUE_ID",
-                "value": "value",
-            },
         )
 
         assert response.is_closed is True
@@ -214,11 +218,6 @@ class TestChannelAccounts:
         with client.conversations.custom_channels.channel_accounts.with_streaming_response.update_staging_token(
             account_token="accountToken",
             channel_id=0,
-            account_name="accountName",
-            delivery_identifier={
-                "type": "CHANNEL_SPECIFIC_OPAQUE_ID",
-                "value": "value",
-            },
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -235,11 +234,6 @@ class TestChannelAccounts:
             client.conversations.custom_channels.channel_accounts.with_raw_response.update_staging_token(
                 account_token="",
                 channel_id=0,
-                account_name="accountName",
-                delivery_identifier={
-                    "type": "CHANNEL_SPECIFIC_OPAQUE_ID",
-                    "value": "value",
-                },
             )
 
 
@@ -409,6 +403,15 @@ class TestAsyncChannelAccounts:
         channel_account = await async_client.conversations.custom_channels.channel_accounts.update_staging_token(
             account_token="accountToken",
             channel_id=0,
+        )
+        assert_matches_type(PublicChannelAccountStagingToken, channel_account, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_staging_token_with_all_params(self, async_client: AsyncHubspot) -> None:
+        channel_account = await async_client.conversations.custom_channels.channel_accounts.update_staging_token(
+            account_token="accountToken",
+            channel_id=0,
             account_name="accountName",
             delivery_identifier={
                 "type": "CHANNEL_SPECIFIC_OPAQUE_ID",
@@ -424,11 +427,6 @@ class TestAsyncChannelAccounts:
             await async_client.conversations.custom_channels.channel_accounts.with_raw_response.update_staging_token(
                 account_token="accountToken",
                 channel_id=0,
-                account_name="accountName",
-                delivery_identifier={
-                    "type": "CHANNEL_SPECIFIC_OPAQUE_ID",
-                    "value": "value",
-                },
             )
         )
 
@@ -444,11 +442,6 @@ class TestAsyncChannelAccounts:
             async_client.conversations.custom_channels.channel_accounts.with_streaming_response.update_staging_token(
                 account_token="accountToken",
                 channel_id=0,
-                account_name="accountName",
-                delivery_identifier={
-                    "type": "CHANNEL_SPECIFIC_OPAQUE_ID",
-                    "value": "value",
-                },
             )
         ) as response:
             assert not response.is_closed
@@ -466,9 +459,4 @@ class TestAsyncChannelAccounts:
             await async_client.conversations.custom_channels.channel_accounts.with_raw_response.update_staging_token(
                 account_token="",
                 channel_id=0,
-                account_name="accountName",
-                delivery_identifier={
-                    "type": "CHANNEL_SPECIFIC_OPAQUE_ID",
-                    "value": "value",
-                },
             )

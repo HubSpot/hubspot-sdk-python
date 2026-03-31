@@ -42,13 +42,14 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ....types.cms import (
-    page_list_revisions_params,
-    page_list_site_pages_params,
-    page_query_site_pages_params,
-    page_list_landing_pages_params,
-    page_query_landing_pages_params,
-    page_list_landing_page_folders_params,
-    page_query_landing_page_folders_params,
+    page_get_site_pages_params,
+    page_get_landing_pages_params,
+    page_get_site_pages_by_query_params,
+    page_get_landing_page_folders_params,
+    page_list_site_page_revisions_params,
+    page_get_landing_pages_by_query_params,
+    page_list_landing_page_revisions_params,
+    page_get_landing_page_folders_by_query_params,
 )
 from ....pagination import SyncPage, AsyncPage
 from .landing_pages import (
@@ -126,47 +127,7 @@ class PagesResource(SyncAPIResource):
         """
         return PagesResourceWithStreamingResponse(self)
 
-    def get_revision(
-        self,
-        revision_id: str,
-        *,
-        object_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageVersion:
-        """
-        Retrieve a previous version of a website page by the revision ID.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        if not revision_id:
-            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
-        return self._get(
-            path_template(
-                "/cms/pages/2026-03/site-pages/{object_id}/revisions/{revision_id}",
-                object_id=object_id,
-                revision_id=revision_id,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PageVersion,
-        )
-
-    def list_landing_page_folders(
+    def get_landing_page_folders(
         self,
         *,
         after: str | Omit = omit,
@@ -226,199 +187,13 @@ class PagesResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    page_list_landing_page_folders_params.PageListLandingPageFoldersParams,
+                    page_get_landing_page_folders_params.PageGetLandingPageFoldersParams,
                 ),
             ),
             cast_to=object,
         )
 
-    def list_landing_pages(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/cms/pages/2026-03/landing-pages/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_list_landing_pages_params.PageListLandingPagesParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    def list_revisions(
-        self,
-        object_id: str,
-        *,
-        after: str | Omit = omit,
-        before: str | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[PageVersion]:
-        """
-        Retrieves all the previous versions of a website page, specified by page ID.
-
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get_api_list(
-            path_template("/cms/pages/2026-03/site-pages/{object_id}/revisions", object_id=object_id),
-            page=SyncPage[PageVersion],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "before": before,
-                        "limit": limit,
-                    },
-                    page_list_revisions_params.PageListRevisionsParams,
-                ),
-            ),
-            model=PageVersion,
-        )
-
-    def list_site_pages(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/cms/pages/2026-03/site-pages/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_list_site_pages_params.PageListSitePagesParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    def query_landing_page_folders(
+    def get_landing_page_folders_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -478,13 +253,120 @@ class PagesResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    page_query_landing_page_folders_params.PageQueryLandingPageFoldersParams,
+                    page_get_landing_page_folders_by_query_params.PageGetLandingPageFoldersByQueryParams,
                 ),
             ),
             cast_to=object,
         )
 
-    def query_landing_pages(
+    def get_landing_page_revision(
+        self,
+        revision_id: str,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PageVersion:
+        """
+        Retrieve a previous version of a landing page, specified by page ID and revision
+        ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not revision_id:
+            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
+        return self._get(
+            path_template(
+                "/cms/pages/2026-03/landing-pages/{object_id}/revisions/{revision_id}",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PageVersion,
+        )
+
+    def get_landing_pages(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/cms/pages/2026-03/landing-pages/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    page_get_landing_pages_params.PageGetLandingPagesParams,
+                ),
+            ),
+            cast_to=object,
+        )
+
+    def get_landing_pages_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -544,13 +426,119 @@ class PagesResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    page_query_landing_pages_params.PageQueryLandingPagesParams,
+                    page_get_landing_pages_by_query_params.PageGetLandingPagesByQueryParams,
                 ),
             ),
             cast_to=object,
         )
 
-    def query_site_pages(
+    def get_site_page_revision(
+        self,
+        revision_id: str,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PageVersion:
+        """
+        Retrieve a previous version of a website page by the revision ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not revision_id:
+            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
+        return self._get(
+            path_template(
+                "/cms/pages/2026-03/site-pages/{object_id}/revisions/{revision_id}",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PageVersion,
+        )
+
+    def get_site_pages(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/cms/pages/2026-03/site-pages/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    page_get_site_pages_params.PageGetSitePagesParams,
+                ),
+            ),
+            cast_to=object,
+        )
+
+    def get_site_pages_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -610,13 +598,121 @@ class PagesResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    page_query_site_pages_params.PageQuerySitePagesParams,
+                    page_get_site_pages_by_query_params.PageGetSitePagesByQueryParams,
                 ),
             ),
             cast_to=object,
         )
 
-    def reset_draft(
+    def list_landing_page_revisions(
+        self,
+        object_id: str,
+        *,
+        after: str | Omit = omit,
+        before: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[PageVersion]:
+        """
+        Retrieve all the previous versions of a landing page, specified by page ID.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._get_api_list(
+            path_template("/cms/pages/2026-03/landing-pages/{object_id}/revisions", object_id=object_id),
+            page=SyncPage[PageVersion],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "before": before,
+                        "limit": limit,
+                    },
+                    page_list_landing_page_revisions_params.PageListLandingPageRevisionsParams,
+                ),
+            ),
+            model=PageVersion,
+        )
+
+    def list_site_page_revisions(
+        self,
+        object_id: str,
+        *,
+        after: str | Omit = omit,
+        before: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[PageVersion]:
+        """
+        Retrieves all the previous versions of a website page, specified by page ID.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._get_api_list(
+            path_template("/cms/pages/2026-03/site-pages/{object_id}/revisions", object_id=object_id),
+            page=SyncPage[PageVersion],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "before": before,
+                        "limit": limit,
+                    },
+                    page_list_site_page_revisions_params.PageListSitePageRevisionsParams,
+                ),
+            ),
+            model=PageVersion,
+        )
+
+    def reset_site_page_draft(
         self,
         object_id: str,
         *,
@@ -650,7 +746,86 @@ class PagesResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def restore_revision(
+    def restore_landing_page_revision(
+        self,
+        revision_id: str,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Page:
+        """
+        Restores a previous version of a landing page, specified by page ID and revision
+        ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not revision_id:
+            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
+        return self._post(
+            path_template(
+                "/cms/pages/2026-03/landing-pages/{object_id}/revisions/{revision_id}/restore",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Page,
+        )
+
+    def restore_landing_page_revision_to_draft(
+        self,
+        revision_id: int,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Page:
+        """
+        Specify a previous version of a landing page to set as the page draft.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._post(
+            path_template(
+                "/cms/pages/2026-03/landing-pages/{object_id}/revisions/{revision_id}/restore-to-draft",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Page,
+        )
+
+    def restore_site_page_revision(
         self,
         revision_id: str,
         *,
@@ -691,7 +866,7 @@ class PagesResource(SyncAPIResource):
             cast_to=Page,
         )
 
-    def restore_revision_to_draft(
+    def restore_site_page_revision_to_draft(
         self,
         revision_id: int,
         *,
@@ -775,47 +950,7 @@ class AsyncPagesResource(AsyncAPIResource):
         """
         return AsyncPagesResourceWithStreamingResponse(self)
 
-    async def get_revision(
-        self,
-        revision_id: str,
-        *,
-        object_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageVersion:
-        """
-        Retrieve a previous version of a website page by the revision ID.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        if not revision_id:
-            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
-        return await self._get(
-            path_template(
-                "/cms/pages/2026-03/site-pages/{object_id}/revisions/{revision_id}",
-                object_id=object_id,
-                revision_id=revision_id,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PageVersion,
-        )
-
-    async def list_landing_page_folders(
+    async def get_landing_page_folders(
         self,
         *,
         after: str | Omit = omit,
@@ -875,199 +1010,13 @@ class AsyncPagesResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    page_list_landing_page_folders_params.PageListLandingPageFoldersParams,
+                    page_get_landing_page_folders_params.PageGetLandingPageFoldersParams,
                 ),
             ),
             cast_to=object,
         )
 
-    async def list_landing_pages(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/cms/pages/2026-03/landing-pages/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_list_landing_pages_params.PageListLandingPagesParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    def list_revisions(
-        self,
-        object_id: str,
-        *,
-        after: str | Omit = omit,
-        before: str | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[PageVersion, AsyncPage[PageVersion]]:
-        """
-        Retrieves all the previous versions of a website page, specified by page ID.
-
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not object_id:
-            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
-        return self._get_api_list(
-            path_template("/cms/pages/2026-03/site-pages/{object_id}/revisions", object_id=object_id),
-            page=AsyncPage[PageVersion],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "before": before,
-                        "limit": limit,
-                    },
-                    page_list_revisions_params.PageListRevisionsParams,
-                ),
-            ),
-            model=PageVersion,
-        )
-
-    async def list_site_pages(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/cms/pages/2026-03/site-pages/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_list_site_pages_params.PageListSitePagesParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    async def query_landing_page_folders(
+    async def get_landing_page_folders_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -1127,13 +1076,120 @@ class AsyncPagesResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    page_query_landing_page_folders_params.PageQueryLandingPageFoldersParams,
+                    page_get_landing_page_folders_by_query_params.PageGetLandingPageFoldersByQueryParams,
                 ),
             ),
             cast_to=object,
         )
 
-    async def query_landing_pages(
+    async def get_landing_page_revision(
+        self,
+        revision_id: str,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PageVersion:
+        """
+        Retrieve a previous version of a landing page, specified by page ID and revision
+        ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not revision_id:
+            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
+        return await self._get(
+            path_template(
+                "/cms/pages/2026-03/landing-pages/{object_id}/revisions/{revision_id}",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PageVersion,
+        )
+
+    async def get_landing_pages(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/cms/pages/2026-03/landing-pages/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    page_get_landing_pages_params.PageGetLandingPagesParams,
+                ),
+            ),
+            cast_to=object,
+        )
+
+    async def get_landing_pages_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -1193,13 +1249,119 @@ class AsyncPagesResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    page_query_landing_pages_params.PageQueryLandingPagesParams,
+                    page_get_landing_pages_by_query_params.PageGetLandingPagesByQueryParams,
                 ),
             ),
             cast_to=object,
         )
 
-    async def query_site_pages(
+    async def get_site_page_revision(
+        self,
+        revision_id: str,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PageVersion:
+        """
+        Retrieve a previous version of a website page by the revision ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not revision_id:
+            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
+        return await self._get(
+            path_template(
+                "/cms/pages/2026-03/site-pages/{object_id}/revisions/{revision_id}",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PageVersion,
+        )
+
+    async def get_site_pages(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/cms/pages/2026-03/site-pages/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    page_get_site_pages_params.PageGetSitePagesParams,
+                ),
+            ),
+            cast_to=object,
+        )
+
+    async def get_site_pages_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -1259,13 +1421,121 @@ class AsyncPagesResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    page_query_site_pages_params.PageQuerySitePagesParams,
+                    page_get_site_pages_by_query_params.PageGetSitePagesByQueryParams,
                 ),
             ),
             cast_to=object,
         )
 
-    async def reset_draft(
+    def list_landing_page_revisions(
+        self,
+        object_id: str,
+        *,
+        after: str | Omit = omit,
+        before: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[PageVersion, AsyncPage[PageVersion]]:
+        """
+        Retrieve all the previous versions of a landing page, specified by page ID.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._get_api_list(
+            path_template("/cms/pages/2026-03/landing-pages/{object_id}/revisions", object_id=object_id),
+            page=AsyncPage[PageVersion],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "before": before,
+                        "limit": limit,
+                    },
+                    page_list_landing_page_revisions_params.PageListLandingPageRevisionsParams,
+                ),
+            ),
+            model=PageVersion,
+        )
+
+    def list_site_page_revisions(
+        self,
+        object_id: str,
+        *,
+        after: str | Omit = omit,
+        before: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[PageVersion, AsyncPage[PageVersion]]:
+        """
+        Retrieves all the previous versions of a website page, specified by page ID.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return self._get_api_list(
+            path_template("/cms/pages/2026-03/site-pages/{object_id}/revisions", object_id=object_id),
+            page=AsyncPage[PageVersion],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "before": before,
+                        "limit": limit,
+                    },
+                    page_list_site_page_revisions_params.PageListSitePageRevisionsParams,
+                ),
+            ),
+            model=PageVersion,
+        )
+
+    async def reset_site_page_draft(
         self,
         object_id: str,
         *,
@@ -1299,7 +1569,86 @@ class AsyncPagesResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def restore_revision(
+    async def restore_landing_page_revision(
+        self,
+        revision_id: str,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Page:
+        """
+        Restores a previous version of a landing page, specified by page ID and revision
+        ID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        if not revision_id:
+            raise ValueError(f"Expected a non-empty value for `revision_id` but received {revision_id!r}")
+        return await self._post(
+            path_template(
+                "/cms/pages/2026-03/landing-pages/{object_id}/revisions/{revision_id}/restore",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Page,
+        )
+
+    async def restore_landing_page_revision_to_draft(
+        self,
+        revision_id: int,
+        *,
+        object_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Page:
+        """
+        Specify a previous version of a landing page to set as the page draft.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not object_id:
+            raise ValueError(f"Expected a non-empty value for `object_id` but received {object_id!r}")
+        return await self._post(
+            path_template(
+                "/cms/pages/2026-03/landing-pages/{object_id}/revisions/{revision_id}/restore-to-draft",
+                object_id=object_id,
+                revision_id=revision_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Page,
+        )
+
+    async def restore_site_page_revision(
         self,
         revision_id: str,
         *,
@@ -1340,7 +1689,7 @@ class AsyncPagesResource(AsyncAPIResource):
             cast_to=Page,
         )
 
-    async def restore_revision_to_draft(
+    async def restore_site_page_revision_to_draft(
         self,
         revision_id: int,
         *,
@@ -1384,38 +1733,50 @@ class PagesResourceWithRawResponse:
     def __init__(self, pages: PagesResource) -> None:
         self._pages = pages
 
-        self.get_revision = to_raw_response_wrapper(
-            pages.get_revision,
+        self.get_landing_page_folders = to_raw_response_wrapper(
+            pages.get_landing_page_folders,
         )
-        self.list_landing_page_folders = to_raw_response_wrapper(
-            pages.list_landing_page_folders,
+        self.get_landing_page_folders_by_query = to_raw_response_wrapper(
+            pages.get_landing_page_folders_by_query,
         )
-        self.list_landing_pages = to_raw_response_wrapper(
-            pages.list_landing_pages,
+        self.get_landing_page_revision = to_raw_response_wrapper(
+            pages.get_landing_page_revision,
         )
-        self.list_revisions = to_raw_response_wrapper(
-            pages.list_revisions,
+        self.get_landing_pages = to_raw_response_wrapper(
+            pages.get_landing_pages,
         )
-        self.list_site_pages = to_raw_response_wrapper(
-            pages.list_site_pages,
+        self.get_landing_pages_by_query = to_raw_response_wrapper(
+            pages.get_landing_pages_by_query,
         )
-        self.query_landing_page_folders = to_raw_response_wrapper(
-            pages.query_landing_page_folders,
+        self.get_site_page_revision = to_raw_response_wrapper(
+            pages.get_site_page_revision,
         )
-        self.query_landing_pages = to_raw_response_wrapper(
-            pages.query_landing_pages,
+        self.get_site_pages = to_raw_response_wrapper(
+            pages.get_site_pages,
         )
-        self.query_site_pages = to_raw_response_wrapper(
-            pages.query_site_pages,
+        self.get_site_pages_by_query = to_raw_response_wrapper(
+            pages.get_site_pages_by_query,
         )
-        self.reset_draft = to_raw_response_wrapper(
-            pages.reset_draft,
+        self.list_landing_page_revisions = to_raw_response_wrapper(
+            pages.list_landing_page_revisions,
         )
-        self.restore_revision = to_raw_response_wrapper(
-            pages.restore_revision,
+        self.list_site_page_revisions = to_raw_response_wrapper(
+            pages.list_site_page_revisions,
         )
-        self.restore_revision_to_draft = to_raw_response_wrapper(
-            pages.restore_revision_to_draft,
+        self.reset_site_page_draft = to_raw_response_wrapper(
+            pages.reset_site_page_draft,
+        )
+        self.restore_landing_page_revision = to_raw_response_wrapper(
+            pages.restore_landing_page_revision,
+        )
+        self.restore_landing_page_revision_to_draft = to_raw_response_wrapper(
+            pages.restore_landing_page_revision_to_draft,
+        )
+        self.restore_site_page_revision = to_raw_response_wrapper(
+            pages.restore_site_page_revision,
+        )
+        self.restore_site_page_revision_to_draft = to_raw_response_wrapper(
+            pages.restore_site_page_revision_to_draft,
         )
 
     @cached_property
@@ -1447,38 +1808,50 @@ class AsyncPagesResourceWithRawResponse:
     def __init__(self, pages: AsyncPagesResource) -> None:
         self._pages = pages
 
-        self.get_revision = async_to_raw_response_wrapper(
-            pages.get_revision,
+        self.get_landing_page_folders = async_to_raw_response_wrapper(
+            pages.get_landing_page_folders,
         )
-        self.list_landing_page_folders = async_to_raw_response_wrapper(
-            pages.list_landing_page_folders,
+        self.get_landing_page_folders_by_query = async_to_raw_response_wrapper(
+            pages.get_landing_page_folders_by_query,
         )
-        self.list_landing_pages = async_to_raw_response_wrapper(
-            pages.list_landing_pages,
+        self.get_landing_page_revision = async_to_raw_response_wrapper(
+            pages.get_landing_page_revision,
         )
-        self.list_revisions = async_to_raw_response_wrapper(
-            pages.list_revisions,
+        self.get_landing_pages = async_to_raw_response_wrapper(
+            pages.get_landing_pages,
         )
-        self.list_site_pages = async_to_raw_response_wrapper(
-            pages.list_site_pages,
+        self.get_landing_pages_by_query = async_to_raw_response_wrapper(
+            pages.get_landing_pages_by_query,
         )
-        self.query_landing_page_folders = async_to_raw_response_wrapper(
-            pages.query_landing_page_folders,
+        self.get_site_page_revision = async_to_raw_response_wrapper(
+            pages.get_site_page_revision,
         )
-        self.query_landing_pages = async_to_raw_response_wrapper(
-            pages.query_landing_pages,
+        self.get_site_pages = async_to_raw_response_wrapper(
+            pages.get_site_pages,
         )
-        self.query_site_pages = async_to_raw_response_wrapper(
-            pages.query_site_pages,
+        self.get_site_pages_by_query = async_to_raw_response_wrapper(
+            pages.get_site_pages_by_query,
         )
-        self.reset_draft = async_to_raw_response_wrapper(
-            pages.reset_draft,
+        self.list_landing_page_revisions = async_to_raw_response_wrapper(
+            pages.list_landing_page_revisions,
         )
-        self.restore_revision = async_to_raw_response_wrapper(
-            pages.restore_revision,
+        self.list_site_page_revisions = async_to_raw_response_wrapper(
+            pages.list_site_page_revisions,
         )
-        self.restore_revision_to_draft = async_to_raw_response_wrapper(
-            pages.restore_revision_to_draft,
+        self.reset_site_page_draft = async_to_raw_response_wrapper(
+            pages.reset_site_page_draft,
+        )
+        self.restore_landing_page_revision = async_to_raw_response_wrapper(
+            pages.restore_landing_page_revision,
+        )
+        self.restore_landing_page_revision_to_draft = async_to_raw_response_wrapper(
+            pages.restore_landing_page_revision_to_draft,
+        )
+        self.restore_site_page_revision = async_to_raw_response_wrapper(
+            pages.restore_site_page_revision,
+        )
+        self.restore_site_page_revision_to_draft = async_to_raw_response_wrapper(
+            pages.restore_site_page_revision_to_draft,
         )
 
     @cached_property
@@ -1510,38 +1883,50 @@ class PagesResourceWithStreamingResponse:
     def __init__(self, pages: PagesResource) -> None:
         self._pages = pages
 
-        self.get_revision = to_streamed_response_wrapper(
-            pages.get_revision,
+        self.get_landing_page_folders = to_streamed_response_wrapper(
+            pages.get_landing_page_folders,
         )
-        self.list_landing_page_folders = to_streamed_response_wrapper(
-            pages.list_landing_page_folders,
+        self.get_landing_page_folders_by_query = to_streamed_response_wrapper(
+            pages.get_landing_page_folders_by_query,
         )
-        self.list_landing_pages = to_streamed_response_wrapper(
-            pages.list_landing_pages,
+        self.get_landing_page_revision = to_streamed_response_wrapper(
+            pages.get_landing_page_revision,
         )
-        self.list_revisions = to_streamed_response_wrapper(
-            pages.list_revisions,
+        self.get_landing_pages = to_streamed_response_wrapper(
+            pages.get_landing_pages,
         )
-        self.list_site_pages = to_streamed_response_wrapper(
-            pages.list_site_pages,
+        self.get_landing_pages_by_query = to_streamed_response_wrapper(
+            pages.get_landing_pages_by_query,
         )
-        self.query_landing_page_folders = to_streamed_response_wrapper(
-            pages.query_landing_page_folders,
+        self.get_site_page_revision = to_streamed_response_wrapper(
+            pages.get_site_page_revision,
         )
-        self.query_landing_pages = to_streamed_response_wrapper(
-            pages.query_landing_pages,
+        self.get_site_pages = to_streamed_response_wrapper(
+            pages.get_site_pages,
         )
-        self.query_site_pages = to_streamed_response_wrapper(
-            pages.query_site_pages,
+        self.get_site_pages_by_query = to_streamed_response_wrapper(
+            pages.get_site_pages_by_query,
         )
-        self.reset_draft = to_streamed_response_wrapper(
-            pages.reset_draft,
+        self.list_landing_page_revisions = to_streamed_response_wrapper(
+            pages.list_landing_page_revisions,
         )
-        self.restore_revision = to_streamed_response_wrapper(
-            pages.restore_revision,
+        self.list_site_page_revisions = to_streamed_response_wrapper(
+            pages.list_site_page_revisions,
         )
-        self.restore_revision_to_draft = to_streamed_response_wrapper(
-            pages.restore_revision_to_draft,
+        self.reset_site_page_draft = to_streamed_response_wrapper(
+            pages.reset_site_page_draft,
+        )
+        self.restore_landing_page_revision = to_streamed_response_wrapper(
+            pages.restore_landing_page_revision,
+        )
+        self.restore_landing_page_revision_to_draft = to_streamed_response_wrapper(
+            pages.restore_landing_page_revision_to_draft,
+        )
+        self.restore_site_page_revision = to_streamed_response_wrapper(
+            pages.restore_site_page_revision,
+        )
+        self.restore_site_page_revision_to_draft = to_streamed_response_wrapper(
+            pages.restore_site_page_revision_to_draft,
         )
 
     @cached_property
@@ -1573,38 +1958,50 @@ class AsyncPagesResourceWithStreamingResponse:
     def __init__(self, pages: AsyncPagesResource) -> None:
         self._pages = pages
 
-        self.get_revision = async_to_streamed_response_wrapper(
-            pages.get_revision,
+        self.get_landing_page_folders = async_to_streamed_response_wrapper(
+            pages.get_landing_page_folders,
         )
-        self.list_landing_page_folders = async_to_streamed_response_wrapper(
-            pages.list_landing_page_folders,
+        self.get_landing_page_folders_by_query = async_to_streamed_response_wrapper(
+            pages.get_landing_page_folders_by_query,
         )
-        self.list_landing_pages = async_to_streamed_response_wrapper(
-            pages.list_landing_pages,
+        self.get_landing_page_revision = async_to_streamed_response_wrapper(
+            pages.get_landing_page_revision,
         )
-        self.list_revisions = async_to_streamed_response_wrapper(
-            pages.list_revisions,
+        self.get_landing_pages = async_to_streamed_response_wrapper(
+            pages.get_landing_pages,
         )
-        self.list_site_pages = async_to_streamed_response_wrapper(
-            pages.list_site_pages,
+        self.get_landing_pages_by_query = async_to_streamed_response_wrapper(
+            pages.get_landing_pages_by_query,
         )
-        self.query_landing_page_folders = async_to_streamed_response_wrapper(
-            pages.query_landing_page_folders,
+        self.get_site_page_revision = async_to_streamed_response_wrapper(
+            pages.get_site_page_revision,
         )
-        self.query_landing_pages = async_to_streamed_response_wrapper(
-            pages.query_landing_pages,
+        self.get_site_pages = async_to_streamed_response_wrapper(
+            pages.get_site_pages,
         )
-        self.query_site_pages = async_to_streamed_response_wrapper(
-            pages.query_site_pages,
+        self.get_site_pages_by_query = async_to_streamed_response_wrapper(
+            pages.get_site_pages_by_query,
         )
-        self.reset_draft = async_to_streamed_response_wrapper(
-            pages.reset_draft,
+        self.list_landing_page_revisions = async_to_streamed_response_wrapper(
+            pages.list_landing_page_revisions,
         )
-        self.restore_revision = async_to_streamed_response_wrapper(
-            pages.restore_revision,
+        self.list_site_page_revisions = async_to_streamed_response_wrapper(
+            pages.list_site_page_revisions,
         )
-        self.restore_revision_to_draft = async_to_streamed_response_wrapper(
-            pages.restore_revision_to_draft,
+        self.reset_site_page_draft = async_to_streamed_response_wrapper(
+            pages.reset_site_page_draft,
+        )
+        self.restore_landing_page_revision = async_to_streamed_response_wrapper(
+            pages.restore_landing_page_revision,
+        )
+        self.restore_landing_page_revision_to_draft = async_to_streamed_response_wrapper(
+            pages.restore_landing_page_revision_to_draft,
+        )
+        self.restore_site_page_revision = async_to_streamed_response_wrapper(
+            pages.restore_site_page_revision,
+        )
+        self.restore_site_page_revision_to_draft = async_to_streamed_response_wrapper(
+            pages.restore_site_page_revision_to_draft,
         )
 
     @cached_property

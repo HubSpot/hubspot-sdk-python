@@ -17,9 +17,12 @@ from ...._response import (
 from ...._base_client import make_request_options
 from ....types.cms.page import Page
 from ....types.cms.pages import (
-    a_b_test_end_ab_test_params,
-    a_b_test_rerun_ab_test_params,
-    a_b_test_create_ab_test_variation_params,
+    a_b_test_end_site_page_test_params,
+    a_b_test_rerun_site_page_test_params,
+    a_b_test_end_landing_page_test_params,
+    a_b_test_rerun_landing_page_test_params,
+    a_b_test_create_site_page_variation_params,
+    a_b_test_create_landing_page_variation_params,
 )
 
 __all__ = ["ABTestsResource", "AsyncABTestsResource"]
@@ -45,7 +48,51 @@ class ABTestsResource(SyncAPIResource):
         """
         return ABTestsResourceWithStreamingResponse(self)
 
-    def create_ab_test_variation(
+    def create_landing_page_variation(
+        self,
+        *,
+        content_id: str,
+        variation_name: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Page:
+        """
+        Create a new A/B test variation based on the information provided in the request
+        body.
+
+        Args:
+          content_id: ID of the object to test.
+
+          variation_name: Name of A/B test variation.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/cms/pages/2026-03/landing-pages/ab-test/create-variation",
+            body=maybe_transform(
+                {
+                    "content_id": content_id,
+                    "variation_name": variation_name,
+                },
+                a_b_test_create_landing_page_variation_params.ABTestCreateLandingPageVariationParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Page,
+        )
+
+    def create_site_page_variation(
         self,
         *,
         content_id: str,
@@ -81,7 +128,7 @@ class ABTestsResource(SyncAPIResource):
                     "content_id": content_id,
                     "variation_name": variation_name,
                 },
-                a_b_test_create_ab_test_variation_params.ABTestCreateAbTestVariationParams,
+                a_b_test_create_site_page_variation_params.ABTestCreateSitePageVariationParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -89,7 +136,51 @@ class ABTestsResource(SyncAPIResource):
             cast_to=Page,
         )
 
-    def end_ab_test(
+    def end_landing_page_test(
+        self,
+        *,
+        ab_test_id: str,
+        winner_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        End an active A/B test and designate a winner.
+
+        Args:
+          ab_test_id: ID of the test to end.
+
+          winner_id: ID of the object to designate as the test winner.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/cms/pages/2026-03/landing-pages/ab-test/end",
+            body=maybe_transform(
+                {
+                    "ab_test_id": ab_test_id,
+                    "winner_id": winner_id,
+                },
+                a_b_test_end_landing_page_test_params.ABTestEndLandingPageTestParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def end_site_page_test(
         self,
         *,
         ab_test_id: str,
@@ -125,7 +216,7 @@ class ABTestsResource(SyncAPIResource):
                     "ab_test_id": ab_test_id,
                     "winner_id": winner_id,
                 },
-                a_b_test_end_ab_test_params.ABTestEndAbTestParams,
+                a_b_test_end_site_page_test_params.ABTestEndSitePageTestParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -133,7 +224,51 @@ class ABTestsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def rerun_ab_test(
+    def rerun_landing_page_test(
+        self,
+        *,
+        ab_test_id: str,
+        variation_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Rerun a previous A/B test.
+
+        Args:
+          ab_test_id: ID of the test to rerun.
+
+          variation_id: ID of the object to reactivate as a test variation.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/cms/pages/2026-03/landing-pages/ab-test/rerun",
+            body=maybe_transform(
+                {
+                    "ab_test_id": ab_test_id,
+                    "variation_id": variation_id,
+                },
+                a_b_test_rerun_landing_page_test_params.ABTestRerunLandingPageTestParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def rerun_site_page_test(
         self,
         *,
         ab_test_id: str,
@@ -169,7 +304,7 @@ class ABTestsResource(SyncAPIResource):
                     "ab_test_id": ab_test_id,
                     "variation_id": variation_id,
                 },
-                a_b_test_rerun_ab_test_params.ABTestRerunAbTestParams,
+                a_b_test_rerun_site_page_test_params.ABTestRerunSitePageTestParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -198,7 +333,51 @@ class AsyncABTestsResource(AsyncAPIResource):
         """
         return AsyncABTestsResourceWithStreamingResponse(self)
 
-    async def create_ab_test_variation(
+    async def create_landing_page_variation(
+        self,
+        *,
+        content_id: str,
+        variation_name: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Page:
+        """
+        Create a new A/B test variation based on the information provided in the request
+        body.
+
+        Args:
+          content_id: ID of the object to test.
+
+          variation_name: Name of A/B test variation.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/cms/pages/2026-03/landing-pages/ab-test/create-variation",
+            body=await async_maybe_transform(
+                {
+                    "content_id": content_id,
+                    "variation_name": variation_name,
+                },
+                a_b_test_create_landing_page_variation_params.ABTestCreateLandingPageVariationParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Page,
+        )
+
+    async def create_site_page_variation(
         self,
         *,
         content_id: str,
@@ -234,7 +413,7 @@ class AsyncABTestsResource(AsyncAPIResource):
                     "content_id": content_id,
                     "variation_name": variation_name,
                 },
-                a_b_test_create_ab_test_variation_params.ABTestCreateAbTestVariationParams,
+                a_b_test_create_site_page_variation_params.ABTestCreateSitePageVariationParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -242,7 +421,51 @@ class AsyncABTestsResource(AsyncAPIResource):
             cast_to=Page,
         )
 
-    async def end_ab_test(
+    async def end_landing_page_test(
+        self,
+        *,
+        ab_test_id: str,
+        winner_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        End an active A/B test and designate a winner.
+
+        Args:
+          ab_test_id: ID of the test to end.
+
+          winner_id: ID of the object to designate as the test winner.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/cms/pages/2026-03/landing-pages/ab-test/end",
+            body=await async_maybe_transform(
+                {
+                    "ab_test_id": ab_test_id,
+                    "winner_id": winner_id,
+                },
+                a_b_test_end_landing_page_test_params.ABTestEndLandingPageTestParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def end_site_page_test(
         self,
         *,
         ab_test_id: str,
@@ -278,7 +501,7 @@ class AsyncABTestsResource(AsyncAPIResource):
                     "ab_test_id": ab_test_id,
                     "winner_id": winner_id,
                 },
-                a_b_test_end_ab_test_params.ABTestEndAbTestParams,
+                a_b_test_end_site_page_test_params.ABTestEndSitePageTestParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -286,7 +509,51 @@ class AsyncABTestsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def rerun_ab_test(
+    async def rerun_landing_page_test(
+        self,
+        *,
+        ab_test_id: str,
+        variation_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Rerun a previous A/B test.
+
+        Args:
+          ab_test_id: ID of the test to rerun.
+
+          variation_id: ID of the object to reactivate as a test variation.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/cms/pages/2026-03/landing-pages/ab-test/rerun",
+            body=await async_maybe_transform(
+                {
+                    "ab_test_id": ab_test_id,
+                    "variation_id": variation_id,
+                },
+                a_b_test_rerun_landing_page_test_params.ABTestRerunLandingPageTestParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def rerun_site_page_test(
         self,
         *,
         ab_test_id: str,
@@ -322,7 +589,7 @@ class AsyncABTestsResource(AsyncAPIResource):
                     "ab_test_id": ab_test_id,
                     "variation_id": variation_id,
                 },
-                a_b_test_rerun_ab_test_params.ABTestRerunAbTestParams,
+                a_b_test_rerun_site_page_test_params.ABTestRerunSitePageTestParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -335,14 +602,23 @@ class ABTestsResourceWithRawResponse:
     def __init__(self, a_b_tests: ABTestsResource) -> None:
         self._a_b_tests = a_b_tests
 
-        self.create_ab_test_variation = to_raw_response_wrapper(
-            a_b_tests.create_ab_test_variation,
+        self.create_landing_page_variation = to_raw_response_wrapper(
+            a_b_tests.create_landing_page_variation,
         )
-        self.end_ab_test = to_raw_response_wrapper(
-            a_b_tests.end_ab_test,
+        self.create_site_page_variation = to_raw_response_wrapper(
+            a_b_tests.create_site_page_variation,
         )
-        self.rerun_ab_test = to_raw_response_wrapper(
-            a_b_tests.rerun_ab_test,
+        self.end_landing_page_test = to_raw_response_wrapper(
+            a_b_tests.end_landing_page_test,
+        )
+        self.end_site_page_test = to_raw_response_wrapper(
+            a_b_tests.end_site_page_test,
+        )
+        self.rerun_landing_page_test = to_raw_response_wrapper(
+            a_b_tests.rerun_landing_page_test,
+        )
+        self.rerun_site_page_test = to_raw_response_wrapper(
+            a_b_tests.rerun_site_page_test,
         )
 
 
@@ -350,14 +626,23 @@ class AsyncABTestsResourceWithRawResponse:
     def __init__(self, a_b_tests: AsyncABTestsResource) -> None:
         self._a_b_tests = a_b_tests
 
-        self.create_ab_test_variation = async_to_raw_response_wrapper(
-            a_b_tests.create_ab_test_variation,
+        self.create_landing_page_variation = async_to_raw_response_wrapper(
+            a_b_tests.create_landing_page_variation,
         )
-        self.end_ab_test = async_to_raw_response_wrapper(
-            a_b_tests.end_ab_test,
+        self.create_site_page_variation = async_to_raw_response_wrapper(
+            a_b_tests.create_site_page_variation,
         )
-        self.rerun_ab_test = async_to_raw_response_wrapper(
-            a_b_tests.rerun_ab_test,
+        self.end_landing_page_test = async_to_raw_response_wrapper(
+            a_b_tests.end_landing_page_test,
+        )
+        self.end_site_page_test = async_to_raw_response_wrapper(
+            a_b_tests.end_site_page_test,
+        )
+        self.rerun_landing_page_test = async_to_raw_response_wrapper(
+            a_b_tests.rerun_landing_page_test,
+        )
+        self.rerun_site_page_test = async_to_raw_response_wrapper(
+            a_b_tests.rerun_site_page_test,
         )
 
 
@@ -365,14 +650,23 @@ class ABTestsResourceWithStreamingResponse:
     def __init__(self, a_b_tests: ABTestsResource) -> None:
         self._a_b_tests = a_b_tests
 
-        self.create_ab_test_variation = to_streamed_response_wrapper(
-            a_b_tests.create_ab_test_variation,
+        self.create_landing_page_variation = to_streamed_response_wrapper(
+            a_b_tests.create_landing_page_variation,
         )
-        self.end_ab_test = to_streamed_response_wrapper(
-            a_b_tests.end_ab_test,
+        self.create_site_page_variation = to_streamed_response_wrapper(
+            a_b_tests.create_site_page_variation,
         )
-        self.rerun_ab_test = to_streamed_response_wrapper(
-            a_b_tests.rerun_ab_test,
+        self.end_landing_page_test = to_streamed_response_wrapper(
+            a_b_tests.end_landing_page_test,
+        )
+        self.end_site_page_test = to_streamed_response_wrapper(
+            a_b_tests.end_site_page_test,
+        )
+        self.rerun_landing_page_test = to_streamed_response_wrapper(
+            a_b_tests.rerun_landing_page_test,
+        )
+        self.rerun_site_page_test = to_streamed_response_wrapper(
+            a_b_tests.rerun_site_page_test,
         )
 
 
@@ -380,12 +674,21 @@ class AsyncABTestsResourceWithStreamingResponse:
     def __init__(self, a_b_tests: AsyncABTestsResource) -> None:
         self._a_b_tests = a_b_tests
 
-        self.create_ab_test_variation = async_to_streamed_response_wrapper(
-            a_b_tests.create_ab_test_variation,
+        self.create_landing_page_variation = async_to_streamed_response_wrapper(
+            a_b_tests.create_landing_page_variation,
         )
-        self.end_ab_test = async_to_streamed_response_wrapper(
-            a_b_tests.end_ab_test,
+        self.create_site_page_variation = async_to_streamed_response_wrapper(
+            a_b_tests.create_site_page_variation,
         )
-        self.rerun_ab_test = async_to_streamed_response_wrapper(
-            a_b_tests.rerun_ab_test,
+        self.end_landing_page_test = async_to_streamed_response_wrapper(
+            a_b_tests.end_landing_page_test,
+        )
+        self.end_site_page_test = async_to_streamed_response_wrapper(
+            a_b_tests.end_site_page_test,
+        )
+        self.rerun_landing_page_test = async_to_streamed_response_wrapper(
+            a_b_tests.rerun_landing_page_test,
+        )
+        self.rerun_site_page_test = async_to_streamed_response_wrapper(
+            a_b_tests.rerun_site_page_test,
         )
