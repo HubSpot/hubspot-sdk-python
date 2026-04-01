@@ -10,9 +10,9 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
+    Property,
     CollectionResponsePropertyNoPaging,
 )
-from hubspot_sdk.types.shared import Property
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -44,6 +44,7 @@ class TestProperties:
             name="name",
             type="bool",
             calculation_formula="calculationFormula",
+            currency_property_name="currencyPropertyName",
             data_sensitivity="highly_sensitive",
             description="description",
             display_order=0,
@@ -61,6 +62,7 @@ class TestProperties:
                 }
             ],
             referenced_object_type="referencedObjectType",
+            show_currency_symbol=True,
         )
         assert_matches_type(Property, property, path=["response"])
 
@@ -129,6 +131,7 @@ class TestProperties:
             property_name="propertyName",
             object_type="objectType",
             calculation_formula="calculationFormula",
+            currency_property_name="currencyPropertyName",
             description="description",
             display_order=0,
             field_type="booleancheckbox",
@@ -145,6 +148,7 @@ class TestProperties:
                     "description": "description",
                 }
             ],
+            show_currency_symbol=True,
             type="bool",
         )
         assert_matches_type(Property, property, path=["response"])
@@ -393,6 +397,7 @@ class TestAsyncProperties:
             name="name",
             type="bool",
             calculation_formula="calculationFormula",
+            currency_property_name="currencyPropertyName",
             data_sensitivity="highly_sensitive",
             description="description",
             display_order=0,
@@ -410,6 +415,7 @@ class TestAsyncProperties:
                 }
             ],
             referenced_object_type="referencedObjectType",
+            show_currency_symbol=True,
         )
         assert_matches_type(Property, property, path=["response"])
 
@@ -478,6 +484,7 @@ class TestAsyncProperties:
             property_name="propertyName",
             object_type="objectType",
             calculation_formula="calculationFormula",
+            currency_property_name="currencyPropertyName",
             description="description",
             display_order=0,
             field_type="booleancheckbox",
@@ -494,6 +501,7 @@ class TestAsyncProperties:
                     "description": "description",
                 }
             ],
+            show_currency_symbol=True,
             type="bool",
         )
         assert_matches_type(Property, property, path=["response"])

@@ -264,6 +264,7 @@ from hubspot_sdk.types.cms import (
     BatchInputHubDBTableRowV3BatchUpdateRequest,
     BatchInputHubDBTableRowV3Request,
     BatchResponseHubDBTableRowV3,
+    BatchResponseHubDBTableRowV3WithErrors,
     BoundedNextPage,
     BoundedPaging,
     CollectionResponseWithTotalHubDBTableV3,
@@ -302,7 +303,7 @@ Methods:
 - <code title="post /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/batch/read">client.cms.hubdb.rows.<a href="./src/hubspot_sdk/resources/cms/hubdb/rows.py">get_batch</a>(table_id_or_name, \*\*<a href="src/hubspot_sdk/types/cms/hubdb/row_get_batch_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_hub_db_table_row_v3.py">BatchResponseHubDBTableRowV3</a></code>
 - <code title="get /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/{rowId}/draft">client.cms.hubdb.rows.<a href="./src/hubspot_sdk/resources/cms/hubdb/rows.py">get_draft</a>(row_id, \*, table_id_or_name, \*\*<a href="src/hubspot_sdk/types/cms/hubdb/row_get_draft_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/hub_db_table_row_v3.py">HubDBTableRowV3</a></code>
 - <code title="post /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/read">client.cms.hubdb.rows.<a href="./src/hubspot_sdk/resources/cms/hubdb/rows.py">get_draft_batch</a>(table_id_or_name, \*\*<a href="src/hubspot_sdk/types/cms/hubdb/row_get_draft_batch_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_hub_db_table_row_v3.py">BatchResponseHubDBTableRowV3</a></code>
-- <code title="post /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/purge">client.cms.hubdb.rows.<a href="./src/hubspot_sdk/resources/cms/hubdb/rows.py">purge_batch</a>(table_id_or_name, \*\*<a href="src/hubspot_sdk/types/cms/hubdb/row_purge_batch_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_hub_db_table_row_v3.py">BatchResponseHubDBTableRowV3</a></code>
+- <code title="post /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/purge">client.cms.hubdb.rows.<a href="./src/hubspot_sdk/resources/cms/hubdb/rows.py">purge_batch</a>(table_id_or_name, \*\*<a href="src/hubspot_sdk/types/cms/hubdb/row_purge_batch_params.py">params</a>) -> None</code>
 - <code title="post /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/replace">client.cms.hubdb.rows.<a href="./src/hubspot_sdk/resources/cms/hubdb/rows.py">replace_batch</a>(table_id_or_name, \*\*<a href="src/hubspot_sdk/types/cms/hubdb/row_replace_batch_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_hub_db_table_row_v3.py">BatchResponseHubDBTableRowV3</a></code>
 - <code title="put /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/{rowId}/draft">client.cms.hubdb.rows.<a href="./src/hubspot_sdk/resources/cms/hubdb/rows.py">replace_draft</a>(row_id, \*, table_id_or_name, \*\*<a href="src/hubspot_sdk/types/cms/hubdb/row_replace_draft_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/hub_db_table_row_v3.py">HubDBTableRowV3</a></code>
 - <code title="post /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/update">client.cms.hubdb.rows.<a href="./src/hubspot_sdk/resources/cms/hubdb/rows.py">update_batch</a>(table_id_or_name, \*\*<a href="src/hubspot_sdk/types/cms/hubdb/row_update_batch_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_hub_db_table_row_v3.py">BatchResponseHubDBTableRowV3</a></code>
@@ -341,7 +342,9 @@ from hubspot_sdk.types.cms import (
     AttentionSpanCalculatedValues,
     AttentionSpanEvent,
     AttentionSpanEventRequest,
+    BatchInputPropertyCreate,
     BatchResponseProperty,
+    BatchResponsePropertyWithErrors,
     BeginsWith,
     BooleanPropertyVariable,
     BooleanTargetPropertyVariable,
@@ -428,6 +431,7 @@ from hubspot_sdk.types.cms import (
     Power,
     Property,
     Property1,
+    PropertyCreate,
     PropertyDefinition,
     PropertyDefinitionSource,
     RequiredPropertiesExtensionData,

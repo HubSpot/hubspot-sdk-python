@@ -6,9 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .property import Property
 from ..._models import BaseModel
-from .property_1 import Property1
-from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponseProperty"]
 
@@ -16,16 +15,12 @@ __all__ = ["BatchResponseProperty"]
 class BatchResponseProperty(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
 
-    results: List[Property1]
+    results: List[Property]
 
     started_at: datetime = FieldInfo(alias="startedAt")
 
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
 
-    errors: Optional[List[StandardError]] = None
-
     links: Optional[Dict[str, str]] = None
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)

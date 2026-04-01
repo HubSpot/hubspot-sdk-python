@@ -7,10 +7,10 @@ from typing_extensions import Required, Annotated, TypedDict
 from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
-__all__ = ["ListSearchParams"]
+__all__ = ["ListListBySearchParams"]
 
 
-class ListSearchParams(TypedDict, total=False):
+class ListListBySearchParams(TypedDict, total=False):
     additional_properties: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="additionalProperties")]]
     """The property names of any additional list properties to include in the response.
 

@@ -594,7 +594,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             inputs=["string"],
         )
-        assert_matches_type(BatchResponseHubDBTableRowV3, row, path=["response"])
+        assert row is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -607,7 +607,7 @@ class TestRows:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         row = response.parse()
-        assert_matches_type(BatchResponseHubDBTableRowV3, row, path=["response"])
+        assert row is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -620,7 +620,7 @@ class TestRows:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             row = response.parse()
-            assert_matches_type(BatchResponseHubDBTableRowV3, row, path=["response"])
+            assert row is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1517,7 +1517,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             inputs=["string"],
         )
-        assert_matches_type(BatchResponseHubDBTableRowV3, row, path=["response"])
+        assert row is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1530,7 +1530,7 @@ class TestAsyncRows:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         row = await response.parse()
-        assert_matches_type(BatchResponseHubDBTableRowV3, row, path=["response"])
+        assert row is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1543,7 +1543,7 @@ class TestAsyncRows:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             row = await response.parse()
-            assert_matches_type(BatchResponseHubDBTableRowV3, row, path=["response"])
+            assert row is None
 
         assert cast(Any, response.is_closed) is True
 

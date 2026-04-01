@@ -6,3 +6,4 @@ from .batch_get_params import BatchGetParams as BatchGetParams
 from .batch_create_params import BatchCreateParams as BatchCreateParams
 from .batch_delete_params import BatchDeleteParams as BatchDeleteParams
 from .batch_update_params import BatchUpdateParams as BatchUpdateParams
+from .batch_upsert_params import BatchUpsertParams as BatchUpsertParams

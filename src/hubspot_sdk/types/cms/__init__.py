@@ -128,6 +128,7 @@ from .pipeline_probability import PipelineProbability as PipelineProbability
 from .side_or_corner_param import SideOrCornerParam as SideOrCornerParam
 from .audit_log_list_params import AuditLogListParams as AuditLogListParams
 from .content_search_result import ContentSearchResult as ContentSearchResult
+from .property_create_param import PropertyCreateParam as PropertyCreateParam
 from .public_search_results import PublicSearchResults as PublicSearchResults
 from .round_nearest_numbers import RoundNearestNumbers as RoundNearestNumbers
 from .background_image_param import BackgroundImageParam as BackgroundImageParam

@@ -7,7 +7,6 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.standard_error import StandardError
 from .journal_fetch_response import JournalFetchResponse
 
 __all__ = ["BatchResponseJournalFetchResponse"]
@@ -22,10 +21,6 @@ class BatchResponseJournalFetchResponse(BaseModel):
 
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
 
-    errors: Optional[List[StandardError]] = None
-
     links: Optional[Dict[str, str]] = None
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)

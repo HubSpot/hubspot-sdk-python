@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["ListListMembershipsJoinOrderParams"]
+__all__ = ["ListGetMembershipsJoinOrderParams"]
 
 
-class ListListMembershipsJoinOrderParams(TypedDict, total=False):
+class ListGetMembershipsJoinOrderParams(TypedDict, total=False):
     after: str
     """
     The paging cursor token of the last successfully read resource will be returned
