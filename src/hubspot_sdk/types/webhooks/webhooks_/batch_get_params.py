@@ -7,10 +7,10 @@ from typing_extensions import Required, Annotated, TypedDict
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 
-__all__ = ["BatchReadParams"]
+__all__ = ["BatchGetParams"]
 
 
-class BatchReadParams(TypedDict, total=False):
+class BatchGetParams(TypedDict, total=False):
     inputs: Required[SequenceNotStr[str]]
     """Strings to input."""
 

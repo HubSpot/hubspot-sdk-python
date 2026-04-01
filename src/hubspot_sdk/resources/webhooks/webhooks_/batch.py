@@ -18,11 +18,15 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.webhooks.webhooks_ import (
-    batch_read_params,
-    batch_create_params,
+    batch_get_params,
     batch_get_next_params,
+    batch_get_local_params,
     batch_get_latest_params,
     batch_get_earliest_params,
+    batch_get_local_next_params,
+    batch_get_local_latest_params,
+    batch_get_local_earliest_params,
+    batch_update_subscriptions_params,
 )
 from ....types.webhooks.batch_response_subscription_response import BatchResponseSubscriptionResponse
 from ....types.webhooks.batch_response_journal_fetch_response import BatchResponseJournalFetchResponse
@@ -51,22 +55,22 @@ class BatchResource(SyncAPIResource):
         """
         return BatchResourceWithStreamingResponse(self)
 
-    def create(
+    def get(
         self,
-        app_id: int,
         *,
-        inputs: Iterable[SubscriptionBatchUpdateRequestParam],
+        inputs: SequenceNotStr[str],
+        install_portal_id: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseSubscriptionResponse:
+    ) -> BatchResponseJournalFetchResponse:
         """
-        Batch create event subscriptions for the specified app.
-
         Args:
+          inputs: Strings to input.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -76,12 +80,16 @@ class BatchResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            path_template("/webhooks/2026-03/{app_id}/subscriptions/batch/update", app_id=app_id),
-            body=maybe_transform({"inputs": inputs}, batch_create_params.BatchCreateParams),
+            "/webhooks-journal/journal-local/2026-03/batch/read",
+            body=maybe_transform({"inputs": inputs}, batch_get_params.BatchGetParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"install_portal_id": install_portal_id}, batch_get_params.BatchGetParams),
             ),
-            cast_to=BatchResponseSubscriptionResponse,
+            cast_to=BatchResponseJournalFetchResponse,
         )
 
     def get_earliest(
@@ -156,6 +164,159 @@ class BatchResource(SyncAPIResource):
             cast_to=BatchResponseJournalFetchResponse,
         )
 
+    def get_local(
+        self,
+        *,
+        inputs: SequenceNotStr[str],
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          inputs: Strings to input.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/webhooks-journal/journal/2026-03/batch/read",
+            body=maybe_transform({"inputs": inputs}, batch_get_local_params.BatchGetLocalParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"install_portal_id": install_portal_id}, batch_get_local_params.BatchGetLocalParams
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
+        )
+
+    def get_local_earliest(
+        self,
+        count: int,
+        *,
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            path_template("/webhooks-journal/journal-local/2026-03/batch/earliest/{count}", count=count),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"install_portal_id": install_portal_id},
+                    batch_get_local_earliest_params.BatchGetLocalEarliestParams,
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
+        )
+
+    def get_local_latest(
+        self,
+        count: int,
+        *,
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            path_template("/webhooks-journal/journal-local/2026-03/batch/latest/{count}", count=count),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"install_portal_id": install_portal_id}, batch_get_local_latest_params.BatchGetLocalLatestParams
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
+        )
+
+    def get_local_next(
+        self,
+        count: int,
+        *,
+        offset: str,
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not offset:
+            raise ValueError(f"Expected a non-empty value for `offset` but received {offset!r}")
+        return self._get(
+            path_template(
+                "/webhooks-journal/journal-local/2026-03/batch/{offset}/next/{count}", offset=offset, count=count
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"install_portal_id": install_portal_id}, batch_get_local_next_params.BatchGetLocalNextParams
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
+        )
+
     def get_next(
         self,
         count: int,
@@ -195,65 +356,7 @@ class BatchResource(SyncAPIResource):
             cast_to=BatchResponseJournalFetchResponse,
         )
 
-    def read(
-        self,
-        *,
-        inputs: SequenceNotStr[str],
-        install_portal_id: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseJournalFetchResponse:
-        """
-        Args:
-          inputs: Strings to input.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/webhooks-journal/journal/2026-03/batch/read",
-            body=maybe_transform({"inputs": inputs}, batch_read_params.BatchReadParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"install_portal_id": install_portal_id}, batch_read_params.BatchReadParams),
-            ),
-            cast_to=BatchResponseJournalFetchResponse,
-        )
-
-
-class AsyncBatchResource(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncBatchResourceWithRawResponse:
-        """
-        This property can be used as a prefix for any HTTP method call to return
-        the raw response object instead of the parsed content.
-
-        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
-        """
-        return AsyncBatchResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncBatchResourceWithStreamingResponse:
-        """
-        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
-
-        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
-        """
-        return AsyncBatchResourceWithStreamingResponse(self)
-
-    async def create(
+    def update_subscriptions(
         self,
         app_id: int,
         *,
@@ -277,13 +380,73 @@ class AsyncBatchResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._post(
+        return self._post(
             path_template("/webhooks/2026-03/{app_id}/subscriptions/batch/update", app_id=app_id),
-            body=await async_maybe_transform({"inputs": inputs}, batch_create_params.BatchCreateParams),
+            body=maybe_transform({"inputs": inputs}, batch_update_subscriptions_params.BatchUpdateSubscriptionsParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BatchResponseSubscriptionResponse,
+        )
+
+
+class AsyncBatchResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncBatchResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncBatchResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncBatchResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
+        """
+        return AsyncBatchResourceWithStreamingResponse(self)
+
+    async def get(
+        self,
+        *,
+        inputs: SequenceNotStr[str],
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          inputs: Strings to input.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/webhooks-journal/journal-local/2026-03/batch/read",
+            body=await async_maybe_transform({"inputs": inputs}, batch_get_params.BatchGetParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"install_portal_id": install_portal_id}, batch_get_params.BatchGetParams
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
         )
 
     async def get_earliest(
@@ -358,6 +521,159 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=BatchResponseJournalFetchResponse,
         )
 
+    async def get_local(
+        self,
+        *,
+        inputs: SequenceNotStr[str],
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          inputs: Strings to input.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/webhooks-journal/journal/2026-03/batch/read",
+            body=await async_maybe_transform({"inputs": inputs}, batch_get_local_params.BatchGetLocalParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"install_portal_id": install_portal_id}, batch_get_local_params.BatchGetLocalParams
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
+        )
+
+    async def get_local_earliest(
+        self,
+        count: int,
+        *,
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            path_template("/webhooks-journal/journal-local/2026-03/batch/earliest/{count}", count=count),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"install_portal_id": install_portal_id},
+                    batch_get_local_earliest_params.BatchGetLocalEarliestParams,
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
+        )
+
+    async def get_local_latest(
+        self,
+        count: int,
+        *,
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            path_template("/webhooks-journal/journal-local/2026-03/batch/latest/{count}", count=count),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"install_portal_id": install_portal_id}, batch_get_local_latest_params.BatchGetLocalLatestParams
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
+        )
+
+    async def get_local_next(
+        self,
+        count: int,
+        *,
+        offset: str,
+        install_portal_id: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponseJournalFetchResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not offset:
+            raise ValueError(f"Expected a non-empty value for `offset` but received {offset!r}")
+        return await self._get(
+            path_template(
+                "/webhooks-journal/journal-local/2026-03/batch/{offset}/next/{count}", offset=offset, count=count
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"install_portal_id": install_portal_id}, batch_get_local_next_params.BatchGetLocalNextParams
+                ),
+            ),
+            cast_to=BatchResponseJournalFetchResponse,
+        )
+
     async def get_next(
         self,
         count: int,
@@ -397,22 +713,22 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=BatchResponseJournalFetchResponse,
         )
 
-    async def read(
+    async def update_subscriptions(
         self,
+        app_id: int,
         *,
-        inputs: SequenceNotStr[str],
-        install_portal_id: int | Omit = omit,
+        inputs: Iterable[SubscriptionBatchUpdateRequestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseJournalFetchResponse:
+    ) -> BatchResponseSubscriptionResponse:
         """
-        Args:
-          inputs: Strings to input.
+        Batch create event subscriptions for the specified app.
 
+        Args:
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -422,18 +738,14 @@ class AsyncBatchResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/webhooks-journal/journal/2026-03/batch/read",
-            body=await async_maybe_transform({"inputs": inputs}, batch_read_params.BatchReadParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"install_portal_id": install_portal_id}, batch_read_params.BatchReadParams
-                ),
+            path_template("/webhooks/2026-03/{app_id}/subscriptions/batch/update", app_id=app_id),
+            body=await async_maybe_transform(
+                {"inputs": inputs}, batch_update_subscriptions_params.BatchUpdateSubscriptionsParams
             ),
-            cast_to=BatchResponseJournalFetchResponse,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchResponseSubscriptionResponse,
         )
 
 
@@ -441,8 +753,8 @@ class BatchResourceWithRawResponse:
     def __init__(self, batch: BatchResource) -> None:
         self._batch = batch
 
-        self.create = to_raw_response_wrapper(
-            batch.create,
+        self.get = to_raw_response_wrapper(
+            batch.get,
         )
         self.get_earliest = to_raw_response_wrapper(
             batch.get_earliest,
@@ -450,11 +762,23 @@ class BatchResourceWithRawResponse:
         self.get_latest = to_raw_response_wrapper(
             batch.get_latest,
         )
+        self.get_local = to_raw_response_wrapper(
+            batch.get_local,
+        )
+        self.get_local_earliest = to_raw_response_wrapper(
+            batch.get_local_earliest,
+        )
+        self.get_local_latest = to_raw_response_wrapper(
+            batch.get_local_latest,
+        )
+        self.get_local_next = to_raw_response_wrapper(
+            batch.get_local_next,
+        )
         self.get_next = to_raw_response_wrapper(
             batch.get_next,
         )
-        self.read = to_raw_response_wrapper(
-            batch.read,
+        self.update_subscriptions = to_raw_response_wrapper(
+            batch.update_subscriptions,
         )
 
 
@@ -462,8 +786,8 @@ class AsyncBatchResourceWithRawResponse:
     def __init__(self, batch: AsyncBatchResource) -> None:
         self._batch = batch
 
-        self.create = async_to_raw_response_wrapper(
-            batch.create,
+        self.get = async_to_raw_response_wrapper(
+            batch.get,
         )
         self.get_earliest = async_to_raw_response_wrapper(
             batch.get_earliest,
@@ -471,11 +795,23 @@ class AsyncBatchResourceWithRawResponse:
         self.get_latest = async_to_raw_response_wrapper(
             batch.get_latest,
         )
+        self.get_local = async_to_raw_response_wrapper(
+            batch.get_local,
+        )
+        self.get_local_earliest = async_to_raw_response_wrapper(
+            batch.get_local_earliest,
+        )
+        self.get_local_latest = async_to_raw_response_wrapper(
+            batch.get_local_latest,
+        )
+        self.get_local_next = async_to_raw_response_wrapper(
+            batch.get_local_next,
+        )
         self.get_next = async_to_raw_response_wrapper(
             batch.get_next,
         )
-        self.read = async_to_raw_response_wrapper(
-            batch.read,
+        self.update_subscriptions = async_to_raw_response_wrapper(
+            batch.update_subscriptions,
         )
 
 
@@ -483,8 +819,8 @@ class BatchResourceWithStreamingResponse:
     def __init__(self, batch: BatchResource) -> None:
         self._batch = batch
 
-        self.create = to_streamed_response_wrapper(
-            batch.create,
+        self.get = to_streamed_response_wrapper(
+            batch.get,
         )
         self.get_earliest = to_streamed_response_wrapper(
             batch.get_earliest,
@@ -492,11 +828,23 @@ class BatchResourceWithStreamingResponse:
         self.get_latest = to_streamed_response_wrapper(
             batch.get_latest,
         )
+        self.get_local = to_streamed_response_wrapper(
+            batch.get_local,
+        )
+        self.get_local_earliest = to_streamed_response_wrapper(
+            batch.get_local_earliest,
+        )
+        self.get_local_latest = to_streamed_response_wrapper(
+            batch.get_local_latest,
+        )
+        self.get_local_next = to_streamed_response_wrapper(
+            batch.get_local_next,
+        )
         self.get_next = to_streamed_response_wrapper(
             batch.get_next,
         )
-        self.read = to_streamed_response_wrapper(
-            batch.read,
+        self.update_subscriptions = to_streamed_response_wrapper(
+            batch.update_subscriptions,
         )
 
 
@@ -504,8 +852,8 @@ class AsyncBatchResourceWithStreamingResponse:
     def __init__(self, batch: AsyncBatchResource) -> None:
         self._batch = batch
 
-        self.create = async_to_streamed_response_wrapper(
-            batch.create,
+        self.get = async_to_streamed_response_wrapper(
+            batch.get,
         )
         self.get_earliest = async_to_streamed_response_wrapper(
             batch.get_earliest,
@@ -513,9 +861,21 @@ class AsyncBatchResourceWithStreamingResponse:
         self.get_latest = async_to_streamed_response_wrapper(
             batch.get_latest,
         )
+        self.get_local = async_to_streamed_response_wrapper(
+            batch.get_local,
+        )
+        self.get_local_earliest = async_to_streamed_response_wrapper(
+            batch.get_local_earliest,
+        )
+        self.get_local_latest = async_to_streamed_response_wrapper(
+            batch.get_local_latest,
+        )
+        self.get_local_next = async_to_streamed_response_wrapper(
+            batch.get_local_next,
+        )
         self.get_next = async_to_streamed_response_wrapper(
             batch.get_next,
         )
-        self.read = async_to_streamed_response_wrapper(
-            batch.read,
+        self.update_subscriptions = async_to_streamed_response_wrapper(
+            batch.update_subscriptions,
         )

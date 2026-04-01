@@ -41,16 +41,17 @@ from .....types.cms.blogs import (
     author_create_params,
     author_delete_params,
     author_update_params,
-    author_list_tags_params,
-    author_list_posts_params,
-    author_list_by_query_params,
+    author_get_cursor_params,
+    author_get_tags_cursor_params,
+    author_get_posts_cursor_params,
     author_update_languages_params,
-    author_list_tags_by_query_params,
-    author_list_posts_by_query_params,
+    author_get_cursor_by_query_params,
     author_attach_to_lang_group_params,
     author_set_new_lang_primary_params,
     author_detach_from_lang_group_params,
+    author_get_tags_cursor_by_query_params,
     author_create_language_variation_params,
+    author_get_posts_cursor_by_query_params,
 )
 from .....types.cms.blogs.blog_author_param import BlogAuthorParam
 
@@ -2021,7 +2022,12 @@ class AuthorsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
-        """
+        """Get the list of blog authors.
+
+        Supports paging and filtering. This method would
+        be useful for an integration that examined these models and used an external
+        service to suggest edits.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -2041,7 +2047,7 @@ class AuthorsResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
-            "/cms/blogs/2026-03/authors/cursor",
+            "/cms/blogs/2026-03/authors",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -3982,7 +3988,74 @@ class AuthorsResource(SyncAPIResource):
             cast_to=BinaryAPIResponse,
         )
 
-    def list_by_query(
+    def get_cursor(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/cms/blogs/2026-03/authors/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_get_cursor_params.AuthorGetCursorParams,
+                ),
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def get_cursor_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -4043,13 +4116,13 @@ class AuthorsResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_by_query_params.AuthorListByQueryParams,
+                    author_get_cursor_by_query_params.AuthorGetCursorByQueryParams,
                 ),
             ),
             cast_to=BinaryAPIResponse,
         )
 
-    def list_posts(
+    def get_posts_cursor(
         self,
         *,
         after: str | Omit = omit,
@@ -4110,13 +4183,13 @@ class AuthorsResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_posts_params.AuthorListPostsParams,
+                    author_get_posts_cursor_params.AuthorGetPostsCursorParams,
                 ),
             ),
             cast_to=BinaryAPIResponse,
         )
 
-    def list_posts_by_query(
+    def get_posts_cursor_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -4177,13 +4250,13 @@ class AuthorsResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_posts_by_query_params.AuthorListPostsByQueryParams,
+                    author_get_posts_cursor_by_query_params.AuthorGetPostsCursorByQueryParams,
                 ),
             ),
             cast_to=BinaryAPIResponse,
         )
 
-    def list_tags(
+    def get_tags_cursor(
         self,
         *,
         after: str | Omit = omit,
@@ -4244,13 +4317,13 @@ class AuthorsResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_tags_params.AuthorListTagsParams,
+                    author_get_tags_cursor_params.AuthorGetTagsCursorParams,
                 ),
             ),
             cast_to=BinaryAPIResponse,
         )
 
-    def list_tags_by_query(
+    def get_tags_cursor_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -4311,7 +4384,7 @@ class AuthorsResource(SyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_tags_by_query_params.AuthorListTagsByQueryParams,
+                    author_get_tags_cursor_by_query_params.AuthorGetTagsCursorByQueryParams,
                 ),
             ),
             cast_to=BinaryAPIResponse,
@@ -7208,7 +7281,12 @@ class AsyncAuthorsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
-        """
+        """Get the list of blog authors.
+
+        Supports paging and filtering. This method would
+        be useful for an integration that examined these models and used an external
+        service to suggest edits.
+
         Args:
           after: The paging cursor token of the last successfully read resource will be returned
               as the `paging.next.after` JSON property of a paged response containing more
@@ -7228,7 +7306,7 @@ class AsyncAuthorsResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
-            "/cms/blogs/2026-03/authors/cursor",
+            "/cms/blogs/2026-03/authors",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -9171,7 +9249,74 @@ class AsyncAuthorsResource(AsyncAPIResource):
             cast_to=AsyncBinaryAPIResponse,
         )
 
-    async def list_by_query(
+    async def get_cursor(
+        self,
+        *,
+        after: str | Omit = omit,
+        archived: bool | Omit = omit,
+        created_after: Union[str, datetime] | Omit = omit,
+        created_at: Union[str, datetime] | Omit = omit,
+        created_before: Union[str, datetime] | Omit = omit,
+        limit: int | Omit = omit,
+        property: str | Omit = omit,
+        sort: SequenceNotStr[str] | Omit = omit,
+        updated_after: Union[str, datetime] | Omit = omit,
+        updated_at: Union[str, datetime] | Omit = omit,
+        updated_before: Union[str, datetime] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          archived: Whether to return only results that have been archived.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/cms/blogs/2026-03/authors/cursor",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "after": after,
+                        "archived": archived,
+                        "created_after": created_after,
+                        "created_at": created_at,
+                        "created_before": created_before,
+                        "limit": limit,
+                        "property": property,
+                        "sort": sort,
+                        "updated_after": updated_after,
+                        "updated_at": updated_at,
+                        "updated_before": updated_before,
+                    },
+                    author_get_cursor_params.AuthorGetCursorParams,
+                ),
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def get_cursor_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -9232,13 +9377,13 @@ class AsyncAuthorsResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_by_query_params.AuthorListByQueryParams,
+                    author_get_cursor_by_query_params.AuthorGetCursorByQueryParams,
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
 
-    async def list_posts(
+    async def get_posts_cursor(
         self,
         *,
         after: str | Omit = omit,
@@ -9299,13 +9444,13 @@ class AsyncAuthorsResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_posts_params.AuthorListPostsParams,
+                    author_get_posts_cursor_params.AuthorGetPostsCursorParams,
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
 
-    async def list_posts_by_query(
+    async def get_posts_cursor_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -9366,13 +9511,13 @@ class AsyncAuthorsResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_posts_by_query_params.AuthorListPostsByQueryParams,
+                    author_get_posts_cursor_by_query_params.AuthorGetPostsCursorByQueryParams,
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
 
-    async def list_tags(
+    async def get_tags_cursor(
         self,
         *,
         after: str | Omit = omit,
@@ -9433,13 +9578,13 @@ class AsyncAuthorsResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_tags_params.AuthorListTagsParams,
+                    author_get_tags_cursor_params.AuthorGetTagsCursorParams,
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
 
-    async def list_tags_by_query(
+    async def get_tags_cursor_by_query(
         self,
         *,
         after: str | Omit = omit,
@@ -9500,7 +9645,7 @@ class AsyncAuthorsResource(AsyncAPIResource):
                         "updated_at": updated_at,
                         "updated_before": updated_before,
                     },
-                    author_list_tags_by_query_params.AuthorListTagsByQueryParams,
+                    author_get_tags_cursor_by_query_params.AuthorGetTagsCursorByQueryParams,
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
@@ -10470,24 +10615,28 @@ class AuthorsResourceWithRawResponse:
             authors.get,
             BinaryAPIResponse,
         )
-        self.list_by_query = to_custom_raw_response_wrapper(
-            authors.list_by_query,
+        self.get_cursor = to_custom_raw_response_wrapper(
+            authors.get_cursor,
             BinaryAPIResponse,
         )
-        self.list_posts = to_custom_raw_response_wrapper(
-            authors.list_posts,
+        self.get_cursor_by_query = to_custom_raw_response_wrapper(
+            authors.get_cursor_by_query,
             BinaryAPIResponse,
         )
-        self.list_posts_by_query = to_custom_raw_response_wrapper(
-            authors.list_posts_by_query,
+        self.get_posts_cursor = to_custom_raw_response_wrapper(
+            authors.get_posts_cursor,
             BinaryAPIResponse,
         )
-        self.list_tags = to_custom_raw_response_wrapper(
-            authors.list_tags,
+        self.get_posts_cursor_by_query = to_custom_raw_response_wrapper(
+            authors.get_posts_cursor_by_query,
             BinaryAPIResponse,
         )
-        self.list_tags_by_query = to_custom_raw_response_wrapper(
-            authors.list_tags_by_query,
+        self.get_tags_cursor = to_custom_raw_response_wrapper(
+            authors.get_tags_cursor,
+            BinaryAPIResponse,
+        )
+        self.get_tags_cursor_by_query = to_custom_raw_response_wrapper(
+            authors.get_tags_cursor_by_query,
             BinaryAPIResponse,
         )
         self.set_new_lang_primary = to_raw_response_wrapper(
@@ -10538,24 +10687,28 @@ class AsyncAuthorsResourceWithRawResponse:
             authors.get,
             AsyncBinaryAPIResponse,
         )
-        self.list_by_query = async_to_custom_raw_response_wrapper(
-            authors.list_by_query,
+        self.get_cursor = async_to_custom_raw_response_wrapper(
+            authors.get_cursor,
             AsyncBinaryAPIResponse,
         )
-        self.list_posts = async_to_custom_raw_response_wrapper(
-            authors.list_posts,
+        self.get_cursor_by_query = async_to_custom_raw_response_wrapper(
+            authors.get_cursor_by_query,
             AsyncBinaryAPIResponse,
         )
-        self.list_posts_by_query = async_to_custom_raw_response_wrapper(
-            authors.list_posts_by_query,
+        self.get_posts_cursor = async_to_custom_raw_response_wrapper(
+            authors.get_posts_cursor,
             AsyncBinaryAPIResponse,
         )
-        self.list_tags = async_to_custom_raw_response_wrapper(
-            authors.list_tags,
+        self.get_posts_cursor_by_query = async_to_custom_raw_response_wrapper(
+            authors.get_posts_cursor_by_query,
             AsyncBinaryAPIResponse,
         )
-        self.list_tags_by_query = async_to_custom_raw_response_wrapper(
-            authors.list_tags_by_query,
+        self.get_tags_cursor = async_to_custom_raw_response_wrapper(
+            authors.get_tags_cursor,
+            AsyncBinaryAPIResponse,
+        )
+        self.get_tags_cursor_by_query = async_to_custom_raw_response_wrapper(
+            authors.get_tags_cursor_by_query,
             AsyncBinaryAPIResponse,
         )
         self.set_new_lang_primary = async_to_raw_response_wrapper(
@@ -10606,24 +10759,28 @@ class AuthorsResourceWithStreamingResponse:
             authors.get,
             StreamedBinaryAPIResponse,
         )
-        self.list_by_query = to_custom_streamed_response_wrapper(
-            authors.list_by_query,
+        self.get_cursor = to_custom_streamed_response_wrapper(
+            authors.get_cursor,
             StreamedBinaryAPIResponse,
         )
-        self.list_posts = to_custom_streamed_response_wrapper(
-            authors.list_posts,
+        self.get_cursor_by_query = to_custom_streamed_response_wrapper(
+            authors.get_cursor_by_query,
             StreamedBinaryAPIResponse,
         )
-        self.list_posts_by_query = to_custom_streamed_response_wrapper(
-            authors.list_posts_by_query,
+        self.get_posts_cursor = to_custom_streamed_response_wrapper(
+            authors.get_posts_cursor,
             StreamedBinaryAPIResponse,
         )
-        self.list_tags = to_custom_streamed_response_wrapper(
-            authors.list_tags,
+        self.get_posts_cursor_by_query = to_custom_streamed_response_wrapper(
+            authors.get_posts_cursor_by_query,
             StreamedBinaryAPIResponse,
         )
-        self.list_tags_by_query = to_custom_streamed_response_wrapper(
-            authors.list_tags_by_query,
+        self.get_tags_cursor = to_custom_streamed_response_wrapper(
+            authors.get_tags_cursor,
+            StreamedBinaryAPIResponse,
+        )
+        self.get_tags_cursor_by_query = to_custom_streamed_response_wrapper(
+            authors.get_tags_cursor_by_query,
             StreamedBinaryAPIResponse,
         )
         self.set_new_lang_primary = to_streamed_response_wrapper(
@@ -10674,24 +10831,28 @@ class AsyncAuthorsResourceWithStreamingResponse:
             authors.get,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.list_by_query = async_to_custom_streamed_response_wrapper(
-            authors.list_by_query,
+        self.get_cursor = async_to_custom_streamed_response_wrapper(
+            authors.get_cursor,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.list_posts = async_to_custom_streamed_response_wrapper(
-            authors.list_posts,
+        self.get_cursor_by_query = async_to_custom_streamed_response_wrapper(
+            authors.get_cursor_by_query,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.list_posts_by_query = async_to_custom_streamed_response_wrapper(
-            authors.list_posts_by_query,
+        self.get_posts_cursor = async_to_custom_streamed_response_wrapper(
+            authors.get_posts_cursor,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.list_tags = async_to_custom_streamed_response_wrapper(
-            authors.list_tags,
+        self.get_posts_cursor_by_query = async_to_custom_streamed_response_wrapper(
+            authors.get_posts_cursor_by_query,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.list_tags_by_query = async_to_custom_streamed_response_wrapper(
-            authors.list_tags_by_query,
+        self.get_tags_cursor = async_to_custom_streamed_response_wrapper(
+            authors.get_tags_cursor,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.get_tags_cursor_by_query = async_to_custom_streamed_response_wrapper(
+            authors.get_tags_cursor_by_query,
             AsyncStreamedBinaryAPIResponse,
         )
         self.set_new_lang_primary = async_to_streamed_response_wrapper(

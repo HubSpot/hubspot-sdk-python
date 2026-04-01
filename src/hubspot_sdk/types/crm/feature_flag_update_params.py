@@ -12,7 +12,14 @@ __all__ = ["FeatureFlagUpdateParams"]
 class FeatureFlagUpdateParams(TypedDict, total=False):
     app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
-    flag_name: Required[Annotated[str, PropertyInfo(alias="flagName")]]
+    default_state: Required[Annotated[Literal["ABSENT", "OFF", "ON"], PropertyInfo(alias="defaultState")]]
+    """
+    The state that the flag should have if there are no overrides for a particular
+    portal
+    """
 
-    flag_state: Required[Annotated[Literal["ABSENT", "OFF", "ON"], PropertyInfo(alias="flagState")]]
-    """The state that the given flag should be in for this portal"""
+    override_state: Annotated[Literal["ABSENT", "OFF", "ON"], PropertyInfo(alias="overrideState")]
+    """A flag value that supercedes all other overrides, including portal-level values.
+
+    Mostly used for things like emergency overrides
+    """

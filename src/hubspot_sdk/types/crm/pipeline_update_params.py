@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Dict
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -13,35 +12,24 @@ __all__ = ["PipelineUpdateParams"]
 class PipelineUpdateParams(TypedDict, total=False):
     object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
 
-    pipeline_id: Required[Annotated[str, PropertyInfo(alias="pipelineId")]]
+    validate_deal_stage_usages_before_delete: Annotated[bool, PropertyInfo(alias="validateDealStageUsagesBeforeDelete")]
 
-    metadata: Required[Dict[str, str]]
-    """
-    A JSON object containing properties that are not present on all object
-    pipelines.
-
-    For `deals` pipelines, the `probability` field is required
-    (`{ "probability": 0.5 }`), and represents the likelihood a deal will close.
-    Possible values are between 0.0 and 1.0 in increments of 0.1.
-
-    For `tickets` pipelines, the `ticketState` field is optional
-    (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or
-    has been closed by a member of your Support team. Possible values are `OPEN` or
-    `CLOSED`.
-    """
+    validate_references_before_delete: Annotated[bool, PropertyInfo(alias="validateReferencesBeforeDelete")]
 
     archived: bool
-    """Whether the pipeline is archived."""
+    """Whether the pipeline is archived.
+
+    This property should only be provided when restoring an archived pipeline. If
+    it's provided in any other call, the request will fail and a `400 Bad Request`
+    will be returned.
+    """
 
     display_order: Annotated[int, PropertyInfo(alias="displayOrder")]
-    """The order for displaying this pipeline stage.
+    """The order for displaying this pipeline.
 
-    If two pipeline stages have a matching `displayOrder`, they will be sorted
+    If two pipelines have a matching `displayOrder`, they will be sorted
     alphabetically by label.
     """
 
     label: str
-    """A label used to organize pipeline stages in HubSpot's UI.
-
-    Each pipeline stage's label must be unique within that pipeline.
-    """
+    """A unique label used to organize pipelines in HubSpot's UI"""

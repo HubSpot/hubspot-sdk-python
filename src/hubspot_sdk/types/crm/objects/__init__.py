@@ -180,3 +180,6 @@ from .commerce_payment_update_params import CommercePaymentUpdateParams as Comme
 from .feedback_submission_get_params import FeedbackSubmissionGetParams as FeedbackSubmissionGetParams
 from .feedback_submission_list_params import FeedbackSubmissionListParams as FeedbackSubmissionListParams
 from .feedback_submission_search_params import FeedbackSubmissionSearchParams as FeedbackSubmissionSearchParams
+from .partner_client_list_associations_params import (
+    PartnerClientListAssociationsParams as PartnerClientListAssociationsParams,
+)

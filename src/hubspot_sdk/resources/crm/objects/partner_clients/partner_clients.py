@@ -31,9 +31,11 @@ from .....types.crm.objects import (
     partner_client_list_params,
     partner_client_search_params,
     partner_client_update_params,
+    partner_client_list_associations_params,
 )
 from .....types.crm.filter_group_param import FilterGroupParam
 from .....types.crm.simple_public_object import SimplePublicObject
+from .....types.crm.multi_associated_object_with_label import MultiAssociatedObjectWithLabel
 from .....types.crm.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from .....types.crm.collection_response_with_total_simple_public_object import (
     CollectionResponseWithTotalSimplePublicObject,
@@ -255,6 +257,66 @@ class PartnerClientsResource(SyncAPIResource):
                 ),
             ),
             cast_to=SimplePublicObjectWithAssociations,
+        )
+
+    def list_associations(
+        self,
+        to_object_type: str,
+        *,
+        partner_client_id: str,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[MultiAssociatedObjectWithLabel]:
+        """
+        Retrieve a list of associations for a specific partner client based on the
+        specified object type.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not partner_client_id:
+            raise ValueError(f"Expected a non-empty value for `partner_client_id` but received {partner_client_id!r}")
+        if not to_object_type:
+            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        return self._get_api_list(
+            path_template(
+                "/crm/objects/2026-03/partner_clients/{partner_client_id}/associations/{to_object_type}",
+                partner_client_id=partner_client_id,
+                to_object_type=to_object_type,
+            ),
+            page=SyncPage[MultiAssociatedObjectWithLabel],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                    },
+                    partner_client_list_associations_params.PartnerClientListAssociationsParams,
+                ),
+            ),
+            model=MultiAssociatedObjectWithLabel,
         )
 
     def search(
@@ -537,6 +599,66 @@ class AsyncPartnerClientsResource(AsyncAPIResource):
             cast_to=SimplePublicObjectWithAssociations,
         )
 
+    def list_associations(
+        self,
+        to_object_type: str,
+        *,
+        partner_client_id: str,
+        after: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[MultiAssociatedObjectWithLabel, AsyncPage[MultiAssociatedObjectWithLabel]]:
+        """
+        Retrieve a list of associations for a specific partner client based on the
+        specified object type.
+
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not partner_client_id:
+            raise ValueError(f"Expected a non-empty value for `partner_client_id` but received {partner_client_id!r}")
+        if not to_object_type:
+            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        return self._get_api_list(
+            path_template(
+                "/crm/objects/2026-03/partner_clients/{partner_client_id}/associations/{to_object_type}",
+                partner_client_id=partner_client_id,
+                to_object_type=to_object_type,
+            ),
+            page=AsyncPage[MultiAssociatedObjectWithLabel],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "limit": limit,
+                    },
+                    partner_client_list_associations_params.PartnerClientListAssociationsParams,
+                ),
+            ),
+            model=MultiAssociatedObjectWithLabel,
+        )
+
     async def search(
         self,
         *,
@@ -613,6 +735,9 @@ class PartnerClientsResourceWithRawResponse:
         self.get = to_raw_response_wrapper(
             partner_clients.get,
         )
+        self.list_associations = to_raw_response_wrapper(
+            partner_clients.list_associations,
+        )
         self.search = to_raw_response_wrapper(
             partner_clients.search,
         )
@@ -634,6 +759,9 @@ class AsyncPartnerClientsResourceWithRawResponse:
         )
         self.get = async_to_raw_response_wrapper(
             partner_clients.get,
+        )
+        self.list_associations = async_to_raw_response_wrapper(
+            partner_clients.list_associations,
         )
         self.search = async_to_raw_response_wrapper(
             partner_clients.search,
@@ -657,6 +785,9 @@ class PartnerClientsResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             partner_clients.get,
         )
+        self.list_associations = to_streamed_response_wrapper(
+            partner_clients.list_associations,
+        )
         self.search = to_streamed_response_wrapper(
             partner_clients.search,
         )
@@ -678,6 +809,9 @@ class AsyncPartnerClientsResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             partner_clients.get,
+        )
+        self.list_associations = async_to_streamed_response_wrapper(
+            partner_clients.list_associations,
         )
         self.search = async_to_streamed_response_wrapper(
             partner_clients.search,

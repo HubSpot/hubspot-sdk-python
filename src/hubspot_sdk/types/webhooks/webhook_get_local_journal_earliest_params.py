@@ -6,8 +6,8 @@ from typing_extensions import Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["WebhookGetLocalEarliestParams"]
+__all__ = ["WebhookGetLocalJournalEarliestParams"]
 
 
-class WebhookGetLocalEarliestParams(TypedDict, total=False):
+class WebhookGetLocalJournalEarliestParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]

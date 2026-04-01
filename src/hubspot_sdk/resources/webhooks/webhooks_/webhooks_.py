@@ -35,17 +35,17 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.webhooks import (
-    webhook_create_filter_params,
     webhook_update_settings_params,
-    webhook_get_local_latest_params,
     webhook_get_journal_latest_params,
-    webhook_get_local_earliest_params,
     webhook_create_crm_snapshot_params,
     webhook_create_subscription_params,
     webhook_update_subscription_params,
     webhook_get_journal_earliest_params,
-    webhook_get_local_next_by_offset_params,
+    webhook_get_local_journal_latest_params,
+    webhook_create_subscription_filter_params,
     webhook_get_journal_next_by_offset_params,
+    webhook_get_local_journal_earliest_params,
+    webhook_get_local_journal_next_by_offset_params,
 )
 from ....types.webhooks.filter_param import FilterParam
 from ....types.webhooks.filter_response import FilterResponse
@@ -58,9 +58,11 @@ from ....types.webhooks.throttling_settings_param import ThrottlingSettingsParam
 from ....types.webhooks.subscription_list_response import SubscriptionListResponse
 from ....types.webhooks.crm_object_snapshot_request_param import CrmObjectSnapshotRequestParam
 from ....types.webhooks.crm_object_snapshot_batch_response import CrmObjectSnapshotBatchResponse
-from ....types.webhooks.webhook_get_filters_by_subscription_response import WebhookGetFiltersBySubscriptionResponse
 from ....types.webhooks.collection_response_subscription_response_no_paging import (
     CollectionResponseSubscriptionResponseNoPaging,
+)
+from ....types.webhooks.webhook_get_subscription_filter_for_subscription_response import (
+    WebhookGetSubscriptionFilterForSubscriptionResponse,
 )
 
 __all__ = ["WebhooksResource", "AsyncWebhooksResource"]
@@ -121,47 +123,6 @@ class WebhooksResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CrmObjectSnapshotBatchResponse,
-        )
-
-    def create_filter(
-        self,
-        *,
-        filter: FilterParam,
-        subscription_id: int,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> FilterCreateResponse:
-        """
-        Args:
-          filter: Defines a single condition for searching CRM objects, specifying the property to
-              filter on, the operator to use (such as equals, greater than, or contains), and
-              the value(s) to compare against.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/webhooks-journal/subscriptions/2026-03/filters",
-            body=maybe_transform(
-                {
-                    "filter": filter,
-                    "subscription_id": subscription_id,
-                },
-                webhook_create_filter_params.WebhookCreateFilterParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=FilterCreateResponse,
         )
 
     @overload
@@ -336,19 +297,24 @@ class WebhooksResource(SyncAPIResource):
             cast_to=SubscriptionResponse,
         )
 
-    def delete_filter(
+    def create_subscription_filter(
         self,
-        filter_id: int,
         *,
+        filter: FilterParam,
+        subscription_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
+    ) -> FilterCreateResponse:
         """
         Args:
+          filter: Defines a single condition for searching CRM objects, specifying the property to
+              filter on, the operator to use (such as equals, greater than, or contains), and
+              the value(s) to compare against.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -357,13 +323,19 @@ class WebhooksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            path_template("/webhooks-journal/subscriptions/2026-03/filters/{filter_id}", filter_id=filter_id),
+        return self._post(
+            "/webhooks-journal/subscriptions/2026-03/filters",
+            body=maybe_transform(
+                {
+                    "filter": filter,
+                    "subscription_id": subscription_id,
+                },
+                webhook_create_subscription_filter_params.WebhookCreateSubscriptionFilterParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=FilterCreateResponse,
         )
 
     def delete_journal_subscription(
@@ -497,7 +469,7 @@ class WebhooksResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def get_filter(
+    def delete_subscription_filter(
         self,
         filter_id: int,
         *,
@@ -507,7 +479,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> FilterResponse:
+    ) -> None:
         """
         Args:
           extra_headers: Send extra headers
@@ -518,44 +490,13 @@ class WebhooksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
             path_template("/webhooks-journal/subscriptions/2026-03/filters/{filter_id}", filter_id=filter_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=FilterResponse,
-        )
-
-    def get_filters_by_subscription(
-        self,
-        subscription_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhookGetFiltersBySubscriptionResponse:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            path_template(
-                "/webhooks-journal/subscriptions/2026-03/filters/subscription/{subscription_id}",
-                subscription_id=subscription_id,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=WebhookGetFiltersBySubscriptionResponse,
+            cast_to=NoneType,
         )
 
     def get_journal_earliest(
@@ -703,7 +644,7 @@ class WebhooksResource(SyncAPIResource):
             cast_to=SnapshotStatusResponse,
         )
 
-    def get_local_earliest(
+    def get_local_journal_earliest(
         self,
         *,
         install_portal_id: int | Omit = omit,
@@ -734,13 +675,13 @@ class WebhooksResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {"install_portal_id": install_portal_id},
-                    webhook_get_local_earliest_params.WebhookGetLocalEarliestParams,
+                    webhook_get_local_journal_earliest_params.WebhookGetLocalJournalEarliestParams,
                 ),
             ),
             cast_to=BinaryAPIResponse,
         )
 
-    def get_local_latest(
+    def get_local_journal_latest(
         self,
         *,
         install_portal_id: int | Omit = omit,
@@ -771,13 +712,13 @@ class WebhooksResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {"install_portal_id": install_portal_id},
-                    webhook_get_local_latest_params.WebhookGetLocalLatestParams,
+                    webhook_get_local_journal_latest_params.WebhookGetLocalJournalLatestParams,
                 ),
             ),
             cast_to=BinaryAPIResponse,
         )
 
-    def get_local_next_by_offset(
+    def get_local_journal_next_by_offset(
         self,
         offset: str,
         *,
@@ -811,13 +752,13 @@ class WebhooksResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {"install_portal_id": install_portal_id},
-                    webhook_get_local_next_by_offset_params.WebhookGetLocalNextByOffsetParams,
+                    webhook_get_local_journal_next_by_offset_params.WebhookGetLocalJournalNextByOffsetParams,
                 ),
             ),
             cast_to=BinaryAPIResponse,
         )
 
-    def get_local_status(
+    def get_local_journal_status(
         self,
         status_id: str,
         *,
@@ -914,6 +855,67 @@ class WebhooksResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=SubscriptionResponse,
+        )
+
+    def get_subscription_filter(
+        self,
+        filter_id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FilterResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            path_template("/webhooks-journal/subscriptions/2026-03/filters/{filter_id}", filter_id=filter_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FilterResponse,
+        )
+
+    def get_subscription_filter_for_subscription(
+        self,
+        subscription_id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> WebhookGetSubscriptionFilterForSubscriptionResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            path_template(
+                "/webhooks-journal/subscriptions/2026-03/filters/subscription/{subscription_id}",
+                subscription_id=subscription_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=WebhookGetSubscriptionFilterForSubscriptionResponse,
         )
 
     def list_journal_subscriptions(
@@ -1111,47 +1113,6 @@ class AsyncWebhooksResource(AsyncAPIResource):
             cast_to=CrmObjectSnapshotBatchResponse,
         )
 
-    async def create_filter(
-        self,
-        *,
-        filter: FilterParam,
-        subscription_id: int,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> FilterCreateResponse:
-        """
-        Args:
-          filter: Defines a single condition for searching CRM objects, specifying the property to
-              filter on, the operator to use (such as equals, greater than, or contains), and
-              the value(s) to compare against.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/webhooks-journal/subscriptions/2026-03/filters",
-            body=await async_maybe_transform(
-                {
-                    "filter": filter,
-                    "subscription_id": subscription_id,
-                },
-                webhook_create_filter_params.WebhookCreateFilterParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=FilterCreateResponse,
-        )
-
     @overload
     async def create_journal_subscription(
         self,
@@ -1324,19 +1285,24 @@ class AsyncWebhooksResource(AsyncAPIResource):
             cast_to=SubscriptionResponse,
         )
 
-    async def delete_filter(
+    async def create_subscription_filter(
         self,
-        filter_id: int,
         *,
+        filter: FilterParam,
+        subscription_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
+    ) -> FilterCreateResponse:
         """
         Args:
+          filter: Defines a single condition for searching CRM objects, specifying the property to
+              filter on, the operator to use (such as equals, greater than, or contains), and
+              the value(s) to compare against.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1345,13 +1311,19 @@ class AsyncWebhooksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            path_template("/webhooks-journal/subscriptions/2026-03/filters/{filter_id}", filter_id=filter_id),
+        return await self._post(
+            "/webhooks-journal/subscriptions/2026-03/filters",
+            body=await async_maybe_transform(
+                {
+                    "filter": filter,
+                    "subscription_id": subscription_id,
+                },
+                webhook_create_subscription_filter_params.WebhookCreateSubscriptionFilterParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=FilterCreateResponse,
         )
 
     async def delete_journal_subscription(
@@ -1485,7 +1457,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def get_filter(
+    async def delete_subscription_filter(
         self,
         filter_id: int,
         *,
@@ -1495,7 +1467,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> FilterResponse:
+    ) -> None:
         """
         Args:
           extra_headers: Send extra headers
@@ -1506,44 +1478,13 @@ class AsyncWebhooksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
             path_template("/webhooks-journal/subscriptions/2026-03/filters/{filter_id}", filter_id=filter_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=FilterResponse,
-        )
-
-    async def get_filters_by_subscription(
-        self,
-        subscription_id: int,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhookGetFiltersBySubscriptionResponse:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            path_template(
-                "/webhooks-journal/subscriptions/2026-03/filters/subscription/{subscription_id}",
-                subscription_id=subscription_id,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=WebhookGetFiltersBySubscriptionResponse,
+            cast_to=NoneType,
         )
 
     async def get_journal_earliest(
@@ -1691,7 +1632,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             cast_to=SnapshotStatusResponse,
         )
 
-    async def get_local_earliest(
+    async def get_local_journal_earliest(
         self,
         *,
         install_portal_id: int | Omit = omit,
@@ -1722,13 +1663,13 @@ class AsyncWebhooksResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {"install_portal_id": install_portal_id},
-                    webhook_get_local_earliest_params.WebhookGetLocalEarliestParams,
+                    webhook_get_local_journal_earliest_params.WebhookGetLocalJournalEarliestParams,
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
 
-    async def get_local_latest(
+    async def get_local_journal_latest(
         self,
         *,
         install_portal_id: int | Omit = omit,
@@ -1759,13 +1700,13 @@ class AsyncWebhooksResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {"install_portal_id": install_portal_id},
-                    webhook_get_local_latest_params.WebhookGetLocalLatestParams,
+                    webhook_get_local_journal_latest_params.WebhookGetLocalJournalLatestParams,
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
 
-    async def get_local_next_by_offset(
+    async def get_local_journal_next_by_offset(
         self,
         offset: str,
         *,
@@ -1799,13 +1740,13 @@ class AsyncWebhooksResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {"install_portal_id": install_portal_id},
-                    webhook_get_local_next_by_offset_params.WebhookGetLocalNextByOffsetParams,
+                    webhook_get_local_journal_next_by_offset_params.WebhookGetLocalJournalNextByOffsetParams,
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
 
-    async def get_local_status(
+    async def get_local_journal_status(
         self,
         status_id: str,
         *,
@@ -1902,6 +1843,67 @@ class AsyncWebhooksResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=SubscriptionResponse,
+        )
+
+    async def get_subscription_filter(
+        self,
+        filter_id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FilterResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            path_template("/webhooks-journal/subscriptions/2026-03/filters/{filter_id}", filter_id=filter_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FilterResponse,
+        )
+
+    async def get_subscription_filter_for_subscription(
+        self,
+        subscription_id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> WebhookGetSubscriptionFilterForSubscriptionResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            path_template(
+                "/webhooks-journal/subscriptions/2026-03/filters/subscription/{subscription_id}",
+                subscription_id=subscription_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=WebhookGetSubscriptionFilterForSubscriptionResponse,
         )
 
     async def list_journal_subscriptions(
@@ -2049,17 +2051,14 @@ class WebhooksResourceWithRawResponse:
         self.create_crm_snapshot = to_raw_response_wrapper(
             webhooks.create_crm_snapshot,
         )
-        self.create_filter = to_raw_response_wrapper(
-            webhooks.create_filter,
-        )
         self.create_journal_subscription = to_raw_response_wrapper(
             webhooks.create_journal_subscription,
         )
         self.create_subscription = to_raw_response_wrapper(
             webhooks.create_subscription,
         )
-        self.delete_filter = to_raw_response_wrapper(
-            webhooks.delete_filter,
+        self.create_subscription_filter = to_raw_response_wrapper(
+            webhooks.create_subscription_filter,
         )
         self.delete_journal_subscription = to_raw_response_wrapper(
             webhooks.delete_journal_subscription,
@@ -2073,11 +2072,8 @@ class WebhooksResourceWithRawResponse:
         self.delete_subscription = to_raw_response_wrapper(
             webhooks.delete_subscription,
         )
-        self.get_filter = to_raw_response_wrapper(
-            webhooks.get_filter,
-        )
-        self.get_filters_by_subscription = to_raw_response_wrapper(
-            webhooks.get_filters_by_subscription,
+        self.delete_subscription_filter = to_raw_response_wrapper(
+            webhooks.delete_subscription_filter,
         )
         self.get_journal_earliest = to_custom_raw_response_wrapper(
             webhooks.get_journal_earliest,
@@ -2094,26 +2090,32 @@ class WebhooksResourceWithRawResponse:
         self.get_journal_status = to_raw_response_wrapper(
             webhooks.get_journal_status,
         )
-        self.get_local_earliest = to_custom_raw_response_wrapper(
-            webhooks.get_local_earliest,
+        self.get_local_journal_earliest = to_custom_raw_response_wrapper(
+            webhooks.get_local_journal_earliest,
             BinaryAPIResponse,
         )
-        self.get_local_latest = to_custom_raw_response_wrapper(
-            webhooks.get_local_latest,
+        self.get_local_journal_latest = to_custom_raw_response_wrapper(
+            webhooks.get_local_journal_latest,
             BinaryAPIResponse,
         )
-        self.get_local_next_by_offset = to_custom_raw_response_wrapper(
-            webhooks.get_local_next_by_offset,
+        self.get_local_journal_next_by_offset = to_custom_raw_response_wrapper(
+            webhooks.get_local_journal_next_by_offset,
             BinaryAPIResponse,
         )
-        self.get_local_status = to_raw_response_wrapper(
-            webhooks.get_local_status,
+        self.get_local_journal_status = to_raw_response_wrapper(
+            webhooks.get_local_journal_status,
         )
         self.get_settings = to_raw_response_wrapper(
             webhooks.get_settings,
         )
         self.get_subscription = to_raw_response_wrapper(
             webhooks.get_subscription,
+        )
+        self.get_subscription_filter = to_raw_response_wrapper(
+            webhooks.get_subscription_filter,
+        )
+        self.get_subscription_filter_for_subscription = to_raw_response_wrapper(
+            webhooks.get_subscription_filter_for_subscription,
         )
         self.list_journal_subscriptions = to_raw_response_wrapper(
             webhooks.list_journal_subscriptions,
@@ -2140,17 +2142,14 @@ class AsyncWebhooksResourceWithRawResponse:
         self.create_crm_snapshot = async_to_raw_response_wrapper(
             webhooks.create_crm_snapshot,
         )
-        self.create_filter = async_to_raw_response_wrapper(
-            webhooks.create_filter,
-        )
         self.create_journal_subscription = async_to_raw_response_wrapper(
             webhooks.create_journal_subscription,
         )
         self.create_subscription = async_to_raw_response_wrapper(
             webhooks.create_subscription,
         )
-        self.delete_filter = async_to_raw_response_wrapper(
-            webhooks.delete_filter,
+        self.create_subscription_filter = async_to_raw_response_wrapper(
+            webhooks.create_subscription_filter,
         )
         self.delete_journal_subscription = async_to_raw_response_wrapper(
             webhooks.delete_journal_subscription,
@@ -2164,11 +2163,8 @@ class AsyncWebhooksResourceWithRawResponse:
         self.delete_subscription = async_to_raw_response_wrapper(
             webhooks.delete_subscription,
         )
-        self.get_filter = async_to_raw_response_wrapper(
-            webhooks.get_filter,
-        )
-        self.get_filters_by_subscription = async_to_raw_response_wrapper(
-            webhooks.get_filters_by_subscription,
+        self.delete_subscription_filter = async_to_raw_response_wrapper(
+            webhooks.delete_subscription_filter,
         )
         self.get_journal_earliest = async_to_custom_raw_response_wrapper(
             webhooks.get_journal_earliest,
@@ -2185,26 +2181,32 @@ class AsyncWebhooksResourceWithRawResponse:
         self.get_journal_status = async_to_raw_response_wrapper(
             webhooks.get_journal_status,
         )
-        self.get_local_earliest = async_to_custom_raw_response_wrapper(
-            webhooks.get_local_earliest,
+        self.get_local_journal_earliest = async_to_custom_raw_response_wrapper(
+            webhooks.get_local_journal_earliest,
             AsyncBinaryAPIResponse,
         )
-        self.get_local_latest = async_to_custom_raw_response_wrapper(
-            webhooks.get_local_latest,
+        self.get_local_journal_latest = async_to_custom_raw_response_wrapper(
+            webhooks.get_local_journal_latest,
             AsyncBinaryAPIResponse,
         )
-        self.get_local_next_by_offset = async_to_custom_raw_response_wrapper(
-            webhooks.get_local_next_by_offset,
+        self.get_local_journal_next_by_offset = async_to_custom_raw_response_wrapper(
+            webhooks.get_local_journal_next_by_offset,
             AsyncBinaryAPIResponse,
         )
-        self.get_local_status = async_to_raw_response_wrapper(
-            webhooks.get_local_status,
+        self.get_local_journal_status = async_to_raw_response_wrapper(
+            webhooks.get_local_journal_status,
         )
         self.get_settings = async_to_raw_response_wrapper(
             webhooks.get_settings,
         )
         self.get_subscription = async_to_raw_response_wrapper(
             webhooks.get_subscription,
+        )
+        self.get_subscription_filter = async_to_raw_response_wrapper(
+            webhooks.get_subscription_filter,
+        )
+        self.get_subscription_filter_for_subscription = async_to_raw_response_wrapper(
+            webhooks.get_subscription_filter_for_subscription,
         )
         self.list_journal_subscriptions = async_to_raw_response_wrapper(
             webhooks.list_journal_subscriptions,
@@ -2231,17 +2233,14 @@ class WebhooksResourceWithStreamingResponse:
         self.create_crm_snapshot = to_streamed_response_wrapper(
             webhooks.create_crm_snapshot,
         )
-        self.create_filter = to_streamed_response_wrapper(
-            webhooks.create_filter,
-        )
         self.create_journal_subscription = to_streamed_response_wrapper(
             webhooks.create_journal_subscription,
         )
         self.create_subscription = to_streamed_response_wrapper(
             webhooks.create_subscription,
         )
-        self.delete_filter = to_streamed_response_wrapper(
-            webhooks.delete_filter,
+        self.create_subscription_filter = to_streamed_response_wrapper(
+            webhooks.create_subscription_filter,
         )
         self.delete_journal_subscription = to_streamed_response_wrapper(
             webhooks.delete_journal_subscription,
@@ -2255,11 +2254,8 @@ class WebhooksResourceWithStreamingResponse:
         self.delete_subscription = to_streamed_response_wrapper(
             webhooks.delete_subscription,
         )
-        self.get_filter = to_streamed_response_wrapper(
-            webhooks.get_filter,
-        )
-        self.get_filters_by_subscription = to_streamed_response_wrapper(
-            webhooks.get_filters_by_subscription,
+        self.delete_subscription_filter = to_streamed_response_wrapper(
+            webhooks.delete_subscription_filter,
         )
         self.get_journal_earliest = to_custom_streamed_response_wrapper(
             webhooks.get_journal_earliest,
@@ -2276,26 +2272,32 @@ class WebhooksResourceWithStreamingResponse:
         self.get_journal_status = to_streamed_response_wrapper(
             webhooks.get_journal_status,
         )
-        self.get_local_earliest = to_custom_streamed_response_wrapper(
-            webhooks.get_local_earliest,
+        self.get_local_journal_earliest = to_custom_streamed_response_wrapper(
+            webhooks.get_local_journal_earliest,
             StreamedBinaryAPIResponse,
         )
-        self.get_local_latest = to_custom_streamed_response_wrapper(
-            webhooks.get_local_latest,
+        self.get_local_journal_latest = to_custom_streamed_response_wrapper(
+            webhooks.get_local_journal_latest,
             StreamedBinaryAPIResponse,
         )
-        self.get_local_next_by_offset = to_custom_streamed_response_wrapper(
-            webhooks.get_local_next_by_offset,
+        self.get_local_journal_next_by_offset = to_custom_streamed_response_wrapper(
+            webhooks.get_local_journal_next_by_offset,
             StreamedBinaryAPIResponse,
         )
-        self.get_local_status = to_streamed_response_wrapper(
-            webhooks.get_local_status,
+        self.get_local_journal_status = to_streamed_response_wrapper(
+            webhooks.get_local_journal_status,
         )
         self.get_settings = to_streamed_response_wrapper(
             webhooks.get_settings,
         )
         self.get_subscription = to_streamed_response_wrapper(
             webhooks.get_subscription,
+        )
+        self.get_subscription_filter = to_streamed_response_wrapper(
+            webhooks.get_subscription_filter,
+        )
+        self.get_subscription_filter_for_subscription = to_streamed_response_wrapper(
+            webhooks.get_subscription_filter_for_subscription,
         )
         self.list_journal_subscriptions = to_streamed_response_wrapper(
             webhooks.list_journal_subscriptions,
@@ -2322,17 +2324,14 @@ class AsyncWebhooksResourceWithStreamingResponse:
         self.create_crm_snapshot = async_to_streamed_response_wrapper(
             webhooks.create_crm_snapshot,
         )
-        self.create_filter = async_to_streamed_response_wrapper(
-            webhooks.create_filter,
-        )
         self.create_journal_subscription = async_to_streamed_response_wrapper(
             webhooks.create_journal_subscription,
         )
         self.create_subscription = async_to_streamed_response_wrapper(
             webhooks.create_subscription,
         )
-        self.delete_filter = async_to_streamed_response_wrapper(
-            webhooks.delete_filter,
+        self.create_subscription_filter = async_to_streamed_response_wrapper(
+            webhooks.create_subscription_filter,
         )
         self.delete_journal_subscription = async_to_streamed_response_wrapper(
             webhooks.delete_journal_subscription,
@@ -2346,11 +2345,8 @@ class AsyncWebhooksResourceWithStreamingResponse:
         self.delete_subscription = async_to_streamed_response_wrapper(
             webhooks.delete_subscription,
         )
-        self.get_filter = async_to_streamed_response_wrapper(
-            webhooks.get_filter,
-        )
-        self.get_filters_by_subscription = async_to_streamed_response_wrapper(
-            webhooks.get_filters_by_subscription,
+        self.delete_subscription_filter = async_to_streamed_response_wrapper(
+            webhooks.delete_subscription_filter,
         )
         self.get_journal_earliest = async_to_custom_streamed_response_wrapper(
             webhooks.get_journal_earliest,
@@ -2367,26 +2363,32 @@ class AsyncWebhooksResourceWithStreamingResponse:
         self.get_journal_status = async_to_streamed_response_wrapper(
             webhooks.get_journal_status,
         )
-        self.get_local_earliest = async_to_custom_streamed_response_wrapper(
-            webhooks.get_local_earliest,
+        self.get_local_journal_earliest = async_to_custom_streamed_response_wrapper(
+            webhooks.get_local_journal_earliest,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.get_local_latest = async_to_custom_streamed_response_wrapper(
-            webhooks.get_local_latest,
+        self.get_local_journal_latest = async_to_custom_streamed_response_wrapper(
+            webhooks.get_local_journal_latest,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.get_local_next_by_offset = async_to_custom_streamed_response_wrapper(
-            webhooks.get_local_next_by_offset,
+        self.get_local_journal_next_by_offset = async_to_custom_streamed_response_wrapper(
+            webhooks.get_local_journal_next_by_offset,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.get_local_status = async_to_streamed_response_wrapper(
-            webhooks.get_local_status,
+        self.get_local_journal_status = async_to_streamed_response_wrapper(
+            webhooks.get_local_journal_status,
         )
         self.get_settings = async_to_streamed_response_wrapper(
             webhooks.get_settings,
         )
         self.get_subscription = async_to_streamed_response_wrapper(
             webhooks.get_subscription,
+        )
+        self.get_subscription_filter = async_to_streamed_response_wrapper(
+            webhooks.get_subscription_filter,
+        )
+        self.get_subscription_filter_for_subscription = async_to_streamed_response_wrapper(
+            webhooks.get_subscription_filter_for_subscription,
         )
         self.list_journal_subscriptions = async_to_streamed_response_wrapper(
             webhooks.list_journal_subscriptions,
