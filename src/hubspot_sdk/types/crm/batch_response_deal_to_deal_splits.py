@@ -8,7 +8,6 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .deal_to_deal_splits import DealToDealSplits
-from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponseDealToDealSplits"]
 
@@ -35,15 +34,11 @@ class BatchResponseDealToDealSplits(BaseModel):
     COMPLETE, PENDING, PROCESSING.
     """
 
-    errors: Optional[List[StandardError]] = None
-
     links: Optional[Dict[str, str]] = None
     """
     A map of link names to associated URIs for additional resources or
     documentation.
     """
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """

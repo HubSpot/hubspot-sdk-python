@@ -8,7 +8,6 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .subscription_response import SubscriptionResponse
-from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponseSubscriptionResponse"]
 
@@ -29,12 +28,8 @@ class BatchResponseSubscriptionResponse(BaseModel):
     CANCELED, or COMPLETE.
     """
 
-    errors: Optional[List[StandardError]] = None
-
     links: Optional[Dict[str, str]] = None
     """A collection of related links associated with the batch operation."""
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The date and time when the batch operation was requested."""

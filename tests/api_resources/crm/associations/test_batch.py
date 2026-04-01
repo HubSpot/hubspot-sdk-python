@@ -9,11 +9,7 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm import (
-    BatchResponseVoid,
-    BatchResponsePublicDefaultAssociation,
-    BatchResponsePublicAssociationMultiWithLabel,
-)
+from hubspot_sdk.types.crm import BatchResponsePublicDefaultAssociation, BatchResponsePublicAssociationMultiWithLabel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -112,7 +108,7 @@ class TestBatch:
                 }
             ],
         )
-        assert_matches_type(BatchResponseVoid, batch, path=["response"])
+        assert batch is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -131,7 +127,7 @@ class TestBatch:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         batch = response.parse()
-        assert_matches_type(BatchResponseVoid, batch, path=["response"])
+        assert batch is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -150,7 +146,7 @@ class TestBatch:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             batch = response.parse()
-            assert_matches_type(BatchResponseVoid, batch, path=["response"])
+            assert batch is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -282,7 +278,7 @@ class TestBatch:
                 }
             ],
         )
-        assert_matches_type(BatchResponseVoid, batch, path=["response"])
+        assert batch is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -307,7 +303,7 @@ class TestBatch:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         batch = response.parse()
-        assert_matches_type(BatchResponseVoid, batch, path=["response"])
+        assert batch is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -332,7 +328,7 @@ class TestBatch:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             batch = response.parse()
-            assert_matches_type(BatchResponseVoid, batch, path=["response"])
+            assert batch is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -529,7 +525,7 @@ class TestAsyncBatch:
                 }
             ],
         )
-        assert_matches_type(BatchResponseVoid, batch, path=["response"])
+        assert batch is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -548,7 +544,7 @@ class TestAsyncBatch:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         batch = await response.parse()
-        assert_matches_type(BatchResponseVoid, batch, path=["response"])
+        assert batch is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -567,7 +563,7 @@ class TestAsyncBatch:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             batch = await response.parse()
-            assert_matches_type(BatchResponseVoid, batch, path=["response"])
+            assert batch is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -699,7 +695,7 @@ class TestAsyncBatch:
                 }
             ],
         )
-        assert_matches_type(BatchResponseVoid, batch, path=["response"])
+        assert batch is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -724,7 +720,7 @@ class TestAsyncBatch:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         batch = await response.parse()
-        assert_matches_type(BatchResponseVoid, batch, path=["response"])
+        assert batch is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -749,7 +745,7 @@ class TestAsyncBatch:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             batch = await response.parse()
-            assert_matches_type(BatchResponseVoid, batch, path=["response"])
+            assert batch is None
 
         assert cast(Any, response.is_closed) is True
 

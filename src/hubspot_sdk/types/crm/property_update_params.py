@@ -17,6 +17,8 @@ class PropertyUpdateParams(TypedDict, total=False):
     calculation_formula: Annotated[str, PropertyInfo(alias="calculationFormula")]
     """Represents a formula that is used to compute a calculated property."""
 
+    currency_property_name: Annotated[str, PropertyInfo(alias="currencyPropertyName")]
+
     description: str
     """A description of the property that will be shown as help text in HubSpot."""
 
@@ -60,6 +62,8 @@ class PropertyUpdateParams(TypedDict, total=False):
 
     options: Iterable[OptionInput]
     """A list of valid options for the property."""
+
+    show_currency_symbol: Annotated[bool, PropertyInfo(alias="showCurrencySymbol")]
 
     type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"]
     """The data type of the property."""

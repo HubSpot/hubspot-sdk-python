@@ -6,12 +6,12 @@ from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from .option_input import OptionInput
+from ..shared_params.option_input import OptionInput
 
-__all__ = ["PropertyCreate"]
+__all__ = ["PropertyCreateParam"]
 
 
-class PropertyCreate(TypedDict, total=False):
+class PropertyCreateParam(TypedDict, total=False):
     field_type: Required[
         Annotated[
             Literal[

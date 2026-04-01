@@ -8,7 +8,6 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .hub_db_table_row_v3 import HubDBTableRowV3
-from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponseHubDBTableRowV3"]
 
@@ -28,12 +27,8 @@ class BatchResponseHubDBTableRowV3(BaseModel):
     COMPLETE, PENDING, PROCESSING.
     """
 
-    errors: Optional[List[StandardError]] = None
-
     links: Optional[Dict[str, str]] = None
     """A collection of related links associated with the batch response."""
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The timestamp indicating when the batch request was made."""

@@ -6,7 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._types import Body, Query, Headers, NoneType, NotGiven, not_given
 from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -23,7 +23,6 @@ from ....types.crm.associations import (
     batch_delete_labels_params,
     batch_create_default_params,
 )
-from ....types.crm.batch_response_void import BatchResponseVoid
 from ....types.crm.public_association_multi_post_param import PublicAssociationMultiPostParam
 from ....types.crm.public_association_multi_archive_param import PublicAssociationMultiArchiveParam
 from ....types.crm.batch_response_public_default_association import BatchResponsePublicDefaultAssociation
@@ -114,7 +113,7 @@ class BatchResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseVoid:
+    ) -> None:
         """
         Batch delete associations for objects
 
@@ -131,6 +130,7 @@ class BatchResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
         if not to_object_type:
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             path_template(
                 "/crm/associations/2026-03/{from_object_type}/{to_object_type}/batch/archive",
@@ -141,7 +141,7 @@ class BatchResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseVoid,
+            cast_to=NoneType,
         )
 
     def create_default(
@@ -198,7 +198,7 @@ class BatchResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseVoid:
+    ) -> None:
         """Batch delete specific association labels for objects.
 
         Deleting an unlabeled
@@ -217,6 +217,7 @@ class BatchResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
         if not to_object_type:
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             path_template(
                 "/crm/associations/2026-03/{from_object_type}/{to_object_type}/batch/labels/archive",
@@ -227,7 +228,7 @@ class BatchResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseVoid,
+            cast_to=NoneType,
         )
 
     def get(
@@ -356,7 +357,7 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseVoid:
+    ) -> None:
         """
         Batch delete associations for objects
 
@@ -373,6 +374,7 @@ class AsyncBatchResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
         if not to_object_type:
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             path_template(
                 "/crm/associations/2026-03/{from_object_type}/{to_object_type}/batch/archive",
@@ -383,7 +385,7 @@ class AsyncBatchResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseVoid,
+            cast_to=NoneType,
         )
 
     async def create_default(
@@ -440,7 +442,7 @@ class AsyncBatchResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseVoid:
+    ) -> None:
         """Batch delete specific association labels for objects.
 
         Deleting an unlabeled
@@ -459,6 +461,7 @@ class AsyncBatchResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
         if not to_object_type:
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             path_template(
                 "/crm/associations/2026-03/{from_object_type}/{to_object_type}/batch/labels/archive",
@@ -469,7 +472,7 @@ class AsyncBatchResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseVoid,
+            cast_to=NoneType,
         )
 
     async def get(

@@ -7,7 +7,6 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.standard_error import StandardError
 from .public_association_definition_user_configuration import PublicAssociationDefinitionUserConfiguration
 
 __all__ = ["BatchResponsePublicAssociationDefinitionUserConfiguration"]
@@ -28,16 +27,11 @@ class BatchResponsePublicAssociationDefinitionUserConfiguration(BaseModel):
     PENDING, or PROCESSING.
     """
 
-    errors: Optional[List[StandardError]] = None
-
     links: Optional[Dict[str, str]] = None
     """
     A collection of URLs linking to related documentation or resources associated
     with the batch operation.
     """
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
-    """The total number of errors encountered during the batch operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The date and time when the batch operation was requested."""

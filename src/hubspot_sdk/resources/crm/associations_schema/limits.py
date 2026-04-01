@@ -6,7 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._types import Body, Query, Headers, NoneType, NotGiven, not_given
 from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -18,7 +18,6 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.crm.associations_schema import limit_batch_delete_params, limit_batch_update_params
-from ....types.crm.batch_response_void import BatchResponseVoid
 from ....types.crm.public_association_spec_param import PublicAssociationSpecParam
 from ....types.crm.public_association_definition_configuration_update_request_param import (
     PublicAssociationDefinitionConfigurationUpdateRequestParam,
@@ -87,7 +86,7 @@ class LimitsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseVoid:
+    ) -> None:
         """
         Batch delete limits that have been defined for association types between two
         object types.
@@ -105,6 +104,7 @@ class LimitsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
         if not to_object_type:
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             path_template(
                 "/crm/associations/2026-03/definitions/configurations/{from_object_type}/{to_object_type}/batch/purge",
@@ -115,7 +115,7 @@ class LimitsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseVoid,
+            cast_to=NoneType,
         )
 
     def batch_update(
@@ -258,7 +258,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseVoid:
+    ) -> None:
         """
         Batch delete limits that have been defined for association types between two
         object types.
@@ -276,6 +276,7 @@ class AsyncLimitsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
         if not to_object_type:
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             path_template(
                 "/crm/associations/2026-03/definitions/configurations/{from_object_type}/{to_object_type}/batch/purge",
@@ -286,7 +287,7 @@ class AsyncLimitsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseVoid,
+            cast_to=NoneType,
         )
 
     async def batch_update(

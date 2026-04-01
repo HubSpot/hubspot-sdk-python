@@ -552,7 +552,7 @@ class RowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseHubDBTableRowV3:
+    ) -> None:
         """
         Permanently delete rows from the draft version of a table, given a set of row
         IDs. Maximum of 100 row IDs per call.
@@ -570,6 +570,7 @@ class RowsResource(SyncAPIResource):
         """
         if not table_id_or_name:
             raise ValueError(f"Expected a non-empty value for `table_id_or_name` but received {table_id_or_name!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             path_template(
                 "/cms/hubdb/2026-03/tables/{table_id_or_name}/rows/draft/batch/purge", table_id_or_name=table_id_or_name
@@ -578,7 +579,7 @@ class RowsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseHubDBTableRowV3,
+            cast_to=NoneType,
         )
 
     def replace_batch(
@@ -1314,7 +1315,7 @@ class AsyncRowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponseHubDBTableRowV3:
+    ) -> None:
         """
         Permanently delete rows from the draft version of a table, given a set of row
         IDs. Maximum of 100 row IDs per call.
@@ -1332,6 +1333,7 @@ class AsyncRowsResource(AsyncAPIResource):
         """
         if not table_id_or_name:
             raise ValueError(f"Expected a non-empty value for `table_id_or_name` but received {table_id_or_name!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             path_template(
                 "/cms/hubdb/2026-03/tables/{table_id_or_name}/rows/draft/batch/purge", table_id_or_name=table_id_or_name
@@ -1340,7 +1342,7 @@ class AsyncRowsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponseHubDBTableRowV3,
+            cast_to=NoneType,
         )
 
     async def replace_batch(

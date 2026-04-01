@@ -10,7 +10,6 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
-    BatchResponseVoid,
     BatchResponsePublicAssociationDefinitionConfigurationUpdateResult,
     CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging,
 )
@@ -68,7 +67,7 @@ class TestLimits:
                 }
             ],
         )
-        assert_matches_type(BatchResponseVoid, limit, path=["response"])
+        assert limit is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -87,7 +86,7 @@ class TestLimits:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         limit = response.parse()
-        assert_matches_type(BatchResponseVoid, limit, path=["response"])
+        assert limit is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -106,7 +105,7 @@ class TestLimits:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             limit = response.parse()
-            assert_matches_type(BatchResponseVoid, limit, path=["response"])
+            assert limit is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -337,7 +336,7 @@ class TestAsyncLimits:
                 }
             ],
         )
-        assert_matches_type(BatchResponseVoid, limit, path=["response"])
+        assert limit is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -356,7 +355,7 @@ class TestAsyncLimits:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         limit = await response.parse()
-        assert_matches_type(BatchResponseVoid, limit, path=["response"])
+        assert limit is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -375,7 +374,7 @@ class TestAsyncLimits:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             limit = await response.parse()
-            assert_matches_type(BatchResponseVoid, limit, path=["response"])
+            assert limit is None
 
         assert cast(Any, response.is_closed) is True
 

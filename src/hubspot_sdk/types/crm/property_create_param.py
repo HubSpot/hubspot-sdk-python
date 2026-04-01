@@ -8,10 +8,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 from ..._utils import PropertyInfo
 from ..shared_params.option_input import OptionInput
 
-__all__ = ["PropertyCreateParams"]
+__all__ = ["PropertyCreateParam"]
 
 
-class PropertyCreateParams(TypedDict, total=False):
+class PropertyCreateParam(TypedDict, total=False):
     field_type: Required[
         Annotated[
             Literal[

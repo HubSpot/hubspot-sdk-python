@@ -7,7 +7,6 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.standard_error import StandardError
 from .public_wide_status_bulk_response import PublicWideStatusBulkResponse
 
 __all__ = ["BatchResponsePublicWideStatusBulkResponse"]
@@ -32,17 +31,8 @@ class BatchResponsePublicWideStatusBulkResponse(BaseModel):
     PROCESSING, CANCELED, COMPLETE.
     """
 
-    errors: Optional[List[StandardError]] = None
-    """
-    An array of errors encountered during the batch operation, each item providing
-    details about a specific error.
-    """
-
     links: Optional[Dict[str, str]] = None
     """A collection of related links associated with the batch response."""
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
-    """The number of errors that occurred during the batch operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The date and time when the batch request was made."""

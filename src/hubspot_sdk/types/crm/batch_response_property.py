@@ -6,9 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .property import Property
 from ..._models import BaseModel
-from ..shared.property import Property
-from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponseProperty"]
 
@@ -28,16 +27,11 @@ class BatchResponseProperty(BaseModel):
     COMPLETE, PENDING, or PROCESSING.
     """
 
-    errors: Optional[List[StandardError]] = None
-
     links: Optional[Dict[str, str]] = None
     """
     A collection of URLs linking to documentation or resources related to the batch
     operation.
     """
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
-    """The total number of errors encountered during the batch operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The timestamp indicating when the batch operation was requested."""

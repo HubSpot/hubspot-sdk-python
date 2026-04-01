@@ -7,7 +7,6 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.standard_error import StandardError
 from .marketing_event_public_default_response_v2 import MarketingEventPublicDefaultResponseV2
 
 __all__ = ["BatchResponseMarketingEventPublicDefaultResponseV2"]
@@ -25,12 +24,8 @@ class BatchResponseMarketingEventPublicDefaultResponseV2(BaseModel):
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
     """The status of the response."""
 
-    errors: Optional[List[StandardError]] = None
-
     links: Optional[Dict[str, str]] = None
     """Result object of the request."""
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """Timestamp of when the request was sent."""

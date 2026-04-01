@@ -21,20 +21,21 @@ from ...types.crm import (
     list_get_params,
     list_list_params,
     list_create_params,
-    list_search_params,
     list_move_list_params,
     list_list_folders_params,
     list_create_folder_params,
     list_rename_folder_params,
     list_get_id_mapping_params,
+    list_list_by_search_params,
     list_list_memberships_params,
     list_update_list_name_params,
     list_update_list_filters_params,
     list_batch_read_memberships_params,
     list_add_and_remove_memberships_params,
+    list_get_memberships_join_order_params,
     list_update_schedule_conversion_params,
-    list_list_memberships_join_order_params,
-    list_get_by_object_type_id_and_name_params,
+    list_get_by_object_type_and_name_params,
+    list_get_size_and_edits_history_between_params,
 )
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
@@ -53,6 +54,7 @@ from ...types.crm.public_list_permissions_param import PublicListPermissionsPara
 from ...types.crm.public_batch_migration_mapping import PublicBatchMigrationMapping
 from ...types.crm.public_list_conversion_response import PublicListConversionResponse
 from ...types.crm.public_membership_settings_param import PublicMembershipSettingsParam
+from ...types.crm.list_size_and_edit_history_response import ListSizeAndEditHistoryResponse
 from ...types.crm.batch_response_record_id_with_memberships import BatchResponseRecordIDWithMemberships
 from ...types.crm.api_collection_response_record_list_membership import APICollectionResponseRecordListMembership
 
@@ -493,38 +495,6 @@ class ListsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def delete_schedule_conversion(
-        self,
-        list_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not list_id:
-            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            path_template("/crm/lists/2026-03/{list_id}/schedule-conversion", list_id=list_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get(
         self,
         list_id: str,
@@ -561,7 +531,7 @@ class ListsResource(SyncAPIResource):
             cast_to=ListFetchResponse,
         )
 
-    def get_by_object_type_id_and_name(
+    def get_by_object_type_and_name(
         self,
         list_name: str,
         *,
@@ -601,7 +571,7 @@ class ListsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {"include_filters": include_filters},
-                    list_get_by_object_type_id_and_name_params.ListGetByObjectTypeIDAndNameParams,
+                    list_get_by_object_type_and_name_params.ListGetByObjectTypeAndNameParams,
                 ),
             ),
             cast_to=ListFetchResponse,
@@ -640,6 +610,58 @@ class ListsResource(SyncAPIResource):
                 ),
             ),
             cast_to=PublicMigrationMapping,
+        )
+
+    def get_memberships_join_order(
+        self,
+        list_id: str,
+        *,
+        after: str | Omit = omit,
+        before: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[JoinTimeAndRecordID]:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not list_id:
+            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
+        return self._get_api_list(
+            path_template("/crm/lists/2026-03/{list_id}/memberships/join-order", list_id=list_id),
+            page=SyncPage[JoinTimeAndRecordID],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "before": before,
+                        "limit": limit,
+                    },
+                    list_get_memberships_join_order_params.ListGetMembershipsJoinOrderParams,
+                ),
+            ),
+            model=JoinTimeAndRecordID,
         )
 
     def get_record_memberships(
@@ -709,6 +731,124 @@ class ListsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=PublicListConversionResponse,
+        )
+
+    def get_size_and_edits_history_between(
+        self,
+        list_id: str,
+        *,
+        end_date: str | Omit = omit,
+        start_date: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ListSizeAndEditHistoryResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not list_id:
+            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
+        return self._get(
+            path_template("/crm/lists/2026-03/{list_id}/size-and-edits-history/between", list_id=list_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "end_date": end_date,
+                        "start_date": start_date,
+                    },
+                    list_get_size_and_edits_history_between_params.ListGetSizeAndEditsHistoryBetweenParams,
+                ),
+            ),
+            cast_to=ListSizeAndEditHistoryResponse,
+        )
+
+    def list_by_search(
+        self,
+        *,
+        additional_properties: SequenceNotStr[str],
+        list_ids: SequenceNotStr[str],
+        offset: int,
+        processing_types: SequenceNotStr[str],
+        count: int | Omit = omit,
+        object_type_id: str | Omit = omit,
+        query: str | Omit = omit,
+        sort: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ListSearchResponse:
+        """
+        Args:
+          additional_properties: The property names of any additional list properties to include in the response.
+              Properties that do not exist or that are empty for a particular list are not
+              included in the response.
+
+              By default, all requests will fetch the following properties for each list:
+              `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
+              `hs_folder_name`, and `hs_list_reference_count`.
+
+          list_ids: ILS list ids to be included in search results. If not specified, all lists
+              matching other criteria will be included
+
+          offset: Value used to paginate through lists. The `offset` provided in the response can
+              be used in the next request to fetch the next page of results. Defaults to `0`
+              if no offset is provided.
+
+          processing_types: List processing types to be included in search results. If not specified, all
+              lists with all processing types will be included.
+
+          count: The number of lists to include in the response. Defaults to `20` if no value is
+              provided. The max `count` is `500`.
+
+          query: The `query` that will be used to search for lists by list name. If no `query` is
+              provided, then the results will include all lists.
+
+          sort: Sort field and order
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/crm/lists/2026-03/search",
+            body=maybe_transform(
+                {
+                    "additional_properties": additional_properties,
+                    "list_ids": list_ids,
+                    "offset": offset,
+                    "processing_types": processing_types,
+                    "count": count,
+                    "object_type_id": object_type_id,
+                    "query": query,
+                    "sort": sort,
+                },
+                list_list_by_search_params.ListListBySearchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ListSearchResponse,
         )
 
     def list_folders(
@@ -791,58 +931,6 @@ class ListsResource(SyncAPIResource):
                         "limit": limit,
                     },
                     list_list_memberships_params.ListListMembershipsParams,
-                ),
-            ),
-            model=JoinTimeAndRecordID,
-        )
-
-    def list_memberships_join_order(
-        self,
-        list_id: str,
-        *,
-        after: str | Omit = omit,
-        before: str | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[JoinTimeAndRecordID]:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not list_id:
-            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
-        return self._get_api_list(
-            path_template("/crm/lists/2026-03/{list_id}/memberships/join-order", list_id=list_id),
-            page=SyncPage[JoinTimeAndRecordID],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "before": before,
-                        "limit": limit,
-                    },
-                    list_list_memberships_join_order_params.ListListMembershipsJoinOrderParams,
                 ),
             ),
             model=JoinTimeAndRecordID,
@@ -1033,52 +1121,19 @@ class ListsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def search(
+    def schedule_conversion(
         self,
+        list_id: str,
         *,
-        additional_properties: SequenceNotStr[str],
-        list_ids: SequenceNotStr[str],
-        offset: int,
-        processing_types: SequenceNotStr[str],
-        count: int | Omit = omit,
-        object_type_id: str | Omit = omit,
-        query: str | Omit = omit,
-        sort: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ListSearchResponse:
+    ) -> None:
         """
         Args:
-          additional_properties: The property names of any additional list properties to include in the response.
-              Properties that do not exist or that are empty for a particular list are not
-              included in the response.
-
-              By default, all requests will fetch the following properties for each list:
-              `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
-              `hs_folder_name`, and `hs_list_reference_count`.
-
-          list_ids: ILS list ids to be included in search results. If not specified, all lists
-              matching other criteria will be included
-
-          offset: Value used to paginate through lists. The `offset` provided in the response can
-              be used in the next request to fetch the next page of results. Defaults to `0`
-              if no offset is provided.
-
-          processing_types: List processing types to be included in search results. If not specified, all
-              lists with all processing types will be included.
-
-          count: The number of lists to include in the response. Defaults to `20` if no value is
-              provided. The max `count` is `500`.
-
-          query: The `query` that will be used to search for lists by list name. If no `query` is
-              provided, then the results will include all lists.
-
-          sort: Sort field and order
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1087,25 +1142,15 @@ class ListsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._post(
-            "/crm/lists/2026-03/search",
-            body=maybe_transform(
-                {
-                    "additional_properties": additional_properties,
-                    "list_ids": list_ids,
-                    "offset": offset,
-                    "processing_types": processing_types,
-                    "count": count,
-                    "object_type_id": object_type_id,
-                    "query": query,
-                    "sort": sort,
-                },
-                list_search_params.ListSearchParams,
-            ),
+        if not list_id:
+            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/crm/lists/2026-03/{list_id}/schedule-conversion", list_id=list_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ListSearchResponse,
+            cast_to=NoneType,
         )
 
     def update_list_filters(
@@ -1743,38 +1788,6 @@ class AsyncListsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def delete_schedule_conversion(
-        self,
-        list_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not list_id:
-            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            path_template("/crm/lists/2026-03/{list_id}/schedule-conversion", list_id=list_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get(
         self,
         list_id: str,
@@ -1811,7 +1824,7 @@ class AsyncListsResource(AsyncAPIResource):
             cast_to=ListFetchResponse,
         )
 
-    async def get_by_object_type_id_and_name(
+    async def get_by_object_type_and_name(
         self,
         list_name: str,
         *,
@@ -1851,7 +1864,7 @@ class AsyncListsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {"include_filters": include_filters},
-                    list_get_by_object_type_id_and_name_params.ListGetByObjectTypeIDAndNameParams,
+                    list_get_by_object_type_and_name_params.ListGetByObjectTypeAndNameParams,
                 ),
             ),
             cast_to=ListFetchResponse,
@@ -1890,6 +1903,58 @@ class AsyncListsResource(AsyncAPIResource):
                 ),
             ),
             cast_to=PublicMigrationMapping,
+        )
+
+    def get_memberships_join_order(
+        self,
+        list_id: str,
+        *,
+        after: str | Omit = omit,
+        before: str | Omit = omit,
+        limit: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[JoinTimeAndRecordID, AsyncPage[JoinTimeAndRecordID]]:
+        """
+        Args:
+          after: The paging cursor token of the last successfully read resource will be returned
+              as the `paging.next.after` JSON property of a paged response containing more
+              results.
+
+          limit: The maximum number of results to display per page.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not list_id:
+            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
+        return self._get_api_list(
+            path_template("/crm/lists/2026-03/{list_id}/memberships/join-order", list_id=list_id),
+            page=AsyncPage[JoinTimeAndRecordID],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "after": after,
+                        "before": before,
+                        "limit": limit,
+                    },
+                    list_get_memberships_join_order_params.ListGetMembershipsJoinOrderParams,
+                ),
+            ),
+            model=JoinTimeAndRecordID,
         )
 
     async def get_record_memberships(
@@ -1959,6 +2024,124 @@ class AsyncListsResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=PublicListConversionResponse,
+        )
+
+    async def get_size_and_edits_history_between(
+        self,
+        list_id: str,
+        *,
+        end_date: str | Omit = omit,
+        start_date: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ListSizeAndEditHistoryResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not list_id:
+            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
+        return await self._get(
+            path_template("/crm/lists/2026-03/{list_id}/size-and-edits-history/between", list_id=list_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "end_date": end_date,
+                        "start_date": start_date,
+                    },
+                    list_get_size_and_edits_history_between_params.ListGetSizeAndEditsHistoryBetweenParams,
+                ),
+            ),
+            cast_to=ListSizeAndEditHistoryResponse,
+        )
+
+    async def list_by_search(
+        self,
+        *,
+        additional_properties: SequenceNotStr[str],
+        list_ids: SequenceNotStr[str],
+        offset: int,
+        processing_types: SequenceNotStr[str],
+        count: int | Omit = omit,
+        object_type_id: str | Omit = omit,
+        query: str | Omit = omit,
+        sort: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ListSearchResponse:
+        """
+        Args:
+          additional_properties: The property names of any additional list properties to include in the response.
+              Properties that do not exist or that are empty for a particular list are not
+              included in the response.
+
+              By default, all requests will fetch the following properties for each list:
+              `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
+              `hs_folder_name`, and `hs_list_reference_count`.
+
+          list_ids: ILS list ids to be included in search results. If not specified, all lists
+              matching other criteria will be included
+
+          offset: Value used to paginate through lists. The `offset` provided in the response can
+              be used in the next request to fetch the next page of results. Defaults to `0`
+              if no offset is provided.
+
+          processing_types: List processing types to be included in search results. If not specified, all
+              lists with all processing types will be included.
+
+          count: The number of lists to include in the response. Defaults to `20` if no value is
+              provided. The max `count` is `500`.
+
+          query: The `query` that will be used to search for lists by list name. If no `query` is
+              provided, then the results will include all lists.
+
+          sort: Sort field and order
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/crm/lists/2026-03/search",
+            body=await async_maybe_transform(
+                {
+                    "additional_properties": additional_properties,
+                    "list_ids": list_ids,
+                    "offset": offset,
+                    "processing_types": processing_types,
+                    "count": count,
+                    "object_type_id": object_type_id,
+                    "query": query,
+                    "sort": sort,
+                },
+                list_list_by_search_params.ListListBySearchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ListSearchResponse,
         )
 
     async def list_folders(
@@ -2043,58 +2226,6 @@ class AsyncListsResource(AsyncAPIResource):
                         "limit": limit,
                     },
                     list_list_memberships_params.ListListMembershipsParams,
-                ),
-            ),
-            model=JoinTimeAndRecordID,
-        )
-
-    def list_memberships_join_order(
-        self,
-        list_id: str,
-        *,
-        after: str | Omit = omit,
-        before: str | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[JoinTimeAndRecordID, AsyncPage[JoinTimeAndRecordID]]:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not list_id:
-            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
-        return self._get_api_list(
-            path_template("/crm/lists/2026-03/{list_id}/memberships/join-order", list_id=list_id),
-            page=AsyncPage[JoinTimeAndRecordID],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "before": before,
-                        "limit": limit,
-                    },
-                    list_list_memberships_join_order_params.ListListMembershipsJoinOrderParams,
                 ),
             ),
             model=JoinTimeAndRecordID,
@@ -2285,52 +2416,19 @@ class AsyncListsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def search(
+    async def schedule_conversion(
         self,
+        list_id: str,
         *,
-        additional_properties: SequenceNotStr[str],
-        list_ids: SequenceNotStr[str],
-        offset: int,
-        processing_types: SequenceNotStr[str],
-        count: int | Omit = omit,
-        object_type_id: str | Omit = omit,
-        query: str | Omit = omit,
-        sort: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ListSearchResponse:
+    ) -> None:
         """
         Args:
-          additional_properties: The property names of any additional list properties to include in the response.
-              Properties that do not exist or that are empty for a particular list are not
-              included in the response.
-
-              By default, all requests will fetch the following properties for each list:
-              `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
-              `hs_folder_name`, and `hs_list_reference_count`.
-
-          list_ids: ILS list ids to be included in search results. If not specified, all lists
-              matching other criteria will be included
-
-          offset: Value used to paginate through lists. The `offset` provided in the response can
-              be used in the next request to fetch the next page of results. Defaults to `0`
-              if no offset is provided.
-
-          processing_types: List processing types to be included in search results. If not specified, all
-              lists with all processing types will be included.
-
-          count: The number of lists to include in the response. Defaults to `20` if no value is
-              provided. The max `count` is `500`.
-
-          query: The `query` that will be used to search for lists by list name. If no `query` is
-              provided, then the results will include all lists.
-
-          sort: Sort field and order
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2339,25 +2437,15 @@ class AsyncListsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._post(
-            "/crm/lists/2026-03/search",
-            body=await async_maybe_transform(
-                {
-                    "additional_properties": additional_properties,
-                    "list_ids": list_ids,
-                    "offset": offset,
-                    "processing_types": processing_types,
-                    "count": count,
-                    "object_type_id": object_type_id,
-                    "query": query,
-                    "sort": sort,
-                },
-                list_search_params.ListSearchParams,
-            ),
+        if not list_id:
+            raise ValueError(f"Expected a non-empty value for `list_id` but received {list_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/crm/lists/2026-03/{list_id}/schedule-conversion", list_id=list_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ListSearchResponse,
+            cast_to=NoneType,
         )
 
     async def update_list_filters(
@@ -2596,17 +2684,17 @@ class ListsResourceWithRawResponse:
         self.delete_memberships = to_raw_response_wrapper(
             lists.delete_memberships,
         )
-        self.delete_schedule_conversion = to_raw_response_wrapper(
-            lists.delete_schedule_conversion,
-        )
         self.get = to_raw_response_wrapper(
             lists.get,
         )
-        self.get_by_object_type_id_and_name = to_raw_response_wrapper(
-            lists.get_by_object_type_id_and_name,
+        self.get_by_object_type_and_name = to_raw_response_wrapper(
+            lists.get_by_object_type_and_name,
         )
         self.get_id_mapping = to_raw_response_wrapper(
             lists.get_id_mapping,
+        )
+        self.get_memberships_join_order = to_raw_response_wrapper(
+            lists.get_memberships_join_order,
         )
         self.get_record_memberships = to_raw_response_wrapper(
             lists.get_record_memberships,
@@ -2614,14 +2702,17 @@ class ListsResourceWithRawResponse:
         self.get_schedule_conversion = to_raw_response_wrapper(
             lists.get_schedule_conversion,
         )
+        self.get_size_and_edits_history_between = to_raw_response_wrapper(
+            lists.get_size_and_edits_history_between,
+        )
+        self.list_by_search = to_raw_response_wrapper(
+            lists.list_by_search,
+        )
         self.list_folders = to_raw_response_wrapper(
             lists.list_folders,
         )
         self.list_memberships = to_raw_response_wrapper(
             lists.list_memberships,
-        )
-        self.list_memberships_join_order = to_raw_response_wrapper(
-            lists.list_memberships_join_order,
         )
         self.move_folder = to_raw_response_wrapper(
             lists.move_folder,
@@ -2638,8 +2729,8 @@ class ListsResourceWithRawResponse:
         self.restore = to_raw_response_wrapper(
             lists.restore,
         )
-        self.search = to_raw_response_wrapper(
-            lists.search,
+        self.schedule_conversion = to_raw_response_wrapper(
+            lists.schedule_conversion,
         )
         self.update_list_filters = to_raw_response_wrapper(
             lists.update_list_filters,
@@ -2689,17 +2780,17 @@ class AsyncListsResourceWithRawResponse:
         self.delete_memberships = async_to_raw_response_wrapper(
             lists.delete_memberships,
         )
-        self.delete_schedule_conversion = async_to_raw_response_wrapper(
-            lists.delete_schedule_conversion,
-        )
         self.get = async_to_raw_response_wrapper(
             lists.get,
         )
-        self.get_by_object_type_id_and_name = async_to_raw_response_wrapper(
-            lists.get_by_object_type_id_and_name,
+        self.get_by_object_type_and_name = async_to_raw_response_wrapper(
+            lists.get_by_object_type_and_name,
         )
         self.get_id_mapping = async_to_raw_response_wrapper(
             lists.get_id_mapping,
+        )
+        self.get_memberships_join_order = async_to_raw_response_wrapper(
+            lists.get_memberships_join_order,
         )
         self.get_record_memberships = async_to_raw_response_wrapper(
             lists.get_record_memberships,
@@ -2707,14 +2798,17 @@ class AsyncListsResourceWithRawResponse:
         self.get_schedule_conversion = async_to_raw_response_wrapper(
             lists.get_schedule_conversion,
         )
+        self.get_size_and_edits_history_between = async_to_raw_response_wrapper(
+            lists.get_size_and_edits_history_between,
+        )
+        self.list_by_search = async_to_raw_response_wrapper(
+            lists.list_by_search,
+        )
         self.list_folders = async_to_raw_response_wrapper(
             lists.list_folders,
         )
         self.list_memberships = async_to_raw_response_wrapper(
             lists.list_memberships,
-        )
-        self.list_memberships_join_order = async_to_raw_response_wrapper(
-            lists.list_memberships_join_order,
         )
         self.move_folder = async_to_raw_response_wrapper(
             lists.move_folder,
@@ -2731,8 +2825,8 @@ class AsyncListsResourceWithRawResponse:
         self.restore = async_to_raw_response_wrapper(
             lists.restore,
         )
-        self.search = async_to_raw_response_wrapper(
-            lists.search,
+        self.schedule_conversion = async_to_raw_response_wrapper(
+            lists.schedule_conversion,
         )
         self.update_list_filters = async_to_raw_response_wrapper(
             lists.update_list_filters,
@@ -2782,17 +2876,17 @@ class ListsResourceWithStreamingResponse:
         self.delete_memberships = to_streamed_response_wrapper(
             lists.delete_memberships,
         )
-        self.delete_schedule_conversion = to_streamed_response_wrapper(
-            lists.delete_schedule_conversion,
-        )
         self.get = to_streamed_response_wrapper(
             lists.get,
         )
-        self.get_by_object_type_id_and_name = to_streamed_response_wrapper(
-            lists.get_by_object_type_id_and_name,
+        self.get_by_object_type_and_name = to_streamed_response_wrapper(
+            lists.get_by_object_type_and_name,
         )
         self.get_id_mapping = to_streamed_response_wrapper(
             lists.get_id_mapping,
+        )
+        self.get_memberships_join_order = to_streamed_response_wrapper(
+            lists.get_memberships_join_order,
         )
         self.get_record_memberships = to_streamed_response_wrapper(
             lists.get_record_memberships,
@@ -2800,14 +2894,17 @@ class ListsResourceWithStreamingResponse:
         self.get_schedule_conversion = to_streamed_response_wrapper(
             lists.get_schedule_conversion,
         )
+        self.get_size_and_edits_history_between = to_streamed_response_wrapper(
+            lists.get_size_and_edits_history_between,
+        )
+        self.list_by_search = to_streamed_response_wrapper(
+            lists.list_by_search,
+        )
         self.list_folders = to_streamed_response_wrapper(
             lists.list_folders,
         )
         self.list_memberships = to_streamed_response_wrapper(
             lists.list_memberships,
-        )
-        self.list_memberships_join_order = to_streamed_response_wrapper(
-            lists.list_memberships_join_order,
         )
         self.move_folder = to_streamed_response_wrapper(
             lists.move_folder,
@@ -2824,8 +2921,8 @@ class ListsResourceWithStreamingResponse:
         self.restore = to_streamed_response_wrapper(
             lists.restore,
         )
-        self.search = to_streamed_response_wrapper(
-            lists.search,
+        self.schedule_conversion = to_streamed_response_wrapper(
+            lists.schedule_conversion,
         )
         self.update_list_filters = to_streamed_response_wrapper(
             lists.update_list_filters,
@@ -2875,17 +2972,17 @@ class AsyncListsResourceWithStreamingResponse:
         self.delete_memberships = async_to_streamed_response_wrapper(
             lists.delete_memberships,
         )
-        self.delete_schedule_conversion = async_to_streamed_response_wrapper(
-            lists.delete_schedule_conversion,
-        )
         self.get = async_to_streamed_response_wrapper(
             lists.get,
         )
-        self.get_by_object_type_id_and_name = async_to_streamed_response_wrapper(
-            lists.get_by_object_type_id_and_name,
+        self.get_by_object_type_and_name = async_to_streamed_response_wrapper(
+            lists.get_by_object_type_and_name,
         )
         self.get_id_mapping = async_to_streamed_response_wrapper(
             lists.get_id_mapping,
+        )
+        self.get_memberships_join_order = async_to_streamed_response_wrapper(
+            lists.get_memberships_join_order,
         )
         self.get_record_memberships = async_to_streamed_response_wrapper(
             lists.get_record_memberships,
@@ -2893,14 +2990,17 @@ class AsyncListsResourceWithStreamingResponse:
         self.get_schedule_conversion = async_to_streamed_response_wrapper(
             lists.get_schedule_conversion,
         )
+        self.get_size_and_edits_history_between = async_to_streamed_response_wrapper(
+            lists.get_size_and_edits_history_between,
+        )
+        self.list_by_search = async_to_streamed_response_wrapper(
+            lists.list_by_search,
+        )
         self.list_folders = async_to_streamed_response_wrapper(
             lists.list_folders,
         )
         self.list_memberships = async_to_streamed_response_wrapper(
             lists.list_memberships,
-        )
-        self.list_memberships_join_order = async_to_streamed_response_wrapper(
-            lists.list_memberships_join_order,
         )
         self.move_folder = async_to_streamed_response_wrapper(
             lists.move_folder,
@@ -2917,8 +3017,8 @@ class AsyncListsResourceWithStreamingResponse:
         self.restore = async_to_streamed_response_wrapper(
             lists.restore,
         )
-        self.search = async_to_streamed_response_wrapper(
-            lists.search,
+        self.schedule_conversion = async_to_streamed_response_wrapper(
+            lists.schedule_conversion,
         )
         self.update_list_filters = async_to_streamed_response_wrapper(
             lists.update_list_filters,

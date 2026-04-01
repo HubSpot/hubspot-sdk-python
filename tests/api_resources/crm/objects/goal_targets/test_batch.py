@@ -9,7 +9,7 @@ import pytest
 
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm import BatchResponseSimplePublicObject
+from hubspot_sdk.types.crm import BatchResponseSimplePublicObject, BatchResponseSimplePublicUpsertObject
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -231,6 +231,55 @@ class TestBatch:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_upsert(self, client: Hubspot) -> None:
+        batch = client.crm.objects.goal_targets.batch.upsert(
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        )
+        assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_upsert(self, client: Hubspot) -> None:
+        response = client.crm.objects.goal_targets.batch.with_raw_response.upsert(
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        batch = response.parse()
+        assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_upsert(self, client: Hubspot) -> None:
+        with client.crm.objects.goal_targets.batch.with_streaming_response.upsert(
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            batch = response.parse()
+            assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncBatch:
     parametrize = pytest.mark.parametrize(
@@ -448,5 +497,54 @@ class TestAsyncBatch:
 
             batch = await response.parse()
             assert_matches_type(BatchResponseSimplePublicObject, batch, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_upsert(self, async_client: AsyncHubspot) -> None:
+        batch = await async_client.crm.objects.goal_targets.batch.upsert(
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        )
+        assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_upsert(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.objects.goal_targets.batch.with_raw_response.upsert(
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        batch = await response.parse()
+        assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_upsert(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.objects.goal_targets.batch.with_streaming_response.upsert(
+            inputs=[
+                {
+                    "id": "id",
+                    "properties": {"foo": "string"},
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            batch = await response.parse()
+            assert_matches_type(BatchResponseSimplePublicUpsertObject, batch, path=["response"])
 
         assert cast(Any, response.is_closed) is True

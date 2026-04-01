@@ -7,7 +7,6 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.standard_error import StandardError
 from .public_campaign_with_assets import PublicCampaignWithAssets
 
 __all__ = ["BatchResponsePublicCampaignWithAssets"]
@@ -32,17 +31,8 @@ class BatchResponsePublicCampaignWithAssets(BaseModel):
     CANCELED, COMPLETE, PENDING, PROCESSING.
     """
 
-    errors: Optional[List[StandardError]] = None
-    """
-    An array of errors encountered during the batch operation, each described by a
-    StandardError object.
-    """
-
     links: Optional[Dict[str, str]] = None
     """A collection of URLs linking to related resources or documentation."""
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
-    """The number of errors encountered during the batch operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The timestamp when the batch request was initially made."""

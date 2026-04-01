@@ -8,7 +8,6 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .public_campaign import PublicCampaign
-from ..shared.standard_error import StandardError
 
 __all__ = ["BatchResponsePublicCampaign"]
 
@@ -38,17 +37,8 @@ class BatchResponsePublicCampaign(BaseModel):
     COMPLETE, PENDING, PROCESSING.
     """
 
-    errors: Optional[List[StandardError]] = None
-    """
-    An array of errors that occurred during the batch operation, each item detailing
-    a specific error.
-    """
-
     links: Optional[Dict[str, str]] = None
     """A map of related links associated with the batch operation."""
-
-    num_errors: Optional[int] = FieldInfo(alias="numErrors", default=None)
-    """The number of errors that occurred during the batch operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """

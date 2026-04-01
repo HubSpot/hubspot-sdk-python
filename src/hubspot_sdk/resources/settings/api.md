@@ -9,6 +9,7 @@ from hubspot_sdk.types.settings import (
     BatchInputExchangeRateCreateRequest,
     BatchInputExchangeRateUpdateRequest,
     BatchResponseExchangeRate,
+    BatchResponseExchangeRateWithErrors,
     CentralExchangeRatesInformation,
     CollectionResponseCurrencyCodeInfoNoPaging,
     CollectionResponseExchangeRateForwardPaging,
