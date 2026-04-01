@@ -7,14 +7,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["PipelineReplaceParams"]
+__all__ = ["PipelineStageInputParam"]
 
 
-class PipelineReplaceParams(TypedDict, total=False):
-    object_type: Required[Annotated[str, PropertyInfo(alias="objectType")]]
-
-    pipeline_id: Required[Annotated[str, PropertyInfo(alias="pipelineId")]]
-
+class PipelineStageInputParam(TypedDict, total=False):
     display_order: Required[Annotated[int, PropertyInfo(alias="displayOrder")]]
     """The order for displaying this pipeline stage.
 
@@ -42,3 +38,5 @@ class PipelineReplaceParams(TypedDict, total=False):
     has been closed by a member of your Support team. Possible values are `OPEN` or
     `CLOSED`.
     """
+
+    stage_id: Annotated[str, PropertyInfo(alias="stageId")]

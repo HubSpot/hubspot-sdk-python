@@ -9,10 +9,10 @@ from typing_extensions import Annotated, TypedDict
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 
-__all__ = ["AuthorListByQueryParams"]
+__all__ = ["AuthorGetCursorByQueryParams"]
 
 
-class AuthorListByQueryParams(TypedDict, total=False):
+class AuthorGetCursorByQueryParams(TypedDict, total=False):
     after: str
     """
     The paging cursor token of the last successfully read resource will be returned

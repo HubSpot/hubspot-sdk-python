@@ -26,8 +26,8 @@ from hubspot_sdk.types.webhooks import (
     SnapshotStatusResponse,
     SubscriptionListResponse,
     CrmObjectSnapshotBatchResponse,
-    WebhookGetFiltersBySubscriptionResponse,
     CollectionResponseSubscriptionResponseNoPaging,
+    WebhookGetSubscriptionFilterForSubscriptionResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -88,67 +88,6 @@ class TestWebhooks:
 
             webhook = response.parse()
             assert_matches_type(CrmObjectSnapshotBatchResponse, webhook, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_create_filter(self, client: Hubspot) -> None:
-        webhook = client.webhooks.webhooks.create_filter(
-            filter={
-                "conditions": [
-                    {
-                        "filter_type": "CRM_OBJECT_PROPERTY",
-                        "operator": "CONTAINS",
-                        "property": "property",
-                    }
-                ]
-            },
-            subscription_id=0,
-        )
-        assert_matches_type(FilterCreateResponse, webhook, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_create_filter(self, client: Hubspot) -> None:
-        response = client.webhooks.webhooks.with_raw_response.create_filter(
-            filter={
-                "conditions": [
-                    {
-                        "filter_type": "CRM_OBJECT_PROPERTY",
-                        "operator": "CONTAINS",
-                        "property": "property",
-                    }
-                ]
-            },
-            subscription_id=0,
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        webhook = response.parse()
-        assert_matches_type(FilterCreateResponse, webhook, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_create_filter(self, client: Hubspot) -> None:
-        with client.webhooks.webhooks.with_streaming_response.create_filter(
-            filter={
-                "conditions": [
-                    {
-                        "filter_type": "CRM_OBJECT_PROPERTY",
-                        "operator": "CONTAINS",
-                        "property": "property",
-                    }
-                ]
-            },
-            subscription_id=0,
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            webhook = response.parse()
-            assert_matches_type(FilterCreateResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -319,35 +258,62 @@ class TestWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_filter(self, client: Hubspot) -> None:
-        webhook = client.webhooks.webhooks.delete_filter(
-            0,
+    def test_method_create_subscription_filter(self, client: Hubspot) -> None:
+        webhook = client.webhooks.webhooks.create_subscription_filter(
+            filter={
+                "conditions": [
+                    {
+                        "filter_type": "CRM_OBJECT_PROPERTY",
+                        "operator": "CONTAINS",
+                        "property": "property",
+                    }
+                ]
+            },
+            subscription_id=0,
         )
-        assert webhook is None
+        assert_matches_type(FilterCreateResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_filter(self, client: Hubspot) -> None:
-        response = client.webhooks.webhooks.with_raw_response.delete_filter(
-            0,
+    def test_raw_response_create_subscription_filter(self, client: Hubspot) -> None:
+        response = client.webhooks.webhooks.with_raw_response.create_subscription_filter(
+            filter={
+                "conditions": [
+                    {
+                        "filter_type": "CRM_OBJECT_PROPERTY",
+                        "operator": "CONTAINS",
+                        "property": "property",
+                    }
+                ]
+            },
+            subscription_id=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert webhook is None
+        assert_matches_type(FilterCreateResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_filter(self, client: Hubspot) -> None:
-        with client.webhooks.webhooks.with_streaming_response.delete_filter(
-            0,
+    def test_streaming_response_create_subscription_filter(self, client: Hubspot) -> None:
+        with client.webhooks.webhooks.with_streaming_response.create_subscription_filter(
+            filter={
+                "conditions": [
+                    {
+                        "filter_type": "CRM_OBJECT_PROPERTY",
+                        "operator": "CONTAINS",
+                        "property": "property",
+                    }
+                ]
+            },
+            subscription_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert webhook is None
+            assert_matches_type(FilterCreateResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -492,69 +458,35 @@ class TestWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_filter(self, client: Hubspot) -> None:
-        webhook = client.webhooks.webhooks.get_filter(
+    def test_method_delete_subscription_filter(self, client: Hubspot) -> None:
+        webhook = client.webhooks.webhooks.delete_subscription_filter(
             0,
         )
-        assert_matches_type(FilterResponse, webhook, path=["response"])
+        assert webhook is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_filter(self, client: Hubspot) -> None:
-        response = client.webhooks.webhooks.with_raw_response.get_filter(
-            0,
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        webhook = response.parse()
-        assert_matches_type(FilterResponse, webhook, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_get_filter(self, client: Hubspot) -> None:
-        with client.webhooks.webhooks.with_streaming_response.get_filter(
-            0,
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            webhook = response.parse()
-            assert_matches_type(FilterResponse, webhook, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_get_filters_by_subscription(self, client: Hubspot) -> None:
-        webhook = client.webhooks.webhooks.get_filters_by_subscription(
-            0,
-        )
-        assert_matches_type(WebhookGetFiltersBySubscriptionResponse, webhook, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_get_filters_by_subscription(self, client: Hubspot) -> None:
-        response = client.webhooks.webhooks.with_raw_response.get_filters_by_subscription(
+    def test_raw_response_delete_subscription_filter(self, client: Hubspot) -> None:
+        response = client.webhooks.webhooks.with_raw_response.delete_subscription_filter(
             0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(WebhookGetFiltersBySubscriptionResponse, webhook, path=["response"])
+        assert webhook is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_filters_by_subscription(self, client: Hubspot) -> None:
-        with client.webhooks.webhooks.with_streaming_response.get_filters_by_subscription(
+    def test_streaming_response_delete_subscription_filter(self, client: Hubspot) -> None:
+        with client.webhooks.webhooks.with_streaming_response.delete_subscription_filter(
             0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(WebhookGetFiltersBySubscriptionResponse, webhook, path=["response"])
+            assert webhook is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -785,11 +717,11 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_local_earliest(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_local_journal_earliest(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/earliest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = client.webhooks.webhooks.get_local_earliest()
+        webhook = client.webhooks.webhooks.get_local_journal_earliest()
         assert webhook.is_closed
         assert webhook.json() == {"foo": "bar"}
         assert cast(Any, webhook.is_closed) is True
@@ -797,11 +729,11 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_local_earliest_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_local_journal_earliest_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/earliest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = client.webhooks.webhooks.get_local_earliest(
+        webhook = client.webhooks.webhooks.get_local_journal_earliest(
             install_portal_id=0,
         )
         assert webhook.is_closed
@@ -811,12 +743,12 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get_local_earliest(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_get_local_journal_earliest(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/earliest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
-        webhook = client.webhooks.webhooks.with_raw_response.get_local_earliest()
+        webhook = client.webhooks.webhooks.with_raw_response.get_local_journal_earliest()
 
         assert webhook.is_closed is True
         assert webhook.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -825,11 +757,11 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get_local_earliest(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get_local_journal_earliest(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/earliest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        with client.webhooks.webhooks.with_streaming_response.get_local_earliest() as webhook:
+        with client.webhooks.webhooks.with_streaming_response.get_local_journal_earliest() as webhook:
             assert not webhook.is_closed
             assert webhook.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -841,11 +773,11 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_local_latest(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_local_journal_latest(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/latest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = client.webhooks.webhooks.get_local_latest()
+        webhook = client.webhooks.webhooks.get_local_journal_latest()
         assert webhook.is_closed
         assert webhook.json() == {"foo": "bar"}
         assert cast(Any, webhook.is_closed) is True
@@ -853,11 +785,11 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_local_latest_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_local_journal_latest_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/latest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = client.webhooks.webhooks.get_local_latest(
+        webhook = client.webhooks.webhooks.get_local_journal_latest(
             install_portal_id=0,
         )
         assert webhook.is_closed
@@ -867,12 +799,12 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get_local_latest(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_get_local_journal_latest(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/latest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
-        webhook = client.webhooks.webhooks.with_raw_response.get_local_latest()
+        webhook = client.webhooks.webhooks.with_raw_response.get_local_journal_latest()
 
         assert webhook.is_closed is True
         assert webhook.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -881,11 +813,11 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get_local_latest(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get_local_journal_latest(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/latest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        with client.webhooks.webhooks.with_streaming_response.get_local_latest() as webhook:
+        with client.webhooks.webhooks.with_streaming_response.get_local_journal_latest() as webhook:
             assert not webhook.is_closed
             assert webhook.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -897,11 +829,11 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_local_next_by_offset(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_local_journal_next_by_offset(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/offset/offset/next").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = client.webhooks.webhooks.get_local_next_by_offset(
+        webhook = client.webhooks.webhooks.get_local_journal_next_by_offset(
             offset="offset",
         )
         assert webhook.is_closed
@@ -911,11 +843,13 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_local_next_by_offset_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_local_journal_next_by_offset_with_all_params(
+        self, client: Hubspot, respx_mock: MockRouter
+    ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/offset/offset/next").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = client.webhooks.webhooks.get_local_next_by_offset(
+        webhook = client.webhooks.webhooks.get_local_journal_next_by_offset(
             offset="offset",
             install_portal_id=0,
         )
@@ -926,12 +860,12 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get_local_next_by_offset(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_get_local_journal_next_by_offset(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/offset/offset/next").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
-        webhook = client.webhooks.webhooks.with_raw_response.get_local_next_by_offset(
+        webhook = client.webhooks.webhooks.with_raw_response.get_local_journal_next_by_offset(
             offset="offset",
         )
 
@@ -942,11 +876,11 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get_local_next_by_offset(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get_local_journal_next_by_offset(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/offset/offset/next").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        with client.webhooks.webhooks.with_streaming_response.get_local_next_by_offset(
+        with client.webhooks.webhooks.with_streaming_response.get_local_journal_next_by_offset(
             offset="offset",
         ) as webhook:
             assert not webhook.is_closed
@@ -960,24 +894,24 @@ class TestWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_get_local_next_by_offset(self, client: Hubspot) -> None:
+    def test_path_params_get_local_journal_next_by_offset(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `offset` but received ''"):
-            client.webhooks.webhooks.with_raw_response.get_local_next_by_offset(
+            client.webhooks.webhooks.with_raw_response.get_local_journal_next_by_offset(
                 offset="",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_local_status(self, client: Hubspot) -> None:
-        webhook = client.webhooks.webhooks.get_local_status(
+    def test_method_get_local_journal_status(self, client: Hubspot) -> None:
+        webhook = client.webhooks.webhooks.get_local_journal_status(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
         assert_matches_type(SnapshotStatusResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_local_status(self, client: Hubspot) -> None:
-        response = client.webhooks.webhooks.with_raw_response.get_local_status(
+    def test_raw_response_get_local_journal_status(self, client: Hubspot) -> None:
+        response = client.webhooks.webhooks.with_raw_response.get_local_journal_status(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
 
@@ -988,8 +922,8 @@ class TestWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_local_status(self, client: Hubspot) -> None:
-        with client.webhooks.webhooks.with_streaming_response.get_local_status(
+    def test_streaming_response_get_local_journal_status(self, client: Hubspot) -> None:
+        with client.webhooks.webhooks.with_streaming_response.get_local_journal_status(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ) as response:
             assert not response.is_closed
@@ -1002,9 +936,9 @@ class TestWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_local_status(self, client: Hubspot) -> None:
+    def test_path_params_get_local_journal_status(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `status_id` but received ''"):
-            client.webhooks.webhooks.with_raw_response.get_local_status(
+            client.webhooks.webhooks.with_raw_response.get_local_journal_status(
                 "",
             )
 
@@ -1076,6 +1010,74 @@ class TestWebhooks:
 
             webhook = response.parse()
             assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_subscription_filter(self, client: Hubspot) -> None:
+        webhook = client.webhooks.webhooks.get_subscription_filter(
+            0,
+        )
+        assert_matches_type(FilterResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_subscription_filter(self, client: Hubspot) -> None:
+        response = client.webhooks.webhooks.with_raw_response.get_subscription_filter(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        webhook = response.parse()
+        assert_matches_type(FilterResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_subscription_filter(self, client: Hubspot) -> None:
+        with client.webhooks.webhooks.with_streaming_response.get_subscription_filter(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            webhook = response.parse()
+            assert_matches_type(FilterResponse, webhook, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_subscription_filter_for_subscription(self, client: Hubspot) -> None:
+        webhook = client.webhooks.webhooks.get_subscription_filter_for_subscription(
+            0,
+        )
+        assert_matches_type(WebhookGetSubscriptionFilterForSubscriptionResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_subscription_filter_for_subscription(self, client: Hubspot) -> None:
+        response = client.webhooks.webhooks.with_raw_response.get_subscription_filter_for_subscription(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        webhook = response.parse()
+        assert_matches_type(WebhookGetSubscriptionFilterForSubscriptionResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_subscription_filter_for_subscription(self, client: Hubspot) -> None:
+        with client.webhooks.webhooks.with_streaming_response.get_subscription_filter_for_subscription(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            webhook = response.parse()
+            assert_matches_type(WebhookGetSubscriptionFilterForSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1291,67 +1293,6 @@ class TestAsyncWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_filter(self, async_client: AsyncHubspot) -> None:
-        webhook = await async_client.webhooks.webhooks.create_filter(
-            filter={
-                "conditions": [
-                    {
-                        "filter_type": "CRM_OBJECT_PROPERTY",
-                        "operator": "CONTAINS",
-                        "property": "property",
-                    }
-                ]
-            },
-            subscription_id=0,
-        )
-        assert_matches_type(FilterCreateResponse, webhook, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_create_filter(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.webhooks.webhooks.with_raw_response.create_filter(
-            filter={
-                "conditions": [
-                    {
-                        "filter_type": "CRM_OBJECT_PROPERTY",
-                        "operator": "CONTAINS",
-                        "property": "property",
-                    }
-                ]
-            },
-            subscription_id=0,
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        webhook = await response.parse()
-        assert_matches_type(FilterCreateResponse, webhook, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_create_filter(self, async_client: AsyncHubspot) -> None:
-        async with async_client.webhooks.webhooks.with_streaming_response.create_filter(
-            filter={
-                "conditions": [
-                    {
-                        "filter_type": "CRM_OBJECT_PROPERTY",
-                        "operator": "CONTAINS",
-                        "property": "property",
-                    }
-                ]
-            },
-            subscription_id=0,
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            webhook = await response.parse()
-            assert_matches_type(FilterCreateResponse, webhook, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     async def test_method_create_journal_subscription_overload_1(self, async_client: AsyncHubspot) -> None:
         webhook = await async_client.webhooks.webhooks.create_journal_subscription()
         assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
@@ -1517,35 +1458,62 @@ class TestAsyncWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_filter(self, async_client: AsyncHubspot) -> None:
-        webhook = await async_client.webhooks.webhooks.delete_filter(
-            0,
+    async def test_method_create_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        webhook = await async_client.webhooks.webhooks.create_subscription_filter(
+            filter={
+                "conditions": [
+                    {
+                        "filter_type": "CRM_OBJECT_PROPERTY",
+                        "operator": "CONTAINS",
+                        "property": "property",
+                    }
+                ]
+            },
+            subscription_id=0,
         )
-        assert webhook is None
+        assert_matches_type(FilterCreateResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_filter(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.webhooks.webhooks.with_raw_response.delete_filter(
-            0,
+    async def test_raw_response_create_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.webhooks.webhooks.with_raw_response.create_subscription_filter(
+            filter={
+                "conditions": [
+                    {
+                        "filter_type": "CRM_OBJECT_PROPERTY",
+                        "operator": "CONTAINS",
+                        "property": "property",
+                    }
+                ]
+            },
+            subscription_id=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert webhook is None
+        assert_matches_type(FilterCreateResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_filter(self, async_client: AsyncHubspot) -> None:
-        async with async_client.webhooks.webhooks.with_streaming_response.delete_filter(
-            0,
+    async def test_streaming_response_create_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        async with async_client.webhooks.webhooks.with_streaming_response.create_subscription_filter(
+            filter={
+                "conditions": [
+                    {
+                        "filter_type": "CRM_OBJECT_PROPERTY",
+                        "operator": "CONTAINS",
+                        "property": "property",
+                    }
+                ]
+            },
+            subscription_id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert webhook is None
+            assert_matches_type(FilterCreateResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1690,69 +1658,35 @@ class TestAsyncWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_filter(self, async_client: AsyncHubspot) -> None:
-        webhook = await async_client.webhooks.webhooks.get_filter(
+    async def test_method_delete_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        webhook = await async_client.webhooks.webhooks.delete_subscription_filter(
             0,
         )
-        assert_matches_type(FilterResponse, webhook, path=["response"])
+        assert webhook is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_filter(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.webhooks.webhooks.with_raw_response.get_filter(
-            0,
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        webhook = await response.parse()
-        assert_matches_type(FilterResponse, webhook, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_get_filter(self, async_client: AsyncHubspot) -> None:
-        async with async_client.webhooks.webhooks.with_streaming_response.get_filter(
-            0,
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            webhook = await response.parse()
-            assert_matches_type(FilterResponse, webhook, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_get_filters_by_subscription(self, async_client: AsyncHubspot) -> None:
-        webhook = await async_client.webhooks.webhooks.get_filters_by_subscription(
-            0,
-        )
-        assert_matches_type(WebhookGetFiltersBySubscriptionResponse, webhook, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_get_filters_by_subscription(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.webhooks.webhooks.with_raw_response.get_filters_by_subscription(
+    async def test_raw_response_delete_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.webhooks.webhooks.with_raw_response.delete_subscription_filter(
             0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(WebhookGetFiltersBySubscriptionResponse, webhook, path=["response"])
+        assert webhook is None
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_filters_by_subscription(self, async_client: AsyncHubspot) -> None:
-        async with async_client.webhooks.webhooks.with_streaming_response.get_filters_by_subscription(
+    async def test_streaming_response_delete_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        async with async_client.webhooks.webhooks.with_streaming_response.delete_subscription_filter(
             0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(WebhookGetFiltersBySubscriptionResponse, webhook, path=["response"])
+            assert webhook is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1997,11 +1931,11 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_local_earliest(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get_local_journal_earliest(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/earliest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = await async_client.webhooks.webhooks.get_local_earliest()
+        webhook = await async_client.webhooks.webhooks.get_local_journal_earliest()
         assert webhook.is_closed
         assert await webhook.json() == {"foo": "bar"}
         assert cast(Any, webhook.is_closed) is True
@@ -2009,13 +1943,13 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_local_earliest_with_all_params(
+    async def test_method_get_local_journal_earliest_with_all_params(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/earliest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = await async_client.webhooks.webhooks.get_local_earliest(
+        webhook = await async_client.webhooks.webhooks.get_local_journal_earliest(
             install_portal_id=0,
         )
         assert webhook.is_closed
@@ -2025,12 +1959,14 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get_local_earliest(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_get_local_journal_earliest(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/earliest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
-        webhook = await async_client.webhooks.webhooks.with_raw_response.get_local_earliest()
+        webhook = await async_client.webhooks.webhooks.with_raw_response.get_local_journal_earliest()
 
         assert webhook.is_closed is True
         assert webhook.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2039,13 +1975,13 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_get_local_earliest(
+    async def test_streaming_response_get_local_journal_earliest(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/earliest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        async with async_client.webhooks.webhooks.with_streaming_response.get_local_earliest() as webhook:
+        async with async_client.webhooks.webhooks.with_streaming_response.get_local_journal_earliest() as webhook:
             assert not webhook.is_closed
             assert webhook.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -2057,11 +1993,11 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_local_latest(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get_local_journal_latest(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/latest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = await async_client.webhooks.webhooks.get_local_latest()
+        webhook = await async_client.webhooks.webhooks.get_local_journal_latest()
         assert webhook.is_closed
         assert await webhook.json() == {"foo": "bar"}
         assert cast(Any, webhook.is_closed) is True
@@ -2069,13 +2005,13 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_local_latest_with_all_params(
+    async def test_method_get_local_journal_latest_with_all_params(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/latest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = await async_client.webhooks.webhooks.get_local_latest(
+        webhook = await async_client.webhooks.webhooks.get_local_journal_latest(
             install_portal_id=0,
         )
         assert webhook.is_closed
@@ -2085,12 +2021,14 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get_local_latest(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_get_local_journal_latest(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/latest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
-        webhook = await async_client.webhooks.webhooks.with_raw_response.get_local_latest()
+        webhook = await async_client.webhooks.webhooks.with_raw_response.get_local_journal_latest()
 
         assert webhook.is_closed is True
         assert webhook.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2099,13 +2037,13 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_get_local_latest(
+    async def test_streaming_response_get_local_journal_latest(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/latest").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        async with async_client.webhooks.webhooks.with_streaming_response.get_local_latest() as webhook:
+        async with async_client.webhooks.webhooks.with_streaming_response.get_local_journal_latest() as webhook:
             assert not webhook.is_closed
             assert webhook.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -2117,11 +2055,13 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_local_next_by_offset(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get_local_journal_next_by_offset(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/offset/offset/next").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = await async_client.webhooks.webhooks.get_local_next_by_offset(
+        webhook = await async_client.webhooks.webhooks.get_local_journal_next_by_offset(
             offset="offset",
         )
         assert webhook.is_closed
@@ -2131,13 +2071,13 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_local_next_by_offset_with_all_params(
+    async def test_method_get_local_journal_next_by_offset_with_all_params(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/offset/offset/next").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        webhook = await async_client.webhooks.webhooks.get_local_next_by_offset(
+        webhook = await async_client.webhooks.webhooks.get_local_journal_next_by_offset(
             offset="offset",
             install_portal_id=0,
         )
@@ -2148,14 +2088,14 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get_local_next_by_offset(
+    async def test_raw_response_get_local_journal_next_by_offset(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/offset/offset/next").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
-        webhook = await async_client.webhooks.webhooks.with_raw_response.get_local_next_by_offset(
+        webhook = await async_client.webhooks.webhooks.with_raw_response.get_local_journal_next_by_offset(
             offset="offset",
         )
 
@@ -2166,13 +2106,13 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_get_local_next_by_offset(
+    async def test_streaming_response_get_local_journal_next_by_offset(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/webhooks-journal/journal-local/2026-03/offset/offset/next").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        async with async_client.webhooks.webhooks.with_streaming_response.get_local_next_by_offset(
+        async with async_client.webhooks.webhooks.with_streaming_response.get_local_journal_next_by_offset(
             offset="offset",
         ) as webhook:
             assert not webhook.is_closed
@@ -2186,24 +2126,24 @@ class TestAsyncWebhooks:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_get_local_next_by_offset(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_local_journal_next_by_offset(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `offset` but received ''"):
-            await async_client.webhooks.webhooks.with_raw_response.get_local_next_by_offset(
+            await async_client.webhooks.webhooks.with_raw_response.get_local_journal_next_by_offset(
                 offset="",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_local_status(self, async_client: AsyncHubspot) -> None:
-        webhook = await async_client.webhooks.webhooks.get_local_status(
+    async def test_method_get_local_journal_status(self, async_client: AsyncHubspot) -> None:
+        webhook = await async_client.webhooks.webhooks.get_local_journal_status(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
         assert_matches_type(SnapshotStatusResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_local_status(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.webhooks.webhooks.with_raw_response.get_local_status(
+    async def test_raw_response_get_local_journal_status(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.webhooks.webhooks.with_raw_response.get_local_journal_status(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
 
@@ -2214,8 +2154,8 @@ class TestAsyncWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_local_status(self, async_client: AsyncHubspot) -> None:
-        async with async_client.webhooks.webhooks.with_streaming_response.get_local_status(
+    async def test_streaming_response_get_local_journal_status(self, async_client: AsyncHubspot) -> None:
+        async with async_client.webhooks.webhooks.with_streaming_response.get_local_journal_status(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ) as response:
             assert not response.is_closed
@@ -2228,9 +2168,9 @@ class TestAsyncWebhooks:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_local_status(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_local_journal_status(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `status_id` but received ''"):
-            await async_client.webhooks.webhooks.with_raw_response.get_local_status(
+            await async_client.webhooks.webhooks.with_raw_response.get_local_journal_status(
                 "",
             )
 
@@ -2302,6 +2242,76 @@ class TestAsyncWebhooks:
 
             webhook = await response.parse()
             assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        webhook = await async_client.webhooks.webhooks.get_subscription_filter(
+            0,
+        )
+        assert_matches_type(FilterResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.webhooks.webhooks.with_raw_response.get_subscription_filter(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        webhook = await response.parse()
+        assert_matches_type(FilterResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_subscription_filter(self, async_client: AsyncHubspot) -> None:
+        async with async_client.webhooks.webhooks.with_streaming_response.get_subscription_filter(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            webhook = await response.parse()
+            assert_matches_type(FilterResponse, webhook, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_subscription_filter_for_subscription(self, async_client: AsyncHubspot) -> None:
+        webhook = await async_client.webhooks.webhooks.get_subscription_filter_for_subscription(
+            0,
+        )
+        assert_matches_type(WebhookGetSubscriptionFilterForSubscriptionResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_subscription_filter_for_subscription(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.webhooks.webhooks.with_raw_response.get_subscription_filter_for_subscription(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        webhook = await response.parse()
+        assert_matches_type(WebhookGetSubscriptionFilterForSubscriptionResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_subscription_filter_for_subscription(
+        self, async_client: AsyncHubspot
+    ) -> None:
+        async with async_client.webhooks.webhooks.with_streaming_response.get_subscription_filter_for_subscription(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            webhook = await response.parse()
+            assert_matches_type(WebhookGetSubscriptionFilterForSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

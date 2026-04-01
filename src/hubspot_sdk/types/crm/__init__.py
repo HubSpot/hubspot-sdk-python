@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+from .pipeline import Pipeline as Pipeline
 from .property import Property as Property
 from .date_time import DateTime as DateTime
 from .public_team import PublicTeam as PublicTeam
 from .filter_param import FilterParam as FilterParam
 from .public_owner import PublicOwner as PublicOwner
 from .associated_id import AssociatedID as AssociatedID
+from .flag_response import FlagResponse as FlagResponse
 from .object_schema import ObjectSchema as ObjectSchema
 from .pipeline_stage import PipelineStage as PipelineStage
 from .import_row_core import ImportRowCore as ImportRowCore
@@ -53,6 +55,7 @@ from .at_limit_record_sample import AtLimitRecordSample as AtLimitRecordSample
 from .flags_for_app_response import FlagsForAppResponse as FlagsForAppResponse
 from .object_type_definition import ObjectTypeDefinition as ObjectTypeDefinition
 from .pipeline_create_params import PipelineCreateParams as PipelineCreateParams
+from .pipeline_delete_params import PipelineDeleteParams as PipelineDeleteParams
 from .pipeline_update_params import PipelineUpdateParams as PipelineUpdateParams
 from .property_create_params import PropertyCreateParams as PropertyCreateParams
 from .property_update_params import PropertyUpdateParams as PropertyUpdateParams
@@ -70,7 +73,6 @@ from .association_list_params import AssociationListParams as AssociationListPar
 from .batch_response_property import BatchResponseProperty as BatchResponseProperty
 from .join_time_and_record_id import JoinTimeAndRecordID as JoinTimeAndRecordID
 from .pipeline_limit_response import PipelineLimitResponse as PipelineLimitResponse
-from .pipeline_replace_params import PipelineReplaceParams as PipelineReplaceParams
 from .public_date_point_param import PublicDatePointParam as PublicDatePointParam
 from .public_list_permissions import PublicListPermissions as PublicListPermissions
 from .public_or_filter_branch import PublicOrFilterBranch as PublicOrFilterBranch
@@ -100,6 +102,7 @@ from .labels_between_object_pair import LabelsBetweenObjectPair as LabelsBetween
 from .list_folder_fetch_response import ListFolderFetchResponse as ListFolderFetchResponse
 from .list_get_id_mapping_params import ListGetIDMappingParams as ListGetIDMappingParams
 from .list_list_by_search_params import ListListBySearchParams as ListListBySearchParams
+from .pipeline_stage_input_param import PipelineStageInputParam as PipelineStageInputParam
 from .portal_flag_state_response import PortalFlagStateResponse as PortalFlagStateResponse
 from .public_default_association import PublicDefaultAssociation as PublicDefaultAssociation
 from .public_membership_settings import PublicMembershipSettings as PublicMembershipSettings
@@ -125,6 +128,8 @@ from .simple_public_upsert_object import SimplePublicUpsertObject as SimplePubli
 from .custom_object_limit_response import CustomObjectLimitResponse as CustomObjectLimitResponse
 from .list_list_memberships_params import ListListMembershipsParams as ListListMembershipsParams
 from .list_update_list_name_params import ListUpdateListNameParams as ListUpdateListNameParams
+from .pipeline_create_stage_params import PipelineCreateStageParams as PipelineCreateStageParams
+from .pipeline_update_stage_params import PipelineUpdateStageParams as PipelineUpdateStageParams
 from .public_ads_time_filter_param import PublicAdsTimeFilterParam as PublicAdsTimeFilterParam
 from .public_all_history_refine_by import PublicAllHistoryRefineBy as PublicAllHistoryRefineBy
 from .public_constant_filter_param import PublicConstantFilterParam as PublicConstantFilterParam
@@ -225,6 +230,9 @@ from .public_bool_property_operation_param import PublicBoolPropertyOperationPar
 from .public_date_property_operation_param import PublicDatePropertyOperationParam as PublicDatePropertyOperationParam
 from .public_in_list_filter_metadata_param import PublicInListFilterMetadataParam as PublicInListFilterMetadataParam
 from .public_num_associations_filter_param import PublicNumAssociationsFilterParam as PublicNumAssociationsFilterParam
+from .pipeline_update_all_properties_params import (
+    PipelineUpdateAllPropertiesParams as PipelineUpdateAllPropertiesParams,
+)
 from .public_enumeration_property_operation import (
     PublicEnumerationPropertyOperation as PublicEnumerationPropertyOperation,
 )
@@ -249,6 +257,9 @@ from .public_restricted_filter_branch_param import (
 )
 from .action_response_with_single_result_uri import (
     ActionResponseWithSingleResultUri as ActionResponseWithSingleResultUri,
+)
+from .collection_response_pipeline_no_paging import (
+    CollectionResponsePipelineNoPaging as CollectionResponsePipelineNoPaging,
 )
 from .collection_response_property_no_paging import (
     CollectionResponsePropertyNoPaging as CollectionResponsePropertyNoPaging,
@@ -291,6 +302,9 @@ from .simple_public_object_batch_input_param import (
 )
 from .simple_public_object_with_associations import (
     SimplePublicObjectWithAssociations as SimplePublicObjectWithAssociations,
+)
+from .feature_flag_update_portal_state_params import (
+    FeatureFlagUpdatePortalStateParams as FeatureFlagUpdatePortalStateParams,
 )
 from .list_get_by_object_type_and_name_params import (
     ListGetByObjectTypeAndNameParams as ListGetByObjectTypeAndNameParams,
@@ -369,6 +383,9 @@ from .public_relative_ranged_timestamp_refine_by import (
 )
 from .collection_response_object_schema_no_paging import (
     CollectionResponseObjectSchemaNoPaging as CollectionResponseObjectSchemaNoPaging,
+)
+from .pipeline_update_stage_all_properties_params import (
+    PipelineUpdateStageAllPropertiesParams as PipelineUpdateStageAllPropertiesParams,
 )
 from .public_default_association_multi_post_param import (
     PublicDefaultAssociationMultiPostParam as PublicDefaultAssociationMultiPostParam,

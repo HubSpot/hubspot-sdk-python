@@ -11,6 +11,7 @@ from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     SimplePublicObject,
+    MultiAssociatedObjectWithLabel,
     SimplePublicObjectWithAssociations,
     CollectionResponseWithTotalSimplePublicObject,
 )
@@ -172,6 +173,69 @@ class TestPartnerClients:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
             client.crm.objects.partner_clients.with_raw_response.get(
                 partner_client_id="",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_associations(self, client: Hubspot) -> None:
+        partner_client = client.crm.objects.partner_clients.list_associations(
+            to_object_type="toObjectType",
+            partner_client_id="partnerClientId",
+        )
+        assert_matches_type(SyncPage[MultiAssociatedObjectWithLabel], partner_client, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_associations_with_all_params(self, client: Hubspot) -> None:
+        partner_client = client.crm.objects.partner_clients.list_associations(
+            to_object_type="toObjectType",
+            partner_client_id="partnerClientId",
+            after="after",
+            limit=0,
+        )
+        assert_matches_type(SyncPage[MultiAssociatedObjectWithLabel], partner_client, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_list_associations(self, client: Hubspot) -> None:
+        response = client.crm.objects.partner_clients.with_raw_response.list_associations(
+            to_object_type="toObjectType",
+            partner_client_id="partnerClientId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        partner_client = response.parse()
+        assert_matches_type(SyncPage[MultiAssociatedObjectWithLabel], partner_client, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_list_associations(self, client: Hubspot) -> None:
+        with client.crm.objects.partner_clients.with_streaming_response.list_associations(
+            to_object_type="toObjectType",
+            partner_client_id="partnerClientId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            partner_client = response.parse()
+            assert_matches_type(SyncPage[MultiAssociatedObjectWithLabel], partner_client, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_list_associations(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
+            client.crm.objects.partner_clients.with_raw_response.list_associations(
+                to_object_type="toObjectType",
+                partner_client_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
+            client.crm.objects.partner_clients.with_raw_response.list_associations(
+                to_object_type="",
+                partner_client_id="partnerClientId",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -428,6 +492,69 @@ class TestAsyncPartnerClients:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
             await async_client.crm.objects.partner_clients.with_raw_response.get(
                 partner_client_id="",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_associations(self, async_client: AsyncHubspot) -> None:
+        partner_client = await async_client.crm.objects.partner_clients.list_associations(
+            to_object_type="toObjectType",
+            partner_client_id="partnerClientId",
+        )
+        assert_matches_type(AsyncPage[MultiAssociatedObjectWithLabel], partner_client, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_associations_with_all_params(self, async_client: AsyncHubspot) -> None:
+        partner_client = await async_client.crm.objects.partner_clients.list_associations(
+            to_object_type="toObjectType",
+            partner_client_id="partnerClientId",
+            after="after",
+            limit=0,
+        )
+        assert_matches_type(AsyncPage[MultiAssociatedObjectWithLabel], partner_client, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_list_associations(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.objects.partner_clients.with_raw_response.list_associations(
+            to_object_type="toObjectType",
+            partner_client_id="partnerClientId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        partner_client = await response.parse()
+        assert_matches_type(AsyncPage[MultiAssociatedObjectWithLabel], partner_client, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_list_associations(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.objects.partner_clients.with_streaming_response.list_associations(
+            to_object_type="toObjectType",
+            partner_client_id="partnerClientId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            partner_client = await response.parse()
+            assert_matches_type(AsyncPage[MultiAssociatedObjectWithLabel], partner_client, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_list_associations(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
+            await async_client.crm.objects.partner_clients.with_raw_response.list_associations(
+                to_object_type="toObjectType",
+                partner_client_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
+            await async_client.crm.objects.partner_clients.with_raw_response.list_associations(
+                to_object_type="",
+                partner_client_id="partnerClientId",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")

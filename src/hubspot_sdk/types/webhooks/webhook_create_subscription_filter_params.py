@@ -7,10 +7,10 @@ from typing_extensions import Required, Annotated, TypedDict
 from ..._utils import PropertyInfo
 from .filter_param import FilterParam
 
-__all__ = ["WebhookCreateFilterParams"]
+__all__ = ["WebhookCreateSubscriptionFilterParams"]
 
 
-class WebhookCreateFilterParams(TypedDict, total=False):
+class WebhookCreateSubscriptionFilterParams(TypedDict, total=False):
     filter: Required[FilterParam]
     """
     Defines a single condition for searching CRM objects, specifying the property to

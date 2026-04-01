@@ -273,7 +273,7 @@ class TestAuthors:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/authors").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         author = client.cms.blogs.authors.list()
         assert author.is_closed
         assert author.json() == {"foo": "bar"}
@@ -283,7 +283,7 @@ class TestAuthors:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_list_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/authors").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         author = client.cms.blogs.authors.list(
             after="after",
             archived=True,
@@ -305,7 +305,7 @@ class TestAuthors:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/authors").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         author = client.cms.blogs.authors.with_raw_response.list()
 
@@ -317,7 +317,7 @@ class TestAuthors:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_streaming_response_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/authors").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.authors.with_streaming_response.list() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -712,11 +712,9 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = client.cms.blogs.authors.list_by_query()
+    def test_method_get_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = client.cms.blogs.authors.get_cursor()
         assert author.is_closed
         assert author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -724,11 +722,9 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_by_query_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = client.cms.blogs.authors.list_by_query(
+    def test_method_get_cursor_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = client.cms.blogs.authors.get_cursor(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -748,12 +744,10 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
+    def test_raw_response_get_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        author = client.cms.blogs.authors.with_raw_response.list_by_query()
+        author = client.cms.blogs.authors.with_raw_response.get_cursor()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -762,11 +756,9 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.authors.with_streaming_response.list_by_query() as author:
+    def test_streaming_response_get_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        with client.cms.blogs.authors.with_streaming_response.get_cursor() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -778,9 +770,11 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_posts(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        author = client.cms.blogs.authors.list_posts()
+    def test_method_get_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = client.cms.blogs.authors.get_cursor_by_query()
         assert author.is_closed
         assert author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -788,9 +782,11 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_posts_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        author = client.cms.blogs.authors.list_posts(
+    def test_method_get_cursor_by_query_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = client.cms.blogs.authors.get_cursor_by_query(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -810,10 +806,12 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list_posts(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    def test_raw_response_get_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
 
-        author = client.cms.blogs.authors.with_raw_response.list_posts()
+        author = client.cms.blogs.authors.with_raw_response.get_cursor_by_query()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -822,9 +820,11 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list_posts(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        with client.cms.blogs.authors.with_streaming_response.list_posts() as author:
+    def test_streaming_response_get_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.blogs.authors.with_streaming_response.get_cursor_by_query() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -836,11 +836,9 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_posts_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = client.cms.blogs.authors.list_posts_by_query()
+    def test_method_get_posts_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = client.cms.blogs.authors.get_posts_cursor()
         assert author.is_closed
         assert author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -848,11 +846,9 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_posts_by_query_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = client.cms.blogs.authors.list_posts_by_query(
+    def test_method_get_posts_cursor_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = client.cms.blogs.authors.get_posts_cursor(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -872,12 +868,10 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list_posts_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
+    def test_raw_response_get_posts_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        author = client.cms.blogs.authors.with_raw_response.list_posts_by_query()
+        author = client.cms.blogs.authors.with_raw_response.get_posts_cursor()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -886,11 +880,9 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list_posts_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        with client.cms.blogs.authors.with_streaming_response.list_posts_by_query() as author:
+    def test_streaming_response_get_posts_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        with client.cms.blogs.authors.with_streaming_response.get_posts_cursor() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -902,9 +894,11 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        author = client.cms.blogs.authors.list_tags()
+    def test_method_get_posts_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = client.cms.blogs.authors.get_posts_cursor_by_query()
         assert author.is_closed
         assert author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -912,9 +906,11 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_tags_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        author = client.cms.blogs.authors.list_tags(
+    def test_method_get_posts_cursor_by_query_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = client.cms.blogs.authors.get_posts_cursor_by_query(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -934,10 +930,12 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    def test_raw_response_get_posts_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
 
-        author = client.cms.blogs.authors.with_raw_response.list_tags()
+        author = client.cms.blogs.authors.with_raw_response.get_posts_cursor_by_query()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -946,9 +944,11 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        with client.cms.blogs.authors.with_streaming_response.list_tags() as author:
+    def test_streaming_response_get_posts_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.blogs.authors.with_streaming_response.get_posts_cursor_by_query() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -960,11 +960,9 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_tags_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = client.cms.blogs.authors.list_tags_by_query()
+    def test_method_get_tags_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = client.cms.blogs.authors.get_tags_cursor()
         assert author.is_closed
         assert author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -972,11 +970,9 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_tags_by_query_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = client.cms.blogs.authors.list_tags_by_query(
+    def test_method_get_tags_cursor_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = client.cms.blogs.authors.get_tags_cursor(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -996,12 +992,10 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list_tags_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
+    def test_raw_response_get_tags_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        author = client.cms.blogs.authors.with_raw_response.list_tags_by_query()
+        author = client.cms.blogs.authors.with_raw_response.get_tags_cursor()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1010,11 +1004,75 @@ class TestAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list_tags_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get_tags_cursor(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        with client.cms.blogs.authors.with_streaming_response.get_tags_cursor() as author:
+            assert not author.is_closed
+            assert author.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert author.json() == {"foo": "bar"}
+            assert cast(Any, author.is_closed) is True
+            assert isinstance(author, StreamedBinaryAPIResponse)
+
+        assert cast(Any, author.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_get_tags_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        with client.cms.blogs.authors.with_streaming_response.list_tags_by_query() as author:
+        author = client.cms.blogs.authors.get_tags_cursor_by_query()
+        assert author.is_closed
+        assert author.json() == {"foo": "bar"}
+        assert cast(Any, author.is_closed) is True
+        assert isinstance(author, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_get_tags_cursor_by_query_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = client.cms.blogs.authors.get_tags_cursor_by_query(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert author.is_closed
+        assert author.json() == {"foo": "bar"}
+        assert cast(Any, author.is_closed) is True
+        assert isinstance(author, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_get_tags_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        author = client.cms.blogs.authors.with_raw_response.get_tags_cursor_by_query()
+
+        assert author.is_closed is True
+        assert author.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert author.json() == {"foo": "bar"}
+        assert isinstance(author, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_get_tags_cursor_by_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.blogs.authors.with_streaming_response.get_tags_cursor_by_query() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -1364,7 +1422,7 @@ class TestAsyncAuthors:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/authors").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         author = await async_client.cms.blogs.authors.list()
         assert author.is_closed
         assert await author.json() == {"foo": "bar"}
@@ -1374,7 +1432,7 @@ class TestAsyncAuthors:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_list_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/authors").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         author = await async_client.cms.blogs.authors.list(
             after="after",
             archived=True,
@@ -1396,7 +1454,7 @@ class TestAsyncAuthors:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/authors").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         author = await async_client.cms.blogs.authors.with_raw_response.list()
 
@@ -1408,7 +1466,7 @@ class TestAsyncAuthors:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        respx_mock.get("/cms/blogs/2026-03/authors").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.authors.with_streaming_response.list() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1817,11 +1875,9 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = await async_client.cms.blogs.authors.list_by_query()
+    async def test_method_get_cursor(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = await async_client.cms.blogs.authors.get_cursor()
         assert author.is_closed
         assert await author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -1829,13 +1885,9 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_by_query_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = await async_client.cms.blogs.authors.list_by_query(
+    async def test_method_get_cursor_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = await async_client.cms.blogs.authors.get_cursor(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1855,12 +1907,10 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
+    async def test_raw_response_get_cursor(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        author = await async_client.cms.blogs.authors.with_raw_response.list_by_query()
+        author = await async_client.cms.blogs.authors.with_raw_response.get_cursor()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1869,11 +1919,9 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.authors.with_streaming_response.list_by_query() as author:
+    async def test_streaming_response_get_cursor(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        async with async_client.cms.blogs.authors.with_streaming_response.get_cursor() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -1885,9 +1933,11 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_posts(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        author = await async_client.cms.blogs.authors.list_posts()
+    async def test_method_get_cursor_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = await async_client.cms.blogs.authors.get_cursor_by_query()
         assert author.is_closed
         assert await author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -1895,9 +1945,13 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_posts_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        author = await async_client.cms.blogs.authors.list_posts(
+    async def test_method_get_cursor_by_query_with_all_params(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = await async_client.cms.blogs.authors.get_cursor_by_query(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1917,10 +1971,12 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list_posts(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    async def test_raw_response_get_cursor_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
 
-        author = await async_client.cms.blogs.authors.with_raw_response.list_posts()
+        author = await async_client.cms.blogs.authors.with_raw_response.get_cursor_by_query()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1929,9 +1985,13 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list_posts(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        async with async_client.cms.blogs.authors.with_streaming_response.list_posts() as author:
+    async def test_streaming_response_get_cursor_by_query(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.blogs.authors.with_streaming_response.get_cursor_by_query() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -1943,11 +2003,9 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_posts_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = await async_client.cms.blogs.authors.list_posts_by_query()
+    async def test_method_get_posts_cursor(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = await async_client.cms.blogs.authors.get_posts_cursor()
         assert author.is_closed
         assert await author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -1955,13 +2013,11 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_posts_by_query_with_all_params(
+    async def test_method_get_posts_cursor_with_all_params(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = await async_client.cms.blogs.authors.list_posts_by_query(
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = await async_client.cms.blogs.authors.get_posts_cursor(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1981,12 +2037,10 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list_posts_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
+    async def test_raw_response_get_posts_cursor(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        author = await async_client.cms.blogs.authors.with_raw_response.list_posts_by_query()
+        author = await async_client.cms.blogs.authors.with_raw_response.get_posts_cursor()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1995,13 +2049,11 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list_posts_by_query(
+    async def test_streaming_response_get_posts_cursor(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
-        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        async with async_client.cms.blogs.authors.with_streaming_response.list_posts_by_query() as author:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        async with async_client.cms.blogs.authors.with_streaming_response.get_posts_cursor() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -2013,9 +2065,11 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        author = await async_client.cms.blogs.authors.list_tags()
+    async def test_method_get_posts_cursor_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = await async_client.cms.blogs.authors.get_posts_cursor_by_query()
         assert author.is_closed
         assert await author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -2023,9 +2077,13 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_tags_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        author = await async_client.cms.blogs.authors.list_tags(
+    async def test_method_get_posts_cursor_by_query_with_all_params(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = await async_client.cms.blogs.authors.get_posts_cursor_by_query(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -2045,10 +2103,14 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    async def test_raw_response_get_posts_cursor_by_query(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
 
-        author = await async_client.cms.blogs.authors.with_raw_response.list_tags()
+        author = await async_client.cms.blogs.authors.with_raw_response.get_posts_cursor_by_query()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2057,9 +2119,13 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        async with async_client.cms.blogs.authors.with_streaming_response.list_tags() as author:
+    async def test_streaming_response_get_posts_cursor_by_query(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.blogs.authors.with_streaming_response.get_posts_cursor_by_query() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -2071,11 +2137,9 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_tags_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = await async_client.cms.blogs.authors.list_tags_by_query()
+    async def test_method_get_tags_cursor(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = await async_client.cms.blogs.authors.get_tags_cursor()
         assert author.is_closed
         assert await author.json() == {"foo": "bar"}
         assert cast(Any, author.is_closed) is True
@@ -2083,13 +2147,11 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_tags_by_query_with_all_params(
+    async def test_method_get_tags_cursor_with_all_params(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        author = await async_client.cms.blogs.authors.list_tags_by_query(
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        author = await async_client.cms.blogs.authors.get_tags_cursor(
             after="after",
             archived=True,
             created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -2109,12 +2171,10 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list_tags_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
-        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
+    async def test_raw_response_get_tags_cursor(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        author = await async_client.cms.blogs.authors.with_raw_response.list_tags_by_query()
+        author = await async_client.cms.blogs.authors.with_raw_response.get_tags_cursor()
 
         assert author.is_closed is True
         assert author.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2123,13 +2183,81 @@ class TestAsyncAuthors:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list_tags_by_query(
+    async def test_streaming_response_get_tags_cursor(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        async with async_client.cms.blogs.authors.with_streaming_response.get_tags_cursor() as author:
+            assert not author.is_closed
+            assert author.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await author.json() == {"foo": "bar"}
+            assert cast(Any, author.is_closed) is True
+            assert isinstance(author, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, author.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_get_tags_cursor_by_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        author = await async_client.cms.blogs.authors.get_tags_cursor_by_query()
+        assert author.is_closed
+        assert await author.json() == {"foo": "bar"}
+        assert cast(Any, author.is_closed) is True
+        assert isinstance(author, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_get_tags_cursor_by_query_with_all_params(
         self, async_client: AsyncHubspot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        async with async_client.cms.blogs.authors.with_streaming_response.list_tags_by_query() as author:
+        author = await async_client.cms.blogs.authors.get_tags_cursor_by_query(
+            after="after",
+            archived=True,
+            created_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+            limit=0,
+            property="property",
+            sort=["string"],
+            updated_after=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert author.is_closed
+        assert await author.json() == {"foo": "bar"}
+        assert cast(Any, author.is_closed) is True
+        assert isinstance(author, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_get_tags_cursor_by_query(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        author = await async_client.cms.blogs.authors.with_raw_response.get_tags_cursor_by_query()
+
+        assert author.is_closed is True
+        assert author.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await author.json() == {"foo": "bar"}
+        assert isinstance(author, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_get_tags_cursor_by_query(
+        self, async_client: AsyncHubspot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.blogs.authors.with_streaming_response.get_tags_cursor_by_query() as author:
             assert not author.is_closed
             assert author.http_request.headers.get("X-Stainless-Lang") == "python"
 

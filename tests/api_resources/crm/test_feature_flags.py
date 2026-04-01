@@ -10,6 +10,7 @@ import pytest
 from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
+    FlagResponse,
     FlagsForAppResponse,
     PortalFlagStateResponse,
     PortalFlagStateBatchResponse,
@@ -25,42 +26,50 @@ class TestFeatureFlags:
     @parametrize
     def test_method_update(self, client: Hubspot) -> None:
         feature_flag = client.crm.feature_flags.update(
-            portal_id=0,
-            app_id=0,
             flag_name="flagName",
-            flag_state="ABSENT",
+            app_id=0,
+            default_state="ABSENT",
         )
-        assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+        feature_flag = client.crm.feature_flags.update(
+            flag_name="flagName",
+            app_id=0,
+            default_state="ABSENT",
+            override_state="ABSENT",
+        )
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Hubspot) -> None:
         response = client.crm.feature_flags.with_raw_response.update(
-            portal_id=0,
-            app_id=0,
             flag_name="flagName",
-            flag_state="ABSENT",
+            app_id=0,
+            default_state="ABSENT",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         feature_flag = response.parse()
-        assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Hubspot) -> None:
         with client.crm.feature_flags.with_streaming_response.update(
-            portal_id=0,
-            app_id=0,
             flag_name="flagName",
-            flag_state="ABSENT",
+            app_id=0,
+            default_state="ABSENT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             feature_flag = response.parse()
-            assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+            assert_matches_type(FlagResponse, feature_flag, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -69,16 +78,61 @@ class TestFeatureFlags:
     def test_path_params_update(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             client.crm.feature_flags.with_raw_response.update(
-                portal_id=0,
-                app_id=0,
                 flag_name="",
-                flag_state="ABSENT",
+                app_id=0,
+                default_state="ABSENT",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_delete(self, client: Hubspot) -> None:
         feature_flag = client.crm.feature_flags.delete(
+            flag_name="flagName",
+            app_id=0,
+        )
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_delete(self, client: Hubspot) -> None:
+        response = client.crm.feature_flags.with_raw_response.delete(
+            flag_name="flagName",
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        feature_flag = response.parse()
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_delete(self, client: Hubspot) -> None:
+        with client.crm.feature_flags.with_streaming_response.delete(
+            flag_name="flagName",
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            feature_flag = response.parse()
+            assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_delete(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
+            client.crm.feature_flags.with_raw_response.delete(
+                flag_name="",
+                app_id=0,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete_portal_state(self, client: Hubspot) -> None:
+        feature_flag = client.crm.feature_flags.delete_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -87,8 +141,8 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
-        response = client.crm.feature_flags.with_raw_response.delete(
+    def test_raw_response_delete_portal_state(self, client: Hubspot) -> None:
+        response = client.crm.feature_flags.with_raw_response.delete_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -101,8 +155,8 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
-        with client.crm.feature_flags.with_streaming_response.delete(
+    def test_streaming_response_delete_portal_state(self, client: Hubspot) -> None:
+        with client.crm.feature_flags.with_streaming_response.delete_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -117,9 +171,9 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete_portal_state(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
-            client.crm.feature_flags.with_raw_response.delete(
+            client.crm.feature_flags.with_raw_response.delete_portal_state(
                 portal_id=0,
                 app_id=0,
                 flag_name="",
@@ -129,6 +183,52 @@ class TestFeatureFlags:
     @parametrize
     def test_method_get(self, client: Hubspot) -> None:
         feature_flag = client.crm.feature_flags.get(
+            flag_name="flagName",
+            app_id=0,
+        )
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get(self, client: Hubspot) -> None:
+        response = client.crm.feature_flags.with_raw_response.get(
+            flag_name="flagName",
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        feature_flag = response.parse()
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get(self, client: Hubspot) -> None:
+        with client.crm.feature_flags.with_streaming_response.get(
+            flag_name="flagName",
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            feature_flag = response.parse()
+            assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_get(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
+            client.crm.feature_flags.with_raw_response.get(
+                flag_name="",
+                app_id=0,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_portal_state(self, client: Hubspot) -> None:
+        feature_flag = client.crm.feature_flags.get_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -137,8 +237,8 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
-        response = client.crm.feature_flags.with_raw_response.get(
+    def test_raw_response_get_portal_state(self, client: Hubspot) -> None:
+        response = client.crm.feature_flags.with_raw_response.get_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -151,8 +251,8 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
-        with client.crm.feature_flags.with_streaming_response.get(
+    def test_streaming_response_get_portal_state(self, client: Hubspot) -> None:
+        with client.crm.feature_flags.with_streaming_response.get_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -167,9 +267,9 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get_portal_state(self, client: Hubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
-            client.crm.feature_flags.with_raw_response.get(
+            client.crm.feature_flags.with_raw_response.get_portal_state(
                 portal_id=0,
                 app_id=0,
                 flag_name="",
@@ -266,6 +366,60 @@ class TestFeatureFlags:
                 app_id=0,
             )
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_portal_state(self, client: Hubspot) -> None:
+        feature_flag = client.crm.feature_flags.update_portal_state(
+            portal_id=0,
+            app_id=0,
+            flag_name="flagName",
+            flag_state="ABSENT",
+        )
+        assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_update_portal_state(self, client: Hubspot) -> None:
+        response = client.crm.feature_flags.with_raw_response.update_portal_state(
+            portal_id=0,
+            app_id=0,
+            flag_name="flagName",
+            flag_state="ABSENT",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        feature_flag = response.parse()
+        assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_update_portal_state(self, client: Hubspot) -> None:
+        with client.crm.feature_flags.with_streaming_response.update_portal_state(
+            portal_id=0,
+            app_id=0,
+            flag_name="flagName",
+            flag_state="ABSENT",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            feature_flag = response.parse()
+            assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_update_portal_state(self, client: Hubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
+            client.crm.feature_flags.with_raw_response.update_portal_state(
+                portal_id=0,
+                app_id=0,
+                flag_name="",
+                flag_state="ABSENT",
+            )
+
 
 class TestAsyncFeatureFlags:
     parametrize = pytest.mark.parametrize(
@@ -276,42 +430,50 @@ class TestAsyncFeatureFlags:
     @parametrize
     async def test_method_update(self, async_client: AsyncHubspot) -> None:
         feature_flag = await async_client.crm.feature_flags.update(
-            portal_id=0,
-            app_id=0,
             flag_name="flagName",
-            flag_state="ABSENT",
+            app_id=0,
+            default_state="ABSENT",
         )
-        assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+        feature_flag = await async_client.crm.feature_flags.update(
+            flag_name="flagName",
+            app_id=0,
+            default_state="ABSENT",
+            override_state="ABSENT",
+        )
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.update(
-            portal_id=0,
-            app_id=0,
             flag_name="flagName",
-            flag_state="ABSENT",
+            app_id=0,
+            default_state="ABSENT",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         feature_flag = await response.parse()
-        assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.update(
-            portal_id=0,
-            app_id=0,
             flag_name="flagName",
-            flag_state="ABSENT",
+            app_id=0,
+            default_state="ABSENT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             feature_flag = await response.parse()
-            assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+            assert_matches_type(FlagResponse, feature_flag, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -320,16 +482,61 @@ class TestAsyncFeatureFlags:
     async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             await async_client.crm.feature_flags.with_raw_response.update(
-                portal_id=0,
-                app_id=0,
                 flag_name="",
-                flag_state="ABSENT",
+                app_id=0,
+                default_state="ABSENT",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncHubspot) -> None:
         feature_flag = await async_client.crm.feature_flags.delete(
+            flag_name="flagName",
+            app_id=0,
+        )
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.feature_flags.with_raw_response.delete(
+            flag_name="flagName",
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        feature_flag = await response.parse()
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.feature_flags.with_streaming_response.delete(
+            flag_name="flagName",
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            feature_flag = await response.parse()
+            assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
+            await async_client.crm.feature_flags.with_raw_response.delete(
+                flag_name="",
+                app_id=0,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete_portal_state(self, async_client: AsyncHubspot) -> None:
+        feature_flag = await async_client.crm.feature_flags.delete_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -338,8 +545,8 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.feature_flags.with_raw_response.delete(
+    async def test_raw_response_delete_portal_state(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.feature_flags.with_raw_response.delete_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -352,8 +559,8 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.feature_flags.with_streaming_response.delete(
+    async def test_streaming_response_delete_portal_state(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.feature_flags.with_streaming_response.delete_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -368,9 +575,9 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_portal_state(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
-            await async_client.crm.feature_flags.with_raw_response.delete(
+            await async_client.crm.feature_flags.with_raw_response.delete_portal_state(
                 portal_id=0,
                 app_id=0,
                 flag_name="",
@@ -380,6 +587,52 @@ class TestAsyncFeatureFlags:
     @parametrize
     async def test_method_get(self, async_client: AsyncHubspot) -> None:
         feature_flag = await async_client.crm.feature_flags.get(
+            flag_name="flagName",
+            app_id=0,
+        )
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.feature_flags.with_raw_response.get(
+            flag_name="flagName",
+            app_id=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        feature_flag = await response.parse()
+        assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.feature_flags.with_streaming_response.get(
+            flag_name="flagName",
+            app_id=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            feature_flag = await response.parse()
+            assert_matches_type(FlagResponse, feature_flag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
+            await async_client.crm.feature_flags.with_raw_response.get(
+                flag_name="",
+                app_id=0,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_portal_state(self, async_client: AsyncHubspot) -> None:
+        feature_flag = await async_client.crm.feature_flags.get_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -388,8 +641,8 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
-        response = await async_client.crm.feature_flags.with_raw_response.get(
+    async def test_raw_response_get_portal_state(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.feature_flags.with_raw_response.get_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -402,8 +655,8 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
-        async with async_client.crm.feature_flags.with_streaming_response.get(
+    async def test_streaming_response_get_portal_state(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.feature_flags.with_streaming_response.get_portal_state(
             portal_id=0,
             app_id=0,
             flag_name="flagName",
@@ -418,9 +671,9 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_portal_state(self, async_client: AsyncHubspot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
-            await async_client.crm.feature_flags.with_raw_response.get(
+            await async_client.crm.feature_flags.with_raw_response.get_portal_state(
                 portal_id=0,
                 app_id=0,
                 flag_name="",
@@ -515,4 +768,58 @@ class TestAsyncFeatureFlags:
             await async_client.crm.feature_flags.with_raw_response.list_portals(
                 flag_name="",
                 app_id=0,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_portal_state(self, async_client: AsyncHubspot) -> None:
+        feature_flag = await async_client.crm.feature_flags.update_portal_state(
+            portal_id=0,
+            app_id=0,
+            flag_name="flagName",
+            flag_state="ABSENT",
+        )
+        assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_update_portal_state(self, async_client: AsyncHubspot) -> None:
+        response = await async_client.crm.feature_flags.with_raw_response.update_portal_state(
+            portal_id=0,
+            app_id=0,
+            flag_name="flagName",
+            flag_state="ABSENT",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        feature_flag = await response.parse()
+        assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_update_portal_state(self, async_client: AsyncHubspot) -> None:
+        async with async_client.crm.feature_flags.with_streaming_response.update_portal_state(
+            portal_id=0,
+            app_id=0,
+            flag_name="flagName",
+            flag_state="ABSENT",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            feature_flag = await response.parse()
+            assert_matches_type(PortalFlagStateResponse, feature_flag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_update_portal_state(self, async_client: AsyncHubspot) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
+            await async_client.crm.feature_flags.with_raw_response.update_portal_state(
+                portal_id=0,
+                app_id=0,
+                flag_name="",
+                flag_state="ABSENT",
             )

@@ -2,8 +2,12 @@
 
 from __future__ import annotations
 
-from .batch_read_params import BatchReadParams as BatchReadParams
-from .batch_create_params import BatchCreateParams as BatchCreateParams
+from .batch_get_params import BatchGetParams as BatchGetParams
 from .batch_get_next_params import BatchGetNextParams as BatchGetNextParams
+from .batch_get_local_params import BatchGetLocalParams as BatchGetLocalParams
 from .batch_get_latest_params import BatchGetLatestParams as BatchGetLatestParams
 from .batch_get_earliest_params import BatchGetEarliestParams as BatchGetEarliestParams
+from .batch_get_local_next_params import BatchGetLocalNextParams as BatchGetLocalNextParams
+from .batch_get_local_latest_params import BatchGetLocalLatestParams as BatchGetLocalLatestParams
+from .batch_get_local_earliest_params import BatchGetLocalEarliestParams as BatchGetLocalEarliestParams
+from .batch_update_subscriptions_params import BatchUpdateSubscriptionsParams as BatchUpdateSubscriptionsParams

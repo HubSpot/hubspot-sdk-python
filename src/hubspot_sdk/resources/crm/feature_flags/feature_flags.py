@@ -24,8 +24,13 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....types.crm import feature_flag_update_params, feature_flag_list_portals_params
+from ....types.crm import (
+    feature_flag_update_params,
+    feature_flag_list_portals_params,
+    feature_flag_update_portal_state_params,
+)
 from ...._base_client import make_request_options
+from ....types.crm.flag_response import FlagResponse
 from ....types.crm.flags_for_app_response import FlagsForAppResponse
 from ....types.crm.portal_flag_state_response import PortalFlagStateResponse
 from ....types.crm.portal_flag_state_batch_response import PortalFlagStateBatchResponse
@@ -59,23 +64,29 @@ class FeatureFlagsResource(SyncAPIResource):
 
     def update(
         self,
-        portal_id: int,
+        flag_name: str,
         *,
         app_id: int,
-        flag_name: str,
-        flag_state: Literal["ABSENT", "OFF", "ON"],
+        default_state: Literal["ABSENT", "OFF", "ON"],
+        override_state: Literal["ABSENT", "OFF", "ON"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PortalFlagStateResponse:
-        """
-        Specify an account-level flag state for a specific HubSpot account.
+    ) -> FlagResponse:
+        """Set a feature flag for an app.
+
+        For example, update the `hs-hide-crm-cards`
+        flag's `defaultState` to `ON` to hide classic CRM cards from new installs.
 
         Args:
-          flag_state: The state that the given flag should be in for this portal
+          default_state: The state that the flag should have if there are no overrides for a particular
+              portal
+
+          override_state: A flag value that supercedes all other overrides, including portal-level values.
+              Mostly used for things like emergency overrides
 
           extra_headers: Send extra headers
 
@@ -88,20 +99,57 @@ class FeatureFlagsResource(SyncAPIResource):
         if not flag_name:
             raise ValueError(f"Expected a non-empty value for `flag_name` but received {flag_name!r}")
         return self._put(
-            path_template(
-                "/feature-flags/2026-03/{app_id}/flags/{flag_name}/portals/{portal_id}",
-                app_id=app_id,
-                flag_name=flag_name,
-                portal_id=portal_id,
+            path_template("/feature-flags/2026-03/{app_id}/flags/{flag_name}", app_id=app_id, flag_name=flag_name),
+            body=maybe_transform(
+                {
+                    "default_state": default_state,
+                    "override_state": override_state,
+                },
+                feature_flag_update_params.FeatureFlagUpdateParams,
             ),
-            body=maybe_transform({"flag_state": flag_state}, feature_flag_update_params.FeatureFlagUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PortalFlagStateResponse,
+            cast_to=FlagResponse,
         )
 
     def delete(
+        self,
+        flag_name: str,
+        *,
+        app_id: int,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FlagResponse:
+        """Delete a feature flag in an app.
+
+        For example, delete the `hs-release-app-cards`
+        flag after all accounts have been migrated.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not flag_name:
+            raise ValueError(f"Expected a non-empty value for `flag_name` but received {flag_name!r}")
+        return self._delete(
+            path_template("/feature-flags/2026-03/{app_id}/flags/{flag_name}", app_id=app_id, flag_name=flag_name),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FlagResponse,
+        )
+
+    def delete_portal_state(
         self,
         portal_id: int,
         *,
@@ -144,6 +192,42 @@ class FeatureFlagsResource(SyncAPIResource):
         )
 
     def get(
+        self,
+        flag_name: str,
+        *,
+        app_id: int,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FlagResponse:
+        """Retrieve the current status of the app's feature flags.
+
+        No request body is
+        included.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not flag_name:
+            raise ValueError(f"Expected a non-empty value for `flag_name` but received {flag_name!r}")
+        return self._get(
+            path_template("/feature-flags/2026-03/{app_id}/flags/{flag_name}", app_id=app_id, flag_name=flag_name),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FlagResponse,
+        )
+
+    def get_portal_state(
         self,
         portal_id: int,
         *,
@@ -263,32 +347,7 @@ class FeatureFlagsResource(SyncAPIResource):
             cast_to=PortalFlagStateBatchResponse,
         )
 
-
-class AsyncFeatureFlagsResource(AsyncAPIResource):
-    @cached_property
-    def batch(self) -> AsyncBatchResource:
-        return AsyncBatchResource(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> AsyncFeatureFlagsResourceWithRawResponse:
-        """
-        This property can be used as a prefix for any HTTP method call to return
-        the raw response object instead of the parsed content.
-
-        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
-        """
-        return AsyncFeatureFlagsResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncFeatureFlagsResourceWithStreamingResponse:
-        """
-        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
-
-        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
-        """
-        return AsyncFeatureFlagsResourceWithStreamingResponse(self)
-
-    async def update(
+    def update_portal_state(
         self,
         portal_id: int,
         *,
@@ -318,15 +377,15 @@ class AsyncFeatureFlagsResource(AsyncAPIResource):
         """
         if not flag_name:
             raise ValueError(f"Expected a non-empty value for `flag_name` but received {flag_name!r}")
-        return await self._put(
+        return self._put(
             path_template(
                 "/feature-flags/2026-03/{app_id}/flags/{flag_name}/portals/{portal_id}",
                 app_id=app_id,
                 flag_name=flag_name,
                 portal_id=portal_id,
             ),
-            body=await async_maybe_transform(
-                {"flag_state": flag_state}, feature_flag_update_params.FeatureFlagUpdateParams
+            body=maybe_transform(
+                {"flag_state": flag_state}, feature_flag_update_portal_state_params.FeatureFlagUpdatePortalStateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -334,7 +393,119 @@ class AsyncFeatureFlagsResource(AsyncAPIResource):
             cast_to=PortalFlagStateResponse,
         )
 
+
+class AsyncFeatureFlagsResource(AsyncAPIResource):
+    @cached_property
+    def batch(self) -> AsyncBatchResource:
+        return AsyncBatchResource(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncFeatureFlagsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncFeatureFlagsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncFeatureFlagsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
+        """
+        return AsyncFeatureFlagsResourceWithStreamingResponse(self)
+
+    async def update(
+        self,
+        flag_name: str,
+        *,
+        app_id: int,
+        default_state: Literal["ABSENT", "OFF", "ON"],
+        override_state: Literal["ABSENT", "OFF", "ON"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FlagResponse:
+        """Set a feature flag for an app.
+
+        For example, update the `hs-hide-crm-cards`
+        flag's `defaultState` to `ON` to hide classic CRM cards from new installs.
+
+        Args:
+          default_state: The state that the flag should have if there are no overrides for a particular
+              portal
+
+          override_state: A flag value that supercedes all other overrides, including portal-level values.
+              Mostly used for things like emergency overrides
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not flag_name:
+            raise ValueError(f"Expected a non-empty value for `flag_name` but received {flag_name!r}")
+        return await self._put(
+            path_template("/feature-flags/2026-03/{app_id}/flags/{flag_name}", app_id=app_id, flag_name=flag_name),
+            body=await async_maybe_transform(
+                {
+                    "default_state": default_state,
+                    "override_state": override_state,
+                },
+                feature_flag_update_params.FeatureFlagUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FlagResponse,
+        )
+
     async def delete(
+        self,
+        flag_name: str,
+        *,
+        app_id: int,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FlagResponse:
+        """Delete a feature flag in an app.
+
+        For example, delete the `hs-release-app-cards`
+        flag after all accounts have been migrated.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not flag_name:
+            raise ValueError(f"Expected a non-empty value for `flag_name` but received {flag_name!r}")
+        return await self._delete(
+            path_template("/feature-flags/2026-03/{app_id}/flags/{flag_name}", app_id=app_id, flag_name=flag_name),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FlagResponse,
+        )
+
+    async def delete_portal_state(
         self,
         portal_id: int,
         *,
@@ -377,6 +548,42 @@ class AsyncFeatureFlagsResource(AsyncAPIResource):
         )
 
     async def get(
+        self,
+        flag_name: str,
+        *,
+        app_id: int,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FlagResponse:
+        """Retrieve the current status of the app's feature flags.
+
+        No request body is
+        included.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not flag_name:
+            raise ValueError(f"Expected a non-empty value for `flag_name` but received {flag_name!r}")
+        return await self._get(
+            path_template("/feature-flags/2026-03/{app_id}/flags/{flag_name}", app_id=app_id, flag_name=flag_name),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FlagResponse,
+        )
+
+    async def get_portal_state(
         self,
         portal_id: int,
         *,
@@ -496,6 +703,52 @@ class AsyncFeatureFlagsResource(AsyncAPIResource):
             cast_to=PortalFlagStateBatchResponse,
         )
 
+    async def update_portal_state(
+        self,
+        portal_id: int,
+        *,
+        app_id: int,
+        flag_name: str,
+        flag_state: Literal["ABSENT", "OFF", "ON"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PortalFlagStateResponse:
+        """
+        Specify an account-level flag state for a specific HubSpot account.
+
+        Args:
+          flag_state: The state that the given flag should be in for this portal
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not flag_name:
+            raise ValueError(f"Expected a non-empty value for `flag_name` but received {flag_name!r}")
+        return await self._put(
+            path_template(
+                "/feature-flags/2026-03/{app_id}/flags/{flag_name}/portals/{portal_id}",
+                app_id=app_id,
+                flag_name=flag_name,
+                portal_id=portal_id,
+            ),
+            body=await async_maybe_transform(
+                {"flag_state": flag_state}, feature_flag_update_portal_state_params.FeatureFlagUpdatePortalStateParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PortalFlagStateResponse,
+        )
+
 
 class FeatureFlagsResourceWithRawResponse:
     def __init__(self, feature_flags: FeatureFlagsResource) -> None:
@@ -507,14 +760,23 @@ class FeatureFlagsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             feature_flags.delete,
         )
+        self.delete_portal_state = to_raw_response_wrapper(
+            feature_flags.delete_portal_state,
+        )
         self.get = to_raw_response_wrapper(
             feature_flags.get,
+        )
+        self.get_portal_state = to_raw_response_wrapper(
+            feature_flags.get_portal_state,
         )
         self.list_all = to_raw_response_wrapper(
             feature_flags.list_all,
         )
         self.list_portals = to_raw_response_wrapper(
             feature_flags.list_portals,
+        )
+        self.update_portal_state = to_raw_response_wrapper(
+            feature_flags.update_portal_state,
         )
 
     @cached_property
@@ -532,14 +794,23 @@ class AsyncFeatureFlagsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             feature_flags.delete,
         )
+        self.delete_portal_state = async_to_raw_response_wrapper(
+            feature_flags.delete_portal_state,
+        )
         self.get = async_to_raw_response_wrapper(
             feature_flags.get,
+        )
+        self.get_portal_state = async_to_raw_response_wrapper(
+            feature_flags.get_portal_state,
         )
         self.list_all = async_to_raw_response_wrapper(
             feature_flags.list_all,
         )
         self.list_portals = async_to_raw_response_wrapper(
             feature_flags.list_portals,
+        )
+        self.update_portal_state = async_to_raw_response_wrapper(
+            feature_flags.update_portal_state,
         )
 
     @cached_property
@@ -557,14 +828,23 @@ class FeatureFlagsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             feature_flags.delete,
         )
+        self.delete_portal_state = to_streamed_response_wrapper(
+            feature_flags.delete_portal_state,
+        )
         self.get = to_streamed_response_wrapper(
             feature_flags.get,
+        )
+        self.get_portal_state = to_streamed_response_wrapper(
+            feature_flags.get_portal_state,
         )
         self.list_all = to_streamed_response_wrapper(
             feature_flags.list_all,
         )
         self.list_portals = to_streamed_response_wrapper(
             feature_flags.list_portals,
+        )
+        self.update_portal_state = to_streamed_response_wrapper(
+            feature_flags.update_portal_state,
         )
 
     @cached_property
@@ -582,14 +862,23 @@ class AsyncFeatureFlagsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             feature_flags.delete,
         )
+        self.delete_portal_state = async_to_streamed_response_wrapper(
+            feature_flags.delete_portal_state,
+        )
         self.get = async_to_streamed_response_wrapper(
             feature_flags.get,
+        )
+        self.get_portal_state = async_to_streamed_response_wrapper(
+            feature_flags.get_portal_state,
         )
         self.list_all = async_to_streamed_response_wrapper(
             feature_flags.list_all,
         )
         self.list_portals = async_to_streamed_response_wrapper(
             feature_flags.list_portals,
+        )
+        self.update_portal_state = async_to_streamed_response_wrapper(
+            feature_flags.update_portal_state,
         )
 
     @cached_property

@@ -7,8 +7,8 @@ from typing_extensions import Required, TypedDict
 
 from ..subscription_batch_update_request_param import SubscriptionBatchUpdateRequestParam
 
-__all__ = ["BatchCreateParams"]
+__all__ = ["BatchUpdateSubscriptionsParams"]
 
 
-class BatchCreateParams(TypedDict, total=False):
+class BatchUpdateSubscriptionsParams(TypedDict, total=False):
     inputs: Required[Iterable[SubscriptionBatchUpdateRequestParam]]
