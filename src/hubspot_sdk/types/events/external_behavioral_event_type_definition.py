@@ -8,8 +8,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .property import Property
 from ..._models import BaseModel
-from ..shared.property import Property
 from .association_definition import AssociationDefinition
 from .behavioral_event_type_definition_labels import BehavioralEventTypeDefinitionLabels
 from .external_object_resolution_mapping_response import ExternalObjectResolutionMappingResponse

@@ -6,9 +6,9 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .option import Option
 from ..._models import BaseModel
-from .property_modification_metadata import PropertyModificationMetadata
+from ..shared.option import Option
+from ..shared.property_modification_metadata import PropertyModificationMetadata
 
 __all__ = ["Property"]
 
@@ -17,56 +17,49 @@ class Property(BaseModel):
     """A HubSpot property"""
 
     description: str
-    """A description of the property that will be shown as help text in HubSpot."""
+    """A summary of the property's purpose."""
 
     field_type: str = FieldInfo(alias="fieldType")
-    """Controls how the property appears in HubSpot."""
+    """Determines how the property will appear in HubSpot's UI or on a form.
+
+    Learn more in the properties API guide.
+    """
 
     group_name: str = FieldInfo(alias="groupName")
-    """The name of the property group the property belongs to."""
+    """The name of the group to which the property is assigned."""
 
     label: str
-    """A human-readable property label that will be shown in HubSpot."""
+    """The display label for the property."""
 
     name: str
-    """
-    The internal property name, which must be used when referencing the property via
-    the API.
-    """
+    """The internal name for the property."""
 
     options: List[Option]
     """A list of valid options for the property.
 
-    This field is required for enumerated properties, but will be empty for other
-    property types.
+    This field is required for enumerated properties.
     """
 
     type: str
-    """The property data type."""
+    """The data type of the property, such as string or number."""
 
     archived: Optional[bool] = None
-    """Whether or not the property is archived."""
+    """Whether the property is archived."""
 
     archived_at: Optional[datetime] = FieldInfo(alias="archivedAt", default=None)
-    """When the property was archived."""
+    """The timestamp when the property was archived, in ISO 8601 format."""
 
     calculated: Optional[bool] = None
-    """
-    For default properties, true indicates that the property is calculated by a
-    HubSpot process. It has no effect for custom properties.
-    """
+    """Whether the property is a calculated field."""
 
     calculation_formula: Optional[str] = FieldInfo(alias="calculationFormula", default=None)
     """The formula used for calculated properties."""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
-    """When the property was created"""
+    """The timestamp when the property was created, in ISO 8601 format."""
 
     created_user_id: Optional[str] = FieldInfo(alias="createdUserId", default=None)
-    """The internal ID of the user who created the property in HubSpot.
-
-    This field may not exist if the property was created outside of HubSpot.
-    """
+    """The ID of the user who created the property."""
 
     data_sensitivity: Optional[Literal["highly_sensitive", "non_sensitive", "sensitive"]] = FieldInfo(
         alias="dataSensitivity", default=None
@@ -79,46 +72,37 @@ class Property(BaseModel):
     date_display_hint: Optional[Literal["absolute", "absolute_with_relative", "time_since", "time_until"]] = FieldInfo(
         alias="dateDisplayHint", default=None
     )
-    """
-    Controls how date properties are displayed in the HubSpot UI, with options such
-    as 'absolute', 'absolute_with_relative', 'time_since', and 'time_until'.
-    """
 
     display_order: Optional[int] = FieldInfo(alias="displayOrder", default=None)
-    """
-    The order that this property should be displayed in the HubSpot UI relative to
-    other properties for this object type. Properties are displayed in order
-    starting with the lowest positive integer value. A value of -1 will cause the
-    property to be displayed **after** any positive values.
-    """
+    """The position of the item relative to others in the list."""
 
     external_options: Optional[bool] = FieldInfo(alias="externalOptions", default=None)
-    """
-    For default properties, true indicates that the options are stored externally to
-    the property settings.
+    """Applicable only for enumeration type properties.
+
+    Should be set to true with a 'referencedObjectType' of 'OWNER'. Otherwise false.
     """
 
     form_field: Optional[bool] = FieldInfo(alias="formField", default=None)
-    """Whether or not the property can be used in a HubSpot form."""
+    """Whether the property can appear on forms."""
 
     has_unique_value: Optional[bool] = FieldInfo(alias="hasUniqueValue", default=None)
-    """Whether or not the property's value must be unique.
-
-    Once set, this can't be changed.
-    """
+    """Whether the property is a unique identifier property."""
 
     hidden: Optional[bool] = None
-    """Hidden options won't be shown in HubSpot."""
+    """Whether or not the property will be hidden from the HubSpot UI.
+
+    It's recommended that this be set to false for custom properties.
+    """
 
     hubspot_defined: Optional[bool] = FieldInfo(alias="hubspotDefined", default=None)
-    """This will be true for default object properties built into HubSpot."""
+    """A boolean value set to true for HubSpot default properties."""
 
     modification_metadata: Optional[PropertyModificationMetadata] = FieldInfo(
         alias="modificationMetadata", default=None
     )
 
     referenced_object_type: Optional[str] = FieldInfo(alias="referencedObjectType", default=None)
-    """If this property is related to other object(s), they'll be listed here."""
+    """Deprecated. Use externalOptionsReferenceType instead."""
 
     sensitive_data_categories: Optional[List[str]] = FieldInfo(alias="sensitiveDataCategories", default=None)
     """
@@ -127,16 +111,9 @@ class Property(BaseModel):
     """
 
     show_currency_symbol: Optional[bool] = FieldInfo(alias="showCurrencySymbol", default=None)
-    """
-    Whether the property will display the currency symbol set in the account
-    settings.
-    """
+    """Whether to show the currency symbol in HubSpot's UI."""
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
-    """When the object type was last updated."""
+    """The timestamp when the property was last updated, in ISO 8601 format."""
 
     updated_user_id: Optional[str] = FieldInfo(alias="updatedUserId", default=None)
-    """The internal user ID of the user who updated the property in HubSpot.
-
-    This field may not exist if the property was updated outside of HubSpot.
-    """

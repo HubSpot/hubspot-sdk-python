@@ -5,8 +5,8 @@ from datetime import datetime
 
 from pydantic import Field as FieldInfo
 
+from .property import Property
 from ..._models import BaseModel
-from ..shared.property import Property
 from ..shared.association_definition import AssociationDefinition
 from ..shared.object_type_definition_labels import ObjectTypeDefinitionLabels
 

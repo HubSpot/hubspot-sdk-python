@@ -11,9 +11,9 @@ from hubspot_sdk import Hubspot, AsyncHubspot
 from tests.utils import assert_matches_type
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.events import (
+    Property,
     ExternalBehavioralEventTypeDefinition,
 )
-from hubspot_sdk.types.shared import Property
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

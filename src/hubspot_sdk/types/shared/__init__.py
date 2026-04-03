@@ -3,7 +3,6 @@
 from .error import Error as Error
 from .option import Option as Option
 from .paging import Paging as Paging
-from .property import Property as Property
 from .next_page import NextPage as NextPage
 from .error_detail import ErrorDetail as ErrorDetail
 from .option_input import OptionInput as OptionInput

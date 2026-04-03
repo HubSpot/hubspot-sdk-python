@@ -12,6 +12,7 @@ from hubspot_sdk.types.crm import (
     FilterGroup,
     LabelsBetweenObjectPair,
     MultiAssociatedObjectWithLabel,
+    Property,
     PublicDefaultAssociation,
     PublicObjectSearchRequest,
     SimplePublicObject,
@@ -1397,7 +1398,6 @@ from hubspot_sdk.types.crm import (
     BatchResponseProperty,
     BatchResponsePropertyWithErrors,
     CollectionResponsePropertyNoPaging,
-    Property,
     PropertyCreate,
     PropertyUpdate,
 )

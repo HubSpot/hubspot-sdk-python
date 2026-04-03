@@ -26,7 +26,7 @@ from ...types.events import (
     definition_create_property_params,
     definition_update_property_params,
 )
-from ...types.shared.property import Property
+from ...types.events.property import Property
 from ...types.shared_params.option_input import OptionInput
 from ...types.events.external_behavioral_event_type_definition import ExternalBehavioralEventTypeDefinition
 from ...types.events.behavioral_event_http_completion_request_param import BehavioralEventHTTPCompletionRequestParam
