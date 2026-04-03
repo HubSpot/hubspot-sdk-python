@@ -8,14 +8,6 @@ from .emails import (
     EmailsResourceWithStreamingResponse,
     AsyncEmailsResourceWithStreamingResponse,
 )
-from .events import (
-    EventsResource,
-    AsyncEventsResource,
-    EventsResourceWithRawResponse,
-    AsyncEventsResourceWithRawResponse,
-    EventsResourceWithStreamingResponse,
-    AsyncEventsResourceWithStreamingResponse,
-)
 from .campaigns import (
     CampaignsResource,
     AsyncCampaignsResource,
@@ -48,6 +40,14 @@ from .transactional import (
     TransactionalResourceWithStreamingResponse,
     AsyncTransactionalResourceWithStreamingResponse,
 )
+from .marketing_events import (
+    MarketingEventsResource,
+    AsyncMarketingEventsResource,
+    MarketingEventsResourceWithRawResponse,
+    AsyncMarketingEventsResourceWithRawResponse,
+    MarketingEventsResourceWithStreamingResponse,
+    AsyncMarketingEventsResourceWithStreamingResponse,
+)
 
 __all__ = [
     "CampaignsResource",
@@ -62,12 +62,12 @@ __all__ = [
     "AsyncEmailsResourceWithRawResponse",
     "EmailsResourceWithStreamingResponse",
     "AsyncEmailsResourceWithStreamingResponse",
-    "EventsResource",
-    "AsyncEventsResource",
-    "EventsResourceWithRawResponse",
-    "AsyncEventsResourceWithRawResponse",
-    "EventsResourceWithStreamingResponse",
-    "AsyncEventsResourceWithStreamingResponse",
+    "MarketingEventsResource",
+    "AsyncMarketingEventsResource",
+    "MarketingEventsResourceWithRawResponse",
+    "AsyncMarketingEventsResourceWithRawResponse",
+    "MarketingEventsResourceWithStreamingResponse",
+    "AsyncMarketingEventsResourceWithStreamingResponse",
     "SingleSendResource",
     "AsyncSingleSendResource",
     "SingleSendResourceWithRawResponse",

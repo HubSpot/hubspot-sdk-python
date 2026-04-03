@@ -30,7 +30,6 @@ from .email_list_params import EmailListParams as EmailListParams
 from .fee_create_params import FeeCreateParams as FeeCreateParams
 from .fee_search_params import FeeSearchParams as FeeSearchParams
 from .fee_update_params import FeeUpdateParams as FeeUpdateParams
-from .object_get_params import ObjectGetParams as ObjectGetParams
 from .order_list_params import OrderListParams as OrderListParams
 from .quote_list_params import QuoteListParams as QuoteListParams
 from .tax_create_params import TaxCreateParams as TaxCreateParams
@@ -59,7 +58,6 @@ from .meeting_get_params import MeetingGetParams as MeetingGetParams
 from .note_create_params import NoteCreateParams as NoteCreateParams
 from .note_search_params import NoteSearchParams as NoteSearchParams
 from .note_update_params import NoteUpdateParams as NoteUpdateParams
-from .object_list_params import ObjectListParams as ObjectListParams
 from .product_get_params import ProductGetParams as ProductGetParams
 from .project_get_params import ProjectGetParams as ProjectGetParams
 from .service_get_params import ServiceGetParams as ServiceGetParams
@@ -102,9 +100,6 @@ from .custom_search_params import CustomSearchParams as CustomSearchParams
 from .custom_update_params import CustomUpdateParams as CustomUpdateParams
 from .discount_list_params import DiscountListParams as DiscountListParams
 from .line_item_get_params import LineItemGetParams as LineItemGetParams
-from .object_create_params import ObjectCreateParams as ObjectCreateParams
-from .object_search_params import ObjectSearchParams as ObjectSearchParams
-from .object_update_params import ObjectUpdateParams as ObjectUpdateParams
 from .project_merge_params import ProjectMergeParams as ProjectMergeParams
 from .ticket_create_params import TicketCreateParams as TicketCreateParams
 from .ticket_search_params import TicketSearchParams as TicketSearchParams
@@ -151,6 +146,7 @@ from .subscription_get_params import SubscriptionGetParams as SubscriptionGetPar
 from .communication_get_params import CommunicationGetParams as CommunicationGetParams
 from .subscription_list_params import SubscriptionListParams as SubscriptionListParams
 from .communication_list_params import CommunicationListParams as CommunicationListParams
+from .generic_object_get_params import GenericObjectGetParams as GenericObjectGetParams
 from .goal_target_create_params import GoalTargetCreateParams as GoalTargetCreateParams
 from .goal_target_search_params import GoalTargetSearchParams as GoalTargetSearchParams
 from .goal_target_update_params import GoalTargetUpdateParams as GoalTargetUpdateParams
@@ -159,6 +155,7 @@ from .postal_mail_create_params import PostalMailCreateParams as PostalMailCreat
 from .postal_mail_search_params import PostalMailSearchParams as PostalMailSearchParams
 from .postal_mail_update_params import PostalMailUpdateParams as PostalMailUpdateParams
 from .contact_gdpr_delete_params import ContactGdprDeleteParams as ContactGdprDeleteParams
+from .generic_object_list_params import GenericObjectListParams as GenericObjectListParams
 from .partner_client_list_params import PartnerClientListParams as PartnerClientListParams
 from .partner_service_get_params import PartnerServiceGetParams as PartnerServiceGetParams
 from .subscription_create_params import SubscriptionCreateParams as SubscriptionCreateParams
@@ -170,6 +167,9 @@ from .communication_search_params import CommunicationSearchParams as Communicat
 from .communication_update_params import CommunicationUpdateParams as CommunicationUpdateParams
 from .partner_service_list_params import PartnerServiceListParams as PartnerServiceListParams
 from .commerce_payment_list_params import CommercePaymentListParams as CommercePaymentListParams
+from .generic_object_create_params import GenericObjectCreateParams as GenericObjectCreateParams
+from .generic_object_search_params import GenericObjectSearchParams as GenericObjectSearchParams
+from .generic_object_update_params import GenericObjectUpdateParams as GenericObjectUpdateParams
 from .partner_client_search_params import PartnerClientSearchParams as PartnerClientSearchParams
 from .partner_client_update_params import PartnerClientUpdateParams as PartnerClientUpdateParams
 from .partner_service_search_params import PartnerServiceSearchParams as PartnerServiceSearchParams

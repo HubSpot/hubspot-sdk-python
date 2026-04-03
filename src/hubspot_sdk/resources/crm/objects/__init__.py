@@ -248,6 +248,14 @@ from .communications import (
     CommunicationsResourceWithStreamingResponse,
     AsyncCommunicationsResourceWithStreamingResponse,
 )
+from .generic_objects import (
+    GenericObjectsResource,
+    AsyncGenericObjectsResource,
+    GenericObjectsResourceWithRawResponse,
+    AsyncGenericObjectsResourceWithRawResponse,
+    GenericObjectsResourceWithStreamingResponse,
+    AsyncGenericObjectsResourceWithStreamingResponse,
+)
 from .partner_clients import (
     PartnerClientsResource,
     AsyncPartnerClientsResource,
@@ -408,6 +416,12 @@ __all__ = [
     "AsyncNotesResourceWithRawResponse",
     "NotesResourceWithStreamingResponse",
     "AsyncNotesResourceWithStreamingResponse",
+    "GenericObjectsResource",
+    "AsyncGenericObjectsResource",
+    "GenericObjectsResourceWithRawResponse",
+    "AsyncGenericObjectsResourceWithRawResponse",
+    "GenericObjectsResourceWithStreamingResponse",
+    "AsyncGenericObjectsResourceWithStreamingResponse",
     "OrdersResource",
     "AsyncOrdersResource",
     "OrdersResourceWithRawResponse",

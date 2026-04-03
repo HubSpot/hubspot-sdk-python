@@ -2,17 +2,24 @@
 
 from __future__ import annotations
 
-from . import business_units_ as business_units
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .business_unit_entries import (
+    BusinessUnitEntriesResource,
+    AsyncBusinessUnitEntriesResource,
+    BusinessUnitEntriesResourceWithRawResponse,
+    AsyncBusinessUnitEntriesResourceWithRawResponse,
+    BusinessUnitEntriesResourceWithStreamingResponse,
+    AsyncBusinessUnitEntriesResourceWithStreamingResponse,
+)
 
 __all__ = ["BusinessUnitsResource", "AsyncBusinessUnitsResource"]
 
 
 class BusinessUnitsResource(SyncAPIResource):
     @cached_property
-    def business_units(self) -> business_units.BusinessUnitsResource:
-        return business_units.BusinessUnitsResource(self._client)
+    def business_unit_entries(self) -> BusinessUnitEntriesResource:
+        return BusinessUnitEntriesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> BusinessUnitsResourceWithRawResponse:
@@ -36,8 +43,8 @@ class BusinessUnitsResource(SyncAPIResource):
 
 class AsyncBusinessUnitsResource(AsyncAPIResource):
     @cached_property
-    def business_units(self) -> business_units.AsyncBusinessUnitsResource:
-        return business_units.AsyncBusinessUnitsResource(self._client)
+    def business_unit_entries(self) -> AsyncBusinessUnitEntriesResource:
+        return AsyncBusinessUnitEntriesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncBusinessUnitsResourceWithRawResponse:
@@ -64,8 +71,8 @@ class BusinessUnitsResourceWithRawResponse:
         self._business_units = business_units
 
     @cached_property
-    def business_units(self) -> business_units.BusinessUnitsResourceWithRawResponse:
-        return business_units.BusinessUnitsResourceWithRawResponse(self._business_units.business_units)
+    def business_unit_entries(self) -> BusinessUnitEntriesResourceWithRawResponse:
+        return BusinessUnitEntriesResourceWithRawResponse(self._business_units.business_unit_entries)
 
 
 class AsyncBusinessUnitsResourceWithRawResponse:
@@ -73,8 +80,8 @@ class AsyncBusinessUnitsResourceWithRawResponse:
         self._business_units = business_units
 
     @cached_property
-    def business_units(self) -> business_units.AsyncBusinessUnitsResourceWithRawResponse:
-        return business_units.AsyncBusinessUnitsResourceWithRawResponse(self._business_units.business_units)
+    def business_unit_entries(self) -> AsyncBusinessUnitEntriesResourceWithRawResponse:
+        return AsyncBusinessUnitEntriesResourceWithRawResponse(self._business_units.business_unit_entries)
 
 
 class BusinessUnitsResourceWithStreamingResponse:
@@ -82,8 +89,8 @@ class BusinessUnitsResourceWithStreamingResponse:
         self._business_units = business_units
 
     @cached_property
-    def business_units(self) -> business_units.BusinessUnitsResourceWithStreamingResponse:
-        return business_units.BusinessUnitsResourceWithStreamingResponse(self._business_units.business_units)
+    def business_unit_entries(self) -> BusinessUnitEntriesResourceWithStreamingResponse:
+        return BusinessUnitEntriesResourceWithStreamingResponse(self._business_units.business_unit_entries)
 
 
 class AsyncBusinessUnitsResourceWithStreamingResponse:
@@ -91,5 +98,5 @@ class AsyncBusinessUnitsResourceWithStreamingResponse:
         self._business_units = business_units
 
     @cached_property
-    def business_units(self) -> business_units.AsyncBusinessUnitsResourceWithStreamingResponse:
-        return business_units.AsyncBusinessUnitsResourceWithStreamingResponse(self._business_units.business_units)
+    def business_unit_entries(self) -> AsyncBusinessUnitEntriesResourceWithStreamingResponse:
+        return AsyncBusinessUnitEntriesResourceWithStreamingResponse(self._business_units.business_unit_entries)

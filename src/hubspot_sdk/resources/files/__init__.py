@@ -16,8 +16,22 @@ from .folders import (
     FoldersResourceWithStreamingResponse,
     AsyncFoldersResourceWithStreamingResponse,
 )
+from .file_assets import (
+    FileAssetsResource,
+    AsyncFileAssetsResource,
+    FileAssetsResourceWithRawResponse,
+    AsyncFileAssetsResourceWithRawResponse,
+    FileAssetsResourceWithStreamingResponse,
+    AsyncFileAssetsResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "FileAssetsResource",
+    "AsyncFileAssetsResource",
+    "FileAssetsResourceWithRawResponse",
+    "AsyncFileAssetsResourceWithRawResponse",
+    "FileAssetsResourceWithStreamingResponse",
+    "AsyncFileAssetsResourceWithStreamingResponse",
     "FoldersResource",
     "AsyncFoldersResource",
     "FoldersResourceWithRawResponse",

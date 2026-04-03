@@ -3,16 +3,23 @@
 from __future__ import annotations
 
 from ..._compat import cached_property
-from .webhooks_ import webhooks_ as webhooks
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .webhook_subscriptions.webhook_subscriptions import (
+    WebhookSubscriptionsResource,
+    AsyncWebhookSubscriptionsResource,
+    WebhookSubscriptionsResourceWithRawResponse,
+    AsyncWebhookSubscriptionsResourceWithRawResponse,
+    WebhookSubscriptionsResourceWithStreamingResponse,
+    AsyncWebhookSubscriptionsResourceWithStreamingResponse,
+)
 
 __all__ = ["WebhooksResource", "AsyncWebhooksResource"]
 
 
 class WebhooksResource(SyncAPIResource):
     @cached_property
-    def webhooks(self) -> webhooks.WebhooksResource:
-        return webhooks.WebhooksResource(self._client)
+    def webhook_subscriptions(self) -> WebhookSubscriptionsResource:
+        return WebhookSubscriptionsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> WebhooksResourceWithRawResponse:
@@ -36,8 +43,8 @@ class WebhooksResource(SyncAPIResource):
 
 class AsyncWebhooksResource(AsyncAPIResource):
     @cached_property
-    def webhooks(self) -> webhooks.AsyncWebhooksResource:
-        return webhooks.AsyncWebhooksResource(self._client)
+    def webhook_subscriptions(self) -> AsyncWebhookSubscriptionsResource:
+        return AsyncWebhookSubscriptionsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncWebhooksResourceWithRawResponse:
@@ -64,8 +71,8 @@ class WebhooksResourceWithRawResponse:
         self._webhooks = webhooks
 
     @cached_property
-    def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
-        return webhooks.WebhooksResourceWithRawResponse(self._webhooks.webhooks)
+    def webhook_subscriptions(self) -> WebhookSubscriptionsResourceWithRawResponse:
+        return WebhookSubscriptionsResourceWithRawResponse(self._webhooks.webhook_subscriptions)
 
 
 class AsyncWebhooksResourceWithRawResponse:
@@ -73,8 +80,8 @@ class AsyncWebhooksResourceWithRawResponse:
         self._webhooks = webhooks
 
     @cached_property
-    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
-        return webhooks.AsyncWebhooksResourceWithRawResponse(self._webhooks.webhooks)
+    def webhook_subscriptions(self) -> AsyncWebhookSubscriptionsResourceWithRawResponse:
+        return AsyncWebhookSubscriptionsResourceWithRawResponse(self._webhooks.webhook_subscriptions)
 
 
 class WebhooksResourceWithStreamingResponse:
@@ -82,8 +89,8 @@ class WebhooksResourceWithStreamingResponse:
         self._webhooks = webhooks
 
     @cached_property
-    def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
-        return webhooks.WebhooksResourceWithStreamingResponse(self._webhooks.webhooks)
+    def webhook_subscriptions(self) -> WebhookSubscriptionsResourceWithStreamingResponse:
+        return WebhookSubscriptionsResourceWithStreamingResponse(self._webhooks.webhook_subscriptions)
 
 
 class AsyncWebhooksResourceWithStreamingResponse:
@@ -91,5 +98,5 @@ class AsyncWebhooksResourceWithStreamingResponse:
         self._webhooks = webhooks
 
     @cached_property
-    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:
-        return webhooks.AsyncWebhooksResourceWithStreamingResponse(self._webhooks.webhooks)
+    def webhook_subscriptions(self) -> AsyncWebhookSubscriptionsResourceWithStreamingResponse:
+        return AsyncWebhookSubscriptionsResourceWithStreamingResponse(self._webhooks.webhook_subscriptions)

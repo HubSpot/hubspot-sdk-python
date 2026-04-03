@@ -17,7 +17,7 @@ from hubspot_sdk._response import (
     StreamedBinaryAPIResponse,
     AsyncStreamedBinaryAPIResponse,
 )
-from hubspot_sdk.types.cms import Page
+from hubspot_sdk.types.cms import CmsPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -102,7 +102,7 @@ class TestMultiLanguage:
         multi_language = client.cms.pages.multi_language.create_language_variation(
             id="id",
         )
-        assert_matches_type(Page, multi_language, path=["response"])
+        assert_matches_type(CmsPage, multi_language, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -112,7 +112,7 @@ class TestMultiLanguage:
             language="language",
             primary_language="primaryLanguage",
         )
-        assert_matches_type(Page, multi_language, path=["response"])
+        assert_matches_type(CmsPage, multi_language, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -124,7 +124,7 @@ class TestMultiLanguage:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         multi_language = response.parse()
-        assert_matches_type(Page, multi_language, path=["response"])
+        assert_matches_type(CmsPage, multi_language, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -136,7 +136,7 @@ class TestMultiLanguage:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             multi_language = response.parse()
-            assert_matches_type(Page, multi_language, path=["response"])
+            assert_matches_type(CmsPage, multi_language, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -360,7 +360,7 @@ class TestAsyncMultiLanguage:
         multi_language = await async_client.cms.pages.multi_language.create_language_variation(
             id="id",
         )
-        assert_matches_type(Page, multi_language, path=["response"])
+        assert_matches_type(CmsPage, multi_language, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -370,7 +370,7 @@ class TestAsyncMultiLanguage:
             language="language",
             primary_language="primaryLanguage",
         )
-        assert_matches_type(Page, multi_language, path=["response"])
+        assert_matches_type(CmsPage, multi_language, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -382,7 +382,7 @@ class TestAsyncMultiLanguage:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         multi_language = await response.parse()
-        assert_matches_type(Page, multi_language, path=["response"])
+        assert_matches_type(CmsPage, multi_language, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -394,7 +394,7 @@ class TestAsyncMultiLanguage:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             multi_language = await response.parse()
-            assert_matches_type(Page, multi_language, path=["response"])
+            assert_matches_type(CmsPage, multi_language, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

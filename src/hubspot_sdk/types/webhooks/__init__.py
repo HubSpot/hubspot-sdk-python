@@ -18,15 +18,9 @@ from .snapshot_status_response import SnapshotStatusResponse as SnapshotStatusRe
 from .throttling_settings_param import ThrottlingSettingsParam as ThrottlingSettingsParam
 from .subscription_list_response import SubscriptionListResponse as SubscriptionListResponse
 from .crm_object_snapshot_response import CrmObjectSnapshotResponse as CrmObjectSnapshotResponse
-from .webhook_update_settings_params import WebhookUpdateSettingsParams as WebhookUpdateSettingsParams
 from .crm_object_snapshot_request_param import CrmObjectSnapshotRequestParam as CrmObjectSnapshotRequestParam
 from .subscription_upsert_request_param import SubscriptionUpsertRequestParam as SubscriptionUpsertRequestParam
-from .webhook_get_journal_latest_params import WebhookGetJournalLatestParams as WebhookGetJournalLatestParams
 from .crm_object_snapshot_batch_response import CrmObjectSnapshotBatchResponse as CrmObjectSnapshotBatchResponse
-from .webhook_create_crm_snapshot_params import WebhookCreateCrmSnapshotParams as WebhookCreateCrmSnapshotParams
-from .webhook_create_subscription_params import WebhookCreateSubscriptionParams as WebhookCreateSubscriptionParams
-from .webhook_update_subscription_params import WebhookUpdateSubscriptionParams as WebhookUpdateSubscriptionParams
-from .webhook_get_journal_earliest_params import WebhookGetJournalEarliestParams as WebhookGetJournalEarliestParams
 from .batch_response_subscription_response import BatchResponseSubscriptionResponse as BatchResponseSubscriptionResponse
 from .batch_response_journal_fetch_response import (
     BatchResponseJournalFetchResponse as BatchResponseJournalFetchResponse,
@@ -34,26 +28,29 @@ from .batch_response_journal_fetch_response import (
 from .subscription_batch_update_request_param import (
     SubscriptionBatchUpdateRequestParam as SubscriptionBatchUpdateRequestParam,
 )
-from .webhook_get_local_journal_latest_params import (
-    WebhookGetLocalJournalLatestParams as WebhookGetLocalJournalLatestParams,
-)
 from .object_subscription_upsert_request_param import (
     ObjectSubscriptionUpsertRequestParam as ObjectSubscriptionUpsertRequestParam,
 )
-from .webhook_create_subscription_filter_params import (
-    WebhookCreateSubscriptionFilterParams as WebhookCreateSubscriptionFilterParams,
-)
-from .webhook_get_journal_next_by_offset_params import (
-    WebhookGetJournalNextByOffsetParams as WebhookGetJournalNextByOffsetParams,
-)
-from .webhook_get_local_journal_earliest_params import (
-    WebhookGetLocalJournalEarliestParams as WebhookGetLocalJournalEarliestParams,
+from .webhook_subscription_update_settings_params import (
+    WebhookSubscriptionUpdateSettingsParams as WebhookSubscriptionUpdateSettingsParams,
 )
 from .association_subscription_upsert_request_param import (
     AssociationSubscriptionUpsertRequestParam as AssociationSubscriptionUpsertRequestParam,
 )
-from .webhook_get_local_journal_next_by_offset_params import (
-    WebhookGetLocalJournalNextByOffsetParams as WebhookGetLocalJournalNextByOffsetParams,
+from .webhook_subscription_get_journal_latest_params import (
+    WebhookSubscriptionGetJournalLatestParams as WebhookSubscriptionGetJournalLatestParams,
+)
+from .webhook_subscription_create_crm_snapshot_params import (
+    WebhookSubscriptionCreateCrmSnapshotParams as WebhookSubscriptionCreateCrmSnapshotParams,
+)
+from .webhook_subscription_create_subscription_params import (
+    WebhookSubscriptionCreateSubscriptionParams as WebhookSubscriptionCreateSubscriptionParams,
+)
+from .webhook_subscription_update_subscription_params import (
+    WebhookSubscriptionUpdateSubscriptionParams as WebhookSubscriptionUpdateSubscriptionParams,
+)
+from .webhook_subscription_get_journal_earliest_params import (
+    WebhookSubscriptionGetJournalEarliestParams as WebhookSubscriptionGetJournalEarliestParams,
 )
 from .list_membership_subscription_upsert_request_param import (
     ListMembershipSubscriptionUpsertRequestParam as ListMembershipSubscriptionUpsertRequestParam,
@@ -61,9 +58,24 @@ from .list_membership_subscription_upsert_request_param import (
 from .collection_response_subscription_response_no_paging import (
     CollectionResponseSubscriptionResponseNoPaging as CollectionResponseSubscriptionResponseNoPaging,
 )
+from .webhook_subscription_get_local_journal_latest_params import (
+    WebhookSubscriptionGetLocalJournalLatestParams as WebhookSubscriptionGetLocalJournalLatestParams,
+)
 from .app_lifecycle_event_subscription_upsert_request_param import (
     AppLifecycleEventSubscriptionUpsertRequestParam as AppLifecycleEventSubscriptionUpsertRequestParam,
 )
-from .webhook_get_subscription_filter_for_subscription_response import (
-    WebhookGetSubscriptionFilterForSubscriptionResponse as WebhookGetSubscriptionFilterForSubscriptionResponse,
+from .webhook_subscription_create_subscription_filter_params import (
+    WebhookSubscriptionCreateSubscriptionFilterParams as WebhookSubscriptionCreateSubscriptionFilterParams,
+)
+from .webhook_subscription_get_journal_next_by_offset_params import (
+    WebhookSubscriptionGetJournalNextByOffsetParams as WebhookSubscriptionGetJournalNextByOffsetParams,
+)
+from .webhook_subscription_get_local_journal_earliest_params import (
+    WebhookSubscriptionGetLocalJournalEarliestParams as WebhookSubscriptionGetLocalJournalEarliestParams,
+)
+from .webhook_subscription_get_local_journal_next_by_offset_params import (
+    WebhookSubscriptionGetLocalJournalNextByOffsetParams as WebhookSubscriptionGetLocalJournalNextByOffsetParams,
+)
+from .webhook_subscription_get_subscription_filter_for_subscription_response import (
+    WebhookSubscriptionGetSubscriptionFilterForSubscriptionResponse as WebhookSubscriptionGetSubscriptionFilterForSubscriptionResponse,
 )

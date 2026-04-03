@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, List, Union
-from typing_extensions import Literal, TypeAlias, TypeAliasType
+from typing_extensions import Literal, Annotated, TypeAlias, TypeAliasType
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._compat import PYDANTIC_V1
 from ..._models import BaseModel
 from .public_in_list_filter import PublicInListFilter
@@ -38,6 +39,22 @@ __all__ = ["PublicPropertyAssociationFilterBranch", "FilterBranch", "Filter"]
 if TYPE_CHECKING or not PYDANTIC_V1:
     FilterBranch = TypeAliasType(
         "FilterBranch",
+        Annotated[
+            Union[
+                "PublicOrFilterBranch",
+                "PublicAndFilterBranch",
+                "PublicNotAllFilterBranch",
+                "PublicNotAnyFilterBranch",
+                "PublicRestrictedFilterBranch",
+                "PublicUnifiedEventsFilterBranch",
+                "PublicPropertyAssociationFilterBranch",
+                "PublicAssociationFilterBranch",
+            ],
+            PropertyInfo(discriminator="filter_branch_type"),
+        ],
+    )
+else:
+    FilterBranch: TypeAlias = Annotated[
         Union[
             "PublicOrFilterBranch",
             "PublicAndFilterBranch",
@@ -48,43 +65,36 @@ if TYPE_CHECKING or not PYDANTIC_V1:
             "PublicPropertyAssociationFilterBranch",
             "PublicAssociationFilterBranch",
         ],
-    )
-else:
-    FilterBranch: TypeAlias = Union[
-        "PublicOrFilterBranch",
-        "PublicAndFilterBranch",
-        "PublicNotAllFilterBranch",
-        "PublicNotAnyFilterBranch",
-        "PublicRestrictedFilterBranch",
-        "PublicUnifiedEventsFilterBranch",
-        "PublicPropertyAssociationFilterBranch",
-        "PublicAssociationFilterBranch",
+        PropertyInfo(discriminator="filter_branch_type"),
     ]
 
-Filter: TypeAlias = Union[
-    PublicPropertyFilter,
-    PublicAssociationInListFilter,
-    PublicPageViewAnalyticsFilter,
-    PublicCtaAnalyticsFilter,
-    PublicEventAnalyticsFilter,
-    PublicFormSubmissionFilter,
-    PublicFormSubmissionOnPageFilter,
-    PublicIntegrationEventFilter,
-    PublicEmailSubscriptionFilter,
-    PublicCommunicationSubscriptionFilter,
-    PublicCampaignInfluencedFilter,
-    PublicSurveyMonkeyFilter,
-    PublicSurveyMonkeyValueFilter,
-    PublicWebinarFilter,
-    PublicEmailEventFilter,
-    PublicPrivacyAnalyticsFilter,
-    PublicAdsSearchFilter,
-    PublicAdsTimeFilter,
-    PublicInListFilter,
-    PublicNumAssociationsFilter,
-    PublicUnifiedEventsFilter,
-    PublicPropertyAssociationInListFilter,
-    PublicConstantFilter,
+Filter: TypeAlias = Annotated[
+    Union[
+        PublicPropertyFilter,
+        PublicAssociationInListFilter,
+        PublicPageViewAnalyticsFilter,
+        PublicCtaAnalyticsFilter,
+        PublicEventAnalyticsFilter,
+        PublicFormSubmissionFilter,
+        PublicFormSubmissionOnPageFilter,
+        PublicIntegrationEventFilter,
+        PublicEmailSubscriptionFilter,
+        PublicCommunicationSubscriptionFilter,
+        PublicCampaignInfluencedFilter,
+        PublicSurveyMonkeyFilter,
+        PublicSurveyMonkeyValueFilter,
+        PublicWebinarFilter,
+        PublicEmailEventFilter,
+        PublicPrivacyAnalyticsFilter,
+        PublicAdsSearchFilter,
+        PublicAdsTimeFilter,
+        PublicInListFilter,
+        PublicNumAssociationsFilter,
+        PublicUnifiedEventsFilter,
+        PublicPropertyAssociationInListFilter,
+        PublicConstantFilter,
+    ],
+    PropertyInfo(discriminator="filter_type"),
 ]
 
 
