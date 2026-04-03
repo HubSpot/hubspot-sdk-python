@@ -7,7 +7,6 @@ from .shared import (
     Option as Option,
     Paging as Paging,
     NextPage as NextPage,
-    Property as Property,
     ErrorDetail as ErrorDetail,
     OptionInput as OptionInput,
     TaskLocator as TaskLocator,

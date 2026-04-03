@@ -57,13 +57,13 @@ class Property(BaseModel):
     """
 
     calculation_formula: Optional[str] = FieldInfo(alias="calculationFormula", default=None)
-    """Represents a formula that is used to compute a calculated property."""
+    """The formula used for calculated properties."""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
-    """The timestamp when the property was created, in ISO 8601 format."""
+    """When the property was created"""
 
     created_user_id: Optional[str] = FieldInfo(alias="createdUserId", default=None)
-    """The internal user ID of the user who created the property in HubSpot.
+    """The internal ID of the user who created the property in HubSpot.
 
     This field may not exist if the property was created outside of HubSpot.
     """
@@ -83,12 +83,17 @@ class Property(BaseModel):
         alias="dateDisplayHint", default=None
     )
     """
-    Indicates how date values should be displayed, with options such as 'absolute',
-    'absolute_with_relative', 'time_since', or 'time_until'.
+    Controls how date properties are displayed in the HubSpot UI, with options such
+    as 'absolute', 'absolute_with_relative', 'time_since', and 'time_until'.
     """
 
     display_order: Optional[int] = FieldInfo(alias="displayOrder", default=None)
-    """Properties are shown in order, starting with the lowest positive integer value."""
+    """
+    The order that this property should be displayed in the HubSpot UI relative to
+    other properties for this object type. Properties are displayed in order
+    starting with the lowest positive integer value. A value of -1 will cause the
+    property to be displayed **after** any positive values.
+    """
 
     external_options: Optional[bool] = FieldInfo(alias="externalOptions", default=None)
     """
@@ -106,10 +111,7 @@ class Property(BaseModel):
     """
 
     hidden: Optional[bool] = None
-    """Whether or not the property will be hidden from the HubSpot UI.
-
-    It's recommended this be set to false for custom properties.
-    """
+    """Hidden options won't be shown in HubSpot."""
 
     hubspot_defined: Optional[bool] = FieldInfo(alias="hubspotDefined", default=None)
     """This will be true for default object properties built into HubSpot."""
@@ -129,12 +131,12 @@ class Property(BaseModel):
 
     show_currency_symbol: Optional[bool] = FieldInfo(alias="showCurrencySymbol", default=None)
     """
-    Whether or not the property will display the currency symbol set in the account
+    Whether the property will display the currency symbol set in the account
     settings.
     """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
-    """The timestamp when the property was last updated, in ISO 8601 format."""
+    """When the object type was last updated."""
 
     updated_user_id: Optional[str] = FieldInfo(alias="updatedUserId", default=None)
     """The internal user ID of the user who updated the property in HubSpot.

@@ -24,7 +24,6 @@ from hubspot_sdk.types import (
     OptionInput,
     Paging,
     PreviousPage,
-    Property,
     PropertyGroup,
     PropertyGroupCreate,
     PropertyGroupUpdate,
