@@ -4,25 +4,29 @@ from __future__ import annotations
 
 from typing import Union, Optional
 from datetime import datetime
-from typing_extensions import TypeAlias
+from typing_extensions import Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .public_list_permissions import PublicListPermissions
 from .public_membership_settings import PublicMembershipSettings
 
 __all__ = ["PublicObjectList", "FilterBranch"]
 
-FilterBranch: TypeAlias = Union[
-    "PublicOrFilterBranch",
-    "PublicAndFilterBranch",
-    "PublicNotAllFilterBranch",
-    "PublicNotAnyFilterBranch",
-    "PublicRestrictedFilterBranch",
-    "PublicUnifiedEventsFilterBranch",
-    "PublicPropertyAssociationFilterBranch",
-    "PublicAssociationFilterBranch",
+FilterBranch: TypeAlias = Annotated[
+    Union[
+        "PublicOrFilterBranch",
+        "PublicAndFilterBranch",
+        "PublicNotAllFilterBranch",
+        "PublicNotAnyFilterBranch",
+        "PublicRestrictedFilterBranch",
+        "PublicUnifiedEventsFilterBranch",
+        "PublicPropertyAssociationFilterBranch",
+        "PublicAssociationFilterBranch",
+    ],
+    PropertyInfo(discriminator="filter_branch_type"),
 ]
 
 

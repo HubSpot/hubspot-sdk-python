@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from . import files_ as files
 from .folders import (
     FoldersResource,
     AsyncFoldersResource,
@@ -13,14 +12,22 @@ from .folders import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .file_assets import (
+    FileAssetsResource,
+    AsyncFileAssetsResource,
+    FileAssetsResourceWithRawResponse,
+    AsyncFileAssetsResourceWithRawResponse,
+    FileAssetsResourceWithStreamingResponse,
+    AsyncFileAssetsResourceWithStreamingResponse,
+)
 
 __all__ = ["FilesResource", "AsyncFilesResource"]
 
 
 class FilesResource(SyncAPIResource):
     @cached_property
-    def files(self) -> files.FilesResource:
-        return files.FilesResource(self._client)
+    def file_assets(self) -> FileAssetsResource:
+        return FileAssetsResource(self._client)
 
     @cached_property
     def folders(self) -> FoldersResource:
@@ -48,8 +55,8 @@ class FilesResource(SyncAPIResource):
 
 class AsyncFilesResource(AsyncAPIResource):
     @cached_property
-    def files(self) -> files.AsyncFilesResource:
-        return files.AsyncFilesResource(self._client)
+    def file_assets(self) -> AsyncFileAssetsResource:
+        return AsyncFileAssetsResource(self._client)
 
     @cached_property
     def folders(self) -> AsyncFoldersResource:
@@ -80,8 +87,8 @@ class FilesResourceWithRawResponse:
         self._files = files
 
     @cached_property
-    def files(self) -> files.FilesResourceWithRawResponse:
-        return files.FilesResourceWithRawResponse(self._files.files)
+    def file_assets(self) -> FileAssetsResourceWithRawResponse:
+        return FileAssetsResourceWithRawResponse(self._files.file_assets)
 
     @cached_property
     def folders(self) -> FoldersResourceWithRawResponse:
@@ -93,8 +100,8 @@ class AsyncFilesResourceWithRawResponse:
         self._files = files
 
     @cached_property
-    def files(self) -> files.AsyncFilesResourceWithRawResponse:
-        return files.AsyncFilesResourceWithRawResponse(self._files.files)
+    def file_assets(self) -> AsyncFileAssetsResourceWithRawResponse:
+        return AsyncFileAssetsResourceWithRawResponse(self._files.file_assets)
 
     @cached_property
     def folders(self) -> AsyncFoldersResourceWithRawResponse:
@@ -106,8 +113,8 @@ class FilesResourceWithStreamingResponse:
         self._files = files
 
     @cached_property
-    def files(self) -> files.FilesResourceWithStreamingResponse:
-        return files.FilesResourceWithStreamingResponse(self._files.files)
+    def file_assets(self) -> FileAssetsResourceWithStreamingResponse:
+        return FileAssetsResourceWithStreamingResponse(self._files.file_assets)
 
     @cached_property
     def folders(self) -> FoldersResourceWithStreamingResponse:
@@ -119,8 +126,8 @@ class AsyncFilesResourceWithStreamingResponse:
         self._files = files
 
     @cached_property
-    def files(self) -> files.AsyncFilesResourceWithStreamingResponse:
-        return files.AsyncFilesResourceWithStreamingResponse(self._files.files)
+    def file_assets(self) -> AsyncFileAssetsResourceWithStreamingResponse:
+        return AsyncFileAssetsResourceWithStreamingResponse(self._files.file_assets)
 
     @cached_property
     def folders(self) -> AsyncFoldersResourceWithStreamingResponse:

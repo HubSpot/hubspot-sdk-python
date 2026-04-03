@@ -8,7 +8,6 @@ from .xor import Xor as Xor
 from .and_ import And as And
 from .date import Date as Date
 from .not_ import Not as Not
-from .page import Page as Page
 from .size import Size as Size
 from .year import Year as Year
 from .angle import Angle as Angle
@@ -23,6 +22,7 @@ from .option import Option as Option
 from .styles import Styles as Styles
 from .padding import Padding as Padding
 from .add_time import AddTime as AddTime
+from .cms_page import CmsPage as CmsPage
 from .contains import Contains as Contains
 from .gradient import Gradient as Gradient
 from .option_1 import Option1 as Option1
@@ -39,7 +39,6 @@ from .group_view import GroupView as GroupView
 from .if_boolean import IfBoolean as IfBoolean
 from .is_present import IsPresent as IsPresent
 from .lower_case import LowerCase as LowerCase
-from .page_param import PageParam as PageParam
 from .property_1 import Property1 as Property1
 from .rgba_color import RgbaColor as RgbaColor
 from .size_param import SizeParam as SizeParam
@@ -72,6 +71,7 @@ from .subtract_time import SubtractTime as SubtractTime
 from .variant_param import VariantParam as VariantParam
 from .absolute_value import AbsoluteValue as AbsoluteValue
 from .bounded_paging import BoundedPaging as BoundedPaging
+from .cms_page_param import CmsPageParam as CmsPageParam
 from .concat_strings import ConcatStrings as ConcatStrings
 from .content_folder import ContentFolder as ContentFolder
 from .divide_numbers import DivideNumbers as DivideNumbers

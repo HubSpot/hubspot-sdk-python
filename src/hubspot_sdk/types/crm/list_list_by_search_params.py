@@ -11,17 +11,6 @@ __all__ = ["ListListBySearchParams"]
 
 
 class ListListBySearchParams(TypedDict, total=False):
-    additional_properties: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="additionalProperties")]]
-    """The property names of any additional list properties to include in the response.
-
-    Properties that do not exist or that are empty for a particular list are not
-    included in the response.
-
-    By default, all requests will fetch the following properties for each list:
-    `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
-    `hs_folder_name`, and `hs_list_reference_count`.
-    """
-
     list_ids: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="listIds")]]
     """ILS list ids to be included in search results.
 
@@ -39,6 +28,17 @@ class ListListBySearchParams(TypedDict, total=False):
     """List processing types to be included in search results.
 
     If not specified, all lists with all processing types will be included.
+    """
+
+    additional_filter_properties: SequenceNotStr[str]
+    """The property names of any additional list properties to include in the response.
+
+    Properties that do not exist or that are empty for a particular list are not
+    included in the response.
+
+    By default, all requests will fetch the following properties for each list:
+    `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
+    `hs_folder_name`, and `hs_list_reference_count`.
     """
 
     count: int

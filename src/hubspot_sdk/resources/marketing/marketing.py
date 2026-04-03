@@ -20,14 +20,6 @@ from .single_send import (
     SingleSendResourceWithStreamingResponse,
     AsyncSingleSendResourceWithStreamingResponse,
 )
-from .events.events import (
-    EventsResource,
-    AsyncEventsResource,
-    EventsResourceWithRawResponse,
-    AsyncEventsResourceWithRawResponse,
-    EventsResourceWithStreamingResponse,
-    AsyncEventsResourceWithStreamingResponse,
-)
 from .campaigns.campaigns import (
     CampaignsResource,
     AsyncCampaignsResource,
@@ -44,6 +36,14 @@ from .transactional.transactional import (
     TransactionalResourceWithStreamingResponse,
     AsyncTransactionalResourceWithStreamingResponse,
 )
+from .marketing_events.marketing_events import (
+    MarketingEventsResource,
+    AsyncMarketingEventsResource,
+    MarketingEventsResourceWithRawResponse,
+    AsyncMarketingEventsResourceWithRawResponse,
+    MarketingEventsResourceWithStreamingResponse,
+    AsyncMarketingEventsResourceWithStreamingResponse,
+)
 
 __all__ = ["MarketingResource", "AsyncMarketingResource"]
 
@@ -58,8 +58,8 @@ class MarketingResource(SyncAPIResource):
         return EmailsResource(self._client)
 
     @cached_property
-    def events(self) -> EventsResource:
-        return EventsResource(self._client)
+    def marketing_events(self) -> MarketingEventsResource:
+        return MarketingEventsResource(self._client)
 
     @cached_property
     def single_send(self) -> SingleSendResource:
@@ -99,8 +99,8 @@ class AsyncMarketingResource(AsyncAPIResource):
         return AsyncEmailsResource(self._client)
 
     @cached_property
-    def events(self) -> AsyncEventsResource:
-        return AsyncEventsResource(self._client)
+    def marketing_events(self) -> AsyncMarketingEventsResource:
+        return AsyncMarketingEventsResource(self._client)
 
     @cached_property
     def single_send(self) -> AsyncSingleSendResource:
@@ -143,8 +143,8 @@ class MarketingResourceWithRawResponse:
         return EmailsResourceWithRawResponse(self._marketing.emails)
 
     @cached_property
-    def events(self) -> EventsResourceWithRawResponse:
-        return EventsResourceWithRawResponse(self._marketing.events)
+    def marketing_events(self) -> MarketingEventsResourceWithRawResponse:
+        return MarketingEventsResourceWithRawResponse(self._marketing.marketing_events)
 
     @cached_property
     def single_send(self) -> SingleSendResourceWithRawResponse:
@@ -168,8 +168,8 @@ class AsyncMarketingResourceWithRawResponse:
         return AsyncEmailsResourceWithRawResponse(self._marketing.emails)
 
     @cached_property
-    def events(self) -> AsyncEventsResourceWithRawResponse:
-        return AsyncEventsResourceWithRawResponse(self._marketing.events)
+    def marketing_events(self) -> AsyncMarketingEventsResourceWithRawResponse:
+        return AsyncMarketingEventsResourceWithRawResponse(self._marketing.marketing_events)
 
     @cached_property
     def single_send(self) -> AsyncSingleSendResourceWithRawResponse:
@@ -193,8 +193,8 @@ class MarketingResourceWithStreamingResponse:
         return EmailsResourceWithStreamingResponse(self._marketing.emails)
 
     @cached_property
-    def events(self) -> EventsResourceWithStreamingResponse:
-        return EventsResourceWithStreamingResponse(self._marketing.events)
+    def marketing_events(self) -> MarketingEventsResourceWithStreamingResponse:
+        return MarketingEventsResourceWithStreamingResponse(self._marketing.marketing_events)
 
     @cached_property
     def single_send(self) -> SingleSendResourceWithStreamingResponse:
@@ -218,8 +218,8 @@ class AsyncMarketingResourceWithStreamingResponse:
         return AsyncEmailsResourceWithStreamingResponse(self._marketing.emails)
 
     @cached_property
-    def events(self) -> AsyncEventsResourceWithStreamingResponse:
-        return AsyncEventsResourceWithStreamingResponse(self._marketing.events)
+    def marketing_events(self) -> AsyncMarketingEventsResourceWithStreamingResponse:
+        return AsyncMarketingEventsResourceWithStreamingResponse(self._marketing.marketing_events)
 
     @cached_property
     def single_send(self) -> AsyncSingleSendResourceWithStreamingResponse:

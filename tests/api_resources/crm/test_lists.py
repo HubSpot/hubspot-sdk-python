@@ -1063,7 +1063,6 @@ class TestLists:
     @parametrize
     def test_method_list_by_search(self, client: Hubspot) -> None:
         list_ = client.crm.lists.list_by_search(
-            additional_properties=["string"],
             list_ids=["string"],
             offset=0,
             processing_types=["string"],
@@ -1074,10 +1073,10 @@ class TestLists:
     @parametrize
     def test_method_list_by_search_with_all_params(self, client: Hubspot) -> None:
         list_ = client.crm.lists.list_by_search(
-            additional_properties=["string"],
             list_ids=["string"],
             offset=0,
             processing_types=["string"],
+            additional_filter_properties=["string"],
             count=0,
             object_type_id="objectTypeId",
             query="query",
@@ -1089,7 +1088,6 @@ class TestLists:
     @parametrize
     def test_raw_response_list_by_search(self, client: Hubspot) -> None:
         response = client.crm.lists.with_raw_response.list_by_search(
-            additional_properties=["string"],
             list_ids=["string"],
             offset=0,
             processing_types=["string"],
@@ -1104,7 +1102,6 @@ class TestLists:
     @parametrize
     def test_streaming_response_list_by_search(self, client: Hubspot) -> None:
         with client.crm.lists.with_streaming_response.list_by_search(
-            additional_properties=["string"],
             list_ids=["string"],
             offset=0,
             processing_types=["string"],
@@ -3586,7 +3583,6 @@ class TestAsyncLists:
     @parametrize
     async def test_method_list_by_search(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.list_by_search(
-            additional_properties=["string"],
             list_ids=["string"],
             offset=0,
             processing_types=["string"],
@@ -3597,10 +3593,10 @@ class TestAsyncLists:
     @parametrize
     async def test_method_list_by_search_with_all_params(self, async_client: AsyncHubspot) -> None:
         list_ = await async_client.crm.lists.list_by_search(
-            additional_properties=["string"],
             list_ids=["string"],
             offset=0,
             processing_types=["string"],
+            additional_filter_properties=["string"],
             count=0,
             object_type_id="objectTypeId",
             query="query",
@@ -3612,7 +3608,6 @@ class TestAsyncLists:
     @parametrize
     async def test_raw_response_list_by_search(self, async_client: AsyncHubspot) -> None:
         response = await async_client.crm.lists.with_raw_response.list_by_search(
-            additional_properties=["string"],
             list_ids=["string"],
             offset=0,
             processing_types=["string"],
@@ -3627,7 +3622,6 @@ class TestAsyncLists:
     @parametrize
     async def test_streaming_response_list_by_search(self, async_client: AsyncHubspot) -> None:
         async with async_client.crm.lists.with_streaming_response.list_by_search(
-            additional_properties=["string"],
             list_ids=["string"],
             offset=0,
             processing_types=["string"],

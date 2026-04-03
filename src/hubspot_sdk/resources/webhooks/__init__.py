@@ -8,8 +8,22 @@ from .webhooks import (
     WebhooksResourceWithStreamingResponse,
     AsyncWebhooksResourceWithStreamingResponse,
 )
+from .webhook_subscriptions import (
+    WebhookSubscriptionsResource,
+    AsyncWebhookSubscriptionsResource,
+    WebhookSubscriptionsResourceWithRawResponse,
+    AsyncWebhookSubscriptionsResourceWithRawResponse,
+    WebhookSubscriptionsResourceWithStreamingResponse,
+    AsyncWebhookSubscriptionsResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "WebhookSubscriptionsResource",
+    "AsyncWebhookSubscriptionsResource",
+    "WebhookSubscriptionsResourceWithRawResponse",
+    "AsyncWebhookSubscriptionsResourceWithRawResponse",
+    "WebhookSubscriptionsResourceWithStreamingResponse",
+    "AsyncWebhookSubscriptionsResourceWithStreamingResponse",
     "WebhooksResource",
     "AsyncWebhooksResource",
     "WebhooksResourceWithRawResponse",

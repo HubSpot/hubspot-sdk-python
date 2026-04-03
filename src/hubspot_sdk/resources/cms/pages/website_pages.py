@@ -20,7 +20,6 @@ from ...._response import (
 )
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
-from ....types.cms.page import Page
 from ....types.cms.pages import (
     website_page_get_params,
     website_page_list_params,
@@ -32,6 +31,7 @@ from ....types.cms.pages import (
     website_page_update_draft_params,
     website_page_set_new_lang_primary_params,
 )
+from ....types.cms.cms_page import CmsPage
 from ....types.cms.layout_section_param import LayoutSectionParam
 from ....types.cms.public_access_rule_param import PublicAccessRuleParam
 from ....types.cms.content_language_variation_param import ContentLanguageVariationParam
@@ -1035,7 +1035,7 @@ class WebsitePagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """
         Create a new website page.
 
@@ -1250,7 +1250,7 @@ class WebsitePagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     def update(
@@ -2231,7 +2231,7 @@ class WebsitePagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """Partially updates a single website page, specified by its ID.
 
         You only need to
@@ -2456,7 +2456,7 @@ class WebsitePagesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"archived": archived}, website_page_update_params.WebsitePageUpdateParams),
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     def list(
@@ -2479,7 +2479,7 @@ class WebsitePagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[Page]:
+    ) -> SyncPage[CmsPage]:
         """Retrieve all website pages.
 
         Supports paging and filtering. This method would be
@@ -2505,7 +2505,7 @@ class WebsitePagesResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/cms/pages/2026-03/site-pages",
-            page=SyncPage[Page],
+            page=SyncPage[CmsPage],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2528,7 +2528,7 @@ class WebsitePagesResource(SyncAPIResource):
                     website_page_list_params.WebsitePageListParams,
                 ),
             ),
-            model=Page,
+            model=CmsPage,
         )
 
     def delete(
@@ -2583,7 +2583,7 @@ class WebsitePagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """
         Create a copy of an existing website page.
 
@@ -2612,7 +2612,7 @@ class WebsitePagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     def get(
@@ -2627,7 +2627,7 @@ class WebsitePagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """
         Retrieve a website page by its ID.
 
@@ -2659,7 +2659,7 @@ class WebsitePagesResource(SyncAPIResource):
                     website_page_get_params.WebsitePageGetParams,
                 ),
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     def get_draft(
@@ -2672,7 +2672,7 @@ class WebsitePagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """
         Retrieve the full draft version of a website page, specified by its ID.
 
@@ -2692,7 +2692,7 @@ class WebsitePagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     def publish_draft(
@@ -3788,7 +3788,7 @@ class WebsitePagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """Partially update the draft version of a website page, specified by page ID.
 
         You
@@ -4007,7 +4007,7 @@ class WebsitePagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
 
@@ -5007,7 +5007,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """
         Create a new website page.
 
@@ -5222,7 +5222,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     async def update(
@@ -6203,7 +6203,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """Partially updates a single website page, specified by its ID.
 
         You only need to
@@ -6430,7 +6430,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
                     {"archived": archived}, website_page_update_params.WebsitePageUpdateParams
                 ),
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     def list(
@@ -6453,7 +6453,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[Page, AsyncPage[Page]]:
+    ) -> AsyncPaginator[CmsPage, AsyncPage[CmsPage]]:
         """Retrieve all website pages.
 
         Supports paging and filtering. This method would be
@@ -6479,7 +6479,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/cms/pages/2026-03/site-pages",
-            page=AsyncPage[Page],
+            page=AsyncPage[CmsPage],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -6502,7 +6502,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
                     website_page_list_params.WebsitePageListParams,
                 ),
             ),
-            model=Page,
+            model=CmsPage,
         )
 
     async def delete(
@@ -6559,7 +6559,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """
         Create a copy of an existing website page.
 
@@ -6588,7 +6588,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     async def get(
@@ -6603,7 +6603,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """
         Retrieve a website page by its ID.
 
@@ -6635,7 +6635,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
                     website_page_get_params.WebsitePageGetParams,
                 ),
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     async def get_draft(
@@ -6648,7 +6648,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """
         Retrieve the full draft version of a website page, specified by its ID.
 
@@ -6668,7 +6668,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
     async def publish_draft(
@@ -7764,7 +7764,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Page:
+    ) -> CmsPage:
         """Partially update the draft version of a website page, specified by page ID.
 
         You
@@ -7983,7 +7983,7 @@ class AsyncWebsitePagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Page,
+            cast_to=CmsPage,
         )
 
 

@@ -779,10 +779,10 @@ class ListsResource(SyncAPIResource):
     def list_by_search(
         self,
         *,
-        additional_properties: SequenceNotStr[str],
         list_ids: SequenceNotStr[str],
         offset: int,
         processing_types: SequenceNotStr[str],
+        additional_filter_properties: SequenceNotStr[str] | Omit = omit,
         count: int | Omit = omit,
         object_type_id: str | Omit = omit,
         query: str | Omit = omit,
@@ -794,17 +794,10 @@ class ListsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ListSearchResponse:
-        """
-        Args:
-          additional_properties: The property names of any additional list properties to include in the response.
-              Properties that do not exist or that are empty for a particular list are not
-              included in the response.
+        """Args:
+          list_ids: ILS list ids to be included in search results.
 
-              By default, all requests will fetch the following properties for each list:
-              `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
-              `hs_folder_name`, and `hs_list_reference_count`.
-
-          list_ids: ILS list ids to be included in search results. If not specified, all lists
+        If not specified, all lists
               matching other criteria will be included
 
           offset: Value used to paginate through lists. The `offset` provided in the response can
@@ -813,6 +806,14 @@ class ListsResource(SyncAPIResource):
 
           processing_types: List processing types to be included in search results. If not specified, all
               lists with all processing types will be included.
+
+          additional_filter_properties: The property names of any additional list properties to include in the response.
+              Properties that do not exist or that are empty for a particular list are not
+              included in the response.
+
+              By default, all requests will fetch the following properties for each list:
+              `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
+              `hs_folder_name`, and `hs_list_reference_count`.
 
           count: The number of lists to include in the response. Defaults to `20` if no value is
               provided. The max `count` is `500`.
@@ -834,10 +835,10 @@ class ListsResource(SyncAPIResource):
             "/crm/lists/2026-03/search",
             body=maybe_transform(
                 {
-                    "additional_properties": additional_properties,
                     "list_ids": list_ids,
                     "offset": offset,
                     "processing_types": processing_types,
+                    "additional_filter_properties": additional_filter_properties,
                     "count": count,
                     "object_type_id": object_type_id,
                     "query": query,
@@ -2072,10 +2073,10 @@ class AsyncListsResource(AsyncAPIResource):
     async def list_by_search(
         self,
         *,
-        additional_properties: SequenceNotStr[str],
         list_ids: SequenceNotStr[str],
         offset: int,
         processing_types: SequenceNotStr[str],
+        additional_filter_properties: SequenceNotStr[str] | Omit = omit,
         count: int | Omit = omit,
         object_type_id: str | Omit = omit,
         query: str | Omit = omit,
@@ -2087,17 +2088,10 @@ class AsyncListsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ListSearchResponse:
-        """
-        Args:
-          additional_properties: The property names of any additional list properties to include in the response.
-              Properties that do not exist or that are empty for a particular list are not
-              included in the response.
+        """Args:
+          list_ids: ILS list ids to be included in search results.
 
-              By default, all requests will fetch the following properties for each list:
-              `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
-              `hs_folder_name`, and `hs_list_reference_count`.
-
-          list_ids: ILS list ids to be included in search results. If not specified, all lists
+        If not specified, all lists
               matching other criteria will be included
 
           offset: Value used to paginate through lists. The `offset` provided in the response can
@@ -2106,6 +2100,14 @@ class AsyncListsResource(AsyncAPIResource):
 
           processing_types: List processing types to be included in search results. If not specified, all
               lists with all processing types will be included.
+
+          additional_filter_properties: The property names of any additional list properties to include in the response.
+              Properties that do not exist or that are empty for a particular list are not
+              included in the response.
+
+              By default, all requests will fetch the following properties for each list:
+              `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`,
+              `hs_folder_name`, and `hs_list_reference_count`.
 
           count: The number of lists to include in the response. Defaults to `20` if no value is
               provided. The max `count` is `500`.
@@ -2127,10 +2129,10 @@ class AsyncListsResource(AsyncAPIResource):
             "/crm/lists/2026-03/search",
             body=await async_maybe_transform(
                 {
-                    "additional_properties": additional_properties,
                     "list_ids": list_ids,
                     "offset": offset,
                     "processing_types": processing_types,
+                    "additional_filter_properties": additional_filter_properties,
                     "count": count,
                     "object_type_id": object_type_id,
                     "query": query,

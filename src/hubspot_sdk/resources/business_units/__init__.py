@@ -8,8 +8,22 @@ from .business_units import (
     BusinessUnitsResourceWithStreamingResponse,
     AsyncBusinessUnitsResourceWithStreamingResponse,
 )
+from .business_unit_entries import (
+    BusinessUnitEntriesResource,
+    AsyncBusinessUnitEntriesResource,
+    BusinessUnitEntriesResourceWithRawResponse,
+    AsyncBusinessUnitEntriesResourceWithRawResponse,
+    BusinessUnitEntriesResourceWithStreamingResponse,
+    AsyncBusinessUnitEntriesResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "BusinessUnitEntriesResource",
+    "AsyncBusinessUnitEntriesResource",
+    "BusinessUnitEntriesResourceWithRawResponse",
+    "AsyncBusinessUnitEntriesResourceWithRawResponse",
+    "BusinessUnitEntriesResourceWithStreamingResponse",
+    "AsyncBusinessUnitEntriesResourceWithStreamingResponse",
     "BusinessUnitsResource",
     "AsyncBusinessUnitsResource",
     "BusinessUnitsResourceWithRawResponse",

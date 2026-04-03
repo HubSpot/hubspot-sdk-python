@@ -11,12 +11,6 @@ __all__ = ["PublicObjectListSearchResult"]
 
 
 class PublicObjectListSearchResult(BaseModel):
-    additional_properties: Dict[str, str] = FieldInfo(alias="additionalProperties")
-    """
-    The name and value of any additional properties that exist for this list and
-    that were included in the search request.
-    """
-
     list_id: str = FieldInfo(alias="listId")
     """The **ILS ID** of the list."""
 
@@ -34,6 +28,12 @@ class PublicObjectListSearchResult(BaseModel):
 
     processing_type: str = FieldInfo(alias="processingType")
     """The processing type of the list."""
+
+    additional_filter_properties: Optional[Dict[str, str]] = None
+    """
+    The name and value of any additional properties that exist for this list and
+    that were included in the search request.
+    """
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """The time when the list was created."""

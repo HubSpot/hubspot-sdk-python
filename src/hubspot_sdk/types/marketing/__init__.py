@@ -12,7 +12,6 @@ from .email_get_params import EmailGetParams as EmailGetParams
 from .metrics_counters import MetricsCounters as MetricsCounters
 from .contact_reference import ContactReference as ContactReference
 from .email_list_params import EmailListParams as EmailListParams
-from .event_list_params import EventListParams as EventListParams
 from .public_font_style import PublicFontStyle as PublicFontStyle
 from .public_spend_item import PublicSpendItem as PublicSpendItem
 from .email_clone_params import EmailCloneParams as EmailCloneParams
@@ -23,8 +22,6 @@ from .contact_association import ContactAssociation as ContactAssociation
 from .email_create_params import EmailCreateParams as EmailCreateParams
 from .email_delete_params import EmailDeleteParams as EmailDeleteParams
 from .email_update_params import EmailUpdateParams as EmailUpdateParams
-from .event_create_params import EventCreateParams as EventCreateParams
-from .event_update_params import EventUpdateParams as EventUpdateParams
 from .smtp_api_token_view import SmtpAPITokenView as SmtpAPITokenView
 from .campaign_list_params import CampaignListParams as CampaignListParams
 from .crm_property_wrapper import CrmPropertyWrapper as CrmPropertyWrapper
@@ -49,9 +46,6 @@ from .email_statistic_interval import EmailStatisticInterval as EmailStatisticIn
 from .participation_properties import ParticipationProperties as ParticipationProperties
 from .public_rss_email_details import PublicRssEmailDetails as PublicRssEmailDetails
 from .email_update_draft_params import EmailUpdateDraftParams as EmailUpdateDraftParams
-from .event_delete_batch_params import EventDeleteBatchParams as EventDeleteBatchParams
-from .event_update_batch_params import EventUpdateBatchParams as EventUpdateBatchParams
-from .event_upsert_batch_params import EventUpsertBatchParams as EventUpsertBatchParams
 from .public_email_from_details import PublicEmailFromDetails as PublicEmailFromDetails
 from .public_webversion_details import PublicWebversionDetails as PublicWebversionDetails
 from .single_send_create_params import SingleSendCreateParams as SingleSendCreateParams
@@ -62,11 +56,14 @@ from .participation_associations import ParticipationAssociations as Participati
 from .public_email_content_param import PublicEmailContentParam as PublicEmailContentParam
 from .email_list_revisions_params import EmailListRevisionsParams as EmailListRevisionsParams
 from .marketing_event_association import MarketingEventAssociation as MarketingEventAssociation
+from .marketing_event_list_params import MarketingEventListParams as MarketingEventListParams
 from .public_campaign_input_param import PublicCampaignInputParam as PublicCampaignInputParam
 from .public_campaign_with_assets import PublicCampaignWithAssets as PublicCampaignWithAssets
 from .public_email_style_settings import PublicEmailStyleSettings as PublicEmailStyleSettings
 from .public_button_style_settings import PublicButtonStyleSettings as PublicButtonStyleSettings
 from .public_email_testing_details import PublicEmailTestingDetails as PublicEmailTestingDetails
+from .marketing_event_create_params import MarketingEventCreateParams as MarketingEventCreateParams
+from .marketing_event_update_params import MarketingEventUpdateParams as MarketingEventUpdateParams
 from .public_divider_style_settings import PublicDividerStyleSettings as PublicDividerStyleSettings
 from .public_email_recipients_param import PublicEmailRecipientsParam as PublicEmailRecipientsParam
 from .public_email_to_details_param import PublicEmailToDetailsParam as PublicEmailToDetailsParam
@@ -86,11 +83,13 @@ from .email_get_ab_test_variation_params import EmailGetAbTestVariationParams as
 from .public_button_style_settings_param import PublicButtonStyleSettingsParam as PublicButtonStyleSettingsParam
 from .public_campaign_delete_input_param import PublicCampaignDeleteInputParam as PublicCampaignDeleteInputParam
 from .public_email_testing_details_param import PublicEmailTestingDetailsParam as PublicEmailTestingDetailsParam
+from .marketing_event_delete_batch_params import MarketingEventDeleteBatchParams as MarketingEventDeleteBatchParams
+from .marketing_event_update_batch_params import MarketingEventUpdateBatchParams as MarketingEventUpdateBatchParams
+from .marketing_event_upsert_batch_params import MarketingEventUpsertBatchParams as MarketingEventUpsertBatchParams
 from .public_divider_style_settings_param import PublicDividerStyleSettingsParam as PublicDividerStyleSettingsParam
 from .marketing_event_identifiers_response import MarketingEventIdentifiersResponse as MarketingEventIdentifiersResponse
 from .marketing_event_public_read_response import MarketingEventPublicReadResponse as MarketingEventPublicReadResponse
 from .email_create_ab_test_variation_params import EmailCreateAbTestVariationParams as EmailCreateAbTestVariationParams
-from .event_get_by_external_event_id_params import EventGetByExternalEventIDParams as EventGetByExternalEventIDParams
 from .marketing_event_create_request_params import (
     MarketingEventCreateRequestParams as MarketingEventCreateRequestParams,
 )
@@ -115,18 +114,6 @@ from .public_email_subscription_details_param import (
 from .batch_response_subscriber_email_response import (
     BatchResponseSubscriberEmailResponse as BatchResponseSubscriberEmailResponse,
 )
-from .event_delete_by_external_event_id_params import (
-    EventDeleteByExternalEventIDParams as EventDeleteByExternalEventIDParams,
-)
-from .event_search_by_external_event_id_params import (
-    EventSearchByExternalEventIDParams as EventSearchByExternalEventIDParams,
-)
-from .event_update_by_external_event_id_params import (
-    EventUpdateByExternalEventIDParams as EventUpdateByExternalEventIDParams,
-)
-from .event_upsert_by_external_event_id_params import (
-    EventUpsertByExternalEventIDParams as EventUpsertByExternalEventIDParams,
-)
 from .collection_response_public_campaign_asset import (
     CollectionResponsePublicCampaignAsset as CollectionResponsePublicCampaignAsset,
 )
@@ -145,11 +132,23 @@ from .collection_response_with_total_public_email import (
 from .collection_response_with_total_public_campaign import (
     CollectionResponseWithTotalPublicCampaign as CollectionResponseWithTotalPublicCampaign,
 )
-from .event_delete_batch_by_external_event_id_params import (
-    EventDeleteBatchByExternalEventIDParams as EventDeleteBatchByExternalEventIDParams,
+from .marketing_event_get_by_external_event_id_params import (
+    MarketingEventGetByExternalEventIDParams as MarketingEventGetByExternalEventIDParams,
 )
 from .marketing_event_external_unique_identifier_param import (
     MarketingEventExternalUniqueIdentifierParam as MarketingEventExternalUniqueIdentifierParam,
+)
+from .marketing_event_delete_by_external_event_id_params import (
+    MarketingEventDeleteByExternalEventIDParams as MarketingEventDeleteByExternalEventIDParams,
+)
+from .marketing_event_search_by_external_event_id_params import (
+    MarketingEventSearchByExternalEventIDParams as MarketingEventSearchByExternalEventIDParams,
+)
+from .marketing_event_update_by_external_event_id_params import (
+    MarketingEventUpdateByExternalEventIDParams as MarketingEventUpdateByExternalEventIDParams,
+)
+from .marketing_event_upsert_by_external_event_id_params import (
+    MarketingEventUpsertByExternalEventIDParams as MarketingEventUpsertByExternalEventIDParams,
 )
 from .collection_response_with_total_public_email_version import (
     CollectionResponseWithTotalPublicEmailVersion as CollectionResponseWithTotalPublicEmailVersion,
@@ -177,6 +176,9 @@ from .collection_response_with_total_email_statistic_interval import (
 )
 from .collection_response_public_campaign_asset_forward_paging import (
     CollectionResponsePublicCampaignAssetForwardPaging as CollectionResponsePublicCampaignAssetForwardPaging,
+)
+from .marketing_event_delete_batch_by_external_event_id_params import (
+    MarketingEventDeleteBatchByExternalEventIDParams as MarketingEventDeleteBatchByExternalEventIDParams,
 )
 from .batch_response_marketing_event_public_default_response_v2 import (
     BatchResponseMarketingEventPublicDefaultResponseV2 as BatchResponseMarketingEventPublicDefaultResponseV2,

@@ -6,23 +6,25 @@ from .file import File as File
 from .folder import Folder as Folder
 from .file_stat import FileStat as FileStat
 from .signed_url import SignedURL as SignedURL
-from .file_get_params import FileGetParams as FileGetParams
-from .file_create_params import FileCreateParams as FileCreateParams
-from .file_search_params import FileSearchParams as FileSearchParams
-from .file_update_params import FileUpdateParams as FileUpdateParams
-from .file_upload_params import FileUploadParams as FileUploadParams
-from .file_replace_params import FileReplaceParams as FileReplaceParams
 from .file_action_response import FileActionResponse as FileActionResponse
 from .folder_search_params import FolderSearchParams as FolderSearchParams
+from .file_asset_get_params import FileAssetGetParams as FileAssetGetParams
 from .folder_action_response import FolderActionResponse as FolderActionResponse
-from .file_get_by_path_params import FileGetByPathParams as FileGetByPathParams
 from .folder_get_by_id_params import FolderGetByIDParams as FolderGetByIDParams
 from .collection_response_file import CollectionResponseFile as CollectionResponseFile
+from .file_asset_create_params import FileAssetCreateParams as FileAssetCreateParams
+from .file_asset_search_params import FileAssetSearchParams as FileAssetSearchParams
+from .file_asset_update_params import FileAssetUpdateParams as FileAssetUpdateParams
+from .file_asset_upload_params import FileAssetUploadParams as FileAssetUploadParams
+from .file_asset_replace_params import FileAssetReplaceParams as FileAssetReplaceParams
 from .folder_get_by_path_params import FolderGetByPathParams as FolderGetByPathParams
 from .collection_response_folder import CollectionResponseFolder as CollectionResponseFolder
-from .file_get_signed_url_params import FileGetSignedURLParams as FileGetSignedURLParams
 from .folder_update_by_id_params import FolderUpdateByIDParams as FolderUpdateByIDParams
 from .folder_update_task_locator import FolderUpdateTaskLocator as FolderUpdateTaskLocator
 from .import_from_url_task_locator import ImportFromURLTaskLocator as ImportFromURLTaskLocator
+from .file_asset_get_by_path_params import FileAssetGetByPathParams as FileAssetGetByPathParams
+from .file_asset_get_signed_url_params import FileAssetGetSignedURLParams as FileAssetGetSignedURLParams
 from .folder_update_async_by_id_params import FolderUpdateAsyncByIDParams as FolderUpdateAsyncByIDParams
-from .file_import_from_url_async_params import FileImportFromURLAsyncParams as FileImportFromURLAsyncParams
+from .file_asset_import_from_url_async_params import (
+    FileAssetImportFromURLAsyncParams as FileAssetImportFromURLAsyncParams,
+)
