@@ -30,7 +30,7 @@ from ....types.cms.pages import (
     landing_page_schedule_params,
     landing_page_update_draft_params,
 )
-from ....types.cms.cms_page import CmsPage
+from ....types.cms.page_data import PageData
 from ....types.cms.layout_section_param import LayoutSectionParam
 from ....types.cms.public_access_rule_param import PublicAccessRuleParam
 from ....types.cms.content_language_variation_param import ContentLanguageVariationParam
@@ -1034,7 +1034,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Create a new landing page.
 
@@ -1249,7 +1249,7 @@ class LandingPagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     def update(
@@ -2230,7 +2230,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Sparse updates a single Landing Page object identified by the id in the path.
         You only need to specify the column values that you are modifying.
@@ -2454,7 +2454,7 @@ class LandingPagesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"archived": archived}, landing_page_update_params.LandingPageUpdateParams),
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     def list(
@@ -2477,7 +2477,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[CmsPage]:
+    ) -> SyncPage[PageData]:
         """Get the list of landing pages.
 
         Supports paging and filtering. This method would
@@ -2503,7 +2503,7 @@ class LandingPagesResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/cms/pages/2026-03/landing-pages",
-            page=SyncPage[CmsPage],
+            page=SyncPage[PageData],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2526,7 +2526,7 @@ class LandingPagesResource(SyncAPIResource):
                     landing_page_list_params.LandingPageListParams,
                 ),
             ),
-            model=CmsPage,
+            model=PageData,
         )
 
     def delete(
@@ -2581,7 +2581,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Create a copy of an existing landing page.
 
@@ -2610,7 +2610,7 @@ class LandingPagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     def get(
@@ -2625,7 +2625,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Retrieve a landing page, specified by its ID.
 
@@ -2657,7 +2657,7 @@ class LandingPagesResource(SyncAPIResource):
                     landing_page_get_params.LandingPageGetParams,
                 ),
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     def get_draft(
@@ -2670,7 +2670,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Retrieve the full draft version of a landing page, specified by page ID.
 
@@ -2690,7 +2690,7 @@ class LandingPagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     def push_draft_live(
@@ -3783,7 +3783,7 @@ class LandingPagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Partially updates the draft version of a single landing page, specified by its
         ID. You only need to specify the column values that you are modifying.
@@ -4001,7 +4001,7 @@ class LandingPagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
 
@@ -5001,7 +5001,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Create a new landing page.
 
@@ -5216,7 +5216,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     async def update(
@@ -6197,7 +6197,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Sparse updates a single Landing Page object identified by the id in the path.
         You only need to specify the column values that you are modifying.
@@ -6423,7 +6423,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
                     {"archived": archived}, landing_page_update_params.LandingPageUpdateParams
                 ),
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     def list(
@@ -6446,7 +6446,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[CmsPage, AsyncPage[CmsPage]]:
+    ) -> AsyncPaginator[PageData, AsyncPage[PageData]]:
         """Get the list of landing pages.
 
         Supports paging and filtering. This method would
@@ -6472,7 +6472,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/cms/pages/2026-03/landing-pages",
-            page=AsyncPage[CmsPage],
+            page=AsyncPage[PageData],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -6495,7 +6495,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
                     landing_page_list_params.LandingPageListParams,
                 ),
             ),
-            model=CmsPage,
+            model=PageData,
         )
 
     async def delete(
@@ -6552,7 +6552,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Create a copy of an existing landing page.
 
@@ -6581,7 +6581,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     async def get(
@@ -6596,7 +6596,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Retrieve a landing page, specified by its ID.
 
@@ -6628,7 +6628,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
                     landing_page_get_params.LandingPageGetParams,
                 ),
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     async def get_draft(
@@ -6641,7 +6641,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Retrieve the full draft version of a landing page, specified by page ID.
 
@@ -6661,7 +6661,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     async def push_draft_live(
@@ -7754,7 +7754,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Partially updates the draft version of a single landing page, specified by its
         ID. You only need to specify the column values that you are modifying.
@@ -7972,7 +7972,7 @@ class AsyncLandingPagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
 

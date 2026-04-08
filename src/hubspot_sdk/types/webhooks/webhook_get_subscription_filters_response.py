@@ -5,6 +5,6 @@ from typing_extensions import TypeAlias
 
 from .filter_response import FilterResponse
 
-__all__ = ["WebhookSubscriptionGetSubscriptionFilterForSubscriptionResponse"]
+__all__ = ["WebhookGetSubscriptionFiltersResponse"]
 
-WebhookSubscriptionGetSubscriptionFilterForSubscriptionResponse: TypeAlias = List[FilterResponse]
+WebhookGetSubscriptionFiltersResponse: TypeAlias = List[FilterResponse]

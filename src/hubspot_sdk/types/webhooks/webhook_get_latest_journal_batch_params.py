@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Annotated, TypedDict
 
-from ...._utils import PropertyInfo
+from ..._utils import PropertyInfo
 
-__all__ = ["BatchGetLocalLatestParams"]
+__all__ = ["WebhookGetLatestJournalBatchParams"]
 
 
-class BatchGetLocalLatestParams(TypedDict, total=False):
+class WebhookGetLatestJournalBatchParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]

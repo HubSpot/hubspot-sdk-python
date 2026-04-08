@@ -17,7 +17,7 @@ class BatchResponsePage(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
     """Time of batch operation completion."""
 
-    results: List["CmsPage"]
+    results: List["PageData"]
     """Results of batch operation."""
 
     started_at: datetime = FieldInfo(alias="startedAt")
@@ -33,4 +33,4 @@ class BatchResponsePage(BaseModel):
     """Time of batch operation request."""
 
 
-from .cms_page import CmsPage
+from .page_data import PageData

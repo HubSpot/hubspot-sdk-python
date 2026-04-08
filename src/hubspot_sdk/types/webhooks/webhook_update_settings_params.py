@@ -7,10 +7,10 @@ from typing_extensions import Required, Annotated, TypedDict
 from ..._utils import PropertyInfo
 from .throttling_settings_param import ThrottlingSettingsParam
 
-__all__ = ["WebhookSubscriptionUpdateSettingsParams"]
+__all__ = ["WebhookUpdateSettingsParams"]
 
 
-class WebhookSubscriptionUpdateSettingsParams(TypedDict, total=False):
+class WebhookUpdateSettingsParams(TypedDict, total=False):
     target_url: Required[Annotated[str, PropertyInfo(alias="targetUrl")]]
     """
     A publicly available URL for Hubspot to call where event payloads will be

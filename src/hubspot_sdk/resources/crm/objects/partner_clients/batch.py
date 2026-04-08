@@ -7,7 +7,7 @@ from typing import Iterable
 import httpx
 
 from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ....._utils import path_template, maybe_transform, async_maybe_transform
+from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -21,7 +21,6 @@ from .....types.crm.objects.partner_clients import batch_get_params, batch_updat
 from .....types.crm.simple_public_object_id_param import SimplePublicObjectIDParam
 from .....types.crm.batch_response_simple_public_object import BatchResponseSimplePublicObject
 from .....types.crm.simple_public_object_batch_input_param import SimplePublicObjectBatchInputParam
-from .....types.crm.batch_response_public_default_association import BatchResponsePublicDefaultAssociation
 
 __all__ = ["BatchResource", "AsyncBatchResource"]
 
@@ -79,52 +78,6 @@ class BatchResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BatchResponseSimplePublicObject,
-        )
-
-    def create_default_association(
-        self,
-        to_object_id: str,
-        *,
-        from_object_type: str,
-        from_object_id: str,
-        to_object_type: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponsePublicDefaultAssociation:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not from_object_type:
-            raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
-        if not from_object_id:
-            raise ValueError(f"Expected a non-empty value for `from_object_id` but received {from_object_id!r}")
-        if not to_object_type:
-            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
-        if not to_object_id:
-            raise ValueError(f"Expected a non-empty value for `to_object_id` but received {to_object_id!r}")
-        return self._put(
-            path_template(
-                "/crm/objects/2026-03/{from_object_type}/{from_object_id}/associations/default/{to_object_type}/{to_object_id}",
-                from_object_type=from_object_type,
-                from_object_id=from_object_id,
-                to_object_type=to_object_type,
-                to_object_id=to_object_id,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BatchResponsePublicDefaultAssociation,
         )
 
     def get(
@@ -242,52 +195,6 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=BatchResponseSimplePublicObject,
         )
 
-    async def create_default_association(
-        self,
-        to_object_id: str,
-        *,
-        from_object_type: str,
-        from_object_id: str,
-        to_object_type: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponsePublicDefaultAssociation:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not from_object_type:
-            raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
-        if not from_object_id:
-            raise ValueError(f"Expected a non-empty value for `from_object_id` but received {from_object_id!r}")
-        if not to_object_type:
-            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
-        if not to_object_id:
-            raise ValueError(f"Expected a non-empty value for `to_object_id` but received {to_object_id!r}")
-        return await self._put(
-            path_template(
-                "/crm/objects/2026-03/{from_object_type}/{from_object_id}/associations/default/{to_object_type}/{to_object_id}",
-                from_object_type=from_object_type,
-                from_object_id=from_object_id,
-                to_object_type=to_object_type,
-                to_object_id=to_object_id,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BatchResponsePublicDefaultAssociation,
-        )
-
     async def get(
         self,
         *,
@@ -355,9 +262,6 @@ class BatchResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             batch.update,
         )
-        self.create_default_association = to_raw_response_wrapper(
-            batch.create_default_association,
-        )
         self.get = to_raw_response_wrapper(
             batch.get,
         )
@@ -369,9 +273,6 @@ class AsyncBatchResourceWithRawResponse:
 
         self.update = async_to_raw_response_wrapper(
             batch.update,
-        )
-        self.create_default_association = async_to_raw_response_wrapper(
-            batch.create_default_association,
         )
         self.get = async_to_raw_response_wrapper(
             batch.get,
@@ -385,9 +286,6 @@ class BatchResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             batch.update,
         )
-        self.create_default_association = to_streamed_response_wrapper(
-            batch.create_default_association,
-        )
         self.get = to_streamed_response_wrapper(
             batch.get,
         )
@@ -399,9 +297,6 @@ class AsyncBatchResourceWithStreamingResponse:
 
         self.update = async_to_streamed_response_wrapper(
             batch.update,
-        )
-        self.create_default_association = async_to_streamed_response_wrapper(
-            batch.create_default_association,
         )
         self.get = async_to_streamed_response_wrapper(
             batch.get,

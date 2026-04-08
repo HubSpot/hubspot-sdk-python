@@ -346,6 +346,10 @@ class ObjectsResource(SyncAPIResource):
         return FeesResource(self._client)
 
     @cached_property
+    def generic_objects(self) -> GenericObjectsResource:
+        return GenericObjectsResource(self._client)
+
+    @cached_property
     def goal_targets(self) -> GoalTargetsResource:
         return GoalTargetsResource(self._client)
 
@@ -372,10 +376,6 @@ class ObjectsResource(SyncAPIResource):
     @cached_property
     def notes(self) -> NotesResource:
         return NotesResource(self._client)
-
-    @cached_property
-    def generic_objects(self) -> GenericObjectsResource:
-        return GenericObjectsResource(self._client)
 
     @cached_property
     def orders(self) -> OrdersResource:
@@ -507,6 +507,10 @@ class AsyncObjectsResource(AsyncAPIResource):
         return AsyncFeesResource(self._client)
 
     @cached_property
+    def generic_objects(self) -> AsyncGenericObjectsResource:
+        return AsyncGenericObjectsResource(self._client)
+
+    @cached_property
     def goal_targets(self) -> AsyncGoalTargetsResource:
         return AsyncGoalTargetsResource(self._client)
 
@@ -533,10 +537,6 @@ class AsyncObjectsResource(AsyncAPIResource):
     @cached_property
     def notes(self) -> AsyncNotesResource:
         return AsyncNotesResource(self._client)
-
-    @cached_property
-    def generic_objects(self) -> AsyncGenericObjectsResource:
-        return AsyncGenericObjectsResource(self._client)
 
     @cached_property
     def orders(self) -> AsyncOrdersResource:
@@ -671,6 +671,10 @@ class ObjectsResourceWithRawResponse:
         return FeesResourceWithRawResponse(self._objects.fees)
 
     @cached_property
+    def generic_objects(self) -> GenericObjectsResourceWithRawResponse:
+        return GenericObjectsResourceWithRawResponse(self._objects.generic_objects)
+
+    @cached_property
     def goal_targets(self) -> GoalTargetsResourceWithRawResponse:
         return GoalTargetsResourceWithRawResponse(self._objects.goal_targets)
 
@@ -697,10 +701,6 @@ class ObjectsResourceWithRawResponse:
     @cached_property
     def notes(self) -> NotesResourceWithRawResponse:
         return NotesResourceWithRawResponse(self._objects.notes)
-
-    @cached_property
-    def generic_objects(self) -> GenericObjectsResourceWithRawResponse:
-        return GenericObjectsResourceWithRawResponse(self._objects.generic_objects)
 
     @cached_property
     def orders(self) -> OrdersResourceWithRawResponse:
@@ -816,6 +816,10 @@ class AsyncObjectsResourceWithRawResponse:
         return AsyncFeesResourceWithRawResponse(self._objects.fees)
 
     @cached_property
+    def generic_objects(self) -> AsyncGenericObjectsResourceWithRawResponse:
+        return AsyncGenericObjectsResourceWithRawResponse(self._objects.generic_objects)
+
+    @cached_property
     def goal_targets(self) -> AsyncGoalTargetsResourceWithRawResponse:
         return AsyncGoalTargetsResourceWithRawResponse(self._objects.goal_targets)
 
@@ -842,10 +846,6 @@ class AsyncObjectsResourceWithRawResponse:
     @cached_property
     def notes(self) -> AsyncNotesResourceWithRawResponse:
         return AsyncNotesResourceWithRawResponse(self._objects.notes)
-
-    @cached_property
-    def generic_objects(self) -> AsyncGenericObjectsResourceWithRawResponse:
-        return AsyncGenericObjectsResourceWithRawResponse(self._objects.generic_objects)
 
     @cached_property
     def orders(self) -> AsyncOrdersResourceWithRawResponse:
@@ -961,6 +961,10 @@ class ObjectsResourceWithStreamingResponse:
         return FeesResourceWithStreamingResponse(self._objects.fees)
 
     @cached_property
+    def generic_objects(self) -> GenericObjectsResourceWithStreamingResponse:
+        return GenericObjectsResourceWithStreamingResponse(self._objects.generic_objects)
+
+    @cached_property
     def goal_targets(self) -> GoalTargetsResourceWithStreamingResponse:
         return GoalTargetsResourceWithStreamingResponse(self._objects.goal_targets)
 
@@ -987,10 +991,6 @@ class ObjectsResourceWithStreamingResponse:
     @cached_property
     def notes(self) -> NotesResourceWithStreamingResponse:
         return NotesResourceWithStreamingResponse(self._objects.notes)
-
-    @cached_property
-    def generic_objects(self) -> GenericObjectsResourceWithStreamingResponse:
-        return GenericObjectsResourceWithStreamingResponse(self._objects.generic_objects)
 
     @cached_property
     def orders(self) -> OrdersResourceWithStreamingResponse:
@@ -1106,6 +1106,10 @@ class AsyncObjectsResourceWithStreamingResponse:
         return AsyncFeesResourceWithStreamingResponse(self._objects.fees)
 
     @cached_property
+    def generic_objects(self) -> AsyncGenericObjectsResourceWithStreamingResponse:
+        return AsyncGenericObjectsResourceWithStreamingResponse(self._objects.generic_objects)
+
+    @cached_property
     def goal_targets(self) -> AsyncGoalTargetsResourceWithStreamingResponse:
         return AsyncGoalTargetsResourceWithStreamingResponse(self._objects.goal_targets)
 
@@ -1132,10 +1136,6 @@ class AsyncObjectsResourceWithStreamingResponse:
     @cached_property
     def notes(self) -> AsyncNotesResourceWithStreamingResponse:
         return AsyncNotesResourceWithStreamingResponse(self._objects.notes)
-
-    @cached_property
-    def generic_objects(self) -> AsyncGenericObjectsResourceWithStreamingResponse:
-        return AsyncGenericObjectsResourceWithStreamingResponse(self._objects.generic_objects)
 
     @cached_property
     def orders(self) -> AsyncOrdersResourceWithStreamingResponse:

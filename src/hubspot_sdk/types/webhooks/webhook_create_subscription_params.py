@@ -6,10 +6,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["WebhookSubscriptionCreateSubscriptionParams"]
+__all__ = ["WebhookCreateSubscriptionParams"]
 
 
-class WebhookSubscriptionCreateSubscriptionParams(TypedDict, total=False):
+class WebhookCreateSubscriptionParams(TypedDict, total=False):
     active: Required[bool]
     """Determines if the subscription is active or paused. Defaults to false."""
 

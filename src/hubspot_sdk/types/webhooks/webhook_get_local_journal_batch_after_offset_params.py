@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["WebhookSubscriptionGetJournalLatestParams"]
+__all__ = ["WebhookGetLocalJournalBatchAfterOffsetParams"]
 
 
-class WebhookSubscriptionGetJournalLatestParams(TypedDict, total=False):
+class WebhookGetLocalJournalBatchAfterOffsetParams(TypedDict, total=False):
+    offset: Required[str]
+
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]

@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from typing_extensions import Required, Annotated, TypedDict
 
-from ...._types import SequenceNotStr
-from ...._utils import PropertyInfo
+from ..._types import SequenceNotStr
+from ..._utils import PropertyInfo
 
-__all__ = ["BatchGetLocalParams"]
+__all__ = ["WebhookGetJournalBatchParams"]
 
 
-class BatchGetLocalParams(TypedDict, total=False):
+class WebhookGetJournalBatchParams(TypedDict, total=False):
     inputs: Required[SequenceNotStr[str]]
     """Strings to input."""
 

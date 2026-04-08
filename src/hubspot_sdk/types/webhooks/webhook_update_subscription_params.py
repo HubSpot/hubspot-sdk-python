@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["WebhookSubscriptionUpdateSubscriptionParams"]
+__all__ = ["WebhookUpdateSubscriptionParams"]
 
 
-class WebhookSubscriptionUpdateSubscriptionParams(TypedDict, total=False):
+class WebhookUpdateSubscriptionParams(TypedDict, total=False):
     app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
     active: bool

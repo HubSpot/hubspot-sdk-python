@@ -6,8 +6,8 @@ from typing_extensions import Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["WebhookSubscriptionGetLocalJournalNextByOffsetParams"]
+__all__ = ["WebhookGetNextJournalAfterOffsetParams"]
 
 
-class WebhookSubscriptionGetLocalJournalNextByOffsetParams(TypedDict, total=False):
+class WebhookGetNextJournalAfterOffsetParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
