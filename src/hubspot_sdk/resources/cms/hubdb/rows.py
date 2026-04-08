@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable
+from typing import Any, Dict, Iterable, cast
 
 import httpx
 
@@ -16,8 +16,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....pagination import SyncPage, AsyncPage
-from ...._base_client import AsyncPaginator, make_request_options
+from ...._base_client import make_request_options
 from ....types.cms.hubdb import (
     row_get_params,
     row_list_params,
@@ -40,6 +39,9 @@ from ....types.cms.hub_db_table_row_v3_request_param import HubDBTableRowV3Reque
 from ....types.cms.batch_response_hub_db_table_row_v3 import BatchResponseHubDBTableRowV3
 from ....types.cms.hub_db_table_row_batch_clone_request_param import HubDBTableRowBatchCloneRequestParam
 from ....types.cms.hub_db_table_row_v3_batch_update_request_param import HubDBTableRowV3BatchUpdateRequestParam
+from ....types.cms.unified_collection_response_with_total_base_hub_db_table_row_v3 import (
+    UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
+)
 
 __all__ = ["RowsResource", "AsyncRowsResource"]
 
@@ -143,7 +145,7 @@ class RowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[object]:
+    ) -> UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3:
         """Returns a set of rows in the published version of the specified table.
 
         Row
@@ -176,27 +178,31 @@ class RowsResource(SyncAPIResource):
         """
         if not table_id_or_name:
             raise ValueError(f"Expected a non-empty value for `table_id_or_name` but received {table_id_or_name!r}")
-        return self._get_api_list(
-            path_template("/cms/hubdb/2026-03/tables/{table_id_or_name}/rows", table_id_or_name=table_id_or_name),
-            page=SyncPage[object],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "limit": limit,
-                        "offset": offset,
-                        "properties": properties,
-                        "sort": sort,
-                    },
-                    row_list_params.RowListParams,
+        return cast(
+            UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
+            self._get(
+                path_template("/cms/hubdb/2026-03/tables/{table_id_or_name}/rows", table_id_or_name=table_id_or_name),
+                options=make_request_options(
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=maybe_transform(
+                        {
+                            "after": after,
+                            "archived": archived,
+                            "limit": limit,
+                            "offset": offset,
+                            "properties": properties,
+                            "sort": sort,
+                        },
+                        row_list_params.RowListParams,
+                    ),
                 ),
+                cast_to=cast(
+                    Any, UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            model=object,
         )
 
     def clone_batch(
@@ -890,7 +896,7 @@ class AsyncRowsResource(AsyncAPIResource):
             cast_to=HubDBTableRowV3,
         )
 
-    def list(
+    async def list(
         self,
         table_id_or_name: str,
         *,
@@ -906,7 +912,7 @@ class AsyncRowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[object, AsyncPage[object]]:
+    ) -> UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3:
         """Returns a set of rows in the published version of the specified table.
 
         Row
@@ -939,27 +945,31 @@ class AsyncRowsResource(AsyncAPIResource):
         """
         if not table_id_or_name:
             raise ValueError(f"Expected a non-empty value for `table_id_or_name` but received {table_id_or_name!r}")
-        return self._get_api_list(
-            path_template("/cms/hubdb/2026-03/tables/{table_id_or_name}/rows", table_id_or_name=table_id_or_name),
-            page=AsyncPage[object],
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "limit": limit,
-                        "offset": offset,
-                        "properties": properties,
-                        "sort": sort,
-                    },
-                    row_list_params.RowListParams,
+        return cast(
+            UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3,
+            await self._get(
+                path_template("/cms/hubdb/2026-03/tables/{table_id_or_name}/rows", table_id_or_name=table_id_or_name),
+                options=make_request_options(
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=await async_maybe_transform(
+                        {
+                            "after": after,
+                            "archived": archived,
+                            "limit": limit,
+                            "offset": offset,
+                            "properties": properties,
+                            "sort": sort,
+                        },
+                        row_list_params.RowListParams,
+                    ),
                 ),
+                cast_to=cast(
+                    Any, UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            model=object,
         )
 
     async def clone_batch(

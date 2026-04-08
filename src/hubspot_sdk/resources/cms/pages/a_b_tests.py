@@ -23,7 +23,7 @@ from ....types.cms.pages import (
     a_b_test_create_site_page_variation_params,
     a_b_test_create_landing_page_variation_params,
 )
-from ....types.cms.cms_page import CmsPage
+from ....types.cms.page_data import PageData
 
 __all__ = ["ABTestsResource", "AsyncABTestsResource"]
 
@@ -59,7 +59,7 @@ class ABTestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Create a new A/B test variation based on the information provided in the request
         body.
@@ -89,7 +89,7 @@ class ABTestsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     def create_site_page_variation(
@@ -103,7 +103,7 @@ class ABTestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Create a new A/B test variation based on the information provided in the request
         body.
@@ -133,7 +133,7 @@ class ABTestsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     def end_landing_page_test(
@@ -344,7 +344,7 @@ class AsyncABTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Create a new A/B test variation based on the information provided in the request
         body.
@@ -374,7 +374,7 @@ class AsyncABTestsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     async def create_site_page_variation(
@@ -388,7 +388,7 @@ class AsyncABTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CmsPage:
+    ) -> PageData:
         """
         Create a new A/B test variation based on the information provided in the request
         body.
@@ -418,7 +418,7 @@ class AsyncABTestsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CmsPage,
+            cast_to=PageData,
         )
 
     async def end_landing_page_test(

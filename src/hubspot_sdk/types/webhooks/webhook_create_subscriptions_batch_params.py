@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Required, TypedDict
 
-from ..subscription_batch_update_request_param import SubscriptionBatchUpdateRequestParam
+from .subscription_batch_update_request_param import SubscriptionBatchUpdateRequestParam
 
-__all__ = ["BatchUpdateSubscriptionsParams"]
+__all__ = ["WebhookCreateSubscriptionsBatchParams"]
 
 
-class BatchUpdateSubscriptionsParams(TypedDict, total=False):
+class WebhookCreateSubscriptionsBatchParams(TypedDict, total=False):
     inputs: Required[Iterable[SubscriptionBatchUpdateRequestParam]]

@@ -8,10 +8,10 @@ from typing_extensions import Required, Annotated, TypedDict
 from ..._utils import PropertyInfo
 from .crm_object_snapshot_request_param import CrmObjectSnapshotRequestParam
 
-__all__ = ["WebhookSubscriptionCreateCrmSnapshotParams"]
+__all__ = ["WebhookCreateCrmSnapshotParams"]
 
 
-class WebhookSubscriptionCreateCrmSnapshotParams(TypedDict, total=False):
+class WebhookCreateCrmSnapshotParams(TypedDict, total=False):
     snapshot_requests: Required[
         Annotated[Iterable[CrmObjectSnapshotRequestParam], PropertyInfo(alias="snapshotRequests")]
     ]
