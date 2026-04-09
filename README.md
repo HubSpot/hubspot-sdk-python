@@ -1,9 +1,9 @@
-# Hubspot Python API library
+# HubSpot Python API library
 
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/hubspot_sdk.svg?label=pypi%20(stable))](https://pypi.org/project/hubspot_sdk/)
 
-The Hubspot Python library provides convenient access to the Hubspot REST API from any Python 3.9+
+The HubSpot Python library provides convenient access to HubSpot's date-versioned REST API (`2026-03` release) from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -109,7 +109,7 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Pagination
 
-List methods in the Hubspot API are paginated.
+List methods in the HubSpot API are paginated.
 
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
