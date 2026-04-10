@@ -57,7 +57,7 @@ class CallingResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/HubSpot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return CallingResourceWithRawResponse(self)
 
@@ -66,7 +66,7 @@ class CallingResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/HubSpot/hubspot-sdk-python#with_streaming_response
         """
         return CallingResourceWithStreamingResponse(self)
 
@@ -676,7 +676,7 @@ class AsyncCallingResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/HubSpot/hubspot-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncCallingResourceWithRawResponse(self)
 
@@ -685,7 +685,7 @@ class AsyncCallingResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/hubspot-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/HubSpot/hubspot-sdk-python#with_streaming_response
         """
         return AsyncCallingResourceWithStreamingResponse(self)
 
