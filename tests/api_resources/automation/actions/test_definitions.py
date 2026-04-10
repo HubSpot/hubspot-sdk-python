@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.automation import (
@@ -23,7 +23,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
+    def test_method_create(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.create(
             app_id=0,
             action_url="actionUrl",
@@ -56,7 +56,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_with_all_params(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.create(
             app_id=0,
             action_url="actionUrl",
@@ -159,7 +159,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
+    def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.automation.actions.definitions.with_raw_response.create(
             app_id=0,
             action_url="actionUrl",
@@ -196,7 +196,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
+    def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.automation.actions.definitions.with_streaming_response.create(
             app_id=0,
             action_url="actionUrl",
@@ -235,7 +235,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
+    def test_method_update(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.update(
             definition_id="definitionId",
             app_id=0,
@@ -244,7 +244,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_with_all_params(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.update(
             definition_id="definitionId",
             app_id=0,
@@ -340,7 +340,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
+    def test_raw_response_update(self, client: HubSpot) -> None:
         response = client.automation.actions.definitions.with_raw_response.update(
             definition_id="definitionId",
             app_id=0,
@@ -353,7 +353,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
+    def test_streaming_response_update(self, client: HubSpot) -> None:
         with client.automation.actions.definitions.with_streaming_response.update(
             definition_id="definitionId",
             app_id=0,
@@ -368,7 +368,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.definitions.with_raw_response.update(
                 definition_id="",
@@ -377,7 +377,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.list(
             app_id=0,
         )
@@ -385,7 +385,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.list(
             app_id=0,
             after="after",
@@ -396,7 +396,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.automation.actions.definitions.with_raw_response.list(
             app_id=0,
         )
@@ -408,7 +408,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.automation.actions.definitions.with_streaming_response.list(
             app_id=0,
         ) as response:
@@ -422,7 +422,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.delete(
             definition_id="definitionId",
             app_id=0,
@@ -431,7 +431,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.automation.actions.definitions.with_raw_response.delete(
             definition_id="definitionId",
             app_id=0,
@@ -444,7 +444,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.automation.actions.definitions.with_streaming_response.delete(
             definition_id="definitionId",
             app_id=0,
@@ -459,7 +459,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.definitions.with_raw_response.delete(
                 definition_id="",
@@ -468,7 +468,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_requires_object(self, client: Hubspot) -> None:
+    def test_method_create_requires_object(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.create_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -478,7 +478,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_requires_object(self, client: Hubspot) -> None:
+    def test_raw_response_create_requires_object(self, client: HubSpot) -> None:
         response = client.automation.actions.definitions.with_raw_response.create_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -492,7 +492,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_requires_object(self, client: Hubspot) -> None:
+    def test_streaming_response_create_requires_object(self, client: HubSpot) -> None:
         with client.automation.actions.definitions.with_streaming_response.create_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -508,7 +508,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_requires_object(self, client: Hubspot) -> None:
+    def test_path_params_create_requires_object(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.definitions.with_raw_response.create_requires_object(
                 definition_id="",
@@ -518,7 +518,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.get(
             definition_id="definitionId",
             app_id=0,
@@ -527,7 +527,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.get(
             definition_id="definitionId",
             app_id=0,
@@ -537,7 +537,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.automation.actions.definitions.with_raw_response.get(
             definition_id="definitionId",
             app_id=0,
@@ -550,7 +550,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.automation.actions.definitions.with_streaming_response.get(
             definition_id="definitionId",
             app_id=0,
@@ -565,7 +565,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.definitions.with_raw_response.get(
                 definition_id="",
@@ -574,7 +574,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_requires_object(self, client: Hubspot) -> None:
+    def test_method_get_requires_object(self, client: HubSpot) -> None:
         definition = client.automation.actions.definitions.get_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -583,7 +583,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_requires_object(self, client: Hubspot) -> None:
+    def test_raw_response_get_requires_object(self, client: HubSpot) -> None:
         response = client.automation.actions.definitions.with_raw_response.get_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -596,7 +596,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_requires_object(self, client: Hubspot) -> None:
+    def test_streaming_response_get_requires_object(self, client: HubSpot) -> None:
         with client.automation.actions.definitions.with_streaming_response.get_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -611,7 +611,7 @@ class TestDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_requires_object(self, client: Hubspot) -> None:
+    def test_path_params_get_requires_object(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             client.automation.actions.definitions.with_raw_response.get_requires_object(
                 definition_id="",
@@ -626,7 +626,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.create(
             app_id=0,
             action_url="actionUrl",
@@ -659,7 +659,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.create(
             app_id=0,
             action_url="actionUrl",
@@ -762,7 +762,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.actions.definitions.with_raw_response.create(
             app_id=0,
             action_url="actionUrl",
@@ -799,7 +799,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.actions.definitions.with_streaming_response.create(
             app_id=0,
             action_url="actionUrl",
@@ -838,7 +838,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.update(
             definition_id="definitionId",
             app_id=0,
@@ -847,7 +847,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.update(
             definition_id="definitionId",
             app_id=0,
@@ -943,7 +943,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.actions.definitions.with_raw_response.update(
             definition_id="definitionId",
             app_id=0,
@@ -956,7 +956,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.actions.definitions.with_streaming_response.update(
             definition_id="definitionId",
             app_id=0,
@@ -971,7 +971,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.definitions.with_raw_response.update(
                 definition_id="",
@@ -980,7 +980,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.list(
             app_id=0,
         )
@@ -988,7 +988,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.list(
             app_id=0,
             after="after",
@@ -999,7 +999,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.actions.definitions.with_raw_response.list(
             app_id=0,
         )
@@ -1011,7 +1011,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.actions.definitions.with_streaming_response.list(
             app_id=0,
         ) as response:
@@ -1025,7 +1025,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.delete(
             definition_id="definitionId",
             app_id=0,
@@ -1034,7 +1034,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.actions.definitions.with_raw_response.delete(
             definition_id="definitionId",
             app_id=0,
@@ -1047,7 +1047,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.actions.definitions.with_streaming_response.delete(
             definition_id="definitionId",
             app_id=0,
@@ -1062,7 +1062,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.definitions.with_raw_response.delete(
                 definition_id="",
@@ -1071,7 +1071,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_requires_object(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_requires_object(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.create_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -1081,7 +1081,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_requires_object(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_requires_object(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.actions.definitions.with_raw_response.create_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -1095,7 +1095,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_requires_object(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_requires_object(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.actions.definitions.with_streaming_response.create_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -1111,7 +1111,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_requires_object(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_requires_object(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.definitions.with_raw_response.create_requires_object(
                 definition_id="",
@@ -1121,7 +1121,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.get(
             definition_id="definitionId",
             app_id=0,
@@ -1130,7 +1130,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.get(
             definition_id="definitionId",
             app_id=0,
@@ -1140,7 +1140,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.actions.definitions.with_raw_response.get(
             definition_id="definitionId",
             app_id=0,
@@ -1153,7 +1153,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.actions.definitions.with_streaming_response.get(
             definition_id="definitionId",
             app_id=0,
@@ -1168,7 +1168,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.definitions.with_raw_response.get(
                 definition_id="",
@@ -1177,7 +1177,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_requires_object(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_requires_object(self, async_client: AsyncHubSpot) -> None:
         definition = await async_client.automation.actions.definitions.get_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -1186,7 +1186,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_requires_object(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_requires_object(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.actions.definitions.with_raw_response.get_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -1199,7 +1199,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_requires_object(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_requires_object(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.actions.definitions.with_streaming_response.get_requires_object(
             definition_id="definitionId",
             app_id=0,
@@ -1214,7 +1214,7 @@ class TestAsyncDefinitions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_requires_object(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_requires_object(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `definition_id` but received ''"):
             await async_client.automation.actions.definitions.with_raw_response.get_requires_object(
                 definition_id="",

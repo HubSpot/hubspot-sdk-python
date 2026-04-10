@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.automation import (
@@ -25,7 +25,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         sequence = client.automation.sequences.list(
             user_id="userId",
         )
@@ -33,7 +33,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         sequence = client.automation.sequences.list(
             user_id="userId",
             after="after",
@@ -44,7 +44,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.automation.sequences.with_raw_response.list(
             user_id="userId",
         )
@@ -56,7 +56,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.automation.sequences.with_streaming_response.list(
             user_id="userId",
         ) as response:
@@ -70,7 +70,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_enrollment(self, client: Hubspot) -> None:
+    def test_method_create_enrollment(self, client: HubSpot) -> None:
         sequence = client.automation.sequences.create_enrollment(
             user_id="userId",
             contact_id="contactId",
@@ -81,7 +81,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_enrollment_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_enrollment_with_all_params(self, client: HubSpot) -> None:
         sequence = client.automation.sequences.create_enrollment(
             user_id="userId",
             contact_id="contactId",
@@ -93,7 +93,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_enrollment(self, client: Hubspot) -> None:
+    def test_raw_response_create_enrollment(self, client: HubSpot) -> None:
         response = client.automation.sequences.with_raw_response.create_enrollment(
             user_id="userId",
             contact_id="contactId",
@@ -108,7 +108,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_enrollment(self, client: Hubspot) -> None:
+    def test_streaming_response_create_enrollment(self, client: HubSpot) -> None:
         with client.automation.sequences.with_streaming_response.create_enrollment(
             user_id="userId",
             contact_id="contactId",
@@ -125,7 +125,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         sequence = client.automation.sequences.get(
             sequence_id="sequenceId",
             user_id="userId",
@@ -134,7 +134,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.automation.sequences.with_raw_response.get(
             sequence_id="sequenceId",
             user_id="userId",
@@ -147,7 +147,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.automation.sequences.with_streaming_response.get(
             sequence_id="sequenceId",
             user_id="userId",
@@ -162,7 +162,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sequence_id` but received ''"):
             client.automation.sequences.with_raw_response.get(
                 sequence_id="",
@@ -171,7 +171,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_enrollment_by_contact_id(self, client: Hubspot) -> None:
+    def test_method_get_enrollment_by_contact_id(self, client: HubSpot) -> None:
         sequence = client.automation.sequences.get_enrollment_by_contact_id(
             "contactId",
         )
@@ -179,7 +179,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_enrollment_by_contact_id(self, client: Hubspot) -> None:
+    def test_raw_response_get_enrollment_by_contact_id(self, client: HubSpot) -> None:
         response = client.automation.sequences.with_raw_response.get_enrollment_by_contact_id(
             "contactId",
         )
@@ -191,7 +191,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_enrollment_by_contact_id(self, client: Hubspot) -> None:
+    def test_streaming_response_get_enrollment_by_contact_id(self, client: HubSpot) -> None:
         with client.automation.sequences.with_streaming_response.get_enrollment_by_contact_id(
             "contactId",
         ) as response:
@@ -205,7 +205,7 @@ class TestSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_enrollment_by_contact_id(self, client: Hubspot) -> None:
+    def test_path_params_get_enrollment_by_contact_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             client.automation.sequences.with_raw_response.get_enrollment_by_contact_id(
                 "",
@@ -219,7 +219,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         sequence = await async_client.automation.sequences.list(
             user_id="userId",
         )
@@ -227,7 +227,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         sequence = await async_client.automation.sequences.list(
             user_id="userId",
             after="after",
@@ -238,7 +238,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.sequences.with_raw_response.list(
             user_id="userId",
         )
@@ -250,7 +250,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.sequences.with_streaming_response.list(
             user_id="userId",
         ) as response:
@@ -264,7 +264,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_enrollment(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_enrollment(self, async_client: AsyncHubSpot) -> None:
         sequence = await async_client.automation.sequences.create_enrollment(
             user_id="userId",
             contact_id="contactId",
@@ -275,7 +275,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_enrollment_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_enrollment_with_all_params(self, async_client: AsyncHubSpot) -> None:
         sequence = await async_client.automation.sequences.create_enrollment(
             user_id="userId",
             contact_id="contactId",
@@ -287,7 +287,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_enrollment(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_enrollment(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.sequences.with_raw_response.create_enrollment(
             user_id="userId",
             contact_id="contactId",
@@ -302,7 +302,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_enrollment(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_enrollment(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.sequences.with_streaming_response.create_enrollment(
             user_id="userId",
             contact_id="contactId",
@@ -319,7 +319,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         sequence = await async_client.automation.sequences.get(
             sequence_id="sequenceId",
             user_id="userId",
@@ -328,7 +328,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.sequences.with_raw_response.get(
             sequence_id="sequenceId",
             user_id="userId",
@@ -341,7 +341,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.sequences.with_streaming_response.get(
             sequence_id="sequenceId",
             user_id="userId",
@@ -356,7 +356,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sequence_id` but received ''"):
             await async_client.automation.sequences.with_raw_response.get(
                 sequence_id="",
@@ -365,7 +365,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_enrollment_by_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_enrollment_by_contact_id(self, async_client: AsyncHubSpot) -> None:
         sequence = await async_client.automation.sequences.get_enrollment_by_contact_id(
             "contactId",
         )
@@ -373,7 +373,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_enrollment_by_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_enrollment_by_contact_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.automation.sequences.with_raw_response.get_enrollment_by_contact_id(
             "contactId",
         )
@@ -385,7 +385,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_enrollment_by_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_enrollment_by_contact_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.automation.sequences.with_streaming_response.get_enrollment_by_contact_id(
             "contactId",
         ) as response:
@@ -399,7 +399,7 @@ class TestAsyncSequences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_enrollment_by_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_enrollment_by_contact_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_id` but received ''"):
             await async_client.automation.sequences.with_raw_response.get_enrollment_by_contact_id(
                 "",

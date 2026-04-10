@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.communication_preferences import (
     BatchResponsePublicStatus,
@@ -24,7 +24,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_unsubscribe_all_statuses(self, client: Hubspot) -> None:
+    def test_method_get_unsubscribe_all_statuses(self, client: HubSpot) -> None:
         batch = client.communication_preferences.statuses.batch.get_unsubscribe_all_statuses(
             channel="EMAIL",
             inputs=["string"],
@@ -33,7 +33,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_unsubscribe_all_statuses_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_unsubscribe_all_statuses_with_all_params(self, client: HubSpot) -> None:
         batch = client.communication_preferences.statuses.batch.get_unsubscribe_all_statuses(
             channel="EMAIL",
             inputs=["string"],
@@ -43,7 +43,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_unsubscribe_all_statuses(self, client: Hubspot) -> None:
+    def test_raw_response_get_unsubscribe_all_statuses(self, client: HubSpot) -> None:
         response = client.communication_preferences.statuses.batch.with_raw_response.get_unsubscribe_all_statuses(
             channel="EMAIL",
             inputs=["string"],
@@ -56,7 +56,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_unsubscribe_all_statuses(self, client: Hubspot) -> None:
+    def test_streaming_response_get_unsubscribe_all_statuses(self, client: HubSpot) -> None:
         with client.communication_preferences.statuses.batch.with_streaming_response.get_unsubscribe_all_statuses(
             channel="EMAIL",
             inputs=["string"],
@@ -71,7 +71,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_read(self, client: Hubspot) -> None:
+    def test_method_read(self, client: HubSpot) -> None:
         batch = client.communication_preferences.statuses.batch.read(
             channel="EMAIL",
             inputs=["string"],
@@ -80,7 +80,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_read_with_all_params(self, client: Hubspot) -> None:
+    def test_method_read_with_all_params(self, client: HubSpot) -> None:
         batch = client.communication_preferences.statuses.batch.read(
             channel="EMAIL",
             inputs=["string"],
@@ -90,7 +90,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_read(self, client: Hubspot) -> None:
+    def test_raw_response_read(self, client: HubSpot) -> None:
         response = client.communication_preferences.statuses.batch.with_raw_response.read(
             channel="EMAIL",
             inputs=["string"],
@@ -103,7 +103,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_read(self, client: Hubspot) -> None:
+    def test_streaming_response_read(self, client: HubSpot) -> None:
         with client.communication_preferences.statuses.batch.with_streaming_response.read(
             channel="EMAIL",
             inputs=["string"],
@@ -118,7 +118,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_unsubscribe_all(self, client: Hubspot) -> None:
+    def test_method_unsubscribe_all(self, client: HubSpot) -> None:
         batch = client.communication_preferences.statuses.batch.unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -127,7 +127,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_unsubscribe_all_with_all_params(self, client: Hubspot) -> None:
+    def test_method_unsubscribe_all_with_all_params(self, client: HubSpot) -> None:
         batch = client.communication_preferences.statuses.batch.unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -138,7 +138,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_unsubscribe_all(self, client: Hubspot) -> None:
+    def test_raw_response_unsubscribe_all(self, client: HubSpot) -> None:
         response = client.communication_preferences.statuses.batch.with_raw_response.unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -151,7 +151,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_unsubscribe_all(self, client: Hubspot) -> None:
+    def test_streaming_response_unsubscribe_all(self, client: HubSpot) -> None:
         with client.communication_preferences.statuses.batch.with_streaming_response.unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -166,7 +166,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_statuses(self, client: Hubspot) -> None:
+    def test_method_update_statuses(self, client: HubSpot) -> None:
         batch = client.communication_preferences.statuses.batch.update_statuses(
             inputs=[
                 {
@@ -181,7 +181,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_statuses(self, client: Hubspot) -> None:
+    def test_raw_response_update_statuses(self, client: HubSpot) -> None:
         response = client.communication_preferences.statuses.batch.with_raw_response.update_statuses(
             inputs=[
                 {
@@ -200,7 +200,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_statuses(self, client: Hubspot) -> None:
+    def test_streaming_response_update_statuses(self, client: HubSpot) -> None:
         with client.communication_preferences.statuses.batch.with_streaming_response.update_statuses(
             inputs=[
                 {
@@ -227,7 +227,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_unsubscribe_all_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_unsubscribe_all_statuses(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.communication_preferences.statuses.batch.get_unsubscribe_all_statuses(
             channel="EMAIL",
             inputs=["string"],
@@ -236,7 +236,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_unsubscribe_all_statuses_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_unsubscribe_all_statuses_with_all_params(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.communication_preferences.statuses.batch.get_unsubscribe_all_statuses(
             channel="EMAIL",
             inputs=["string"],
@@ -246,7 +246,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_unsubscribe_all_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_unsubscribe_all_statuses(self, async_client: AsyncHubSpot) -> None:
         response = (
             await async_client.communication_preferences.statuses.batch.with_raw_response.get_unsubscribe_all_statuses(
                 channel="EMAIL",
@@ -261,7 +261,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_unsubscribe_all_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_unsubscribe_all_statuses(self, async_client: AsyncHubSpot) -> None:
         async with (
             async_client.communication_preferences.statuses.batch.with_streaming_response.get_unsubscribe_all_statuses(
                 channel="EMAIL",
@@ -278,7 +278,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_read(self, async_client: AsyncHubspot) -> None:
+    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.communication_preferences.statuses.batch.read(
             channel="EMAIL",
             inputs=["string"],
@@ -287,7 +287,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_read_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_read_with_all_params(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.communication_preferences.statuses.batch.read(
             channel="EMAIL",
             inputs=["string"],
@@ -297,7 +297,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.communication_preferences.statuses.batch.with_raw_response.read(
             channel="EMAIL",
             inputs=["string"],
@@ -310,7 +310,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
         async with async_client.communication_preferences.statuses.batch.with_streaming_response.read(
             channel="EMAIL",
             inputs=["string"],
@@ -325,7 +325,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
+    async def test_method_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.communication_preferences.statuses.batch.unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -334,7 +334,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_unsubscribe_all_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_unsubscribe_all_with_all_params(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.communication_preferences.statuses.batch.unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -345,7 +345,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.communication_preferences.statuses.batch.with_raw_response.unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -358,7 +358,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
         async with async_client.communication_preferences.statuses.batch.with_streaming_response.unsubscribe_all(
             channel="EMAIL",
             inputs=["string"],
@@ -373,7 +373,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_statuses(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.communication_preferences.statuses.batch.update_statuses(
             inputs=[
                 {
@@ -388,7 +388,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_statuses(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.communication_preferences.statuses.batch.with_raw_response.update_statuses(
             inputs=[
                 {
@@ -407,7 +407,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_statuses(self, async_client: AsyncHubSpot) -> None:
         async with async_client.communication_preferences.statuses.batch.with_streaming_response.update_statuses(
             inputs=[
                 {

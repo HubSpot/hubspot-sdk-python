@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.marketing import CollectionResponsePublicCampaignAssetForwardPaging
 
@@ -19,7 +19,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
+    def test_method_update(self, client: HubSpot) -> None:
         asset = client.marketing.campaigns.assets.update(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -29,7 +29,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
+    def test_raw_response_update(self, client: HubSpot) -> None:
         response = client.marketing.campaigns.assets.with_raw_response.update(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -43,7 +43,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
+    def test_streaming_response_update(self, client: HubSpot) -> None:
         with client.marketing.campaigns.assets.with_streaming_response.update(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -59,7 +59,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `campaign_guid` but received ''"):
             client.marketing.campaigns.assets.with_raw_response.update(
                 asset_id="assetId",
@@ -83,7 +83,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         asset = client.marketing.campaigns.assets.list(
             asset_type="assetType",
             campaign_guid="campaignGuid",
@@ -92,7 +92,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         asset = client.marketing.campaigns.assets.list(
             asset_type="assetType",
             campaign_guid="campaignGuid",
@@ -105,7 +105,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.marketing.campaigns.assets.with_raw_response.list(
             asset_type="assetType",
             campaign_guid="campaignGuid",
@@ -118,7 +118,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.marketing.campaigns.assets.with_streaming_response.list(
             asset_type="assetType",
             campaign_guid="campaignGuid",
@@ -133,7 +133,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: Hubspot) -> None:
+    def test_path_params_list(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `campaign_guid` but received ''"):
             client.marketing.campaigns.assets.with_raw_response.list(
                 asset_type="assetType",
@@ -148,7 +148,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         asset = client.marketing.campaigns.assets.delete(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -158,7 +158,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.marketing.campaigns.assets.with_raw_response.delete(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -172,7 +172,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.marketing.campaigns.assets.with_streaming_response.delete(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -188,7 +188,7 @@ class TestAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `campaign_guid` but received ''"):
             client.marketing.campaigns.assets.with_raw_response.delete(
                 asset_id="assetId",
@@ -218,7 +218,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
         asset = await async_client.marketing.campaigns.assets.update(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -228,7 +228,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.campaigns.assets.with_raw_response.update(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -242,7 +242,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.campaigns.assets.with_streaming_response.update(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -258,7 +258,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `campaign_guid` but received ''"):
             await async_client.marketing.campaigns.assets.with_raw_response.update(
                 asset_id="assetId",
@@ -282,7 +282,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         asset = await async_client.marketing.campaigns.assets.list(
             asset_type="assetType",
             campaign_guid="campaignGuid",
@@ -291,7 +291,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         asset = await async_client.marketing.campaigns.assets.list(
             asset_type="assetType",
             campaign_guid="campaignGuid",
@@ -304,7 +304,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.campaigns.assets.with_raw_response.list(
             asset_type="assetType",
             campaign_guid="campaignGuid",
@@ -317,7 +317,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.campaigns.assets.with_streaming_response.list(
             asset_type="assetType",
             campaign_guid="campaignGuid",
@@ -332,7 +332,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `campaign_guid` but received ''"):
             await async_client.marketing.campaigns.assets.with_raw_response.list(
                 asset_type="assetType",
@@ -347,7 +347,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         asset = await async_client.marketing.campaigns.assets.delete(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -357,7 +357,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.campaigns.assets.with_raw_response.delete(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -371,7 +371,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.campaigns.assets.with_streaming_response.delete(
             asset_id="assetId",
             campaign_guid="campaignGuid",
@@ -387,7 +387,7 @@ class TestAsyncAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `campaign_guid` but received ''"):
             await async_client.marketing.campaigns.assets.with_raw_response.delete(
                 asset_id="assetId",

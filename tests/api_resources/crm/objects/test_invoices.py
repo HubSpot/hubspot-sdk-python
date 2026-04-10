@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     SimplePublicObject,
@@ -24,7 +24,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
+    def test_method_create(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.create(
             associations=[
                 {
@@ -43,7 +43,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
+    def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.crm.objects.invoices.with_raw_response.create(
             associations=[
                 {
@@ -66,7 +66,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
+    def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.crm.objects.invoices.with_streaming_response.create(
             associations=[
                 {
@@ -91,7 +91,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
+    def test_method_update(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.update(
             invoice_id="invoiceId",
             properties={"foo": "string"},
@@ -100,7 +100,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_with_all_params(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.update(
             invoice_id="invoiceId",
             properties={"foo": "string"},
@@ -110,7 +110,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
+    def test_raw_response_update(self, client: HubSpot) -> None:
         response = client.crm.objects.invoices.with_raw_response.update(
             invoice_id="invoiceId",
             properties={"foo": "string"},
@@ -123,7 +123,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
+    def test_streaming_response_update(self, client: HubSpot) -> None:
         with client.crm.objects.invoices.with_streaming_response.update(
             invoice_id="invoiceId",
             properties={"foo": "string"},
@@ -138,7 +138,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             client.crm.objects.invoices.with_raw_response.update(
                 invoice_id="",
@@ -147,13 +147,13 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.list()
         assert_matches_type(SyncPage[SimplePublicObjectWithAssociations], invoice, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.list(
             after="after",
             archived=True,
@@ -166,7 +166,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.crm.objects.invoices.with_raw_response.list()
 
         assert response.is_closed is True
@@ -176,7 +176,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.crm.objects.invoices.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -188,7 +188,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.delete(
             "invoiceId",
         )
@@ -196,7 +196,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.crm.objects.invoices.with_raw_response.delete(
             "invoiceId",
         )
@@ -208,7 +208,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.crm.objects.invoices.with_streaming_response.delete(
             "invoiceId",
         ) as response:
@@ -222,7 +222,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             client.crm.objects.invoices.with_raw_response.delete(
                 "",
@@ -230,7 +230,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.get(
             invoice_id="invoiceId",
         )
@@ -238,7 +238,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.get(
             invoice_id="invoiceId",
             archived=True,
@@ -251,7 +251,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.crm.objects.invoices.with_raw_response.get(
             invoice_id="invoiceId",
         )
@@ -263,7 +263,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.crm.objects.invoices.with_streaming_response.get(
             invoice_id="invoiceId",
         ) as response:
@@ -277,7 +277,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             client.crm.objects.invoices.with_raw_response.get(
                 invoice_id="",
@@ -285,7 +285,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search(self, client: Hubspot) -> None:
+    def test_method_search(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.search(
             after="after",
             filter_groups=[
@@ -306,7 +306,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: Hubspot) -> None:
+    def test_method_search_with_all_params(self, client: HubSpot) -> None:
         invoice = client.crm.objects.invoices.search(
             after="after",
             filter_groups=[
@@ -331,7 +331,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: Hubspot) -> None:
+    def test_raw_response_search(self, client: HubSpot) -> None:
         response = client.crm.objects.invoices.with_raw_response.search(
             after="after",
             filter_groups=[
@@ -356,7 +356,7 @@ class TestInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: Hubspot) -> None:
+    def test_streaming_response_search(self, client: HubSpot) -> None:
         with client.crm.objects.invoices.with_streaming_response.search(
             after="after",
             filter_groups=[
@@ -389,7 +389,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.create(
             associations=[
                 {
@@ -408,7 +408,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.invoices.with_raw_response.create(
             associations=[
                 {
@@ -431,7 +431,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.invoices.with_streaming_response.create(
             associations=[
                 {
@@ -456,7 +456,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.update(
             invoice_id="invoiceId",
             properties={"foo": "string"},
@@ -465,7 +465,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.update(
             invoice_id="invoiceId",
             properties={"foo": "string"},
@@ -475,7 +475,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.invoices.with_raw_response.update(
             invoice_id="invoiceId",
             properties={"foo": "string"},
@@ -488,7 +488,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.invoices.with_streaming_response.update(
             invoice_id="invoiceId",
             properties={"foo": "string"},
@@ -503,7 +503,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             await async_client.crm.objects.invoices.with_raw_response.update(
                 invoice_id="",
@@ -512,13 +512,13 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.list()
         assert_matches_type(AsyncPage[SimplePublicObjectWithAssociations], invoice, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.list(
             after="after",
             archived=True,
@@ -531,7 +531,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.invoices.with_raw_response.list()
 
         assert response.is_closed is True
@@ -541,7 +541,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.invoices.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -553,7 +553,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.delete(
             "invoiceId",
         )
@@ -561,7 +561,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.invoices.with_raw_response.delete(
             "invoiceId",
         )
@@ -573,7 +573,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.invoices.with_streaming_response.delete(
             "invoiceId",
         ) as response:
@@ -587,7 +587,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             await async_client.crm.objects.invoices.with_raw_response.delete(
                 "",
@@ -595,7 +595,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.get(
             invoice_id="invoiceId",
         )
@@ -603,7 +603,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.get(
             invoice_id="invoiceId",
             archived=True,
@@ -616,7 +616,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.invoices.with_raw_response.get(
             invoice_id="invoiceId",
         )
@@ -628,7 +628,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.invoices.with_streaming_response.get(
             invoice_id="invoiceId",
         ) as response:
@@ -642,7 +642,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             await async_client.crm.objects.invoices.with_raw_response.get(
                 invoice_id="",
@@ -650,7 +650,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.search(
             after="after",
             filter_groups=[
@@ -671,7 +671,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
         invoice = await async_client.crm.objects.invoices.search(
             after="after",
             filter_groups=[
@@ -696,7 +696,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.invoices.with_raw_response.search(
             after="after",
             filter_groups=[
@@ -721,7 +721,7 @@ class TestAsyncInvoices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.invoices.with_streaming_response.search(
             after="after",
             filter_groups=[

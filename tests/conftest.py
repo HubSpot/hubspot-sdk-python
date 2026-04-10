@@ -10,7 +10,7 @@ import httpx
 import pytest
 from pytest_asyncio import is_async_test
 
-from hubspot_sdk import Hubspot, AsyncHubspot, DefaultAioHttpClient
+from hubspot_sdk import HubSpot, AsyncHubSpot, DefaultAioHttpClient
 from hubspot_sdk._utils import is_dict
 
 if TYPE_CHECKING:
@@ -49,17 +49,17 @@ access_token = "My Access Token"
 
 
 @pytest.fixture(scope="session")
-def client(request: FixtureRequest) -> Iterator[Hubspot]:
+def client(request: FixtureRequest) -> Iterator[HubSpot]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with Hubspot(base_url=base_url, access_token=access_token, _strict_response_validation=strict) as client:
+    with HubSpot(base_url=base_url, access_token=access_token, _strict_response_validation=strict) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
-async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncHubspot]:
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncHubSpot]:
     param = getattr(request, "param", True)
 
     # defaults
@@ -78,7 +78,7 @@ async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncHubspot]:
     else:
         raise TypeError(f"Unexpected fixture parameter type {type(param)}, expected bool or dict")
 
-    async with AsyncHubspot(
+    async with AsyncHubSpot(
         base_url=base_url, access_token=access_token, _strict_response_validation=strict, http_client=http_client
     ) as client:
         yield client

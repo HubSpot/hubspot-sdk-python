@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.cms import (
     Property,
@@ -42,7 +42,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_association(self, client: Hubspot) -> None:
+    def test_method_create_association(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_association(
             object_type="objectType",
             app_id=0,
@@ -53,7 +53,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_association_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_association_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_association(
             object_type="objectType",
             app_id=0,
@@ -65,7 +65,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_association(self, client: Hubspot) -> None:
+    def test_raw_response_create_association(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_association(
             object_type="objectType",
             app_id=0,
@@ -80,7 +80,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_association(self, client: Hubspot) -> None:
+    def test_streaming_response_create_association(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_association(
             object_type="objectType",
             app_id=0,
@@ -97,7 +97,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_association(self, client: Hubspot) -> None:
+    def test_path_params_create_association(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.create_association(
                 object_type="",
@@ -108,7 +108,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_attention_span_event(self, client: Hubspot) -> None:
+    def test_method_create_attention_span_event(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_attention_span_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -119,7 +119,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_attention_span_event_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_attention_span_event_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_attention_span_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -146,7 +146,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_attention_span_event(self, client: Hubspot) -> None:
+    def test_raw_response_create_attention_span_event(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_attention_span_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -161,7 +161,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_attention_span_event(self, client: Hubspot) -> None:
+    def test_streaming_response_create_attention_span_event(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_attention_span_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -178,7 +178,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_media_played_event(self, client: Hubspot) -> None:
+    def test_method_create_media_played_event(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_media_played_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -189,7 +189,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_media_played_event_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_media_played_event_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_media_played_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -212,7 +212,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_media_played_event(self, client: Hubspot) -> None:
+    def test_raw_response_create_media_played_event(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_media_played_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -227,7 +227,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_media_played_event(self, client: Hubspot) -> None:
+    def test_streaming_response_create_media_played_event(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_media_played_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -244,7 +244,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_media_played_percent_event(self, client: Hubspot) -> None:
+    def test_method_create_media_played_percent_event(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_media_played_percent_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -255,7 +255,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_media_played_percent_event_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_media_played_percent_event_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_media_played_percent_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -277,7 +277,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_media_played_percent_event(self, client: Hubspot) -> None:
+    def test_raw_response_create_media_played_percent_event(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_media_played_percent_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -292,7 +292,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_media_played_percent_event(self, client: Hubspot) -> None:
+    def test_streaming_response_create_media_played_percent_event(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_media_played_percent_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -309,7 +309,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_object_type(self, client: Hubspot) -> None:
+    def test_method_create_object_type(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_object_type(
             app_id=0,
             media_types=["VIDEO"],
@@ -318,7 +318,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_object_type(self, client: Hubspot) -> None:
+    def test_raw_response_create_object_type(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_object_type(
             app_id=0,
             media_types=["VIDEO"],
@@ -331,7 +331,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_object_type(self, client: Hubspot) -> None:
+    def test_streaming_response_create_object_type(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_object_type(
             app_id=0,
             media_types=["VIDEO"],
@@ -346,7 +346,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_oembed_domain(self, client: Hubspot) -> None:
+    def test_method_create_oembed_domain(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_oembed_domain(
             app_id=0,
             endpoints={
@@ -359,7 +359,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_oembed_domain_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_oembed_domain_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_oembed_domain(
             app_id=0,
             endpoints={
@@ -373,7 +373,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_oembed_domain(self, client: Hubspot) -> None:
+    def test_raw_response_create_oembed_domain(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_oembed_domain(
             app_id=0,
             endpoints={
@@ -390,7 +390,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_oembed_domain(self, client: Hubspot) -> None:
+    def test_streaming_response_create_oembed_domain(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_oembed_domain(
             app_id=0,
             endpoints={
@@ -409,7 +409,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_property(self, client: Hubspot) -> None:
+    def test_method_create_property(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_property(
             object_type="objectType",
             app_id=0,
@@ -423,7 +423,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_property_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_property_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_property(
             object_type="objectType",
             app_id=0,
@@ -455,7 +455,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_property(self, client: Hubspot) -> None:
+    def test_raw_response_create_property(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_property(
             object_type="objectType",
             app_id=0,
@@ -473,7 +473,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_property(self, client: Hubspot) -> None:
+    def test_streaming_response_create_property(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_property(
             object_type="objectType",
             app_id=0,
@@ -493,7 +493,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_property(self, client: Hubspot) -> None:
+    def test_path_params_create_property(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.create_property(
                 object_type="",
@@ -507,7 +507,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_property_group(self, client: Hubspot) -> None:
+    def test_method_create_property_group(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_property_group(
             object_type="objectType",
             app_id=0,
@@ -518,7 +518,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_property_group_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_property_group_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_property_group(
             object_type="objectType",
             app_id=0,
@@ -530,7 +530,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_property_group(self, client: Hubspot) -> None:
+    def test_raw_response_create_property_group(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_property_group(
             object_type="objectType",
             app_id=0,
@@ -545,7 +545,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_property_group(self, client: Hubspot) -> None:
+    def test_streaming_response_create_property_group(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_property_group(
             object_type="objectType",
             app_id=0,
@@ -562,7 +562,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_property_group(self, client: Hubspot) -> None:
+    def test_path_params_create_property_group(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.create_property_group(
                 object_type="",
@@ -573,7 +573,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_video_association_definition(self, client: Hubspot) -> None:
+    def test_method_create_video_association_definition(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.create_video_association_definition(
             0,
         )
@@ -581,7 +581,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_video_association_definition(self, client: Hubspot) -> None:
+    def test_raw_response_create_video_association_definition(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.create_video_association_definition(
             0,
         )
@@ -593,7 +593,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_video_association_definition(self, client: Hubspot) -> None:
+    def test_streaming_response_create_video_association_definition(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.create_video_association_definition(
             0,
         ) as response:
@@ -607,7 +607,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_association(self, client: Hubspot) -> None:
+    def test_method_delete_association(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.delete_association(
             association_id="associationId",
             app_id=0,
@@ -617,7 +617,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_association(self, client: Hubspot) -> None:
+    def test_raw_response_delete_association(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.delete_association(
             association_id="associationId",
             app_id=0,
@@ -631,7 +631,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_association(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_association(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.delete_association(
             association_id="associationId",
             app_id=0,
@@ -647,7 +647,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_association(self, client: Hubspot) -> None:
+    def test_path_params_delete_association(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.delete_association(
                 association_id="associationId",
@@ -664,7 +664,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_oembed_domain(self, client: Hubspot) -> None:
+    def test_method_delete_oembed_domain(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.delete_oembed_domain(
             app_id=0,
         )
@@ -672,7 +672,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_oembed_domain_with_all_params(self, client: Hubspot) -> None:
+    def test_method_delete_oembed_domain_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.delete_oembed_domain(
             app_id=0,
             id=0,
@@ -682,7 +682,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_oembed_domain(self, client: Hubspot) -> None:
+    def test_raw_response_delete_oembed_domain(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.delete_oembed_domain(
             app_id=0,
         )
@@ -694,7 +694,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_oembed_domain(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_oembed_domain(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.delete_oembed_domain(
             app_id=0,
         ) as response:
@@ -708,7 +708,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_property(self, client: Hubspot) -> None:
+    def test_method_delete_property(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.delete_property(
             property_name="propertyName",
             app_id=0,
@@ -718,7 +718,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_property(self, client: Hubspot) -> None:
+    def test_raw_response_delete_property(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.delete_property(
             property_name="propertyName",
             app_id=0,
@@ -732,7 +732,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_property(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_property(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.delete_property(
             property_name="propertyName",
             app_id=0,
@@ -748,7 +748,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_property(self, client: Hubspot) -> None:
+    def test_path_params_delete_property(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.delete_property(
                 property_name="propertyName",
@@ -765,7 +765,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_property_group(self, client: Hubspot) -> None:
+    def test_method_delete_property_group(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.delete_property_group(
             group_name="groupName",
             app_id=0,
@@ -775,7 +775,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_property_group(self, client: Hubspot) -> None:
+    def test_raw_response_delete_property_group(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.delete_property_group(
             group_name="groupName",
             app_id=0,
@@ -789,7 +789,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_property_group(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_property_group(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.delete_property_group(
             group_name="groupName",
             app_id=0,
@@ -805,7 +805,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_property_group(self, client: Hubspot) -> None:
+    def test_path_params_delete_property_group(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.delete_property_group(
                 group_name="groupName",
@@ -822,7 +822,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_event_visibility_settings(self, client: Hubspot) -> None:
+    def test_method_get_event_visibility_settings(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.get_event_visibility_settings(
             0,
         )
@@ -830,7 +830,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_event_visibility_settings(self, client: Hubspot) -> None:
+    def test_raw_response_get_event_visibility_settings(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.get_event_visibility_settings(
             0,
         )
@@ -842,7 +842,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_event_visibility_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_get_event_visibility_settings(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.get_event_visibility_settings(
             0,
         ) as response:
@@ -856,7 +856,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_oembed_domain(self, client: Hubspot) -> None:
+    def test_method_get_oembed_domain(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -865,7 +865,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_oembed_domain(self, client: Hubspot) -> None:
+    def test_raw_response_get_oembed_domain(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -878,7 +878,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_oembed_domain(self, client: Hubspot) -> None:
+    def test_streaming_response_get_oembed_domain(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -893,7 +893,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_oembed_domain(self, client: Hubspot) -> None:
+    def test_path_params_get_oembed_domain(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `o_embed_domain_id` but received ''"):
             client.cms.media_bridge.with_raw_response.get_oembed_domain(
                 o_embed_domain_id="",
@@ -902,7 +902,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_property(self, client: Hubspot) -> None:
+    def test_method_get_property(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.get_property(
             property_name="propertyName",
             app_id=0,
@@ -912,7 +912,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_property_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_property_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.get_property(
             property_name="propertyName",
             app_id=0,
@@ -924,7 +924,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_property(self, client: Hubspot) -> None:
+    def test_raw_response_get_property(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.get_property(
             property_name="propertyName",
             app_id=0,
@@ -938,7 +938,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_property(self, client: Hubspot) -> None:
+    def test_streaming_response_get_property(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.get_property(
             property_name="propertyName",
             app_id=0,
@@ -954,7 +954,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_property(self, client: Hubspot) -> None:
+    def test_path_params_get_property(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.get_property(
                 property_name="propertyName",
@@ -971,7 +971,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_property_group(self, client: Hubspot) -> None:
+    def test_method_get_property_group(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.get_property_group(
             group_name="groupName",
             app_id=0,
@@ -981,7 +981,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_property_group(self, client: Hubspot) -> None:
+    def test_raw_response_get_property_group(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.get_property_group(
             group_name="groupName",
             app_id=0,
@@ -995,7 +995,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_property_group(self, client: Hubspot) -> None:
+    def test_streaming_response_get_property_group(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.get_property_group(
             group_name="groupName",
             app_id=0,
@@ -1011,7 +1011,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_property_group(self, client: Hubspot) -> None:
+    def test_path_params_get_property_group(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.get_property_group(
                 group_name="groupName",
@@ -1028,7 +1028,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_schema(self, client: Hubspot) -> None:
+    def test_method_get_schema(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.get_schema(
             object_type="objectType",
             app_id=0,
@@ -1037,7 +1037,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_schema(self, client: Hubspot) -> None:
+    def test_raw_response_get_schema(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.get_schema(
             object_type="objectType",
             app_id=0,
@@ -1050,7 +1050,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_schema(self, client: Hubspot) -> None:
+    def test_streaming_response_get_schema(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.get_schema(
             object_type="objectType",
             app_id=0,
@@ -1065,7 +1065,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_schema(self, client: Hubspot) -> None:
+    def test_path_params_get_schema(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.get_schema(
                 object_type="",
@@ -1074,7 +1074,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_object_types_by_media_type(self, client: Hubspot) -> None:
+    def test_method_list_object_types_by_media_type(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_object_types_by_media_type(
             media_type="AUDIO",
             app_id=0,
@@ -1083,7 +1083,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_object_types_by_media_type_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_object_types_by_media_type_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_object_types_by_media_type(
             media_type="AUDIO",
             app_id=0,
@@ -1093,7 +1093,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_object_types_by_media_type(self, client: Hubspot) -> None:
+    def test_raw_response_list_object_types_by_media_type(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.list_object_types_by_media_type(
             media_type="AUDIO",
             app_id=0,
@@ -1106,7 +1106,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_object_types_by_media_type(self, client: Hubspot) -> None:
+    def test_streaming_response_list_object_types_by_media_type(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.list_object_types_by_media_type(
             media_type="AUDIO",
             app_id=0,
@@ -1121,7 +1121,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_oembed_domains(self, client: Hubspot) -> None:
+    def test_method_list_oembed_domains(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_oembed_domains(
             app_id=0,
         )
@@ -1129,7 +1129,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_oembed_domains_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_oembed_domains_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_oembed_domains(
             app_id=0,
             domain_portal_id=0,
@@ -1138,7 +1138,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_oembed_domains(self, client: Hubspot) -> None:
+    def test_raw_response_list_oembed_domains(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.list_oembed_domains(
             app_id=0,
         )
@@ -1150,7 +1150,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_oembed_domains(self, client: Hubspot) -> None:
+    def test_streaming_response_list_oembed_domains(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.list_oembed_domains(
             app_id=0,
         ) as response:
@@ -1164,7 +1164,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_properties(self, client: Hubspot) -> None:
+    def test_method_list_properties(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_properties(
             object_type="objectType",
             app_id=0,
@@ -1173,7 +1173,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_properties_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_properties_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_properties(
             object_type="objectType",
             app_id=0,
@@ -1184,7 +1184,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_properties(self, client: Hubspot) -> None:
+    def test_raw_response_list_properties(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.list_properties(
             object_type="objectType",
             app_id=0,
@@ -1197,7 +1197,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_properties(self, client: Hubspot) -> None:
+    def test_streaming_response_list_properties(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.list_properties(
             object_type="objectType",
             app_id=0,
@@ -1212,7 +1212,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_properties(self, client: Hubspot) -> None:
+    def test_path_params_list_properties(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.list_properties(
                 object_type="",
@@ -1221,7 +1221,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_property_groups(self, client: Hubspot) -> None:
+    def test_method_list_property_groups(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_property_groups(
             object_type="objectType",
             app_id=0,
@@ -1230,7 +1230,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_property_groups(self, client: Hubspot) -> None:
+    def test_raw_response_list_property_groups(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.list_property_groups(
             object_type="objectType",
             app_id=0,
@@ -1243,7 +1243,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_property_groups(self, client: Hubspot) -> None:
+    def test_streaming_response_list_property_groups(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.list_property_groups(
             object_type="objectType",
             app_id=0,
@@ -1258,7 +1258,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_property_groups(self, client: Hubspot) -> None:
+    def test_path_params_list_property_groups(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.list_property_groups(
                 object_type="",
@@ -1267,7 +1267,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_schemas(self, client: Hubspot) -> None:
+    def test_method_list_schemas(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_schemas(
             app_id=0,
         )
@@ -1275,7 +1275,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_schemas_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_schemas_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.list_schemas(
             app_id=0,
             archived=True,
@@ -1284,7 +1284,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_schemas(self, client: Hubspot) -> None:
+    def test_raw_response_list_schemas(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.list_schemas(
             app_id=0,
         )
@@ -1296,7 +1296,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_schemas(self, client: Hubspot) -> None:
+    def test_streaming_response_list_schemas(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.list_schemas(
             app_id=0,
         ) as response:
@@ -1310,7 +1310,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_register_app_name(self, client: Hubspot) -> None:
+    def test_method_register_app_name(self, client: HubSpot) -> None:
         with pytest.warns(DeprecationWarning):
             media_bridge = client.cms.media_bridge.register_app_name(
                 app_id=0,
@@ -1321,7 +1321,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_register_app_name_with_all_params(self, client: Hubspot) -> None:
+    def test_method_register_app_name_with_all_params(self, client: HubSpot) -> None:
         with pytest.warns(DeprecationWarning):
             media_bridge = client.cms.media_bridge.register_app_name(
                 app_id=0,
@@ -1335,7 +1335,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_register_app_name(self, client: Hubspot) -> None:
+    def test_raw_response_register_app_name(self, client: HubSpot) -> None:
         with pytest.warns(DeprecationWarning):
             response = client.cms.media_bridge.with_raw_response.register_app_name(
                 app_id=0,
@@ -1349,7 +1349,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_register_app_name(self, client: Hubspot) -> None:
+    def test_streaming_response_register_app_name(self, client: HubSpot) -> None:
         with pytest.warns(DeprecationWarning):
             with client.cms.media_bridge.with_streaming_response.register_app_name(
                 app_id=0,
@@ -1365,7 +1365,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_event_visibility_settings(self, client: Hubspot) -> None:
+    def test_method_update_event_visibility_settings(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_event_visibility_settings(
             app_id=0,
             event_type="ALL",
@@ -1375,7 +1375,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_event_visibility_settings_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_event_visibility_settings_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_event_visibility_settings(
             app_id=0,
             event_type="ALL",
@@ -1388,7 +1388,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_event_visibility_settings(self, client: Hubspot) -> None:
+    def test_raw_response_update_event_visibility_settings(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.update_event_visibility_settings(
             app_id=0,
             event_type="ALL",
@@ -1402,7 +1402,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_event_visibility_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_update_event_visibility_settings(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.update_event_visibility_settings(
             app_id=0,
             event_type="ALL",
@@ -1418,7 +1418,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_oembed_domain(self, client: Hubspot) -> None:
+    def test_method_update_oembed_domain(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -1432,7 +1432,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_oembed_domain_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_oembed_domain_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -1447,7 +1447,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_oembed_domain(self, client: Hubspot) -> None:
+    def test_raw_response_update_oembed_domain(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -1465,7 +1465,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_oembed_domain(self, client: Hubspot) -> None:
+    def test_streaming_response_update_oembed_domain(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -1485,7 +1485,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_oembed_domain(self, client: Hubspot) -> None:
+    def test_path_params_update_oembed_domain(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `o_embed_domain_id` but received ''"):
             client.cms.media_bridge.with_raw_response.update_oembed_domain(
                 o_embed_domain_id="",
@@ -1499,7 +1499,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_property(self, client: Hubspot) -> None:
+    def test_method_update_property(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_property(
             property_name="propertyName",
             app_id=0,
@@ -1509,7 +1509,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_property_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_property_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_property(
             property_name="propertyName",
             app_id=0,
@@ -1538,7 +1538,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_property(self, client: Hubspot) -> None:
+    def test_raw_response_update_property(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.update_property(
             property_name="propertyName",
             app_id=0,
@@ -1552,7 +1552,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_property(self, client: Hubspot) -> None:
+    def test_streaming_response_update_property(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.update_property(
             property_name="propertyName",
             app_id=0,
@@ -1568,7 +1568,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_property(self, client: Hubspot) -> None:
+    def test_path_params_update_property(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.update_property(
                 property_name="propertyName",
@@ -1585,7 +1585,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_property_group(self, client: Hubspot) -> None:
+    def test_method_update_property_group(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_property_group(
             group_name="groupName",
             app_id=0,
@@ -1595,7 +1595,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_property_group_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_property_group_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_property_group(
             group_name="groupName",
             app_id=0,
@@ -1607,7 +1607,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_property_group(self, client: Hubspot) -> None:
+    def test_raw_response_update_property_group(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.update_property_group(
             group_name="groupName",
             app_id=0,
@@ -1621,7 +1621,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_property_group(self, client: Hubspot) -> None:
+    def test_streaming_response_update_property_group(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.update_property_group(
             group_name="groupName",
             app_id=0,
@@ -1637,7 +1637,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_property_group(self, client: Hubspot) -> None:
+    def test_path_params_update_property_group(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.update_property_group(
                 group_name="groupName",
@@ -1654,7 +1654,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_schema(self, client: Hubspot) -> None:
+    def test_method_update_schema(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_schema(
             object_type="objectType",
             app_id=0,
@@ -1664,7 +1664,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_schema_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_schema_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_schema(
             object_type="objectType",
             app_id=0,
@@ -1685,7 +1685,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_schema(self, client: Hubspot) -> None:
+    def test_raw_response_update_schema(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.update_schema(
             object_type="objectType",
             app_id=0,
@@ -1699,7 +1699,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_schema(self, client: Hubspot) -> None:
+    def test_streaming_response_update_schema(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.update_schema(
             object_type="objectType",
             app_id=0,
@@ -1715,7 +1715,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_schema(self, client: Hubspot) -> None:
+    def test_path_params_update_schema(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             client.cms.media_bridge.with_raw_response.update_schema(
                 object_type="",
@@ -1725,7 +1725,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_settings(self, client: Hubspot) -> None:
+    def test_method_update_settings(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_settings(
             app_id=0,
             updated_at=0,
@@ -1734,7 +1734,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_settings_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_settings_with_all_params(self, client: HubSpot) -> None:
         media_bridge = client.cms.media_bridge.update_settings(
             app_id=0,
             updated_at=0,
@@ -1746,7 +1746,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_settings(self, client: Hubspot) -> None:
+    def test_raw_response_update_settings(self, client: HubSpot) -> None:
         response = client.cms.media_bridge.with_raw_response.update_settings(
             app_id=0,
             updated_at=0,
@@ -1759,7 +1759,7 @@ class TestMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_update_settings(self, client: HubSpot) -> None:
         with client.cms.media_bridge.with_streaming_response.update_settings(
             app_id=0,
             updated_at=0,
@@ -1780,7 +1780,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_association(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_association(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_association(
             object_type="objectType",
             app_id=0,
@@ -1791,7 +1791,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_association_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_association_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_association(
             object_type="objectType",
             app_id=0,
@@ -1803,7 +1803,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_association(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_association(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_association(
             object_type="objectType",
             app_id=0,
@@ -1818,7 +1818,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_association(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_association(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_association(
             object_type="objectType",
             app_id=0,
@@ -1835,7 +1835,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_association(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_association(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.create_association(
                 object_type="",
@@ -1846,7 +1846,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_attention_span_event(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_attention_span_event(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_attention_span_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1857,7 +1857,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_attention_span_event_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_attention_span_event_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_attention_span_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1884,7 +1884,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_attention_span_event(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_attention_span_event(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_attention_span_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1899,7 +1899,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_attention_span_event(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_attention_span_event(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_attention_span_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1916,7 +1916,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_media_played_event(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_media_played_event(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_media_played_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1927,7 +1927,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_media_played_event_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_media_played_event_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_media_played_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1950,7 +1950,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_media_played_event(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_media_played_event(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_media_played_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1965,7 +1965,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_media_played_event(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_media_played_event(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_media_played_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1982,7 +1982,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_media_played_percent_event(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_media_played_percent_event(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_media_played_percent_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -1993,7 +1993,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_media_played_percent_event_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_media_played_percent_event_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_media_played_percent_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -2015,7 +2015,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_media_played_percent_event(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_media_played_percent_event(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_media_played_percent_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -2030,7 +2030,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_media_played_percent_event(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_media_played_percent_event(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_media_played_percent_event(
             media_type="AUDIO",
             occurred_timestamp=0,
@@ -2047,7 +2047,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_object_type(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_object_type(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_object_type(
             app_id=0,
             media_types=["VIDEO"],
@@ -2056,7 +2056,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_object_type(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_object_type(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_object_type(
             app_id=0,
             media_types=["VIDEO"],
@@ -2069,7 +2069,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_object_type(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_object_type(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_object_type(
             app_id=0,
             media_types=["VIDEO"],
@@ -2084,7 +2084,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_oembed_domain(
             app_id=0,
             endpoints={
@@ -2097,7 +2097,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_oembed_domain_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_oembed_domain_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_oembed_domain(
             app_id=0,
             endpoints={
@@ -2111,7 +2111,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_oembed_domain(
             app_id=0,
             endpoints={
@@ -2128,7 +2128,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_oembed_domain(
             app_id=0,
             endpoints={
@@ -2147,7 +2147,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_property(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_property(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_property(
             object_type="objectType",
             app_id=0,
@@ -2161,7 +2161,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_property_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_property_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_property(
             object_type="objectType",
             app_id=0,
@@ -2193,7 +2193,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_property(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_property(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_property(
             object_type="objectType",
             app_id=0,
@@ -2211,7 +2211,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_property(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_property(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_property(
             object_type="objectType",
             app_id=0,
@@ -2231,7 +2231,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_property(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_property(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.create_property(
                 object_type="",
@@ -2245,7 +2245,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_property_group(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_property_group(
             object_type="objectType",
             app_id=0,
@@ -2256,7 +2256,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_property_group_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_property_group_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_property_group(
             object_type="objectType",
             app_id=0,
@@ -2268,7 +2268,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_property_group(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_property_group(
             object_type="objectType",
             app_id=0,
@@ -2283,7 +2283,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_property_group(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_property_group(
             object_type="objectType",
             app_id=0,
@@ -2300,7 +2300,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_property_group(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.create_property_group(
                 object_type="",
@@ -2311,7 +2311,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_video_association_definition(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_video_association_definition(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.create_video_association_definition(
             0,
         )
@@ -2319,7 +2319,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_video_association_definition(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_video_association_definition(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.create_video_association_definition(
             0,
         )
@@ -2331,7 +2331,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_video_association_definition(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_video_association_definition(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.create_video_association_definition(
             0,
         ) as response:
@@ -2345,7 +2345,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_association(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_association(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.delete_association(
             association_id="associationId",
             app_id=0,
@@ -2355,7 +2355,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_association(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_association(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.delete_association(
             association_id="associationId",
             app_id=0,
@@ -2369,7 +2369,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_association(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_association(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.delete_association(
             association_id="associationId",
             app_id=0,
@@ -2385,7 +2385,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_association(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_association(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.delete_association(
                 association_id="associationId",
@@ -2402,7 +2402,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.delete_oembed_domain(
             app_id=0,
         )
@@ -2410,7 +2410,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_oembed_domain_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_oembed_domain_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.delete_oembed_domain(
             app_id=0,
             id=0,
@@ -2420,7 +2420,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.delete_oembed_domain(
             app_id=0,
         )
@@ -2432,7 +2432,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.delete_oembed_domain(
             app_id=0,
         ) as response:
@@ -2446,7 +2446,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_property(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_property(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.delete_property(
             property_name="propertyName",
             app_id=0,
@@ -2456,7 +2456,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_property(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_property(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.delete_property(
             property_name="propertyName",
             app_id=0,
@@ -2470,7 +2470,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_property(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_property(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.delete_property(
             property_name="propertyName",
             app_id=0,
@@ -2486,7 +2486,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_property(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_property(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.delete_property(
                 property_name="propertyName",
@@ -2503,7 +2503,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_property_group(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.delete_property_group(
             group_name="groupName",
             app_id=0,
@@ -2513,7 +2513,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_property_group(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.delete_property_group(
             group_name="groupName",
             app_id=0,
@@ -2527,7 +2527,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_property_group(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.delete_property_group(
             group_name="groupName",
             app_id=0,
@@ -2543,7 +2543,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_property_group(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.delete_property_group(
                 group_name="groupName",
@@ -2560,7 +2560,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.get_event_visibility_settings(
             0,
         )
@@ -2568,7 +2568,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.get_event_visibility_settings(
             0,
         )
@@ -2580,7 +2580,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.get_event_visibility_settings(
             0,
         ) as response:
@@ -2594,7 +2594,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -2603,7 +2603,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -2616,7 +2616,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.get_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -2631,7 +2631,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `o_embed_domain_id` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.get_oembed_domain(
                 o_embed_domain_id="",
@@ -2640,7 +2640,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_property(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_property(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.get_property(
             property_name="propertyName",
             app_id=0,
@@ -2650,7 +2650,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_property_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_property_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.get_property(
             property_name="propertyName",
             app_id=0,
@@ -2662,7 +2662,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_property(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_property(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.get_property(
             property_name="propertyName",
             app_id=0,
@@ -2676,7 +2676,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_property(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_property(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.get_property(
             property_name="propertyName",
             app_id=0,
@@ -2692,7 +2692,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_property(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_property(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.get_property(
                 property_name="propertyName",
@@ -2709,7 +2709,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_property_group(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.get_property_group(
             group_name="groupName",
             app_id=0,
@@ -2719,7 +2719,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_property_group(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.get_property_group(
             group_name="groupName",
             app_id=0,
@@ -2733,7 +2733,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_property_group(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.get_property_group(
             group_name="groupName",
             app_id=0,
@@ -2749,7 +2749,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_property_group(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.get_property_group(
                 group_name="groupName",
@@ -2766,7 +2766,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_schema(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_schema(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.get_schema(
             object_type="objectType",
             app_id=0,
@@ -2775,7 +2775,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_schema(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_schema(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.get_schema(
             object_type="objectType",
             app_id=0,
@@ -2788,7 +2788,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_schema(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_schema(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.get_schema(
             object_type="objectType",
             app_id=0,
@@ -2803,7 +2803,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_schema(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_schema(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.get_schema(
                 object_type="",
@@ -2812,7 +2812,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_object_types_by_media_type(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_object_types_by_media_type(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_object_types_by_media_type(
             media_type="AUDIO",
             app_id=0,
@@ -2821,7 +2821,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_object_types_by_media_type_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_object_types_by_media_type_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_object_types_by_media_type(
             media_type="AUDIO",
             app_id=0,
@@ -2831,7 +2831,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_object_types_by_media_type(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_object_types_by_media_type(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.list_object_types_by_media_type(
             media_type="AUDIO",
             app_id=0,
@@ -2844,7 +2844,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_object_types_by_media_type(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_object_types_by_media_type(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.list_object_types_by_media_type(
             media_type="AUDIO",
             app_id=0,
@@ -2859,7 +2859,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_oembed_domains(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_oembed_domains(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_oembed_domains(
             app_id=0,
         )
@@ -2867,7 +2867,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_oembed_domains_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_oembed_domains_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_oembed_domains(
             app_id=0,
             domain_portal_id=0,
@@ -2876,7 +2876,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_oembed_domains(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_oembed_domains(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.list_oembed_domains(
             app_id=0,
         )
@@ -2888,7 +2888,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_oembed_domains(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_oembed_domains(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.list_oembed_domains(
             app_id=0,
         ) as response:
@@ -2902,7 +2902,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_properties(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_properties(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_properties(
             object_type="objectType",
             app_id=0,
@@ -2911,7 +2911,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_properties_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_properties_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_properties(
             object_type="objectType",
             app_id=0,
@@ -2922,7 +2922,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_properties(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_properties(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.list_properties(
             object_type="objectType",
             app_id=0,
@@ -2935,7 +2935,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_properties(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_properties(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.list_properties(
             object_type="objectType",
             app_id=0,
@@ -2950,7 +2950,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list_properties(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list_properties(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.list_properties(
                 object_type="",
@@ -2959,7 +2959,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_property_groups(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_property_groups(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_property_groups(
             object_type="objectType",
             app_id=0,
@@ -2968,7 +2968,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_property_groups(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_property_groups(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.list_property_groups(
             object_type="objectType",
             app_id=0,
@@ -2981,7 +2981,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_property_groups(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_property_groups(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.list_property_groups(
             object_type="objectType",
             app_id=0,
@@ -2996,7 +2996,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list_property_groups(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list_property_groups(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.list_property_groups(
                 object_type="",
@@ -3005,7 +3005,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_schemas(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_schemas(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_schemas(
             app_id=0,
         )
@@ -3013,7 +3013,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_schemas_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_schemas_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.list_schemas(
             app_id=0,
             archived=True,
@@ -3022,7 +3022,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_schemas(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_schemas(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.list_schemas(
             app_id=0,
         )
@@ -3034,7 +3034,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_schemas(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_schemas(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.list_schemas(
             app_id=0,
         ) as response:
@@ -3048,7 +3048,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_register_app_name(self, async_client: AsyncHubspot) -> None:
+    async def test_method_register_app_name(self, async_client: AsyncHubSpot) -> None:
         with pytest.warns(DeprecationWarning):
             media_bridge = await async_client.cms.media_bridge.register_app_name(
                 app_id=0,
@@ -3059,7 +3059,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_register_app_name_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_register_app_name_with_all_params(self, async_client: AsyncHubSpot) -> None:
         with pytest.warns(DeprecationWarning):
             media_bridge = await async_client.cms.media_bridge.register_app_name(
                 app_id=0,
@@ -3073,7 +3073,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_register_app_name(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_register_app_name(self, async_client: AsyncHubSpot) -> None:
         with pytest.warns(DeprecationWarning):
             response = await async_client.cms.media_bridge.with_raw_response.register_app_name(
                 app_id=0,
@@ -3087,7 +3087,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_register_app_name(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_register_app_name(self, async_client: AsyncHubSpot) -> None:
         with pytest.warns(DeprecationWarning):
             async with async_client.cms.media_bridge.with_streaming_response.register_app_name(
                 app_id=0,
@@ -3103,7 +3103,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_event_visibility_settings(
             app_id=0,
             event_type="ALL",
@@ -3113,7 +3113,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_event_visibility_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_event_visibility_settings_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_event_visibility_settings(
             app_id=0,
             event_type="ALL",
@@ -3126,7 +3126,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.update_event_visibility_settings(
             app_id=0,
             event_type="ALL",
@@ -3140,7 +3140,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_event_visibility_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_event_visibility_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.update_event_visibility_settings(
             app_id=0,
             event_type="ALL",
@@ -3156,7 +3156,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -3170,7 +3170,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_oembed_domain_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_oembed_domain_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -3185,7 +3185,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -3203,7 +3203,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.update_oembed_domain(
             o_embed_domain_id="oEmbedDomainId",
             app_id=0,
@@ -3223,7 +3223,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_oembed_domain(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_oembed_domain(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `o_embed_domain_id` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.update_oembed_domain(
                 o_embed_domain_id="",
@@ -3237,7 +3237,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_property(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_property(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_property(
             property_name="propertyName",
             app_id=0,
@@ -3247,7 +3247,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_property_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_property_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_property(
             property_name="propertyName",
             app_id=0,
@@ -3276,7 +3276,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_property(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_property(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.update_property(
             property_name="propertyName",
             app_id=0,
@@ -3290,7 +3290,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_property(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_property(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.update_property(
             property_name="propertyName",
             app_id=0,
@@ -3306,7 +3306,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_property(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_property(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.update_property(
                 property_name="propertyName",
@@ -3323,7 +3323,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_property_group(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_property_group(
             group_name="groupName",
             app_id=0,
@@ -3333,7 +3333,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_property_group_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_property_group_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_property_group(
             group_name="groupName",
             app_id=0,
@@ -3345,7 +3345,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_property_group(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.update_property_group(
             group_name="groupName",
             app_id=0,
@@ -3359,7 +3359,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_property_group(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.update_property_group(
             group_name="groupName",
             app_id=0,
@@ -3375,7 +3375,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_property_group(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_property_group(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.update_property_group(
                 group_name="groupName",
@@ -3392,7 +3392,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_schema(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_schema(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_schema(
             object_type="objectType",
             app_id=0,
@@ -3402,7 +3402,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_schema_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_schema_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_schema(
             object_type="objectType",
             app_id=0,
@@ -3423,7 +3423,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_schema(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_schema(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.update_schema(
             object_type="objectType",
             app_id=0,
@@ -3437,7 +3437,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_schema(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_schema(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.update_schema(
             object_type="objectType",
             app_id=0,
@@ -3453,7 +3453,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_schema(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_schema(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type` but received ''"):
             await async_client.cms.media_bridge.with_raw_response.update_schema(
                 object_type="",
@@ -3463,7 +3463,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_settings(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_settings(
             app_id=0,
             updated_at=0,
@@ -3472,7 +3472,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_settings_with_all_params(self, async_client: AsyncHubSpot) -> None:
         media_bridge = await async_client.cms.media_bridge.update_settings(
             app_id=0,
             updated_at=0,
@@ -3484,7 +3484,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.media_bridge.with_raw_response.update_settings(
             app_id=0,
             updated_at=0,
@@ -3497,7 +3497,7 @@ class TestAsyncMediaBridge:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.media_bridge.with_streaming_response.update_settings(
             app_id=0,
             updated_at=0,

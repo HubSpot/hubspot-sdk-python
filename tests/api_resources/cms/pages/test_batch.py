@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.cms import BatchResponsePage, BatchResponseContentFolder
@@ -20,7 +20,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_folders(self, client: Hubspot) -> None:
+    def test_method_create_folders(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.create_folders(
             inputs=[
                 {
@@ -38,7 +38,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_folders(self, client: Hubspot) -> None:
+    def test_raw_response_create_folders(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.create_folders(
             inputs=[
                 {
@@ -60,7 +60,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_folders(self, client: Hubspot) -> None:
+    def test_streaming_response_create_folders(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.create_folders(
             inputs=[
                 {
@@ -84,7 +84,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_landing_pages(self, client: Hubspot) -> None:
+    def test_method_create_landing_pages(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.create_landing_pages(
             inputs=[
                 {
@@ -262,7 +262,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_landing_pages(self, client: Hubspot) -> None:
+    def test_raw_response_create_landing_pages(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.create_landing_pages(
             inputs=[
                 {
@@ -444,7 +444,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_landing_pages(self, client: Hubspot) -> None:
+    def test_streaming_response_create_landing_pages(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.create_landing_pages(
             inputs=[
                 {
@@ -628,7 +628,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_site_pages(self, client: Hubspot) -> None:
+    def test_method_create_site_pages(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.create_site_pages(
             inputs=[
                 {
@@ -806,7 +806,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_site_pages(self, client: Hubspot) -> None:
+    def test_raw_response_create_site_pages(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.create_site_pages(
             inputs=[
                 {
@@ -988,7 +988,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_site_pages(self, client: Hubspot) -> None:
+    def test_streaming_response_create_site_pages(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.create_site_pages(
             inputs=[
                 {
@@ -1172,7 +1172,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_folders(self, client: Hubspot) -> None:
+    def test_method_delete_folders(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.delete_folders(
             inputs=["string"],
         )
@@ -1180,7 +1180,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_folders(self, client: Hubspot) -> None:
+    def test_raw_response_delete_folders(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.delete_folders(
             inputs=["string"],
         )
@@ -1192,7 +1192,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_folders(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_folders(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.delete_folders(
             inputs=["string"],
         ) as response:
@@ -1206,7 +1206,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_landing_pages(self, client: Hubspot) -> None:
+    def test_method_delete_landing_pages(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.delete_landing_pages(
             inputs=["string"],
         )
@@ -1214,7 +1214,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_landing_pages(self, client: Hubspot) -> None:
+    def test_raw_response_delete_landing_pages(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.delete_landing_pages(
             inputs=["string"],
         )
@@ -1226,7 +1226,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_landing_pages(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_landing_pages(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.delete_landing_pages(
             inputs=["string"],
         ) as response:
@@ -1240,7 +1240,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_site_pages(self, client: Hubspot) -> None:
+    def test_method_delete_site_pages(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.delete_site_pages(
             inputs=["string"],
         )
@@ -1248,7 +1248,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_site_pages(self, client: Hubspot) -> None:
+    def test_raw_response_delete_site_pages(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.delete_site_pages(
             inputs=["string"],
         )
@@ -1260,7 +1260,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_site_pages(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_site_pages(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.delete_site_pages(
             inputs=["string"],
         ) as response:
@@ -1274,7 +1274,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_landing_pages(self, client: Hubspot) -> None:
+    def test_method_get_landing_pages(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.get_landing_pages(
             inputs=["string"],
         )
@@ -1282,7 +1282,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_landing_pages_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_landing_pages_with_all_params(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.get_landing_pages(
             inputs=["string"],
             archived=True,
@@ -1291,7 +1291,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_landing_pages(self, client: Hubspot) -> None:
+    def test_raw_response_get_landing_pages(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.get_landing_pages(
             inputs=["string"],
         )
@@ -1303,7 +1303,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_landing_pages(self, client: Hubspot) -> None:
+    def test_streaming_response_get_landing_pages(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.get_landing_pages(
             inputs=["string"],
         ) as response:
@@ -1317,7 +1317,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_site_pages(self, client: Hubspot) -> None:
+    def test_method_get_site_pages(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.get_site_pages(
             inputs=["string"],
         )
@@ -1325,7 +1325,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_site_pages_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_site_pages_with_all_params(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.get_site_pages(
             inputs=["string"],
             archived=True,
@@ -1334,7 +1334,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_site_pages(self, client: Hubspot) -> None:
+    def test_raw_response_get_site_pages(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.get_site_pages(
             inputs=["string"],
         )
@@ -1346,7 +1346,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_site_pages(self, client: Hubspot) -> None:
+    def test_streaming_response_get_site_pages(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.get_site_pages(
             inputs=["string"],
         ) as response:
@@ -1360,7 +1360,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_folders(self, client: Hubspot) -> None:
+    def test_method_update_folders(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.update_folders(
             inputs=[{}],
         )
@@ -1368,7 +1368,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_folders_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_folders_with_all_params(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.update_folders(
             inputs=[{}],
             archived=True,
@@ -1377,7 +1377,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_folders(self, client: Hubspot) -> None:
+    def test_raw_response_update_folders(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.update_folders(
             inputs=[{}],
         )
@@ -1389,7 +1389,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_folders(self, client: Hubspot) -> None:
+    def test_streaming_response_update_folders(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.update_folders(
             inputs=[{}],
         ) as response:
@@ -1403,7 +1403,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_landing_pages(self, client: Hubspot) -> None:
+    def test_method_update_landing_pages(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.update_landing_pages(
             inputs=[{}],
         )
@@ -1411,7 +1411,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_landing_pages_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_landing_pages_with_all_params(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.update_landing_pages(
             inputs=[{}],
             archived=True,
@@ -1420,7 +1420,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_landing_pages(self, client: Hubspot) -> None:
+    def test_raw_response_update_landing_pages(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.update_landing_pages(
             inputs=[{}],
         )
@@ -1432,7 +1432,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_landing_pages(self, client: Hubspot) -> None:
+    def test_streaming_response_update_landing_pages(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.update_landing_pages(
             inputs=[{}],
         ) as response:
@@ -1446,7 +1446,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_site_pages(self, client: Hubspot) -> None:
+    def test_method_update_site_pages(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.update_site_pages(
             inputs=[{}],
         )
@@ -1454,7 +1454,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_site_pages_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_site_pages_with_all_params(self, client: HubSpot) -> None:
         batch = client.cms.pages.batch.update_site_pages(
             inputs=[{}],
             archived=True,
@@ -1463,7 +1463,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_site_pages(self, client: Hubspot) -> None:
+    def test_raw_response_update_site_pages(self, client: HubSpot) -> None:
         response = client.cms.pages.batch.with_raw_response.update_site_pages(
             inputs=[{}],
         )
@@ -1475,7 +1475,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_site_pages(self, client: Hubspot) -> None:
+    def test_streaming_response_update_site_pages(self, client: HubSpot) -> None:
         with client.cms.pages.batch.with_streaming_response.update_site_pages(
             inputs=[{}],
         ) as response:
@@ -1495,7 +1495,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_folders(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.create_folders(
             inputs=[
                 {
@@ -1513,7 +1513,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_folders(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.create_folders(
             inputs=[
                 {
@@ -1535,7 +1535,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_folders(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.create_folders(
             inputs=[
                 {
@@ -1559,7 +1559,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_landing_pages(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.create_landing_pages(
             inputs=[
                 {
@@ -1737,7 +1737,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_landing_pages(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.create_landing_pages(
             inputs=[
                 {
@@ -1919,7 +1919,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_landing_pages(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.create_landing_pages(
             inputs=[
                 {
@@ -2103,7 +2103,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_site_pages(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.create_site_pages(
             inputs=[
                 {
@@ -2281,7 +2281,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_site_pages(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.create_site_pages(
             inputs=[
                 {
@@ -2463,7 +2463,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_site_pages(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.create_site_pages(
             inputs=[
                 {
@@ -2647,7 +2647,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_folders(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.delete_folders(
             inputs=["string"],
         )
@@ -2655,7 +2655,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_folders(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.delete_folders(
             inputs=["string"],
         )
@@ -2667,7 +2667,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_folders(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.delete_folders(
             inputs=["string"],
         ) as response:
@@ -2681,7 +2681,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_landing_pages(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.delete_landing_pages(
             inputs=["string"],
         )
@@ -2689,7 +2689,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_landing_pages(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.delete_landing_pages(
             inputs=["string"],
         )
@@ -2701,7 +2701,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_landing_pages(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.delete_landing_pages(
             inputs=["string"],
         ) as response:
@@ -2715,7 +2715,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_site_pages(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.delete_site_pages(
             inputs=["string"],
         )
@@ -2723,7 +2723,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_site_pages(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.delete_site_pages(
             inputs=["string"],
         )
@@ -2735,7 +2735,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_site_pages(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.delete_site_pages(
             inputs=["string"],
         ) as response:
@@ -2749,7 +2749,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_landing_pages(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.get_landing_pages(
             inputs=["string"],
         )
@@ -2757,7 +2757,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_landing_pages_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_landing_pages_with_all_params(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.get_landing_pages(
             inputs=["string"],
             archived=True,
@@ -2766,7 +2766,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_landing_pages(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.get_landing_pages(
             inputs=["string"],
         )
@@ -2778,7 +2778,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_landing_pages(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.get_landing_pages(
             inputs=["string"],
         ) as response:
@@ -2792,7 +2792,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_site_pages(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.get_site_pages(
             inputs=["string"],
         )
@@ -2800,7 +2800,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_site_pages_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_site_pages_with_all_params(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.get_site_pages(
             inputs=["string"],
             archived=True,
@@ -2809,7 +2809,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_site_pages(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.get_site_pages(
             inputs=["string"],
         )
@@ -2821,7 +2821,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_site_pages(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.get_site_pages(
             inputs=["string"],
         ) as response:
@@ -2835,7 +2835,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_folders(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.update_folders(
             inputs=[{}],
         )
@@ -2843,7 +2843,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_folders_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_folders_with_all_params(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.update_folders(
             inputs=[{}],
             archived=True,
@@ -2852,7 +2852,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_folders(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.update_folders(
             inputs=[{}],
         )
@@ -2864,7 +2864,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_folders(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_folders(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.update_folders(
             inputs=[{}],
         ) as response:
@@ -2878,7 +2878,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_landing_pages(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.update_landing_pages(
             inputs=[{}],
         )
@@ -2886,7 +2886,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_landing_pages_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_landing_pages_with_all_params(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.update_landing_pages(
             inputs=[{}],
             archived=True,
@@ -2895,7 +2895,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_landing_pages(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.update_landing_pages(
             inputs=[{}],
         )
@@ -2907,7 +2907,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_landing_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_landing_pages(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.update_landing_pages(
             inputs=[{}],
         ) as response:
@@ -2921,7 +2921,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_site_pages(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.update_site_pages(
             inputs=[{}],
         )
@@ -2929,7 +2929,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_site_pages_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_site_pages_with_all_params(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.cms.pages.batch.update_site_pages(
             inputs=[{}],
             archived=True,
@@ -2938,7 +2938,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_site_pages(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.batch.with_raw_response.update_site_pages(
             inputs=[{}],
         )
@@ -2950,7 +2950,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_site_pages(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_site_pages(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.batch.with_streaming_response.update_site_pages(
             inputs=[{}],
         ) as response:

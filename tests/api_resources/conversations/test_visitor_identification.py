@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.conversations import IdentificationTokenResponse
 
@@ -19,7 +19,7 @@ class TestVisitorIdentification:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_generate_token(self, client: Hubspot) -> None:
+    def test_method_generate_token(self, client: HubSpot) -> None:
         visitor_identification = client.conversations.visitor_identification.generate_token(
             email="email",
         )
@@ -27,7 +27,7 @@ class TestVisitorIdentification:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_generate_token_with_all_params(self, client: Hubspot) -> None:
+    def test_method_generate_token_with_all_params(self, client: HubSpot) -> None:
         visitor_identification = client.conversations.visitor_identification.generate_token(
             email="email",
             first_name="firstName",
@@ -37,7 +37,7 @@ class TestVisitorIdentification:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_generate_token(self, client: Hubspot) -> None:
+    def test_raw_response_generate_token(self, client: HubSpot) -> None:
         response = client.conversations.visitor_identification.with_raw_response.generate_token(
             email="email",
         )
@@ -49,7 +49,7 @@ class TestVisitorIdentification:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_generate_token(self, client: Hubspot) -> None:
+    def test_streaming_response_generate_token(self, client: HubSpot) -> None:
         with client.conversations.visitor_identification.with_streaming_response.generate_token(
             email="email",
         ) as response:
@@ -69,7 +69,7 @@ class TestAsyncVisitorIdentification:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_generate_token(self, async_client: AsyncHubspot) -> None:
+    async def test_method_generate_token(self, async_client: AsyncHubSpot) -> None:
         visitor_identification = await async_client.conversations.visitor_identification.generate_token(
             email="email",
         )
@@ -77,7 +77,7 @@ class TestAsyncVisitorIdentification:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_generate_token_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_generate_token_with_all_params(self, async_client: AsyncHubSpot) -> None:
         visitor_identification = await async_client.conversations.visitor_identification.generate_token(
             email="email",
             first_name="firstName",
@@ -87,7 +87,7 @@ class TestAsyncVisitorIdentification:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_generate_token(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_generate_token(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.conversations.visitor_identification.with_raw_response.generate_token(
             email="email",
         )
@@ -99,7 +99,7 @@ class TestAsyncVisitorIdentification:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_generate_token(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_generate_token(self, async_client: AsyncHubSpot) -> None:
         async with async_client.conversations.visitor_identification.with_streaming_response.generate_token(
             email="email",
         ) as response:

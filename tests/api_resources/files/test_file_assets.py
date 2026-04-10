@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -28,7 +28,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
+    def test_method_create(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.create(
             name="name",
         )
@@ -36,7 +36,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.create(
             name="name",
             parent_folder_id="parentFolderId",
@@ -46,7 +46,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
+    def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.create(
             name="name",
         )
@@ -58,7 +58,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
+    def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.create(
             name="name",
         ) as response:
@@ -72,7 +72,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
+    def test_method_update(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.update(
             file_id="321669910225",
             clear_expires=True,
@@ -81,7 +81,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.update(
             file_id="321669910225",
             clear_expires=True,
@@ -96,7 +96,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
+    def test_raw_response_update(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.update(
             file_id="321669910225",
             clear_expires=True,
@@ -109,7 +109,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
+    def test_streaming_response_update(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.update(
             file_id="321669910225",
             clear_expires=True,
@@ -124,7 +124,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.file_assets.with_raw_response.update(
                 file_id="",
@@ -133,7 +133,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.delete(
             "321669910225",
         )
@@ -141,7 +141,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.delete(
             "321669910225",
         )
@@ -153,7 +153,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.delete(
             "321669910225",
         ) as response:
@@ -167,7 +167,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.file_assets.with_raw_response.delete(
                 "",
@@ -175,7 +175,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_gdpr_delete(self, client: Hubspot) -> None:
+    def test_method_gdpr_delete(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.gdpr_delete(
             "321669910225",
         )
@@ -183,7 +183,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_gdpr_delete(self, client: Hubspot) -> None:
+    def test_raw_response_gdpr_delete(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.gdpr_delete(
             "321669910225",
         )
@@ -195,7 +195,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_gdpr_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_gdpr_delete(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.gdpr_delete(
             "321669910225",
         ) as response:
@@ -209,7 +209,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_gdpr_delete(self, client: Hubspot) -> None:
+    def test_path_params_gdpr_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.file_assets.with_raw_response.gdpr_delete(
                 "",
@@ -217,7 +217,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.get(
             file_id="321669910225",
         )
@@ -225,7 +225,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.get(
             file_id="321669910225",
             properties=["string"],
@@ -234,7 +234,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.get(
             file_id="321669910225",
         )
@@ -246,7 +246,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.get(
             file_id="321669910225",
         ) as response:
@@ -260,7 +260,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.file_assets.with_raw_response.get(
                 file_id="",
@@ -268,7 +268,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_path(self, client: Hubspot) -> None:
+    def test_method_get_by_path(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.get_by_path(
             path="path",
         )
@@ -276,7 +276,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_path_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_by_path_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.get_by_path(
             path="path",
             properties=["string"],
@@ -285,7 +285,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_path(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_path(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.get_by_path(
             path="path",
         )
@@ -297,7 +297,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_path(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_path(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.get_by_path(
             path="path",
         ) as response:
@@ -311,7 +311,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_path(self, client: Hubspot) -> None:
+    def test_path_params_get_by_path(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
             client.files.file_assets.with_raw_response.get_by_path(
                 path="",
@@ -319,7 +319,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_import_task_status(self, client: Hubspot) -> None:
+    def test_method_get_import_task_status(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.get_import_task_status(
             "taskId",
         )
@@ -327,7 +327,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_import_task_status(self, client: Hubspot) -> None:
+    def test_raw_response_get_import_task_status(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.get_import_task_status(
             "taskId",
         )
@@ -339,7 +339,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_import_task_status(self, client: Hubspot) -> None:
+    def test_streaming_response_get_import_task_status(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.get_import_task_status(
             "taskId",
         ) as response:
@@ -353,7 +353,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_import_task_status(self, client: Hubspot) -> None:
+    def test_path_params_get_import_task_status(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
             client.files.file_assets.with_raw_response.get_import_task_status(
                 "",
@@ -361,7 +361,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_signed_url(self, client: Hubspot) -> None:
+    def test_method_get_signed_url(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.get_signed_url(
             file_id="321669910225",
         )
@@ -369,7 +369,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_signed_url_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_signed_url_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.get_signed_url(
             file_id="321669910225",
             expiration_seconds=0,
@@ -380,7 +380,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_signed_url(self, client: Hubspot) -> None:
+    def test_raw_response_get_signed_url(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.get_signed_url(
             file_id="321669910225",
         )
@@ -392,7 +392,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_signed_url(self, client: Hubspot) -> None:
+    def test_streaming_response_get_signed_url(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.get_signed_url(
             file_id="321669910225",
         ) as response:
@@ -406,7 +406,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_signed_url(self, client: Hubspot) -> None:
+    def test_path_params_get_signed_url(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.file_assets.with_raw_response.get_signed_url(
                 file_id="",
@@ -414,7 +414,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_import_from_url_async(self, client: Hubspot) -> None:
+    def test_method_import_from_url_async(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -425,7 +425,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_import_from_url_async_with_all_params(self, client: Hubspot) -> None:
+    def test_method_import_from_url_async_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -442,7 +442,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_import_from_url_async(self, client: Hubspot) -> None:
+    def test_raw_response_import_from_url_async(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -457,7 +457,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_import_from_url_async(self, client: Hubspot) -> None:
+    def test_streaming_response_import_from_url_async(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -474,7 +474,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_replace(self, client: Hubspot) -> None:
+    def test_method_replace(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.replace(
             file_id="321669910225",
         )
@@ -482,7 +482,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_replace_with_all_params(self, client: Hubspot) -> None:
+    def test_method_replace_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.replace(
             file_id="321669910225",
             charset_hunch="charsetHunch",
@@ -493,7 +493,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_replace(self, client: Hubspot) -> None:
+    def test_raw_response_replace(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.replace(
             file_id="321669910225",
         )
@@ -505,7 +505,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_replace(self, client: Hubspot) -> None:
+    def test_streaming_response_replace(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.replace(
             file_id="321669910225",
         ) as response:
@@ -519,7 +519,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_replace(self, client: Hubspot) -> None:
+    def test_path_params_replace(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             client.files.file_assets.with_raw_response.replace(
                 file_id="",
@@ -527,13 +527,13 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search(self, client: Hubspot) -> None:
+    def test_method_search(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.search()
         assert_matches_type(SyncPage[File], file_asset, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: Hubspot) -> None:
+    def test_method_search_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.search(
             after="after",
             allows_anonymous_access=True,
@@ -576,7 +576,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: Hubspot) -> None:
+    def test_raw_response_search(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.search()
 
         assert response.is_closed is True
@@ -586,7 +586,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: Hubspot) -> None:
+    def test_streaming_response_search(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -598,13 +598,13 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_upload(self, client: Hubspot) -> None:
+    def test_method_upload(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.upload()
         assert_matches_type(File, file_asset, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_upload_with_all_params(self, client: Hubspot) -> None:
+    def test_method_upload_with_all_params(self, client: HubSpot) -> None:
         file_asset = client.files.file_assets.upload(
             charset_hunch="charsetHunch",
             file=b"Example data",
@@ -617,7 +617,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_upload(self, client: Hubspot) -> None:
+    def test_raw_response_upload(self, client: HubSpot) -> None:
         response = client.files.file_assets.with_raw_response.upload()
 
         assert response.is_closed is True
@@ -627,7 +627,7 @@ class TestFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_upload(self, client: Hubspot) -> None:
+    def test_streaming_response_upload(self, client: HubSpot) -> None:
         with client.files.file_assets.with_streaming_response.upload() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -645,7 +645,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.create(
             name="name",
         )
@@ -653,7 +653,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.create(
             name="name",
             parent_folder_id="parentFolderId",
@@ -663,7 +663,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.create(
             name="name",
         )
@@ -675,7 +675,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.create(
             name="name",
         ) as response:
@@ -689,7 +689,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.update(
             file_id="321669910225",
             clear_expires=True,
@@ -698,7 +698,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.update(
             file_id="321669910225",
             clear_expires=True,
@@ -713,7 +713,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.update(
             file_id="321669910225",
             clear_expires=True,
@@ -726,7 +726,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.update(
             file_id="321669910225",
             clear_expires=True,
@@ -741,7 +741,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.file_assets.with_raw_response.update(
                 file_id="",
@@ -750,7 +750,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.delete(
             "321669910225",
         )
@@ -758,7 +758,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.delete(
             "321669910225",
         )
@@ -770,7 +770,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.delete(
             "321669910225",
         ) as response:
@@ -784,7 +784,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.file_assets.with_raw_response.delete(
                 "",
@@ -792,7 +792,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_gdpr_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.gdpr_delete(
             "321669910225",
         )
@@ -800,7 +800,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.gdpr_delete(
             "321669910225",
         )
@@ -812,7 +812,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.gdpr_delete(
             "321669910225",
         ) as response:
@@ -826,7 +826,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_gdpr_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_gdpr_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.file_assets.with_raw_response.gdpr_delete(
                 "",
@@ -834,7 +834,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.get(
             file_id="321669910225",
         )
@@ -842,7 +842,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.get(
             file_id="321669910225",
             properties=["string"],
@@ -851,7 +851,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.get(
             file_id="321669910225",
         )
@@ -863,7 +863,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.get(
             file_id="321669910225",
         ) as response:
@@ -877,7 +877,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.file_assets.with_raw_response.get(
                 file_id="",
@@ -885,7 +885,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_path(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.get_by_path(
             path="path",
         )
@@ -893,7 +893,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.get_by_path(
             path="path",
             properties=["string"],
@@ -902,7 +902,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_path(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.get_by_path(
             path="path",
         )
@@ -914,7 +914,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_path(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.get_by_path(
             path="path",
         ) as response:
@@ -928,7 +928,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_by_path(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path` but received ''"):
             await async_client.files.file_assets.with_raw_response.get_by_path(
                 path="",
@@ -936,7 +936,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_import_task_status(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.get_import_task_status(
             "taskId",
         )
@@ -944,7 +944,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_import_task_status(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.get_import_task_status(
             "taskId",
         )
@@ -956,7 +956,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_import_task_status(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.get_import_task_status(
             "taskId",
         ) as response:
@@ -970,7 +970,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_import_task_status(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_import_task_status(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
             await async_client.files.file_assets.with_raw_response.get_import_task_status(
                 "",
@@ -978,7 +978,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_signed_url(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_signed_url(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.get_signed_url(
             file_id="321669910225",
         )
@@ -986,7 +986,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_signed_url_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_signed_url_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.get_signed_url(
             file_id="321669910225",
             expiration_seconds=0,
@@ -997,7 +997,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_signed_url(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_signed_url(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.get_signed_url(
             file_id="321669910225",
         )
@@ -1009,7 +1009,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_signed_url(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_signed_url(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.get_signed_url(
             file_id="321669910225",
         ) as response:
@@ -1023,7 +1023,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_signed_url(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_signed_url(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.file_assets.with_raw_response.get_signed_url(
                 file_id="",
@@ -1031,7 +1031,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_import_from_url_async(self, async_client: AsyncHubspot) -> None:
+    async def test_method_import_from_url_async(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -1042,7 +1042,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_import_from_url_async_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_import_from_url_async_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -1059,7 +1059,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_import_from_url_async(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_import_from_url_async(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -1074,7 +1074,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_import_from_url_async(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_import_from_url_async(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.import_from_url_async(
             access="HIDDEN_INDEXABLE",
             duplicate_validation_scope="ENTIRE_PORTAL",
@@ -1091,7 +1091,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_replace(self, async_client: AsyncHubspot) -> None:
+    async def test_method_replace(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.replace(
             file_id="321669910225",
         )
@@ -1099,7 +1099,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_replace_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_replace_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.replace(
             file_id="321669910225",
             charset_hunch="charsetHunch",
@@ -1110,7 +1110,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_replace(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_replace(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.replace(
             file_id="321669910225",
         )
@@ -1122,7 +1122,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_replace(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_replace(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.replace(
             file_id="321669910225",
         ) as response:
@@ -1136,7 +1136,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_replace(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_replace(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `file_id` but received ''"):
             await async_client.files.file_assets.with_raw_response.replace(
                 file_id="",
@@ -1144,13 +1144,13 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.search()
         assert_matches_type(AsyncPage[File], file_asset, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.search(
             after="after",
             allows_anonymous_access=True,
@@ -1193,7 +1193,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.search()
 
         assert response.is_closed is True
@@ -1203,7 +1203,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1215,13 +1215,13 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_upload(self, async_client: AsyncHubspot) -> None:
+    async def test_method_upload(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.upload()
         assert_matches_type(File, file_asset, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_upload_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_upload_with_all_params(self, async_client: AsyncHubSpot) -> None:
         file_asset = await async_client.files.file_assets.upload(
             charset_hunch="charsetHunch",
             file=b"Example data",
@@ -1234,7 +1234,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_upload(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_upload(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.file_assets.with_raw_response.upload()
 
         assert response.is_closed is True
@@ -1244,7 +1244,7 @@ class TestAsyncFileAssets:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_upload(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_upload(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.file_assets.with_streaming_response.upload() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.crm.extensions import CompletedThirdPartyCallResponse
@@ -24,7 +24,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
+    def test_method_create(self, client: HubSpot) -> None:
         transcript = client.crm.extensions.calling.transcripts.create(
             engagement_id=0,
             transcript_create_utterances=[
@@ -43,7 +43,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
+    def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.transcripts.with_raw_response.create(
             engagement_id=0,
             transcript_create_utterances=[
@@ -66,7 +66,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
+    def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.transcripts.with_streaming_response.create(
             engagement_id=0,
             transcript_create_utterances=[
@@ -91,7 +91,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         transcript = client.crm.extensions.calling.transcripts.delete(
             "transcriptId",
         )
@@ -99,7 +99,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.transcripts.with_raw_response.delete(
             "transcriptId",
         )
@@ -111,7 +111,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.transcripts.with_streaming_response.delete(
             "transcriptId",
         ) as response:
@@ -125,7 +125,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transcript_id` but received ''"):
             client.crm.extensions.calling.transcripts.with_raw_response.delete(
                 "",
@@ -133,7 +133,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_inbound_call(self, client: Hubspot) -> None:
+    def test_method_create_inbound_call(self, client: HubSpot) -> None:
         transcript = client.crm.extensions.calling.transcripts.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -153,7 +153,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_inbound_call_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_inbound_call_with_all_params(self, client: HubSpot) -> None:
         transcript = client.crm.extensions.calling.transcripts.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -178,7 +178,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_inbound_call(self, client: Hubspot) -> None:
+    def test_raw_response_create_inbound_call(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.transcripts.with_raw_response.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -202,7 +202,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_inbound_call(self, client: Hubspot) -> None:
+    def test_streaming_response_create_inbound_call(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.transcripts.with_streaming_response.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -228,7 +228,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         transcript = client.crm.extensions.calling.transcripts.get(
             "transcriptId",
         )
@@ -236,7 +236,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.transcripts.with_raw_response.get(
             "transcriptId",
         )
@@ -248,7 +248,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.transcripts.with_streaming_response.get(
             "transcriptId",
         ) as response:
@@ -262,7 +262,7 @@ class TestTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transcript_id` but received ''"):
             client.crm.extensions.calling.transcripts.with_raw_response.get(
                 "",
@@ -276,7 +276,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         transcript = await async_client.crm.extensions.calling.transcripts.create(
             engagement_id=0,
             transcript_create_utterances=[
@@ -295,7 +295,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.transcripts.with_raw_response.create(
             engagement_id=0,
             transcript_create_utterances=[
@@ -318,7 +318,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.transcripts.with_streaming_response.create(
             engagement_id=0,
             transcript_create_utterances=[
@@ -343,7 +343,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         transcript = await async_client.crm.extensions.calling.transcripts.delete(
             "transcriptId",
         )
@@ -351,7 +351,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.transcripts.with_raw_response.delete(
             "transcriptId",
         )
@@ -363,7 +363,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.transcripts.with_streaming_response.delete(
             "transcriptId",
         ) as response:
@@ -377,7 +377,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transcript_id` but received ''"):
             await async_client.crm.extensions.calling.transcripts.with_raw_response.delete(
                 "",
@@ -385,7 +385,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_inbound_call(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_inbound_call(self, async_client: AsyncHubSpot) -> None:
         transcript = await async_client.crm.extensions.calling.transcripts.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -405,7 +405,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_inbound_call_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_inbound_call_with_all_params(self, async_client: AsyncHubSpot) -> None:
         transcript = await async_client.crm.extensions.calling.transcripts.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -430,7 +430,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_inbound_call(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_inbound_call(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.transcripts.with_raw_response.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -454,7 +454,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_inbound_call(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_inbound_call(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.transcripts.with_streaming_response.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -480,7 +480,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         transcript = await async_client.crm.extensions.calling.transcripts.get(
             "transcriptId",
         )
@@ -488,7 +488,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.transcripts.with_raw_response.get(
             "transcriptId",
         )
@@ -500,7 +500,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.transcripts.with_streaming_response.get(
             "transcriptId",
         ) as response:
@@ -514,7 +514,7 @@ class TestAsyncTranscripts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transcript_id` but received ''"):
             await async_client.crm.extensions.calling.transcripts.with_raw_response.get(
                 "",

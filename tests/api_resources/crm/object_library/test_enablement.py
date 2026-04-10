@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm.object_library import (
     ObjectTypeEnablementPublicResponse,
@@ -22,13 +22,13 @@ class TestEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_all(self, client: Hubspot) -> None:
+    def test_method_get_all(self, client: HubSpot) -> None:
         enablement = client.crm.object_library.enablement.get_all()
         assert_matches_type(PortalObjectTypeEnablementPublicResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_all(self, client: Hubspot) -> None:
+    def test_raw_response_get_all(self, client: HubSpot) -> None:
         response = client.crm.object_library.enablement.with_raw_response.get_all()
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_all(self, client: Hubspot) -> None:
+    def test_streaming_response_get_all(self, client: HubSpot) -> None:
         with client.crm.object_library.enablement.with_streaming_response.get_all() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -50,7 +50,7 @@ class TestEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_object_type_id(self, client: Hubspot) -> None:
+    def test_method_get_by_object_type_id(self, client: HubSpot) -> None:
         enablement = client.crm.object_library.enablement.get_by_object_type_id(
             "objectTypeId",
         )
@@ -58,7 +58,7 @@ class TestEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_object_type_id(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_object_type_id(self, client: HubSpot) -> None:
         response = client.crm.object_library.enablement.with_raw_response.get_by_object_type_id(
             "objectTypeId",
         )
@@ -70,7 +70,7 @@ class TestEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_object_type_id(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_object_type_id(self, client: HubSpot) -> None:
         with client.crm.object_library.enablement.with_streaming_response.get_by_object_type_id(
             "objectTypeId",
         ) as response:
@@ -84,7 +84,7 @@ class TestEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_object_type_id(self, client: Hubspot) -> None:
+    def test_path_params_get_by_object_type_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             client.crm.object_library.enablement.with_raw_response.get_by_object_type_id(
                 "",
@@ -98,13 +98,13 @@ class TestAsyncEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_all(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_all(self, async_client: AsyncHubSpot) -> None:
         enablement = await async_client.crm.object_library.enablement.get_all()
         assert_matches_type(PortalObjectTypeEnablementPublicResponse, enablement, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_all(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_all(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.object_library.enablement.with_raw_response.get_all()
 
         assert response.is_closed is True
@@ -114,7 +114,7 @@ class TestAsyncEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_all(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_all(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.object_library.enablement.with_streaming_response.get_all() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -126,7 +126,7 @@ class TestAsyncEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_object_type_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_object_type_id(self, async_client: AsyncHubSpot) -> None:
         enablement = await async_client.crm.object_library.enablement.get_by_object_type_id(
             "objectTypeId",
         )
@@ -134,7 +134,7 @@ class TestAsyncEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_object_type_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_object_type_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.object_library.enablement.with_raw_response.get_by_object_type_id(
             "objectTypeId",
         )
@@ -146,7 +146,7 @@ class TestAsyncEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_object_type_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_object_type_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.object_library.enablement.with_streaming_response.get_by_object_type_id(
             "objectTypeId",
         ) as response:
@@ -160,7 +160,7 @@ class TestAsyncEnablement:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_by_object_type_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_by_object_type_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.object_library.enablement.with_raw_response.get_by_object_type_id(
                 "",

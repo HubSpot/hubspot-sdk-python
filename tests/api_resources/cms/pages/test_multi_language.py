@@ -9,7 +9,7 @@ import httpx
 import pytest
 from respx import MockRouter
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._response import (
     BinaryAPIResponse,
@@ -27,7 +27,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_attach_to_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_attach_to_lang_group(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -43,7 +43,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_attach_to_lang_group_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_attach_to_lang_group_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -60,7 +60,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_attach_to_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_attach_to_lang_group(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -78,7 +78,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_attach_to_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_attach_to_lang_group(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -98,7 +98,7 @@ class TestMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_language_variation(self, client: Hubspot) -> None:
+    def test_method_create_language_variation(self, client: HubSpot) -> None:
         multi_language = client.cms.pages.multi_language.create_language_variation(
             id="id",
         )
@@ -106,7 +106,7 @@ class TestMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_language_variation_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_language_variation_with_all_params(self, client: HubSpot) -> None:
         multi_language = client.cms.pages.multi_language.create_language_variation(
             id="id",
             language="language",
@@ -116,7 +116,7 @@ class TestMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_language_variation(self, client: Hubspot) -> None:
+    def test_raw_response_create_language_variation(self, client: HubSpot) -> None:
         response = client.cms.pages.multi_language.with_raw_response.create_language_variation(
             id="id",
         )
@@ -128,7 +128,7 @@ class TestMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_language_variation(self, client: Hubspot) -> None:
+    def test_streaming_response_create_language_variation(self, client: HubSpot) -> None:
         with client.cms.pages.multi_language.with_streaming_response.create_language_variation(
             id="id",
         ) as response:
@@ -142,7 +142,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_detach_from_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_detach_from_lang_group(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -156,7 +156,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_detach_from_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_detach_from_lang_group(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -172,7 +172,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_detach_from_lang_group(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_detach_from_lang_group(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -190,7 +190,7 @@ class TestMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_set_new_lang_primary(self, client: Hubspot) -> None:
+    def test_method_set_new_lang_primary(self, client: HubSpot) -> None:
         multi_language = client.cms.pages.multi_language.set_new_lang_primary(
             id="id",
         )
@@ -198,7 +198,7 @@ class TestMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_set_new_lang_primary(self, client: Hubspot) -> None:
+    def test_raw_response_set_new_lang_primary(self, client: HubSpot) -> None:
         response = client.cms.pages.multi_language.with_raw_response.set_new_lang_primary(
             id="id",
         )
@@ -210,7 +210,7 @@ class TestMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_set_new_lang_primary(self, client: Hubspot) -> None:
+    def test_streaming_response_set_new_lang_primary(self, client: HubSpot) -> None:
         with client.cms.pages.multi_language.with_streaming_response.set_new_lang_primary(
             id="id",
         ) as response:
@@ -224,7 +224,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_update_languages(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_update_languages(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/update-languages").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -239,7 +239,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_update_languages(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_update_languages(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/update-languages").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -256,7 +256,7 @@ class TestMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_update_languages(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_update_languages(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/update-languages").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -281,7 +281,7 @@ class TestAsyncMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_attach_to_lang_group(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_attach_to_lang_group(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -298,7 +298,7 @@ class TestAsyncMultiLanguage:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_attach_to_lang_group_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -316,7 +316,7 @@ class TestAsyncMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_attach_to_lang_group(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -335,7 +335,7 @@ class TestAsyncMultiLanguage:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_attach_to_lang_group(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -356,7 +356,7 @@ class TestAsyncMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_language_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_language_variation(self, async_client: AsyncHubSpot) -> None:
         multi_language = await async_client.cms.pages.multi_language.create_language_variation(
             id="id",
         )
@@ -364,7 +364,7 @@ class TestAsyncMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_language_variation_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_language_variation_with_all_params(self, async_client: AsyncHubSpot) -> None:
         multi_language = await async_client.cms.pages.multi_language.create_language_variation(
             id="id",
             language="language",
@@ -374,7 +374,7 @@ class TestAsyncMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_language_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_language_variation(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.multi_language.with_raw_response.create_language_variation(
             id="id",
         )
@@ -386,7 +386,7 @@ class TestAsyncMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_language_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_language_variation(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.multi_language.with_streaming_response.create_language_variation(
             id="id",
         ) as response:
@@ -400,7 +400,7 @@ class TestAsyncMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_detach_from_lang_group(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_detach_from_lang_group(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -415,7 +415,7 @@ class TestAsyncMultiLanguage:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_detach_from_lang_group(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -433,7 +433,7 @@ class TestAsyncMultiLanguage:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_detach_from_lang_group(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -452,7 +452,7 @@ class TestAsyncMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
+    async def test_method_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
         multi_language = await async_client.cms.pages.multi_language.set_new_lang_primary(
             id="id",
         )
@@ -460,7 +460,7 @@ class TestAsyncMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.multi_language.with_raw_response.set_new_lang_primary(
             id="id",
         )
@@ -472,7 +472,7 @@ class TestAsyncMultiLanguage:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.multi_language.with_streaming_response.set_new_lang_primary(
             id="id",
         ) as response:
@@ -486,7 +486,7 @@ class TestAsyncMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_languages(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_update_languages(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/update-languages").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -501,7 +501,7 @@ class TestAsyncMultiLanguage:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_update_languages(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_update_languages(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/update-languages").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -519,7 +519,7 @@ class TestAsyncMultiLanguage:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_update_languages(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/pages/2026-03/site-pages/multi-language/update-languages").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})

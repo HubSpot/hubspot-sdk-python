@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.scheduler import (
@@ -23,7 +23,7 @@ class TestAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
+    def test_method_create(self, client: HubSpot) -> None:
         advanced = client.scheduler.meetings.advanced.create(
             organizer_user_id="organizerUserId",
             associations=[
@@ -60,7 +60,7 @@ class TestAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_with_all_params(self, client: HubSpot) -> None:
         advanced = client.scheduler.meetings.advanced.create(
             organizer_user_id="organizerUserId",
             associations=[
@@ -104,7 +104,7 @@ class TestAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
+    def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.scheduler.meetings.advanced.with_raw_response.create(
             organizer_user_id="organizerUserId",
             associations=[
@@ -145,7 +145,7 @@ class TestAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
+    def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.scheduler.meetings.advanced.with_streaming_response.create(
             organizer_user_id="organizerUserId",
             associations=[
@@ -188,7 +188,7 @@ class TestAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_book(self, client: Hubspot) -> None:
+    def test_method_book(self, client: HubSpot) -> None:
         advanced = client.scheduler.meetings.advanced.book(
             duration=0,
             email="email",
@@ -214,7 +214,7 @@ class TestAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_book_with_all_params(self, client: Hubspot) -> None:
+    def test_method_book_with_all_params(self, client: HubSpot) -> None:
         advanced = client.scheduler.meetings.advanced.book(
             duration=0,
             email="email",
@@ -242,7 +242,7 @@ class TestAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_book(self, client: Hubspot) -> None:
+    def test_raw_response_book(self, client: HubSpot) -> None:
         response = client.scheduler.meetings.advanced.with_raw_response.book(
             duration=0,
             email="email",
@@ -272,7 +272,7 @@ class TestAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_book(self, client: Hubspot) -> None:
+    def test_streaming_response_book(self, client: HubSpot) -> None:
         with client.scheduler.meetings.advanced.with_streaming_response.book(
             duration=0,
             email="email",
@@ -310,7 +310,7 @@ class TestAsyncAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         advanced = await async_client.scheduler.meetings.advanced.create(
             organizer_user_id="organizerUserId",
             associations=[
@@ -347,7 +347,7 @@ class TestAsyncAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
         advanced = await async_client.scheduler.meetings.advanced.create(
             organizer_user_id="organizerUserId",
             associations=[
@@ -391,7 +391,7 @@ class TestAsyncAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.scheduler.meetings.advanced.with_raw_response.create(
             organizer_user_id="organizerUserId",
             associations=[
@@ -432,7 +432,7 @@ class TestAsyncAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.scheduler.meetings.advanced.with_streaming_response.create(
             organizer_user_id="organizerUserId",
             associations=[
@@ -475,7 +475,7 @@ class TestAsyncAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_book(self, async_client: AsyncHubspot) -> None:
+    async def test_method_book(self, async_client: AsyncHubSpot) -> None:
         advanced = await async_client.scheduler.meetings.advanced.book(
             duration=0,
             email="email",
@@ -501,7 +501,7 @@ class TestAsyncAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_book_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_book_with_all_params(self, async_client: AsyncHubSpot) -> None:
         advanced = await async_client.scheduler.meetings.advanced.book(
             duration=0,
             email="email",
@@ -529,7 +529,7 @@ class TestAsyncAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_book(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_book(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.scheduler.meetings.advanced.with_raw_response.book(
             duration=0,
             email="email",
@@ -559,7 +559,7 @@ class TestAsyncAdvanced:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_book(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_book(self, async_client: AsyncHubSpot) -> None:
         async with async_client.scheduler.meetings.advanced.with_streaming_response.book(
             duration=0,
             email="email",

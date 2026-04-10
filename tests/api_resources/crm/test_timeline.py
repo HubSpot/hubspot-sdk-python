@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.crm import (
@@ -22,7 +22,7 @@ class TestTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_event(self, client: Hubspot) -> None:
+    def test_method_create_event(self, client: HubSpot) -> None:
         timeline = client.crm.timeline.create_event(
             id="id",
             event_type_name="eventTypeName",
@@ -32,7 +32,7 @@ class TestTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_event_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_event_with_all_params(self, client: HubSpot) -> None:
         timeline = client.crm.timeline.create_event(
             id="id",
             event_type_name="eventTypeName",
@@ -56,7 +56,7 @@ class TestTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_event(self, client: Hubspot) -> None:
+    def test_raw_response_create_event(self, client: HubSpot) -> None:
         response = client.crm.timeline.with_raw_response.create_event(
             id="id",
             event_type_name="eventTypeName",
@@ -70,7 +70,7 @@ class TestTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_event(self, client: Hubspot) -> None:
+    def test_streaming_response_create_event(self, client: HubSpot) -> None:
         with client.crm.timeline.with_streaming_response.create_event(
             id="id",
             event_type_name="eventTypeName",
@@ -86,7 +86,7 @@ class TestTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_project_type(self, client: Hubspot) -> None:
+    def test_method_create_project_type(self, client: HubSpot) -> None:
         timeline = client.crm.timeline.create_project_type(
             developer_symbol="developerSymbol",
             project_name="projectName",
@@ -95,7 +95,7 @@ class TestTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_project_type(self, client: Hubspot) -> None:
+    def test_raw_response_create_project_type(self, client: HubSpot) -> None:
         response = client.crm.timeline.with_raw_response.create_project_type(
             developer_symbol="developerSymbol",
             project_name="projectName",
@@ -108,7 +108,7 @@ class TestTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_project_type(self, client: Hubspot) -> None:
+    def test_streaming_response_create_project_type(self, client: HubSpot) -> None:
         with client.crm.timeline.with_streaming_response.create_project_type(
             developer_symbol="developerSymbol",
             project_name="projectName",
@@ -129,7 +129,7 @@ class TestAsyncTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_event(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_event(self, async_client: AsyncHubSpot) -> None:
         timeline = await async_client.crm.timeline.create_event(
             id="id",
             event_type_name="eventTypeName",
@@ -139,7 +139,7 @@ class TestAsyncTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_event_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_event_with_all_params(self, async_client: AsyncHubSpot) -> None:
         timeline = await async_client.crm.timeline.create_event(
             id="id",
             event_type_name="eventTypeName",
@@ -163,7 +163,7 @@ class TestAsyncTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_event(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_event(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.timeline.with_raw_response.create_event(
             id="id",
             event_type_name="eventTypeName",
@@ -177,7 +177,7 @@ class TestAsyncTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_event(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_event(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.timeline.with_streaming_response.create_event(
             id="id",
             event_type_name="eventTypeName",
@@ -193,7 +193,7 @@ class TestAsyncTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_project_type(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_project_type(self, async_client: AsyncHubSpot) -> None:
         timeline = await async_client.crm.timeline.create_project_type(
             developer_symbol="developerSymbol",
             project_name="projectName",
@@ -202,7 +202,7 @@ class TestAsyncTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_project_type(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_project_type(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.timeline.with_raw_response.create_project_type(
             developer_symbol="developerSymbol",
             project_name="projectName",
@@ -215,7 +215,7 @@ class TestAsyncTimeline:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_project_type(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_project_type(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.timeline.with_streaming_response.create_project_type(
             developer_symbol="developerSymbol",
             project_name="projectName",

@@ -9,7 +9,7 @@ import httpx
 import pytest
 from respx import MockRouter
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk._response import (
     BinaryAPIResponse,
@@ -26,7 +26,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_create(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_create(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.create(
             id="id",
@@ -208,7 +208,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_create(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_create(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = client.cms.blogs.posts.with_raw_response.create(
@@ -392,7 +392,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_create(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_create(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.posts.with_streaming_response.create(
             id="id",
@@ -578,7 +578,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_update(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_update(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -763,7 +763,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_update_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_update_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -1016,7 +1016,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_update(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_update(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -1203,7 +1203,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_update(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_update(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -1392,7 +1392,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.with_raw_response.update(
                 object_id="",
@@ -1571,7 +1571,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_list(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.list()
         assert post.is_closed
@@ -1581,7 +1581,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.list(
             after="after",
@@ -1603,7 +1603,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_list(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = client.cms.blogs.posts.with_raw_response.list()
@@ -1615,7 +1615,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_list(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.posts.with_streaming_response.list() as post:
             assert not post.is_closed
@@ -1629,7 +1629,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         post = client.cms.blogs.posts.delete(
             object_id="objectId",
         )
@@ -1637,7 +1637,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_with_all_params(self, client: Hubspot) -> None:
+    def test_method_delete_with_all_params(self, client: HubSpot) -> None:
         post = client.cms.blogs.posts.delete(
             object_id="objectId",
             archived=True,
@@ -1646,7 +1646,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.cms.blogs.posts.with_raw_response.delete(
             object_id="objectId",
         )
@@ -1658,7 +1658,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.cms.blogs.posts.with_streaming_response.delete(
             object_id="objectId",
         ) as response:
@@ -1672,7 +1672,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.with_raw_response.delete(
                 object_id="",
@@ -1680,7 +1680,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_clone(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_clone(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.clone(
             id="id",
@@ -1692,7 +1692,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_clone_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_clone_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.clone(
             id="id",
@@ -1705,7 +1705,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_clone(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_clone(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = client.cms.blogs.posts.with_raw_response.clone(
@@ -1719,7 +1719,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_clone(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_clone(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.posts.with_streaming_response.clone(
             id="id",
@@ -1735,7 +1735,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.get(
             object_id="objectId",
@@ -1747,7 +1747,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.get(
             object_id="objectId",
@@ -1761,7 +1761,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_get(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = client.cms.blogs.posts.with_raw_response.get(
@@ -1775,7 +1775,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.posts.with_streaming_response.get(
             object_id="objectId",
@@ -1791,7 +1791,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.with_raw_response.get(
                 object_id="",
@@ -1799,7 +1799,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_draft_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_draft_by_id(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -1813,7 +1813,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get_draft_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_get_draft_by_id(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -1829,7 +1829,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get_draft_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get_draft_by_id(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -1847,7 +1847,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_get_draft_by_id(self, client: Hubspot) -> None:
+    def test_path_params_get_draft_by_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.with_raw_response.get_draft_by_id(
                 "",
@@ -1855,7 +1855,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_list_authors(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.list_authors()
         assert post.is_closed
@@ -1865,7 +1865,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_authors_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_list_authors_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.list_authors(
             after="after",
@@ -1887,7 +1887,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_list_authors(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = client.cms.blogs.posts.with_raw_response.list_authors()
@@ -1899,7 +1899,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_list_authors(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.posts.with_streaming_response.list_authors() as post:
             assert not post.is_closed
@@ -1913,7 +1913,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_list_tags(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.list_tags()
         assert post.is_closed
@@ -1923,7 +1923,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list_tags_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_list_tags_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = client.cms.blogs.posts.list_tags(
             after="after",
@@ -1945,7 +1945,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_list_tags(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = client.cms.blogs.posts.with_raw_response.list_tags()
@@ -1957,7 +1957,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_list_tags(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.blogs.posts.with_streaming_response.list_tags() as post:
             assert not post.is_closed
@@ -1971,7 +1971,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_push_live(self, client: Hubspot) -> None:
+    def test_method_push_live(self, client: HubSpot) -> None:
         post = client.cms.blogs.posts.push_live(
             "objectId",
         )
@@ -1979,7 +1979,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_push_live(self, client: Hubspot) -> None:
+    def test_raw_response_push_live(self, client: HubSpot) -> None:
         response = client.cms.blogs.posts.with_raw_response.push_live(
             "objectId",
         )
@@ -1991,7 +1991,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_push_live(self, client: Hubspot) -> None:
+    def test_streaming_response_push_live(self, client: HubSpot) -> None:
         with client.cms.blogs.posts.with_streaming_response.push_live(
             "objectId",
         ) as response:
@@ -2005,7 +2005,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_push_live(self, client: Hubspot) -> None:
+    def test_path_params_push_live(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.with_raw_response.push_live(
                 "",
@@ -2013,7 +2013,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_query(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2025,7 +2025,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_query_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_query_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2049,7 +2049,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_query(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2063,7 +2063,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_query(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_query(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2079,7 +2079,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_query_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_query_authors(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2091,7 +2091,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_query_authors_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_query_authors_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2115,7 +2115,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_query_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_query_authors(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2129,7 +2129,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_query_authors(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_query_authors(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2145,7 +2145,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_query_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_query_tags(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2157,7 +2157,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_query_tags_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_query_tags_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2181,7 +2181,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_query_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_query_tags(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2195,7 +2195,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_query_tags(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_query_tags(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2211,7 +2211,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_reset_draft(self, client: Hubspot) -> None:
+    def test_method_reset_draft(self, client: HubSpot) -> None:
         post = client.cms.blogs.posts.reset_draft(
             "objectId",
         )
@@ -2219,7 +2219,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_reset_draft(self, client: Hubspot) -> None:
+    def test_raw_response_reset_draft(self, client: HubSpot) -> None:
         response = client.cms.blogs.posts.with_raw_response.reset_draft(
             "objectId",
         )
@@ -2231,7 +2231,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_reset_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_reset_draft(self, client: HubSpot) -> None:
         with client.cms.blogs.posts.with_streaming_response.reset_draft(
             "objectId",
         ) as response:
@@ -2245,7 +2245,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_reset_draft(self, client: Hubspot) -> None:
+    def test_path_params_reset_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.with_raw_response.reset_draft(
                 "",
@@ -2253,7 +2253,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_schedule(self, client: Hubspot) -> None:
+    def test_method_schedule(self, client: HubSpot) -> None:
         post = client.cms.blogs.posts.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -2262,7 +2262,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_schedule(self, client: Hubspot) -> None:
+    def test_raw_response_schedule(self, client: HubSpot) -> None:
         response = client.cms.blogs.posts.with_raw_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -2275,7 +2275,7 @@ class TestPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_schedule(self, client: Hubspot) -> None:
+    def test_streaming_response_schedule(self, client: HubSpot) -> None:
         with client.cms.blogs.posts.with_streaming_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -2290,7 +2290,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_update_draft(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_update_draft(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2475,7 +2475,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_update_draft(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_update_draft(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2662,7 +2662,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_update_draft(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_update_draft(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -2851,7 +2851,7 @@ class TestPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_update_draft(self, client: Hubspot) -> None:
+    def test_path_params_update_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.with_raw_response.update_draft(
                 object_id="",
@@ -3036,7 +3036,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_create(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.create(
             id="id",
@@ -3218,7 +3218,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_create(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = await async_client.cms.blogs.posts.with_raw_response.create(
@@ -3402,7 +3402,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_create(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.posts.with_streaming_response.create(
             id="id",
@@ -3588,7 +3588,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_update(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -3773,7 +3773,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -4026,7 +4026,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_update(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -4213,7 +4213,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_update(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -4402,7 +4402,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.with_raw_response.update(
                 object_id="",
@@ -4581,7 +4581,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.list()
         assert post.is_closed
@@ -4591,7 +4591,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.list(
             after="after",
@@ -4613,7 +4613,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = await async_client.cms.blogs.posts.with_raw_response.list()
@@ -4625,7 +4625,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.posts.with_streaming_response.list() as post:
             assert not post.is_closed
@@ -4639,7 +4639,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         post = await async_client.cms.blogs.posts.delete(
             object_id="objectId",
         )
@@ -4647,7 +4647,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncHubSpot) -> None:
         post = await async_client.cms.blogs.posts.delete(
             object_id="objectId",
             archived=True,
@@ -4656,7 +4656,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.posts.with_raw_response.delete(
             object_id="objectId",
         )
@@ -4668,7 +4668,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.posts.with_streaming_response.delete(
             object_id="objectId",
         ) as response:
@@ -4682,7 +4682,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.with_raw_response.delete(
                 object_id="",
@@ -4690,7 +4690,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_clone(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_clone(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.clone(
             id="id",
@@ -4702,7 +4702,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_clone_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_clone_with_all_params(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.clone(
             id="id",
@@ -4715,7 +4715,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_clone(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_clone(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = await async_client.cms.blogs.posts.with_raw_response.clone(
@@ -4729,7 +4729,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_clone(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_clone(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/clone").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.posts.with_streaming_response.clone(
             id="id",
@@ -4745,7 +4745,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.get(
             object_id="objectId",
@@ -4757,7 +4757,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.get(
             object_id="objectId",
@@ -4771,7 +4771,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = await async_client.cms.blogs.posts.with_raw_response.get(
@@ -4785,7 +4785,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.posts.with_streaming_response.get(
             object_id="objectId",
@@ -4801,7 +4801,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.with_raw_response.get(
                 object_id="",
@@ -4809,7 +4809,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_draft_by_id(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get_draft_by_id(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -4823,7 +4823,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get_draft_by_id(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_get_draft_by_id(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -4839,7 +4839,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_get_draft_by_id(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_get_draft_by_id(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -4857,7 +4857,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_get_draft_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_draft_by_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.with_raw_response.get_draft_by_id(
                 "",
@@ -4865,7 +4865,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_list_authors(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.list_authors()
         assert post.is_closed
@@ -4876,7 +4876,7 @@ class TestAsyncPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_list_authors_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.list_authors(
@@ -4899,7 +4899,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_list_authors(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = await async_client.cms.blogs.posts.with_raw_response.list_authors()
@@ -4911,7 +4911,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_list_authors(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.posts.with_streaming_response.list_authors() as post:
             assert not post.is_closed
@@ -4925,7 +4925,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_list_tags(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.list_tags()
         assert post.is_closed
@@ -4935,7 +4935,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list_tags_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_list_tags_with_all_params(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         post = await async_client.cms.blogs.posts.list_tags(
             after="after",
@@ -4957,7 +4957,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_list_tags(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         post = await async_client.cms.blogs.posts.with_raw_response.list_tags()
@@ -4969,7 +4969,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_list_tags(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.blogs.posts.with_streaming_response.list_tags() as post:
             assert not post.is_closed
@@ -4983,7 +4983,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_push_live(self, async_client: AsyncHubspot) -> None:
+    async def test_method_push_live(self, async_client: AsyncHubSpot) -> None:
         post = await async_client.cms.blogs.posts.push_live(
             "objectId",
         )
@@ -4991,7 +4991,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_push_live(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_push_live(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.posts.with_raw_response.push_live(
             "objectId",
         )
@@ -5003,7 +5003,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_push_live(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_push_live(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.posts.with_streaming_response.push_live(
             "objectId",
         ) as response:
@@ -5017,7 +5017,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_push_live(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_push_live(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.with_raw_response.push_live(
                 "",
@@ -5025,7 +5025,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_query(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5037,7 +5037,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_query_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_query_with_all_params(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5061,7 +5061,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_query(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5075,7 +5075,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_query(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_query(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5091,7 +5091,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_query_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_query_authors(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5104,7 +5104,7 @@ class TestAsyncPosts:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_query_authors_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -5129,7 +5129,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_query_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_query_authors(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5143,7 +5143,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_query_authors(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_query_authors(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/authors/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5159,7 +5159,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_query_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_query_tags(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5171,7 +5171,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_query_tags_with_all_params(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_query_tags_with_all_params(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5195,7 +5195,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_query_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_query_tags(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5209,7 +5209,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_query_tags(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_query_tags(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/tags/cursor/query").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5225,7 +5225,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_reset_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_reset_draft(self, async_client: AsyncHubSpot) -> None:
         post = await async_client.cms.blogs.posts.reset_draft(
             "objectId",
         )
@@ -5233,7 +5233,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_reset_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_reset_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.posts.with_raw_response.reset_draft(
             "objectId",
         )
@@ -5245,7 +5245,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_reset_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_reset_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.posts.with_streaming_response.reset_draft(
             "objectId",
         ) as response:
@@ -5259,7 +5259,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_reset_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_reset_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.with_raw_response.reset_draft(
                 "",
@@ -5267,7 +5267,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_schedule(self, async_client: AsyncHubspot) -> None:
+    async def test_method_schedule(self, async_client: AsyncHubSpot) -> None:
         post = await async_client.cms.blogs.posts.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -5276,7 +5276,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_schedule(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_schedule(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.posts.with_raw_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -5289,7 +5289,7 @@ class TestAsyncPosts:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_schedule(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_schedule(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.posts.with_streaming_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -5304,7 +5304,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_draft(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_update_draft(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5489,7 +5489,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_update_draft(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_update_draft(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5676,7 +5676,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_update_draft(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_update_draft(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.patch("/cms/blogs/2026-03/posts/objectId/draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -5865,7 +5865,7 @@ class TestAsyncPosts:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.with_raw_response.update_draft(
                 object_id="",

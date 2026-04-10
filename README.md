@@ -1,9 +1,9 @@
-# Hubspot Python API library
+# HubSpot Python API library
 
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/hubspot_sdk.svg?label=pypi%20(stable))](https://pypi.org/project/hubspot_sdk/)
 
-The Hubspot Python library provides convenient access to the Hubspot REST API from any Python 3.9+
+The HubSpot Python library provides convenient access to the HubSpot REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -28,9 +28,9 @@ pip install git+ssh://git@github.com/stainless-sdks/hubspot-sdk-python.git
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
-client = Hubspot(
+client = HubSpot(
     access_token="My Access Token",
 )
 
@@ -42,13 +42,13 @@ print(result.id)
 
 ## Async usage
 
-Simply import `AsyncHubspot` instead of `Hubspot` and use `await` with each API call:
+Simply import `AsyncHubSpot` instead of `HubSpot` and use `await` with each API call:
 
 ```python
 import asyncio
-from hubspot_sdk import AsyncHubspot
+from hubspot_sdk import AsyncHubSpot
 
-client = AsyncHubspot(
+client = AsyncHubSpot(
     access_token="My Access Token",
 )
 
@@ -81,11 +81,11 @@ Then you can enable it by instantiating the client with `http_client=DefaultAioH
 ```python
 import asyncio
 from hubspot_sdk import DefaultAioHttpClient
-from hubspot_sdk import AsyncHubspot
+from hubspot_sdk import AsyncHubSpot
 
 
 async def main() -> None:
-    async with AsyncHubspot(
+    async with AsyncHubSpot(
         access_token="My Access Token",
         http_client=DefaultAioHttpClient(),
     ) as client:
@@ -109,14 +109,14 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Pagination
 
-List methods in the Hubspot API are paginated.
+List methods in the HubSpot API are paginated.
 
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```python
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
-client = Hubspot()
+client = HubSpot()
 
 all_contacts = []
 # Automatically fetches more pages as needed.
@@ -132,9 +132,9 @@ Or, asynchronously:
 
 ```python
 import asyncio
-from hubspot_sdk import AsyncHubspot
+from hubspot_sdk import AsyncHubSpot
 
-client = AsyncHubspot()
+client = AsyncHubSpot()
 
 
 async def main() -> None:
@@ -183,9 +183,9 @@ for contact in first_page.results:
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
-client = Hubspot()
+client = HubSpot()
 
 public_action_definition = client.automation.actions.definitions.create(
     app_id=0,
@@ -225,9 +225,9 @@ Request parameters that correspond to file uploads can be passed as `bytes`, or 
 
 ```python
 from pathlib import Path
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
-client = Hubspot()
+client = HubSpot()
 
 client.cms.hubdb.tables.import_draft(
     table_id_or_name="tableIdOrName",
@@ -248,9 +248,9 @@ All errors inherit from `hubspot_sdk.APIError`.
 
 ```python
 import hubspot_sdk
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
-client = Hubspot()
+client = HubSpot()
 
 try:
     client.crm.objects.contacts.create(
@@ -300,10 +300,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
 # Configure the default for all requests:
-client = Hubspot(
+client = HubSpot(
     # default is 2
     max_retries=0,
 )
@@ -331,16 +331,16 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
 # Configure the default for all requests:
-client = Hubspot(
+client = HubSpot(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = Hubspot(
+client = HubSpot(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
@@ -396,9 +396,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
-client = Hubspot()
+client = HubSpot()
 response = client.crm.objects.contacts.with_raw_response.create(
     associations=[{
         "to": {
@@ -496,9 +496,9 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from hubspot_sdk import Hubspot, DefaultHttpxClient
+from hubspot_sdk import HubSpot, DefaultHttpxClient
 
-client = Hubspot(
+client = HubSpot(
     # Or use the `HUBSPOT_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
@@ -519,9 +519,9 @@ client.with_options(http_client=DefaultHttpxClient(...))
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ```py
-from hubspot_sdk import Hubspot
+from hubspot_sdk import HubSpot
 
-with Hubspot() as client:
+with HubSpot() as client:
   # make requests here
   ...
 

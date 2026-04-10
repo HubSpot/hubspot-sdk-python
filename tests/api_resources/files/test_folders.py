@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -25,7 +25,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_by_id(self, client: Hubspot) -> None:
+    def test_method_delete_by_id(self, client: HubSpot) -> None:
         folder = client.files.folders.delete_by_id(
             "321669910225",
         )
@@ -33,7 +33,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_by_id(self, client: Hubspot) -> None:
+    def test_raw_response_delete_by_id(self, client: HubSpot) -> None:
         response = client.files.folders.with_raw_response.delete_by_id(
             "321669910225",
         )
@@ -45,7 +45,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_by_id(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_by_id(self, client: HubSpot) -> None:
         with client.files.folders.with_streaming_response.delete_by_id(
             "321669910225",
         ) as response:
@@ -59,7 +59,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_by_id(self, client: Hubspot) -> None:
+    def test_path_params_delete_by_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             client.files.folders.with_raw_response.delete_by_id(
                 "",
@@ -67,7 +67,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_by_path(self, client: Hubspot) -> None:
+    def test_method_delete_by_path(self, client: HubSpot) -> None:
         folder = client.files.folders.delete_by_path(
             "folderPath",
         )
@@ -75,7 +75,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_by_path(self, client: Hubspot) -> None:
+    def test_raw_response_delete_by_path(self, client: HubSpot) -> None:
         response = client.files.folders.with_raw_response.delete_by_path(
             "folderPath",
         )
@@ -87,7 +87,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_by_path(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_by_path(self, client: HubSpot) -> None:
         with client.files.folders.with_streaming_response.delete_by_path(
             "folderPath",
         ) as response:
@@ -101,7 +101,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_by_path(self, client: Hubspot) -> None:
+    def test_path_params_delete_by_path(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_path` but received ''"):
             client.files.folders.with_raw_response.delete_by_path(
                 "",
@@ -109,7 +109,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_id(self, client: Hubspot) -> None:
+    def test_method_get_by_id(self, client: HubSpot) -> None:
         folder = client.files.folders.get_by_id(
             folder_id="321669910225",
         )
@@ -117,7 +117,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_id_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_by_id_with_all_params(self, client: HubSpot) -> None:
         folder = client.files.folders.get_by_id(
             folder_id="321669910225",
             properties=["string"],
@@ -126,7 +126,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_id(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_id(self, client: HubSpot) -> None:
         response = client.files.folders.with_raw_response.get_by_id(
             folder_id="321669910225",
         )
@@ -138,7 +138,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_id(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_id(self, client: HubSpot) -> None:
         with client.files.folders.with_streaming_response.get_by_id(
             folder_id="321669910225",
         ) as response:
@@ -152,7 +152,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_id(self, client: Hubspot) -> None:
+    def test_path_params_get_by_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             client.files.folders.with_raw_response.get_by_id(
                 folder_id="",
@@ -160,7 +160,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_path(self, client: Hubspot) -> None:
+    def test_method_get_by_path(self, client: HubSpot) -> None:
         folder = client.files.folders.get_by_path(
             folder_path="folderPath",
         )
@@ -168,7 +168,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_path_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_by_path_with_all_params(self, client: HubSpot) -> None:
         folder = client.files.folders.get_by_path(
             folder_path="folderPath",
             properties=["string"],
@@ -177,7 +177,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_path(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_path(self, client: HubSpot) -> None:
         response = client.files.folders.with_raw_response.get_by_path(
             folder_path="folderPath",
         )
@@ -189,7 +189,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_path(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_path(self, client: HubSpot) -> None:
         with client.files.folders.with_streaming_response.get_by_path(
             folder_path="folderPath",
         ) as response:
@@ -203,7 +203,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_path(self, client: Hubspot) -> None:
+    def test_path_params_get_by_path(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_path` but received ''"):
             client.files.folders.with_raw_response.get_by_path(
                 folder_path="",
@@ -211,7 +211,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_update_async_status(self, client: Hubspot) -> None:
+    def test_method_get_update_async_status(self, client: HubSpot) -> None:
         folder = client.files.folders.get_update_async_status(
             "taskId",
         )
@@ -219,7 +219,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_update_async_status(self, client: Hubspot) -> None:
+    def test_raw_response_get_update_async_status(self, client: HubSpot) -> None:
         response = client.files.folders.with_raw_response.get_update_async_status(
             "taskId",
         )
@@ -231,7 +231,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_update_async_status(self, client: Hubspot) -> None:
+    def test_streaming_response_get_update_async_status(self, client: HubSpot) -> None:
         with client.files.folders.with_streaming_response.get_update_async_status(
             "taskId",
         ) as response:
@@ -245,7 +245,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_update_async_status(self, client: Hubspot) -> None:
+    def test_path_params_get_update_async_status(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
             client.files.folders.with_raw_response.get_update_async_status(
                 "",
@@ -253,13 +253,13 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search(self, client: Hubspot) -> None:
+    def test_method_search(self, client: HubSpot) -> None:
         folder = client.files.folders.search()
         assert_matches_type(SyncPage[Folder], folder, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: Hubspot) -> None:
+    def test_method_search_with_all_params(self, client: HubSpot) -> None:
         folder = client.files.folders.search(
             after="after",
             before="before",
@@ -283,7 +283,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: Hubspot) -> None:
+    def test_raw_response_search(self, client: HubSpot) -> None:
         response = client.files.folders.with_raw_response.search()
 
         assert response.is_closed is True
@@ -293,7 +293,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: Hubspot) -> None:
+    def test_streaming_response_search(self, client: HubSpot) -> None:
         with client.files.folders.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -305,7 +305,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_async_by_id(self, client: Hubspot) -> None:
+    def test_method_update_async_by_id(self, client: HubSpot) -> None:
         folder = client.files.folders.update_async_by_id(
             id="id",
         )
@@ -313,7 +313,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_async_by_id_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_async_by_id_with_all_params(self, client: HubSpot) -> None:
         folder = client.files.folders.update_async_by_id(
             id="id",
             name="name",
@@ -323,7 +323,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_async_by_id(self, client: Hubspot) -> None:
+    def test_raw_response_update_async_by_id(self, client: HubSpot) -> None:
         response = client.files.folders.with_raw_response.update_async_by_id(
             id="id",
         )
@@ -335,7 +335,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_async_by_id(self, client: Hubspot) -> None:
+    def test_streaming_response_update_async_by_id(self, client: HubSpot) -> None:
         with client.files.folders.with_streaming_response.update_async_by_id(
             id="id",
         ) as response:
@@ -349,7 +349,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_by_id(self, client: Hubspot) -> None:
+    def test_method_update_by_id(self, client: HubSpot) -> None:
         folder = client.files.folders.update_by_id(
             folder_id="321669910225",
         )
@@ -357,7 +357,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_by_id_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_by_id_with_all_params(self, client: HubSpot) -> None:
         folder = client.files.folders.update_by_id(
             folder_id="321669910225",
             name="name",
@@ -367,7 +367,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_by_id(self, client: Hubspot) -> None:
+    def test_raw_response_update_by_id(self, client: HubSpot) -> None:
         response = client.files.folders.with_raw_response.update_by_id(
             folder_id="321669910225",
         )
@@ -379,7 +379,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_by_id(self, client: Hubspot) -> None:
+    def test_streaming_response_update_by_id(self, client: HubSpot) -> None:
         with client.files.folders.with_streaming_response.update_by_id(
             folder_id="321669910225",
         ) as response:
@@ -393,7 +393,7 @@ class TestFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_by_id(self, client: Hubspot) -> None:
+    def test_path_params_update_by_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             client.files.folders.with_raw_response.update_by_id(
                 folder_id="",
@@ -407,7 +407,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_by_id(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.delete_by_id(
             "321669910225",
         )
@@ -415,7 +415,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_by_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.folders.with_raw_response.delete_by_id(
             "321669910225",
         )
@@ -427,7 +427,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_by_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.folders.with_streaming_response.delete_by_id(
             "321669910225",
         ) as response:
@@ -441,7 +441,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_by_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             await async_client.files.folders.with_raw_response.delete_by_id(
                 "",
@@ -449,7 +449,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_by_path(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.delete_by_path(
             "folderPath",
         )
@@ -457,7 +457,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_by_path(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.folders.with_raw_response.delete_by_path(
             "folderPath",
         )
@@ -469,7 +469,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_by_path(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.folders.with_streaming_response.delete_by_path(
             "folderPath",
         ) as response:
@@ -483,7 +483,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_by_path(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_path` but received ''"):
             await async_client.files.folders.with_raw_response.delete_by_path(
                 "",
@@ -491,7 +491,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_id(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.get_by_id(
             folder_id="321669910225",
         )
@@ -499,7 +499,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_id_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_id_with_all_params(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.get_by_id(
             folder_id="321669910225",
             properties=["string"],
@@ -508,7 +508,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.folders.with_raw_response.get_by_id(
             folder_id="321669910225",
         )
@@ -520,7 +520,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.folders.with_streaming_response.get_by_id(
             folder_id="321669910225",
         ) as response:
@@ -534,7 +534,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_by_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             await async_client.files.folders.with_raw_response.get_by_id(
                 folder_id="",
@@ -542,7 +542,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_path(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.get_by_path(
             folder_path="folderPath",
         )
@@ -550,7 +550,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_path_with_all_params(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.get_by_path(
             folder_path="folderPath",
             properties=["string"],
@@ -559,7 +559,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_path(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.folders.with_raw_response.get_by_path(
             folder_path="folderPath",
         )
@@ -571,7 +571,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_path(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.folders.with_streaming_response.get_by_path(
             folder_path="folderPath",
         ) as response:
@@ -585,7 +585,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_by_path(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_by_path(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_path` but received ''"):
             await async_client.files.folders.with_raw_response.get_by_path(
                 folder_path="",
@@ -593,7 +593,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_update_async_status(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_update_async_status(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.get_update_async_status(
             "taskId",
         )
@@ -601,7 +601,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_update_async_status(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_update_async_status(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.folders.with_raw_response.get_update_async_status(
             "taskId",
         )
@@ -613,7 +613,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_update_async_status(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_update_async_status(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.folders.with_streaming_response.get_update_async_status(
             "taskId",
         ) as response:
@@ -627,7 +627,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_update_async_status(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_update_async_status(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `task_id` but received ''"):
             await async_client.files.folders.with_raw_response.get_update_async_status(
                 "",
@@ -635,13 +635,13 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.search()
         assert_matches_type(AsyncPage[Folder], folder, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.search(
             after="after",
             before="before",
@@ -665,7 +665,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.folders.with_raw_response.search()
 
         assert response.is_closed is True
@@ -675,7 +675,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.folders.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -687,7 +687,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_async_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_async_by_id(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.update_async_by_id(
             id="id",
         )
@@ -695,7 +695,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_async_by_id_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_async_by_id_with_all_params(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.update_async_by_id(
             id="id",
             name="name",
@@ -705,7 +705,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_async_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_async_by_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.folders.with_raw_response.update_async_by_id(
             id="id",
         )
@@ -717,7 +717,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_async_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_async_by_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.folders.with_streaming_response.update_async_by_id(
             id="id",
         ) as response:
@@ -731,7 +731,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_by_id(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.update_by_id(
             folder_id="321669910225",
         )
@@ -739,7 +739,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_by_id_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_by_id_with_all_params(self, async_client: AsyncHubSpot) -> None:
         folder = await async_client.files.folders.update_by_id(
             folder_id="321669910225",
             name="name",
@@ -749,7 +749,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_by_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.files.folders.with_raw_response.update_by_id(
             folder_id="321669910225",
         )
@@ -761,7 +761,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_by_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.files.folders.with_streaming_response.update_by_id(
             folder_id="321669910225",
         ) as response:
@@ -775,7 +775,7 @@ class TestAsyncFolders:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_by_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `folder_id` but received ''"):
             await async_client.files.folders.with_raw_response.update_by_id(
                 folder_id="",

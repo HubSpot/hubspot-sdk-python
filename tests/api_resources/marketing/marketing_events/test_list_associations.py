@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.marketing import CollectionResponseWithTotalPublicList
 
@@ -19,7 +19,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         list_association = client.marketing.marketing_events.list_associations.list(
             "marketingEventId",
         )
@@ -27,7 +27,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.list_associations.with_raw_response.list(
             "marketingEventId",
         )
@@ -39,7 +39,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.list_associations.with_streaming_response.list(
             "marketingEventId",
         ) as response:
@@ -53,7 +53,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: Hubspot) -> None:
+    def test_path_params_list(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `marketing_event_id` but received ''"):
             client.marketing.marketing_events.list_associations.with_raw_response.list(
                 "",
@@ -61,7 +61,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         list_association = client.marketing.marketing_events.list_associations.delete(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -70,7 +70,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.list_associations.with_raw_response.delete(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -83,7 +83,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.list_associations.with_streaming_response.delete(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -98,7 +98,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `marketing_event_id` but received ''"):
             client.marketing.marketing_events.list_associations.with_raw_response.delete(
                 list_id="listId",
@@ -113,7 +113,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_associate(self, client: Hubspot) -> None:
+    def test_method_associate(self, client: HubSpot) -> None:
         list_association = client.marketing.marketing_events.list_associations.associate(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -122,7 +122,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_associate(self, client: Hubspot) -> None:
+    def test_raw_response_associate(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.list_associations.with_raw_response.associate(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -135,7 +135,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_associate(self, client: Hubspot) -> None:
+    def test_streaming_response_associate(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.list_associations.with_streaming_response.associate(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -150,7 +150,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_associate(self, client: Hubspot) -> None:
+    def test_path_params_associate(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `marketing_event_id` but received ''"):
             client.marketing.marketing_events.list_associations.with_raw_response.associate(
                 list_id="listId",
@@ -165,7 +165,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_associate_by_external_account(self, client: Hubspot) -> None:
+    def test_method_associate_by_external_account(self, client: HubSpot) -> None:
         list_association = client.marketing.marketing_events.list_associations.associate_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -175,7 +175,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_associate_by_external_account(self, client: Hubspot) -> None:
+    def test_raw_response_associate_by_external_account(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.list_associations.with_raw_response.associate_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -189,7 +189,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_associate_by_external_account(self, client: Hubspot) -> None:
+    def test_streaming_response_associate_by_external_account(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.list_associations.with_streaming_response.associate_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -205,7 +205,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_associate_by_external_account(self, client: Hubspot) -> None:
+    def test_path_params_associate_by_external_account(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             client.marketing.marketing_events.list_associations.with_raw_response.associate_by_external_account(
                 list_id="listId",
@@ -229,7 +229,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_by_external_account(self, client: Hubspot) -> None:
+    def test_method_delete_by_external_account(self, client: HubSpot) -> None:
         list_association = client.marketing.marketing_events.list_associations.delete_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -239,7 +239,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_by_external_account(self, client: Hubspot) -> None:
+    def test_raw_response_delete_by_external_account(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.list_associations.with_raw_response.delete_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -253,7 +253,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_by_external_account(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_by_external_account(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.list_associations.with_streaming_response.delete_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -269,7 +269,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_by_external_account(self, client: Hubspot) -> None:
+    def test_path_params_delete_by_external_account(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             client.marketing.marketing_events.list_associations.with_raw_response.delete_by_external_account(
                 list_id="listId",
@@ -293,7 +293,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_by_external_account(self, client: Hubspot) -> None:
+    def test_method_list_by_external_account(self, client: HubSpot) -> None:
         list_association = client.marketing.marketing_events.list_associations.list_by_external_account(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -302,7 +302,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_by_external_account(self, client: Hubspot) -> None:
+    def test_raw_response_list_by_external_account(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.list_associations.with_raw_response.list_by_external_account(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -315,7 +315,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_by_external_account(self, client: Hubspot) -> None:
+    def test_streaming_response_list_by_external_account(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.list_associations.with_streaming_response.list_by_external_account(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -330,7 +330,7 @@ class TestListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_by_external_account(self, client: Hubspot) -> None:
+    def test_path_params_list_by_external_account(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             client.marketing.marketing_events.list_associations.with_raw_response.list_by_external_account(
                 external_event_id="externalEventId",
@@ -351,7 +351,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         list_association = await async_client.marketing.marketing_events.list_associations.list(
             "marketingEventId",
         )
@@ -359,7 +359,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.list_associations.with_raw_response.list(
             "marketingEventId",
         )
@@ -371,7 +371,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.list_associations.with_streaming_response.list(
             "marketingEventId",
         ) as response:
@@ -385,7 +385,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `marketing_event_id` but received ''"):
             await async_client.marketing.marketing_events.list_associations.with_raw_response.list(
                 "",
@@ -393,7 +393,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         list_association = await async_client.marketing.marketing_events.list_associations.delete(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -402,7 +402,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.list_associations.with_raw_response.delete(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -415,7 +415,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.list_associations.with_streaming_response.delete(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -430,7 +430,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `marketing_event_id` but received ''"):
             await async_client.marketing.marketing_events.list_associations.with_raw_response.delete(
                 list_id="listId",
@@ -445,7 +445,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_associate(self, async_client: AsyncHubspot) -> None:
+    async def test_method_associate(self, async_client: AsyncHubSpot) -> None:
         list_association = await async_client.marketing.marketing_events.list_associations.associate(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -454,7 +454,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_associate(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_associate(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.list_associations.with_raw_response.associate(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -467,7 +467,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_associate(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_associate(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.list_associations.with_streaming_response.associate(
             list_id="listId",
             marketing_event_id="marketingEventId",
@@ -482,7 +482,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_associate(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_associate(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `marketing_event_id` but received ''"):
             await async_client.marketing.marketing_events.list_associations.with_raw_response.associate(
                 list_id="listId",
@@ -497,7 +497,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_associate_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_method_associate_by_external_account(self, async_client: AsyncHubSpot) -> None:
         list_association = (
             await async_client.marketing.marketing_events.list_associations.associate_by_external_account(
                 list_id="listId",
@@ -509,7 +509,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_associate_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_associate_by_external_account(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.list_associations.with_raw_response.associate_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -523,7 +523,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_associate_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_associate_by_external_account(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.list_associations.with_streaming_response.associate_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -539,7 +539,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_associate_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_associate_by_external_account(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             await async_client.marketing.marketing_events.list_associations.with_raw_response.associate_by_external_account(
                 list_id="listId",
@@ -563,7 +563,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_by_external_account(self, async_client: AsyncHubSpot) -> None:
         list_association = await async_client.marketing.marketing_events.list_associations.delete_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -573,7 +573,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_by_external_account(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.list_associations.with_raw_response.delete_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -587,7 +587,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_by_external_account(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.list_associations.with_streaming_response.delete_by_external_account(
             list_id="listId",
             external_account_id="externalAccountId",
@@ -603,7 +603,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_by_external_account(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             await (
                 async_client.marketing.marketing_events.list_associations.with_raw_response.delete_by_external_account(
@@ -633,7 +633,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_by_external_account(self, async_client: AsyncHubSpot) -> None:
         list_association = await async_client.marketing.marketing_events.list_associations.list_by_external_account(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -642,7 +642,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_by_external_account(self, async_client: AsyncHubSpot) -> None:
         response = (
             await async_client.marketing.marketing_events.list_associations.with_raw_response.list_by_external_account(
                 external_event_id="externalEventId",
@@ -657,7 +657,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_by_external_account(self, async_client: AsyncHubSpot) -> None:
         async with (
             async_client.marketing.marketing_events.list_associations.with_streaming_response.list_by_external_account(
                 external_event_id="externalEventId",
@@ -674,7 +674,7 @@ class TestAsyncListAssociations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list_by_external_account(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list_by_external_account(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             await async_client.marketing.marketing_events.list_associations.with_raw_response.list_by_external_account(
                 external_event_id="externalEventId",

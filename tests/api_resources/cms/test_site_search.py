@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.cms import (
     IndexedData,
@@ -22,7 +22,7 @@ class TestSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_indexed_data(self, client: Hubspot) -> None:
+    def test_method_get_indexed_data(self, client: HubSpot) -> None:
         site_search = client.cms.site_search.get_indexed_data(
             content_id="contentId",
         )
@@ -30,7 +30,7 @@ class TestSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_indexed_data_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_indexed_data_with_all_params(self, client: HubSpot) -> None:
         site_search = client.cms.site_search.get_indexed_data(
             content_id="contentId",
             type="type",
@@ -39,7 +39,7 @@ class TestSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_indexed_data(self, client: Hubspot) -> None:
+    def test_raw_response_get_indexed_data(self, client: HubSpot) -> None:
         response = client.cms.site_search.with_raw_response.get_indexed_data(
             content_id="contentId",
         )
@@ -51,7 +51,7 @@ class TestSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_indexed_data(self, client: Hubspot) -> None:
+    def test_streaming_response_get_indexed_data(self, client: HubSpot) -> None:
         with client.cms.site_search.with_streaming_response.get_indexed_data(
             content_id="contentId",
         ) as response:
@@ -65,7 +65,7 @@ class TestSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_indexed_data(self, client: Hubspot) -> None:
+    def test_path_params_get_indexed_data(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `content_id` but received ''"):
             client.cms.site_search.with_raw_response.get_indexed_data(
                 content_id="",
@@ -73,13 +73,13 @@ class TestSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search(self, client: Hubspot) -> None:
+    def test_method_search(self, client: HubSpot) -> None:
         site_search = client.cms.site_search.search()
         assert_matches_type(PublicSearchResults, site_search, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: Hubspot) -> None:
+    def test_method_search_with_all_params(self, client: HubSpot) -> None:
         site_search = client.cms.site_search.search(
             analytics=True,
             autocomplete=True,
@@ -105,7 +105,7 @@ class TestSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: Hubspot) -> None:
+    def test_raw_response_search(self, client: HubSpot) -> None:
         response = client.cms.site_search.with_raw_response.search()
 
         assert response.is_closed is True
@@ -115,7 +115,7 @@ class TestSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: Hubspot) -> None:
+    def test_streaming_response_search(self, client: HubSpot) -> None:
         with client.cms.site_search.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -133,7 +133,7 @@ class TestAsyncSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_indexed_data(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_indexed_data(self, async_client: AsyncHubSpot) -> None:
         site_search = await async_client.cms.site_search.get_indexed_data(
             content_id="contentId",
         )
@@ -141,7 +141,7 @@ class TestAsyncSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_indexed_data_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_indexed_data_with_all_params(self, async_client: AsyncHubSpot) -> None:
         site_search = await async_client.cms.site_search.get_indexed_data(
             content_id="contentId",
             type="type",
@@ -150,7 +150,7 @@ class TestAsyncSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_indexed_data(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_indexed_data(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.site_search.with_raw_response.get_indexed_data(
             content_id="contentId",
         )
@@ -162,7 +162,7 @@ class TestAsyncSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_indexed_data(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_indexed_data(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.site_search.with_streaming_response.get_indexed_data(
             content_id="contentId",
         ) as response:
@@ -176,7 +176,7 @@ class TestAsyncSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_indexed_data(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_indexed_data(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `content_id` but received ''"):
             await async_client.cms.site_search.with_raw_response.get_indexed_data(
                 content_id="",
@@ -184,13 +184,13 @@ class TestAsyncSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
         site_search = await async_client.cms.site_search.search()
         assert_matches_type(PublicSearchResults, site_search, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
         site_search = await async_client.cms.site_search.search(
             analytics=True,
             autocomplete=True,
@@ -216,7 +216,7 @@ class TestAsyncSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.site_search.with_raw_response.search()
 
         assert response.is_closed is True
@@ -226,7 +226,7 @@ class TestAsyncSiteSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.site_search.with_streaming_response.search() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

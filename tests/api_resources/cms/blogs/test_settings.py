@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -25,13 +25,13 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         setting = client.cms.blogs.settings.list()
         assert_matches_type(SyncPage[Blog], setting, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         setting = client.cms.blogs.settings.list(
             after="after",
             archived=True,
@@ -48,7 +48,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.cms.blogs.settings.with_raw_response.list()
 
         assert response.is_closed is True
@@ -58,7 +58,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.cms.blogs.settings.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -70,7 +70,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         setting = client.cms.blogs.settings.get(
             "blogId",
         )
@@ -78,7 +78,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.cms.blogs.settings.with_raw_response.get(
             "blogId",
         )
@@ -90,7 +90,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.cms.blogs.settings.with_streaming_response.get(
             "blogId",
         ) as response:
@@ -104,7 +104,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `blog_id` but received ''"):
             client.cms.blogs.settings.with_raw_response.get(
                 "",
@@ -112,7 +112,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_revision(self, client: Hubspot) -> None:
+    def test_method_get_revision(self, client: HubSpot) -> None:
         setting = client.cms.blogs.settings.get_revision(
             revision_id="revisionId",
             blog_id="blogId",
@@ -121,7 +121,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_revision(self, client: Hubspot) -> None:
+    def test_raw_response_get_revision(self, client: HubSpot) -> None:
         response = client.cms.blogs.settings.with_raw_response.get_revision(
             revision_id="revisionId",
             blog_id="blogId",
@@ -134,7 +134,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_revision(self, client: Hubspot) -> None:
+    def test_streaming_response_get_revision(self, client: HubSpot) -> None:
         with client.cms.blogs.settings.with_streaming_response.get_revision(
             revision_id="revisionId",
             blog_id="blogId",
@@ -149,7 +149,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_revision(self, client: Hubspot) -> None:
+    def test_path_params_get_revision(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `blog_id` but received ''"):
             client.cms.blogs.settings.with_raw_response.get_revision(
                 revision_id="revisionId",
@@ -164,7 +164,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_revisions(self, client: Hubspot) -> None:
+    def test_method_list_revisions(self, client: HubSpot) -> None:
         setting = client.cms.blogs.settings.list_revisions(
             blog_id="blogId",
         )
@@ -172,7 +172,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_revisions_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_revisions_with_all_params(self, client: HubSpot) -> None:
         setting = client.cms.blogs.settings.list_revisions(
             blog_id="blogId",
             after="after",
@@ -183,7 +183,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_revisions(self, client: Hubspot) -> None:
+    def test_raw_response_list_revisions(self, client: HubSpot) -> None:
         response = client.cms.blogs.settings.with_raw_response.list_revisions(
             blog_id="blogId",
         )
@@ -195,7 +195,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_revisions(self, client: Hubspot) -> None:
+    def test_streaming_response_list_revisions(self, client: HubSpot) -> None:
         with client.cms.blogs.settings.with_streaming_response.list_revisions(
             blog_id="blogId",
         ) as response:
@@ -209,7 +209,7 @@ class TestSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_revisions(self, client: Hubspot) -> None:
+    def test_path_params_list_revisions(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `blog_id` but received ''"):
             client.cms.blogs.settings.with_raw_response.list_revisions(
                 blog_id="",
@@ -223,13 +223,13 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         setting = await async_client.cms.blogs.settings.list()
         assert_matches_type(AsyncPage[Blog], setting, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         setting = await async_client.cms.blogs.settings.list(
             after="after",
             archived=True,
@@ -246,7 +246,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.settings.with_raw_response.list()
 
         assert response.is_closed is True
@@ -256,7 +256,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.settings.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -268,7 +268,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         setting = await async_client.cms.blogs.settings.get(
             "blogId",
         )
@@ -276,7 +276,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.settings.with_raw_response.get(
             "blogId",
         )
@@ -288,7 +288,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.settings.with_streaming_response.get(
             "blogId",
         ) as response:
@@ -302,7 +302,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `blog_id` but received ''"):
             await async_client.cms.blogs.settings.with_raw_response.get(
                 "",
@@ -310,7 +310,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_revision(self, async_client: AsyncHubSpot) -> None:
         setting = await async_client.cms.blogs.settings.get_revision(
             revision_id="revisionId",
             blog_id="blogId",
@@ -319,7 +319,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_revision(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.settings.with_raw_response.get_revision(
             revision_id="revisionId",
             blog_id="blogId",
@@ -332,7 +332,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_revision(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.settings.with_streaming_response.get_revision(
             revision_id="revisionId",
             blog_id="blogId",
@@ -347,7 +347,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_revision(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `blog_id` but received ''"):
             await async_client.cms.blogs.settings.with_raw_response.get_revision(
                 revision_id="revisionId",
@@ -362,7 +362,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_revisions(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_revisions(self, async_client: AsyncHubSpot) -> None:
         setting = await async_client.cms.blogs.settings.list_revisions(
             blog_id="blogId",
         )
@@ -370,7 +370,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_revisions_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_revisions_with_all_params(self, async_client: AsyncHubSpot) -> None:
         setting = await async_client.cms.blogs.settings.list_revisions(
             blog_id="blogId",
             after="after",
@@ -381,7 +381,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_revisions(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_revisions(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.blogs.settings.with_raw_response.list_revisions(
             blog_id="blogId",
         )
@@ -393,7 +393,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_revisions(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_revisions(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.blogs.settings.with_streaming_response.list_revisions(
             blog_id="blogId",
         ) as response:
@@ -407,7 +407,7 @@ class TestAsyncSettings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list_revisions(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list_revisions(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `blog_id` but received ''"):
             await async_client.cms.blogs.settings.with_raw_response.list_revisions(
                 blog_id="",

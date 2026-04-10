@@ -9,7 +9,7 @@ import httpx
 import pytest
 from respx import MockRouter
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from hubspot_sdk._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -25,7 +25,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_previous_version(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -40,7 +40,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_get_previous_version(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -57,7 +57,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get_previous_version(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -76,7 +76,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_get_previous_version(self, client: Hubspot) -> None:
+    def test_path_params_get_previous_version(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.revisions.with_raw_response.get_previous_version(
                 revision_id="revisionId",
@@ -91,7 +91,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_previous_versions(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_previous_versions(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -105,7 +105,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get_previous_versions_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get_previous_versions_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -122,7 +122,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get_previous_versions(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_get_previous_versions(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -138,7 +138,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get_previous_versions(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get_previous_versions(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -156,7 +156,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_get_previous_versions(self, client: Hubspot) -> None:
+    def test_path_params_get_previous_versions(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.revisions.with_raw_response.get_previous_versions(
                 object_id="",
@@ -164,7 +164,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_restore_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_restore_previous_version(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -179,7 +179,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_restore_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_restore_previous_version(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -196,7 +196,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_restore_previous_version(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_restore_previous_version(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -215,7 +215,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_restore_previous_version(self, client: Hubspot) -> None:
+    def test_path_params_restore_previous_version(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.revisions.with_raw_response.restore_previous_version(
                 revision_id="revisionId",
@@ -230,7 +230,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_restore_previous_version_to_draft(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_restore_previous_version_to_draft(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -245,7 +245,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_restore_previous_version_to_draft(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_restore_previous_version_to_draft(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -263,7 +263,7 @@ class TestRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_streaming_response_restore_previous_version_to_draft(
-        self, client: Hubspot, respx_mock: MockRouter
+        self, client: HubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -283,7 +283,7 @@ class TestRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_restore_previous_version_to_draft(self, client: Hubspot) -> None:
+    def test_path_params_restore_previous_version_to_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.blogs.posts.revisions.with_raw_response.restore_previous_version_to_draft(
                 revision_id=0,
@@ -298,7 +298,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_previous_version(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get_previous_version(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -313,7 +313,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get_previous_version(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_get_previous_version(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -331,7 +331,7 @@ class TestAsyncRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_get_previous_version(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions/revisionId").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -351,7 +351,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_get_previous_version(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_previous_version(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.revisions.with_raw_response.get_previous_version(
                 revision_id="revisionId",
@@ -366,7 +366,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get_previous_versions(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get_previous_versions(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -381,7 +381,7 @@ class TestAsyncRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_get_previous_versions_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -399,7 +399,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get_previous_versions(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_get_previous_versions(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -416,7 +416,7 @@ class TestAsyncRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_get_previous_versions(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/cms/blogs/2026-03/posts/objectId/revisions").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -435,7 +435,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_get_previous_versions(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_previous_versions(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.revisions.with_raw_response.get_previous_versions(
                 object_id="",
@@ -443,7 +443,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_restore_previous_version(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_restore_previous_version(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -459,7 +459,7 @@ class TestAsyncRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_restore_previous_version(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -478,7 +478,7 @@ class TestAsyncRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_restore_previous_version(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/revisionId/restore").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -498,7 +498,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_restore_previous_version(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_restore_previous_version(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.revisions.with_raw_response.restore_previous_version(
                 revision_id="revisionId",
@@ -514,7 +514,7 @@ class TestAsyncRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_restore_previous_version_to_draft(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -531,7 +531,7 @@ class TestAsyncRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_restore_previous_version_to_draft(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -550,7 +550,7 @@ class TestAsyncRevisions:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_restore_previous_version_to_draft(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/cms/blogs/2026-03/posts/objectId/revisions/0/restore-to-draft").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
@@ -570,7 +570,7 @@ class TestAsyncRevisions:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_restore_previous_version_to_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_restore_previous_version_to_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.blogs.posts.revisions.with_raw_response.restore_previous_version_to_draft(
                 revision_id=0,

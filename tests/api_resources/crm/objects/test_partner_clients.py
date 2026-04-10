@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     SimplePublicObject,
@@ -25,7 +25,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
+    def test_method_update(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.update(
             partner_client_id="partnerClientId",
             properties={"foo": "string"},
@@ -34,7 +34,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_with_all_params(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.update(
             partner_client_id="partnerClientId",
             properties={"foo": "string"},
@@ -44,7 +44,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
+    def test_raw_response_update(self, client: HubSpot) -> None:
         response = client.crm.objects.partner_clients.with_raw_response.update(
             partner_client_id="partnerClientId",
             properties={"foo": "string"},
@@ -57,7 +57,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
+    def test_streaming_response_update(self, client: HubSpot) -> None:
         with client.crm.objects.partner_clients.with_streaming_response.update(
             partner_client_id="partnerClientId",
             properties={"foo": "string"},
@@ -72,7 +72,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
             client.crm.objects.partner_clients.with_raw_response.update(
                 partner_client_id="",
@@ -81,13 +81,13 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.list()
         assert_matches_type(SyncPage[SimplePublicObjectWithAssociations], partner_client, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.list(
             after="after",
             archived=True,
@@ -100,7 +100,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.crm.objects.partner_clients.with_raw_response.list()
 
         assert response.is_closed is True
@@ -110,7 +110,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.crm.objects.partner_clients.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -122,7 +122,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.get(
             partner_client_id="partnerClientId",
         )
@@ -130,7 +130,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.get(
             partner_client_id="partnerClientId",
             archived=True,
@@ -143,7 +143,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.crm.objects.partner_clients.with_raw_response.get(
             partner_client_id="partnerClientId",
         )
@@ -155,7 +155,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.crm.objects.partner_clients.with_streaming_response.get(
             partner_client_id="partnerClientId",
         ) as response:
@@ -169,7 +169,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
             client.crm.objects.partner_clients.with_raw_response.get(
                 partner_client_id="",
@@ -177,7 +177,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_associations(self, client: Hubspot) -> None:
+    def test_method_list_associations(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.list_associations(
             to_object_type="toObjectType",
             partner_client_id="partnerClientId",
@@ -186,7 +186,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_associations_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_associations_with_all_params(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.list_associations(
             to_object_type="toObjectType",
             partner_client_id="partnerClientId",
@@ -197,7 +197,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_associations(self, client: Hubspot) -> None:
+    def test_raw_response_list_associations(self, client: HubSpot) -> None:
         response = client.crm.objects.partner_clients.with_raw_response.list_associations(
             to_object_type="toObjectType",
             partner_client_id="partnerClientId",
@@ -210,7 +210,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_associations(self, client: Hubspot) -> None:
+    def test_streaming_response_list_associations(self, client: HubSpot) -> None:
         with client.crm.objects.partner_clients.with_streaming_response.list_associations(
             to_object_type="toObjectType",
             partner_client_id="partnerClientId",
@@ -225,7 +225,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_associations(self, client: Hubspot) -> None:
+    def test_path_params_list_associations(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
             client.crm.objects.partner_clients.with_raw_response.list_associations(
                 to_object_type="toObjectType",
@@ -240,7 +240,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search(self, client: Hubspot) -> None:
+    def test_method_search(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.search(
             after="after",
             filter_groups=[
@@ -261,7 +261,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: Hubspot) -> None:
+    def test_method_search_with_all_params(self, client: HubSpot) -> None:
         partner_client = client.crm.objects.partner_clients.search(
             after="after",
             filter_groups=[
@@ -286,7 +286,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: Hubspot) -> None:
+    def test_raw_response_search(self, client: HubSpot) -> None:
         response = client.crm.objects.partner_clients.with_raw_response.search(
             after="after",
             filter_groups=[
@@ -311,7 +311,7 @@ class TestPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: Hubspot) -> None:
+    def test_streaming_response_search(self, client: HubSpot) -> None:
         with client.crm.objects.partner_clients.with_streaming_response.search(
             after="after",
             filter_groups=[
@@ -344,7 +344,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.update(
             partner_client_id="partnerClientId",
             properties={"foo": "string"},
@@ -353,7 +353,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.update(
             partner_client_id="partnerClientId",
             properties={"foo": "string"},
@@ -363,7 +363,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.partner_clients.with_raw_response.update(
             partner_client_id="partnerClientId",
             properties={"foo": "string"},
@@ -376,7 +376,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.partner_clients.with_streaming_response.update(
             partner_client_id="partnerClientId",
             properties={"foo": "string"},
@@ -391,7 +391,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
             await async_client.crm.objects.partner_clients.with_raw_response.update(
                 partner_client_id="",
@@ -400,13 +400,13 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.list()
         assert_matches_type(AsyncPage[SimplePublicObjectWithAssociations], partner_client, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.list(
             after="after",
             archived=True,
@@ -419,7 +419,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.partner_clients.with_raw_response.list()
 
         assert response.is_closed is True
@@ -429,7 +429,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.partner_clients.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -441,7 +441,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.get(
             partner_client_id="partnerClientId",
         )
@@ -449,7 +449,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.get(
             partner_client_id="partnerClientId",
             archived=True,
@@ -462,7 +462,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.partner_clients.with_raw_response.get(
             partner_client_id="partnerClientId",
         )
@@ -474,7 +474,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.partner_clients.with_streaming_response.get(
             partner_client_id="partnerClientId",
         ) as response:
@@ -488,7 +488,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
             await async_client.crm.objects.partner_clients.with_raw_response.get(
                 partner_client_id="",
@@ -496,7 +496,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_associations(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_associations(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.list_associations(
             to_object_type="toObjectType",
             partner_client_id="partnerClientId",
@@ -505,7 +505,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_associations_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_associations_with_all_params(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.list_associations(
             to_object_type="toObjectType",
             partner_client_id="partnerClientId",
@@ -516,7 +516,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_associations(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_associations(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.partner_clients.with_raw_response.list_associations(
             to_object_type="toObjectType",
             partner_client_id="partnerClientId",
@@ -529,7 +529,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_associations(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_associations(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.partner_clients.with_streaming_response.list_associations(
             to_object_type="toObjectType",
             partner_client_id="partnerClientId",
@@ -544,7 +544,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list_associations(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list_associations(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `partner_client_id` but received ''"):
             await async_client.crm.objects.partner_clients.with_raw_response.list_associations(
                 to_object_type="toObjectType",
@@ -559,7 +559,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.search(
             after="after",
             filter_groups=[
@@ -580,7 +580,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
         partner_client = await async_client.crm.objects.partner_clients.search(
             after="after",
             filter_groups=[
@@ -605,7 +605,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.partner_clients.with_raw_response.search(
             after="after",
             filter_groups=[
@@ -630,7 +630,7 @@ class TestAsyncPartnerClients:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.partner_clients.with_streaming_response.search(
             after="after",
             filter_groups=[

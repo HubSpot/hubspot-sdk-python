@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     PublicPropertyValidationRule,
@@ -23,7 +23,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_object_type_id(self, client: Hubspot) -> None:
+    def test_method_get_by_object_type_id(self, client: HubSpot) -> None:
         properties_validation = client.crm.properties_validations.get_by_object_type_id(
             "objectTypeId",
         )
@@ -33,7 +33,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_object_type_id(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_object_type_id(self, client: HubSpot) -> None:
         response = client.crm.properties_validations.with_raw_response.get_by_object_type_id(
             "objectTypeId",
         )
@@ -47,7 +47,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_object_type_id(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_object_type_id(self, client: HubSpot) -> None:
         with client.crm.properties_validations.with_streaming_response.get_by_object_type_id(
             "objectTypeId",
         ) as response:
@@ -63,7 +63,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_object_type_id(self, client: Hubspot) -> None:
+    def test_path_params_get_by_object_type_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             client.crm.properties_validations.with_raw_response.get_by_object_type_id(
                 "",
@@ -71,7 +71,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_object_type_id_and_property_name(self, client: Hubspot) -> None:
+    def test_method_get_by_object_type_id_and_property_name(self, client: HubSpot) -> None:
         properties_validation = client.crm.properties_validations.get_by_object_type_id_and_property_name(
             property_name="propertyName",
             object_type_id="objectTypeId",
@@ -82,7 +82,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_object_type_id_and_property_name(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_object_type_id_and_property_name(self, client: HubSpot) -> None:
         response = client.crm.properties_validations.with_raw_response.get_by_object_type_id_and_property_name(
             property_name="propertyName",
             object_type_id="objectTypeId",
@@ -97,7 +97,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_object_type_id_and_property_name(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_object_type_id_and_property_name(self, client: HubSpot) -> None:
         with client.crm.properties_validations.with_streaming_response.get_by_object_type_id_and_property_name(
             property_name="propertyName",
             object_type_id="objectTypeId",
@@ -114,7 +114,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_object_type_id_and_property_name(self, client: Hubspot) -> None:
+    def test_path_params_get_by_object_type_id_and_property_name(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             client.crm.properties_validations.with_raw_response.get_by_object_type_id_and_property_name(
                 property_name="propertyName",
@@ -129,7 +129,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_object_type_id_property_name_and_rule_type(self, client: Hubspot) -> None:
+    def test_method_get_by_object_type_id_property_name_and_rule_type(self, client: HubSpot) -> None:
         properties_validation = client.crm.properties_validations.get_by_object_type_id_property_name_and_rule_type(
             rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
@@ -139,7 +139,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_object_type_id_property_name_and_rule_type(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_object_type_id_property_name_and_rule_type(self, client: HubSpot) -> None:
         response = (
             client.crm.properties_validations.with_raw_response.get_by_object_type_id_property_name_and_rule_type(
                 rule_type="AFTER_DATETIME_DURATION",
@@ -155,7 +155,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_object_type_id_property_name_and_rule_type(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_object_type_id_property_name_and_rule_type(self, client: HubSpot) -> None:
         with (
             client.crm.properties_validations.with_streaming_response.get_by_object_type_id_property_name_and_rule_type(
                 rule_type="AFTER_DATETIME_DURATION",
@@ -173,7 +173,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_object_type_id_property_name_and_rule_type(self, client: Hubspot) -> None:
+    def test_path_params_get_by_object_type_id_property_name_and_rule_type(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             client.crm.properties_validations.with_raw_response.get_by_object_type_id_property_name_and_rule_type(
                 rule_type="AFTER_DATETIME_DURATION",
@@ -190,7 +190,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_by_object_type_id_property_name_and_rule_type(self, client: Hubspot) -> None:
+    def test_method_update_by_object_type_id_property_name_and_rule_type(self, client: HubSpot) -> None:
         properties_validation = client.crm.properties_validations.update_by_object_type_id_property_name_and_rule_type(
             rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
@@ -201,7 +201,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_by_object_type_id_property_name_and_rule_type_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_by_object_type_id_property_name_and_rule_type_with_all_params(self, client: HubSpot) -> None:
         properties_validation = client.crm.properties_validations.update_by_object_type_id_property_name_and_rule_type(
             rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
@@ -213,7 +213,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_by_object_type_id_property_name_and_rule_type(self, client: Hubspot) -> None:
+    def test_raw_response_update_by_object_type_id_property_name_and_rule_type(self, client: HubSpot) -> None:
         response = (
             client.crm.properties_validations.with_raw_response.update_by_object_type_id_property_name_and_rule_type(
                 rule_type="AFTER_DATETIME_DURATION",
@@ -230,7 +230,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_by_object_type_id_property_name_and_rule_type(self, client: Hubspot) -> None:
+    def test_streaming_response_update_by_object_type_id_property_name_and_rule_type(self, client: HubSpot) -> None:
         with client.crm.properties_validations.with_streaming_response.update_by_object_type_id_property_name_and_rule_type(
             rule_type="AFTER_DATETIME_DURATION",
             object_type_id="objectTypeId",
@@ -247,7 +247,7 @@ class TestPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_by_object_type_id_property_name_and_rule_type(self, client: Hubspot) -> None:
+    def test_path_params_update_by_object_type_id_property_name_and_rule_type(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             client.crm.properties_validations.with_raw_response.update_by_object_type_id_property_name_and_rule_type(
                 rule_type="AFTER_DATETIME_DURATION",
@@ -272,7 +272,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_object_type_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_object_type_id(self, async_client: AsyncHubSpot) -> None:
         properties_validation = await async_client.crm.properties_validations.get_by_object_type_id(
             "objectTypeId",
         )
@@ -282,7 +282,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_object_type_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_object_type_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.properties_validations.with_raw_response.get_by_object_type_id(
             "objectTypeId",
         )
@@ -296,7 +296,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_object_type_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_object_type_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.properties_validations.with_streaming_response.get_by_object_type_id(
             "objectTypeId",
         ) as response:
@@ -312,7 +312,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_by_object_type_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_by_object_type_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.properties_validations.with_raw_response.get_by_object_type_id(
                 "",
@@ -320,7 +320,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_object_type_id_and_property_name(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_object_type_id_and_property_name(self, async_client: AsyncHubSpot) -> None:
         properties_validation = await async_client.crm.properties_validations.get_by_object_type_id_and_property_name(
             property_name="propertyName",
             object_type_id="objectTypeId",
@@ -331,7 +331,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_object_type_id_and_property_name(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_object_type_id_and_property_name(self, async_client: AsyncHubSpot) -> None:
         response = (
             await async_client.crm.properties_validations.with_raw_response.get_by_object_type_id_and_property_name(
                 property_name="propertyName",
@@ -348,7 +348,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_object_type_id_and_property_name(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_object_type_id_and_property_name(self, async_client: AsyncHubSpot) -> None:
         async with (
             async_client.crm.properties_validations.with_streaming_response.get_by_object_type_id_and_property_name(
                 property_name="propertyName",
@@ -367,7 +367,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_by_object_type_id_and_property_name(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_by_object_type_id_and_property_name(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.properties_validations.with_raw_response.get_by_object_type_id_and_property_name(
                 property_name="propertyName",
@@ -382,7 +382,7 @@ class TestAsyncPropertiesValidations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_object_type_id_property_name_and_rule_type(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_object_type_id_property_name_and_rule_type(self, async_client: AsyncHubSpot) -> None:
         properties_validation = (
             await async_client.crm.properties_validations.get_by_object_type_id_property_name_and_rule_type(
                 rule_type="AFTER_DATETIME_DURATION",
@@ -395,7 +395,7 @@ class TestAsyncPropertiesValidations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_by_object_type_id_property_name_and_rule_type(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         response = await async_client.crm.properties_validations.with_raw_response.get_by_object_type_id_property_name_and_rule_type(
             rule_type="AFTER_DATETIME_DURATION",
@@ -411,7 +411,7 @@ class TestAsyncPropertiesValidations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_by_object_type_id_property_name_and_rule_type(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         async with async_client.crm.properties_validations.with_streaming_response.get_by_object_type_id_property_name_and_rule_type(
             rule_type="AFTER_DATETIME_DURATION",
@@ -429,7 +429,7 @@ class TestAsyncPropertiesValidations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_by_object_type_id_property_name_and_rule_type(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.properties_validations.with_raw_response.get_by_object_type_id_property_name_and_rule_type(
@@ -448,7 +448,7 @@ class TestAsyncPropertiesValidations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update_by_object_type_id_property_name_and_rule_type(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         properties_validation = (
             await async_client.crm.properties_validations.update_by_object_type_id_property_name_and_rule_type(
@@ -463,7 +463,7 @@ class TestAsyncPropertiesValidations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update_by_object_type_id_property_name_and_rule_type_with_all_params(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         properties_validation = (
             await async_client.crm.properties_validations.update_by_object_type_id_property_name_and_rule_type(
@@ -479,7 +479,7 @@ class TestAsyncPropertiesValidations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update_by_object_type_id_property_name_and_rule_type(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         response = await async_client.crm.properties_validations.with_raw_response.update_by_object_type_id_property_name_and_rule_type(
             rule_type="AFTER_DATETIME_DURATION",
@@ -496,7 +496,7 @@ class TestAsyncPropertiesValidations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update_by_object_type_id_property_name_and_rule_type(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         async with async_client.crm.properties_validations.with_streaming_response.update_by_object_type_id_property_name_and_rule_type(
             rule_type="AFTER_DATETIME_DURATION",
@@ -515,7 +515,7 @@ class TestAsyncPropertiesValidations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_update_by_object_type_id_property_name_and_rule_type(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_type_id` but received ''"):
             await async_client.crm.properties_validations.with_raw_response.update_by_object_type_id_property_name_and_rule_type(

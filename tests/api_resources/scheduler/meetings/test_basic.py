@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.scheduler import ExternalBookingInfo, ExternalLinkMetadata, ExternalLinkAvailabilityAndBusyTimes
@@ -20,13 +20,13 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         basic = client.scheduler.meetings.basic.list()
         assert_matches_type(SyncPage[ExternalLinkMetadata], basic, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         basic = client.scheduler.meetings.basic.list(
             after="after",
             limit=0,
@@ -38,7 +38,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.scheduler.meetings.basic.with_raw_response.list()
 
         assert response.is_closed is True
@@ -48,7 +48,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.scheduler.meetings.basic.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -60,7 +60,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_availability_by_slug(self, client: Hubspot) -> None:
+    def test_method_get_availability_by_slug(self, client: HubSpot) -> None:
         basic = client.scheduler.meetings.basic.get_availability_by_slug(
             slug="slug",
             timezone="timezone",
@@ -69,7 +69,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_availability_by_slug_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_availability_by_slug_with_all_params(self, client: HubSpot) -> None:
         basic = client.scheduler.meetings.basic.get_availability_by_slug(
             slug="slug",
             timezone="timezone",
@@ -79,7 +79,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_availability_by_slug(self, client: Hubspot) -> None:
+    def test_raw_response_get_availability_by_slug(self, client: HubSpot) -> None:
         response = client.scheduler.meetings.basic.with_raw_response.get_availability_by_slug(
             slug="slug",
             timezone="timezone",
@@ -92,7 +92,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_availability_by_slug(self, client: Hubspot) -> None:
+    def test_streaming_response_get_availability_by_slug(self, client: HubSpot) -> None:
         with client.scheduler.meetings.basic.with_streaming_response.get_availability_by_slug(
             slug="slug",
             timezone="timezone",
@@ -107,7 +107,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_availability_by_slug(self, client: Hubspot) -> None:
+    def test_path_params_get_availability_by_slug(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.scheduler.meetings.basic.with_raw_response.get_availability_by_slug(
                 slug="",
@@ -116,7 +116,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_booking_info_by_slug(self, client: Hubspot) -> None:
+    def test_method_get_booking_info_by_slug(self, client: HubSpot) -> None:
         basic = client.scheduler.meetings.basic.get_booking_info_by_slug(
             slug="slug",
             timezone="timezone",
@@ -125,7 +125,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_booking_info_by_slug(self, client: Hubspot) -> None:
+    def test_raw_response_get_booking_info_by_slug(self, client: HubSpot) -> None:
         response = client.scheduler.meetings.basic.with_raw_response.get_booking_info_by_slug(
             slug="slug",
             timezone="timezone",
@@ -138,7 +138,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_booking_info_by_slug(self, client: Hubspot) -> None:
+    def test_streaming_response_get_booking_info_by_slug(self, client: HubSpot) -> None:
         with client.scheduler.meetings.basic.with_streaming_response.get_booking_info_by_slug(
             slug="slug",
             timezone="timezone",
@@ -153,7 +153,7 @@ class TestBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_booking_info_by_slug(self, client: Hubspot) -> None:
+    def test_path_params_get_booking_info_by_slug(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.scheduler.meetings.basic.with_raw_response.get_booking_info_by_slug(
                 slug="",
@@ -168,13 +168,13 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         basic = await async_client.scheduler.meetings.basic.list()
         assert_matches_type(AsyncPage[ExternalLinkMetadata], basic, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         basic = await async_client.scheduler.meetings.basic.list(
             after="after",
             limit=0,
@@ -186,7 +186,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.scheduler.meetings.basic.with_raw_response.list()
 
         assert response.is_closed is True
@@ -196,7 +196,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.scheduler.meetings.basic.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -208,7 +208,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_availability_by_slug(self, async_client: AsyncHubSpot) -> None:
         basic = await async_client.scheduler.meetings.basic.get_availability_by_slug(
             slug="slug",
             timezone="timezone",
@@ -217,7 +217,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_availability_by_slug_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_availability_by_slug_with_all_params(self, async_client: AsyncHubSpot) -> None:
         basic = await async_client.scheduler.meetings.basic.get_availability_by_slug(
             slug="slug",
             timezone="timezone",
@@ -227,7 +227,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_availability_by_slug(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.scheduler.meetings.basic.with_raw_response.get_availability_by_slug(
             slug="slug",
             timezone="timezone",
@@ -240,7 +240,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_availability_by_slug(self, async_client: AsyncHubSpot) -> None:
         async with async_client.scheduler.meetings.basic.with_streaming_response.get_availability_by_slug(
             slug="slug",
             timezone="timezone",
@@ -255,7 +255,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_availability_by_slug(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_availability_by_slug(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.scheduler.meetings.basic.with_raw_response.get_availability_by_slug(
                 slug="",
@@ -264,7 +264,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_booking_info_by_slug(self, async_client: AsyncHubSpot) -> None:
         basic = await async_client.scheduler.meetings.basic.get_booking_info_by_slug(
             slug="slug",
             timezone="timezone",
@@ -273,7 +273,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_booking_info_by_slug(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.scheduler.meetings.basic.with_raw_response.get_booking_info_by_slug(
             slug="slug",
             timezone="timezone",
@@ -286,7 +286,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_booking_info_by_slug(self, async_client: AsyncHubSpot) -> None:
         async with async_client.scheduler.meetings.basic.with_streaming_response.get_booking_info_by_slug(
             slug="slug",
             timezone="timezone",
@@ -301,7 +301,7 @@ class TestAsyncBasic:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_booking_info_by_slug(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_booking_info_by_slug(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.scheduler.meetings.basic.with_raw_response.get_booking_info_by_slug(
                 slug="",

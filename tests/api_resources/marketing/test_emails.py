@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -27,13 +27,13 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
+    def test_method_create(self, client: HubSpot) -> None:
         email = client.marketing.emails.create()
         assert_matches_type(PublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.create(
             active_domain="activeDomain",
             archived=True,
@@ -192,7 +192,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
+    def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.create()
 
         assert response.is_closed is True
@@ -202,7 +202,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
+    def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -214,7 +214,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
+    def test_method_update(self, client: HubSpot) -> None:
         email = client.marketing.emails.update(
             email_id="emailId",
         )
@@ -222,7 +222,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.update(
             email_id="emailId",
             query_archived=True,
@@ -382,7 +382,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
+    def test_raw_response_update(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.update(
             email_id="emailId",
         )
@@ -394,7 +394,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
+    def test_streaming_response_update(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.update(
             email_id="emailId",
         ) as response:
@@ -408,7 +408,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.update(
                 email_id="",
@@ -416,13 +416,13 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         email = client.marketing.emails.list()
         assert_matches_type(SyncPage[PublicEmail], email, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.list(
             after="after",
             archived=True,
@@ -450,7 +450,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.list()
 
         assert response.is_closed is True
@@ -460,7 +460,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -472,7 +472,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         email = client.marketing.emails.delete(
             email_id="emailId",
         )
@@ -480,7 +480,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_with_all_params(self, client: Hubspot) -> None:
+    def test_method_delete_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.delete(
             email_id="emailId",
             archived=True,
@@ -489,7 +489,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.delete(
             email_id="emailId",
         )
@@ -501,7 +501,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.delete(
             email_id="emailId",
         ) as response:
@@ -515,7 +515,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.delete(
                 email_id="",
@@ -523,7 +523,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_clone(self, client: Hubspot) -> None:
+    def test_method_clone(self, client: HubSpot) -> None:
         email = client.marketing.emails.clone(
             id="id",
         )
@@ -531,7 +531,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_clone_with_all_params(self, client: Hubspot) -> None:
+    def test_method_clone_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.clone(
             id="id",
             clone_name="cloneName",
@@ -541,7 +541,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_clone(self, client: Hubspot) -> None:
+    def test_raw_response_clone(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.clone(
             id="id",
         )
@@ -553,7 +553,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_clone(self, client: Hubspot) -> None:
+    def test_streaming_response_clone(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.clone(
             id="id",
         ) as response:
@@ -567,7 +567,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_ab_test_variation(self, client: Hubspot) -> None:
+    def test_method_create_ab_test_variation(self, client: HubSpot) -> None:
         email = client.marketing.emails.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -576,7 +576,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_ab_test_variation(self, client: Hubspot) -> None:
+    def test_raw_response_create_ab_test_variation(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -589,7 +589,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_ab_test_variation(self, client: Hubspot) -> None:
+    def test_streaming_response_create_ab_test_variation(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -604,13 +604,13 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         email = client.marketing.emails.get()
         assert_matches_type(AggregateEmailStatistics, email, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.get(
             email_ids=[0],
             end_timestamp="endTimestamp",
@@ -621,7 +621,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.get()
 
         assert response.is_closed is True
@@ -631,7 +631,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.get() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -643,7 +643,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_ab_test_variation(self, client: Hubspot) -> None:
+    def test_method_get_ab_test_variation(self, client: HubSpot) -> None:
         email = client.marketing.emails.get_ab_test_variation(
             email_id="emailId",
         )
@@ -651,7 +651,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_ab_test_variation_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_ab_test_variation_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.get_ab_test_variation(
             email_id="emailId",
             archived=True,
@@ -665,7 +665,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_ab_test_variation(self, client: Hubspot) -> None:
+    def test_raw_response_get_ab_test_variation(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.get_ab_test_variation(
             email_id="emailId",
         )
@@ -677,7 +677,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_ab_test_variation(self, client: Hubspot) -> None:
+    def test_streaming_response_get_ab_test_variation(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.get_ab_test_variation(
             email_id="emailId",
         ) as response:
@@ -691,7 +691,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_ab_test_variation(self, client: Hubspot) -> None:
+    def test_path_params_get_ab_test_variation(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.get_ab_test_variation(
                 email_id="",
@@ -699,7 +699,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_draft(self, client: Hubspot) -> None:
+    def test_method_get_draft(self, client: HubSpot) -> None:
         email = client.marketing.emails.get_draft(
             "emailId",
         )
@@ -707,7 +707,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_draft(self, client: Hubspot) -> None:
+    def test_raw_response_get_draft(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.get_draft(
             "emailId",
         )
@@ -719,7 +719,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_get_draft(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.get_draft(
             "emailId",
         ) as response:
@@ -733,7 +733,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_draft(self, client: Hubspot) -> None:
+    def test_path_params_get_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.get_draft(
                 "",
@@ -741,13 +741,13 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_histogram(self, client: Hubspot) -> None:
+    def test_method_get_histogram(self, client: HubSpot) -> None:
         email = client.marketing.emails.get_histogram()
         assert_matches_type(CollectionResponseWithTotalEmailStatisticInterval, email, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_histogram_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_histogram_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.get_histogram(
             email_ids=[0],
             end_timestamp="endTimestamp",
@@ -758,7 +758,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_histogram(self, client: Hubspot) -> None:
+    def test_raw_response_get_histogram(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.get_histogram()
 
         assert response.is_closed is True
@@ -768,7 +768,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_histogram(self, client: Hubspot) -> None:
+    def test_streaming_response_get_histogram(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.get_histogram() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -780,7 +780,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_revision(self, client: Hubspot) -> None:
+    def test_method_get_revision(self, client: HubSpot) -> None:
         email = client.marketing.emails.get_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -789,7 +789,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_revision(self, client: Hubspot) -> None:
+    def test_raw_response_get_revision(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.get_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -802,7 +802,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_revision(self, client: Hubspot) -> None:
+    def test_streaming_response_get_revision(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.get_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -817,7 +817,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_revision(self, client: Hubspot) -> None:
+    def test_path_params_get_revision(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.get_revision(
                 revision_id="revisionId",
@@ -832,7 +832,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_revisions(self, client: Hubspot) -> None:
+    def test_method_list_revisions(self, client: HubSpot) -> None:
         email = client.marketing.emails.list_revisions(
             email_id="emailId",
         )
@@ -840,7 +840,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_revisions_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_revisions_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.list_revisions(
             email_id="emailId",
             after="after",
@@ -851,7 +851,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_revisions(self, client: Hubspot) -> None:
+    def test_raw_response_list_revisions(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.list_revisions(
             email_id="emailId",
         )
@@ -863,7 +863,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_revisions(self, client: Hubspot) -> None:
+    def test_streaming_response_list_revisions(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.list_revisions(
             email_id="emailId",
         ) as response:
@@ -877,7 +877,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_revisions(self, client: Hubspot) -> None:
+    def test_path_params_list_revisions(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.list_revisions(
                 email_id="",
@@ -885,7 +885,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_publish(self, client: Hubspot) -> None:
+    def test_method_publish(self, client: HubSpot) -> None:
         email = client.marketing.emails.publish(
             "emailId",
         )
@@ -893,7 +893,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_publish(self, client: Hubspot) -> None:
+    def test_raw_response_publish(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.publish(
             "emailId",
         )
@@ -905,7 +905,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_publish(self, client: Hubspot) -> None:
+    def test_streaming_response_publish(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.publish(
             "emailId",
         ) as response:
@@ -919,7 +919,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_publish(self, client: Hubspot) -> None:
+    def test_path_params_publish(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.publish(
                 "",
@@ -927,7 +927,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_reset_draft(self, client: Hubspot) -> None:
+    def test_method_reset_draft(self, client: HubSpot) -> None:
         email = client.marketing.emails.reset_draft(
             "emailId",
         )
@@ -935,7 +935,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_reset_draft(self, client: Hubspot) -> None:
+    def test_raw_response_reset_draft(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.reset_draft(
             "emailId",
         )
@@ -947,7 +947,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_reset_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_reset_draft(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.reset_draft(
             "emailId",
         ) as response:
@@ -961,7 +961,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_reset_draft(self, client: Hubspot) -> None:
+    def test_path_params_reset_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.reset_draft(
                 "",
@@ -969,7 +969,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_restore_revision(self, client: Hubspot) -> None:
+    def test_method_restore_revision(self, client: HubSpot) -> None:
         email = client.marketing.emails.restore_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -978,7 +978,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_restore_revision(self, client: Hubspot) -> None:
+    def test_raw_response_restore_revision(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.restore_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -991,7 +991,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_restore_revision(self, client: Hubspot) -> None:
+    def test_streaming_response_restore_revision(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.restore_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -1006,7 +1006,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_restore_revision(self, client: Hubspot) -> None:
+    def test_path_params_restore_revision(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.restore_revision(
                 revision_id="revisionId",
@@ -1021,7 +1021,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_restore_revision_to_draft(self, client: Hubspot) -> None:
+    def test_method_restore_revision_to_draft(self, client: HubSpot) -> None:
         email = client.marketing.emails.restore_revision_to_draft(
             revision_id=0,
             email_id="emailId",
@@ -1030,7 +1030,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_restore_revision_to_draft(self, client: Hubspot) -> None:
+    def test_raw_response_restore_revision_to_draft(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.restore_revision_to_draft(
             revision_id=0,
             email_id="emailId",
@@ -1043,7 +1043,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_restore_revision_to_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_restore_revision_to_draft(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.restore_revision_to_draft(
             revision_id=0,
             email_id="emailId",
@@ -1058,7 +1058,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_restore_revision_to_draft(self, client: Hubspot) -> None:
+    def test_path_params_restore_revision_to_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.restore_revision_to_draft(
                 revision_id=0,
@@ -1067,7 +1067,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_unpublish(self, client: Hubspot) -> None:
+    def test_method_unpublish(self, client: HubSpot) -> None:
         email = client.marketing.emails.unpublish(
             "emailId",
         )
@@ -1075,7 +1075,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_unpublish(self, client: Hubspot) -> None:
+    def test_raw_response_unpublish(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.unpublish(
             "emailId",
         )
@@ -1087,7 +1087,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_unpublish(self, client: Hubspot) -> None:
+    def test_streaming_response_unpublish(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.unpublish(
             "emailId",
         ) as response:
@@ -1101,7 +1101,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_unpublish(self, client: Hubspot) -> None:
+    def test_path_params_unpublish(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.unpublish(
                 "",
@@ -1109,7 +1109,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_draft(self, client: Hubspot) -> None:
+    def test_method_update_draft(self, client: HubSpot) -> None:
         email = client.marketing.emails.update_draft(
             email_id="emailId",
         )
@@ -1117,7 +1117,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_draft_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_draft_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.update_draft(
             email_id="emailId",
             active_domain="activeDomain",
@@ -1276,7 +1276,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_draft(self, client: Hubspot) -> None:
+    def test_raw_response_update_draft(self, client: HubSpot) -> None:
         response = client.marketing.emails.with_raw_response.update_draft(
             email_id="emailId",
         )
@@ -1288,7 +1288,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_update_draft(self, client: HubSpot) -> None:
         with client.marketing.emails.with_streaming_response.update_draft(
             email_id="emailId",
         ) as response:
@@ -1302,7 +1302,7 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_draft(self, client: Hubspot) -> None:
+    def test_path_params_update_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             client.marketing.emails.with_raw_response.update_draft(
                 email_id="",
@@ -1316,13 +1316,13 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.create()
         assert_matches_type(PublicEmail, email, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.create(
             active_domain="activeDomain",
             archived=True,
@@ -1481,7 +1481,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.create()
 
         assert response.is_closed is True
@@ -1491,7 +1491,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1503,7 +1503,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.update(
             email_id="emailId",
         )
@@ -1511,7 +1511,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.update(
             email_id="emailId",
             query_archived=True,
@@ -1671,7 +1671,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.update(
             email_id="emailId",
         )
@@ -1683,7 +1683,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.update(
             email_id="emailId",
         ) as response:
@@ -1697,7 +1697,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.update(
                 email_id="",
@@ -1705,13 +1705,13 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.list()
         assert_matches_type(AsyncPage[PublicEmail], email, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.list(
             after="after",
             archived=True,
@@ -1739,7 +1739,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.list()
 
         assert response.is_closed is True
@@ -1749,7 +1749,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1761,7 +1761,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.delete(
             email_id="emailId",
         )
@@ -1769,7 +1769,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.delete(
             email_id="emailId",
             archived=True,
@@ -1778,7 +1778,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.delete(
             email_id="emailId",
         )
@@ -1790,7 +1790,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.delete(
             email_id="emailId",
         ) as response:
@@ -1804,7 +1804,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.delete(
                 email_id="",
@@ -1812,7 +1812,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_clone(self, async_client: AsyncHubspot) -> None:
+    async def test_method_clone(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.clone(
             id="id",
         )
@@ -1820,7 +1820,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_clone_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_clone_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.clone(
             id="id",
             clone_name="cloneName",
@@ -1830,7 +1830,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_clone(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_clone(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.clone(
             id="id",
         )
@@ -1842,7 +1842,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_clone(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_clone(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.clone(
             id="id",
         ) as response:
@@ -1856,7 +1856,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_ab_test_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -1865,7 +1865,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_ab_test_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -1878,7 +1878,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_ab_test_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.create_ab_test_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -1893,13 +1893,13 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get()
         assert_matches_type(AggregateEmailStatistics, email, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get(
             email_ids=[0],
             end_timestamp="endTimestamp",
@@ -1910,7 +1910,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.get()
 
         assert response.is_closed is True
@@ -1920,7 +1920,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.get() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1932,7 +1932,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_ab_test_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get_ab_test_variation(
             email_id="emailId",
         )
@@ -1940,7 +1940,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_ab_test_variation_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_ab_test_variation_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get_ab_test_variation(
             email_id="emailId",
             archived=True,
@@ -1954,7 +1954,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_ab_test_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.get_ab_test_variation(
             email_id="emailId",
         )
@@ -1966,7 +1966,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_ab_test_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.get_ab_test_variation(
             email_id="emailId",
         ) as response:
@@ -1980,7 +1980,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_ab_test_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_ab_test_variation(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.get_ab_test_variation(
                 email_id="",
@@ -1988,7 +1988,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_draft(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get_draft(
             "emailId",
         )
@@ -1996,7 +1996,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.get_draft(
             "emailId",
         )
@@ -2008,7 +2008,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.get_draft(
             "emailId",
         ) as response:
@@ -2022,7 +2022,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.get_draft(
                 "",
@@ -2030,13 +2030,13 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_histogram(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_histogram(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get_histogram()
         assert_matches_type(CollectionResponseWithTotalEmailStatisticInterval, email, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_histogram_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_histogram_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get_histogram(
             email_ids=[0],
             end_timestamp="endTimestamp",
@@ -2047,7 +2047,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_histogram(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_histogram(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.get_histogram()
 
         assert response.is_closed is True
@@ -2057,7 +2057,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_histogram(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_histogram(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.get_histogram() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2069,7 +2069,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_revision(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -2078,7 +2078,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_revision(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.get_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -2091,7 +2091,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_revision(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.get_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -2106,7 +2106,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_revision(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.get_revision(
                 revision_id="revisionId",
@@ -2121,7 +2121,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_revisions(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_revisions(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.list_revisions(
             email_id="emailId",
         )
@@ -2129,7 +2129,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_revisions_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_revisions_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.list_revisions(
             email_id="emailId",
             after="after",
@@ -2140,7 +2140,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_revisions(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_revisions(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.list_revisions(
             email_id="emailId",
         )
@@ -2152,7 +2152,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_revisions(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_revisions(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.list_revisions(
             email_id="emailId",
         ) as response:
@@ -2166,7 +2166,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list_revisions(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list_revisions(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.list_revisions(
                 email_id="",
@@ -2174,7 +2174,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_publish(self, async_client: AsyncHubspot) -> None:
+    async def test_method_publish(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.publish(
             "emailId",
         )
@@ -2182,7 +2182,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_publish(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_publish(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.publish(
             "emailId",
         )
@@ -2194,7 +2194,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_publish(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_publish(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.publish(
             "emailId",
         ) as response:
@@ -2208,7 +2208,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_publish(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_publish(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.publish(
                 "",
@@ -2216,7 +2216,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_reset_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_reset_draft(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.reset_draft(
             "emailId",
         )
@@ -2224,7 +2224,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_reset_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_reset_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.reset_draft(
             "emailId",
         )
@@ -2236,7 +2236,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_reset_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_reset_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.reset_draft(
             "emailId",
         ) as response:
@@ -2250,7 +2250,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_reset_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_reset_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.reset_draft(
                 "",
@@ -2258,7 +2258,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_restore_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_method_restore_revision(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.restore_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -2267,7 +2267,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_restore_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_restore_revision(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.restore_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -2280,7 +2280,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_restore_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_restore_revision(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.restore_revision(
             revision_id="revisionId",
             email_id="emailId",
@@ -2295,7 +2295,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_restore_revision(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_restore_revision(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.restore_revision(
                 revision_id="revisionId",
@@ -2310,7 +2310,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_restore_revision_to_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.restore_revision_to_draft(
             revision_id=0,
             email_id="emailId",
@@ -2319,7 +2319,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_restore_revision_to_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.restore_revision_to_draft(
             revision_id=0,
             email_id="emailId",
@@ -2332,7 +2332,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_restore_revision_to_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.restore_revision_to_draft(
             revision_id=0,
             email_id="emailId",
@@ -2347,7 +2347,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_restore_revision_to_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_restore_revision_to_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.restore_revision_to_draft(
                 revision_id=0,
@@ -2356,7 +2356,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_unpublish(self, async_client: AsyncHubspot) -> None:
+    async def test_method_unpublish(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.unpublish(
             "emailId",
         )
@@ -2364,7 +2364,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_unpublish(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_unpublish(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.unpublish(
             "emailId",
         )
@@ -2376,7 +2376,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_unpublish(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_unpublish(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.unpublish(
             "emailId",
         ) as response:
@@ -2390,7 +2390,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_unpublish(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_unpublish(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.unpublish(
                 "",
@@ -2398,7 +2398,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_draft(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.update_draft(
             email_id="emailId",
         )
@@ -2406,7 +2406,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_draft_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_draft_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.update_draft(
             email_id="emailId",
             active_domain="activeDomain",
@@ -2565,7 +2565,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.emails.with_raw_response.update_draft(
             email_id="emailId",
         )
@@ -2577,7 +2577,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.emails.with_streaming_response.update_draft(
             email_id="emailId",
         ) as response:
@@ -2591,7 +2591,7 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `email_id` but received ''"):
             await async_client.marketing.emails.with_raw_response.update_draft(
                 email_id="",

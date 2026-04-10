@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.crm.extensions import (
@@ -25,7 +25,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_method_create_channel_connection_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.create_channel_connection_settings(
             app_id=0,
             is_ready=True,
@@ -35,7 +35,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_raw_response_create_channel_connection_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.create_channel_connection_settings(
             app_id=0,
             is_ready=True,
@@ -49,7 +49,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_create_channel_connection_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.create_channel_connection_settings(
             app_id=0,
             is_ready=True,
@@ -65,7 +65,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_inbound_call(self, client: Hubspot) -> None:
+    def test_method_create_inbound_call(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -85,7 +85,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_inbound_call_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_inbound_call_with_all_params(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -110,7 +110,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_inbound_call(self, client: Hubspot) -> None:
+    def test_raw_response_create_inbound_call(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -134,7 +134,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_inbound_call(self, client: Hubspot) -> None:
+    def test_streaming_response_create_inbound_call(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -160,7 +160,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_recording_ready(self, client: Hubspot) -> None:
+    def test_method_create_recording_ready(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.create_recording_ready(
             engagement_id=0,
         )
@@ -168,7 +168,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_recording_ready(self, client: Hubspot) -> None:
+    def test_raw_response_create_recording_ready(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.create_recording_ready(
             engagement_id=0,
         )
@@ -180,7 +180,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_recording_ready(self, client: Hubspot) -> None:
+    def test_streaming_response_create_recording_ready(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.create_recording_ready(
             engagement_id=0,
         ) as response:
@@ -194,7 +194,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_recording_settings(self, client: Hubspot) -> None:
+    def test_method_create_recording_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.create_recording_settings(
             app_id=0,
             url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
@@ -203,7 +203,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_recording_settings(self, client: Hubspot) -> None:
+    def test_raw_response_create_recording_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.create_recording_settings(
             app_id=0,
             url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
@@ -216,7 +216,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_recording_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_create_recording_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.create_recording_settings(
             app_id=0,
             url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
@@ -231,7 +231,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_settings(self, client: Hubspot) -> None:
+    def test_method_create_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.create_settings(
             app_id=0,
             height=0,
@@ -248,7 +248,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_settings(self, client: Hubspot) -> None:
+    def test_raw_response_create_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.create_settings(
             app_id=0,
             height=0,
@@ -269,7 +269,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_create_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.create_settings(
             app_id=0,
             height=0,
@@ -292,7 +292,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_method_delete_channel_connection_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.delete_channel_connection_settings(
             0,
         )
@@ -300,7 +300,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_raw_response_delete_channel_connection_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.delete_channel_connection_settings(
             0,
         )
@@ -312,7 +312,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_channel_connection_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.delete_channel_connection_settings(
             0,
         ) as response:
@@ -326,7 +326,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_settings(self, client: Hubspot) -> None:
+    def test_method_delete_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.delete_settings(
             0,
         )
@@ -334,7 +334,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_settings(self, client: Hubspot) -> None:
+    def test_raw_response_delete_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.delete_settings(
             0,
         )
@@ -346,7 +346,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.delete_settings(
             0,
         ) as response:
@@ -360,7 +360,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_method_get_channel_connection_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.get_channel_connection_settings(
             0,
         )
@@ -368,7 +368,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_raw_response_get_channel_connection_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.get_channel_connection_settings(
             0,
         )
@@ -380,7 +380,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_get_channel_connection_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.get_channel_connection_settings(
             0,
         ) as response:
@@ -394,7 +394,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_recording_settings(self, client: Hubspot) -> None:
+    def test_method_get_recording_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.get_recording_settings(
             0,
         )
@@ -402,7 +402,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_recording_settings(self, client: Hubspot) -> None:
+    def test_raw_response_get_recording_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.get_recording_settings(
             0,
         )
@@ -414,7 +414,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_recording_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_get_recording_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.get_recording_settings(
             0,
         ) as response:
@@ -428,7 +428,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_settings(self, client: Hubspot) -> None:
+    def test_method_get_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.get_settings(
             0,
         )
@@ -436,7 +436,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_settings(self, client: Hubspot) -> None:
+    def test_raw_response_get_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.get_settings(
             0,
         )
@@ -448,7 +448,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_get_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.get_settings(
             0,
         ) as response:
@@ -462,7 +462,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_method_update_channel_connection_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.update_channel_connection_settings(
             app_id=0,
         )
@@ -470,7 +470,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_channel_connection_settings_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_channel_connection_settings_with_all_params(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.update_channel_connection_settings(
             app_id=0,
             is_ready=True,
@@ -480,7 +480,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_raw_response_update_channel_connection_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.update_channel_connection_settings(
             app_id=0,
         )
@@ -492,7 +492,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_channel_connection_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_update_channel_connection_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.update_channel_connection_settings(
             app_id=0,
         ) as response:
@@ -506,7 +506,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_recording_settings(self, client: Hubspot) -> None:
+    def test_method_update_recording_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.update_recording_settings(
             app_id=0,
         )
@@ -514,7 +514,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_recording_settings_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_recording_settings_with_all_params(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.update_recording_settings(
             app_id=0,
             url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
@@ -523,7 +523,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_recording_settings(self, client: Hubspot) -> None:
+    def test_raw_response_update_recording_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.update_recording_settings(
             app_id=0,
         )
@@ -535,7 +535,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_recording_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_update_recording_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.update_recording_settings(
             app_id=0,
         ) as response:
@@ -549,7 +549,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_settings(self, client: Hubspot) -> None:
+    def test_method_update_settings(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.update_settings(
             app_id=0,
         )
@@ -557,7 +557,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_settings_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_settings_with_all_params(self, client: HubSpot) -> None:
         calling = client.crm.extensions.calling.update_settings(
             app_id=0,
             height=0,
@@ -574,7 +574,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_settings(self, client: Hubspot) -> None:
+    def test_raw_response_update_settings(self, client: HubSpot) -> None:
         response = client.crm.extensions.calling.with_raw_response.update_settings(
             app_id=0,
         )
@@ -586,7 +586,7 @@ class TestCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_settings(self, client: Hubspot) -> None:
+    def test_streaming_response_update_settings(self, client: HubSpot) -> None:
         with client.crm.extensions.calling.with_streaming_response.update_settings(
             app_id=0,
         ) as response:
@@ -606,7 +606,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.create_channel_connection_settings(
             app_id=0,
             is_ready=True,
@@ -616,7 +616,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.create_channel_connection_settings(
             app_id=0,
             is_ready=True,
@@ -630,7 +630,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.create_channel_connection_settings(
             app_id=0,
             is_ready=True,
@@ -646,7 +646,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_inbound_call(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_inbound_call(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -666,7 +666,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_inbound_call_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_inbound_call_with_all_params(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -691,7 +691,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_inbound_call(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_inbound_call(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -715,7 +715,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_inbound_call(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_inbound_call(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.create_inbound_call(
             create_engagement=True,
             engagement_properties={"foo": "string"},
@@ -741,7 +741,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_recording_ready(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_recording_ready(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.create_recording_ready(
             engagement_id=0,
         )
@@ -749,7 +749,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_recording_ready(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_recording_ready(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.create_recording_ready(
             engagement_id=0,
         )
@@ -761,7 +761,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_recording_ready(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_recording_ready(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.create_recording_ready(
             engagement_id=0,
         ) as response:
@@ -775,7 +775,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_recording_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.create_recording_settings(
             app_id=0,
             url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
@@ -784,7 +784,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_recording_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.create_recording_settings(
             app_id=0,
             url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
@@ -797,7 +797,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_recording_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.create_recording_settings(
             app_id=0,
             url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
@@ -812,7 +812,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.create_settings(
             app_id=0,
             height=0,
@@ -829,7 +829,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.create_settings(
             app_id=0,
             height=0,
@@ -850,7 +850,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.create_settings(
             app_id=0,
             height=0,
@@ -873,7 +873,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.delete_channel_connection_settings(
             0,
         )
@@ -881,7 +881,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.delete_channel_connection_settings(
             0,
         )
@@ -893,7 +893,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.delete_channel_connection_settings(
             0,
         ) as response:
@@ -907,7 +907,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.delete_settings(
             0,
         )
@@ -915,7 +915,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.delete_settings(
             0,
         )
@@ -927,7 +927,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.delete_settings(
             0,
         ) as response:
@@ -941,7 +941,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.get_channel_connection_settings(
             0,
         )
@@ -949,7 +949,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.get_channel_connection_settings(
             0,
         )
@@ -961,7 +961,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.get_channel_connection_settings(
             0,
         ) as response:
@@ -975,7 +975,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_recording_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.get_recording_settings(
             0,
         )
@@ -983,7 +983,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_recording_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.get_recording_settings(
             0,
         )
@@ -995,7 +995,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_recording_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.get_recording_settings(
             0,
         ) as response:
@@ -1009,7 +1009,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.get_settings(
             0,
         )
@@ -1017,7 +1017,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.get_settings(
             0,
         )
@@ -1029,7 +1029,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.get_settings(
             0,
         ) as response:
@@ -1043,7 +1043,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.update_channel_connection_settings(
             app_id=0,
         )
@@ -1051,7 +1051,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_channel_connection_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_channel_connection_settings_with_all_params(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.update_channel_connection_settings(
             app_id=0,
             is_ready=True,
@@ -1061,7 +1061,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.update_channel_connection_settings(
             app_id=0,
         )
@@ -1073,7 +1073,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_channel_connection_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_channel_connection_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.update_channel_connection_settings(
             app_id=0,
         ) as response:
@@ -1087,7 +1087,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_recording_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.update_recording_settings(
             app_id=0,
         )
@@ -1095,7 +1095,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_recording_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_recording_settings_with_all_params(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.update_recording_settings(
             app_id=0,
             url_to_retrieve_authed_recording="urlToRetrieveAuthedRecording",
@@ -1104,7 +1104,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_recording_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.update_recording_settings(
             app_id=0,
         )
@@ -1116,7 +1116,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_recording_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_recording_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.update_recording_settings(
             app_id=0,
         ) as response:
@@ -1130,7 +1130,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_settings(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.update_settings(
             app_id=0,
         )
@@ -1138,7 +1138,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_settings_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_settings_with_all_params(self, async_client: AsyncHubSpot) -> None:
         calling = await async_client.crm.extensions.calling.update_settings(
             app_id=0,
             height=0,
@@ -1155,7 +1155,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_settings(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.calling.with_raw_response.update_settings(
             app_id=0,
         )
@@ -1167,7 +1167,7 @@ class TestAsyncCalling:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_settings(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_settings(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.calling.with_streaming_response.update_settings(
             app_id=0,
         ) as response:

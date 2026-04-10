@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.cms import (
     HubDBTableRowV3,
@@ -23,7 +23,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
+    def test_method_create(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.create(
             table_id_or_name="tableIdOrName",
             child_table_id=0,
@@ -34,7 +34,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_with_all_params(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.create(
             table_id_or_name="tableIdOrName",
             child_table_id=0,
@@ -47,7 +47,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
+    def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.create(
             table_id_or_name="tableIdOrName",
             child_table_id=0,
@@ -62,7 +62,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
+    def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.create(
             table_id_or_name="tableIdOrName",
             child_table_id=0,
@@ -79,7 +79,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create(self, client: Hubspot) -> None:
+    def test_path_params_create(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.create(
                 table_id_or_name="",
@@ -90,7 +90,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.list(
             table_id_or_name="tableIdOrName",
         )
@@ -98,7 +98,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.list(
             table_id_or_name="tableIdOrName",
             after="after",
@@ -112,7 +112,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.list(
             table_id_or_name="tableIdOrName",
         )
@@ -124,7 +124,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.list(
             table_id_or_name="tableIdOrName",
         ) as response:
@@ -138,7 +138,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: Hubspot) -> None:
+    def test_path_params_list(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.list(
                 table_id_or_name="",
@@ -146,7 +146,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_clone_batch(self, client: Hubspot) -> None:
+    def test_method_clone_batch(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -155,7 +155,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_clone_batch(self, client: Hubspot) -> None:
+    def test_raw_response_clone_batch(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -168,7 +168,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_clone_batch(self, client: Hubspot) -> None:
+    def test_streaming_response_clone_batch(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -183,7 +183,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_clone_batch(self, client: Hubspot) -> None:
+    def test_path_params_clone_batch(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.clone_batch(
                 table_id_or_name="",
@@ -192,7 +192,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_clone_draft(self, client: Hubspot) -> None:
+    def test_method_clone_draft(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.clone_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -201,7 +201,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_clone_draft_with_all_params(self, client: Hubspot) -> None:
+    def test_method_clone_draft_with_all_params(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.clone_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -211,7 +211,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_clone_draft(self, client: Hubspot) -> None:
+    def test_raw_response_clone_draft(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.clone_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -224,7 +224,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_clone_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_clone_draft(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.clone_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -239,7 +239,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_clone_draft(self, client: Hubspot) -> None:
+    def test_path_params_clone_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.clone_draft(
                 row_id="321669910225",
@@ -254,7 +254,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_batch(self, client: Hubspot) -> None:
+    def test_method_create_batch(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -269,7 +269,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_batch(self, client: Hubspot) -> None:
+    def test_raw_response_create_batch(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -288,7 +288,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_batch(self, client: Hubspot) -> None:
+    def test_streaming_response_create_batch(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -309,7 +309,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_batch(self, client: Hubspot) -> None:
+    def test_path_params_create_batch(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.create_batch(
                 table_id_or_name="",
@@ -324,7 +324,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_draft(self, client: Hubspot) -> None:
+    def test_method_delete_draft(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.delete_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -333,7 +333,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_draft(self, client: Hubspot) -> None:
+    def test_raw_response_delete_draft(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.delete_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -346,7 +346,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_draft(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.delete_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -361,7 +361,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_draft(self, client: Hubspot) -> None:
+    def test_path_params_delete_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.delete_draft(
                 row_id="321669910225",
@@ -376,7 +376,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.get(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -385,7 +385,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.get(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -395,7 +395,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.get(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -408,7 +408,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.get(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -423,7 +423,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.get(
                 row_id="321669910225",
@@ -438,7 +438,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_batch(self, client: Hubspot) -> None:
+    def test_method_get_batch(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -447,7 +447,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_batch(self, client: Hubspot) -> None:
+    def test_raw_response_get_batch(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -460,7 +460,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_batch(self, client: Hubspot) -> None:
+    def test_streaming_response_get_batch(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -475,7 +475,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_batch(self, client: Hubspot) -> None:
+    def test_path_params_get_batch(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.get_batch(
                 table_id_or_name="",
@@ -484,7 +484,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_draft(self, client: Hubspot) -> None:
+    def test_method_get_draft(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.get_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -493,7 +493,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_draft_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_draft_with_all_params(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.get_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -503,7 +503,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_draft(self, client: Hubspot) -> None:
+    def test_raw_response_get_draft(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.get_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -516,7 +516,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_get_draft(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.get_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -531,7 +531,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_draft(self, client: Hubspot) -> None:
+    def test_path_params_get_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.get_draft(
                 row_id="321669910225",
@@ -546,7 +546,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_draft_batch(self, client: Hubspot) -> None:
+    def test_method_get_draft_batch(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -555,7 +555,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_draft_batch(self, client: Hubspot) -> None:
+    def test_raw_response_get_draft_batch(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -568,7 +568,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_draft_batch(self, client: Hubspot) -> None:
+    def test_streaming_response_get_draft_batch(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -583,7 +583,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_draft_batch(self, client: Hubspot) -> None:
+    def test_path_params_get_draft_batch(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.get_draft_batch(
                 table_id_or_name="",
@@ -592,7 +592,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_purge_batch(self, client: Hubspot) -> None:
+    def test_method_purge_batch(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -601,7 +601,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_purge_batch(self, client: Hubspot) -> None:
+    def test_raw_response_purge_batch(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -614,7 +614,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_purge_batch(self, client: Hubspot) -> None:
+    def test_streaming_response_purge_batch(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -629,7 +629,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_purge_batch(self, client: Hubspot) -> None:
+    def test_path_params_purge_batch(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.purge_batch(
                 table_id_or_name="",
@@ -638,7 +638,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_replace_batch(self, client: Hubspot) -> None:
+    def test_method_replace_batch(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -653,7 +653,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_replace_batch(self, client: Hubspot) -> None:
+    def test_raw_response_replace_batch(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -672,7 +672,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_replace_batch(self, client: Hubspot) -> None:
+    def test_streaming_response_replace_batch(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -693,7 +693,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_replace_batch(self, client: Hubspot) -> None:
+    def test_path_params_replace_batch(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.replace_batch(
                 table_id_or_name="",
@@ -708,7 +708,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_replace_draft(self, client: Hubspot) -> None:
+    def test_method_replace_draft(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -720,7 +720,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_replace_draft_with_all_params(self, client: Hubspot) -> None:
+    def test_method_replace_draft_with_all_params(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -734,7 +734,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_replace_draft(self, client: Hubspot) -> None:
+    def test_raw_response_replace_draft(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -750,7 +750,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_replace_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_replace_draft(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -768,7 +768,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_replace_draft(self, client: Hubspot) -> None:
+    def test_path_params_replace_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.replace_draft(
                 row_id="321669910225",
@@ -789,7 +789,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_batch(self, client: Hubspot) -> None:
+    def test_method_update_batch(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -804,7 +804,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_batch(self, client: Hubspot) -> None:
+    def test_raw_response_update_batch(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -823,7 +823,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_batch(self, client: Hubspot) -> None:
+    def test_streaming_response_update_batch(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -844,7 +844,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_batch(self, client: Hubspot) -> None:
+    def test_path_params_update_batch(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.update_batch(
                 table_id_or_name="",
@@ -859,7 +859,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_draft(self, client: Hubspot) -> None:
+    def test_method_update_draft(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -871,7 +871,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_draft_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_draft_with_all_params(self, client: HubSpot) -> None:
         row = client.cms.hubdb.rows.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -885,7 +885,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_draft(self, client: Hubspot) -> None:
+    def test_raw_response_update_draft(self, client: HubSpot) -> None:
         response = client.cms.hubdb.rows.with_raw_response.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -901,7 +901,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_update_draft(self, client: HubSpot) -> None:
         with client.cms.hubdb.rows.with_streaming_response.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -919,7 +919,7 @@ class TestRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_draft(self, client: Hubspot) -> None:
+    def test_path_params_update_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             client.cms.hubdb.rows.with_raw_response.update_draft(
                 row_id="321669910225",
@@ -946,7 +946,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.create(
             table_id_or_name="tableIdOrName",
             child_table_id=0,
@@ -957,7 +957,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.create(
             table_id_or_name="tableIdOrName",
             child_table_id=0,
@@ -970,7 +970,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.create(
             table_id_or_name="tableIdOrName",
             child_table_id=0,
@@ -985,7 +985,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.create(
             table_id_or_name="tableIdOrName",
             child_table_id=0,
@@ -1002,7 +1002,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.create(
                 table_id_or_name="",
@@ -1013,7 +1013,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.list(
             table_id_or_name="tableIdOrName",
         )
@@ -1021,7 +1021,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.list(
             table_id_or_name="tableIdOrName",
             after="after",
@@ -1035,7 +1035,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.list(
             table_id_or_name="tableIdOrName",
         )
@@ -1047,7 +1047,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.list(
             table_id_or_name="tableIdOrName",
         ) as response:
@@ -1061,7 +1061,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.list(
                 table_id_or_name="",
@@ -1069,7 +1069,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_clone_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_method_clone_batch(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -1078,7 +1078,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_clone_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_clone_batch(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -1091,7 +1091,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_clone_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_clone_batch(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.clone_batch(
             table_id_or_name="tableIdOrName",
             inputs=[{"id": "id"}],
@@ -1106,7 +1106,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_clone_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_clone_batch(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.clone_batch(
                 table_id_or_name="",
@@ -1115,7 +1115,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_clone_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_clone_draft(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.clone_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1124,7 +1124,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_clone_draft_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_clone_draft_with_all_params(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.clone_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1134,7 +1134,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_clone_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_clone_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.clone_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1147,7 +1147,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_clone_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_clone_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.clone_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1162,7 +1162,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_clone_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_clone_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.clone_draft(
                 row_id="321669910225",
@@ -1177,7 +1177,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_batch(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1192,7 +1192,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_batch(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1211,7 +1211,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_batch(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.create_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1232,7 +1232,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_batch(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.create_batch(
                 table_id_or_name="",
@@ -1247,7 +1247,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_draft(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.delete_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1256,7 +1256,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.delete_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1269,7 +1269,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.delete_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1284,7 +1284,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.delete_draft(
                 row_id="321669910225",
@@ -1299,7 +1299,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.get(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1308,7 +1308,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.get(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1318,7 +1318,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.get(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1331,7 +1331,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.get(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1346,7 +1346,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.get(
                 row_id="321669910225",
@@ -1361,7 +1361,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_batch(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1370,7 +1370,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_batch(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1383,7 +1383,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_batch(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.get_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1398,7 +1398,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_batch(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.get_batch(
                 table_id_or_name="",
@@ -1407,7 +1407,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_draft(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.get_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1416,7 +1416,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_draft_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_draft_with_all_params(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.get_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1426,7 +1426,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.get_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1439,7 +1439,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.get_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1454,7 +1454,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.get_draft(
                 row_id="321669910225",
@@ -1469,7 +1469,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_draft_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_draft_batch(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1478,7 +1478,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_draft_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_draft_batch(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1491,7 +1491,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_draft_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_draft_batch(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.get_draft_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1506,7 +1506,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_draft_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_draft_batch(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.get_draft_batch(
                 table_id_or_name="",
@@ -1515,7 +1515,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_purge_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_method_purge_batch(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1524,7 +1524,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_purge_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_purge_batch(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1537,7 +1537,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_purge_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_purge_batch(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.purge_batch(
             table_id_or_name="tableIdOrName",
             inputs=["string"],
@@ -1552,7 +1552,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_purge_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_purge_batch(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.purge_batch(
                 table_id_or_name="",
@@ -1561,7 +1561,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_replace_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_method_replace_batch(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1576,7 +1576,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_replace_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_replace_batch(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1595,7 +1595,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_replace_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_replace_batch(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.replace_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1616,7 +1616,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_replace_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_replace_batch(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.replace_batch(
                 table_id_or_name="",
@@ -1631,7 +1631,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_replace_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_replace_draft(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1643,7 +1643,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_replace_draft_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_replace_draft_with_all_params(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1657,7 +1657,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_replace_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_replace_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1673,7 +1673,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_replace_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_replace_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.replace_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1691,7 +1691,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_replace_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_replace_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.replace_draft(
                 row_id="321669910225",
@@ -1712,7 +1712,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_batch(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1727,7 +1727,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_batch(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1746,7 +1746,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_batch(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.update_batch(
             table_id_or_name="tableIdOrName",
             inputs=[
@@ -1767,7 +1767,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_batch(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_batch(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.update_batch(
                 table_id_or_name="",
@@ -1782,7 +1782,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_draft(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1794,7 +1794,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_draft_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_draft_with_all_params(self, async_client: AsyncHubSpot) -> None:
         row = await async_client.cms.hubdb.rows.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1808,7 +1808,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.hubdb.rows.with_raw_response.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1824,7 +1824,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.hubdb.rows.with_streaming_response.update_draft(
             row_id="321669910225",
             table_id_or_name="tableIdOrName",
@@ -1842,7 +1842,7 @@ class TestAsyncRows:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `table_id_or_name` but received ''"):
             await async_client.cms.hubdb.rows.with_raw_response.update_draft(
                 row_id="321669910225",
