@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class HubspotError(Exception):
+class HubSpotError(Exception):
     pass
 
 
-class APIError(HubspotError):
+class APIError(HubSpotError):
     message: str
     request: httpx.Request
 

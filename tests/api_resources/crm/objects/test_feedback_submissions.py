@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import SimplePublicObjectWithAssociations, CollectionResponseWithTotalSimplePublicObject
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -20,13 +20,13 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         feedback_submission = client.crm.objects.feedback_submissions.list()
         assert_matches_type(SyncPage[SimplePublicObjectWithAssociations], feedback_submission, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         feedback_submission = client.crm.objects.feedback_submissions.list(
             after="after",
             archived=True,
@@ -39,7 +39,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.crm.objects.feedback_submissions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -49,7 +49,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.crm.objects.feedback_submissions.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -61,7 +61,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         feedback_submission = client.crm.objects.feedback_submissions.get(
             feedback_submission_id="feedbackSubmissionId",
         )
@@ -69,7 +69,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
         feedback_submission = client.crm.objects.feedback_submissions.get(
             feedback_submission_id="feedbackSubmissionId",
             archived=True,
@@ -82,7 +82,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.crm.objects.feedback_submissions.with_raw_response.get(
             feedback_submission_id="feedbackSubmissionId",
         )
@@ -94,7 +94,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.crm.objects.feedback_submissions.with_streaming_response.get(
             feedback_submission_id="feedbackSubmissionId",
         ) as response:
@@ -108,7 +108,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(
             ValueError, match=r"Expected a non-empty value for `feedback_submission_id` but received ''"
         ):
@@ -118,7 +118,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search(self, client: Hubspot) -> None:
+    def test_method_search(self, client: HubSpot) -> None:
         feedback_submission = client.crm.objects.feedback_submissions.search(
             after="after",
             filter_groups=[
@@ -139,7 +139,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_search_with_all_params(self, client: Hubspot) -> None:
+    def test_method_search_with_all_params(self, client: HubSpot) -> None:
         feedback_submission = client.crm.objects.feedback_submissions.search(
             after="after",
             filter_groups=[
@@ -164,7 +164,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_search(self, client: Hubspot) -> None:
+    def test_raw_response_search(self, client: HubSpot) -> None:
         response = client.crm.objects.feedback_submissions.with_raw_response.search(
             after="after",
             filter_groups=[
@@ -189,7 +189,7 @@ class TestFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_search(self, client: Hubspot) -> None:
+    def test_streaming_response_search(self, client: HubSpot) -> None:
         with client.crm.objects.feedback_submissions.with_streaming_response.search(
             after="after",
             filter_groups=[
@@ -222,13 +222,13 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         feedback_submission = await async_client.crm.objects.feedback_submissions.list()
         assert_matches_type(AsyncPage[SimplePublicObjectWithAssociations], feedback_submission, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         feedback_submission = await async_client.crm.objects.feedback_submissions.list(
             after="after",
             archived=True,
@@ -241,7 +241,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.feedback_submissions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -251,7 +251,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.feedback_submissions.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -263,7 +263,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         feedback_submission = await async_client.crm.objects.feedback_submissions.get(
             feedback_submission_id="feedbackSubmissionId",
         )
@@ -271,7 +271,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         feedback_submission = await async_client.crm.objects.feedback_submissions.get(
             feedback_submission_id="feedbackSubmissionId",
             archived=True,
@@ -284,7 +284,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.feedback_submissions.with_raw_response.get(
             feedback_submission_id="feedbackSubmissionId",
         )
@@ -296,7 +296,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.feedback_submissions.with_streaming_response.get(
             feedback_submission_id="feedbackSubmissionId",
         ) as response:
@@ -310,7 +310,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(
             ValueError, match=r"Expected a non-empty value for `feedback_submission_id` but received ''"
         ):
@@ -320,7 +320,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search(self, async_client: AsyncHubSpot) -> None:
         feedback_submission = await async_client.crm.objects.feedback_submissions.search(
             after="after",
             filter_groups=[
@@ -341,7 +341,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_search_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_search_with_all_params(self, async_client: AsyncHubSpot) -> None:
         feedback_submission = await async_client.crm.objects.feedback_submissions.search(
             after="after",
             filter_groups=[
@@ -366,7 +366,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_search(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.objects.feedback_submissions.with_raw_response.search(
             after="after",
             filter_groups=[
@@ -391,7 +391,7 @@ class TestAsyncFeedbackSubmissions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.objects.feedback_submissions.with_streaming_response.search(
             after="after",
             filter_groups=[

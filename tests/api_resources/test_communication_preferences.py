@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.communication_preferences import (
     LinkGenerationResponse,
@@ -23,7 +23,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_generate_links(self, client: Hubspot) -> None:
+    def test_method_generate_links(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.generate_links(
             channel="EMAIL",
             subscriber_id_string="subscriberIdString",
@@ -32,7 +32,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_generate_links_with_all_params(self, client: Hubspot) -> None:
+    def test_method_generate_links_with_all_params(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.generate_links(
             channel="EMAIL",
             subscriber_id_string="subscriberIdString",
@@ -44,7 +44,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_generate_links(self, client: Hubspot) -> None:
+    def test_raw_response_generate_links(self, client: HubSpot) -> None:
         response = client.communication_preferences.with_raw_response.generate_links(
             channel="EMAIL",
             subscriber_id_string="subscriberIdString",
@@ -57,7 +57,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_generate_links(self, client: Hubspot) -> None:
+    def test_streaming_response_generate_links(self, client: HubSpot) -> None:
         with client.communication_preferences.with_streaming_response.generate_links(
             channel="EMAIL",
             subscriber_id_string="subscriberIdString",
@@ -72,7 +72,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_statuses(self, client: Hubspot) -> None:
+    def test_method_get_statuses(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.get_statuses(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -81,7 +81,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_statuses_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_statuses_with_all_params(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.get_statuses(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -91,7 +91,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_statuses(self, client: Hubspot) -> None:
+    def test_raw_response_get_statuses(self, client: HubSpot) -> None:
         response = client.communication_preferences.with_raw_response.get_statuses(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -104,7 +104,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_statuses(self, client: Hubspot) -> None:
+    def test_streaming_response_get_statuses(self, client: HubSpot) -> None:
         with client.communication_preferences.with_streaming_response.get_statuses(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -119,7 +119,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_statuses(self, client: Hubspot) -> None:
+    def test_path_params_get_statuses(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             client.communication_preferences.with_raw_response.get_statuses(
                 subscriber_id_string="",
@@ -128,7 +128,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_unsubscribe_all_status(self, client: Hubspot) -> None:
+    def test_method_get_unsubscribe_all_status(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -137,7 +137,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_unsubscribe_all_status_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_unsubscribe_all_status_with_all_params(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -148,7 +148,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_unsubscribe_all_status(self, client: Hubspot) -> None:
+    def test_raw_response_get_unsubscribe_all_status(self, client: HubSpot) -> None:
         response = client.communication_preferences.with_raw_response.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -161,7 +161,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_unsubscribe_all_status(self, client: Hubspot) -> None:
+    def test_streaming_response_get_unsubscribe_all_status(self, client: HubSpot) -> None:
         with client.communication_preferences.with_streaming_response.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -176,7 +176,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_unsubscribe_all_status(self, client: Hubspot) -> None:
+    def test_path_params_get_unsubscribe_all_status(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             client.communication_preferences.with_raw_response.get_unsubscribe_all_status(
                 subscriber_id_string="",
@@ -185,7 +185,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_unsubscribe_all(self, client: Hubspot) -> None:
+    def test_method_unsubscribe_all(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -194,7 +194,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_unsubscribe_all_with_all_params(self, client: Hubspot) -> None:
+    def test_method_unsubscribe_all_with_all_params(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -205,7 +205,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_unsubscribe_all(self, client: Hubspot) -> None:
+    def test_raw_response_unsubscribe_all(self, client: HubSpot) -> None:
         response = client.communication_preferences.with_raw_response.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -218,7 +218,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_unsubscribe_all(self, client: Hubspot) -> None:
+    def test_streaming_response_unsubscribe_all(self, client: HubSpot) -> None:
         with client.communication_preferences.with_streaming_response.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -233,7 +233,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_unsubscribe_all(self, client: Hubspot) -> None:
+    def test_path_params_unsubscribe_all(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             client.communication_preferences.with_raw_response.unsubscribe_all(
                 subscriber_id_string="",
@@ -242,7 +242,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_status(self, client: Hubspot) -> None:
+    def test_method_update_status(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.update_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -253,7 +253,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_status_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_status_with_all_params(self, client: HubSpot) -> None:
         communication_preference = client.communication_preferences.update_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -266,7 +266,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_status(self, client: Hubspot) -> None:
+    def test_raw_response_update_status(self, client: HubSpot) -> None:
         response = client.communication_preferences.with_raw_response.update_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -281,7 +281,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_status(self, client: Hubspot) -> None:
+    def test_streaming_response_update_status(self, client: HubSpot) -> None:
         with client.communication_preferences.with_streaming_response.update_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -298,7 +298,7 @@ class TestCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_status(self, client: Hubspot) -> None:
+    def test_path_params_update_status(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             client.communication_preferences.with_raw_response.update_status(
                 subscriber_id_string="",
@@ -315,7 +315,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_generate_links(self, async_client: AsyncHubspot) -> None:
+    async def test_method_generate_links(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.generate_links(
             channel="EMAIL",
             subscriber_id_string="subscriberIdString",
@@ -324,7 +324,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_generate_links_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_generate_links_with_all_params(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.generate_links(
             channel="EMAIL",
             subscriber_id_string="subscriberIdString",
@@ -336,7 +336,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_generate_links(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_generate_links(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.communication_preferences.with_raw_response.generate_links(
             channel="EMAIL",
             subscriber_id_string="subscriberIdString",
@@ -349,7 +349,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_generate_links(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_generate_links(self, async_client: AsyncHubSpot) -> None:
         async with async_client.communication_preferences.with_streaming_response.generate_links(
             channel="EMAIL",
             subscriber_id_string="subscriberIdString",
@@ -364,7 +364,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_statuses(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.get_statuses(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -373,7 +373,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_statuses_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_statuses_with_all_params(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.get_statuses(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -383,7 +383,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_statuses(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.communication_preferences.with_raw_response.get_statuses(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -396,7 +396,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_statuses(self, async_client: AsyncHubSpot) -> None:
         async with async_client.communication_preferences.with_streaming_response.get_statuses(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -411,7 +411,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_statuses(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_statuses(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             await async_client.communication_preferences.with_raw_response.get_statuses(
                 subscriber_id_string="",
@@ -420,7 +420,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -429,7 +429,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_unsubscribe_all_status_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_unsubscribe_all_status_with_all_params(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -440,7 +440,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.communication_preferences.with_raw_response.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -453,7 +453,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
         async with async_client.communication_preferences.with_streaming_response.get_unsubscribe_all_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -468,7 +468,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_unsubscribe_all_status(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_unsubscribe_all_status(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             await async_client.communication_preferences.with_raw_response.get_unsubscribe_all_status(
                 subscriber_id_string="",
@@ -477,7 +477,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
+    async def test_method_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -486,7 +486,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_unsubscribe_all_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_unsubscribe_all_with_all_params(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -497,7 +497,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.communication_preferences.with_raw_response.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -510,7 +510,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
         async with async_client.communication_preferences.with_streaming_response.unsubscribe_all(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -525,7 +525,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_unsubscribe_all(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_unsubscribe_all(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             await async_client.communication_preferences.with_raw_response.unsubscribe_all(
                 subscriber_id_string="",
@@ -534,7 +534,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_status(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_status(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.update_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -545,7 +545,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_status_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_status_with_all_params(self, async_client: AsyncHubSpot) -> None:
         communication_preference = await async_client.communication_preferences.update_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -558,7 +558,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_status(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_status(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.communication_preferences.with_raw_response.update_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -573,7 +573,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_status(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_status(self, async_client: AsyncHubSpot) -> None:
         async with async_client.communication_preferences.with_streaming_response.update_status(
             subscriber_id_string="subscriberIdString",
             channel="EMAIL",
@@ -590,7 +590,7 @@ class TestAsyncCommunicationPreferences:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_status(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_status(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscriber_id_string` but received ''"):
             await async_client.communication_preferences.with_raw_response.update_status(
                 subscriber_id_string="",

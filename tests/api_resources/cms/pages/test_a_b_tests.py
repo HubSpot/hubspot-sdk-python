@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.cms import PageData
 
@@ -19,7 +19,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_landing_page_variation(self, client: Hubspot) -> None:
+    def test_method_create_landing_page_variation(self, client: HubSpot) -> None:
         a_b_test = client.cms.pages.a_b_tests.create_landing_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -28,7 +28,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_landing_page_variation(self, client: Hubspot) -> None:
+    def test_raw_response_create_landing_page_variation(self, client: HubSpot) -> None:
         response = client.cms.pages.a_b_tests.with_raw_response.create_landing_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -41,7 +41,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_landing_page_variation(self, client: Hubspot) -> None:
+    def test_streaming_response_create_landing_page_variation(self, client: HubSpot) -> None:
         with client.cms.pages.a_b_tests.with_streaming_response.create_landing_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -56,7 +56,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_site_page_variation(self, client: Hubspot) -> None:
+    def test_method_create_site_page_variation(self, client: HubSpot) -> None:
         a_b_test = client.cms.pages.a_b_tests.create_site_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -65,7 +65,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_site_page_variation(self, client: Hubspot) -> None:
+    def test_raw_response_create_site_page_variation(self, client: HubSpot) -> None:
         response = client.cms.pages.a_b_tests.with_raw_response.create_site_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -78,7 +78,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_site_page_variation(self, client: Hubspot) -> None:
+    def test_streaming_response_create_site_page_variation(self, client: HubSpot) -> None:
         with client.cms.pages.a_b_tests.with_streaming_response.create_site_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -93,7 +93,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_end_landing_page_test(self, client: Hubspot) -> None:
+    def test_method_end_landing_page_test(self, client: HubSpot) -> None:
         a_b_test = client.cms.pages.a_b_tests.end_landing_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -102,7 +102,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_end_landing_page_test(self, client: Hubspot) -> None:
+    def test_raw_response_end_landing_page_test(self, client: HubSpot) -> None:
         response = client.cms.pages.a_b_tests.with_raw_response.end_landing_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -115,7 +115,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_end_landing_page_test(self, client: Hubspot) -> None:
+    def test_streaming_response_end_landing_page_test(self, client: HubSpot) -> None:
         with client.cms.pages.a_b_tests.with_streaming_response.end_landing_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -130,7 +130,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_end_site_page_test(self, client: Hubspot) -> None:
+    def test_method_end_site_page_test(self, client: HubSpot) -> None:
         a_b_test = client.cms.pages.a_b_tests.end_site_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -139,7 +139,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_end_site_page_test(self, client: Hubspot) -> None:
+    def test_raw_response_end_site_page_test(self, client: HubSpot) -> None:
         response = client.cms.pages.a_b_tests.with_raw_response.end_site_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -152,7 +152,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_end_site_page_test(self, client: Hubspot) -> None:
+    def test_streaming_response_end_site_page_test(self, client: HubSpot) -> None:
         with client.cms.pages.a_b_tests.with_streaming_response.end_site_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -167,7 +167,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_rerun_landing_page_test(self, client: Hubspot) -> None:
+    def test_method_rerun_landing_page_test(self, client: HubSpot) -> None:
         a_b_test = client.cms.pages.a_b_tests.rerun_landing_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -176,7 +176,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_rerun_landing_page_test(self, client: Hubspot) -> None:
+    def test_raw_response_rerun_landing_page_test(self, client: HubSpot) -> None:
         response = client.cms.pages.a_b_tests.with_raw_response.rerun_landing_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -189,7 +189,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_rerun_landing_page_test(self, client: Hubspot) -> None:
+    def test_streaming_response_rerun_landing_page_test(self, client: HubSpot) -> None:
         with client.cms.pages.a_b_tests.with_streaming_response.rerun_landing_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -204,7 +204,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_rerun_site_page_test(self, client: Hubspot) -> None:
+    def test_method_rerun_site_page_test(self, client: HubSpot) -> None:
         a_b_test = client.cms.pages.a_b_tests.rerun_site_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -213,7 +213,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_rerun_site_page_test(self, client: Hubspot) -> None:
+    def test_raw_response_rerun_site_page_test(self, client: HubSpot) -> None:
         response = client.cms.pages.a_b_tests.with_raw_response.rerun_site_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -226,7 +226,7 @@ class TestABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_rerun_site_page_test(self, client: Hubspot) -> None:
+    def test_streaming_response_rerun_site_page_test(self, client: HubSpot) -> None:
         with client.cms.pages.a_b_tests.with_streaming_response.rerun_site_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -247,7 +247,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_landing_page_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_landing_page_variation(self, async_client: AsyncHubSpot) -> None:
         a_b_test = await async_client.cms.pages.a_b_tests.create_landing_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -256,7 +256,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_landing_page_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_landing_page_variation(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.a_b_tests.with_raw_response.create_landing_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -269,7 +269,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_landing_page_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_landing_page_variation(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.a_b_tests.with_streaming_response.create_landing_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -284,7 +284,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_site_page_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_site_page_variation(self, async_client: AsyncHubSpot) -> None:
         a_b_test = await async_client.cms.pages.a_b_tests.create_site_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -293,7 +293,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_site_page_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_site_page_variation(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.a_b_tests.with_raw_response.create_site_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -306,7 +306,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_site_page_variation(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_site_page_variation(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.a_b_tests.with_streaming_response.create_site_page_variation(
             content_id="contentId",
             variation_name="variationName",
@@ -321,7 +321,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_end_landing_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_method_end_landing_page_test(self, async_client: AsyncHubSpot) -> None:
         a_b_test = await async_client.cms.pages.a_b_tests.end_landing_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -330,7 +330,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_end_landing_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_end_landing_page_test(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.a_b_tests.with_raw_response.end_landing_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -343,7 +343,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_end_landing_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_end_landing_page_test(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.a_b_tests.with_streaming_response.end_landing_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -358,7 +358,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_end_site_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_method_end_site_page_test(self, async_client: AsyncHubSpot) -> None:
         a_b_test = await async_client.cms.pages.a_b_tests.end_site_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -367,7 +367,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_end_site_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_end_site_page_test(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.a_b_tests.with_raw_response.end_site_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -380,7 +380,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_end_site_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_end_site_page_test(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.a_b_tests.with_streaming_response.end_site_page_test(
             ab_test_id="abTestId",
             winner_id="winnerId",
@@ -395,7 +395,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_rerun_landing_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_method_rerun_landing_page_test(self, async_client: AsyncHubSpot) -> None:
         a_b_test = await async_client.cms.pages.a_b_tests.rerun_landing_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -404,7 +404,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_rerun_landing_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_rerun_landing_page_test(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.a_b_tests.with_raw_response.rerun_landing_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -417,7 +417,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_rerun_landing_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_rerun_landing_page_test(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.a_b_tests.with_streaming_response.rerun_landing_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -432,7 +432,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_rerun_site_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_method_rerun_site_page_test(self, async_client: AsyncHubSpot) -> None:
         a_b_test = await async_client.cms.pages.a_b_tests.rerun_site_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -441,7 +441,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_rerun_site_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_rerun_site_page_test(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.a_b_tests.with_raw_response.rerun_site_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",
@@ -454,7 +454,7 @@ class TestAsyncABTests:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_rerun_site_page_test(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_rerun_site_page_test(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.a_b_tests.with_streaming_response.rerun_site_page_test(
             ab_test_id="abTestId",
             variation_id="variationId",

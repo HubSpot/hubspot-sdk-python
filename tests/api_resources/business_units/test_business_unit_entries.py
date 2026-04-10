@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.business_units import (
     CollectionResponsePublicBusinessUnitNoPaging,
@@ -21,7 +21,7 @@ class TestBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_user_id(self, client: Hubspot) -> None:
+    def test_method_get_by_user_id(self, client: HubSpot) -> None:
         business_unit_entry = client.business_units.business_unit_entries.get_by_user_id(
             user_id="userId",
         )
@@ -29,7 +29,7 @@ class TestBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_user_id_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_by_user_id_with_all_params(self, client: HubSpot) -> None:
         business_unit_entry = client.business_units.business_unit_entries.get_by_user_id(
             user_id="userId",
             name=["string"],
@@ -39,7 +39,7 @@ class TestBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_user_id(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_user_id(self, client: HubSpot) -> None:
         response = client.business_units.business_unit_entries.with_raw_response.get_by_user_id(
             user_id="userId",
         )
@@ -51,7 +51,7 @@ class TestBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_user_id(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_user_id(self, client: HubSpot) -> None:
         with client.business_units.business_unit_entries.with_streaming_response.get_by_user_id(
             user_id="userId",
         ) as response:
@@ -65,7 +65,7 @@ class TestBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_user_id(self, client: Hubspot) -> None:
+    def test_path_params_get_by_user_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
             client.business_units.business_unit_entries.with_raw_response.get_by_user_id(
                 user_id="",
@@ -79,7 +79,7 @@ class TestAsyncBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_user_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_user_id(self, async_client: AsyncHubSpot) -> None:
         business_unit_entry = await async_client.business_units.business_unit_entries.get_by_user_id(
             user_id="userId",
         )
@@ -87,7 +87,7 @@ class TestAsyncBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_user_id_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_user_id_with_all_params(self, async_client: AsyncHubSpot) -> None:
         business_unit_entry = await async_client.business_units.business_unit_entries.get_by_user_id(
             user_id="userId",
             name=["string"],
@@ -97,7 +97,7 @@ class TestAsyncBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_user_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_user_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.business_units.business_unit_entries.with_raw_response.get_by_user_id(
             user_id="userId",
         )
@@ -109,7 +109,7 @@ class TestAsyncBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_user_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_user_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.business_units.business_unit_entries.with_streaming_response.get_by_user_id(
             user_id="userId",
         ) as response:
@@ -123,7 +123,7 @@ class TestAsyncBusinessUnitEntries:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_by_user_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_by_user_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
             await async_client.business_units.business_unit_entries.with_raw_response.get_by_user_id(
                 user_id="",

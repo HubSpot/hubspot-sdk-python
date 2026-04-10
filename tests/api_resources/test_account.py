@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.account import PortalInformationResponse, CollectionResponseAPIUsageNoPaging
 
@@ -19,13 +19,13 @@ class TestAccount:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         account = client.account.get()
         assert_matches_type(PortalInformationResponse, account, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.account.with_raw_response.get()
 
         assert response.is_closed is True
@@ -35,7 +35,7 @@ class TestAccount:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.account.with_streaming_response.get() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -47,13 +47,13 @@ class TestAccount:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_daily_private_apps_usage(self, client: Hubspot) -> None:
+    def test_method_get_daily_private_apps_usage(self, client: HubSpot) -> None:
         account = client.account.get_daily_private_apps_usage()
         assert_matches_type(CollectionResponseAPIUsageNoPaging, account, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_daily_private_apps_usage(self, client: Hubspot) -> None:
+    def test_raw_response_get_daily_private_apps_usage(self, client: HubSpot) -> None:
         response = client.account.with_raw_response.get_daily_private_apps_usage()
 
         assert response.is_closed is True
@@ -63,7 +63,7 @@ class TestAccount:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_daily_private_apps_usage(self, client: Hubspot) -> None:
+    def test_streaming_response_get_daily_private_apps_usage(self, client: HubSpot) -> None:
         with client.account.with_streaming_response.get_daily_private_apps_usage() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -81,13 +81,13 @@ class TestAsyncAccount:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         account = await async_client.account.get()
         assert_matches_type(PortalInformationResponse, account, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.account.with_raw_response.get()
 
         assert response.is_closed is True
@@ -97,7 +97,7 @@ class TestAsyncAccount:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.account.with_streaming_response.get() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -109,13 +109,13 @@ class TestAsyncAccount:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_daily_private_apps_usage(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_daily_private_apps_usage(self, async_client: AsyncHubSpot) -> None:
         account = await async_client.account.get_daily_private_apps_usage()
         assert_matches_type(CollectionResponseAPIUsageNoPaging, account, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_daily_private_apps_usage(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_daily_private_apps_usage(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.account.with_raw_response.get_daily_private_apps_usage()
 
         assert response.is_closed is True
@@ -125,7 +125,7 @@ class TestAsyncAccount:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_daily_private_apps_usage(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_daily_private_apps_usage(self, async_client: AsyncHubSpot) -> None:
         async with async_client.account.with_streaming_response.get_daily_private_apps_usage() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

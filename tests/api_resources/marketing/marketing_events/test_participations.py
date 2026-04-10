@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 from hubspot_sdk.types.marketing import AttendanceCounters, ParticipationBreakdown
@@ -20,7 +20,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_external_account_and_event_id(self, client: Hubspot) -> None:
+    def test_method_get_by_external_account_and_event_id(self, client: HubSpot) -> None:
         participation = client.marketing.marketing_events.participations.get_by_external_account_and_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -29,7 +29,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_external_account_and_event_id(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_external_account_and_event_id(self, client: HubSpot) -> None:
         response = (
             client.marketing.marketing_events.participations.with_raw_response.get_by_external_account_and_event_id(
                 external_event_id="externalEventId",
@@ -44,7 +44,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_external_account_and_event_id(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_external_account_and_event_id(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.participations.with_streaming_response.get_by_external_account_and_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -59,7 +59,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_by_external_account_and_event_id(self, client: Hubspot) -> None:
+    def test_path_params_get_by_external_account_and_event_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             client.marketing.marketing_events.participations.with_raw_response.get_by_external_account_and_event_id(
                 external_event_id="externalEventId",
@@ -74,7 +74,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_by_id(self, client: Hubspot) -> None:
+    def test_method_get_by_id(self, client: HubSpot) -> None:
         participation = client.marketing.marketing_events.participations.get_by_id(
             0,
         )
@@ -82,7 +82,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_by_id(self, client: Hubspot) -> None:
+    def test_raw_response_get_by_id(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.participations.with_raw_response.get_by_id(
             0,
         )
@@ -94,7 +94,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_by_id(self, client: Hubspot) -> None:
+    def test_streaming_response_get_by_id(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.participations.with_streaming_response.get_by_id(
             0,
         ) as response:
@@ -108,7 +108,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_breakdown_by_contact(self, client: Hubspot) -> None:
+    def test_method_list_breakdown_by_contact(self, client: HubSpot) -> None:
         participation = client.marketing.marketing_events.participations.list_breakdown_by_contact(
             contact_identifier="contactIdentifier",
         )
@@ -116,7 +116,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_breakdown_by_contact_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_breakdown_by_contact_with_all_params(self, client: HubSpot) -> None:
         participation = client.marketing.marketing_events.participations.list_breakdown_by_contact(
             contact_identifier="contactIdentifier",
             after="after",
@@ -127,7 +127,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_breakdown_by_contact(self, client: Hubspot) -> None:
+    def test_raw_response_list_breakdown_by_contact(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_contact(
             contact_identifier="contactIdentifier",
         )
@@ -139,7 +139,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_breakdown_by_contact(self, client: Hubspot) -> None:
+    def test_streaming_response_list_breakdown_by_contact(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.participations.with_streaming_response.list_breakdown_by_contact(
             contact_identifier="contactIdentifier",
         ) as response:
@@ -153,7 +153,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_breakdown_by_contact(self, client: Hubspot) -> None:
+    def test_path_params_list_breakdown_by_contact(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_identifier` but received ''"):
             client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_contact(
                 contact_identifier="",
@@ -161,7 +161,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_breakdown_by_external_account_and_event_id(self, client: Hubspot) -> None:
+    def test_method_list_breakdown_by_external_account_and_event_id(self, client: HubSpot) -> None:
         participation = (
             client.marketing.marketing_events.participations.list_breakdown_by_external_account_and_event_id(
                 external_event_id="externalEventId",
@@ -172,7 +172,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_breakdown_by_external_account_and_event_id_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_breakdown_by_external_account_and_event_id_with_all_params(self, client: HubSpot) -> None:
         participation = (
             client.marketing.marketing_events.participations.list_breakdown_by_external_account_and_event_id(
                 external_event_id="externalEventId",
@@ -187,7 +187,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_breakdown_by_external_account_and_event_id(self, client: Hubspot) -> None:
+    def test_raw_response_list_breakdown_by_external_account_and_event_id(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_external_account_and_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -200,7 +200,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_breakdown_by_external_account_and_event_id(self, client: Hubspot) -> None:
+    def test_streaming_response_list_breakdown_by_external_account_and_event_id(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.participations.with_streaming_response.list_breakdown_by_external_account_and_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -215,7 +215,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_breakdown_by_external_account_and_event_id(self, client: Hubspot) -> None:
+    def test_path_params_list_breakdown_by_external_account_and_event_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_external_account_and_event_id(
                 external_event_id="externalEventId",
@@ -230,7 +230,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_breakdown_by_id(self, client: Hubspot) -> None:
+    def test_method_list_breakdown_by_id(self, client: HubSpot) -> None:
         participation = client.marketing.marketing_events.participations.list_breakdown_by_id(
             marketing_event_id=0,
         )
@@ -238,7 +238,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_breakdown_by_id_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_breakdown_by_id_with_all_params(self, client: HubSpot) -> None:
         participation = client.marketing.marketing_events.participations.list_breakdown_by_id(
             marketing_event_id=0,
             after="after",
@@ -250,7 +250,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_breakdown_by_id(self, client: Hubspot) -> None:
+    def test_raw_response_list_breakdown_by_id(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_id(
             marketing_event_id=0,
         )
@@ -262,7 +262,7 @@ class TestParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_breakdown_by_id(self, client: Hubspot) -> None:
+    def test_streaming_response_list_breakdown_by_id(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.participations.with_streaming_response.list_breakdown_by_id(
             marketing_event_id=0,
         ) as response:
@@ -282,7 +282,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_external_account_and_event_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_external_account_and_event_id(self, async_client: AsyncHubSpot) -> None:
         participation = (
             await async_client.marketing.marketing_events.participations.get_by_external_account_and_event_id(
                 external_event_id="externalEventId",
@@ -293,7 +293,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_external_account_and_event_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_external_account_and_event_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.participations.with_raw_response.get_by_external_account_and_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -306,7 +306,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_external_account_and_event_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_external_account_and_event_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.participations.with_streaming_response.get_by_external_account_and_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -321,7 +321,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_by_external_account_and_event_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_by_external_account_and_event_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             await async_client.marketing.marketing_events.participations.with_raw_response.get_by_external_account_and_event_id(
                 external_event_id="externalEventId",
@@ -336,7 +336,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_by_id(self, async_client: AsyncHubSpot) -> None:
         participation = await async_client.marketing.marketing_events.participations.get_by_id(
             0,
         )
@@ -344,7 +344,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_by_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.participations.with_raw_response.get_by_id(
             0,
         )
@@ -356,7 +356,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_by_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.participations.with_streaming_response.get_by_id(
             0,
         ) as response:
@@ -370,7 +370,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_breakdown_by_contact(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_breakdown_by_contact(self, async_client: AsyncHubSpot) -> None:
         participation = await async_client.marketing.marketing_events.participations.list_breakdown_by_contact(
             contact_identifier="contactIdentifier",
         )
@@ -378,7 +378,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_breakdown_by_contact_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_breakdown_by_contact_with_all_params(self, async_client: AsyncHubSpot) -> None:
         participation = await async_client.marketing.marketing_events.participations.list_breakdown_by_contact(
             contact_identifier="contactIdentifier",
             after="after",
@@ -389,7 +389,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_breakdown_by_contact(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_breakdown_by_contact(self, async_client: AsyncHubSpot) -> None:
         response = (
             await async_client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_contact(
                 contact_identifier="contactIdentifier",
@@ -403,7 +403,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_breakdown_by_contact(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_breakdown_by_contact(self, async_client: AsyncHubSpot) -> None:
         async with (
             async_client.marketing.marketing_events.participations.with_streaming_response.list_breakdown_by_contact(
                 contact_identifier="contactIdentifier",
@@ -419,7 +419,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list_breakdown_by_contact(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list_breakdown_by_contact(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `contact_identifier` but received ''"):
             await async_client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_contact(
                 contact_identifier="",
@@ -427,7 +427,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_breakdown_by_external_account_and_event_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_breakdown_by_external_account_and_event_id(self, async_client: AsyncHubSpot) -> None:
         participation = await async_client.marketing.marketing_events.participations.list_breakdown_by_external_account_and_event_id(
             external_event_id="externalEventId",
             external_account_id="externalAccountId",
@@ -437,7 +437,7 @@ class TestAsyncParticipations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_breakdown_by_external_account_and_event_id_with_all_params(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         participation = await async_client.marketing.marketing_events.participations.list_breakdown_by_external_account_and_event_id(
             external_event_id="externalEventId",
@@ -452,7 +452,7 @@ class TestAsyncParticipations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_breakdown_by_external_account_and_event_id(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         response = await async_client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_external_account_and_event_id(
             external_event_id="externalEventId",
@@ -467,7 +467,7 @@ class TestAsyncParticipations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_breakdown_by_external_account_and_event_id(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         async with async_client.marketing.marketing_events.participations.with_streaming_response.list_breakdown_by_external_account_and_event_id(
             external_event_id="externalEventId",
@@ -484,7 +484,7 @@ class TestAsyncParticipations:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_list_breakdown_by_external_account_and_event_id(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             await async_client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_external_account_and_event_id(
@@ -500,7 +500,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_breakdown_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_breakdown_by_id(self, async_client: AsyncHubSpot) -> None:
         participation = await async_client.marketing.marketing_events.participations.list_breakdown_by_id(
             marketing_event_id=0,
         )
@@ -508,7 +508,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_breakdown_by_id_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_breakdown_by_id_with_all_params(self, async_client: AsyncHubSpot) -> None:
         participation = await async_client.marketing.marketing_events.participations.list_breakdown_by_id(
             marketing_event_id=0,
             after="after",
@@ -520,7 +520,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_breakdown_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_breakdown_by_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.participations.with_raw_response.list_breakdown_by_id(
             marketing_event_id=0,
         )
@@ -532,7 +532,7 @@ class TestAsyncParticipations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_breakdown_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_breakdown_by_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.participations.with_streaming_response.list_breakdown_by_id(
             marketing_event_id=0,
         ) as response:

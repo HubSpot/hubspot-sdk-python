@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.marketing import BatchResponseSubscriberVidResponse, BatchResponseSubscriberEmailResponse
 
@@ -19,7 +19,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_by_event_id_and_contact_id(self, client: Hubspot) -> None:
+    def test_method_create_by_event_id_and_contact_id(self, client: HubSpot) -> None:
         attendance = client.marketing.marketing_events.attendance.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -35,7 +35,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_by_event_id_and_contact_id(self, client: Hubspot) -> None:
+    def test_raw_response_create_by_event_id_and_contact_id(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.attendance.with_raw_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -55,7 +55,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_by_event_id_and_contact_id(self, client: Hubspot) -> None:
+    def test_streaming_response_create_by_event_id_and_contact_id(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.attendance.with_streaming_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -77,7 +77,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_by_event_id_and_contact_id(self, client: Hubspot) -> None:
+    def test_path_params_create_by_event_id_and_contact_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.marketing.marketing_events.attendance.with_raw_response.create_by_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -106,7 +106,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_by_event_id_and_email(self, client: Hubspot) -> None:
+    def test_method_create_by_event_id_and_email(self, client: HubSpot) -> None:
         attendance = client.marketing.marketing_events.attendance.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -123,7 +123,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_by_event_id_and_email(self, client: Hubspot) -> None:
+    def test_raw_response_create_by_event_id_and_email(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.attendance.with_raw_response.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -144,7 +144,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_by_event_id_and_email(self, client: Hubspot) -> None:
+    def test_streaming_response_create_by_event_id_and_email(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.attendance.with_streaming_response.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -167,7 +167,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_by_event_id_and_email(self, client: Hubspot) -> None:
+    def test_path_params_create_by_event_id_and_email(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.marketing.marketing_events.attendance.with_raw_response.create_by_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -198,7 +198,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_by_external_event_id_and_contact_id(self, client: Hubspot) -> None:
+    def test_method_create_by_external_event_id_and_contact_id(self, client: HubSpot) -> None:
         attendance = client.marketing.marketing_events.attendance.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -214,7 +214,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_by_external_event_id_and_contact_id_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_by_external_event_id_and_contact_id_with_all_params(self, client: HubSpot) -> None:
         attendance = client.marketing.marketing_events.attendance.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -231,7 +231,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_by_external_event_id_and_contact_id(self, client: Hubspot) -> None:
+    def test_raw_response_create_by_external_event_id_and_contact_id(self, client: HubSpot) -> None:
         response = (
             client.marketing.marketing_events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -253,7 +253,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_by_external_event_id_and_contact_id(self, client: Hubspot) -> None:
+    def test_streaming_response_create_by_external_event_id_and_contact_id(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.attendance.with_streaming_response.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -275,7 +275,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_by_external_event_id_and_contact_id(self, client: Hubspot) -> None:
+    def test_path_params_create_by_external_event_id_and_contact_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             client.marketing.marketing_events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -304,7 +304,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_by_external_event_id_and_email(self, client: Hubspot) -> None:
+    def test_method_create_by_external_event_id_and_email(self, client: HubSpot) -> None:
         attendance = client.marketing.marketing_events.attendance.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -321,7 +321,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_by_external_event_id_and_email_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_by_external_event_id_and_email_with_all_params(self, client: HubSpot) -> None:
         attendance = client.marketing.marketing_events.attendance.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -339,7 +339,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_by_external_event_id_and_email(self, client: Hubspot) -> None:
+    def test_raw_response_create_by_external_event_id_and_email(self, client: HubSpot) -> None:
         response = client.marketing.marketing_events.attendance.with_raw_response.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -360,7 +360,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_by_external_event_id_and_email(self, client: Hubspot) -> None:
+    def test_streaming_response_create_by_external_event_id_and_email(self, client: HubSpot) -> None:
         with client.marketing.marketing_events.attendance.with_streaming_response.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -383,7 +383,7 @@ class TestAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_create_by_external_event_id_and_email(self, client: Hubspot) -> None:
+    def test_path_params_create_by_external_event_id_and_email(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             client.marketing.marketing_events.attendance.with_raw_response.create_by_external_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -420,7 +420,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_by_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_by_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
         attendance = await async_client.marketing.marketing_events.attendance.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -436,7 +436,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_by_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_by_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.attendance.with_raw_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -456,7 +456,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_by_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_by_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.attendance.with_streaming_response.create_by_event_id_and_contact_id(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -478,7 +478,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_by_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_by_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await (
                 async_client.marketing.marketing_events.attendance.with_raw_response.create_by_event_id_and_contact_id(
@@ -511,7 +511,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_by_event_id_and_email(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_by_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
         attendance = await async_client.marketing.marketing_events.attendance.create_by_event_id_and_email(
             subscriber_state="subscriberState",
             object_id="objectId",
@@ -528,7 +528,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_by_event_id_and_email(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_by_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
         response = (
             await async_client.marketing.marketing_events.attendance.with_raw_response.create_by_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -551,7 +551,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_by_event_id_and_email(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_by_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
         async with (
             async_client.marketing.marketing_events.attendance.with_streaming_response.create_by_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -576,7 +576,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_by_event_id_and_email(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_by_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.marketing.marketing_events.attendance.with_raw_response.create_by_event_id_and_email(
                 subscriber_state="subscriberState",
@@ -607,7 +607,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
         attendance = (
             await async_client.marketing.marketing_events.attendance.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -626,7 +626,7 @@ class TestAsyncAttendance:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_by_external_event_id_and_contact_id_with_all_params(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         attendance = (
             await async_client.marketing.marketing_events.attendance.create_by_external_event_id_and_contact_id(
@@ -646,7 +646,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -667,7 +667,7 @@ class TestAsyncAttendance:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_by_external_event_id_and_contact_id(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         async with async_client.marketing.marketing_events.attendance.with_streaming_response.create_by_external_event_id_and_contact_id(
             subscriber_state="subscriberState",
@@ -690,7 +690,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_by_external_event_id_and_contact_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             await async_client.marketing.marketing_events.attendance.with_raw_response.create_by_external_event_id_and_contact_id(
                 subscriber_state="subscriberState",
@@ -719,7 +719,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_by_external_event_id_and_email(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_by_external_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
         attendance = await async_client.marketing.marketing_events.attendance.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -737,7 +737,7 @@ class TestAsyncAttendance:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_by_external_event_id_and_email_with_all_params(
-        self, async_client: AsyncHubspot
+        self, async_client: AsyncHubSpot
     ) -> None:
         attendance = await async_client.marketing.marketing_events.attendance.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
@@ -756,7 +756,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_by_external_event_id_and_email(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_by_external_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.marketing_events.attendance.with_raw_response.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -777,7 +777,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_by_external_event_id_and_email(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_by_external_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.marketing_events.attendance.with_streaming_response.create_by_external_event_id_and_email(
             subscriber_state="subscriberState",
             external_event_id="externalEventId",
@@ -800,7 +800,7 @@ class TestAsyncAttendance:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_create_by_external_event_id_and_email(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_create_by_external_event_id_and_email(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             await async_client.marketing.marketing_events.attendance.with_raw_response.create_by_external_event_id_and_email(
                 subscriber_state="subscriberState",

@@ -9,7 +9,7 @@ import httpx
 import pytest
 from respx import MockRouter
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from hubspot_sdk._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -25,7 +25,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_create(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_create(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/url-mappings/2026-03/url-mappings").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -64,7 +64,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_create(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_create(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/url-mappings/2026-03/url-mappings").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -105,7 +105,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_create(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_create(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/url-mappings/2026-03/url-mappings").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -148,7 +148,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_list(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         url_mapping = client.cms.url_mappings.list()
         assert url_mapping.is_closed
@@ -158,7 +158,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_list(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         url_mapping = client.cms.url_mappings.with_raw_response.list()
@@ -170,7 +170,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_list(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_list(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.cms.url_mappings.with_streaming_response.list() as url_mapping:
             assert not url_mapping.is_closed
@@ -184,7 +184,7 @@ class TestURLMappings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         url_mapping = client.cms.url_mappings.delete(
             0,
         )
@@ -192,7 +192,7 @@ class TestURLMappings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.cms.url_mappings.with_raw_response.delete(
             0,
         )
@@ -204,7 +204,7 @@ class TestURLMappings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.cms.url_mappings.with_streaming_response.delete(
             0,
         ) as response:
@@ -218,7 +218,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_get(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings/0").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -232,7 +232,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_get(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings/0").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -248,7 +248,7 @@ class TestURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_get(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_get(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings/0").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -272,7 +272,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_create(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/url-mappings/2026-03/url-mappings").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -311,7 +311,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_create(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/url-mappings/2026-03/url-mappings").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -352,7 +352,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_create(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/url-mappings/2026-03/url-mappings").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -395,7 +395,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         url_mapping = await async_client.cms.url_mappings.list()
         assert url_mapping.is_closed
@@ -405,7 +405,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         url_mapping = await async_client.cms.url_mappings.with_raw_response.list()
@@ -417,7 +417,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_list(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.cms.url_mappings.with_streaming_response.list() as url_mapping:
             assert not url_mapping.is_closed
@@ -431,7 +431,7 @@ class TestAsyncURLMappings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         url_mapping = await async_client.cms.url_mappings.delete(
             0,
         )
@@ -439,7 +439,7 @@ class TestAsyncURLMappings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.url_mappings.with_raw_response.delete(
             0,
         )
@@ -451,7 +451,7 @@ class TestAsyncURLMappings:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.url_mappings.with_streaming_response.delete(
             0,
         ) as response:
@@ -465,7 +465,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings/0").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -479,7 +479,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings/0").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -495,7 +495,7 @@ class TestAsyncURLMappings:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_get(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.get("/url-mappings/2026-03/url-mappings/0").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )

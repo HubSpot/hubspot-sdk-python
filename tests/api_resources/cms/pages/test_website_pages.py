@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.cms import PageData
@@ -21,7 +21,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: Hubspot) -> None:
+    def test_method_create(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.create(
             id="id",
             ab_status="automated_loser_variant",
@@ -195,7 +195,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Hubspot) -> None:
+    def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.create(
             id="id",
             ab_status="automated_loser_variant",
@@ -373,7 +373,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Hubspot) -> None:
+    def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.create(
             id="id",
             ab_status="automated_loser_variant",
@@ -553,7 +553,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
+    def test_method_update(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.update(
             object_id="objectId",
             id="id",
@@ -728,7 +728,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_with_all_params(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.update(
             object_id="objectId",
             id="id",
@@ -971,7 +971,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
+    def test_raw_response_update(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.update(
             object_id="objectId",
             id="id",
@@ -1150,7 +1150,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
+    def test_streaming_response_update(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.update(
             object_id="objectId",
             id="id",
@@ -1331,7 +1331,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.website_pages.with_raw_response.update(
                 object_id="",
@@ -1506,13 +1506,13 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.list()
         assert_matches_type(SyncPage[PageData], website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.list(
             after="after",
             archived=True,
@@ -1530,7 +1530,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.list()
 
         assert response.is_closed is True
@@ -1540,7 +1540,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1552,7 +1552,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.delete(
             object_id="objectId",
         )
@@ -1560,7 +1560,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_with_all_params(self, client: Hubspot) -> None:
+    def test_method_delete_with_all_params(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.delete(
             object_id="objectId",
             archived=True,
@@ -1569,7 +1569,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.delete(
             object_id="objectId",
         )
@@ -1581,7 +1581,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.delete(
             object_id="objectId",
         ) as response:
@@ -1595,7 +1595,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.website_pages.with_raw_response.delete(
                 object_id="",
@@ -1603,7 +1603,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_clone(self, client: Hubspot) -> None:
+    def test_method_clone(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.clone(
             id="id",
         )
@@ -1611,7 +1611,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_clone_with_all_params(self, client: Hubspot) -> None:
+    def test_method_clone_with_all_params(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.clone(
             id="id",
             clone_name="cloneName",
@@ -1620,7 +1620,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_clone(self, client: Hubspot) -> None:
+    def test_raw_response_clone(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.clone(
             id="id",
         )
@@ -1632,7 +1632,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_clone(self, client: Hubspot) -> None:
+    def test_streaming_response_clone(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.clone(
             id="id",
         ) as response:
@@ -1646,7 +1646,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.get(
             object_id="objectId",
         )
@@ -1654,7 +1654,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_with_all_params(self, client: Hubspot) -> None:
+    def test_method_get_with_all_params(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.get(
             object_id="objectId",
             archived=True,
@@ -1664,7 +1664,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.get(
             object_id="objectId",
         )
@@ -1676,7 +1676,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.get(
             object_id="objectId",
         ) as response:
@@ -1690,7 +1690,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.website_pages.with_raw_response.get(
                 object_id="",
@@ -1698,7 +1698,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_draft(self, client: Hubspot) -> None:
+    def test_method_get_draft(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.get_draft(
             "objectId",
         )
@@ -1706,7 +1706,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_draft(self, client: Hubspot) -> None:
+    def test_raw_response_get_draft(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.get_draft(
             "objectId",
         )
@@ -1718,7 +1718,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_get_draft(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.get_draft(
             "objectId",
         ) as response:
@@ -1732,7 +1732,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_draft(self, client: Hubspot) -> None:
+    def test_path_params_get_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.website_pages.with_raw_response.get_draft(
                 "",
@@ -1740,7 +1740,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_publish_draft(self, client: Hubspot) -> None:
+    def test_method_publish_draft(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.publish_draft(
             "objectId",
         )
@@ -1748,7 +1748,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_publish_draft(self, client: Hubspot) -> None:
+    def test_raw_response_publish_draft(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.publish_draft(
             "objectId",
         )
@@ -1760,7 +1760,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_publish_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_publish_draft(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.publish_draft(
             "objectId",
         ) as response:
@@ -1774,7 +1774,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_publish_draft(self, client: Hubspot) -> None:
+    def test_path_params_publish_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.website_pages.with_raw_response.publish_draft(
                 "",
@@ -1782,7 +1782,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_schedule(self, client: Hubspot) -> None:
+    def test_method_schedule(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1791,7 +1791,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_schedule(self, client: Hubspot) -> None:
+    def test_raw_response_schedule(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1804,7 +1804,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_schedule(self, client: Hubspot) -> None:
+    def test_streaming_response_schedule(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1819,7 +1819,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_set_new_lang_primary(self, client: Hubspot) -> None:
+    def test_method_set_new_lang_primary(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.set_new_lang_primary(
             id="id",
         )
@@ -1827,7 +1827,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_set_new_lang_primary(self, client: Hubspot) -> None:
+    def test_raw_response_set_new_lang_primary(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.set_new_lang_primary(
             id="id",
         )
@@ -1839,7 +1839,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_set_new_lang_primary(self, client: Hubspot) -> None:
+    def test_streaming_response_set_new_lang_primary(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.set_new_lang_primary(
             id="id",
         ) as response:
@@ -1853,7 +1853,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_draft(self, client: Hubspot) -> None:
+    def test_method_update_draft(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.update_draft(
             object_id="objectId",
             id="id",
@@ -2028,7 +2028,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_draft(self, client: Hubspot) -> None:
+    def test_raw_response_update_draft(self, client: HubSpot) -> None:
         response = client.cms.pages.website_pages.with_raw_response.update_draft(
             object_id="objectId",
             id="id",
@@ -2207,7 +2207,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_draft(self, client: Hubspot) -> None:
+    def test_streaming_response_update_draft(self, client: HubSpot) -> None:
         with client.cms.pages.website_pages.with_streaming_response.update_draft(
             object_id="objectId",
             id="id",
@@ -2388,7 +2388,7 @@ class TestWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_draft(self, client: Hubspot) -> None:
+    def test_path_params_update_draft(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             client.cms.pages.website_pages.with_raw_response.update_draft(
                 object_id="",
@@ -2569,7 +2569,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.create(
             id="id",
             ab_status="automated_loser_variant",
@@ -2743,7 +2743,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.create(
             id="id",
             ab_status="automated_loser_variant",
@@ -2921,7 +2921,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.create(
             id="id",
             ab_status="automated_loser_variant",
@@ -3101,7 +3101,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.update(
             object_id="objectId",
             id="id",
@@ -3276,7 +3276,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.update(
             object_id="objectId",
             id="id",
@@ -3519,7 +3519,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.update(
             object_id="objectId",
             id="id",
@@ -3698,7 +3698,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.update(
             object_id="objectId",
             id="id",
@@ -3879,7 +3879,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.website_pages.with_raw_response.update(
                 object_id="",
@@ -4054,13 +4054,13 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.list()
         assert_matches_type(AsyncPage[PageData], website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.list(
             after="after",
             archived=True,
@@ -4078,7 +4078,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.list()
 
         assert response.is_closed is True
@@ -4088,7 +4088,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4100,7 +4100,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.delete(
             object_id="objectId",
         )
@@ -4108,7 +4108,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.delete(
             object_id="objectId",
             archived=True,
@@ -4117,7 +4117,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.delete(
             object_id="objectId",
         )
@@ -4129,7 +4129,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.delete(
             object_id="objectId",
         ) as response:
@@ -4143,7 +4143,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.website_pages.with_raw_response.delete(
                 object_id="",
@@ -4151,7 +4151,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_clone(self, async_client: AsyncHubspot) -> None:
+    async def test_method_clone(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.clone(
             id="id",
         )
@@ -4159,7 +4159,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_clone_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_clone_with_all_params(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.clone(
             id="id",
             clone_name="cloneName",
@@ -4168,7 +4168,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_clone(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_clone(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.clone(
             id="id",
         )
@@ -4180,7 +4180,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_clone(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_clone(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.clone(
             id="id",
         ) as response:
@@ -4194,7 +4194,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.get(
             object_id="objectId",
         )
@@ -4202,7 +4202,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.get(
             object_id="objectId",
             archived=True,
@@ -4212,7 +4212,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.get(
             object_id="objectId",
         )
@@ -4224,7 +4224,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.get(
             object_id="objectId",
         ) as response:
@@ -4238,7 +4238,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.website_pages.with_raw_response.get(
                 object_id="",
@@ -4246,7 +4246,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_draft(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.get_draft(
             "objectId",
         )
@@ -4254,7 +4254,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.get_draft(
             "objectId",
         )
@@ -4266,7 +4266,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.get_draft(
             "objectId",
         ) as response:
@@ -4280,7 +4280,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.website_pages.with_raw_response.get_draft(
                 "",
@@ -4288,7 +4288,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_publish_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_publish_draft(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.publish_draft(
             "objectId",
         )
@@ -4296,7 +4296,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_publish_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_publish_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.publish_draft(
             "objectId",
         )
@@ -4308,7 +4308,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_publish_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_publish_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.publish_draft(
             "objectId",
         ) as response:
@@ -4322,7 +4322,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_publish_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_publish_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.website_pages.with_raw_response.publish_draft(
                 "",
@@ -4330,7 +4330,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_schedule(self, async_client: AsyncHubspot) -> None:
+    async def test_method_schedule(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -4339,7 +4339,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_schedule(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_schedule(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -4352,7 +4352,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_schedule(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_schedule(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.schedule(
             id="id",
             publish_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -4367,7 +4367,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
+    async def test_method_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.set_new_lang_primary(
             id="id",
         )
@@ -4375,7 +4375,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.set_new_lang_primary(
             id="id",
         )
@@ -4387,7 +4387,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_set_new_lang_primary(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_set_new_lang_primary(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.set_new_lang_primary(
             id="id",
         ) as response:
@@ -4401,7 +4401,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_draft(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.update_draft(
             object_id="objectId",
             id="id",
@@ -4576,7 +4576,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_draft(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.pages.website_pages.with_raw_response.update_draft(
             object_id="objectId",
             id="id",
@@ -4755,7 +4755,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_draft(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.pages.website_pages.with_streaming_response.update_draft(
             object_id="objectId",
             id="id",
@@ -4936,7 +4936,7 @@ class TestAsyncWebsitePages:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_draft(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_draft(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `object_id` but received ''"):
             await async_client.cms.pages.website_pages.with_raw_response.update_draft(
                 object_id="",

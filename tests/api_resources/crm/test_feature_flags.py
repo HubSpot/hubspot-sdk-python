@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     FlagResponse,
@@ -24,7 +24,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update(self, client: Hubspot) -> None:
+    def test_method_update(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.update(
             flag_name="flagName",
             app_id=0,
@@ -34,7 +34,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_with_all_params(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.update(
             flag_name="flagName",
             app_id=0,
@@ -45,7 +45,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update(self, client: Hubspot) -> None:
+    def test_raw_response_update(self, client: HubSpot) -> None:
         response = client.crm.feature_flags.with_raw_response.update(
             flag_name="flagName",
             app_id=0,
@@ -59,7 +59,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update(self, client: Hubspot) -> None:
+    def test_streaming_response_update(self, client: HubSpot) -> None:
         with client.crm.feature_flags.with_streaming_response.update(
             flag_name="flagName",
             app_id=0,
@@ -75,7 +75,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update(self, client: Hubspot) -> None:
+    def test_path_params_update(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             client.crm.feature_flags.with_raw_response.update(
                 flag_name="",
@@ -85,7 +85,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete(self, client: Hubspot) -> None:
+    def test_method_delete(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.delete(
             flag_name="flagName",
             app_id=0,
@@ -94,7 +94,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete(self, client: Hubspot) -> None:
+    def test_raw_response_delete(self, client: HubSpot) -> None:
         response = client.crm.feature_flags.with_raw_response.delete(
             flag_name="flagName",
             app_id=0,
@@ -107,7 +107,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete(self, client: Hubspot) -> None:
+    def test_streaming_response_delete(self, client: HubSpot) -> None:
         with client.crm.feature_flags.with_streaming_response.delete(
             flag_name="flagName",
             app_id=0,
@@ -122,7 +122,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete(self, client: Hubspot) -> None:
+    def test_path_params_delete(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             client.crm.feature_flags.with_raw_response.delete(
                 flag_name="",
@@ -131,7 +131,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_portal_state(self, client: Hubspot) -> None:
+    def test_method_delete_portal_state(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.delete_portal_state(
             portal_id=0,
             app_id=0,
@@ -141,7 +141,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_delete_portal_state(self, client: Hubspot) -> None:
+    def test_raw_response_delete_portal_state(self, client: HubSpot) -> None:
         response = client.crm.feature_flags.with_raw_response.delete_portal_state(
             portal_id=0,
             app_id=0,
@@ -155,7 +155,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_delete_portal_state(self, client: Hubspot) -> None:
+    def test_streaming_response_delete_portal_state(self, client: HubSpot) -> None:
         with client.crm.feature_flags.with_streaming_response.delete_portal_state(
             portal_id=0,
             app_id=0,
@@ -171,7 +171,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_delete_portal_state(self, client: Hubspot) -> None:
+    def test_path_params_delete_portal_state(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             client.crm.feature_flags.with_raw_response.delete_portal_state(
                 portal_id=0,
@@ -181,7 +181,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Hubspot) -> None:
+    def test_method_get(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.get(
             flag_name="flagName",
             app_id=0,
@@ -190,7 +190,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Hubspot) -> None:
+    def test_raw_response_get(self, client: HubSpot) -> None:
         response = client.crm.feature_flags.with_raw_response.get(
             flag_name="flagName",
             app_id=0,
@@ -203,7 +203,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Hubspot) -> None:
+    def test_streaming_response_get(self, client: HubSpot) -> None:
         with client.crm.feature_flags.with_streaming_response.get(
             flag_name="flagName",
             app_id=0,
@@ -218,7 +218,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get(self, client: Hubspot) -> None:
+    def test_path_params_get(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             client.crm.feature_flags.with_raw_response.get(
                 flag_name="",
@@ -227,7 +227,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_portal_state(self, client: Hubspot) -> None:
+    def test_method_get_portal_state(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.get_portal_state(
             portal_id=0,
             app_id=0,
@@ -237,7 +237,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_portal_state(self, client: Hubspot) -> None:
+    def test_raw_response_get_portal_state(self, client: HubSpot) -> None:
         response = client.crm.feature_flags.with_raw_response.get_portal_state(
             portal_id=0,
             app_id=0,
@@ -251,7 +251,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_portal_state(self, client: Hubspot) -> None:
+    def test_streaming_response_get_portal_state(self, client: HubSpot) -> None:
         with client.crm.feature_flags.with_streaming_response.get_portal_state(
             portal_id=0,
             app_id=0,
@@ -267,7 +267,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_portal_state(self, client: Hubspot) -> None:
+    def test_path_params_get_portal_state(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             client.crm.feature_flags.with_raw_response.get_portal_state(
                 portal_id=0,
@@ -277,7 +277,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_all(self, client: Hubspot) -> None:
+    def test_method_list_all(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.list_all(
             0,
         )
@@ -285,7 +285,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_all(self, client: Hubspot) -> None:
+    def test_raw_response_list_all(self, client: HubSpot) -> None:
         response = client.crm.feature_flags.with_raw_response.list_all(
             0,
         )
@@ -297,7 +297,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_all(self, client: Hubspot) -> None:
+    def test_streaming_response_list_all(self, client: HubSpot) -> None:
         with client.crm.feature_flags.with_streaming_response.list_all(
             0,
         ) as response:
@@ -311,7 +311,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_portals(self, client: Hubspot) -> None:
+    def test_method_list_portals(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.list_portals(
             flag_name="flagName",
             app_id=0,
@@ -320,7 +320,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_portals_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_portals_with_all_params(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.list_portals(
             flag_name="flagName",
             app_id=0,
@@ -331,7 +331,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_portals(self, client: Hubspot) -> None:
+    def test_raw_response_list_portals(self, client: HubSpot) -> None:
         response = client.crm.feature_flags.with_raw_response.list_portals(
             flag_name="flagName",
             app_id=0,
@@ -344,7 +344,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_portals(self, client: Hubspot) -> None:
+    def test_streaming_response_list_portals(self, client: HubSpot) -> None:
         with client.crm.feature_flags.with_streaming_response.list_portals(
             flag_name="flagName",
             app_id=0,
@@ -359,7 +359,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list_portals(self, client: Hubspot) -> None:
+    def test_path_params_list_portals(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             client.crm.feature_flags.with_raw_response.list_portals(
                 flag_name="",
@@ -368,7 +368,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_portal_state(self, client: Hubspot) -> None:
+    def test_method_update_portal_state(self, client: HubSpot) -> None:
         feature_flag = client.crm.feature_flags.update_portal_state(
             portal_id=0,
             app_id=0,
@@ -379,7 +379,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_portal_state(self, client: Hubspot) -> None:
+    def test_raw_response_update_portal_state(self, client: HubSpot) -> None:
         response = client.crm.feature_flags.with_raw_response.update_portal_state(
             portal_id=0,
             app_id=0,
@@ -394,7 +394,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_portal_state(self, client: Hubspot) -> None:
+    def test_streaming_response_update_portal_state(self, client: HubSpot) -> None:
         with client.crm.feature_flags.with_streaming_response.update_portal_state(
             portal_id=0,
             app_id=0,
@@ -411,7 +411,7 @@ class TestFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_portal_state(self, client: Hubspot) -> None:
+    def test_path_params_update_portal_state(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             client.crm.feature_flags.with_raw_response.update_portal_state(
                 portal_id=0,
@@ -428,7 +428,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.update(
             flag_name="flagName",
             app_id=0,
@@ -438,7 +438,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.update(
             flag_name="flagName",
             app_id=0,
@@ -449,7 +449,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.update(
             flag_name="flagName",
             app_id=0,
@@ -463,7 +463,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.update(
             flag_name="flagName",
             app_id=0,
@@ -479,7 +479,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             await async_client.crm.feature_flags.with_raw_response.update(
                 flag_name="",
@@ -489,7 +489,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.delete(
             flag_name="flagName",
             app_id=0,
@@ -498,7 +498,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.delete(
             flag_name="flagName",
             app_id=0,
@@ -511,7 +511,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.delete(
             flag_name="flagName",
             app_id=0,
@@ -526,7 +526,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             await async_client.crm.feature_flags.with_raw_response.delete(
                 flag_name="",
@@ -535,7 +535,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_method_delete_portal_state(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.delete_portal_state(
             portal_id=0,
             app_id=0,
@@ -545,7 +545,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_delete_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_delete_portal_state(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.delete_portal_state(
             portal_id=0,
             app_id=0,
@@ -559,7 +559,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_delete_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_delete_portal_state(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.delete_portal_state(
             portal_id=0,
             app_id=0,
@@ -575,7 +575,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_delete_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_delete_portal_state(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             await async_client.crm.feature_flags.with_raw_response.delete_portal_state(
                 portal_id=0,
@@ -585,7 +585,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.get(
             flag_name="flagName",
             app_id=0,
@@ -594,7 +594,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.get(
             flag_name="flagName",
             app_id=0,
@@ -607,7 +607,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.get(
             flag_name="flagName",
             app_id=0,
@@ -622,7 +622,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             await async_client.crm.feature_flags.with_raw_response.get(
                 flag_name="",
@@ -631,7 +631,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_portal_state(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.get_portal_state(
             portal_id=0,
             app_id=0,
@@ -641,7 +641,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_portal_state(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.get_portal_state(
             portal_id=0,
             app_id=0,
@@ -655,7 +655,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_portal_state(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.get_portal_state(
             portal_id=0,
             app_id=0,
@@ -671,7 +671,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_portal_state(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             await async_client.crm.feature_flags.with_raw_response.get_portal_state(
                 portal_id=0,
@@ -681,7 +681,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_all(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_all(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.list_all(
             0,
         )
@@ -689,7 +689,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_all(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_all(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.list_all(
             0,
         )
@@ -701,7 +701,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_all(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_all(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.list_all(
             0,
         ) as response:
@@ -715,7 +715,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_portals(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_portals(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.list_portals(
             flag_name="flagName",
             app_id=0,
@@ -724,7 +724,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_portals_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_portals_with_all_params(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.list_portals(
             flag_name="flagName",
             app_id=0,
@@ -735,7 +735,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_portals(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_portals(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.list_portals(
             flag_name="flagName",
             app_id=0,
@@ -748,7 +748,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_portals(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_portals(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.list_portals(
             flag_name="flagName",
             app_id=0,
@@ -763,7 +763,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list_portals(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_list_portals(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             await async_client.crm.feature_flags.with_raw_response.list_portals(
                 flag_name="",
@@ -772,7 +772,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_portal_state(self, async_client: AsyncHubSpot) -> None:
         feature_flag = await async_client.crm.feature_flags.update_portal_state(
             portal_id=0,
             app_id=0,
@@ -783,7 +783,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_portal_state(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.feature_flags.with_raw_response.update_portal_state(
             portal_id=0,
             app_id=0,
@@ -798,7 +798,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_portal_state(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.feature_flags.with_streaming_response.update_portal_state(
             portal_id=0,
             app_id=0,
@@ -815,7 +815,7 @@ class TestAsyncFeatureFlags:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_portal_state(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_portal_state(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `flag_name` but received ''"):
             await async_client.crm.feature_flags.with_raw_response.update_portal_state(
                 portal_id=0,

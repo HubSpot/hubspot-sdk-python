@@ -12,7 +12,7 @@ import httpx
 from ._utils import extract_type_var_from_base
 
 if TYPE_CHECKING:
-    from ._client import Hubspot, AsyncHubspot
+    from ._client import HubSpot, AsyncHubSpot
     from ._models import FinalRequestOptions
 
 
@@ -31,7 +31,7 @@ class Stream(Generic[_T]):
         *,
         cast_to: type[_T],
         response: httpx.Response,
-        client: Hubspot,
+        client: HubSpot,
         options: Optional[FinalRequestOptions] = None,
     ) -> None:
         self.response = response
@@ -96,7 +96,7 @@ class AsyncStream(Generic[_T]):
         *,
         cast_to: type[_T],
         response: httpx.Response,
-        client: AsyncHubspot,
+        client: AsyncHubSpot,
         options: Optional[FinalRequestOptions] = None,
     ) -> None:
         self.response = response

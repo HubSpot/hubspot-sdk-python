@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -21,7 +21,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_exchange_rate(self, client: Hubspot) -> None:
+    def test_method_create_exchange_rate(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -30,7 +30,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_exchange_rate_with_all_params(self, client: Hubspot) -> None:
+    def test_method_create_exchange_rate_with_all_params(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -40,7 +40,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create_exchange_rate(self, client: Hubspot) -> None:
+    def test_raw_response_create_exchange_rate(self, client: HubSpot) -> None:
         response = client.settings.currencies.exchange_rates.with_raw_response.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -53,7 +53,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create_exchange_rate(self, client: Hubspot) -> None:
+    def test_streaming_response_create_exchange_rate(self, client: HubSpot) -> None:
         with client.settings.currencies.exchange_rates.with_streaming_response.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -68,7 +68,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_exchange_rate_by_id(self, client: Hubspot) -> None:
+    def test_method_get_exchange_rate_by_id(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.get_exchange_rate_by_id(
             "exchangeRateId",
         )
@@ -76,7 +76,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_exchange_rate_by_id(self, client: Hubspot) -> None:
+    def test_raw_response_get_exchange_rate_by_id(self, client: HubSpot) -> None:
         response = client.settings.currencies.exchange_rates.with_raw_response.get_exchange_rate_by_id(
             "exchangeRateId",
         )
@@ -88,7 +88,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_exchange_rate_by_id(self, client: Hubspot) -> None:
+    def test_streaming_response_get_exchange_rate_by_id(self, client: HubSpot) -> None:
         with client.settings.currencies.exchange_rates.with_streaming_response.get_exchange_rate_by_id(
             "exchangeRateId",
         ) as response:
@@ -102,7 +102,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_get_exchange_rate_by_id(self, client: Hubspot) -> None:
+    def test_path_params_get_exchange_rate_by_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `exchange_rate_id` but received ''"):
             client.settings.currencies.exchange_rates.with_raw_response.get_exchange_rate_by_id(
                 "",
@@ -110,13 +110,13 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_current_exchange_rates(self, client: Hubspot) -> None:
+    def test_method_list_current_exchange_rates(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.list_current_exchange_rates()
         assert_matches_type(CollectionResponseExchangeRateNoPaging, exchange_rate, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_current_exchange_rates(self, client: Hubspot) -> None:
+    def test_raw_response_list_current_exchange_rates(self, client: HubSpot) -> None:
         response = client.settings.currencies.exchange_rates.with_raw_response.list_current_exchange_rates()
 
         assert response.is_closed is True
@@ -126,7 +126,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_current_exchange_rates(self, client: Hubspot) -> None:
+    def test_streaming_response_list_current_exchange_rates(self, client: HubSpot) -> None:
         with (
             client.settings.currencies.exchange_rates.with_streaming_response.list_current_exchange_rates()
         ) as response:
@@ -140,13 +140,13 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_exchange_rates(self, client: Hubspot) -> None:
+    def test_method_list_exchange_rates(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.list_exchange_rates()
         assert_matches_type(SyncPage[ExchangeRate], exchange_rate, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_exchange_rates_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_exchange_rates_with_all_params(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.list_exchange_rates(
             after="after",
             from_currency_code="AED",
@@ -157,7 +157,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_exchange_rates(self, client: Hubspot) -> None:
+    def test_raw_response_list_exchange_rates(self, client: HubSpot) -> None:
         response = client.settings.currencies.exchange_rates.with_raw_response.list_exchange_rates()
 
         assert response.is_closed is True
@@ -167,7 +167,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_exchange_rates(self, client: Hubspot) -> None:
+    def test_streaming_response_list_exchange_rates(self, client: HubSpot) -> None:
         with client.settings.currencies.exchange_rates.with_streaming_response.list_exchange_rates() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -179,7 +179,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_exchange_rate(self, client: Hubspot) -> None:
+    def test_method_update_exchange_rate(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -188,7 +188,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_exchange_rate_with_all_params(self, client: Hubspot) -> None:
+    def test_method_update_exchange_rate_with_all_params(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -198,7 +198,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_exchange_rate(self, client: Hubspot) -> None:
+    def test_raw_response_update_exchange_rate(self, client: HubSpot) -> None:
         response = client.settings.currencies.exchange_rates.with_raw_response.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -211,7 +211,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_exchange_rate(self, client: Hubspot) -> None:
+    def test_streaming_response_update_exchange_rate(self, client: HubSpot) -> None:
         with client.settings.currencies.exchange_rates.with_streaming_response.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -226,7 +226,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_update_exchange_rate(self, client: Hubspot) -> None:
+    def test_path_params_update_exchange_rate(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `exchange_rate_id` but received ''"):
             client.settings.currencies.exchange_rates.with_raw_response.update_exchange_rate(
                 exchange_rate_id="",
@@ -235,7 +235,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_visibility(self, client: Hubspot) -> None:
+    def test_method_update_visibility(self, client: HubSpot) -> None:
         exchange_rate = client.settings.currencies.exchange_rates.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -245,7 +245,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_visibility(self, client: Hubspot) -> None:
+    def test_raw_response_update_visibility(self, client: HubSpot) -> None:
         response = client.settings.currencies.exchange_rates.with_raw_response.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -259,7 +259,7 @@ class TestExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_visibility(self, client: Hubspot) -> None:
+    def test_streaming_response_update_visibility(self, client: HubSpot) -> None:
         with client.settings.currencies.exchange_rates.with_streaming_response.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -281,7 +281,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_exchange_rate(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_exchange_rate(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -290,7 +290,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_exchange_rate_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_create_exchange_rate_with_all_params(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -300,7 +300,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create_exchange_rate(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_create_exchange_rate(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.exchange_rates.with_raw_response.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -313,7 +313,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create_exchange_rate(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_create_exchange_rate(self, async_client: AsyncHubSpot) -> None:
         async with async_client.settings.currencies.exchange_rates.with_streaming_response.create_exchange_rate(
             conversion_rate=0,
             from_currency_code="AED",
@@ -328,7 +328,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_exchange_rate_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_exchange_rate_by_id(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.get_exchange_rate_by_id(
             "exchangeRateId",
         )
@@ -336,7 +336,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_exchange_rate_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_exchange_rate_by_id(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.exchange_rates.with_raw_response.get_exchange_rate_by_id(
             "exchangeRateId",
         )
@@ -348,7 +348,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_exchange_rate_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_exchange_rate_by_id(self, async_client: AsyncHubSpot) -> None:
         async with async_client.settings.currencies.exchange_rates.with_streaming_response.get_exchange_rate_by_id(
             "exchangeRateId",
         ) as response:
@@ -362,7 +362,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_get_exchange_rate_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_get_exchange_rate_by_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `exchange_rate_id` but received ''"):
             await async_client.settings.currencies.exchange_rates.with_raw_response.get_exchange_rate_by_id(
                 "",
@@ -370,13 +370,13 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_current_exchange_rates(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_current_exchange_rates(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.list_current_exchange_rates()
         assert_matches_type(CollectionResponseExchangeRateNoPaging, exchange_rate, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_current_exchange_rates(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_current_exchange_rates(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.exchange_rates.with_raw_response.list_current_exchange_rates()
 
         assert response.is_closed is True
@@ -386,7 +386,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_current_exchange_rates(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_current_exchange_rates(self, async_client: AsyncHubSpot) -> None:
         async with (
             async_client.settings.currencies.exchange_rates.with_streaming_response.list_current_exchange_rates()
         ) as response:
@@ -400,13 +400,13 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_exchange_rates(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_exchange_rates(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.list_exchange_rates()
         assert_matches_type(AsyncPage[ExchangeRate], exchange_rate, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_exchange_rates_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_exchange_rates_with_all_params(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.list_exchange_rates(
             after="after",
             from_currency_code="AED",
@@ -417,7 +417,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_exchange_rates(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_exchange_rates(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.exchange_rates.with_raw_response.list_exchange_rates()
 
         assert response.is_closed is True
@@ -427,7 +427,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_exchange_rates(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_exchange_rates(self, async_client: AsyncHubSpot) -> None:
         async with (
             async_client.settings.currencies.exchange_rates.with_streaming_response.list_exchange_rates()
         ) as response:
@@ -441,7 +441,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_exchange_rate(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_exchange_rate(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -450,7 +450,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_exchange_rate_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_exchange_rate_with_all_params(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -460,7 +460,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_exchange_rate(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_exchange_rate(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.exchange_rates.with_raw_response.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -473,7 +473,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_exchange_rate(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_exchange_rate(self, async_client: AsyncHubSpot) -> None:
         async with async_client.settings.currencies.exchange_rates.with_streaming_response.update_exchange_rate(
             exchange_rate_id="exchangeRateId",
             conversion_rate=0,
@@ -488,7 +488,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_update_exchange_rate(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_update_exchange_rate(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `exchange_rate_id` but received ''"):
             await async_client.settings.currencies.exchange_rates.with_raw_response.update_exchange_rate(
                 exchange_rate_id="",
@@ -497,7 +497,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_visibility(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_visibility(self, async_client: AsyncHubSpot) -> None:
         exchange_rate = await async_client.settings.currencies.exchange_rates.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -507,7 +507,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_visibility(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_visibility(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.exchange_rates.with_raw_response.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",
@@ -521,7 +521,7 @@ class TestAsyncExchangeRates:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_visibility(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_visibility(self, async_client: AsyncHubSpot) -> None:
         async with async_client.settings.currencies.exchange_rates.with_streaming_response.update_visibility(
             from_currency_code="AED",
             to_currency_code="AED",

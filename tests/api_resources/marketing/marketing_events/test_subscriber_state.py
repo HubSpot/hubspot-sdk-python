@@ -9,7 +9,7 @@ import httpx
 import pytest
 from respx import MockRouter
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from hubspot_sdk._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -25,7 +25,7 @@ class TestSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_record_by_email(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_record_by_email(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -49,7 +49,7 @@ class TestSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_record_by_email(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_record_by_email(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -75,7 +75,7 @@ class TestSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_record_by_email(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_record_by_email(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -103,7 +103,7 @@ class TestSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_record_by_email(self, client: Hubspot) -> None:
+    def test_path_params_record_by_email(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             client.marketing.marketing_events.subscriber_state.with_raw_response.record_by_email(
                 subscriber_state="subscriberState",
@@ -136,7 +136,7 @@ class TestSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_record_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_record_by_id(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -159,7 +159,7 @@ class TestSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_record_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_record_by_id(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -184,7 +184,7 @@ class TestSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_record_by_id(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_record_by_id(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -211,7 +211,7 @@ class TestSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_record_by_id(self, client: Hubspot) -> None:
+    def test_path_params_record_by_id(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             client.marketing.marketing_events.subscriber_state.with_raw_response.record_by_id(
                 subscriber_state="subscriberState",
@@ -248,7 +248,7 @@ class TestAsyncSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_record_by_email(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_record_by_email(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -272,7 +272,7 @@ class TestAsyncSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_record_by_email(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_record_by_email(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -300,7 +300,7 @@ class TestAsyncSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_record_by_email(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_record_by_email(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/email-upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -328,7 +328,7 @@ class TestAsyncSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_record_by_email(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_record_by_email(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             await async_client.marketing.marketing_events.subscriber_state.with_raw_response.record_by_email(
                 subscriber_state="subscriberState",
@@ -361,7 +361,7 @@ class TestAsyncSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_record_by_id(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_record_by_id(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -384,7 +384,7 @@ class TestAsyncSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_record_by_id(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_record_by_id(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -411,7 +411,7 @@ class TestAsyncSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_record_by_id(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_record_by_id(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/marketing/marketing-events/2026-03/events/externalEventId/subscriberState/upsert").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
@@ -438,7 +438,7 @@ class TestAsyncSubscriberState:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_record_by_id(self, async_client: AsyncHubspot) -> None:
+    async def test_path_params_record_by_id(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_event_id` but received ''"):
             await async_client.marketing.marketing_events.subscriber_state.with_raw_response.record_by_id(
                 subscriber_state="subscriberState",

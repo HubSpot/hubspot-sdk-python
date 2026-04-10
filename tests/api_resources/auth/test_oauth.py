@@ -9,7 +9,7 @@ import httpx
 import pytest
 from respx import MockRouter
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._response import (
     BinaryAPIResponse,
@@ -29,7 +29,7 @@ class TestOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_create_token(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_create_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         oauth = client.auth.oauth.create_token()
         assert oauth.is_closed
@@ -39,7 +39,7 @@ class TestOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_create_token_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_create_token_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         oauth = client.auth.oauth.create_token(
             client_id="client_id",
@@ -58,7 +58,7 @@ class TestOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_create_token(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_create_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         oauth = client.auth.oauth.with_raw_response.create_token()
@@ -70,7 +70,7 @@ class TestOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_create_token(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_create_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.auth.oauth.with_streaming_response.create_token() as oauth:
             assert not oauth.is_closed
@@ -84,13 +84,13 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_introspect_token(self, client: Hubspot) -> None:
+    def test_method_introspect_token(self, client: HubSpot) -> None:
         oauth = client.auth.oauth.introspect_token()
         assert_matches_type(TokenInfoResponseBaseIf, oauth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_introspect_token_with_all_params(self, client: Hubspot) -> None:
+    def test_method_introspect_token_with_all_params(self, client: HubSpot) -> None:
         oauth = client.auth.oauth.introspect_token(
             token="token",
             client_id="client_id",
@@ -101,7 +101,7 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_introspect_token(self, client: Hubspot) -> None:
+    def test_raw_response_introspect_token(self, client: HubSpot) -> None:
         response = client.auth.oauth.with_raw_response.introspect_token()
 
         assert response.is_closed is True
@@ -111,7 +111,7 @@ class TestOAuth:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_introspect_token(self, client: Hubspot) -> None:
+    def test_streaming_response_introspect_token(self, client: HubSpot) -> None:
         with client.auth.oauth.with_streaming_response.introspect_token() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -123,7 +123,7 @@ class TestOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_revoke_token(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_revoke_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token/revoke").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         oauth = client.auth.oauth.revoke_token()
         assert oauth.is_closed
@@ -133,7 +133,7 @@ class TestOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_revoke_token_with_all_params(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_method_revoke_token_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token/revoke").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         oauth = client.auth.oauth.revoke_token(
             token="token",
@@ -148,7 +148,7 @@ class TestOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_revoke_token(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_raw_response_revoke_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token/revoke").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         oauth = client.auth.oauth.with_raw_response.revoke_token()
@@ -160,7 +160,7 @@ class TestOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_revoke_token(self, client: Hubspot, respx_mock: MockRouter) -> None:
+    def test_streaming_response_revoke_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token/revoke").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.auth.oauth.with_streaming_response.revoke_token() as oauth:
             assert not oauth.is_closed
@@ -180,7 +180,7 @@ class TestAsyncOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_token(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_create_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         oauth = await async_client.auth.oauth.create_token()
         assert oauth.is_closed
@@ -191,7 +191,7 @@ class TestAsyncOAuth:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_create_token_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         oauth = await async_client.auth.oauth.create_token(
@@ -211,7 +211,7 @@ class TestAsyncOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_create_token(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_create_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         oauth = await async_client.auth.oauth.with_raw_response.create_token()
@@ -223,7 +223,7 @@ class TestAsyncOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_create_token(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_create_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.auth.oauth.with_streaming_response.create_token() as oauth:
             assert not oauth.is_closed
@@ -237,13 +237,13 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_introspect_token(self, async_client: AsyncHubspot) -> None:
+    async def test_method_introspect_token(self, async_client: AsyncHubSpot) -> None:
         oauth = await async_client.auth.oauth.introspect_token()
         assert_matches_type(TokenInfoResponseBaseIf, oauth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_introspect_token_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_introspect_token_with_all_params(self, async_client: AsyncHubSpot) -> None:
         oauth = await async_client.auth.oauth.introspect_token(
             token="token",
             client_id="client_id",
@@ -254,7 +254,7 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_introspect_token(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_introspect_token(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.auth.oauth.with_raw_response.introspect_token()
 
         assert response.is_closed is True
@@ -264,7 +264,7 @@ class TestAsyncOAuth:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_introspect_token(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_introspect_token(self, async_client: AsyncHubSpot) -> None:
         async with async_client.auth.oauth.with_streaming_response.introspect_token() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -276,7 +276,7 @@ class TestAsyncOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_revoke_token(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_method_revoke_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token/revoke").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         oauth = await async_client.auth.oauth.revoke_token()
         assert oauth.is_closed
@@ -287,7 +287,7 @@ class TestAsyncOAuth:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_revoke_token_with_all_params(
-        self, async_client: AsyncHubspot, respx_mock: MockRouter
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
     ) -> None:
         respx_mock.post("/oauth/2026-03/token/revoke").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         oauth = await async_client.auth.oauth.revoke_token(
@@ -303,7 +303,7 @@ class TestAsyncOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_revoke_token(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_raw_response_revoke_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token/revoke").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         oauth = await async_client.auth.oauth.with_raw_response.revoke_token()
@@ -315,7 +315,7 @@ class TestAsyncOAuth:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_revoke_token(self, async_client: AsyncHubspot, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_revoke_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
         respx_mock.post("/oauth/2026-03/token/revoke").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.auth.oauth.with_streaming_response.revoke_token() as oauth:
             assert not oauth.is_closed

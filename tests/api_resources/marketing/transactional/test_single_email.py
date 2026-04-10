@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.marketing import EmailSendStatusView
 
@@ -19,7 +19,7 @@ class TestSingleEmail:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_send(self, client: Hubspot) -> None:
+    def test_method_send(self, client: HubSpot) -> None:
         single_email = client.marketing.transactional.single_email.send(
             contact_properties={"foo": "string"},
             custom_properties={"foo": {}},
@@ -34,7 +34,7 @@ class TestSingleEmail:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_send_with_all_params(self, client: Hubspot) -> None:
+    def test_method_send_with_all_params(self, client: HubSpot) -> None:
         single_email = client.marketing.transactional.single_email.send(
             contact_properties={"foo": "string"},
             custom_properties={"foo": {}},
@@ -52,7 +52,7 @@ class TestSingleEmail:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_send(self, client: Hubspot) -> None:
+    def test_raw_response_send(self, client: HubSpot) -> None:
         response = client.marketing.transactional.single_email.with_raw_response.send(
             contact_properties={"foo": "string"},
             custom_properties={"foo": {}},
@@ -71,7 +71,7 @@ class TestSingleEmail:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_send(self, client: Hubspot) -> None:
+    def test_streaming_response_send(self, client: HubSpot) -> None:
         with client.marketing.transactional.single_email.with_streaming_response.send(
             contact_properties={"foo": "string"},
             custom_properties={"foo": {}},
@@ -98,7 +98,7 @@ class TestAsyncSingleEmail:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_send(self, async_client: AsyncHubspot) -> None:
+    async def test_method_send(self, async_client: AsyncHubSpot) -> None:
         single_email = await async_client.marketing.transactional.single_email.send(
             contact_properties={"foo": "string"},
             custom_properties={"foo": {}},
@@ -113,7 +113,7 @@ class TestAsyncSingleEmail:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_send_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_send_with_all_params(self, async_client: AsyncHubSpot) -> None:
         single_email = await async_client.marketing.transactional.single_email.send(
             contact_properties={"foo": "string"},
             custom_properties={"foo": {}},
@@ -131,7 +131,7 @@ class TestAsyncSingleEmail:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_send(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_send(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.marketing.transactional.single_email.with_raw_response.send(
             contact_properties={"foo": "string"},
             custom_properties={"foo": {}},
@@ -150,7 +150,7 @@ class TestAsyncSingleEmail:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_send(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_send(self, async_client: AsyncHubSpot) -> None:
         async with async_client.marketing.transactional.single_email.with_streaming_response.send(
             contact_properties={"foo": "string"},
             custom_properties={"foo": {}},

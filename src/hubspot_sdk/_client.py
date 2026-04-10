@@ -67,10 +67,10 @@ if TYPE_CHECKING:
         AsyncCommunicationPreferencesResource,
     )
 
-__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Hubspot", "AsyncHubspot", "Client", "AsyncClient"]
+__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "HubSpot", "AsyncHubSpot", "Client", "AsyncClient"]
 
 
-class Hubspot(SyncAPIClient):
+class HubSpot(SyncAPIClient):
     # client options
     access_token: str | None
     developer_api_key: str | None
@@ -99,7 +99,7 @@ class Hubspot(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous Hubspot client instance."""
+        """Construct a new synchronous HubSpot client instance."""
         self.access_token = access_token
 
         self.developer_api_key = developer_api_key
@@ -211,12 +211,12 @@ class Hubspot(SyncAPIClient):
         return WebhooksResource(self)
 
     @cached_property
-    def with_raw_response(self) -> HubspotWithRawResponse:
-        return HubspotWithRawResponse(self)
+    def with_raw_response(self) -> HubSpotWithRawResponse:
+        return HubSpotWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> HubspotWithStreamedResponse:
-        return HubspotWithStreamedResponse(self)
+    def with_streaming_response(self) -> HubSpotWithStreamedResponse:
+        return HubSpotWithStreamedResponse(self)
 
     @property
     @override
@@ -336,7 +336,7 @@ class Hubspot(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncHubspot(AsyncAPIClient):
+class AsyncHubSpot(AsyncAPIClient):
     # client options
     access_token: str | None
     developer_api_key: str | None
@@ -365,7 +365,7 @@ class AsyncHubspot(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async AsyncHubspot client instance."""
+        """Construct a new async AsyncHubSpot client instance."""
         self.access_token = access_token
 
         self.developer_api_key = developer_api_key
@@ -477,12 +477,12 @@ class AsyncHubspot(AsyncAPIClient):
         return AsyncWebhooksResource(self)
 
     @cached_property
-    def with_raw_response(self) -> AsyncHubspotWithRawResponse:
-        return AsyncHubspotWithRawResponse(self)
+    def with_raw_response(self) -> AsyncHubSpotWithRawResponse:
+        return AsyncHubSpotWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncHubspotWithStreamedResponse:
-        return AsyncHubspotWithStreamedResponse(self)
+    def with_streaming_response(self) -> AsyncHubSpotWithStreamedResponse:
+        return AsyncHubSpotWithStreamedResponse(self)
 
     @property
     @override
@@ -602,10 +602,10 @@ class AsyncHubspot(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class HubspotWithRawResponse:
-    _client: Hubspot
+class HubSpotWithRawResponse:
+    _client: HubSpot
 
-    def __init__(self, client: Hubspot) -> None:
+    def __init__(self, client: HubSpot) -> None:
         self._client = client
 
     @cached_property
@@ -699,10 +699,10 @@ class HubspotWithRawResponse:
         return WebhooksResourceWithRawResponse(self._client.webhooks)
 
 
-class AsyncHubspotWithRawResponse:
-    _client: AsyncHubspot
+class AsyncHubSpotWithRawResponse:
+    _client: AsyncHubSpot
 
-    def __init__(self, client: AsyncHubspot) -> None:
+    def __init__(self, client: AsyncHubSpot) -> None:
         self._client = client
 
     @cached_property
@@ -798,10 +798,10 @@ class AsyncHubspotWithRawResponse:
         return AsyncWebhooksResourceWithRawResponse(self._client.webhooks)
 
 
-class HubspotWithStreamedResponse:
-    _client: Hubspot
+class HubSpotWithStreamedResponse:
+    _client: HubSpot
 
-    def __init__(self, client: Hubspot) -> None:
+    def __init__(self, client: HubSpot) -> None:
         self._client = client
 
     @cached_property
@@ -897,10 +897,10 @@ class HubspotWithStreamedResponse:
         return WebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
-class AsyncHubspotWithStreamedResponse:
-    _client: AsyncHubspot
+class AsyncHubSpotWithStreamedResponse:
+    _client: AsyncHubSpot
 
-    def __init__(self, client: AsyncHubspot) -> None:
+    def __init__(self, client: AsyncHubSpot) -> None:
         self._client = client
 
     @cached_property
@@ -996,6 +996,6 @@ class AsyncHubspotWithStreamedResponse:
         return AsyncWebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
-Client = Hubspot
+Client = HubSpot
 
-AsyncClient = AsyncHubspot
+AsyncClient = AsyncHubSpot

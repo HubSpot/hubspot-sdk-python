@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import BatchResponseDealToDealSplits
 
@@ -19,7 +19,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_read(self, client: Hubspot) -> None:
+    def test_method_read(self, client: HubSpot) -> None:
         batch = client.crm.deal_splits.batch.read(
             inputs=[{"id": "id"}],
         )
@@ -27,7 +27,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_read(self, client: Hubspot) -> None:
+    def test_raw_response_read(self, client: HubSpot) -> None:
         response = client.crm.deal_splits.batch.with_raw_response.read(
             inputs=[{"id": "id"}],
         )
@@ -39,7 +39,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_read(self, client: Hubspot) -> None:
+    def test_streaming_response_read(self, client: HubSpot) -> None:
         with client.crm.deal_splits.batch.with_streaming_response.read(
             inputs=[{"id": "id"}],
         ) as response:
@@ -53,7 +53,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_upsert(self, client: Hubspot) -> None:
+    def test_method_upsert(self, client: HubSpot) -> None:
         batch = client.crm.deal_splits.batch.upsert(
             inputs=[
                 {
@@ -71,7 +71,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_upsert(self, client: Hubspot) -> None:
+    def test_raw_response_upsert(self, client: HubSpot) -> None:
         response = client.crm.deal_splits.batch.with_raw_response.upsert(
             inputs=[
                 {
@@ -93,7 +93,7 @@ class TestBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_upsert(self, client: Hubspot) -> None:
+    def test_streaming_response_upsert(self, client: HubSpot) -> None:
         with client.crm.deal_splits.batch.with_streaming_response.upsert(
             inputs=[
                 {
@@ -123,7 +123,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_read(self, async_client: AsyncHubspot) -> None:
+    async def test_method_read(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.crm.deal_splits.batch.read(
             inputs=[{"id": "id"}],
         )
@@ -131,7 +131,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_read(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_read(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.deal_splits.batch.with_raw_response.read(
             inputs=[{"id": "id"}],
         )
@@ -143,7 +143,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_read(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_read(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.deal_splits.batch.with_streaming_response.read(
             inputs=[{"id": "id"}],
         ) as response:
@@ -157,7 +157,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_upsert(self, async_client: AsyncHubspot) -> None:
+    async def test_method_upsert(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.crm.deal_splits.batch.upsert(
             inputs=[
                 {
@@ -175,7 +175,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_upsert(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_upsert(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.deal_splits.batch.with_raw_response.upsert(
             inputs=[
                 {
@@ -197,7 +197,7 @@ class TestAsyncBatch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_upsert(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_upsert(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.deal_splits.batch.with_streaming_response.upsert(
             inputs=[
                 {

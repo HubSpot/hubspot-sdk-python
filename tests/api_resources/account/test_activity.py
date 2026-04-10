@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.pagination import SyncPage, AsyncPage
@@ -25,13 +25,13 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_audit_logs(self, client: Hubspot) -> None:
+    def test_method_list_audit_logs(self, client: HubSpot) -> None:
         activity = client.account.activity.list_audit_logs()
         assert_matches_type(SyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_audit_logs_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_audit_logs_with_all_params(self, client: HubSpot) -> None:
         activity = client.account.activity.list_audit_logs(
             acting_user_id=[0],
             after="after",
@@ -45,7 +45,7 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_audit_logs(self, client: Hubspot) -> None:
+    def test_raw_response_list_audit_logs(self, client: HubSpot) -> None:
         response = client.account.activity.with_raw_response.list_audit_logs()
 
         assert response.is_closed is True
@@ -55,7 +55,7 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_audit_logs(self, client: Hubspot) -> None:
+    def test_streaming_response_list_audit_logs(self, client: HubSpot) -> None:
         with client.account.activity.with_streaming_response.list_audit_logs() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,13 +67,13 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_login_activities(self, client: Hubspot) -> None:
+    def test_method_list_login_activities(self, client: HubSpot) -> None:
         activity = client.account.activity.list_login_activities()
         assert_matches_type(SyncPage[PublicLoginAudit], activity, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_login_activities_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_login_activities_with_all_params(self, client: HubSpot) -> None:
         activity = client.account.activity.list_login_activities(
             after="after",
             limit=0,
@@ -83,7 +83,7 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_login_activities(self, client: Hubspot) -> None:
+    def test_raw_response_list_login_activities(self, client: HubSpot) -> None:
         response = client.account.activity.with_raw_response.list_login_activities()
 
         assert response.is_closed is True
@@ -93,7 +93,7 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_login_activities(self, client: Hubspot) -> None:
+    def test_streaming_response_list_login_activities(self, client: HubSpot) -> None:
         with client.account.activity.with_streaming_response.list_login_activities() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -105,13 +105,13 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_security_activities(self, client: Hubspot) -> None:
+    def test_method_list_security_activities(self, client: HubSpot) -> None:
         activity = client.account.activity.list_security_activities()
         assert_matches_type(SyncPage[HydratedCriticalAction], activity, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_security_activities_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_security_activities_with_all_params(self, client: HubSpot) -> None:
         activity = client.account.activity.list_security_activities(
             after="after",
             from_timestamp=0,
@@ -123,7 +123,7 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_security_activities(self, client: Hubspot) -> None:
+    def test_raw_response_list_security_activities(self, client: HubSpot) -> None:
         response = client.account.activity.with_raw_response.list_security_activities()
 
         assert response.is_closed is True
@@ -133,7 +133,7 @@ class TestActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_security_activities(self, client: Hubspot) -> None:
+    def test_streaming_response_list_security_activities(self, client: HubSpot) -> None:
         with client.account.activity.with_streaming_response.list_security_activities() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -151,13 +151,13 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_audit_logs(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_audit_logs(self, async_client: AsyncHubSpot) -> None:
         activity = await async_client.account.activity.list_audit_logs()
         assert_matches_type(AsyncPage[PublicAPIUserActionEvent], activity, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_audit_logs_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_audit_logs_with_all_params(self, async_client: AsyncHubSpot) -> None:
         activity = await async_client.account.activity.list_audit_logs(
             acting_user_id=[0],
             after="after",
@@ -171,7 +171,7 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_audit_logs(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_audit_logs(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.account.activity.with_raw_response.list_audit_logs()
 
         assert response.is_closed is True
@@ -181,7 +181,7 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_audit_logs(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_audit_logs(self, async_client: AsyncHubSpot) -> None:
         async with async_client.account.activity.with_streaming_response.list_audit_logs() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -193,13 +193,13 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_login_activities(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_login_activities(self, async_client: AsyncHubSpot) -> None:
         activity = await async_client.account.activity.list_login_activities()
         assert_matches_type(AsyncPage[PublicLoginAudit], activity, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_login_activities_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_login_activities_with_all_params(self, async_client: AsyncHubSpot) -> None:
         activity = await async_client.account.activity.list_login_activities(
             after="after",
             limit=0,
@@ -209,7 +209,7 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_login_activities(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_login_activities(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.account.activity.with_raw_response.list_login_activities()
 
         assert response.is_closed is True
@@ -219,7 +219,7 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_login_activities(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_login_activities(self, async_client: AsyncHubSpot) -> None:
         async with async_client.account.activity.with_streaming_response.list_login_activities() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -231,13 +231,13 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_security_activities(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_security_activities(self, async_client: AsyncHubSpot) -> None:
         activity = await async_client.account.activity.list_security_activities()
         assert_matches_type(AsyncPage[HydratedCriticalAction], activity, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_security_activities_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_security_activities_with_all_params(self, async_client: AsyncHubSpot) -> None:
         activity = await async_client.account.activity.list_security_activities(
             after="after",
             from_timestamp=0,
@@ -249,7 +249,7 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_security_activities(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_security_activities(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.account.activity.with_raw_response.list_security_activities()
 
         assert response.is_closed is True
@@ -259,7 +259,7 @@ class TestAsyncActivity:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_security_activities(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_security_activities(self, async_client: AsyncHubSpot) -> None:
         async with async_client.account.activity.with_streaming_response.list_security_activities() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

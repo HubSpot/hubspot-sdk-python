@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.settings import (
     CompanyCurrency,
@@ -22,13 +22,13 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_company_currency(self, client: Hubspot) -> None:
+    def test_method_get_company_currency(self, client: HubSpot) -> None:
         currency = client.settings.currencies.get_company_currency()
         assert_matches_type(CompanyCurrency, currency, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get_company_currency(self, client: Hubspot) -> None:
+    def test_raw_response_get_company_currency(self, client: HubSpot) -> None:
         response = client.settings.currencies.with_raw_response.get_company_currency()
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get_company_currency(self, client: Hubspot) -> None:
+    def test_streaming_response_get_company_currency(self, client: HubSpot) -> None:
         with client.settings.currencies.with_streaming_response.get_company_currency() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -50,13 +50,13 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_codes(self, client: Hubspot) -> None:
+    def test_method_list_codes(self, client: HubSpot) -> None:
         currency = client.settings.currencies.list_codes()
         assert_matches_type(CollectionResponseCurrencyCodeInfoNoPaging, currency, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list_codes(self, client: Hubspot) -> None:
+    def test_raw_response_list_codes(self, client: HubSpot) -> None:
         response = client.settings.currencies.with_raw_response.list_codes()
 
         assert response.is_closed is True
@@ -66,7 +66,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list_codes(self, client: Hubspot) -> None:
+    def test_streaming_response_list_codes(self, client: HubSpot) -> None:
         with client.settings.currencies.with_streaming_response.list_codes() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -78,7 +78,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_update_company_currency(self, client: Hubspot) -> None:
+    def test_method_update_company_currency(self, client: HubSpot) -> None:
         currency = client.settings.currencies.update_company_currency(
             currency_code="AED",
         )
@@ -86,7 +86,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_update_company_currency(self, client: Hubspot) -> None:
+    def test_raw_response_update_company_currency(self, client: HubSpot) -> None:
         response = client.settings.currencies.with_raw_response.update_company_currency(
             currency_code="AED",
         )
@@ -98,7 +98,7 @@ class TestCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_update_company_currency(self, client: Hubspot) -> None:
+    def test_streaming_response_update_company_currency(self, client: HubSpot) -> None:
         with client.settings.currencies.with_streaming_response.update_company_currency(
             currency_code="AED",
         ) as response:
@@ -118,13 +118,13 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_company_currency(self, async_client: AsyncHubspot) -> None:
+    async def test_method_get_company_currency(self, async_client: AsyncHubSpot) -> None:
         currency = await async_client.settings.currencies.get_company_currency()
         assert_matches_type(CompanyCurrency, currency, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get_company_currency(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_get_company_currency(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.with_raw_response.get_company_currency()
 
         assert response.is_closed is True
@@ -134,7 +134,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get_company_currency(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_get_company_currency(self, async_client: AsyncHubSpot) -> None:
         async with async_client.settings.currencies.with_streaming_response.get_company_currency() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -146,13 +146,13 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_codes(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_codes(self, async_client: AsyncHubSpot) -> None:
         currency = await async_client.settings.currencies.list_codes()
         assert_matches_type(CollectionResponseCurrencyCodeInfoNoPaging, currency, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list_codes(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list_codes(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.with_raw_response.list_codes()
 
         assert response.is_closed is True
@@ -162,7 +162,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list_codes(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list_codes(self, async_client: AsyncHubSpot) -> None:
         async with async_client.settings.currencies.with_streaming_response.list_codes() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -174,7 +174,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_update_company_currency(self, async_client: AsyncHubspot) -> None:
+    async def test_method_update_company_currency(self, async_client: AsyncHubSpot) -> None:
         currency = await async_client.settings.currencies.update_company_currency(
             currency_code="AED",
         )
@@ -182,7 +182,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_update_company_currency(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_update_company_currency(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.settings.currencies.with_raw_response.update_company_currency(
             currency_code="AED",
         )
@@ -194,7 +194,7 @@ class TestAsyncCurrencies:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_update_company_currency(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_update_company_currency(self, async_client: AsyncHubSpot) -> None:
         async with async_client.settings.currencies.with_streaming_response.update_company_currency(
             currency_code="AED",
         ) as response:

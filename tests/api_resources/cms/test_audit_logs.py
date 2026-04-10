@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from hubspot_sdk import Hubspot, AsyncHubspot
+from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.cms import (
     PublicAuditLog,
@@ -22,13 +22,13 @@ class TestAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Hubspot) -> None:
+    def test_method_list(self, client: HubSpot) -> None:
         audit_log = client.cms.audit_logs.list()
         assert_matches_type(SyncPage[PublicAuditLog], audit_log, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Hubspot) -> None:
+    def test_method_list_with_all_params(self, client: HubSpot) -> None:
         audit_log = client.cms.audit_logs.list(
             after="after",
             before="before",
@@ -43,7 +43,7 @@ class TestAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Hubspot) -> None:
+    def test_raw_response_list(self, client: HubSpot) -> None:
         response = client.cms.audit_logs.with_raw_response.list()
 
         assert response.is_closed is True
@@ -53,7 +53,7 @@ class TestAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Hubspot) -> None:
+    def test_streaming_response_list(self, client: HubSpot) -> None:
         with client.cms.audit_logs.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,7 +65,7 @@ class TestAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_export(self, client: Hubspot) -> None:
+    def test_method_export(self, client: HubSpot) -> None:
         audit_log = client.cms.audit_logs.export(
             email="email",
             format="CSV",
@@ -78,7 +78,7 @@ class TestAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_export_with_all_params(self, client: Hubspot) -> None:
+    def test_method_export_with_all_params(self, client: HubSpot) -> None:
         audit_log = client.cms.audit_logs.export(
             email="email",
             format="CSV",
@@ -95,7 +95,7 @@ class TestAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_export(self, client: Hubspot) -> None:
+    def test_raw_response_export(self, client: HubSpot) -> None:
         response = client.cms.audit_logs.with_raw_response.export(
             email="email",
             format="CSV",
@@ -112,7 +112,7 @@ class TestAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_export(self, client: Hubspot) -> None:
+    def test_streaming_response_export(self, client: HubSpot) -> None:
         with client.cms.audit_logs.with_streaming_response.export(
             email="email",
             format="CSV",
@@ -137,13 +137,13 @@ class TestAsyncAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         audit_log = await async_client.cms.audit_logs.list()
         assert_matches_type(AsyncPage[PublicAuditLog], audit_log, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncHubSpot) -> None:
         audit_log = await async_client.cms.audit_logs.list(
             after="after",
             before="before",
@@ -158,7 +158,7 @@ class TestAsyncAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_list(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.audit_logs.with_raw_response.list()
 
         assert response.is_closed is True
@@ -168,7 +168,7 @@ class TestAsyncAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.audit_logs.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -180,7 +180,7 @@ class TestAsyncAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_export(self, async_client: AsyncHubspot) -> None:
+    async def test_method_export(self, async_client: AsyncHubSpot) -> None:
         audit_log = await async_client.cms.audit_logs.export(
             email="email",
             format="CSV",
@@ -193,7 +193,7 @@ class TestAsyncAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_export_with_all_params(self, async_client: AsyncHubspot) -> None:
+    async def test_method_export_with_all_params(self, async_client: AsyncHubSpot) -> None:
         audit_log = await async_client.cms.audit_logs.export(
             email="email",
             format="CSV",
@@ -210,7 +210,7 @@ class TestAsyncAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_export(self, async_client: AsyncHubspot) -> None:
+    async def test_raw_response_export(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.cms.audit_logs.with_raw_response.export(
             email="email",
             format="CSV",
@@ -227,7 +227,7 @@ class TestAsyncAuditLogs:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_export(self, async_client: AsyncHubspot) -> None:
+    async def test_streaming_response_export(self, async_client: AsyncHubSpot) -> None:
         async with async_client.cms.audit_logs.with_streaming_response.export(
             email="email",
             format="CSV",
