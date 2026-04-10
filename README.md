@@ -1,7 +1,7 @@
 # HubSpot Python API library
 
 <!-- prettier-ignore -->
-[![PyPI version](https://img.shields.io/pypi/v/hubspot_sdk.svg?label=pypi%20(stable))](https://pypi.org/project/hubspot_sdk/)
+[![PyPI version](https://img.shields.io/pypi/v/hubspot-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/hubspot-sdk/)
 
 The HubSpot Python library provides convenient access to the HubSpot REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
@@ -16,12 +16,9 @@ The REST API documentation can be found on [developers.hubspot.com](https://deve
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/HubSpot/hubspot-sdk-python.git
+# install from PyPI
+pip install hubspot-sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install hubspot_sdk`
 
 ## Usage
 
@@ -72,8 +69,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from the production repo
-pip install 'hubspot_sdk[aiohttp] @ git+ssh://git@github.com/HubSpot/hubspot-sdk-python.git'
+# install from PyPI
+pip install hubspot-sdk[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
