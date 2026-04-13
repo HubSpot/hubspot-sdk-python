@@ -1,7 +1,7 @@
 # HubSpot Python API library
 
 <!-- prettier-ignore -->
-[![PyPI version](https://img.shields.io/pypi/v/hubspot-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/hubspot-sdk/)
+[![PyPI version](https://img.shields.io/pypi/v/hubspot-sdk.svg?label=pypi)](https://pypi.org/project/hubspot-sdk/)
 
 The HubSpot Python library provides convenient access to HubSpot's date-versioned REST API (`2026-03` release) from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
