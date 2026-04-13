@@ -17,7 +17,7 @@ The REST API documentation can be found on [developers.hubspot.com](https://deve
 
 ```sh
 # install from PyPI
-pip install hubspot-sdk
+pip install '--pre hubspot-sdk'
 ```
 
 ## Usage
@@ -70,7 +70,7 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from PyPI
-pip install hubspot-sdk[aiohttp]
+pip install '--pre hubspot-sdk[aiohttp]'
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
