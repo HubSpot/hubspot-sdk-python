@@ -102,6 +102,7 @@ if TYPE_CHECKING or not PYDANTIC_V1:
             "Substring",
             Euler,
             "StringLength",
+            "IsBlank",
             "AddTime",
             "SubtractTime",
         ],
@@ -179,6 +180,7 @@ else:
         "Substring",
         Euler,
         "StringLength",
+        "IsBlank",
         "AddTime",
         "SubtractTime",
     ]
@@ -205,6 +207,7 @@ from .month import Month
 from .power import Power
 from .add_time import AddTime
 from .contains import Contains
+from .is_blank import IsBlank
 from .if_number import IfNumber
 from .if_string import IfString
 from .less_than import LessThan

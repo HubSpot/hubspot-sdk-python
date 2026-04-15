@@ -6,12 +6,15 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["WebhookCreateSubscriptionParams"]
+__all__ = ["WebhookCreateEventSubscriptionParams"]
 
 
-class WebhookCreateSubscriptionParams(TypedDict, total=False):
+class WebhookCreateEventSubscriptionParams(TypedDict, total=False):
     active: Required[bool]
-    """Determines if the subscription is active or paused. Defaults to false."""
+    """A boolean indicating whether the subscription is active.
+
+    This field is required.
+    """
 
     event_type: Required[
         Annotated[
@@ -68,27 +71,26 @@ class WebhookCreateSubscriptionParams(TypedDict, total=False):
             PropertyInfo(alias="eventType"),
         ]
     ]
-    """Type of event to listen for.
+    """A string representing the type of event to subscribe to.
 
-    Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+    Valid values include various object changes such as 'contact.propertyChange',
+    'deal.creation', and 'conversation.newMessage'.
     """
 
     event_type_name: Annotated[str, PropertyInfo(alias="eventTypeName")]
-    """The name of the event to listen for.
+    """A string that provides a human-readable name for the event type.
 
-    This is used with custom objects to specify custom event types beyond the
-    standard eventType enum values.
+    This is optional.
     """
 
     object_type_id: Annotated[str, PropertyInfo(alias="objectTypeId")]
-    """The ID of the object type for the subscription.
-
-    This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a
-    custom object ID for custom object subscriptions.
+    """
+    A string representing the identifier of the object type for which the
+    subscription is being created. This is optional.
     """
 
     property_name: Annotated[str, PropertyInfo(alias="propertyName")]
-    """The internal name of the property to monitor for changes.
+    """A string indicating the name of the property that triggers the event.
 
-    Only applies when `eventType` is `propertyChange`.
+    This is optional and used when subscribing to property change events.
     """

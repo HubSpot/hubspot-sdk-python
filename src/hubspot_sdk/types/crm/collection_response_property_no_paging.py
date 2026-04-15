@@ -2,8 +2,8 @@
 
 from typing import List
 
-from .property import Property
 from ..._models import BaseModel
+from ..shared.property import Property
 
 __all__ = ["CollectionResponsePropertyNoPaging"]
 

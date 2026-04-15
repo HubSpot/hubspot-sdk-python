@@ -11,6 +11,6 @@ __all__ = ["SubscriptionListResponse"]
 class SubscriptionListResponse(BaseModel):
     results: List[SubscriptionResponse]
     """
-    An array containing all active and paused event subscriptions configured for the
-    app.
+    An array of SubscriptionResponse objects, each representing a subscription
+    associated with the app. This property is required.
     """

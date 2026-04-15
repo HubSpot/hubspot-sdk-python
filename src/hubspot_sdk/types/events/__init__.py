@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from .property import Property as Property
 from .date_point import DatePoint as DatePoint
 from .fiscal_year import FiscalYear as FiscalYear
 from .time_offset import TimeOffset as TimeOffset

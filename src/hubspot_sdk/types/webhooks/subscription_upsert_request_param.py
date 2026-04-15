@@ -9,6 +9,7 @@ from .object_subscription_upsert_request_param import ObjectSubscriptionUpsertRe
 from .association_subscription_upsert_request_param import AssociationSubscriptionUpsertRequestParam
 from .list_membership_subscription_upsert_request_param import ListMembershipSubscriptionUpsertRequestParam
 from .app_lifecycle_event_subscription_upsert_request_param import AppLifecycleEventSubscriptionUpsertRequestParam
+from .gdpr_privacy_deletion_subscription_upsert_request_param import GdprPrivacyDeletionSubscriptionUpsertRequestParam
 
 __all__ = ["SubscriptionUpsertRequestParam"]
 
@@ -17,4 +18,5 @@ SubscriptionUpsertRequestParam: TypeAlias = Union[
     AssociationSubscriptionUpsertRequestParam,
     AppLifecycleEventSubscriptionUpsertRequestParam,
     ListMembershipSubscriptionUpsertRequestParam,
+    GdprPrivacyDeletionSubscriptionUpsertRequestParam,
 ]

@@ -450,6 +450,7 @@ class MediaBridgeResource(SyncAPIResource):
         name: str,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"],
         calculation_formula: str | Omit = omit,
+        currency_property_name: str | Omit = omit,
         data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] | Omit = omit,
         description: str | Omit = omit,
         display_order: int | Omit = omit,
@@ -457,8 +458,11 @@ class MediaBridgeResource(SyncAPIResource):
         form_field: bool | Omit = omit,
         has_unique_value: bool | Omit = omit,
         hidden: bool | Omit = omit,
+        number_display_hint: Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+        | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
+        show_currency_symbol: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -492,6 +496,7 @@ class MediaBridgeResource(SyncAPIResource):
                     "name": name,
                     "type": type,
                     "calculation_formula": calculation_formula,
+                    "currency_property_name": currency_property_name,
                     "data_sensitivity": data_sensitivity,
                     "description": description,
                     "display_order": display_order,
@@ -499,8 +504,10 @@ class MediaBridgeResource(SyncAPIResource):
                     "form_field": form_field,
                     "has_unique_value": has_unique_value,
                     "hidden": hidden,
+                    "number_display_hint": number_display_hint,
                     "options": options,
                     "referenced_object_type": referenced_object_type,
+                    "show_currency_symbol": show_currency_symbol,
                 },
                 media_bridge_create_property_params.MediaBridgeCreatePropertyParams,
             ),
@@ -1319,6 +1326,7 @@ class MediaBridgeResource(SyncAPIResource):
         app_id: int,
         object_type: str,
         calculation_formula: str | Omit = omit,
+        currency_property_name: str | Omit = omit,
         description: str | Omit = omit,
         display_order: int | Omit = omit,
         field_type: Literal[
@@ -1341,7 +1349,10 @@ class MediaBridgeResource(SyncAPIResource):
         has_unique_value: bool | Omit = omit,
         hidden: bool | Omit = omit,
         label: str | Omit = omit,
+        number_display_hint: Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+        | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
+        show_currency_symbol: bool | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1376,6 +1387,7 @@ class MediaBridgeResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "calculation_formula": calculation_formula,
+                    "currency_property_name": currency_property_name,
                     "description": description,
                     "display_order": display_order,
                     "field_type": field_type,
@@ -1384,7 +1396,9 @@ class MediaBridgeResource(SyncAPIResource):
                     "has_unique_value": has_unique_value,
                     "hidden": hidden,
                     "label": label,
+                    "number_display_hint": number_display_hint,
                     "options": options,
+                    "show_currency_symbol": show_currency_symbol,
                     "type": type,
                 },
                 media_bridge_update_property_params.MediaBridgeUpdatePropertyParams,
@@ -1925,6 +1939,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         name: str,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"],
         calculation_formula: str | Omit = omit,
+        currency_property_name: str | Omit = omit,
         data_sensitivity: Literal["highly_sensitive", "non_sensitive", "sensitive"] | Omit = omit,
         description: str | Omit = omit,
         display_order: int | Omit = omit,
@@ -1932,8 +1947,11 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         form_field: bool | Omit = omit,
         has_unique_value: bool | Omit = omit,
         hidden: bool | Omit = omit,
+        number_display_hint: Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+        | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
+        show_currency_symbol: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1967,6 +1985,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
                     "name": name,
                     "type": type,
                     "calculation_formula": calculation_formula,
+                    "currency_property_name": currency_property_name,
                     "data_sensitivity": data_sensitivity,
                     "description": description,
                     "display_order": display_order,
@@ -1974,8 +1993,10 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
                     "form_field": form_field,
                     "has_unique_value": has_unique_value,
                     "hidden": hidden,
+                    "number_display_hint": number_display_hint,
                     "options": options,
                     "referenced_object_type": referenced_object_type,
+                    "show_currency_symbol": show_currency_symbol,
                 },
                 media_bridge_create_property_params.MediaBridgeCreatePropertyParams,
             ),
@@ -2794,6 +2815,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         app_id: int,
         object_type: str,
         calculation_formula: str | Omit = omit,
+        currency_property_name: str | Omit = omit,
         description: str | Omit = omit,
         display_order: int | Omit = omit,
         field_type: Literal[
@@ -2816,7 +2838,10 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         has_unique_value: bool | Omit = omit,
         hidden: bool | Omit = omit,
         label: str | Omit = omit,
+        number_display_hint: Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+        | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
+        show_currency_symbol: bool | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2851,6 +2876,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "calculation_formula": calculation_formula,
+                    "currency_property_name": currency_property_name,
                     "description": description,
                     "display_order": display_order,
                     "field_type": field_type,
@@ -2859,7 +2885,9 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
                     "has_unique_value": has_unique_value,
                     "hidden": hidden,
                     "label": label,
+                    "number_display_hint": number_display_hint,
                     "options": options,
+                    "show_currency_symbol": show_currency_symbol,
                     "type": type,
                 },
                 media_bridge_update_property_params.MediaBridgeUpdatePropertyParams,

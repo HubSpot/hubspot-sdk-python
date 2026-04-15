@@ -25,7 +25,7 @@ from .boolean_target_property_variable import BooleanTargetPropertyVariable
 from .fetch_single_currency_portal_currency import FetchSingleCurrencyPortalCurrency
 from .timestamp_of_target_property_variable import TimestampOfTargetPropertyVariable
 
-__all__ = ["TimeBetween", "Input"]
+__all__ = ["IsBlank", "Input"]
 
 if TYPE_CHECKING or not PYDANTIC_V1:
     Input = TypeAliasType(
@@ -186,14 +186,14 @@ else:
     ]
 
 
-class TimeBetween(BaseModel):
-    operator: Literal["TIME_BETWEEN"]
+class IsBlank(BaseModel):
+    operator: Literal["IS_BLANK"]
 
     inputs: Optional[List[Input]] = None
 
     property_name: Optional[str] = FieldInfo(alias="propertyName", default=None)
 
-    value: Optional[float] = None
+    value: Optional[bool] = None
 
 
 from .or_ import Or
@@ -206,7 +206,6 @@ from .month import Month
 from .power import Power
 from .add_time import AddTime
 from .contains import Contains
-from .is_blank import IsBlank
 from .if_number import IfNumber
 from .if_string import IfString
 from .less_than import LessThan
@@ -222,6 +221,7 @@ from .max_numbers import MaxNumbers
 from .min_numbers import MinNumbers
 from .square_root import SquareRoot
 from .parse_number import ParseNumber
+from .time_between import TimeBetween
 from .number_equals import NumberEquals
 from .string_equals import StringEquals
 from .string_length import StringLength

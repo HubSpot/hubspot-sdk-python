@@ -12,6 +12,7 @@ __all__ = ["ConditionParam"]
 
 class ConditionParam(TypedDict, total=False):
     filter_type: Required[Annotated[Literal["CRM_OBJECT_PROPERTY"], PropertyInfo(alias="filterType")]]
+    """A string representing the type of filter. Valid value is 'CRM_OBJECT_PROPERTY'."""
 
     operator: Required[
         Literal[
@@ -30,9 +31,23 @@ class ConditionParam(TypedDict, total=False):
             "STARTS_WITH",
         ]
     ]
+    """A string indicating the operation to apply for filtering.
+
+    Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS',
+    'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
+    """
 
     property: Required[str]
+    """A string specifying the property of the CRM object to be filtered."""
 
     value: str
+    """
+    A string representing the value to compare against the specified property when
+    filtering.
+    """
 
     values: SequenceNotStr[str]
+    """
+    An array of strings, each representing a value to be used in the filtering
+    operation.
+    """

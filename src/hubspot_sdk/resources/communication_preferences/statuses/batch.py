@@ -76,7 +76,13 @@ class BatchResource(SyncAPIResource):
         Checks whether a set of contacts have opted out of all communications.
 
         Args:
+          channel: The communication channel to filter the unsubscribe statuses. This parameter is
+              required and currently supports 'EMAIL' as a valid value.
+
           inputs: Strings to input.
+
+          business_unit_id: The ID of the business unit to filter the results. This is an optional
+              parameter.
 
           extra_headers: Send extra headers
 
@@ -124,7 +130,12 @@ class BatchResource(SyncAPIResource):
         Batch retrieve subscription statuses for a set of contacts.
 
         Args:
+          channel: The communication channel to filter the subscription statuses. Must be 'EMAIL'.
+
           inputs: Strings to input.
+
+          business_unit_id: An optional integer representing the business unit ID. This parameter helps to
+              filter the results based on the specific business unit.
 
           extra_headers: Send extra headers
 
@@ -171,7 +182,16 @@ class BatchResource(SyncAPIResource):
         Unsubscribe a set of contacts from all email subscriptions.
 
         Args:
+          channel: The communication channel from which subscribers will be unsubscribed. This
+              parameter is required and currently supports only 'EMAIL'.
+
           inputs: Strings to input.
+
+          business_unit_id: An optional integer representing the business unit ID for which the operation is
+              being performed.
+
+          verbose: A boolean indicating whether to include detailed information in the response.
+              Defaults to false.
 
           extra_headers: Send extra headers
 
@@ -274,7 +294,13 @@ class AsyncBatchResource(AsyncAPIResource):
         Checks whether a set of contacts have opted out of all communications.
 
         Args:
+          channel: The communication channel to filter the unsubscribe statuses. This parameter is
+              required and currently supports 'EMAIL' as a valid value.
+
           inputs: Strings to input.
+
+          business_unit_id: The ID of the business unit to filter the results. This is an optional
+              parameter.
 
           extra_headers: Send extra headers
 
@@ -322,7 +348,12 @@ class AsyncBatchResource(AsyncAPIResource):
         Batch retrieve subscription statuses for a set of contacts.
 
         Args:
+          channel: The communication channel to filter the subscription statuses. Must be 'EMAIL'.
+
           inputs: Strings to input.
+
+          business_unit_id: An optional integer representing the business unit ID. This parameter helps to
+              filter the results based on the specific business unit.
 
           extra_headers: Send extra headers
 
@@ -369,7 +400,16 @@ class AsyncBatchResource(AsyncAPIResource):
         Unsubscribe a set of contacts from all email subscriptions.
 
         Args:
+          channel: The communication channel from which subscribers will be unsubscribed. This
+              parameter is required and currently supports only 'EMAIL'.
+
           inputs: Strings to input.
+
+          business_unit_id: An optional integer representing the business unit ID for which the operation is
+              being performed.
+
+          verbose: A boolean indicating whether to include detailed information in the response.
+              Defaults to false.
 
           extra_headers: Send extra headers
 

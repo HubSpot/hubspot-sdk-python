@@ -102,8 +102,12 @@ class CommunicationPreferencesResource(SyncAPIResource):
         management into your applications.
 
         Args:
+          channel: The communication channel for which the links are generated. Must be 'EMAIL'.
+
           subscriber_id_string: A string representing the unique identifier of the subscriber. This property is
               required.
+
+          business_unit_id: The identifier of the business unit. Defaults to 0 if not specified.
 
           language: The language in which the generated link should be presented, represented as a
               string.
@@ -162,6 +166,12 @@ class CommunicationPreferencesResource(SyncAPIResource):
         Retrieve a contact's current email subscription preferences.
 
         Args:
+          channel: The communication channel for which the subscription status is being retrieved.
+              This parameter is required and currently supports only 'EMAIL'.
+
+          business_unit_id: The ID of the business unit to filter the subscription status by. This is an
+              optional parameter.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -216,6 +226,15 @@ class CommunicationPreferencesResource(SyncAPIResource):
         will be empty.
 
         Args:
+          channel: The communication channel from which to unsubscribe the subscriber. This is a
+              required parameter and must be 'EMAIL'.
+
+          business_unit_id: The ID of the business unit to which the subscriber belongs. This is an optional
+              parameter.
+
+          verbose: A boolean indicating whether to include detailed information in the response.
+              Defaults to false.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -268,6 +287,14 @@ class CommunicationPreferencesResource(SyncAPIResource):
         Unsubscribe a contact from all email subscriptions.
 
         Args:
+          channel: The communication channel to unsubscribe from. Must be 'EMAIL'.
+
+          business_unit_id: The ID of the business unit associated with the request. This is an optional
+              integer parameter.
+
+          verbose: A boolean indicating whether to include detailed information in the response.
+              Defaults to false.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -430,8 +457,12 @@ class AsyncCommunicationPreferencesResource(AsyncAPIResource):
         management into your applications.
 
         Args:
+          channel: The communication channel for which the links are generated. Must be 'EMAIL'.
+
           subscriber_id_string: A string representing the unique identifier of the subscriber. This property is
               required.
+
+          business_unit_id: The identifier of the business unit. Defaults to 0 if not specified.
 
           language: The language in which the generated link should be presented, represented as a
               string.
@@ -490,6 +521,12 @@ class AsyncCommunicationPreferencesResource(AsyncAPIResource):
         Retrieve a contact's current email subscription preferences.
 
         Args:
+          channel: The communication channel for which the subscription status is being retrieved.
+              This parameter is required and currently supports only 'EMAIL'.
+
+          business_unit_id: The ID of the business unit to filter the subscription status by. This is an
+              optional parameter.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -544,6 +581,15 @@ class AsyncCommunicationPreferencesResource(AsyncAPIResource):
         will be empty.
 
         Args:
+          channel: The communication channel from which to unsubscribe the subscriber. This is a
+              required parameter and must be 'EMAIL'.
+
+          business_unit_id: The ID of the business unit to which the subscriber belongs. This is an optional
+              parameter.
+
+          verbose: A boolean indicating whether to include detailed information in the response.
+              Defaults to false.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -596,6 +642,14 @@ class AsyncCommunicationPreferencesResource(AsyncAPIResource):
         Unsubscribe a contact from all email subscriptions.
 
         Args:
+          channel: The communication channel to unsubscribe from. Must be 'EMAIL'.
+
+          business_unit_id: The ID of the business unit associated with the request. This is an optional
+              integer parameter.
+
+          verbose: A boolean indicating whether to include detailed information in the response.
+              Defaults to false.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

@@ -14,22 +14,28 @@ __all__ = ["BatchResponseSubscriptionResponse"]
 
 class BatchResponseSubscriptionResponse(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
-    """The date and time when the batch operation was completed."""
+    """The date and time when the batch operation was completed, in ISO 8601 format."""
 
     results: List[SubscriptionResponse]
-    """The list of results from the batch operation."""
+    """
+    An array of SubscriptionResponse objects, each representing the result of an
+    individual subscription update within the batch operation.
+    """
 
     started_at: datetime = FieldInfo(alias="startedAt")
-    """The date and time when the batch operation started."""
+    """The date and time when the batch operation started, in ISO 8601 format."""
 
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
-    """
-    The current status of the batch operation, which can be PENDING, PROCESSING,
-    CANCELED, or COMPLETE.
+    """The current status of the batch operation.
+
+    Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
     """
 
     links: Optional[Dict[str, str]] = None
-    """A collection of related links associated with the batch operation."""
+    """
+    A map of link names to associated URIs, providing additional information or
+    resources related to the batch operation.
+    """
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
-    """The date and time when the batch operation was requested."""
+    """The date and time when the batch operation was requested, in ISO 8601 format."""

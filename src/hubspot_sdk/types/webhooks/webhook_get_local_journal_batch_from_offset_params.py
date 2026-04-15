@@ -6,10 +6,14 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["WebhookGetLocalJournalBatchAfterOffsetParams"]
+__all__ = ["WebhookGetLocalJournalBatchFromOffsetParams"]
 
 
-class WebhookGetLocalJournalBatchAfterOffsetParams(TypedDict, total=False):
+class WebhookGetLocalJournalBatchFromOffsetParams(TypedDict, total=False):
     offset: Required[str]
 
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
+    """The ID of the portal where the webhooks are installed.
+
+    This is an integer value.
+    """

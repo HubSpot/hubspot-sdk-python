@@ -60,6 +60,11 @@ class PropertyUpdateParams(TypedDict, total=False):
     label: str
     """A human-readable property label that will be shown in HubSpot."""
 
+    number_display_hint: Annotated[
+        Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"],
+        PropertyInfo(alias="numberDisplayHint"),
+    ]
+
     options: Iterable[OptionInput]
     """A list of valid options for the property."""
 

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .pipeline import Pipeline as Pipeline
-from .property import Property as Property
 from .date_time import DateTime as DateTime
 from .public_team import PublicTeam as PublicTeam
 from .filter_param import FilterParam as FilterParam
@@ -43,7 +42,6 @@ from .public_now_reference import PublicNowReference as PublicNowReference
 from .simple_public_object import SimplePublicObject as SimplePublicObject
 from .value_with_timestamp import ValueWithTimestamp as ValueWithTimestamp
 from .list_move_list_params import ListMoveListParams as ListMoveListParams
-from .property_create_param import PropertyCreateParam as PropertyCreateParam
 from .public_in_list_filter import PublicInListFilter as PublicInListFilter
 from .public_webinar_filter import PublicWebinarFilter as PublicWebinarFilter
 from .public_week_reference import PublicWeekReference as PublicWeekReference

@@ -44,6 +44,8 @@ class MediaBridgeCreatePropertyParams(TypedDict, total=False):
 
     calculation_formula: Annotated[str, PropertyInfo(alias="calculationFormula")]
 
+    currency_property_name: Annotated[str, PropertyInfo(alias="currencyPropertyName")]
+
     data_sensitivity: Annotated[
         Literal["highly_sensitive", "non_sensitive", "sensitive"], PropertyInfo(alias="dataSensitivity")
     ]
@@ -60,6 +62,13 @@ class MediaBridgeCreatePropertyParams(TypedDict, total=False):
 
     hidden: bool
 
+    number_display_hint: Annotated[
+        Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"],
+        PropertyInfo(alias="numberDisplayHint"),
+    ]
+
     options: Iterable[OptionInput]
 
     referenced_object_type: Annotated[str, PropertyInfo(alias="referencedObjectType")]
+
+    show_currency_symbol: Annotated[bool, PropertyInfo(alias="showCurrencySymbol")]

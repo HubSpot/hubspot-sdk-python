@@ -3,6 +3,7 @@
 from .error import Error as Error
 from .option import Option as Option
 from .paging import Paging as Paging
+from .property import Property as Property
 from .next_page import NextPage as NextPage
 from .error_detail import ErrorDetail as ErrorDetail
 from .option_input import OptionInput as OptionInput
@@ -15,6 +16,7 @@ from .property_group import PropertyGroup as PropertyGroup
 from .property_value import PropertyValue as PropertyValue
 from .standard_error import StandardError as StandardError
 from .action_response import ActionResponse as ActionResponse
+from .property_create import PropertyCreate as PropertyCreate
 from .association_spec import AssociationSpec as AssociationSpec
 from .public_object_id import PublicObjectID as PublicObjectID
 from .batch_input_string import BatchInputString as BatchInputString
@@ -25,6 +27,7 @@ from .object_type_definition import ObjectTypeDefinition as ObjectTypeDefinition
 from .automation_actions_option import AutomationActionsOption as AutomationActionsOption
 from .batch_input_property_name import BatchInputPropertyName as BatchInputPropertyName
 from .association_definition_egg import AssociationDefinitionEgg as AssociationDefinitionEgg
+from .batch_input_property_create import BatchInputPropertyCreate as BatchInputPropertyCreate
 from .batch_input_public_object_id import BatchInputPublicObjectID as BatchInputPublicObjectID
 from .object_type_definition_patch import ObjectTypeDefinitionPatch as ObjectTypeDefinitionPatch
 from .ab_test_create_request_v_next import AbTestCreateRequestVNext as AbTestCreateRequestVNext

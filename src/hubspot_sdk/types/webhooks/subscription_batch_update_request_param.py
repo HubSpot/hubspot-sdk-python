@@ -9,11 +9,7 @@ __all__ = ["SubscriptionBatchUpdateRequestParam"]
 
 class SubscriptionBatchUpdateRequestParam(TypedDict, total=False):
     id: Required[int]
-    """The ID of the webhook subscription to update."""
+    """The unique identifier for the subscription to be updated. It is an integer."""
 
     active: Required[bool]
-    """Whether to activate or pause the webhook subscription.
-
-    If true, the subscription will send webhook notifications. If false, the
-    subscription is paused and will not send notifications.
-    """
+    """A boolean indicating whether the subscription is active."""
