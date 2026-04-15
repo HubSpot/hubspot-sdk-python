@@ -35,7 +35,7 @@ from ...._response import (
 )
 from ....types.crm import property_get_params, property_list_params, property_create_params, property_update_params
 from ...._base_client import make_request_options
-from ....types.crm.property import Property
+from ....types.shared.property import Property
 from ....types.shared_params.option_input import OptionInput
 from ....types.crm.collection_response_property_no_paging import CollectionResponsePropertyNoPaging
 
@@ -101,6 +101,8 @@ class PropertiesResource(SyncAPIResource):
         form_field: bool | Omit = omit,
         has_unique_value: bool | Omit = omit,
         hidden: bool | Omit = omit,
+        number_display_hint: Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+        | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
@@ -115,44 +117,6 @@ class PropertiesResource(SyncAPIResource):
         Create and return a copy of a new property for the specified object type.
 
         Args:
-          field_type: Controls how the property appears in HubSpot.
-
-          group_name: The name of the property group the property belongs to.
-
-          label: A human-readable property label that will be shown in HubSpot.
-
-          name: The internal property name, which must be used when referencing the property via
-              the API.
-
-          type: The data type of the property.
-
-          calculation_formula: Represents a formula that is used to compute a calculated property.
-
-          data_sensitivity: Indicates the sensitivity level of the property, with options: highly_sensitive,
-              non_sensitive, or sensitive.
-
-          description: A description of the property that will be shown as help text in HubSpot.
-
-          display_order: Properties are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property to be displayed after any positive
-              values.
-
-          external_options: Applicable only for 'enumeration' type properties. Should be set to true in
-              conjunction with a 'referencedObjectType' of 'OWNER'. Otherwise false.
-
-          form_field: Whether or not the property can be used in a HubSpot form.
-
-          has_unique_value: Whether or not the property's value must be unique. Once set, this can't be
-              changed.
-
-          hidden: If true, the property won't be visible and can't be used in HubSpot.
-
-          options: A list of valid options for the property. This field is required for enumerated
-              properties.
-
-          referenced_object_type: Should be set to 'OWNER' when 'externalOptions' is true, which causes the
-              property to dynamically pull option values from the current HubSpot users.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -181,6 +145,7 @@ class PropertiesResource(SyncAPIResource):
                     "form_field": form_field,
                     "has_unique_value": has_unique_value,
                     "hidden": hidden,
+                    "number_display_hint": number_display_hint,
                     "options": options,
                     "referenced_object_type": referenced_object_type,
                     "show_currency_symbol": show_currency_symbol,
@@ -221,6 +186,8 @@ class PropertiesResource(SyncAPIResource):
         group_name: str | Omit = omit,
         hidden: bool | Omit = omit,
         label: str | Omit = omit,
+        number_display_hint: Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+        | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
@@ -288,6 +255,7 @@ class PropertiesResource(SyncAPIResource):
                     "group_name": group_name,
                     "hidden": hidden,
                     "label": label,
+                    "number_display_hint": number_display_hint,
                     "options": options,
                     "show_currency_symbol": show_currency_symbol,
                     "type": type,
@@ -510,6 +478,8 @@ class AsyncPropertiesResource(AsyncAPIResource):
         form_field: bool | Omit = omit,
         has_unique_value: bool | Omit = omit,
         hidden: bool | Omit = omit,
+        number_display_hint: Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+        | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
@@ -524,44 +494,6 @@ class AsyncPropertiesResource(AsyncAPIResource):
         Create and return a copy of a new property for the specified object type.
 
         Args:
-          field_type: Controls how the property appears in HubSpot.
-
-          group_name: The name of the property group the property belongs to.
-
-          label: A human-readable property label that will be shown in HubSpot.
-
-          name: The internal property name, which must be used when referencing the property via
-              the API.
-
-          type: The data type of the property.
-
-          calculation_formula: Represents a formula that is used to compute a calculated property.
-
-          data_sensitivity: Indicates the sensitivity level of the property, with options: highly_sensitive,
-              non_sensitive, or sensitive.
-
-          description: A description of the property that will be shown as help text in HubSpot.
-
-          display_order: Properties are displayed in order starting with the lowest positive integer
-              value. Values of -1 will cause the property to be displayed after any positive
-              values.
-
-          external_options: Applicable only for 'enumeration' type properties. Should be set to true in
-              conjunction with a 'referencedObjectType' of 'OWNER'. Otherwise false.
-
-          form_field: Whether or not the property can be used in a HubSpot form.
-
-          has_unique_value: Whether or not the property's value must be unique. Once set, this can't be
-              changed.
-
-          hidden: If true, the property won't be visible and can't be used in HubSpot.
-
-          options: A list of valid options for the property. This field is required for enumerated
-              properties.
-
-          referenced_object_type: Should be set to 'OWNER' when 'externalOptions' is true, which causes the
-              property to dynamically pull option values from the current HubSpot users.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -590,6 +522,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
                     "form_field": form_field,
                     "has_unique_value": has_unique_value,
                     "hidden": hidden,
+                    "number_display_hint": number_display_hint,
                     "options": options,
                     "referenced_object_type": referenced_object_type,
                     "show_currency_symbol": show_currency_symbol,
@@ -630,6 +563,8 @@ class AsyncPropertiesResource(AsyncAPIResource):
         group_name: str | Omit = omit,
         hidden: bool | Omit = omit,
         label: str | Omit = omit,
+        number_display_hint: Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+        | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
@@ -697,6 +632,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
                     "group_name": group_name,
                     "hidden": hidden,
                     "label": label,
+                    "number_display_hint": number_display_hint,
                     "options": options,
                     "show_currency_symbol": show_currency_symbol,
                     "type": type,

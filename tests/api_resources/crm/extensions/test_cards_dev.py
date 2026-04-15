@@ -420,6 +420,7 @@ class TestCardsDev:
     def test_method_migrate_views(self, client: HubSpot) -> None:
         cards_dev = client.crm.extensions.cards_dev.migrate_views(
             app_id=0,
+            allow_duplicate_app_card_ids=True,
             app_card_id=0,
             legacy_crm_card_id=0,
         )
@@ -430,6 +431,7 @@ class TestCardsDev:
     def test_method_migrate_views_with_all_params(self, client: HubSpot) -> None:
         cards_dev = client.crm.extensions.cards_dev.migrate_views(
             app_id=0,
+            allow_duplicate_app_card_ids=True,
             app_card_id=0,
             legacy_crm_card_id=0,
             helpdesk_app_card_id=0,
@@ -441,6 +443,7 @@ class TestCardsDev:
     def test_raw_response_migrate_views(self, client: HubSpot) -> None:
         response = client.crm.extensions.cards_dev.with_raw_response.migrate_views(
             app_id=0,
+            allow_duplicate_app_card_ids=True,
             app_card_id=0,
             legacy_crm_card_id=0,
         )
@@ -455,6 +458,7 @@ class TestCardsDev:
     def test_streaming_response_migrate_views(self, client: HubSpot) -> None:
         with client.crm.extensions.cards_dev.with_streaming_response.migrate_views(
             app_id=0,
+            allow_duplicate_app_card_ids=True,
             app_card_id=0,
             legacy_crm_card_id=0,
         ) as response:
@@ -870,6 +874,7 @@ class TestAsyncCardsDev:
     async def test_method_migrate_views(self, async_client: AsyncHubSpot) -> None:
         cards_dev = await async_client.crm.extensions.cards_dev.migrate_views(
             app_id=0,
+            allow_duplicate_app_card_ids=True,
             app_card_id=0,
             legacy_crm_card_id=0,
         )
@@ -880,6 +885,7 @@ class TestAsyncCardsDev:
     async def test_method_migrate_views_with_all_params(self, async_client: AsyncHubSpot) -> None:
         cards_dev = await async_client.crm.extensions.cards_dev.migrate_views(
             app_id=0,
+            allow_duplicate_app_card_ids=True,
             app_card_id=0,
             legacy_crm_card_id=0,
             helpdesk_app_card_id=0,
@@ -891,6 +897,7 @@ class TestAsyncCardsDev:
     async def test_raw_response_migrate_views(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.extensions.cards_dev.with_raw_response.migrate_views(
             app_id=0,
+            allow_duplicate_app_card_ids=True,
             app_card_id=0,
             legacy_crm_card_id=0,
         )
@@ -905,6 +912,7 @@ class TestAsyncCardsDev:
     async def test_streaming_response_migrate_views(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.extensions.cards_dev.with_streaming_response.migrate_views(
             app_id=0,
+            allow_duplicate_app_card_ids=True,
             app_card_id=0,
             legacy_crm_card_id=0,
         ) as response:

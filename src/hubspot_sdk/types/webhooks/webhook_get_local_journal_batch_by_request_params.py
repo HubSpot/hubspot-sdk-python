@@ -7,11 +7,16 @@ from typing_extensions import Required, Annotated, TypedDict
 from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
-__all__ = ["WebhookGetJournalBatchParams"]
+__all__ = ["WebhookGetLocalJournalBatchByRequestParams"]
 
 
-class WebhookGetJournalBatchParams(TypedDict, total=False):
+class WebhookGetLocalJournalBatchByRequestParams(TypedDict, total=False):
     inputs: Required[SequenceNotStr[str]]
     """Strings to input."""
 
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
+    """The ID of the portal where the webhook is installed.
+
+    This parameter is optional and is used to specify the portal context for the
+    operation.
+    """

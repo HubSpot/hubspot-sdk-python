@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
-from ..property_create_param import PropertyCreateParam
+from ...shared_params.property_create import PropertyCreate
 
 __all__ = ["BatchCreateParams"]
 
@@ -14,4 +14,4 @@ __all__ = ["BatchCreateParams"]
 class BatchCreateParams(TypedDict, total=False):
     app_id: Required[Annotated[int, PropertyInfo(alias="appId")]]
 
-    inputs: Required[Iterable[PropertyCreateParam]]
+    inputs: Required[Iterable[PropertyCreate]]

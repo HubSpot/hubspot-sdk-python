@@ -14,3 +14,8 @@ class Filter(BaseModel):
     """
 
     conditions: List[Condition]
+    """An array of conditions that define the filter criteria.
+
+    Each condition specifies a property, operator, and value to determine if a data
+    item meets the filter requirements.
+    """

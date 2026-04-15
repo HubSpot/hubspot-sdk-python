@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any, cast
 from typing_extensions import Literal
 
 import httpx
@@ -130,26 +129,21 @@ class OAuthResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return cast(
-            TokenInfoResponseBaseIf,
-            self._post(
-                "/oauth/2026-03/token/introspect",
-                body=maybe_transform(
-                    {
-                        "token": token,
-                        "client_id": client_id,
-                        "client_secret": client_secret,
-                        "token_type_hint": token_type_hint,
-                    },
-                    oauth_introspect_token_params.OAuthIntrospectTokenParams,
-                ),
-                options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-                ),
-                cast_to=cast(
-                    Any, TokenInfoResponseBaseIf
-                ),  # Union types cannot be passed in as arguments in the type system
+        return self._post(
+            "/oauth/2026-03/token/introspect",
+            body=maybe_transform(
+                {
+                    "token": token,
+                    "client_id": client_id,
+                    "client_secret": client_secret,
+                    "token_type_hint": token_type_hint,
+                },
+                oauth_introspect_token_params.OAuthIntrospectTokenParams,
             ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TokenInfoResponseBaseIf,
         )
 
     def revoke_token(
@@ -295,26 +289,21 @@ class AsyncOAuthResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return cast(
-            TokenInfoResponseBaseIf,
-            await self._post(
-                "/oauth/2026-03/token/introspect",
-                body=await async_maybe_transform(
-                    {
-                        "token": token,
-                        "client_id": client_id,
-                        "client_secret": client_secret,
-                        "token_type_hint": token_type_hint,
-                    },
-                    oauth_introspect_token_params.OAuthIntrospectTokenParams,
-                ),
-                options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-                ),
-                cast_to=cast(
-                    Any, TokenInfoResponseBaseIf
-                ),  # Union types cannot be passed in as arguments in the type system
+        return await self._post(
+            "/oauth/2026-03/token/introspect",
+            body=await async_maybe_transform(
+                {
+                    "token": token,
+                    "client_id": client_id,
+                    "client_secret": client_secret,
+                    "token_type_hint": token_type_hint,
+                },
+                oauth_introspect_token_params.OAuthIntrospectTokenParams,
             ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TokenInfoResponseBaseIf,
         )
 
     async def revoke_token(

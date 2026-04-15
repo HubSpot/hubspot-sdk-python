@@ -2,15 +2,15 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["ListMembershipSubscriptionUpsertRequestParam"]
+__all__ = ["GdprPrivacyDeletionSubscriptionUpsertRequestParam"]
 
 
-class ListMembershipSubscriptionUpsertRequestParam(TypedDict, total=False):
+class GdprPrivacyDeletionSubscriptionUpsertRequestParam(TypedDict, total=False):
     actions: Required[
         List[
             Literal[
@@ -31,9 +31,7 @@ class ListMembershipSubscriptionUpsertRequestParam(TypedDict, total=False):
         ]
     ]
 
-    list_ids: Required[Annotated[Iterable[int], PropertyInfo(alias="listIds")]]
-
-    object_ids: Required[Annotated[Iterable[int], PropertyInfo(alias="objectIds")]]
+    object_type_id: Required[Annotated[str, PropertyInfo(alias="objectTypeId")]]
 
     portal_id: Required[Annotated[int, PropertyInfo(alias="portalId")]]
 

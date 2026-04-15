@@ -18,6 +18,8 @@ class MediaBridgeUpdatePropertyParams(TypedDict, total=False):
 
     calculation_formula: Annotated[str, PropertyInfo(alias="calculationFormula")]
 
+    currency_property_name: Annotated[str, PropertyInfo(alias="currencyPropertyName")]
+
     description: str
 
     display_order: Annotated[int, PropertyInfo(alias="displayOrder")]
@@ -50,6 +52,13 @@ class MediaBridgeUpdatePropertyParams(TypedDict, total=False):
 
     label: str
 
+    number_display_hint: Annotated[
+        Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"],
+        PropertyInfo(alias="numberDisplayHint"),
+    ]
+
     options: Iterable[OptionInput]
+
+    show_currency_symbol: Annotated[bool, PropertyInfo(alias="showCurrencySymbol")]
 
     type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"]

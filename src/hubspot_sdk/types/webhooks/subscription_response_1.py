@@ -14,7 +14,7 @@ __all__ = ["SubscriptionResponse1"]
 
 class SubscriptionResponse1(BaseModel):
     id: int
-    """The unique ID of the webhook subscription."""
+    """The unique identifier for the subscription, represented as an integer."""
 
     actions: List[
         Literal[
@@ -30,46 +30,82 @@ class SubscriptionResponse1(BaseModel):
             "APP_UNINSTALL",
             "ADDED_TO_LIST",
             "REMOVED_FROM_LIST",
+            "GDPR_DELETE",
         ]
     ]
+    """
+    An array of actions that trigger the subscription, such as 'CREATE', 'UPDATE',
+    'DELETE', 'MERGE', 'RESTORE', 'ASSOCIATION_ADDED', 'ASSOCIATION_REMOVED',
+    'SNAPSHOT', 'APP_INSTALL', 'APP_UNINSTALL', 'ADDED_TO_LIST',
+    'REMOVED_FROM_LIST', and 'GDPR_DELETE'.
+    """
 
     app_id: int = FieldInfo(alias="appId")
+    """
+    The unique identifier for the app associated with the subscription, represented
+    as an integer.
+    """
 
     created_at: datetime = FieldInfo(alias="createdAt")
-    """
-    The timestamp when the webhook subscription was created, in ISO 8601 format
-    (e.g., 2020-02-29T12:30:00Z).
-    """
+    """The date and time when the subscription was created, in ISO 8601 format."""
 
     object_type_id: str = FieldInfo(alias="objectTypeId")
-    """The ID of the object type for the subscription.
-
-    This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a
-    custom object ID for custom object subscriptions.
+    """
+    The identifier for the object type associated with the subscription, represented
+    as a string.
     """
 
-    subscription_type: Literal["APP_LIFECYCLE_EVENT", "ASSOCIATION", "EVENT", "LIST_MEMBERSHIP", "OBJECT"] = FieldInfo(
-        alias="subscriptionType"
-    )
+    subscription_type: Literal[
+        "APP_LIFECYCLE_EVENT", "ASSOCIATION", "EVENT", "GDPR_PRIVACY_DELETION", "LIST_MEMBERSHIP", "OBJECT"
+    ] = FieldInfo(alias="subscriptionType")
+    """
+    The type of subscription, which can be one of 'OBJECT', 'ASSOCIATION', 'EVENT',
+    'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
+    """
 
     updated_at: datetime = FieldInfo(alias="updatedAt")
-    """
-    The timestamp when the webhook subscription was last updated, in ISO 8601 format
-    (e.g., 2020-02-29T12:30:00Z).
-    """
+    """The date and time when the subscription was last updated, in ISO 8601 format."""
 
     action_overrides: Optional[Dict[str, ActionOverrideRequest]] = FieldInfo(alias="actionOverrides", default=None)
+    """
+    An object containing action overrides, where each key is an action and the value
+    is an ActionOverrideRequest object.
+    """
 
     associated_object_type_ids: Optional[List[str]] = FieldInfo(alias="associatedObjectTypeIds", default=None)
+    """
+    An array of strings representing the associated object type IDs for the
+    subscription.
+    """
 
     created_by: Optional[int] = FieldInfo(alias="createdBy", default=None)
+    """
+    The unique identifier for the user who created the subscription, represented as
+    an integer.
+    """
 
     deleted_at: Optional[datetime] = FieldInfo(alias="deletedAt", default=None)
+    """The date and time when the subscription was deleted, in ISO 8601 format."""
 
     list_ids: Optional[List[int]] = FieldInfo(alias="listIds", default=None)
+    """
+    An array of integers representing the list IDs associated with the subscription.
+    """
 
     object_ids: Optional[List[int]] = FieldInfo(alias="objectIds", default=None)
+    """
+    An array of integers representing the object IDs associated with the
+    subscription.
+    """
 
     portal_id: Optional[int] = FieldInfo(alias="portalId", default=None)
+    """
+    The unique identifier for the portal associated with the subscription,
+    represented as an integer.
+    """
 
     properties: Optional[List[str]] = None
+    """
+    An array of strings representing the properties associated with the
+    subscription.
+    """
