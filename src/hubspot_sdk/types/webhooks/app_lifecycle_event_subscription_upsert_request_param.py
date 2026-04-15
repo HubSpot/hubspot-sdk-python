@@ -17,7 +17,9 @@ class AppLifecycleEventSubscriptionUpsertRequestParam(TypedDict, total=False):
 
     subscription_type: Required[
         Annotated[
-            Literal["OBJECT", "ASSOCIATION", "EVENT", "APP_LIFECYCLE_EVENT", "LIST_MEMBERSHIP"],
+            Literal[
+                "OBJECT", "ASSOCIATION", "EVENT", "APP_LIFECYCLE_EVENT", "LIST_MEMBERSHIP", "GDPR_PRIVACY_DELETION"
+            ],
             PropertyInfo(alias="subscriptionType"),
         ]
     ]

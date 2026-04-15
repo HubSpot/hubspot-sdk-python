@@ -10,3 +10,7 @@ __all__ = ["CollectionResponseSubscriptionResponseNoPaging"]
 
 class CollectionResponseSubscriptionResponseNoPaging(BaseModel):
     results: List[SubscriptionResponse1]
+    """
+    An array of SubscriptionResponse objects, each representing a subscription's
+    details such as actions, app ID, and timestamps.
+    """

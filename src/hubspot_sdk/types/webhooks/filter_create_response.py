@@ -9,3 +9,7 @@ __all__ = ["FilterCreateResponse"]
 
 class FilterCreateResponse(BaseModel):
     filter_id: int = FieldInfo(alias="filterId")
+    """The unique identifier for the created filter.
+
+    It is an integer formatted as int64.
+    """

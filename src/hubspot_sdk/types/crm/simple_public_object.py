@@ -23,7 +23,7 @@ class SimplePublicObject(BaseModel):
     created_at: datetime = FieldInfo(alias="createdAt")
     """The timestamp when the object was created, in ISO 8601 format."""
 
-    properties: Dict[str, Optional[str]]
+    properties: Dict[str, str]
     """Key-value pairs representing the properties of the object."""
 
     updated_at: datetime = FieldInfo(alias="updatedAt")

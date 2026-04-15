@@ -12,3 +12,7 @@ __all__ = ["CrmObjectSnapshotBatchResponse"]
 
 class CrmObjectSnapshotBatchResponse(BaseModel):
     snapshot_responses: List[CrmObjectSnapshotResponse] = FieldInfo(alias="snapshotResponses")
+    """
+    An array of CrmObjectSnapshotResponse objects, each containing the details of a
+    single CRM object snapshot request. This property is required.
+    """

@@ -149,6 +149,8 @@ class URLMappingCreateParams(TypedDict, total=False):
     label: Required[str]
     """A label for the URL mapping."""
 
+    last_used_at: Required[Annotated[int, PropertyInfo(alias="lastUsedAt")]]
+
     name: Required[str]
     """The name of the URL mapping."""
 

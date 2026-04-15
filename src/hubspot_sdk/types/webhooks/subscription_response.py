@@ -13,20 +13,13 @@ __all__ = ["SubscriptionResponse"]
 
 class SubscriptionResponse(BaseModel):
     id: str
-    """The unique ID of the webhook subscription."""
+    """The unique identifier for the subscription, represented as an integer."""
 
     active: bool
-    """Whether the subscription is active or paused.
-
-    If true, the subscription will send webhook notifications. If false, the
-    subscription is paused and will not send notifications.
-    """
+    """A boolean indicating whether the subscription is currently active."""
 
     created_at: datetime = FieldInfo(alias="createdAt")
-    """
-    The timestamp when the webhook subscription was created, in ISO 8601 format
-    (e.g., 2020-02-29T12:30:00Z).
-    """
+    """The date and time when the subscription was created, in ISO 8601 format."""
 
     event_type: Literal[
         "company.associationChange",
@@ -78,35 +71,23 @@ class SubscriptionResponse(BaseModel):
         "ticket.propertyChange",
         "ticket.restore",
     ] = FieldInfo(alias="eventType")
-    """The type of event to listen for.
+    """The type of event that triggers the subscription.
 
-    Accepted values include contact.creation, contact.deletion,
-    contact.propertyChange, and similar event types for other CRM objects and custom
-    objects.
+    Valid values include various object changes such as 'contact.propertyChange',
+    'deal.creation', and 'ticket.deletion'.
     """
 
     event_type_name: Optional[str] = FieldInfo(alias="eventTypeName", default=None)
-    """The name of the event to listen for.
-
-    This is used with custom objects to specify custom event types beyond the
-    standard eventType enum values.
-    """
+    """A descriptive name for the event type."""
 
     object_type_id: Optional[str] = FieldInfo(alias="objectTypeId", default=None)
-    """The ID of the object type for the subscription.
-
-    This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a
-    custom object ID for custom object subscriptions.
+    """
+    The identifier for the object type associated with the subscription, represented
+    as a string.
     """
 
     property_name: Optional[str] = FieldInfo(alias="propertyName", default=None)
-    """The internal name of the property to monitor for changes.
-
-    Only applies when eventType is propertyChange.
-    """
+    """The name of the property associated with the event, if applicable."""
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
-    """
-    The timestamp when the webhook subscription was last updated, in ISO 8601 format
-    (e.g., 2020-02-29T12:30:00Z).
-    """
+    """The date and time when the subscription was last updated, in ISO 8601 format."""

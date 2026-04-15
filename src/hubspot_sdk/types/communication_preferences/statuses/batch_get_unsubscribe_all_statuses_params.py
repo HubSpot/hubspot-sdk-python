@@ -12,8 +12,16 @@ __all__ = ["BatchGetUnsubscribeAllStatusesParams"]
 
 class BatchGetUnsubscribeAllStatusesParams(TypedDict, total=False):
     channel: Required[Literal["EMAIL"]]
+    """The communication channel to filter the unsubscribe statuses.
+
+    This parameter is required and currently supports 'EMAIL' as a valid value.
+    """
 
     inputs: Required[SequenceNotStr[str]]
     """Strings to input."""
 
     business_unit_id: Annotated[int, PropertyInfo(alias="businessUnitId")]
+    """The ID of the business unit to filter the results.
+
+    This is an optional parameter.
+    """

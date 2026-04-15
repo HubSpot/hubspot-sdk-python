@@ -10,9 +10,9 @@ import pytest
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
-    Property,
     CollectionResponsePropertyNoPaging,
 )
+from hubspot_sdk.types.shared import Property
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -52,6 +52,7 @@ class TestProperties:
             form_field=True,
             has_unique_value=True,
             hidden=True,
+            number_display_hint="currency",
             options=[
                 {
                     "display_order": 0,
@@ -139,6 +140,7 @@ class TestProperties:
             group_name="groupName",
             hidden=True,
             label="label",
+            number_display_hint="currency",
             options=[
                 {
                     "display_order": 0,
@@ -405,6 +407,7 @@ class TestAsyncProperties:
             form_field=True,
             has_unique_value=True,
             hidden=True,
+            number_display_hint="currency",
             options=[
                 {
                     "display_order": 0,
@@ -492,6 +495,7 @@ class TestAsyncProperties:
             group_name="groupName",
             hidden=True,
             label="label",
+            number_display_hint="currency",
             options=[
                 {
                     "display_order": 0,

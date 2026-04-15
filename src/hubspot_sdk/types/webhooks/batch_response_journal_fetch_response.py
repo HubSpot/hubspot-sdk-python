@@ -14,13 +14,28 @@ __all__ = ["BatchResponseJournalFetchResponse"]
 
 class BatchResponseJournalFetchResponse(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
+    """The date and time when the batch operation was completed, in ISO 8601 format."""
 
     results: List[JournalFetchResponse]
+    """
+    An array of journal fetch responses, each containing details about individual
+    journal entries.
+    """
 
     started_at: datetime = FieldInfo(alias="startedAt")
+    """The date and time when the batch operation started, in ISO 8601 format."""
 
     status: Literal["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]
+    """The current status of the batch operation.
+
+    Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+    """
 
     links: Optional[Dict[str, str]] = None
+    """
+    A map of link names to associated URIs, providing additional resources or
+    documentation related to the batch operation.
+    """
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
+    """The date and time when the batch operation was requested, in ISO 8601 format."""

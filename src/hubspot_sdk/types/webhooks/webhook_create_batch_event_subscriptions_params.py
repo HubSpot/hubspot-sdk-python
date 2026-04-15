@@ -7,8 +7,12 @@ from typing_extensions import Required, TypedDict
 
 from .subscription_batch_update_request_param import SubscriptionBatchUpdateRequestParam
 
-__all__ = ["WebhookCreateSubscriptionsBatchParams"]
+__all__ = ["WebhookCreateBatchEventSubscriptionsParams"]
 
 
-class WebhookCreateSubscriptionsBatchParams(TypedDict, total=False):
+class WebhookCreateBatchEventSubscriptionsParams(TypedDict, total=False):
     inputs: Required[Iterable[SubscriptionBatchUpdateRequestParam]]
+    """
+    An array of SubscriptionBatchUpdateRequest objects, each representing a
+    subscription to be updated. This property is required.
+    """

@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Required, TypedDict
 
-from ..property_create_param import PropertyCreateParam
+from ...shared_params.property_create import PropertyCreate
 
 __all__ = ["BatchCreateParams"]
 
 
 class BatchCreateParams(TypedDict, total=False):
-    inputs: Required[Iterable[PropertyCreateParam]]
+    inputs: Required[Iterable[PropertyCreate]]

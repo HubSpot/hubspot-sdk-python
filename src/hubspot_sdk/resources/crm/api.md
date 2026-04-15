@@ -12,7 +12,6 @@ from hubspot_sdk.types.crm import (
     FilterGroup,
     LabelsBetweenObjectPair,
     MultiAssociatedObjectWithLabel,
-    Property,
     PublicDefaultAssociation,
     PublicObjectSearchRequest,
     SimplePublicObject,
@@ -1393,22 +1392,20 @@ Types:
 
 ```python
 from hubspot_sdk.types.crm import (
-    BatchInputPropertyCreate,
     BatchResponseProperty,
     BatchResponsePropertyWithErrors,
     CollectionResponsePropertyNoPaging,
-    PropertyCreate,
     PropertyUpdate,
 )
 ```
 
 Methods:
 
-- <code title="post /crm/properties/2026-03/{objectType}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">create</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/property.py">Property</a></code>
-- <code title="patch /crm/properties/2026-03/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">update</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/property.py">Property</a></code>
+- <code title="post /crm/properties/2026-03/{objectType}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">create</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
+- <code title="patch /crm/properties/2026-03/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">update</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 - <code title="get /crm/properties/2026-03/{objectType}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">list</a>(object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/collection_response_property_no_paging.py">CollectionResponsePropertyNoPaging</a></code>
 - <code title="delete /crm/properties/2026-03/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">delete</a>(property_name, \*, object_type) -> None</code>
-- <code title="get /crm/properties/2026-03/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">get</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/crm/property.py">Property</a></code>
+- <code title="get /crm/properties/2026-03/{objectType}/{propertyName}">client.crm.properties.<a href="./src/hubspot_sdk/resources/crm/properties/properties.py">get</a>(property_name, \*, object_type, \*\*<a href="src/hubspot_sdk/types/crm/property_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/property.py">Property</a></code>
 
 ### Batch
 

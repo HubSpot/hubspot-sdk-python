@@ -279,6 +279,7 @@ class CardsDevResource(SyncAPIResource):
         self,
         app_id: int,
         *,
+        allow_duplicate_app_card_ids: bool,
         app_card_id: int,
         legacy_crm_card_id: int,
         helpdesk_app_card_id: int | Omit = omit,
@@ -303,6 +304,7 @@ class CardsDevResource(SyncAPIResource):
             path_template("/crm/extensions/cards-dev/2026-03/{app_id}/views/migrate", app_id=app_id),
             body=maybe_transform(
                 {
+                    "allow_duplicate_app_card_ids": allow_duplicate_app_card_ids,
                     "app_card_id": app_card_id,
                     "legacy_crm_card_id": legacy_crm_card_id,
                     "helpdesk_app_card_id": helpdesk_app_card_id,
@@ -563,6 +565,7 @@ class AsyncCardsDevResource(AsyncAPIResource):
         self,
         app_id: int,
         *,
+        allow_duplicate_app_card_ids: bool,
         app_card_id: int,
         legacy_crm_card_id: int,
         helpdesk_app_card_id: int | Omit = omit,
@@ -587,6 +590,7 @@ class AsyncCardsDevResource(AsyncAPIResource):
             path_template("/crm/extensions/cards-dev/2026-03/{app_id}/views/migrate", app_id=app_id),
             body=await async_maybe_transform(
                 {
+                    "allow_duplicate_app_card_ids": allow_duplicate_app_card_ids,
                     "app_card_id": app_card_id,
                     "legacy_crm_card_id": legacy_crm_card_id,
                     "helpdesk_app_card_id": helpdesk_app_card_id,

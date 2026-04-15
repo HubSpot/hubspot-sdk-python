@@ -433,6 +433,7 @@ class TestMediaBridge:
             name="name",
             type="bool",
             calculation_formula="calculationFormula",
+            currency_property_name="currencyPropertyName",
             data_sensitivity="highly_sensitive",
             description="description",
             display_order=0,
@@ -440,6 +441,7 @@ class TestMediaBridge:
             form_field=True,
             has_unique_value=True,
             hidden=True,
+            number_display_hint="currency",
             options=[
                 {
                     "display_order": 0,
@@ -450,6 +452,7 @@ class TestMediaBridge:
                 }
             ],
             referenced_object_type="referencedObjectType",
+            show_currency_symbol=True,
         )
         assert_matches_type(Property, media_bridge, path=["response"])
 
@@ -1515,6 +1518,7 @@ class TestMediaBridge:
             app_id=0,
             object_type="objectType",
             calculation_formula="calculationFormula",
+            currency_property_name="currencyPropertyName",
             description="description",
             display_order=0,
             field_type="booleancheckbox",
@@ -1523,6 +1527,7 @@ class TestMediaBridge:
             has_unique_value=True,
             hidden=True,
             label="label",
+            number_display_hint="currency",
             options=[
                 {
                     "display_order": 0,
@@ -1532,6 +1537,7 @@ class TestMediaBridge:
                     "description": "description",
                 }
             ],
+            show_currency_symbol=True,
             type="bool",
         )
         assert_matches_type(Property, media_bridge, path=["response"])
@@ -2171,6 +2177,7 @@ class TestAsyncMediaBridge:
             name="name",
             type="bool",
             calculation_formula="calculationFormula",
+            currency_property_name="currencyPropertyName",
             data_sensitivity="highly_sensitive",
             description="description",
             display_order=0,
@@ -2178,6 +2185,7 @@ class TestAsyncMediaBridge:
             form_field=True,
             has_unique_value=True,
             hidden=True,
+            number_display_hint="currency",
             options=[
                 {
                     "display_order": 0,
@@ -2188,6 +2196,7 @@ class TestAsyncMediaBridge:
                 }
             ],
             referenced_object_type="referencedObjectType",
+            show_currency_symbol=True,
         )
         assert_matches_type(Property, media_bridge, path=["response"])
 
@@ -3253,6 +3262,7 @@ class TestAsyncMediaBridge:
             app_id=0,
             object_type="objectType",
             calculation_formula="calculationFormula",
+            currency_property_name="currencyPropertyName",
             description="description",
             display_order=0,
             field_type="booleancheckbox",
@@ -3261,6 +3271,7 @@ class TestAsyncMediaBridge:
             has_unique_value=True,
             hidden=True,
             label="label",
+            number_display_hint="currency",
             options=[
                 {
                     "display_order": 0,
@@ -3270,6 +3281,7 @@ class TestAsyncMediaBridge:
                     "description": "description",
                 }
             ],
+            show_currency_symbol=True,
             type="bool",
         )
         assert_matches_type(Property, media_bridge, path=["response"])

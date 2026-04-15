@@ -56,6 +56,8 @@ class InboundDBObjectType(BaseModel):
 
     object_type_id: str = FieldInfo(alias="objectTypeId")
 
+    object_type_id_string: str = FieldInfo(alias="objectTypeIdString")
+
     permissioning_type: Literal["ALL_OR_NONE", "DO_NOT_CHECK_PERMISSIONS", "EXPLICIT", "OWNER_BASED", "TEAM_BASED"] = (
         FieldInfo(alias="permissioningType")
     )

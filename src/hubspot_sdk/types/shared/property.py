@@ -6,9 +6,9 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .option import Option
 from ..._models import BaseModel
-from ..shared.option import Option
-from ..shared.property_modification_metadata import PropertyModificationMetadata
+from .property_modification_metadata import PropertyModificationMetadata
 
 __all__ = ["Property"]
 
@@ -119,6 +119,15 @@ class Property(BaseModel):
     modification_metadata: Optional[PropertyModificationMetadata] = FieldInfo(
         alias="modificationMetadata", default=None
     )
+
+    number_display_hint: Optional[
+        Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+    ] = FieldInfo(alias="numberDisplayHint", default=None)
+    """Hint for how a number property is displayed and validated in HubSpot's UI.
+
+    Can be: "unformatted", "formatted", "currency", "percentage", "duration", or
+    "probability".
+    """
 
     referenced_object_type: Optional[str] = FieldInfo(alias="referencedObjectType", default=None)
     """If this property is related to other object(s), they'll be listed here."""

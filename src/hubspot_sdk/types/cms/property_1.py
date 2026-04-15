@@ -40,6 +40,8 @@ class Property1(BaseModel):
 
     created_user_id: Optional[str] = FieldInfo(alias="createdUserId", default=None)
 
+    currency_property_name: Optional[str] = FieldInfo(alias="currencyPropertyName", default=None)
+
     data_sensitivity: Optional[Literal["highly_sensitive", "non_sensitive", "sensitive"]] = FieldInfo(
         alias="dataSensitivity", default=None
     )
@@ -63,6 +65,10 @@ class Property1(BaseModel):
     modification_metadata: Optional[PropertyModificationMetadata] = FieldInfo(
         alias="modificationMetadata", default=None
     )
+
+    number_display_hint: Optional[
+        Literal["currency", "duration", "formatted", "percentage", "probability", "unformatted"]
+    ] = FieldInfo(alias="numberDisplayHint", default=None)
 
     referenced_object_type: Optional[str] = FieldInfo(alias="referencedObjectType", default=None)
 

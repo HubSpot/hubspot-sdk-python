@@ -11,5 +11,13 @@ __all__ = ["DefinitionListParams"]
 
 class DefinitionListParams(TypedDict, total=False):
     business_unit_id: Annotated[int, PropertyInfo(alias="businessUnitId")]
+    """
+    An integer representing the ID of the business unit for which to retrieve
+    subscription definitions.
+    """
 
     include_translations: Annotated[bool, PropertyInfo(alias="includeTranslations")]
+    """
+    A boolean indicating whether to include translations of the communication
+    preferences definitions in the response.
+    """
