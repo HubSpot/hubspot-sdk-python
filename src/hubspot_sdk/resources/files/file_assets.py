@@ -8,6 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from ..._files import deepcopy_with_paths
 from ..._types import (
     Body,
     Omit,
@@ -20,7 +21,7 @@ from ..._types import (
     omit,
     not_given,
 )
-from ..._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
+from ..._utils import extract_files, path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -555,12 +556,13 @@ class FileAssetsResource(SyncAPIResource):
         """
         if not file_id:
             raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
-        body = deepcopy_minimal(
+        body = deepcopy_with_paths(
             {
                 "charset_hunch": charset_hunch,
                 "file": file,
                 "options": options,
-            }
+            },
+            [["file"]],
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
         # It should be noted that the actual Content-Type header that will be
@@ -724,7 +726,7 @@ class FileAssetsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        body = deepcopy_minimal(
+        body = deepcopy_with_paths(
             {
                 "charset_hunch": charset_hunch,
                 "file": file,
@@ -732,7 +734,8 @@ class FileAssetsResource(SyncAPIResource):
                 "folder_id": folder_id,
                 "folder_path": folder_path,
                 "options": options,
-            }
+            },
+            [["file"]],
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
         # It should be noted that the actual Content-Type header that will be
@@ -1253,12 +1256,13 @@ class AsyncFileAssetsResource(AsyncAPIResource):
         """
         if not file_id:
             raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
-        body = deepcopy_minimal(
+        body = deepcopy_with_paths(
             {
                 "charset_hunch": charset_hunch,
                 "file": file,
                 "options": options,
-            }
+            },
+            [["file"]],
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
         # It should be noted that the actual Content-Type header that will be
@@ -1422,7 +1426,7 @@ class AsyncFileAssetsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        body = deepcopy_minimal(
+        body = deepcopy_with_paths(
             {
                 "charset_hunch": charset_hunch,
                 "file": file,
@@ -1430,7 +1434,8 @@ class AsyncFileAssetsResource(AsyncAPIResource):
                 "folder_id": folder_id,
                 "folder_path": folder_path,
                 "options": options,
-            }
+            },
+            [["file"]],
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
         # It should be noted that the actual Content-Type header that will be
