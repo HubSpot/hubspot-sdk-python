@@ -12,10 +12,6 @@ __all__ = ["WebhookUpdateSettingsParams"]
 
 class WebhookUpdateSettingsParams(TypedDict, total=False):
     target_url: Required[Annotated[str, PropertyInfo(alias="targetUrl")]]
-    """
-    A publicly available URL for Hubspot to call where event payloads will be
-    delivered. See [link-so-some-doc](#) for details about the format of these event
-    payloads.
-    """
+    """The URL to which webhook events will be sent. It is a string."""
 
     throttling: Required[ThrottlingSettingsParam]

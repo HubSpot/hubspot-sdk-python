@@ -24,8 +24,10 @@ class FolderListParams(TypedDict, total=False):
     """Whether to return only results that have been archived."""
 
     created_after: Annotated[Union[str, datetime], PropertyInfo(alias="createdAfter", format="iso8601")]
+    """Filter folders created after the specified date and time."""
 
     created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
+    """Filter folders by their exact creation date and time."""
 
     created_before: Annotated[Union[str, datetime], PropertyInfo(alias="createdBefore", format="iso8601")]
 
@@ -33,6 +35,7 @@ class FolderListParams(TypedDict, total=False):
     """The maximum number of results to display per page."""
 
     property: str
+    """Specify a property to include in the response."""
 
     sort: SequenceNotStr[str]
 

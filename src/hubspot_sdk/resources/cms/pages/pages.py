@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-
 import httpx
 
 from .batch import (
@@ -23,8 +20,8 @@ from .folders import (
     FoldersResourceWithStreamingResponse,
     AsyncFoldersResourceWithStreamingResponse,
 )
-from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import path_template, maybe_transform, async_maybe_transform
+from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from ...._utils import path_template, maybe_transform
 from .a_b_tests import (
     ABTestsResource,
     AsyncABTestsResource,
@@ -41,16 +38,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....types.cms import (
-    page_get_site_pages_params,
-    page_get_landing_pages_params,
-    page_get_site_pages_by_query_params,
-    page_get_landing_page_folders_params,
-    page_list_site_page_revisions_params,
-    page_get_landing_pages_by_query_params,
-    page_list_landing_page_revisions_params,
-    page_get_landing_page_folders_by_query_params,
-)
+from ....types.cms import page_list_site_page_revisions_params, page_list_landing_page_revisions_params
 from ....pagination import SyncPage, AsyncPage
 from .landing_pages import (
     LandingPagesResource,
@@ -127,138 +115,6 @@ class PagesResource(SyncAPIResource):
         """
         return PagesResourceWithStreamingResponse(self)
 
-    def get_landing_page_folders(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/cms/pages/2026-03/landing-pages/folders/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_landing_page_folders_params.PageGetLandingPageFoldersParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    def get_landing_page_folders_by_query(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/cms/pages/2026-03/landing-pages/folders/cursor/query",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_landing_page_folders_by_query_params.PageGetLandingPageFoldersByQueryParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
     def get_landing_page_revision(
         self,
         revision_id: str,
@@ -300,138 +156,6 @@ class PagesResource(SyncAPIResource):
             cast_to=PageVersion,
         )
 
-    def get_landing_pages(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/cms/pages/2026-03/landing-pages/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_landing_pages_params.PageGetLandingPagesParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    def get_landing_pages_by_query(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/cms/pages/2026-03/landing-pages/cursor/query",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_landing_pages_by_query_params.PageGetLandingPagesByQueryParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
     def get_site_page_revision(
         self,
         revision_id: str,
@@ -470,138 +194,6 @@ class PagesResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=PageVersion,
-        )
-
-    def get_site_pages(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/cms/pages/2026-03/site-pages/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_site_pages_params.PageGetSitePagesParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    def get_site_pages_by_query(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/cms/pages/2026-03/site-pages/cursor/query",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_site_pages_by_query_params.PageGetSitePagesByQueryParams,
-                ),
-            ),
-            cast_to=object,
         )
 
     def list_landing_page_revisions(
@@ -950,138 +542,6 @@ class AsyncPagesResource(AsyncAPIResource):
         """
         return AsyncPagesResourceWithStreamingResponse(self)
 
-    async def get_landing_page_folders(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/cms/pages/2026-03/landing-pages/folders/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_landing_page_folders_params.PageGetLandingPageFoldersParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    async def get_landing_page_folders_by_query(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/cms/pages/2026-03/landing-pages/folders/cursor/query",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_landing_page_folders_by_query_params.PageGetLandingPageFoldersByQueryParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
     async def get_landing_page_revision(
         self,
         revision_id: str,
@@ -1123,138 +583,6 @@ class AsyncPagesResource(AsyncAPIResource):
             cast_to=PageVersion,
         )
 
-    async def get_landing_pages(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/cms/pages/2026-03/landing-pages/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_landing_pages_params.PageGetLandingPagesParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    async def get_landing_pages_by_query(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/cms/pages/2026-03/landing-pages/cursor/query",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_landing_pages_by_query_params.PageGetLandingPagesByQueryParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
     async def get_site_page_revision(
         self,
         revision_id: str,
@@ -1293,138 +621,6 @@ class AsyncPagesResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=PageVersion,
-        )
-
-    async def get_site_pages(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/cms/pages/2026-03/site-pages/cursor",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_site_pages_params.PageGetSitePagesParams,
-                ),
-            ),
-            cast_to=object,
-        )
-
-    async def get_site_pages_by_query(
-        self,
-        *,
-        after: str | Omit = omit,
-        archived: bool | Omit = omit,
-        created_after: Union[str, datetime] | Omit = omit,
-        created_at: Union[str, datetime] | Omit = omit,
-        created_before: Union[str, datetime] | Omit = omit,
-        limit: int | Omit = omit,
-        property: str | Omit = omit,
-        sort: SequenceNotStr[str] | Omit = omit,
-        updated_after: Union[str, datetime] | Omit = omit,
-        updated_at: Union[str, datetime] | Omit = omit,
-        updated_before: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
-        """
-        Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
-
-          archived: Whether to return only results that have been archived.
-
-          limit: The maximum number of results to display per page.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/cms/pages/2026-03/site-pages/cursor/query",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "after": after,
-                        "archived": archived,
-                        "created_after": created_after,
-                        "created_at": created_at,
-                        "created_before": created_before,
-                        "limit": limit,
-                        "property": property,
-                        "sort": sort,
-                        "updated_after": updated_after,
-                        "updated_at": updated_at,
-                        "updated_before": updated_before,
-                    },
-                    page_get_site_pages_by_query_params.PageGetSitePagesByQueryParams,
-                ),
-            ),
-            cast_to=object,
         )
 
     def list_landing_page_revisions(
@@ -1733,29 +929,11 @@ class PagesResourceWithRawResponse:
     def __init__(self, pages: PagesResource) -> None:
         self._pages = pages
 
-        self.get_landing_page_folders = to_raw_response_wrapper(
-            pages.get_landing_page_folders,
-        )
-        self.get_landing_page_folders_by_query = to_raw_response_wrapper(
-            pages.get_landing_page_folders_by_query,
-        )
         self.get_landing_page_revision = to_raw_response_wrapper(
             pages.get_landing_page_revision,
         )
-        self.get_landing_pages = to_raw_response_wrapper(
-            pages.get_landing_pages,
-        )
-        self.get_landing_pages_by_query = to_raw_response_wrapper(
-            pages.get_landing_pages_by_query,
-        )
         self.get_site_page_revision = to_raw_response_wrapper(
             pages.get_site_page_revision,
-        )
-        self.get_site_pages = to_raw_response_wrapper(
-            pages.get_site_pages,
-        )
-        self.get_site_pages_by_query = to_raw_response_wrapper(
-            pages.get_site_pages_by_query,
         )
         self.list_landing_page_revisions = to_raw_response_wrapper(
             pages.list_landing_page_revisions,
@@ -1808,29 +986,11 @@ class AsyncPagesResourceWithRawResponse:
     def __init__(self, pages: AsyncPagesResource) -> None:
         self._pages = pages
 
-        self.get_landing_page_folders = async_to_raw_response_wrapper(
-            pages.get_landing_page_folders,
-        )
-        self.get_landing_page_folders_by_query = async_to_raw_response_wrapper(
-            pages.get_landing_page_folders_by_query,
-        )
         self.get_landing_page_revision = async_to_raw_response_wrapper(
             pages.get_landing_page_revision,
         )
-        self.get_landing_pages = async_to_raw_response_wrapper(
-            pages.get_landing_pages,
-        )
-        self.get_landing_pages_by_query = async_to_raw_response_wrapper(
-            pages.get_landing_pages_by_query,
-        )
         self.get_site_page_revision = async_to_raw_response_wrapper(
             pages.get_site_page_revision,
-        )
-        self.get_site_pages = async_to_raw_response_wrapper(
-            pages.get_site_pages,
-        )
-        self.get_site_pages_by_query = async_to_raw_response_wrapper(
-            pages.get_site_pages_by_query,
         )
         self.list_landing_page_revisions = async_to_raw_response_wrapper(
             pages.list_landing_page_revisions,
@@ -1883,29 +1043,11 @@ class PagesResourceWithStreamingResponse:
     def __init__(self, pages: PagesResource) -> None:
         self._pages = pages
 
-        self.get_landing_page_folders = to_streamed_response_wrapper(
-            pages.get_landing_page_folders,
-        )
-        self.get_landing_page_folders_by_query = to_streamed_response_wrapper(
-            pages.get_landing_page_folders_by_query,
-        )
         self.get_landing_page_revision = to_streamed_response_wrapper(
             pages.get_landing_page_revision,
         )
-        self.get_landing_pages = to_streamed_response_wrapper(
-            pages.get_landing_pages,
-        )
-        self.get_landing_pages_by_query = to_streamed_response_wrapper(
-            pages.get_landing_pages_by_query,
-        )
         self.get_site_page_revision = to_streamed_response_wrapper(
             pages.get_site_page_revision,
-        )
-        self.get_site_pages = to_streamed_response_wrapper(
-            pages.get_site_pages,
-        )
-        self.get_site_pages_by_query = to_streamed_response_wrapper(
-            pages.get_site_pages_by_query,
         )
         self.list_landing_page_revisions = to_streamed_response_wrapper(
             pages.list_landing_page_revisions,
@@ -1958,29 +1100,11 @@ class AsyncPagesResourceWithStreamingResponse:
     def __init__(self, pages: AsyncPagesResource) -> None:
         self._pages = pages
 
-        self.get_landing_page_folders = async_to_streamed_response_wrapper(
-            pages.get_landing_page_folders,
-        )
-        self.get_landing_page_folders_by_query = async_to_streamed_response_wrapper(
-            pages.get_landing_page_folders_by_query,
-        )
         self.get_landing_page_revision = async_to_streamed_response_wrapper(
             pages.get_landing_page_revision,
         )
-        self.get_landing_pages = async_to_streamed_response_wrapper(
-            pages.get_landing_pages,
-        )
-        self.get_landing_pages_by_query = async_to_streamed_response_wrapper(
-            pages.get_landing_pages_by_query,
-        )
         self.get_site_page_revision = async_to_streamed_response_wrapper(
             pages.get_site_page_revision,
-        )
-        self.get_site_pages = async_to_streamed_response_wrapper(
-            pages.get_site_pages,
-        )
-        self.get_site_pages_by_query = async_to_streamed_response_wrapper(
-            pages.get_site_pages_by_query,
         )
         self.list_landing_page_revisions = async_to_streamed_response_wrapper(
             pages.list_landing_page_revisions,

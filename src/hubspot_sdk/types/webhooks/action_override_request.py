@@ -18,18 +18,18 @@ class ActionOverrideRequest(BaseModel):
 
     list_ids: Optional[List[int]] = FieldInfo(alias="listIds", default=None)
     """
-    An array of integers representing list IDs that are affected by the action
-    override. These IDs are in int64 format.
+    An array of integers representing list IDs that are associated with the action
+    override. The integers are in int64 format.
     """
 
     object_ids: Optional[List[int]] = FieldInfo(alias="objectIds", default=None)
     """
     An array of integers, each representing an object ID for which the action
-    override is applicable. These IDs are in int64 format.
+    override is applicable. The integers are in int64 format.
     """
 
     properties: Optional[List[str]] = None
-    """
-    An array of strings representing specific properties to be overridden in the
-    action. Each entry in the array corresponds to a property name.
+    """An array of strings representing the properties to be overridden in the action.
+
+    Each string corresponds to a property name.
     """

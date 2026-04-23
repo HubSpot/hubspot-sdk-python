@@ -1,7 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import Dict, List, Union, Optional
 from typing_extensions import TypeAlias
 
@@ -9,6 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .public_action_labels import PublicActionLabels
+from .output_field_definition import OutputFieldDefinition
 from .public_input_field_definition import PublicInputFieldDefinition
 from .public_object_request_options import PublicObjectRequestOptions
 from .public_single_field_dependency import PublicSingleFieldDependency
@@ -48,7 +47,4 @@ class PublicActionDefinition(BaseModel):
 
     object_request_options: Optional[PublicObjectRequestOptions] = FieldInfo(alias="objectRequestOptions", default=None)
 
-    output_fields: Optional[List["OutputFieldDefinition"]] = FieldInfo(alias="outputFields", default=None)
-
-
-from .output_field_definition import OutputFieldDefinition
+    output_fields: Optional[List[OutputFieldDefinition]] = FieldInfo(alias="outputFields", default=None)

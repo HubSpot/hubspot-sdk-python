@@ -13,5 +13,5 @@ class WebhookGetEarliestJournalEntryParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
     """The ID of the portal installation to filter the journal entries.
 
-    This is an integer value.
+    It is an integer.
     """

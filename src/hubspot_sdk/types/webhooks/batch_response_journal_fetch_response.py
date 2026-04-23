@@ -18,8 +18,8 @@ class BatchResponseJournalFetchResponse(BaseModel):
 
     results: List[JournalFetchResponse]
     """
-    An array of journal fetch responses, each containing details about individual
-    journal entries.
+    An array of results from the batch operation, each represented as a
+    JournalFetchResponse object.
     """
 
     started_at: datetime = FieldInfo(alias="startedAt")
@@ -32,10 +32,7 @@ class BatchResponseJournalFetchResponse(BaseModel):
     """
 
     links: Optional[Dict[str, str]] = None
-    """
-    A map of link names to associated URIs, providing additional resources or
-    documentation related to the batch operation.
-    """
+    """A map of link names to associated URIs related to the batch operation."""
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)
     """The date and time when the batch operation was requested, in ISO 8601 format."""

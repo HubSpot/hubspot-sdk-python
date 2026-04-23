@@ -227,7 +227,13 @@ class FoldersResource(SyncAPIResource):
 
           archived: Whether to return only results that have been archived.
 
+          created_after: Filter folders created after the specified date and time.
+
+          created_at: Filter folders by their exact creation date and time.
+
           limit: The maximum number of results to display per page.
+
+          property: Specify a property to include in the response.
 
           extra_headers: Send extra headers
 
@@ -722,7 +728,13 @@ class AsyncFoldersResource(AsyncAPIResource):
 
           archived: Whether to return only results that have been archived.
 
+          created_after: Filter folders created after the specified date and time.
+
+          created_at: Filter folders by their exact creation date and time.
+
           limit: The maximum number of results to display per page.
+
+          property: Specify a property to include in the response.
 
           extra_headers: Send extra headers
 

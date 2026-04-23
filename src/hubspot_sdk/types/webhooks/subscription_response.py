@@ -13,7 +13,10 @@ __all__ = ["SubscriptionResponse"]
 
 class SubscriptionResponse(BaseModel):
     id: str
-    """The unique identifier for the subscription, represented as an integer."""
+    """The unique identifier for the subscription.
+
+    It is an integer formatted as int64.
+    """
 
     active: bool
     """A boolean indicating whether the subscription is currently active."""
@@ -73,21 +76,21 @@ class SubscriptionResponse(BaseModel):
     ] = FieldInfo(alias="eventType")
     """The type of event that triggers the subscription.
 
-    Valid values include various object changes such as 'contact.propertyChange',
-    'deal.creation', and 'ticket.deletion'.
+    Valid values include various property changes, creations, deletions, merges,
+    restores, and association changes for different HubSpot objects.
     """
 
     event_type_name: Optional[str] = FieldInfo(alias="eventTypeName", default=None)
-    """A descriptive name for the event type."""
+    """The name of the event type for the subscription."""
 
     object_type_id: Optional[str] = FieldInfo(alias="objectTypeId", default=None)
-    """
-    The identifier for the object type associated with the subscription, represented
-    as a string.
+    """The identifier for the object type associated with the subscription.
+
+    It is a string.
     """
 
     property_name: Optional[str] = FieldInfo(alias="propertyName", default=None)
-    """The name of the property associated with the event, if applicable."""
+    """The name of the property associated with the subscription event, if applicable."""
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """The date and time when the subscription was last updated, in ISO 8601 format."""

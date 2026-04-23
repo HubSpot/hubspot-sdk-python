@@ -51,7 +51,6 @@ from .record_limit_response import RecordLimitResponse as RecordLimitResponse
 from .usage_for_object_type import UsageForObjectType as UsageForObjectType
 from .at_limit_record_sample import AtLimitRecordSample as AtLimitRecordSample
 from .flags_for_app_response import FlagsForAppResponse as FlagsForAppResponse
-from .object_type_definition import ObjectTypeDefinition as ObjectTypeDefinition
 from .pipeline_create_params import PipelineCreateParams as PipelineCreateParams
 from .pipeline_delete_params import PipelineDeleteParams as PipelineDeleteParams
 from .pipeline_update_params import PipelineUpdateParams as PipelineUpdateParams
@@ -143,6 +142,7 @@ from .public_unified_events_filter import PublicUnifiedEventsFilter as PublicUni
 from .timeline_create_event_params import TimelineCreateEventParams as TimelineCreateEventParams
 from .timeline_event_i_frame_param import TimelineEventIFrameParam as TimelineEventIFrameParam
 from .app_event_resolution_response import AppEventResolutionResponse as AppEventResolutionResponse
+from .limits_object_type_definition import LimitsObjectTypeDefinition as LimitsObjectTypeDefinition
 from .list_create_id_mapping_params import ListCreateIDMappingParams as ListCreateIDMappingParams
 from .public_association_spec_param import PublicAssociationSpecParam as PublicAssociationSpecParam
 from .public_deal_split_input_param import PublicDealSplitInputParam as PublicDealSplitInputParam

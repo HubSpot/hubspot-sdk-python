@@ -12,3 +12,4 @@ class LandingPageGetParams(TypedDict, total=False):
     """Whether to return only results that have been archived."""
 
     property: str
+    """A specific property of the landing page to include in the response."""

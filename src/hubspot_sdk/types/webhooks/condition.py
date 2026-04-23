@@ -12,7 +12,10 @@ __all__ = ["Condition"]
 
 class Condition(BaseModel):
     filter_type: Literal["CRM_OBJECT_PROPERTY"] = FieldInfo(alias="filterType")
-    """A string representing the type of filter. Valid value is 'CRM_OBJECT_PROPERTY'."""
+    """A string indicating the type of filter being applied.
+
+    Valid value is 'CRM_OBJECT_PROPERTY'.
+    """
 
     operator: Literal[
         "CONTAINS",
@@ -29,23 +32,26 @@ class Condition(BaseModel):
         "NOT_IN",
         "STARTS_WITH",
     ]
-    """A string indicating the operation to apply for filtering.
+    """A string specifying the operation to be performed in the condition.
 
     Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS',
     'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
     """
 
     property: str
-    """A string specifying the property of the CRM object to be filtered."""
+    """
+    A string representing the specific property of the CRM object that the condition
+    applies to.
+    """
 
     value: Optional[str] = None
     """
-    A string representing the value to compare against the specified property when
-    filtering.
+    A string representing the value to be compared against the specified property
+    when using single-value operators.
     """
 
     values: Optional[List[str]] = None
     """
-    An array of strings, each representing a value to be used in the filtering
-    operation.
+    An array of strings used to specify multiple values for comparison when using
+    operators that support multiple values, such as 'IN' or 'NOT_IN'.
     """

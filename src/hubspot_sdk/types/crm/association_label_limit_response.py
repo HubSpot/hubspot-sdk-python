@@ -5,7 +5,7 @@ from typing import List
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from .object_type_definition import ObjectTypeDefinition
+from .limits_object_type_definition import LimitsObjectTypeDefinition
 
 __all__ = ["AssociationLabelLimitResponse"]
 
@@ -14,7 +14,7 @@ class AssociationLabelLimitResponse(BaseModel):
     all_labels: List[str] = FieldInfo(alias="allLabels")
     """A list of all association labels."""
 
-    from_object_type: ObjectTypeDefinition = FieldInfo(alias="fromObjectType")
+    from_object_type: LimitsObjectTypeDefinition = FieldInfo(alias="fromObjectType")
 
     limit: int
     """The maximum number of association labels allowed."""
@@ -22,7 +22,7 @@ class AssociationLabelLimitResponse(BaseModel):
     percentage: float
     """The percentage of the association label limit that has been used."""
 
-    to_object_type: ObjectTypeDefinition = FieldInfo(alias="toObjectType")
+    to_object_type: LimitsObjectTypeDefinition = FieldInfo(alias="toObjectType")
 
     usage: int
     """The current number of association labels used."""

@@ -57,6 +57,8 @@ class ChirpAIContextObjectParam(TypedDict, total=False):
 
     compliance_ids: Annotated[ComplianceIDsParam, PropertyInfo(alias="complianceIds")]
 
+    conversation_id: Annotated[str, PropertyInfo(alias="conversationId")]
+
     feature_id: Annotated[str, PropertyInfo(alias="featureId")]
     """The identifier for the feature associated with the context."""
 

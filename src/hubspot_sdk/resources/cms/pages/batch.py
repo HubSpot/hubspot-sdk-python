@@ -246,8 +246,8 @@ class BatchResource(SyncAPIResource):
     ) -> None:
         """Delete a batch of website pages as specified in the request body.
 
-        Note: this is
-        not the same as the dashboard `archive` function. To perform a dashboard
+        Note that this
+        is not the same as the dashboard `archive` function. To perform a dashboard
         `archive` send an normal update with the `archivedInDashboard` field set to
         `true`.
 
@@ -698,8 +698,8 @@ class AsyncBatchResource(AsyncAPIResource):
     ) -> None:
         """Delete a batch of website pages as specified in the request body.
 
-        Note: this is
-        not the same as the dashboard `archive` function. To perform a dashboard
+        Note that this
+        is not the same as the dashboard `archive` function. To perform a dashboard
         `archive` send an normal update with the `archivedInDashboard` field set to
         `true`.
 

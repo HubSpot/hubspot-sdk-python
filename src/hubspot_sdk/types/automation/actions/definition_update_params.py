@@ -8,6 +8,7 @@ from typing_extensions import Required, Annotated, TypeAlias, TypedDict
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 from ..public_action_labels_param import PublicActionLabelsParam
+from ..output_field_definition_param import OutputFieldDefinitionParam
 from ..public_input_field_definition_param import PublicInputFieldDefinitionParam
 from ..public_object_request_options_param import PublicObjectRequestOptionsParam
 from ..public_single_field_dependency_param import PublicSingleFieldDependencyParam
@@ -36,12 +37,10 @@ class DefinitionUpdateParams(TypedDict, total=False):
 
     object_types: Annotated[SequenceNotStr[str], PropertyInfo(alias="objectTypes")]
 
-    output_fields: Annotated[Iterable["OutputFieldDefinitionParam"], PropertyInfo(alias="outputFields")]
+    output_fields: Annotated[Iterable[OutputFieldDefinitionParam], PropertyInfo(alias="outputFields")]
 
     published: bool
     """Indicates whether the action is published and available for use."""
 
 
 InputFieldDependency: TypeAlias = Union[PublicSingleFieldDependencyParam, PublicConditionalSingleFieldDependencyParam]
-
-from ..output_field_definition_param import OutputFieldDefinitionParam

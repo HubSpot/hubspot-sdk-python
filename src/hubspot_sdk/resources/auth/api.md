@@ -5,7 +5,12 @@
 Types:
 
 ```python
-from hubspot_sdk.types.auth import TokenInfoResponseBaseIf
+from hubspot_sdk.types.auth import (
+    PublicAccessTokenInfoResponse,
+    PublicRefreshTokenInfoResponse,
+    SignedAccessToken,
+    TokenInfoResponseBaseIf,
+)
 ```
 
 Methods:

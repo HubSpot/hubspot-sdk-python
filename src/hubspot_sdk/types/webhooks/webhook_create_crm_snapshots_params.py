@@ -17,5 +17,5 @@ class WebhookCreateCrmSnapshotsParams(TypedDict, total=False):
     ]
     """
     An array of CrmObjectSnapshotRequest objects, each representing a request to
-    capture a snapshot of a specific CRM object. This property is required.
+    create a snapshot for a specific CRM object. This property is required.
     """
