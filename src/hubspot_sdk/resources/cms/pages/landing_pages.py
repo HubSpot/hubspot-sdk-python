@@ -2478,20 +2478,36 @@ class LandingPagesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[PageData]:
-        """Get the list of landing pages.
+        """Retrieve a list of landing pages in your HubSpot account.
 
-        Supports paging and filtering. This method would
-        be useful for an integration that examined these models and used an external
-        service to suggest edits.
+        This endpoint allows
+        you to filter landing pages based on creation and update timestamps, sort them,
+        and paginate through results. You can also choose to include archived pages or
+        specify certain properties to be included in the response.
 
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
+          after: A cursor token for pagination. Use the value from the previous response's
+              paging.next.after field.
 
           archived: Whether to return only results that have been archived.
 
+          created_after: Filter landing pages created after a specific date and time.
+
+          created_at: Filter landing pages by their creation timestamp.
+
+          created_before: Filter landing pages created before a specific date and time.
+
           limit: The maximum number of results to display per page.
+
+          property: Specify which properties of the landing pages to include in the response.
+
+          sort: Specify the order in which results are returned. Accepts an array of strings.
+
+          updated_after: Filter landing pages updated after a specific date and time.
+
+          updated_at: Filter landing pages by their last updated timestamp.
+
+          updated_before: Filter landing pages updated before a specific date and time.
 
           extra_headers: Send extra headers
 
@@ -2631,6 +2647,8 @@ class LandingPagesResource(SyncAPIResource):
 
         Args:
           archived: Whether to return only results that have been archived.
+
+          property: A specific property of the landing page to include in the response.
 
           extra_headers: Send extra headers
 
@@ -6447,20 +6465,36 @@ class AsyncLandingPagesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PageData, AsyncPage[PageData]]:
-        """Get the list of landing pages.
+        """Retrieve a list of landing pages in your HubSpot account.
 
-        Supports paging and filtering. This method would
-        be useful for an integration that examined these models and used an external
-        service to suggest edits.
+        This endpoint allows
+        you to filter landing pages based on creation and update timestamps, sort them,
+        and paginate through results. You can also choose to include archived pages or
+        specify certain properties to be included in the response.
 
         Args:
-          after: The paging cursor token of the last successfully read resource will be returned
-              as the `paging.next.after` JSON property of a paged response containing more
-              results.
+          after: A cursor token for pagination. Use the value from the previous response's
+              paging.next.after field.
 
           archived: Whether to return only results that have been archived.
 
+          created_after: Filter landing pages created after a specific date and time.
+
+          created_at: Filter landing pages by their creation timestamp.
+
+          created_before: Filter landing pages created before a specific date and time.
+
           limit: The maximum number of results to display per page.
+
+          property: Specify which properties of the landing pages to include in the response.
+
+          sort: Specify the order in which results are returned. Accepts an array of strings.
+
+          updated_after: Filter landing pages updated after a specific date and time.
+
+          updated_at: Filter landing pages by their last updated timestamp.
+
+          updated_before: Filter landing pages updated before a specific date and time.
 
           extra_headers: Send extra headers
 
@@ -6602,6 +6636,8 @@ class AsyncLandingPagesResource(AsyncAPIResource):
 
         Args:
           archived: Whether to return only results that have been archived.
+
+          property: A specific property of the landing page to include in the response.
 
           extra_headers: Send extra headers
 

@@ -11,6 +11,6 @@ __all__ = ["SubscriptionListResponse"]
 class SubscriptionListResponse(BaseModel):
     results: List[SubscriptionResponse]
     """
-    An array of SubscriptionResponse objects, each representing a subscription
-    associated with the app. This property is required.
+    An array of subscription responses, each detailing a specific subscription's
+    properties and status.
     """

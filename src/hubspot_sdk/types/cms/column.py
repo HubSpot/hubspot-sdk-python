@@ -6,10 +6,10 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .option import Option
 from ..._models import BaseModel
 from .foreign_id import ForeignID
 from .simple_user import SimpleUser
+from .hubdb_option import HubdbOption
 
 __all__ = ["Column"]
 
@@ -82,7 +82,7 @@ class Column(BaseModel):
     option_count: Optional[int] = FieldInfo(alias="optionCount", default=None)
     """Number of options available"""
 
-    options: Optional[List[Option]] = None
+    options: Optional[List[HubdbOption]] = None
     """Options to choose for select and multi-select columns"""
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)

@@ -9,7 +9,7 @@ __all__ = ["SubscriptionBatchUpdateRequestParam"]
 
 class SubscriptionBatchUpdateRequestParam(TypedDict, total=False):
     id: Required[int]
-    """The unique identifier for the subscription to be updated. It is an integer."""
+    """The unique identifier for the subscription. It is an integer."""
 
     active: Required[bool]
     """A boolean indicating whether the subscription is active."""

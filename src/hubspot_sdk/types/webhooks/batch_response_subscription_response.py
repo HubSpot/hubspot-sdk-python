@@ -18,8 +18,8 @@ class BatchResponseSubscriptionResponse(BaseModel):
 
     results: List[SubscriptionResponse]
     """
-    An array of SubscriptionResponse objects, each representing the result of an
-    individual subscription update within the batch operation.
+    An array containing the results of the batch operation, with each item
+    representing an individual subscription response.
     """
 
     started_at: datetime = FieldInfo(alias="startedAt")
@@ -33,8 +33,8 @@ class BatchResponseSubscriptionResponse(BaseModel):
 
     links: Optional[Dict[str, str]] = None
     """
-    A map of link names to associated URIs, providing additional information or
-    resources related to the batch operation.
+    A map of link names to associated URIs providing additional information about
+    the batch operation.
     """
 
     requested_at: Optional[datetime] = FieldInfo(alias="requestedAt", default=None)

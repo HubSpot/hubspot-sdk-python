@@ -38,14 +38,12 @@ from ...types.files import (
     file_asset_update_params,
     file_asset_upload_params,
     file_asset_replace_params,
-    file_asset_get_by_path_params,
     file_asset_get_signed_url_params,
     file_asset_import_from_url_async_params,
 )
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.files.file import File
 from ...types.files.folder import Folder
-from ...types.files.file_stat import FileStat
 from ...types.files.signed_url import SignedURL
 from ...types.files.file_action_response import FileActionResponse
 from ...types.files.import_from_url_task_locator import ImportFromURLTaskLocator
@@ -304,46 +302,6 @@ class FileAssetsResource(SyncAPIResource):
                 query=maybe_transform({"properties": properties}, file_asset_get_params.FileAssetGetParams),
             ),
             cast_to=File,
-        )
-
-    def get_by_path(
-        self,
-        path: str,
-        *,
-        properties: SequenceNotStr[str] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> FileStat:
-        """
-        Retrieve a file by its path.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        return self._get(
-            path_template("/files/2026-03/files/stat/{path}", path=path),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {"properties": properties}, file_asset_get_by_path_params.FileAssetGetByPathParams
-                ),
-            ),
-            cast_to=FileStat,
         )
 
     def get_import_task_status(
@@ -1006,46 +964,6 @@ class AsyncFileAssetsResource(AsyncAPIResource):
             cast_to=File,
         )
 
-    async def get_by_path(
-        self,
-        path: str,
-        *,
-        properties: SequenceNotStr[str] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> FileStat:
-        """
-        Retrieve a file by its path.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        return await self._get(
-            path_template("/files/2026-03/files/stat/{path}", path=path),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"properties": properties}, file_asset_get_by_path_params.FileAssetGetByPathParams
-                ),
-            ),
-            cast_to=FileStat,
-        )
-
     async def get_import_task_status(
         self,
         task_id: str,
@@ -1472,9 +1390,6 @@ class FileAssetsResourceWithRawResponse:
         self.get = to_raw_response_wrapper(
             file_assets.get,
         )
-        self.get_by_path = to_raw_response_wrapper(
-            file_assets.get_by_path,
-        )
         self.get_import_task_status = to_raw_response_wrapper(
             file_assets.get_import_task_status,
         )
@@ -1513,9 +1428,6 @@ class AsyncFileAssetsResourceWithRawResponse:
         )
         self.get = async_to_raw_response_wrapper(
             file_assets.get,
-        )
-        self.get_by_path = async_to_raw_response_wrapper(
-            file_assets.get_by_path,
         )
         self.get_import_task_status = async_to_raw_response_wrapper(
             file_assets.get_import_task_status,
@@ -1556,9 +1468,6 @@ class FileAssetsResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             file_assets.get,
         )
-        self.get_by_path = to_streamed_response_wrapper(
-            file_assets.get_by_path,
-        )
         self.get_import_task_status = to_streamed_response_wrapper(
             file_assets.get_import_task_status,
         )
@@ -1597,9 +1506,6 @@ class AsyncFileAssetsResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             file_assets.get,
-        )
-        self.get_by_path = async_to_streamed_response_wrapper(
-            file_assets.get_by_path,
         )
         self.get_import_task_status = async_to_streamed_response_wrapper(
             file_assets.get_import_task_status,

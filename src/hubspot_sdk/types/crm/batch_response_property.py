@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.property import Property
+from ..shared.base_property import BaseProperty
 
 __all__ = ["BatchResponseProperty"]
 
@@ -16,7 +16,7 @@ class BatchResponseProperty(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
     """The timestamp indicating when the batch operation was completed."""
 
-    results: List[Property]
+    results: List[BaseProperty]
 
     started_at: datetime = FieldInfo(alias="startedAt")
     """The timestamp indicating when the batch operation began processing."""

@@ -31,7 +31,7 @@ class PublicRangedTimeOperationParam(TypedDict, total=False):
     lower_bound_time_point: Required[Annotated[LowerBoundTimePoint, PropertyInfo(alias="lowerBoundTimePoint")]]
     """Defines the lower bound time point for the operation."""
 
-    operation_type: Required[Annotated[str, PropertyInfo(alias="operationType")]]
+    operation_type: Required[Annotated[Literal["TIME_RANGED"], PropertyInfo(alias="operationType")]]
     """Specifies the type of operation (TIME_RANGED)."""
 
     operator: Required[str]

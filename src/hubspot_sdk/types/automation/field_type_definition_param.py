@@ -7,6 +7,7 @@ from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from ..._utils import PropertyInfo
 from .long_field_schema_param import LongFieldSchemaParam
+from .array_field_schema_param import ArrayFieldSchemaParam
 from .double_field_schema_param import DoubleFieldSchemaParam
 from .object_field_schema_param import ObjectFieldSchemaParam
 from .string_field_schema_param import StringFieldSchemaParam
@@ -22,7 +23,7 @@ Schema: TypeAlias = Union[
     DoubleFieldSchemaParam,
     StringFieldSchemaParam,
     BooleanFieldSchemaParam,
-    "ArrayFieldSchemaParam",
+    ArrayFieldSchemaParam,
     ObjectFieldSchemaParam,
 ]
 
@@ -273,6 +274,3 @@ class FieldTypeDefinitionParam(TypedDict, total=False):
     Indicates the type of object that the field references, with accepted values
     like OWNER.
     """
-
-
-from .array_field_schema_param import ArrayFieldSchemaParam

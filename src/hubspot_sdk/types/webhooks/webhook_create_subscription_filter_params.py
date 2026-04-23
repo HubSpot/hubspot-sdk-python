@@ -21,5 +21,5 @@ class WebhookCreateSubscriptionFilterParams(TypedDict, total=False):
     subscription_id: Required[Annotated[int, PropertyInfo(alias="subscriptionId")]]
     """The unique identifier of the subscription to which the filter will be applied.
 
-    It is an integer in int64 format.
+    It is an integer formatted as int64.
     """

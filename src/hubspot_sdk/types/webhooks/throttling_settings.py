@@ -9,4 +9,4 @@ __all__ = ["ThrottlingSettings"]
 
 class ThrottlingSettings(BaseModel):
     max_concurrent_requests: int = FieldInfo(alias="maxConcurrentRequests")
-    """The maximum number of concurrent requests allowed. It is an integer value."""
+    """The maximum number of concurrent requests allowed. This is an integer value."""

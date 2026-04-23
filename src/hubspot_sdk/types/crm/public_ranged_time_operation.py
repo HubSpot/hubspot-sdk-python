@@ -27,7 +27,7 @@ class PublicRangedTimeOperation(BaseModel):
     lower_bound_time_point: LowerBoundTimePoint = FieldInfo(alias="lowerBoundTimePoint")
     """Defines the lower bound time point for the operation."""
 
-    operation_type: str = FieldInfo(alias="operationType")
+    operation_type: Literal["TIME_RANGED"] = FieldInfo(alias="operationType")
     """Specifies the type of operation (TIME_RANGED)."""
 
     operator: str

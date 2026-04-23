@@ -11,10 +11,7 @@ __all__ = ["WebhookCreateEventSubscriptionParams"]
 
 class WebhookCreateEventSubscriptionParams(TypedDict, total=False):
     active: Required[bool]
-    """A boolean indicating whether the subscription is active.
-
-    This field is required.
-    """
+    """A boolean indicating whether the subscription is active."""
 
     event_type: Required[
         Annotated[
@@ -73,24 +70,21 @@ class WebhookCreateEventSubscriptionParams(TypedDict, total=False):
     ]
     """A string representing the type of event to subscribe to.
 
-    Valid values include various object changes such as 'contact.propertyChange',
-    'deal.creation', and 'conversation.newMessage'.
+    Valid values include various property changes, creations, deletions, merges,
+    restorations, association changes, and event completions.
     """
 
     event_type_name: Annotated[str, PropertyInfo(alias="eventTypeName")]
-    """A string that provides a human-readable name for the event type.
-
-    This is optional.
-    """
+    """A string providing a human-readable name for the event type."""
 
     object_type_id: Annotated[str, PropertyInfo(alias="objectTypeId")]
     """
-    A string representing the identifier of the object type for which the
-    subscription is being created. This is optional.
+    A string representing the ID of the object type associated with the
+    subscription.
     """
 
     property_name: Annotated[str, PropertyInfo(alias="propertyName")]
-    """A string indicating the name of the property that triggers the event.
-
-    This is optional and used when subscribing to property change events.
+    """
+    A string indicating the specific property name related to the event type, if
+    applicable.
     """

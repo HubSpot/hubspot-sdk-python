@@ -28,7 +28,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
 
@@ -39,7 +39,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
             name="name",
             path="path",
         )
@@ -52,7 +52,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
 
         assert response.is_closed is True
@@ -67,7 +67,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -85,7 +85,7 @@ class TestRows:
                 table_id_or_name="",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -261,7 +261,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -276,7 +276,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -295,7 +295,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         ) as response:
@@ -317,7 +317,7 @@ class TestRows:
                     {
                         "child_table_id": 0,
                         "display_index": 0,
-                        "values": {"foo": {}},
+                        "values": {"foo": {"foo": "bar"}},
                     }
                 ],
             )
@@ -645,7 +645,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -660,7 +660,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -679,7 +679,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         ) as response:
@@ -701,7 +701,7 @@ class TestRows:
                     {
                         "child_table_id": 0,
                         "display_index": 0,
-                        "values": {"foo": {}},
+                        "values": {"foo": {"foo": "bar"}},
                     }
                 ],
             )
@@ -714,7 +714,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
 
@@ -726,7 +726,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
             name="name",
             path="path",
         )
@@ -740,7 +740,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
 
         assert response.is_closed is True
@@ -756,7 +756,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -775,7 +775,7 @@ class TestRows:
                 table_id_or_name="",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `row_id` but received ''"):
@@ -784,7 +784,7 @@ class TestRows:
                 table_id_or_name="tableIdOrName",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -796,7 +796,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -811,7 +811,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -830,7 +830,7 @@ class TestRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         ) as response:
@@ -852,7 +852,7 @@ class TestRows:
                     {
                         "child_table_id": 0,
                         "display_index": 0,
-                        "values": {"foo": {}},
+                        "values": {"foo": {"foo": "bar"}},
                     }
                 ],
             )
@@ -865,7 +865,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
 
@@ -877,7 +877,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
             name="name",
             path="path",
         )
@@ -891,7 +891,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
 
         assert response.is_closed is True
@@ -907,7 +907,7 @@ class TestRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -926,7 +926,7 @@ class TestRows:
                 table_id_or_name="",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `row_id` but received ''"):
@@ -935,7 +935,7 @@ class TestRows:
                 table_id_or_name="tableIdOrName",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
 
@@ -951,7 +951,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
 
@@ -962,7 +962,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
             name="name",
             path="path",
         )
@@ -975,7 +975,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
 
         assert response.is_closed is True
@@ -990,7 +990,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1008,7 +1008,7 @@ class TestAsyncRows:
                 table_id_or_name="",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -1184,7 +1184,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -1199,7 +1199,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -1218,7 +1218,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         ) as response:
@@ -1240,7 +1240,7 @@ class TestAsyncRows:
                     {
                         "child_table_id": 0,
                         "display_index": 0,
-                        "values": {"foo": {}},
+                        "values": {"foo": {"foo": "bar"}},
                     }
                 ],
             )
@@ -1568,7 +1568,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -1583,7 +1583,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -1602,7 +1602,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         ) as response:
@@ -1624,7 +1624,7 @@ class TestAsyncRows:
                     {
                         "child_table_id": 0,
                         "display_index": 0,
-                        "values": {"foo": {}},
+                        "values": {"foo": {"foo": "bar"}},
                     }
                 ],
             )
@@ -1637,7 +1637,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
 
@@ -1649,7 +1649,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
             name="name",
             path="path",
         )
@@ -1663,7 +1663,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
 
         assert response.is_closed is True
@@ -1679,7 +1679,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1698,7 +1698,7 @@ class TestAsyncRows:
                 table_id_or_name="",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `row_id` but received ''"):
@@ -1707,7 +1707,7 @@ class TestAsyncRows:
                 table_id_or_name="tableIdOrName",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -1719,7 +1719,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -1734,7 +1734,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         )
@@ -1753,7 +1753,7 @@ class TestAsyncRows:
                 {
                     "child_table_id": 0,
                     "display_index": 0,
-                    "values": {"foo": {}},
+                    "values": {"foo": {"foo": "bar"}},
                 }
             ],
         ) as response:
@@ -1775,7 +1775,7 @@ class TestAsyncRows:
                     {
                         "child_table_id": 0,
                         "display_index": 0,
-                        "values": {"foo": {}},
+                        "values": {"foo": {"foo": "bar"}},
                     }
                 ],
             )
@@ -1788,7 +1788,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
         assert_matches_type(HubDBTableRowV3, row, path=["response"])
 
@@ -1800,7 +1800,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
             name="name",
             path="path",
         )
@@ -1814,7 +1814,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         )
 
         assert response.is_closed is True
@@ -1830,7 +1830,7 @@ class TestAsyncRows:
             table_id_or_name="tableIdOrName",
             child_table_id=0,
             display_index=0,
-            values={"foo": {}},
+            values={"foo": {"foo": "bar"}},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1849,7 +1849,7 @@ class TestAsyncRows:
                 table_id_or_name="",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `row_id` but received ''"):
@@ -1858,5 +1858,5 @@ class TestAsyncRows:
                 table_id_or_name="tableIdOrName",
                 child_table_id=0,
                 display_index=0,
-                values={"foo": {}},
+                values={"foo": {"foo": "bar"}},
             )

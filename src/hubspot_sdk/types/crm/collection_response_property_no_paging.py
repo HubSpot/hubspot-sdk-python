@@ -3,10 +3,10 @@
 from typing import List
 
 from ..._models import BaseModel
-from ..shared.property import Property
+from ..shared.base_property import BaseProperty
 
 __all__ = ["CollectionResponsePropertyNoPaging"]
 
 
 class CollectionResponsePropertyNoPaging(BaseModel):
-    results: List[Property]
+    results: List[BaseProperty]

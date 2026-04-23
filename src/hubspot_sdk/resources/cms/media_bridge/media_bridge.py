@@ -50,19 +50,19 @@ from ....types.cms import (
     media_bridge_create_media_played_percent_event_params,
 )
 from ...._base_client import make_request_options
-from ....types.cms.property import Property
 from ....types.cms.object_schema import ObjectSchema
 from ....types.cms.endpoints_param import EndpointsParam
 from ....types.shared.property_group import PropertyGroup
 from ....types.cms.media_played_event import MediaPlayedEvent
 from ....types.cms.attention_span_event import AttentionSpanEvent
+from ....types.cms.media_bridge_property import MediaBridgeProperty
 from ....types.shared_params.option_input import OptionInput
 from ....types.cms.event_visibility_change import EventVisibilityChange
 from ....types.cms.event_visibility_response import EventVisibilityResponse
-from ....types.shared.association_definition import AssociationDefinition
-from ....types.shared.object_type_definition import ObjectTypeDefinition
 from ....types.cms.object_definition_response import ObjectDefinitionResponse
 from ....types.cms.media_played_percentage_event import MediaPlayedPercentageEvent
+from ....types.shared.base_association_definition import BaseAssociationDefinition
+from ....types.shared.base_object_type_definition import BaseObjectTypeDefinition
 from ....types.cms.integrator_o_embed_domain_model import IntegratorOEmbedDomainModel
 from ....types.cms.o_embed_domains_collection_response import OEmbedDomainsCollectionResponse
 from ....types.cms.attention_span_calculated_values_param import AttentionSpanCalculatedValuesParam
@@ -114,7 +114,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssociationDefinition:
+    ) -> BaseAssociationDefinition:
         """
         Create a new association definition for the specified object type.
 
@@ -146,7 +146,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AssociationDefinition,
+            cast_to=BaseAssociationDefinition,
         )
 
     def create_attention_span_event(
@@ -469,7 +469,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> MediaBridgeProperty:
         """
         Create a new property for the specified media type
 
@@ -514,7 +514,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Property,
+            cast_to=MediaBridgeProperty,
         )
 
     def create_property_group(
@@ -574,7 +574,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssociationDefinition:
+    ) -> BaseAssociationDefinition:
         """
         Args:
           extra_headers: Send extra headers
@@ -590,7 +590,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AssociationDefinition,
+            cast_to=BaseAssociationDefinition,
         )
 
     def delete_association(
@@ -849,7 +849,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> MediaBridgeProperty:
         """
         Get the details for an existing property by name.
 
@@ -888,7 +888,7 @@ class MediaBridgeResource(SyncAPIResource):
                     media_bridge_get_property_params.MediaBridgeGetPropertyParams,
                 ),
             ),
-            cast_to=Property,
+            cast_to=MediaBridgeProperty,
         )
 
     def get_property_group(
@@ -1360,7 +1360,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> MediaBridgeProperty:
         """
         Update an existing property for an object type.
 
@@ -1406,7 +1406,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Property,
+            cast_to=MediaBridgeProperty,
         )
 
     def update_property_group(
@@ -1480,7 +1480,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ObjectTypeDefinition:
+    ) -> BaseObjectTypeDefinition:
         """
         Update the schema for an existing object type
 
@@ -1516,7 +1516,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ObjectTypeDefinition,
+            cast_to=BaseObjectTypeDefinition,
         )
 
     def update_settings(
@@ -1603,7 +1603,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssociationDefinition:
+    ) -> BaseAssociationDefinition:
         """
         Create a new association definition for the specified object type.
 
@@ -1635,7 +1635,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AssociationDefinition,
+            cast_to=BaseAssociationDefinition,
         )
 
     async def create_attention_span_event(
@@ -1958,7 +1958,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> MediaBridgeProperty:
         """
         Create a new property for the specified media type
 
@@ -2003,7 +2003,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Property,
+            cast_to=MediaBridgeProperty,
         )
 
     async def create_property_group(
@@ -2063,7 +2063,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssociationDefinition:
+    ) -> BaseAssociationDefinition:
         """
         Args:
           extra_headers: Send extra headers
@@ -2079,7 +2079,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AssociationDefinition,
+            cast_to=BaseAssociationDefinition,
         )
 
     async def delete_association(
@@ -2338,7 +2338,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> MediaBridgeProperty:
         """
         Get the details for an existing property by name.
 
@@ -2377,7 +2377,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
                     media_bridge_get_property_params.MediaBridgeGetPropertyParams,
                 ),
             ),
-            cast_to=Property,
+            cast_to=MediaBridgeProperty,
         )
 
     async def get_property_group(
@@ -2849,7 +2849,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> MediaBridgeProperty:
         """
         Update an existing property for an object type.
 
@@ -2895,7 +2895,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Property,
+            cast_to=MediaBridgeProperty,
         )
 
     async def update_property_group(
@@ -2969,7 +2969,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ObjectTypeDefinition:
+    ) -> BaseObjectTypeDefinition:
         """
         Update the schema for an existing object type
 
@@ -3005,7 +3005,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ObjectTypeDefinition,
+            cast_to=BaseObjectTypeDefinition,
         )
 
     async def update_settings(
