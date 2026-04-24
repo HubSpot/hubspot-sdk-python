@@ -59,10 +59,10 @@ from ....types.cms.media_bridge_property import MediaBridgeProperty
 from ....types.shared_params.option_input import OptionInput
 from ....types.cms.event_visibility_change import EventVisibilityChange
 from ....types.cms.event_visibility_response import EventVisibilityResponse
+from ....types.shared.association_definition import AssociationDefinition
+from ....types.shared.object_type_definition import ObjectTypeDefinition
 from ....types.cms.object_definition_response import ObjectDefinitionResponse
 from ....types.cms.media_played_percentage_event import MediaPlayedPercentageEvent
-from ....types.shared.base_association_definition import BaseAssociationDefinition
-from ....types.shared.base_object_type_definition import BaseObjectTypeDefinition
 from ....types.cms.integrator_o_embed_domain_model import IntegratorOEmbedDomainModel
 from ....types.cms.o_embed_domains_collection_response import OEmbedDomainsCollectionResponse
 from ....types.cms.attention_span_calculated_values_param import AttentionSpanCalculatedValuesParam
@@ -114,7 +114,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseAssociationDefinition:
+    ) -> AssociationDefinition:
         """
         Create a new association definition for the specified object type.
 
@@ -146,7 +146,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseAssociationDefinition,
+            cast_to=AssociationDefinition,
         )
 
     def create_attention_span_event(
@@ -574,7 +574,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseAssociationDefinition:
+    ) -> AssociationDefinition:
         """
         Args:
           extra_headers: Send extra headers
@@ -590,7 +590,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseAssociationDefinition,
+            cast_to=AssociationDefinition,
         )
 
     def delete_association(
@@ -1480,7 +1480,7 @@ class MediaBridgeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseObjectTypeDefinition:
+    ) -> ObjectTypeDefinition:
         """
         Update the schema for an existing object type
 
@@ -1516,7 +1516,7 @@ class MediaBridgeResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseObjectTypeDefinition,
+            cast_to=ObjectTypeDefinition,
         )
 
     def update_settings(
@@ -1603,7 +1603,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseAssociationDefinition:
+    ) -> AssociationDefinition:
         """
         Create a new association definition for the specified object type.
 
@@ -1635,7 +1635,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseAssociationDefinition,
+            cast_to=AssociationDefinition,
         )
 
     async def create_attention_span_event(
@@ -2063,7 +2063,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseAssociationDefinition:
+    ) -> AssociationDefinition:
         """
         Args:
           extra_headers: Send extra headers
@@ -2079,7 +2079,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseAssociationDefinition,
+            cast_to=AssociationDefinition,
         )
 
     async def delete_association(
@@ -2969,7 +2969,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseObjectTypeDefinition:
+    ) -> ObjectTypeDefinition:
         """
         Update the schema for an existing object type
 
@@ -3005,7 +3005,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseObjectTypeDefinition,
+            cast_to=ObjectTypeDefinition,
         )
 
     async def update_settings(
