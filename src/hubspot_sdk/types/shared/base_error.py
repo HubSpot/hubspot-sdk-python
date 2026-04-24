@@ -7,10 +7,10 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 from .error_detail import ErrorDetail
 
-__all__ = ["ErrorData"]
+__all__ = ["BaseError"]
 
 
-class ErrorData(BaseModel):
+class BaseError(BaseModel):
     category: str
     """The error category"""
 

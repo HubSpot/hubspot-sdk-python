@@ -11,10 +11,10 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 from .content_language_variation import ContentLanguageVariation
 
-__all__ = ["PagesPage"]
+__all__ = ["PageData"]
 
 
-class PagesPage(BaseModel):
+class PageData(BaseModel):
     id: str
     """The unique ID of the page."""
 

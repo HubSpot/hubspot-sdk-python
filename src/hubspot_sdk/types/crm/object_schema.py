@@ -6,8 +6,8 @@ from datetime import datetime
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.property import Property
-from ..shared.association_definition import AssociationDefinition
+from ..shared.base_property import BaseProperty
+from ..shared.base_association_definition import BaseAssociationDefinition
 from ..shared.object_type_definition_labels import ObjectTypeDefinitionLabels
 
 __all__ = ["ObjectSchema"]
@@ -24,7 +24,7 @@ class ObjectSchema(BaseModel):
 
     archived: bool
 
-    associations: List[AssociationDefinition]
+    associations: List[BaseAssociationDefinition]
     """Associations defined for a given object type."""
 
     fully_qualified_name: str = FieldInfo(alias="fullyQualifiedName")
@@ -37,7 +37,7 @@ class ObjectSchema(BaseModel):
 
     object_type_id: str = FieldInfo(alias="objectTypeId")
 
-    properties: List[Property]
+    properties: List[BaseProperty]
     """Properties defined for this object type."""
 
     required_properties: List[str] = FieldInfo(alias="requiredProperties")

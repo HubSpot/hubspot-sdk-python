@@ -33,7 +33,7 @@ from ....types.cms.pages import (
     multi_language_detach_from_lang_group_params,
     multi_language_create_language_variation_params,
 )
-from ....types.cms.pages_page import PagesPage
+from ....types.cms.page_data import PageData
 
 __all__ = ["MultiLanguageResource", "AsyncMultiLanguageResource"]
 
@@ -1811,7 +1811,7 @@ class MultiLanguageResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PagesPage:
+    ) -> PageData:
         """Create a new language variation from an existing website page.
 
         The variation
@@ -1847,7 +1847,7 @@ class MultiLanguageResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PagesPage,
+            cast_to=PageData,
         )
 
     def detach_from_lang_group(
@@ -4589,7 +4589,7 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PagesPage:
+    ) -> PageData:
         """Create a new language variation from an existing website page.
 
         The variation
@@ -4625,7 +4625,7 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PagesPage,
+            cast_to=PageData,
         )
 
     async def detach_from_lang_group(

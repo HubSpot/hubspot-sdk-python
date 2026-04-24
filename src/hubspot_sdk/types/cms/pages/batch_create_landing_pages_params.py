@@ -9,8 +9,8 @@ __all__ = ["BatchCreateLandingPagesParams"]
 
 
 class BatchCreateLandingPagesParams(TypedDict, total=False):
-    inputs: Required[Iterable["PagesPageParam"]]
+    inputs: Required[Iterable["PageDataParam"]]
     """Pages to input."""
 
 
-from ..pages_page_param import PagesPageParam
+from ..page_data_param import PageDataParam

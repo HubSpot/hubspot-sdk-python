@@ -10,7 +10,7 @@ import pytest
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
-from hubspot_sdk.types.cms import PagesPage
+from hubspot_sdk.types.cms import PageData
 from hubspot_sdk.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -191,7 +191,7 @@ class TestWebsitePages:
             widget_containers={"foo": {}},
             widgets={"foo": {}},
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -369,7 +369,7 @@ class TestWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -547,7 +547,7 @@ class TestWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -724,7 +724,7 @@ class TestWebsitePages:
             widget_containers={"foo": {}},
             widgets={"foo": {}},
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -967,7 +967,7 @@ class TestWebsitePages:
             widgets={"foo": {}},
             archived=True,
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1146,7 +1146,7 @@ class TestWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1325,7 +1325,7 @@ class TestWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1508,7 +1508,7 @@ class TestWebsitePages:
     @parametrize
     def test_method_list(self, client: HubSpot) -> None:
         website_page = client.cms.pages.website_pages.list()
-        assert_matches_type(SyncPage[PagesPage], website_page, path=["response"])
+        assert_matches_type(SyncPage[PageData], website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1526,7 +1526,7 @@ class TestWebsitePages:
             updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SyncPage[PagesPage], website_page, path=["response"])
+        assert_matches_type(SyncPage[PageData], website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1536,7 +1536,7 @@ class TestWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = response.parse()
-        assert_matches_type(SyncPage[PagesPage], website_page, path=["response"])
+        assert_matches_type(SyncPage[PageData], website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1546,7 +1546,7 @@ class TestWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = response.parse()
-            assert_matches_type(SyncPage[PagesPage], website_page, path=["response"])
+            assert_matches_type(SyncPage[PageData], website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1607,7 +1607,7 @@ class TestWebsitePages:
         website_page = client.cms.pages.website_pages.clone(
             id="id",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1616,7 +1616,7 @@ class TestWebsitePages:
             id="id",
             clone_name="cloneName",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1628,7 +1628,7 @@ class TestWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1640,7 +1640,7 @@ class TestWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1650,7 +1650,7 @@ class TestWebsitePages:
         website_page = client.cms.pages.website_pages.get(
             object_id="objectId",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1660,7 +1660,7 @@ class TestWebsitePages:
             archived=True,
             property="property",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1672,7 +1672,7 @@ class TestWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1684,7 +1684,7 @@ class TestWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1702,7 +1702,7 @@ class TestWebsitePages:
         website_page = client.cms.pages.website_pages.get_draft(
             "objectId",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1714,7 +1714,7 @@ class TestWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1726,7 +1726,7 @@ class TestWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2024,7 +2024,7 @@ class TestWebsitePages:
             widget_containers={"foo": {}},
             widgets={"foo": {}},
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2203,7 +2203,7 @@ class TestWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2382,7 +2382,7 @@ class TestWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2739,7 +2739,7 @@ class TestAsyncWebsitePages:
             widget_containers={"foo": {}},
             widgets={"foo": {}},
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2917,7 +2917,7 @@ class TestAsyncWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = await response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3095,7 +3095,7 @@ class TestAsyncWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = await response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3272,7 +3272,7 @@ class TestAsyncWebsitePages:
             widget_containers={"foo": {}},
             widgets={"foo": {}},
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3515,7 +3515,7 @@ class TestAsyncWebsitePages:
             widgets={"foo": {}},
             archived=True,
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3694,7 +3694,7 @@ class TestAsyncWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = await response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3873,7 +3873,7 @@ class TestAsyncWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = await response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4056,7 +4056,7 @@ class TestAsyncWebsitePages:
     @parametrize
     async def test_method_list(self, async_client: AsyncHubSpot) -> None:
         website_page = await async_client.cms.pages.website_pages.list()
-        assert_matches_type(AsyncPage[PagesPage], website_page, path=["response"])
+        assert_matches_type(AsyncPage[PageData], website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4074,7 +4074,7 @@ class TestAsyncWebsitePages:
             updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             updated_before=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(AsyncPage[PagesPage], website_page, path=["response"])
+        assert_matches_type(AsyncPage[PageData], website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4084,7 +4084,7 @@ class TestAsyncWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = await response.parse()
-        assert_matches_type(AsyncPage[PagesPage], website_page, path=["response"])
+        assert_matches_type(AsyncPage[PageData], website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4094,7 +4094,7 @@ class TestAsyncWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = await response.parse()
-            assert_matches_type(AsyncPage[PagesPage], website_page, path=["response"])
+            assert_matches_type(AsyncPage[PageData], website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4155,7 +4155,7 @@ class TestAsyncWebsitePages:
         website_page = await async_client.cms.pages.website_pages.clone(
             id="id",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4164,7 +4164,7 @@ class TestAsyncWebsitePages:
             id="id",
             clone_name="cloneName",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4176,7 +4176,7 @@ class TestAsyncWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = await response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4188,7 +4188,7 @@ class TestAsyncWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = await response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4198,7 +4198,7 @@ class TestAsyncWebsitePages:
         website_page = await async_client.cms.pages.website_pages.get(
             object_id="objectId",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4208,7 +4208,7 @@ class TestAsyncWebsitePages:
             archived=True,
             property="property",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4220,7 +4220,7 @@ class TestAsyncWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = await response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4232,7 +4232,7 @@ class TestAsyncWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = await response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4250,7 +4250,7 @@ class TestAsyncWebsitePages:
         website_page = await async_client.cms.pages.website_pages.get_draft(
             "objectId",
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4262,7 +4262,7 @@ class TestAsyncWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = await response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4274,7 +4274,7 @@ class TestAsyncWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = await response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4572,7 +4572,7 @@ class TestAsyncWebsitePages:
             widget_containers={"foo": {}},
             widgets={"foo": {}},
         )
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4751,7 +4751,7 @@ class TestAsyncWebsitePages:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         website_page = await response.parse()
-        assert_matches_type(PagesPage, website_page, path=["response"])
+        assert_matches_type(PageData, website_page, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -4930,7 +4930,7 @@ class TestAsyncWebsitePages:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             website_page = await response.parse()
-            assert_matches_type(PagesPage, website_page, path=["response"])
+            assert_matches_type(PageData, website_page, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
