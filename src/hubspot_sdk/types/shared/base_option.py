@@ -6,10 +6,10 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["Option"]
+__all__ = ["BaseOption"]
 
 
-class Option(BaseModel):
+class BaseOption(BaseModel):
     """A HubSpot property option"""
 
     hidden: bool

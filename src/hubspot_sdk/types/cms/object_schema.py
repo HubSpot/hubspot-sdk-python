@@ -7,7 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .property_1 import Property1
-from ..shared.association_definition import AssociationDefinition
+from ..shared.base_association_definition import BaseAssociationDefinition
 from ..shared.object_type_definition_labels import ObjectTypeDefinitionLabels
 
 __all__ = ["ObjectSchema"]
@@ -20,7 +20,7 @@ class ObjectSchema(BaseModel):
 
     archived: bool
 
-    associations: List[AssociationDefinition]
+    associations: List[BaseAssociationDefinition]
 
     fully_qualified_name: str = FieldInfo(alias="fullyQualifiedName")
 

@@ -30,7 +30,7 @@ from ....types.cms.pages import (
     batch_delete_landing_pages_params,
     batch_update_landing_pages_params,
 )
-from ....types.cms.pages_page_param import PagesPageParam
+from ....types.cms.page_data_param import PageDataParam
 from ....types.cms.batch_response_page import BatchResponsePage
 from ....types.cms.content_folder_param import ContentFolderParam
 from ....types.cms.batch_response_content_folder import BatchResponseContentFolder
@@ -95,7 +95,7 @@ class BatchResource(SyncAPIResource):
     def create_landing_pages(
         self,
         *,
-        inputs: Iterable[PagesPageParam],
+        inputs: Iterable[PageDataParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -129,7 +129,7 @@ class BatchResource(SyncAPIResource):
     def create_site_pages(
         self,
         *,
-        inputs: Iterable[PagesPageParam],
+        inputs: Iterable[PageDataParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -541,7 +541,7 @@ class AsyncBatchResource(AsyncAPIResource):
     async def create_landing_pages(
         self,
         *,
-        inputs: Iterable[PagesPageParam],
+        inputs: Iterable[PageDataParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -577,7 +577,7 @@ class AsyncBatchResource(AsyncAPIResource):
     async def create_site_pages(
         self,
         *,
-        inputs: Iterable[PagesPageParam],
+        inputs: Iterable[PageDataParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

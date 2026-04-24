@@ -35,7 +35,7 @@ from ...._response import (
 )
 from ....types.crm import property_get_params, property_list_params, property_create_params, property_update_params
 from ...._base_client import make_request_options
-from ....types.shared.property import Property
+from ....types.shared.base_property import BaseProperty
 from ....types.shared_params.option_input import OptionInput
 from ....types.crm.collection_response_property_no_paging import CollectionResponsePropertyNoPaging
 
@@ -112,7 +112,7 @@ class PropertiesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> BaseProperty:
         """
         Create and return a copy of a new property for the specified object type.
 
@@ -155,7 +155,7 @@ class PropertiesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Property,
+            cast_to=BaseProperty,
         )
 
     def update(
@@ -197,7 +197,7 @@ class PropertiesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> BaseProperty:
         """Perform a partial update of a property identified by { propertyName }.
 
         Provided
@@ -265,7 +265,7 @@ class PropertiesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Property,
+            cast_to=BaseProperty,
         )
 
     def list(
@@ -375,7 +375,7 @@ class PropertiesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> BaseProperty:
         """
         Read a property identified by {propertyName}.
 
@@ -415,7 +415,7 @@ class PropertiesResource(SyncAPIResource):
                     property_get_params.PropertyGetParams,
                 ),
             ),
-            cast_to=Property,
+            cast_to=BaseProperty,
         )
 
 
@@ -489,7 +489,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> BaseProperty:
         """
         Create and return a copy of a new property for the specified object type.
 
@@ -532,7 +532,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Property,
+            cast_to=BaseProperty,
         )
 
     async def update(
@@ -574,7 +574,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> BaseProperty:
         """Perform a partial update of a property identified by { propertyName }.
 
         Provided
@@ -642,7 +642,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Property,
+            cast_to=BaseProperty,
         )
 
     async def list(
@@ -752,7 +752,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Property:
+    ) -> BaseProperty:
         """
         Read a property identified by {propertyName}.
 
@@ -792,7 +792,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
                     property_get_params.PropertyGetParams,
                 ),
             ),
-            cast_to=Property,
+            cast_to=BaseProperty,
         )
 
 

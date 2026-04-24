@@ -11,7 +11,7 @@ __all__ = ["CollectionResponseWithTotalPageForwardPaging"]
 
 
 class CollectionResponseWithTotalPageForwardPaging(BaseModel):
-    results: List["PagesPage"]
+    results: List["PageData"]
     """Collection of pages."""
 
     total: int
@@ -20,4 +20,4 @@ class CollectionResponseWithTotalPageForwardPaging(BaseModel):
     paging: Optional[ForwardPaging] = None
 
 
-from .pages_page import PagesPage
+from .page_data import PageData
