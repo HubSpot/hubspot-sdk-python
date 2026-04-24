@@ -12,7 +12,7 @@ from tests.utils import assert_matches_type
 from hubspot_sdk.types.crm import (
     CollectionResponsePropertyNoPaging,
 )
-from hubspot_sdk.types.shared import BaseProperty
+from hubspot_sdk.types.shared import Property
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -31,7 +31,7 @@ class TestProperties:
             name="name",
             type="bool",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -65,7 +65,7 @@ class TestProperties:
             referenced_object_type="referencedObjectType",
             show_currency_symbol=True,
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -82,7 +82,7 @@ class TestProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = response.parse()
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -99,7 +99,7 @@ class TestProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = response.parse()
-            assert_matches_type(BaseProperty, property, path=["response"])
+            assert_matches_type(Property, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -123,7 +123,7 @@ class TestProperties:
             property_name="propertyName",
             object_type="objectType",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -153,7 +153,7 @@ class TestProperties:
             show_currency_symbol=True,
             type="bool",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -166,7 +166,7 @@ class TestProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = response.parse()
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -179,7 +179,7 @@ class TestProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = response.parse()
-            assert_matches_type(BaseProperty, property, path=["response"])
+            assert_matches_type(Property, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -311,7 +311,7 @@ class TestProperties:
             property_name="propertyName",
             object_type="objectType",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -324,7 +324,7 @@ class TestProperties:
             locale="locale",
             properties="properties",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -337,7 +337,7 @@ class TestProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = response.parse()
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -350,7 +350,7 @@ class TestProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = response.parse()
-            assert_matches_type(BaseProperty, property, path=["response"])
+            assert_matches_type(Property, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -386,7 +386,7 @@ class TestAsyncProperties:
             name="name",
             type="bool",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -420,7 +420,7 @@ class TestAsyncProperties:
             referenced_object_type="referencedObjectType",
             show_currency_symbol=True,
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -437,7 +437,7 @@ class TestAsyncProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = await response.parse()
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -454,7 +454,7 @@ class TestAsyncProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = await response.parse()
-            assert_matches_type(BaseProperty, property, path=["response"])
+            assert_matches_type(Property, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -478,7 +478,7 @@ class TestAsyncProperties:
             property_name="propertyName",
             object_type="objectType",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -508,7 +508,7 @@ class TestAsyncProperties:
             show_currency_symbol=True,
             type="bool",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -521,7 +521,7 @@ class TestAsyncProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = await response.parse()
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -534,7 +534,7 @@ class TestAsyncProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = await response.parse()
-            assert_matches_type(BaseProperty, property, path=["response"])
+            assert_matches_type(Property, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -666,7 +666,7 @@ class TestAsyncProperties:
             property_name="propertyName",
             object_type="objectType",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -679,7 +679,7 @@ class TestAsyncProperties:
             locale="locale",
             properties="properties",
         )
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -692,7 +692,7 @@ class TestAsyncProperties:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         property = await response.parse()
-        assert_matches_type(BaseProperty, property, path=["response"])
+        assert_matches_type(Property, property, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -705,7 +705,7 @@ class TestAsyncProperties:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             property = await response.parse()
-            assert_matches_type(BaseProperty, property, path=["response"])
+            assert_matches_type(Property, property, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

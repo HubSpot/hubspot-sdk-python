@@ -26,7 +26,7 @@ from ...types.events import (
     definition_create_property_params,
     definition_update_property_params,
 )
-from ...types.shared.base_property import BaseProperty
+from ...types.shared.property import Property
 from ...types.shared_params.option_input import OptionInput
 from ...types.events.external_behavioral_event_type_definition import ExternalBehavioralEventTypeDefinition
 from ...types.events.behavioral_event_http_completion_request_param import BehavioralEventHTTPCompletionRequestParam
@@ -271,7 +271,7 @@ class DefinitionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseProperty:
+    ) -> Property:
         """
         Create a new property for an existing event definition.
 
@@ -314,7 +314,7 @@ class DefinitionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseProperty,
+            cast_to=Property,
         )
 
     def delete_property(
@@ -438,7 +438,7 @@ class DefinitionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseProperty:
+    ) -> Property:
         """
         Update an existing property in a custom event definition.
 
@@ -479,7 +479,7 @@ class DefinitionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseProperty,
+            cast_to=Property,
         )
 
 
@@ -718,7 +718,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseProperty:
+    ) -> Property:
         """
         Create a new property for an existing event definition.
 
@@ -761,7 +761,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseProperty,
+            cast_to=Property,
         )
 
     async def delete_property(
@@ -887,7 +887,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseProperty:
+    ) -> Property:
         """
         Update an existing property in a custom event definition.
 
@@ -928,7 +928,7 @@ class AsyncDefinitionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseProperty,
+            cast_to=Property,
         )
 
 

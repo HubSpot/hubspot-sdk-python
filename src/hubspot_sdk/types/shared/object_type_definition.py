@@ -8,10 +8,10 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 from .object_type_definition_labels import ObjectTypeDefinitionLabels
 
-__all__ = ["BaseObjectTypeDefinition"]
+__all__ = ["ObjectTypeDefinition"]
 
 
-class BaseObjectTypeDefinition(BaseModel):
+class ObjectTypeDefinition(BaseModel):
     id: str
 
     allows_sensitive_properties: bool = FieldInfo(alias="allowsSensitiveProperties")
