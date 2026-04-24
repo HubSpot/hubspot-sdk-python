@@ -1,7 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
@@ -9,6 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .long_field_schema import LongFieldSchema
+from .array_field_schema import ArrayFieldSchema
 from .double_field_schema import DoubleFieldSchema
 from .object_field_schema import ObjectFieldSchema
 from .string_field_schema import StringFieldSchema
@@ -24,7 +23,7 @@ Schema: TypeAlias = Union[
     DoubleFieldSchema,
     StringFieldSchema,
     BooleanFieldSchema,
-    "ArrayFieldSchema",
+    ArrayFieldSchema,
     ObjectFieldSchema,
 ]
 
@@ -271,6 +270,3 @@ class FieldTypeDefinition(BaseModel):
     Indicates the type of object that the field references, with accepted values
     like OWNER.
     """
-
-
-from .array_field_schema import ArrayFieldSchema

@@ -12,12 +12,12 @@ __all__ = ["JournalFetchResponse"]
 class JournalFetchResponse(BaseModel):
     current_offset: str = FieldInfo(alias="currentOffset")
     """
-    A UUID string indicating the current offset in the journal data, used for
-    pagination.
+    The unique identifier for the current offset of the journal entry, formatted as
+    a UUID.
     """
 
     expires_at: datetime = FieldInfo(alias="expiresAt")
     """The date and time when the URL will expire, in ISO 8601 format."""
 
     url: str
-    """A string representing the URL where the fetched journal data can be accessed."""
+    """The URL where the journal entry can be accessed. It is a string."""

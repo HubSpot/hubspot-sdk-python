@@ -75,6 +75,7 @@ class PropertyValue(TypedDict, total=False):
             "COMPANIES",
             "COMPANY_FAMILIES",
             "COMPANY_INSIGHTS",
+            "CONNECTED_ACCOUNT",
             "CONTACTS",
             "CONTACTS_WEB",
             "CONTENT_MEMBERSHIP",

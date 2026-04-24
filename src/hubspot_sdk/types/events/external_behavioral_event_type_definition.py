@@ -9,8 +9,8 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.property import Property
-from .association_definition import AssociationDefinition
+from ..shared.base_property import BaseProperty
+from .definitions_association_definition import DefinitionsAssociationDefinition
 from .behavioral_event_type_definition_labels import BehavioralEventTypeDefinitionLabels
 from .external_object_resolution_mapping_response import ExternalObjectResolutionMappingResponse
 
@@ -22,7 +22,7 @@ class ExternalBehavioralEventTypeDefinition(BaseModel):
 
     archived: bool
 
-    associations: List[AssociationDefinition]
+    associations: List[DefinitionsAssociationDefinition]
 
     fully_qualified_name: str = FieldInfo(alias="fullyQualifiedName")
 
@@ -32,7 +32,7 @@ class ExternalBehavioralEventTypeDefinition(BaseModel):
 
     object_type_id: str = FieldInfo(alias="objectTypeId")
 
-    properties: List[Property]
+    properties: List[BaseProperty]
 
     combo_event_rules: Optional["ComboEventRuleBranch"] = FieldInfo(alias="comboEventRules", default=None)
 
@@ -45,6 +45,10 @@ class ExternalBehavioralEventTypeDefinition(BaseModel):
     )
 
     description: Optional[str] = None
+
+    detail_template: Optional[str] = FieldInfo(alias="detailTemplate", default=None)
+
+    header_template: Optional[str] = FieldInfo(alias="headerTemplate", default=None)
 
     primary_object: Optional[str] = FieldInfo(alias="primaryObject", default=None)
 

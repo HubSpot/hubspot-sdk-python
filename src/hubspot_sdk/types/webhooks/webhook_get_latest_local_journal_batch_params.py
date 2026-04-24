@@ -11,7 +11,8 @@ __all__ = ["WebhookGetLatestLocalJournalBatchParams"]
 
 class WebhookGetLatestLocalJournalBatchParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
-    """The ID of the portal installation to filter the webhook journal entries.
+    """The ID of the portal installation.
 
-    It is an optional integer parameter.
+    This parameter is optional and used to filter the journal entries by a specific
+    portal.
     """

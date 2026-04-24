@@ -24,20 +24,31 @@ class WebsitePageListParams(TypedDict, total=False):
     """Whether to return only results that have been archived."""
 
     created_after: Annotated[Union[str, datetime], PropertyInfo(alias="createdAfter", format="iso8601")]
+    """Filter pages created after a specific date and time."""
 
     created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
+    """Filter pages by the exact creation timestamp. Format is date-time."""
 
     created_before: Annotated[Union[str, datetime], PropertyInfo(alias="createdBefore", format="iso8601")]
+    """Filter pages created before a specific date-time."""
 
     limit: int
     """The maximum number of results to display per page."""
 
     property: str
+    """Specify properties to include in the response."""
 
     sort: SequenceNotStr[str]
+    """Specify the order of results. Accepts an array of field names to sort by."""
 
     updated_after: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAfter", format="iso8601")]
+    """Filter pages updated after the specified date-time."""
 
     updated_at: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAt", format="iso8601")]
+    """Filter pages by their exact update timestamp in ISO 8601 format."""
 
     updated_before: Annotated[Union[str, datetime], PropertyInfo(alias="updatedBefore", format="iso8601")]
+    """Filter pages updated before a specific date and time.
+
+    Format should be date-time.
+    """

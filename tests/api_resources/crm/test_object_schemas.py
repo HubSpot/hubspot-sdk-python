@@ -13,7 +13,7 @@ from hubspot_sdk.types.crm import (
     ObjectSchema,
     CollectionResponseObjectSchemaNoPaging,
 )
-from hubspot_sdk.types.shared import ObjectTypeDefinition, AssociationDefinition
+from hubspot_sdk.types.shared import BaseObjectTypeDefinition, BaseAssociationDefinition
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -153,7 +153,7 @@ class TestObjectSchemas:
             object_type="objectType",
             clear_description=True,
         )
-        assert_matches_type(ObjectTypeDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseObjectTypeDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -173,7 +173,7 @@ class TestObjectSchemas:
             searchable_properties=["string"],
             secondary_display_properties=["string"],
         )
-        assert_matches_type(ObjectTypeDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseObjectTypeDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -186,7 +186,7 @@ class TestObjectSchemas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         object_schema = response.parse()
-        assert_matches_type(ObjectTypeDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseObjectTypeDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -199,7 +199,7 @@ class TestObjectSchemas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             object_schema = response.parse()
-            assert_matches_type(ObjectTypeDefinition, object_schema, path=["response"])
+            assert_matches_type(BaseObjectTypeDefinition, object_schema, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -310,7 +310,7 @@ class TestObjectSchemas:
             from_object_type_id="fromObjectTypeId",
             to_object_type_id="toObjectTypeId",
         )
-        assert_matches_type(AssociationDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseAssociationDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -321,7 +321,7 @@ class TestObjectSchemas:
             to_object_type_id="toObjectTypeId",
             name="name",
         )
-        assert_matches_type(AssociationDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseAssociationDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -335,7 +335,7 @@ class TestObjectSchemas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         object_schema = response.parse()
-        assert_matches_type(AssociationDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseAssociationDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -349,7 +349,7 @@ class TestObjectSchemas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             object_schema = response.parse()
-            assert_matches_type(AssociationDefinition, object_schema, path=["response"])
+            assert_matches_type(BaseAssociationDefinition, object_schema, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -608,7 +608,7 @@ class TestAsyncObjectSchemas:
             object_type="objectType",
             clear_description=True,
         )
-        assert_matches_type(ObjectTypeDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseObjectTypeDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -628,7 +628,7 @@ class TestAsyncObjectSchemas:
             searchable_properties=["string"],
             secondary_display_properties=["string"],
         )
-        assert_matches_type(ObjectTypeDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseObjectTypeDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -641,7 +641,7 @@ class TestAsyncObjectSchemas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         object_schema = await response.parse()
-        assert_matches_type(ObjectTypeDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseObjectTypeDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -654,7 +654,7 @@ class TestAsyncObjectSchemas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             object_schema = await response.parse()
-            assert_matches_type(ObjectTypeDefinition, object_schema, path=["response"])
+            assert_matches_type(BaseObjectTypeDefinition, object_schema, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -765,7 +765,7 @@ class TestAsyncObjectSchemas:
             from_object_type_id="fromObjectTypeId",
             to_object_type_id="toObjectTypeId",
         )
-        assert_matches_type(AssociationDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseAssociationDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -776,7 +776,7 @@ class TestAsyncObjectSchemas:
             to_object_type_id="toObjectTypeId",
             name="name",
         )
-        assert_matches_type(AssociationDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseAssociationDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -790,7 +790,7 @@ class TestAsyncObjectSchemas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         object_schema = await response.parse()
-        assert_matches_type(AssociationDefinition, object_schema, path=["response"])
+        assert_matches_type(BaseAssociationDefinition, object_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -804,7 +804,7 @@ class TestAsyncObjectSchemas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             object_schema = await response.parse()
-            assert_matches_type(AssociationDefinition, object_schema, path=["response"])
+            assert_matches_type(BaseAssociationDefinition, object_schema, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -1812,8 +1812,12 @@ class MultiLanguageResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PageData:
-        """
-        Create a new language variation from an existing site page
+        """Create a new language variation from an existing website page.
+
+        The variation
+        will be a copy of the draft state of the source page. To preview the content,
+        you can
+        [retrieve the draft of the source website page](/api-reference/latest/cms/pages/website-pages/drafts/get-website-page-draft).
 
         Args:
           id: ID of content to clone.
@@ -4586,8 +4590,12 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PageData:
-        """
-        Create a new language variation from an existing site page
+        """Create a new language variation from an existing website page.
+
+        The variation
+        will be a copy of the draft state of the source page. To preview the content,
+        you can
+        [retrieve the draft of the source website page](/api-reference/latest/cms/pages/website-pages/drafts/get-website-page-draft).
 
         Args:
           id: ID of content to clone.

@@ -13,8 +13,7 @@ class WebhookGetJournalBatchFromOffsetParams(TypedDict, total=False):
     offset: Required[str]
 
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
-    """The ID of the portal installation to filter the webhook journal entries.
+    """The ID of the portal installation.
 
-    This parameter is optional and is used to specify which portal's data to
-    retrieve.
+    This is an integer value used to specify the portal context for the request.
     """

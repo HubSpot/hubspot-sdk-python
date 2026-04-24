@@ -2,40 +2,22 @@
 
 from __future__ import annotations
 
-import typing_extensions
-from typing import Mapping, cast
-
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, FileTypes, omit, not_given
-from ..._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
+from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
-    BinaryAPIResponse,
-    AsyncBinaryAPIResponse,
-    StreamedBinaryAPIResponse,
-    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
-    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
-    to_custom_streamed_response_wrapper,
-    async_to_custom_raw_response_wrapper,
-    async_to_custom_streamed_response_wrapper,
 )
-from ...types.cms import (
-    source_code_create_params,
-    source_code_upsert_params,
-    source_code_validate_params,
-    source_code_get_metadata_params,
-    source_code_extract_async_params,
-)
+from ...types.cms import source_code_extract_async_params
 from ..._base_client import make_request_options
 from ...types.shared.task_locator import TaskLocator
 from ...types.shared.action_response import ActionResponse
-from ...types.cms.asset_file_metadata import AssetFileMetadata
 
 __all__ = ["SourceCodeResource", "AsyncSourceCodeResource"]
 
@@ -59,92 +41,6 @@ class SourceCodeResource(SyncAPIResource):
         For more information, see https://www.github.com/HubSpot/hubspot-sdk-python#with_streaming_response
         """
         return SourceCodeResourceWithStreamingResponse(self)
-
-    @typing_extensions.deprecated("deprecated")
-    def create(
-        self,
-        path: str,
-        *,
-        environment: str,
-        file: FileTypes | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssetFileMetadata:
-        """Creates a file at the specified path in the specified environment.
-
-        Accepts
-        multipart/form-data content type. Throws an error if a file already exists at
-        the specified path.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
-        return self._post(
-            path_template("/cms/source-code/2026-03/{environment}/content/{path}", environment=environment, path=path),
-            body=maybe_transform(body, source_code_create_params.SourceCodeCreateParams),
-            files=files,
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AssetFileMetadata,
-        )
-
-    def delete(
-        self,
-        path: str,
-        *,
-        environment: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Deletes the file at the specified path in the specified environment.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            path_template("/cms/source-code/2026-03/{environment}/content/{path}", environment=environment, path=path),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
 
     def extract_async(
         self,
@@ -182,44 +78,6 @@ class SourceCodeResource(SyncAPIResource):
             cast_to=TaskLocator,
         )
 
-    def get(
-        self,
-        path: str,
-        *,
-        environment: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BinaryAPIResponse:
-        """
-        Downloads the byte contents of the file at the specified path in the specified
-        environment.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            path_template("/cms/source-code/2026-03/{environment}/content/{path}", environment=environment, path=path),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BinaryAPIResponse,
-        )
-
     def get_extraction_status(
         self,
         task_id: int,
@@ -252,144 +110,6 @@ class SourceCodeResource(SyncAPIResource):
             cast_to=ActionResponse,
         )
 
-    def get_metadata(
-        self,
-        path: str,
-        *,
-        environment: str,
-        properties: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssetFileMetadata:
-        """
-        Gets the metadata object for the file at the specified path in the specified
-        environment.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        return self._get(
-            path_template("/cms/source-code/2026-03/{environment}/metadata/{path}", environment=environment, path=path),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {"properties": properties}, source_code_get_metadata_params.SourceCodeGetMetadataParams
-                ),
-            ),
-            cast_to=AssetFileMetadata,
-        )
-
-    def upsert(
-        self,
-        path: str,
-        *,
-        environment: str,
-        file: FileTypes | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssetFileMetadata:
-        """Upserts a file at the specified path in the specified environment.
-
-        Accepts
-        multipart/form-data content type.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
-        return self._put(
-            path_template("/cms/source-code/2026-03/{environment}/content/{path}", environment=environment, path=path),
-            body=maybe_transform(body, source_code_upsert_params.SourceCodeUpsertParams),
-            files=files,
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AssetFileMetadata,
-        )
-
-    def validate(
-        self,
-        path: str,
-        *,
-        environment: str,
-        file: FileTypes | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BinaryAPIResponse:
-        """
-        Validates the file contents passed to the endpoint given a specified path and
-        environment. Accepts multipart/form-data content type.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
-        return self._post(
-            path_template("/cms/source-code/2026-03/{environment}/validate/{path}", environment=environment, path=path),
-            body=maybe_transform(body, source_code_validate_params.SourceCodeValidateParams),
-            files=files,
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BinaryAPIResponse,
-        )
-
 
 class AsyncSourceCodeResource(AsyncAPIResource):
     @cached_property
@@ -410,92 +130,6 @@ class AsyncSourceCodeResource(AsyncAPIResource):
         For more information, see https://www.github.com/HubSpot/hubspot-sdk-python#with_streaming_response
         """
         return AsyncSourceCodeResourceWithStreamingResponse(self)
-
-    @typing_extensions.deprecated("deprecated")
-    async def create(
-        self,
-        path: str,
-        *,
-        environment: str,
-        file: FileTypes | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssetFileMetadata:
-        """Creates a file at the specified path in the specified environment.
-
-        Accepts
-        multipart/form-data content type. Throws an error if a file already exists at
-        the specified path.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
-        return await self._post(
-            path_template("/cms/source-code/2026-03/{environment}/content/{path}", environment=environment, path=path),
-            body=await async_maybe_transform(body, source_code_create_params.SourceCodeCreateParams),
-            files=files,
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AssetFileMetadata,
-        )
-
-    async def delete(
-        self,
-        path: str,
-        *,
-        environment: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Deletes the file at the specified path in the specified environment.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            path_template("/cms/source-code/2026-03/{environment}/content/{path}", environment=environment, path=path),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
 
     async def extract_async(
         self,
@@ -535,44 +169,6 @@ class AsyncSourceCodeResource(AsyncAPIResource):
             cast_to=TaskLocator,
         )
 
-    async def get(
-        self,
-        path: str,
-        *,
-        environment: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncBinaryAPIResponse:
-        """
-        Downloads the byte contents of the file at the specified path in the specified
-        environment.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            path_template("/cms/source-code/2026-03/{environment}/content/{path}", environment=environment, path=path),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AsyncBinaryAPIResponse,
-        )
-
     async def get_extraction_status(
         self,
         task_id: int,
@@ -605,176 +201,16 @@ class AsyncSourceCodeResource(AsyncAPIResource):
             cast_to=ActionResponse,
         )
 
-    async def get_metadata(
-        self,
-        path: str,
-        *,
-        environment: str,
-        properties: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssetFileMetadata:
-        """
-        Gets the metadata object for the file at the specified path in the specified
-        environment.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        return await self._get(
-            path_template("/cms/source-code/2026-03/{environment}/metadata/{path}", environment=environment, path=path),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"properties": properties}, source_code_get_metadata_params.SourceCodeGetMetadataParams
-                ),
-            ),
-            cast_to=AssetFileMetadata,
-        )
-
-    async def upsert(
-        self,
-        path: str,
-        *,
-        environment: str,
-        file: FileTypes | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AssetFileMetadata:
-        """Upserts a file at the specified path in the specified environment.
-
-        Accepts
-        multipart/form-data content type.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
-        return await self._put(
-            path_template("/cms/source-code/2026-03/{environment}/content/{path}", environment=environment, path=path),
-            body=await async_maybe_transform(body, source_code_upsert_params.SourceCodeUpsertParams),
-            files=files,
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AssetFileMetadata,
-        )
-
-    async def validate(
-        self,
-        path: str,
-        *,
-        environment: str,
-        file: FileTypes | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncBinaryAPIResponse:
-        """
-        Validates the file contents passed to the endpoint given a specified path and
-        environment. Accepts multipart/form-data content type.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not environment:
-            raise ValueError(f"Expected a non-empty value for `environment` but received {environment!r}")
-        if not path:
-            raise ValueError(f"Expected a non-empty value for `path` but received {path!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
-        return await self._post(
-            path_template("/cms/source-code/2026-03/{environment}/validate/{path}", environment=environment, path=path),
-            body=await async_maybe_transform(body, source_code_validate_params.SourceCodeValidateParams),
-            files=files,
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AsyncBinaryAPIResponse,
-        )
-
 
 class SourceCodeResourceWithRawResponse:
     def __init__(self, source_code: SourceCodeResource) -> None:
         self._source_code = source_code
 
-        self.create = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                source_code.create,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.delete = to_raw_response_wrapper(
-            source_code.delete,
-        )
         self.extract_async = to_raw_response_wrapper(
             source_code.extract_async,
         )
-        self.get = to_custom_raw_response_wrapper(
-            source_code.get,
-            BinaryAPIResponse,
-        )
         self.get_extraction_status = to_raw_response_wrapper(
             source_code.get_extraction_status,
-        )
-        self.get_metadata = to_raw_response_wrapper(
-            source_code.get_metadata,
-        )
-        self.upsert = to_raw_response_wrapper(
-            source_code.upsert,
-        )
-        self.validate = to_custom_raw_response_wrapper(
-            source_code.validate,
-            BinaryAPIResponse,
         )
 
 
@@ -782,33 +218,11 @@ class AsyncSourceCodeResourceWithRawResponse:
     def __init__(self, source_code: AsyncSourceCodeResource) -> None:
         self._source_code = source_code
 
-        self.create = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                source_code.create,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.delete = async_to_raw_response_wrapper(
-            source_code.delete,
-        )
         self.extract_async = async_to_raw_response_wrapper(
             source_code.extract_async,
         )
-        self.get = async_to_custom_raw_response_wrapper(
-            source_code.get,
-            AsyncBinaryAPIResponse,
-        )
         self.get_extraction_status = async_to_raw_response_wrapper(
             source_code.get_extraction_status,
-        )
-        self.get_metadata = async_to_raw_response_wrapper(
-            source_code.get_metadata,
-        )
-        self.upsert = async_to_raw_response_wrapper(
-            source_code.upsert,
-        )
-        self.validate = async_to_custom_raw_response_wrapper(
-            source_code.validate,
-            AsyncBinaryAPIResponse,
         )
 
 
@@ -816,33 +230,11 @@ class SourceCodeResourceWithStreamingResponse:
     def __init__(self, source_code: SourceCodeResource) -> None:
         self._source_code = source_code
 
-        self.create = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                source_code.create,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.delete = to_streamed_response_wrapper(
-            source_code.delete,
-        )
         self.extract_async = to_streamed_response_wrapper(
             source_code.extract_async,
         )
-        self.get = to_custom_streamed_response_wrapper(
-            source_code.get,
-            StreamedBinaryAPIResponse,
-        )
         self.get_extraction_status = to_streamed_response_wrapper(
             source_code.get_extraction_status,
-        )
-        self.get_metadata = to_streamed_response_wrapper(
-            source_code.get_metadata,
-        )
-        self.upsert = to_streamed_response_wrapper(
-            source_code.upsert,
-        )
-        self.validate = to_custom_streamed_response_wrapper(
-            source_code.validate,
-            StreamedBinaryAPIResponse,
         )
 
 
@@ -850,31 +242,9 @@ class AsyncSourceCodeResourceWithStreamingResponse:
     def __init__(self, source_code: AsyncSourceCodeResource) -> None:
         self._source_code = source_code
 
-        self.create = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                source_code.create,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.delete = async_to_streamed_response_wrapper(
-            source_code.delete,
-        )
         self.extract_async = async_to_streamed_response_wrapper(
             source_code.extract_async,
         )
-        self.get = async_to_custom_streamed_response_wrapper(
-            source_code.get,
-            AsyncStreamedBinaryAPIResponse,
-        )
         self.get_extraction_status = async_to_streamed_response_wrapper(
             source_code.get_extraction_status,
-        )
-        self.get_metadata = async_to_streamed_response_wrapper(
-            source_code.get_metadata,
-        )
-        self.upsert = async_to_streamed_response_wrapper(
-            source_code.upsert,
-        )
-        self.validate = async_to_custom_streamed_response_wrapper(
-            source_code.validate,
-            AsyncStreamedBinaryAPIResponse,
         )

@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .property import Property
 from ..._models import BaseModel
+from .media_bridge_property import MediaBridgeProperty
 
 __all__ = ["BatchResponseProperty"]
 
@@ -15,7 +15,7 @@ __all__ = ["BatchResponseProperty"]
 class BatchResponseProperty(BaseModel):
     completed_at: datetime = FieldInfo(alias="completedAt")
 
-    results: List[Property]
+    results: List[MediaBridgeProperty]
 
     started_at: datetime = FieldInfo(alias="startedAt")
 

@@ -11,4 +11,4 @@ __all__ = ["ThrottlingSettingsParam"]
 
 class ThrottlingSettingsParam(TypedDict, total=False):
     max_concurrent_requests: Required[Annotated[int, PropertyInfo(alias="maxConcurrentRequests")]]
-    """The maximum number of concurrent requests allowed. It is an integer value."""
+    """The maximum number of concurrent requests allowed. This is an integer value."""

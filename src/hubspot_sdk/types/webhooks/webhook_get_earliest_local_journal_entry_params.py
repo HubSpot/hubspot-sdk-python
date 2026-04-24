@@ -11,7 +11,7 @@ __all__ = ["WebhookGetEarliestLocalJournalEntryParams"]
 
 class WebhookGetEarliestLocalJournalEntryParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
-    """The ID of the portal for which to retrieve the earliest journal entry.
+    """The ID of the portal installation to filter the journal entries by.
 
     This parameter is optional and should be an integer.
     """

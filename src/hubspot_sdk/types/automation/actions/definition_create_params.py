@@ -9,6 +9,7 @@ from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 from ..public_action_labels_param import PublicActionLabelsParam
 from ..public_action_function_param import PublicActionFunctionParam
+from ..output_field_definition_param import OutputFieldDefinitionParam
 from ..public_input_field_definition_param import PublicInputFieldDefinitionParam
 from ..public_object_request_options_param import PublicObjectRequestOptionsParam
 from ..public_single_field_dependency_param import PublicSingleFieldDependencyParam
@@ -46,9 +47,7 @@ class DefinitionCreateParams(TypedDict, total=False):
 
     object_request_options: Annotated[PublicObjectRequestOptionsParam, PropertyInfo(alias="objectRequestOptions")]
 
-    output_fields: Annotated[Iterable["OutputFieldDefinitionParam"], PropertyInfo(alias="outputFields")]
+    output_fields: Annotated[Iterable[OutputFieldDefinitionParam], PropertyInfo(alias="outputFields")]
 
 
 InputFieldDependency: TypeAlias = Union[PublicSingleFieldDependencyParam, PublicConditionalSingleFieldDependencyParam]
-
-from ..output_field_definition_param import OutputFieldDefinitionParam
