@@ -7,10 +7,10 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["BaseAssociationDefinition"]
+__all__ = ["AssociationDefinition"]
 
 
-class BaseAssociationDefinition(BaseModel):
+class AssociationDefinition(BaseModel):
     """The definition of an association"""
 
     id: str

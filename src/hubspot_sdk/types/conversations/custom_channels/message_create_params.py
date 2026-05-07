@@ -10,7 +10,6 @@ from ...._utils import PropertyInfo
 from ..file_attachment_param import FileAttachmentParam
 from ..contact_attachment_param import ContactAttachmentParam
 from ..location_attachment_param import LocationAttachmentParam
-from ..pre_resolved_contacts_param import PreResolvedContactsParam
 from ..quick_replies_attachment_param import QuickRepliesAttachmentParam
 from ..message_header_attachment_param import MessageHeaderAttachmentParam
 from ..unsupported_content_attachment_param import UnsupportedContentAttachmentParam
@@ -42,8 +41,6 @@ class MessageCreateParams(TypedDict, total=False):
     integration_idempotency_id: Annotated[str, PropertyInfo(alias="integrationIdempotencyId")]
 
     integration_thread_id: Annotated[str, PropertyInfo(alias="integrationThreadId")]
-
-    pre_resolved_contacts: Annotated[PreResolvedContactsParam, PropertyInfo(alias="preResolvedContacts")]
 
     rich_text: Annotated[str, PropertyInfo(alias="richText")]
 

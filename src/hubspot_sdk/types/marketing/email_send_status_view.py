@@ -44,6 +44,7 @@ class EmailSendStatusView(BaseModel):
             "BRAND_RECIPIENT_FATIGUE_SUPPRESSED",
             "CAMPAIGN_CANCELLED",
             "CANCELLED_ABUSE",
+            "CONTACT_VIEW_PERMISSION",
             "CORRUPT_INPUT",
             "EMAIL_DISABLED",
             "EMAIL_UNCONFIRMED",

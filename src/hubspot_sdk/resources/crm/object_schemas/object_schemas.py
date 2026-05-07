@@ -34,8 +34,8 @@ from ....types.crm import (
 )
 from ...._base_client import make_request_options
 from ....types.crm.object_schema import ObjectSchema
-from ....types.shared.base_association_definition import BaseAssociationDefinition
-from ....types.shared.base_object_type_definition import BaseObjectTypeDefinition
+from ....types.shared.association_definition import AssociationDefinition
+from ....types.shared.object_type_definition import ObjectTypeDefinition
 from ....types.crm.object_type_property_create_param import ObjectTypePropertyCreateParam
 from ....types.shared_params.object_type_definition_labels import ObjectTypeDefinitionLabels
 from ....types.crm.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
@@ -164,7 +164,7 @@ class ObjectSchemasResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseObjectTypeDefinition:
+    ) -> ObjectTypeDefinition:
         """
         Update attributes of a custom object schema, such as properties and labels,
         using the object type ID or fully qualified name.
@@ -199,7 +199,7 @@ class ObjectSchemasResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseObjectTypeDefinition,
+            cast_to=ObjectTypeDefinition,
         )
 
     def list(
@@ -306,7 +306,7 @@ class ObjectSchemasResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseAssociationDefinition:
+    ) -> AssociationDefinition:
         """
         Create a new association between the specified object type and another object
         type. This operation requires the definition of the association attributes, such
@@ -336,7 +336,7 @@ class ObjectSchemasResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseAssociationDefinition,
+            cast_to=AssociationDefinition,
         )
 
     def delete_association(
@@ -554,7 +554,7 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseObjectTypeDefinition:
+    ) -> ObjectTypeDefinition:
         """
         Update attributes of a custom object schema, such as properties and labels,
         using the object type ID or fully qualified name.
@@ -589,7 +589,7 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseObjectTypeDefinition,
+            cast_to=ObjectTypeDefinition,
         )
 
     async def list(
@@ -698,7 +698,7 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BaseAssociationDefinition:
+    ) -> AssociationDefinition:
         """
         Create a new association between the specified object type and another object
         type. This operation requires the definition of the association attributes, such
@@ -728,7 +728,7 @@ class AsyncObjectSchemasResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BaseAssociationDefinition,
+            cast_to=AssociationDefinition,
         )
 
     async def delete_association(

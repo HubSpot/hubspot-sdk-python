@@ -10,10 +10,10 @@ from ..._utils import PropertyInfo
 from .public_access_rule_param import PublicAccessRuleParam
 from .content_language_variation_param import ContentLanguageVariationParam
 
-__all__ = ["PageDataParam"]
+__all__ = ["PagesPageParam"]
 
 
-class PageDataParam(TypedDict, total=False):
+class PagesPageParam(TypedDict, total=False):
     id: Required[str]
     """The unique ID of the page."""
 
