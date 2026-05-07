@@ -13,4 +13,4 @@ else
 fi
 
 echo "==> Making sure it imports"
-.venv/bin/python -c 'import hubspot_sdk'
+rye run python -c 'import hubspot_sdk'
