@@ -15,11 +15,11 @@ __all__ = ["PageVersion"]
 class PageVersion(BaseModel):
     id: str
 
-    object: "PageData"
+    object: "PagesPage"
 
     updated_at: datetime = FieldInfo(alias="updatedAt")
 
     user: VersionUser
 
 
-from .page_data import PageData
+from .pages_page import PagesPage

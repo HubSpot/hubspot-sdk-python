@@ -9,8 +9,8 @@ __all__ = ["BatchCreateSitePagesParams"]
 
 
 class BatchCreateSitePagesParams(TypedDict, total=False):
-    inputs: Required[Iterable["PageDataParam"]]
+    inputs: Required[Iterable["PagesPageParam"]]
     """Pages to input."""
 
 
-from ..page_data_param import PageDataParam
+from ..pages_page_param import PagesPageParam

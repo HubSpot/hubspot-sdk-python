@@ -20,8 +20,16 @@ class MetricListContactIDsByTypeParams(TypedDict, total=False):
     """
 
     end_date: Annotated[str, PropertyInfo(alias="endDate")]
+    """The end date for fetching contact data, in YYYY-MM-DD format.
+
+    Optional. Example: 2000-01-27
+    """
 
     limit: int
     """The maximum number of results to display per page."""
 
     start_date: Annotated[str, PropertyInfo(alias="startDate")]
+    """The start date for fetching contact data, in YYYY-MM-DD format.
+
+    Optional. Example: 2000-01-20
+    """

@@ -218,6 +218,14 @@ class CampaignsResource(SyncAPIResource):
 
           limit: The maximum number of results to display per page.
 
+          name: Filter campaigns by name. Optional.
+
+          properties: A comma-separated list of properties to include in the response.
+               Unrecognized properties are ignored. Optional. Example:
+               hs_name, hs_budget,hs_notes
+
+          sort: The property to sort results by. Optional.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -307,6 +315,15 @@ class CampaignsResource(SyncAPIResource):
         if startDate and endDate are provided.
 
         Args:
+          end_date: The end date for fetching asset metrics, in YYYY-MM-DD format. Optional.
+              Example: 2000-01-27
+
+          properties: A comma-separated list of properties to include in the response.
+               Unrecognized properties are ignored. Optional. Example: hs_name,hs_budget, hs_notes
+
+          start_date: The start date for fetching asset metrics, in YYYY-MM-DD format.
+              Optional. Example: 2000-01-20
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -485,6 +502,14 @@ class AsyncCampaignsResource(AsyncAPIResource):
 
           limit: The maximum number of results to display per page.
 
+          name: Filter campaigns by name. Optional.
+
+          properties: A comma-separated list of properties to include in the response.
+               Unrecognized properties are ignored. Optional. Example:
+               hs_name, hs_budget,hs_notes
+
+          sort: The property to sort results by. Optional.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -574,6 +599,15 @@ class AsyncCampaignsResource(AsyncAPIResource):
         if startDate and endDate are provided.
 
         Args:
+          end_date: The end date for fetching asset metrics, in YYYY-MM-DD format. Optional.
+              Example: 2000-01-27
+
+          properties: A comma-separated list of properties to include in the response.
+               Unrecognized properties are ignored. Optional. Example: hs_name,hs_budget, hs_notes
+
+          start_date: The start date for fetching asset metrics, in YYYY-MM-DD format.
+              Optional. Example: 2000-01-20
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

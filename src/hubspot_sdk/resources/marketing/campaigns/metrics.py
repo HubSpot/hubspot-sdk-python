@@ -66,6 +66,12 @@ class MetricsResource(SyncAPIResource):
         as sessions, new contacts, and influenced contacts.
 
         Args:
+          end_date: The end date for fetching attribution data, in YYYY-MM-DD format. Optional.
+              Example: 2000-01-27
+
+          start_date: The start date for fetching attribution data, in YYYY-MM-DD format. Optional.
+              Example: 2000-01-20
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -112,6 +118,11 @@ class MetricsResource(SyncAPIResource):
         Fetch revenue attribution report data for a specified campaign
 
         Args:
+          attribution_model: The revenue attribution model used to calculate deal revenue credit. Defaults to
+              LINEAR if not specified. Enum values: LINEAR, FIRST_INTERACTION,
+              LAST_INTERACTION, FULL_PATH, U_SHAPED, W_SHAPED, TIME_DECAY, J_SHAPED,
+              INVERSE_J_SHAPED
+
           end_date: End date to fetch attribution data, YYYY-MM-DD
 
           start_date: Start date to fetch attribution data, YYYY-MM-DD
@@ -169,7 +180,13 @@ class MetricsResource(SyncAPIResource):
               as the `paging.next.after` JSON property of a paged response containing more
               results.
 
+          end_date: The end date for fetching contact data, in YYYY-MM-DD format.
+              Optional. Example: 2000-01-27
+
           limit: The maximum number of results to display per page.
+
+          start_date: The start date for fetching contact data, in YYYY-MM-DD format.
+              Optional. Example: 2000-01-20
 
           extra_headers: Send extra headers
 
@@ -247,6 +264,12 @@ class AsyncMetricsResource(AsyncAPIResource):
         as sessions, new contacts, and influenced contacts.
 
         Args:
+          end_date: The end date for fetching attribution data, in YYYY-MM-DD format. Optional.
+              Example: 2000-01-27
+
+          start_date: The start date for fetching attribution data, in YYYY-MM-DD format. Optional.
+              Example: 2000-01-20
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -293,6 +316,11 @@ class AsyncMetricsResource(AsyncAPIResource):
         Fetch revenue attribution report data for a specified campaign
 
         Args:
+          attribution_model: The revenue attribution model used to calculate deal revenue credit. Defaults to
+              LINEAR if not specified. Enum values: LINEAR, FIRST_INTERACTION,
+              LAST_INTERACTION, FULL_PATH, U_SHAPED, W_SHAPED, TIME_DECAY, J_SHAPED,
+              INVERSE_J_SHAPED
+
           end_date: End date to fetch attribution data, YYYY-MM-DD
 
           start_date: Start date to fetch attribution data, YYYY-MM-DD
@@ -350,7 +378,13 @@ class AsyncMetricsResource(AsyncAPIResource):
               as the `paging.next.after` JSON property of a paged response containing more
               results.
 
+          end_date: The end date for fetching contact data, in YYYY-MM-DD format.
+              Optional. Example: 2000-01-27
+
           limit: The maximum number of results to display per page.
+
+          start_date: The start date for fetching contact data, in YYYY-MM-DD format.
+              Optional. Example: 2000-01-20
 
           extra_headers: Send extra headers
 

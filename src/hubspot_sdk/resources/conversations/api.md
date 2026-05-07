@@ -21,8 +21,6 @@ from hubspot_sdk.types.conversations import (
     FileAttachment,
     LocationAttachment,
     MessageHeaderAttachment,
-    PreResolvedContact,
-    PreResolvedContacts,
     PublicChannelAccount,
     PublicChannelAccountEgg,
     PublicChannelAccountStagingToken,

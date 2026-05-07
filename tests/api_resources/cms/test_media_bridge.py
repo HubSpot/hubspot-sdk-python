@@ -27,8 +27,8 @@ from hubspot_sdk.types.cms import (
 )
 from hubspot_sdk.types.shared import (
     PropertyGroup,
-    BaseObjectTypeDefinition,
-    BaseAssociationDefinition,
+    ObjectTypeDefinition,
+    AssociationDefinition,
     CollectionResponsePropertyGroupNoPaging,
 )
 
@@ -49,7 +49,7 @@ class TestMediaBridge:
             from_object_type_id="fromObjectTypeId",
             to_object_type_id="toObjectTypeId",
         )
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -61,7 +61,7 @@ class TestMediaBridge:
             to_object_type_id="toObjectTypeId",
             name="name",
         )
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -76,7 +76,7 @@ class TestMediaBridge:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         media_bridge = response.parse()
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -91,7 +91,7 @@ class TestMediaBridge:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             media_bridge = response.parse()
-            assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+            assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -580,7 +580,7 @@ class TestMediaBridge:
         media_bridge = client.cms.media_bridge.create_video_association_definition(
             0,
         )
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -592,7 +592,7 @@ class TestMediaBridge:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         media_bridge = response.parse()
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -604,7 +604,7 @@ class TestMediaBridge:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             media_bridge = response.parse()
-            assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+            assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1666,7 +1666,7 @@ class TestMediaBridge:
             app_id=0,
             clear_description=True,
         )
-        assert_matches_type(BaseObjectTypeDefinition, media_bridge, path=["response"])
+        assert_matches_type(ObjectTypeDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1687,7 +1687,7 @@ class TestMediaBridge:
             searchable_properties=["string"],
             secondary_display_properties=["string"],
         )
-        assert_matches_type(BaseObjectTypeDefinition, media_bridge, path=["response"])
+        assert_matches_type(ObjectTypeDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1701,7 +1701,7 @@ class TestMediaBridge:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         media_bridge = response.parse()
-        assert_matches_type(BaseObjectTypeDefinition, media_bridge, path=["response"])
+        assert_matches_type(ObjectTypeDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1715,7 +1715,7 @@ class TestMediaBridge:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             media_bridge = response.parse()
-            assert_matches_type(BaseObjectTypeDefinition, media_bridge, path=["response"])
+            assert_matches_type(ObjectTypeDefinition, media_bridge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1793,7 +1793,7 @@ class TestAsyncMediaBridge:
             from_object_type_id="fromObjectTypeId",
             to_object_type_id="toObjectTypeId",
         )
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1805,7 +1805,7 @@ class TestAsyncMediaBridge:
             to_object_type_id="toObjectTypeId",
             name="name",
         )
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1820,7 +1820,7 @@ class TestAsyncMediaBridge:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         media_bridge = await response.parse()
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1835,7 +1835,7 @@ class TestAsyncMediaBridge:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             media_bridge = await response.parse()
-            assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+            assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2324,7 +2324,7 @@ class TestAsyncMediaBridge:
         media_bridge = await async_client.cms.media_bridge.create_video_association_definition(
             0,
         )
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2336,7 +2336,7 @@ class TestAsyncMediaBridge:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         media_bridge = await response.parse()
-        assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+        assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2348,7 +2348,7 @@ class TestAsyncMediaBridge:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             media_bridge = await response.parse()
-            assert_matches_type(BaseAssociationDefinition, media_bridge, path=["response"])
+            assert_matches_type(AssociationDefinition, media_bridge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3410,7 +3410,7 @@ class TestAsyncMediaBridge:
             app_id=0,
             clear_description=True,
         )
-        assert_matches_type(BaseObjectTypeDefinition, media_bridge, path=["response"])
+        assert_matches_type(ObjectTypeDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3431,7 +3431,7 @@ class TestAsyncMediaBridge:
             searchable_properties=["string"],
             secondary_display_properties=["string"],
         )
-        assert_matches_type(BaseObjectTypeDefinition, media_bridge, path=["response"])
+        assert_matches_type(ObjectTypeDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3445,7 +3445,7 @@ class TestAsyncMediaBridge:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         media_bridge = await response.parse()
-        assert_matches_type(BaseObjectTypeDefinition, media_bridge, path=["response"])
+        assert_matches_type(ObjectTypeDefinition, media_bridge, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3459,7 +3459,7 @@ class TestAsyncMediaBridge:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             media_bridge = await response.parse()
-            assert_matches_type(BaseObjectTypeDefinition, media_bridge, path=["response"])
+            assert_matches_type(ObjectTypeDefinition, media_bridge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

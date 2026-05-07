@@ -18,6 +18,8 @@ class ChirpAIContextObjectParam(TypedDict, total=False):
     application_id: Required[Annotated[str, PropertyInfo(alias="applicationId")]]
     """The identifier for the application associated with the context."""
 
+    is_private: Required[Annotated[bool, PropertyInfo(alias="isPrivate")]]
+
     metadata: Required[Dict[str, str]]
     """Additional metadata related to the context, represented as key-value pairs."""
 
