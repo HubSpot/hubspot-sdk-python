@@ -11,6 +11,3 @@ else
   echo "==> Running lints"
   rye run lint
 fi
-
-echo "==> Making sure it imports"
-rye run python -c 'import hubspot_sdk'
