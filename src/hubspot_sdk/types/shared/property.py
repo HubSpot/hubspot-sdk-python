@@ -6,14 +6,14 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .option import Option
 from ..._models import BaseModel
-from .base_option import BaseOption
 from .property_modification_metadata import PropertyModificationMetadata
 
-__all__ = ["BaseProperty"]
+__all__ = ["Property"]
 
 
-class BaseProperty(BaseModel):
+class Property(BaseModel):
     """A HubSpot property"""
 
     description: str
@@ -34,7 +34,7 @@ class BaseProperty(BaseModel):
     the API.
     """
 
-    options: List[BaseOption]
+    options: List[Option]
     """A list of valid options for the property.
 
     This field is required for enumerated properties, but will be empty for other

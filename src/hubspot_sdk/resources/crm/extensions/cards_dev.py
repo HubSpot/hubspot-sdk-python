@@ -290,7 +290,11 @@ class CardsDevResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardMigrateViewsResponse:
-        """
+        """Swaps a Legacy CRM Card with an App Card in views.
+
+        Reference the "Migrate a
+        legacy CRM card to an app card" docs for more information
+
         Args:
           extra_headers: Send extra headers
 
@@ -576,7 +580,11 @@ class AsyncCardsDevResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardMigrateViewsResponse:
-        """
+        """Swaps a Legacy CRM Card with an App Card in views.
+
+        Reference the "Migrate a
+        legacy CRM card to an app card" docs for more information
+
         Args:
           extra_headers: Send extra headers
 

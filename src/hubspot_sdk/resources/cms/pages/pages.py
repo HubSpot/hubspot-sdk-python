@@ -65,7 +65,7 @@ from .multi_language import (
     AsyncMultiLanguageResourceWithStreamingResponse,
 )
 from ...._base_client import AsyncPaginator, make_request_options
-from ....types.cms.page_data import PageData
+from ....types.cms.pages_page import PagesPage
 from ....types.cms.page_version import PageVersion
 
 __all__ = ["PagesResource", "AsyncPagesResource"]
@@ -349,7 +349,7 @@ class PagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageData:
+    ) -> PagesPage:
         """
         Restores a previous version of a landing page, specified by page ID and revision
         ID.
@@ -376,7 +376,7 @@ class PagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PageData,
+            cast_to=PagesPage,
         )
 
     def restore_landing_page_revision_to_draft(
@@ -390,7 +390,7 @@ class PagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageData:
+    ) -> PagesPage:
         """
         Specify a previous version of a landing page to set as the page draft.
 
@@ -414,7 +414,7 @@ class PagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PageData,
+            cast_to=PagesPage,
         )
 
     def restore_site_page_revision(
@@ -428,7 +428,7 @@ class PagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageData:
+    ) -> PagesPage:
         """
         Restores a website page to a previous version, specified by page ID and version
         ID.
@@ -455,7 +455,7 @@ class PagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PageData,
+            cast_to=PagesPage,
         )
 
     def restore_site_page_revision_to_draft(
@@ -469,7 +469,7 @@ class PagesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageData:
+    ) -> PagesPage:
         """
         Takes a specified version of a website page and sets it as the new draft version
         of the page.
@@ -494,7 +494,7 @@ class PagesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PageData,
+            cast_to=PagesPage,
         )
 
 
@@ -776,7 +776,7 @@ class AsyncPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageData:
+    ) -> PagesPage:
         """
         Restores a previous version of a landing page, specified by page ID and revision
         ID.
@@ -803,7 +803,7 @@ class AsyncPagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PageData,
+            cast_to=PagesPage,
         )
 
     async def restore_landing_page_revision_to_draft(
@@ -817,7 +817,7 @@ class AsyncPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageData:
+    ) -> PagesPage:
         """
         Specify a previous version of a landing page to set as the page draft.
 
@@ -841,7 +841,7 @@ class AsyncPagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PageData,
+            cast_to=PagesPage,
         )
 
     async def restore_site_page_revision(
@@ -855,7 +855,7 @@ class AsyncPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageData:
+    ) -> PagesPage:
         """
         Restores a website page to a previous version, specified by page ID and version
         ID.
@@ -882,7 +882,7 @@ class AsyncPagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PageData,
+            cast_to=PagesPage,
         )
 
     async def restore_site_page_revision_to_draft(
@@ -896,7 +896,7 @@ class AsyncPagesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PageData:
+    ) -> PagesPage:
         """
         Takes a specified version of a website page and sets it as the new draft version
         of the page.
@@ -921,7 +921,7 @@ class AsyncPagesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PageData,
+            cast_to=PagesPage,
         )
 
 

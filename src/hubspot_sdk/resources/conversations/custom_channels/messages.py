@@ -20,7 +20,6 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.conversations.custom_channels import message_create_params, message_update_params
-from ....types.conversations.pre_resolved_contacts_param import PreResolvedContactsParam
 from ....types.conversations.public_conversations_message import PublicConversationsMessage
 from ....types.conversations.channel_integration_participant_param import ChannelIntegrationParticipantParam
 
@@ -62,7 +61,6 @@ class MessagesResource(SyncAPIResource):
         in_reply_to_id: str | Omit = omit,
         integration_idempotency_id: str | Omit = omit,
         integration_thread_id: str | Omit = omit,
-        pre_resolved_contacts: PreResolvedContactsParam | Omit = omit,
         rich_text: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -98,7 +96,6 @@ class MessagesResource(SyncAPIResource):
                     "in_reply_to_id": in_reply_to_id,
                     "integration_idempotency_id": integration_idempotency_id,
                     "integration_thread_id": integration_thread_id,
-                    "pre_resolved_contacts": pre_resolved_contacts,
                     "rich_text": rich_text,
                 },
                 message_create_params.MessageCreateParams,
@@ -234,7 +231,6 @@ class AsyncMessagesResource(AsyncAPIResource):
         in_reply_to_id: str | Omit = omit,
         integration_idempotency_id: str | Omit = omit,
         integration_thread_id: str | Omit = omit,
-        pre_resolved_contacts: PreResolvedContactsParam | Omit = omit,
         rich_text: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -270,7 +266,6 @@ class AsyncMessagesResource(AsyncAPIResource):
                     "in_reply_to_id": in_reply_to_id,
                     "integration_idempotency_id": integration_idempotency_id,
                     "integration_thread_id": integration_thread_id,
-                    "pre_resolved_contacts": pre_resolved_contacts,
                     "rich_text": rich_text,
                 },
                 message_create_params.MessageCreateParams,

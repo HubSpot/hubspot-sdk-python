@@ -126,7 +126,15 @@ class AssetsResource(SyncAPIResource):
               as the `paging.next.after` JSON property of a paged response containing more
               results.
 
+          end_date: End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to
+              fetch the metrics associated with the assets for a specified period. If not
+              provided, no asset metrics will be fetched. Example: 2024-01-27
+
           limit: The maximum number of results to display per page.
+
+          start_date: Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to
+              fetch the metrics associated with the assets for a specified period. If not
+              provided, no asset metrics will be fetched. Example: 2023-01-20
 
           extra_headers: Send extra headers
 
@@ -323,7 +331,15 @@ class AsyncAssetsResource(AsyncAPIResource):
               as the `paging.next.after` JSON property of a paged response containing more
               results.
 
+          end_date: End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to
+              fetch the metrics associated with the assets for a specified period. If not
+              provided, no asset metrics will be fetched. Example: 2024-01-27
+
           limit: The maximum number of results to display per page.
+
+          start_date: Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to
+              fetch the metrics associated with the assets for a specified period. If not
+              provided, no asset metrics will be fetched. Example: 2023-01-20
 
           extra_headers: Send extra headers
 

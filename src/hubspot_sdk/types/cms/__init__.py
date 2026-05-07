@@ -13,10 +13,10 @@ from .padding import Padding as Padding
 from .gradient import Gradient as Gradient
 from .option_1 import Option1 as Option1
 from .endpoints import Endpoints as Endpoints
-from .page_data import PageData as PageData
 from .color_stop import ColorStop as ColorStop
 from .foreign_id import ForeignID as ForeignID
 from .group_view import GroupView as GroupView
+from .pages_page import PagesPage as PagesPage
 from .property_1 import Property1 as Property1
 from .rgba_color import RgbaColor as RgbaColor
 from .size_param import SizeParam as SizeParam
@@ -43,9 +43,9 @@ from .layout_section import LayoutSection as LayoutSection
 from .side_or_corner import SideOrCorner as SideOrCorner
 from .endpoints_param import EndpointsParam as EndpointsParam
 from .hub_db_table_v3 import HubDBTableV3 as HubDBTableV3
-from .page_data_param import PageDataParam as PageDataParam
 from .background_image import BackgroundImage as BackgroundImage
 from .color_stop_param import ColorStopParam as ColorStopParam
+from .pages_page_param import PagesPageParam as PagesPageParam
 from .public_audit_log import PublicAuditLog as PublicAuditLog
 from .rgba_color_param import RgbaColorParam as RgbaColorParam
 from .bounded_next_page import BoundedNextPage as BoundedNextPage

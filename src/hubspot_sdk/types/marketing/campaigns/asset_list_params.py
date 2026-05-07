@@ -20,8 +20,20 @@ class AssetListParams(TypedDict, total=False):
     """
 
     end_date: Annotated[str, PropertyInfo(alias="endDate")]
+    """End date to fetch asset metrics, formatted as YYYY-MM-DD.
+
+    This date is used to fetch the metrics associated with the assets for a
+    specified period. If not provided, no asset metrics will be fetched. Example:
+    2024-01-27
+    """
 
     limit: str
     """The maximum number of results to display per page."""
 
     start_date: Annotated[str, PropertyInfo(alias="startDate")]
+    """Start date to fetch asset metrics, formatted as YYYY-MM-DD.
+
+    This date is used to fetch the metrics associated with the assets for a
+    specified period. If not provided, no asset metrics will be fetched. Example:
+    2023-01-20
+    """
