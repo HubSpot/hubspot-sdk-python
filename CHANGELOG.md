@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2026-05-13)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** manual updates ([76f3f9d](https://github.com/HubSpot/hubspot-sdk-python/commit/76f3f9d5fcb1fa893b4d734a0b596b4a113bc18f))
+* **internal/types:** support eagerly validating pydantic iterators ([22db987](https://github.com/HubSpot/hubspot-sdk-python/commit/22db987508f91e58f8e087f0d9dfb866575739b1))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([b13d110](https://github.com/HubSpot/hubspot-sdk-python/commit/b13d11000ddb13b586659f32821ccf5979a6c6f1))
+
 ## 0.1.0-alpha.5 (2026-05-07)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
