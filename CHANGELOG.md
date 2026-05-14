@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2026-05-14)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** manual updates ([c59ffca](https://github.com/HubSpot/hubspot-sdk-python/commit/c59ffca04eb35b38cfb054d250acd8dfde28b539))
+* **api:** manual updates ([01640e6](https://github.com/HubSpot/hubspot-sdk-python/commit/01640e6c69764f64e54d24690380b9301631e52a))
+
+
+### Chores
+
+* update SDK settings ([cde115d](https://github.com/HubSpot/hubspot-sdk-python/commit/cde115d789f298734b1079f622fc8eea71c88e20))
+* update SDK settings ([4dfe136](https://github.com/HubSpot/hubspot-sdk-python/commit/4dfe136ff43e06ff521fc5040199a84a44cfe008))
+* update SDK settings ([d5df30c](https://github.com/HubSpot/hubspot-sdk-python/commit/d5df30ced57fbe78aaf89d6fdd5dd9d6630b7ade))
+
 ## 0.1.0-alpha.6 (2026-05-13)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
