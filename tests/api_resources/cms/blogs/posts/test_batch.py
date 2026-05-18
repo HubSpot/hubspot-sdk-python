@@ -85,7 +85,7 @@ class TestBatch:
                                         },
                                         "background_gradient": {
                                             "angle": {
-                                                "units": "deg",
+                                                "units": "DEGREES",
                                                 "value": 0,
                                             },
                                             "colors": [
@@ -125,7 +125,7 @@ class TestBatch:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -274,7 +274,7 @@ class TestBatch:
                                         },
                                         "background_gradient": {
                                             "angle": {
-                                                "units": "deg",
+                                                "units": "DEGREES",
                                                 "value": 0,
                                             },
                                             "colors": [
@@ -314,7 +314,7 @@ class TestBatch:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -463,7 +463,7 @@ class TestBatch:
                                         },
                                         "background_gradient": {
                                             "angle": {
-                                                "units": "deg",
+                                                "units": "DEGREES",
                                                 "value": 0,
                                             },
                                             "colors": [
@@ -503,7 +503,7 @@ class TestBatch:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -821,7 +821,7 @@ class TestAsyncBatch:
                                         },
                                         "background_gradient": {
                                             "angle": {
-                                                "units": "deg",
+                                                "units": "DEGREES",
                                                 "value": 0,
                                             },
                                             "colors": [
@@ -861,7 +861,7 @@ class TestAsyncBatch:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -1010,7 +1010,7 @@ class TestAsyncBatch:
                                         },
                                         "background_gradient": {
                                             "angle": {
-                                                "units": "deg",
+                                                "units": "DEGREES",
                                                 "value": 0,
                                             },
                                             "colors": [
@@ -1050,7 +1050,7 @@ class TestAsyncBatch:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -1199,7 +1199,7 @@ class TestAsyncBatch:
                                         },
                                         "background_gradient": {
                                             "angle": {
-                                                "units": "deg",
+                                                "units": "DEGREES",
                                                 "value": 0,
                                             },
                                             "colors": [
@@ -1239,7 +1239,7 @@ class TestAsyncBatch:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [

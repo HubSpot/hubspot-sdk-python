@@ -9,7 +9,11 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm import BatchResponsePublicDefaultAssociation, BatchResponsePublicAssociationMultiWithLabel
+from hubspot_sdk.types.crm import (
+    BatchResponseLabelsBetweenObjectPair,
+    BatchResponsePublicDefaultAssociation,
+    BatchResponsePublicAssociationMultiWithLabel,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -21,42 +25,72 @@ class TestBatch:
     @parametrize
     def test_method_create(self, client: HubSpot) -> None:
         batch = client.crm.associations.batch.create(
-            to_object_id="toObjectId",
-            from_object_type="fromObjectType",
-            from_object_id="fromObjectId",
             to_object_type="toObjectType",
+            from_object_type="fromObjectType",
+            inputs=[
+                {
+                    "from": {"id": "id"},
+                    "to": {"id": "id"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
         )
-        assert_matches_type(BatchResponsePublicDefaultAssociation, batch, path=["response"])
+        assert_matches_type(BatchResponseLabelsBetweenObjectPair, batch, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: HubSpot) -> None:
         response = client.crm.associations.batch.with_raw_response.create(
-            to_object_id="toObjectId",
-            from_object_type="fromObjectType",
-            from_object_id="fromObjectId",
             to_object_type="toObjectType",
+            from_object_type="fromObjectType",
+            inputs=[
+                {
+                    "from": {"id": "id"},
+                    "to": {"id": "id"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         batch = response.parse()
-        assert_matches_type(BatchResponsePublicDefaultAssociation, batch, path=["response"])
+        assert_matches_type(BatchResponseLabelsBetweenObjectPair, batch, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: HubSpot) -> None:
         with client.crm.associations.batch.with_streaming_response.create(
-            to_object_id="toObjectId",
-            from_object_type="fromObjectType",
-            from_object_id="fromObjectId",
             to_object_type="toObjectType",
+            from_object_type="fromObjectType",
+            inputs=[
+                {
+                    "from": {"id": "id"},
+                    "to": {"id": "id"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             batch = response.parse()
-            assert_matches_type(BatchResponsePublicDefaultAssociation, batch, path=["response"])
+            assert_matches_type(BatchResponseLabelsBetweenObjectPair, batch, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -65,34 +99,38 @@ class TestBatch:
     def test_path_params_create(self, client: HubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `from_object_type` but received ''"):
             client.crm.associations.batch.with_raw_response.create(
-                to_object_id="toObjectId",
+                to_object_type="toObjectType",
                 from_object_type="",
-                from_object_id="fromObjectId",
-                to_object_type="toObjectType",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `from_object_id` but received ''"):
-            client.crm.associations.batch.with_raw_response.create(
-                to_object_id="toObjectId",
-                from_object_type="fromObjectType",
-                from_object_id="",
-                to_object_type="toObjectType",
+                inputs=[
+                    {
+                        "from": {"id": "id"},
+                        "to": {"id": "id"},
+                        "types": [
+                            {
+                                "association_category": "HUBSPOT_DEFINED",
+                                "association_type_id": 0,
+                            }
+                        ],
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
             client.crm.associations.batch.with_raw_response.create(
-                to_object_id="toObjectId",
-                from_object_type="fromObjectType",
-                from_object_id="fromObjectId",
                 to_object_type="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_id` but received ''"):
-            client.crm.associations.batch.with_raw_response.create(
-                to_object_id="",
                 from_object_type="fromObjectType",
-                from_object_id="fromObjectId",
-                to_object_type="toObjectType",
+                inputs=[
+                    {
+                        "from": {"id": "id"},
+                        "to": {"id": "id"},
+                        "types": [
+                            {
+                                "association_category": "HUBSPOT_DEFINED",
+                                "association_type_id": 0,
+                            }
+                        ],
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -438,42 +476,72 @@ class TestAsyncBatch:
     @parametrize
     async def test_method_create(self, async_client: AsyncHubSpot) -> None:
         batch = await async_client.crm.associations.batch.create(
-            to_object_id="toObjectId",
-            from_object_type="fromObjectType",
-            from_object_id="fromObjectId",
             to_object_type="toObjectType",
+            from_object_type="fromObjectType",
+            inputs=[
+                {
+                    "from": {"id": "id"},
+                    "to": {"id": "id"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
         )
-        assert_matches_type(BatchResponsePublicDefaultAssociation, batch, path=["response"])
+        assert_matches_type(BatchResponseLabelsBetweenObjectPair, batch, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncHubSpot) -> None:
         response = await async_client.crm.associations.batch.with_raw_response.create(
-            to_object_id="toObjectId",
-            from_object_type="fromObjectType",
-            from_object_id="fromObjectId",
             to_object_type="toObjectType",
+            from_object_type="fromObjectType",
+            inputs=[
+                {
+                    "from": {"id": "id"},
+                    "to": {"id": "id"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         batch = await response.parse()
-        assert_matches_type(BatchResponsePublicDefaultAssociation, batch, path=["response"])
+        assert_matches_type(BatchResponseLabelsBetweenObjectPair, batch, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncHubSpot) -> None:
         async with async_client.crm.associations.batch.with_streaming_response.create(
-            to_object_id="toObjectId",
-            from_object_type="fromObjectType",
-            from_object_id="fromObjectId",
             to_object_type="toObjectType",
+            from_object_type="fromObjectType",
+            inputs=[
+                {
+                    "from": {"id": "id"},
+                    "to": {"id": "id"},
+                    "types": [
+                        {
+                            "association_category": "HUBSPOT_DEFINED",
+                            "association_type_id": 0,
+                        }
+                    ],
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             batch = await response.parse()
-            assert_matches_type(BatchResponsePublicDefaultAssociation, batch, path=["response"])
+            assert_matches_type(BatchResponseLabelsBetweenObjectPair, batch, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -482,34 +550,38 @@ class TestAsyncBatch:
     async def test_path_params_create(self, async_client: AsyncHubSpot) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `from_object_type` but received ''"):
             await async_client.crm.associations.batch.with_raw_response.create(
-                to_object_id="toObjectId",
+                to_object_type="toObjectType",
                 from_object_type="",
-                from_object_id="fromObjectId",
-                to_object_type="toObjectType",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `from_object_id` but received ''"):
-            await async_client.crm.associations.batch.with_raw_response.create(
-                to_object_id="toObjectId",
-                from_object_type="fromObjectType",
-                from_object_id="",
-                to_object_type="toObjectType",
+                inputs=[
+                    {
+                        "from": {"id": "id"},
+                        "to": {"id": "id"},
+                        "types": [
+                            {
+                                "association_category": "HUBSPOT_DEFINED",
+                                "association_type_id": 0,
+                            }
+                        ],
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_type` but received ''"):
             await async_client.crm.associations.batch.with_raw_response.create(
-                to_object_id="toObjectId",
-                from_object_type="fromObjectType",
-                from_object_id="fromObjectId",
                 to_object_type="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `to_object_id` but received ''"):
-            await async_client.crm.associations.batch.with_raw_response.create(
-                to_object_id="",
                 from_object_type="fromObjectType",
-                from_object_id="fromObjectId",
-                to_object_type="toObjectType",
+                inputs=[
+                    {
+                        "from": {"id": "id"},
+                        "to": {"id": "id"},
+                        "types": [
+                            {
+                                "association_category": "HUBSPOT_DEFINED",
+                                "association_type_id": 0,
+                            }
+                        ],
+                    }
+                ],
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")

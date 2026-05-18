@@ -512,6 +512,7 @@ class TestAuthors:
             },
             language="language",
             primary_language="primaryLanguage",
+            use_published=True,
         )
         assert author.is_closed
         assert author.json() == {"foo": "bar"}
@@ -1667,6 +1668,7 @@ class TestAsyncAuthors:
             },
             language="language",
             primary_language="primaryLanguage",
+            use_published=True,
         )
         assert author.is_closed
         assert await author.json() == {"foo": "bar"}

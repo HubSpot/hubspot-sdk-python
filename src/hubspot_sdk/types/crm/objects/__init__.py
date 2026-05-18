@@ -129,9 +129,6 @@ from .project_update_params import ProjectUpdateParams as ProjectUpdateParams
 from .service_create_params import ServiceCreateParams as ServiceCreateParams
 from .service_search_params import ServiceSearchParams as ServiceSearchParams
 from .service_update_params import ServiceUpdateParams as ServiceUpdateParams
-from .contract_create_params import ContractCreateParams as ContractCreateParams
-from .contract_search_params import ContractSearchParams as ContractSearchParams
-from .contract_update_params import ContractUpdateParams as ContractUpdateParams
 from .discount_create_params import DiscountCreateParams as DiscountCreateParams
 from .discount_search_params import DiscountSearchParams as DiscountSearchParams
 from .discount_update_params import DiscountUpdateParams as DiscountUpdateParams

@@ -16,13 +16,19 @@ class AssociationSpecWithLabel(BaseModel):
     """
 
     category: Literal["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED", "WORK"]
-    """
-    The category of the association, such as HUBSPOT_DEFINED, USER_DEFINED, or
-    INTEGRATOR_DEFINED.
+    """Association category.
+
+    Can be HUBSPOT_DEFINED, USER_DEFINED, INTEGRATOR_DEFINED or WORK
     """
 
     type_id: int = FieldInfo(alias="typeId")
-    """The unique identifier for the type of association."""
+    """
+    An integer value used to uniquely identify a specific association type within
+    its Association Category.
+    """
 
     label: Optional[str] = None
-    """A label describing the association between two objects."""
+    """
+    An optional descriptor that provides additional context about the relationship
+    between associated records, such as "Mentor" and "Mentee".
+    """

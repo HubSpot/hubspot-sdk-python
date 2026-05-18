@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
+
+from ....._utils import PropertyInfo
 
 __all__ = ["MultiLanguageCreateLangVariationParams"]
 
@@ -13,3 +15,5 @@ class MultiLanguageCreateLangVariationParams(TypedDict, total=False):
 
     language: str
     """Target language of new variant."""
+
+    use_published: Annotated[bool, PropertyInfo(alias="usePublished")]

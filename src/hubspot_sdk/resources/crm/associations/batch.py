@@ -19,12 +19,14 @@ from ...._response import (
 from ...._base_client import make_request_options
 from ....types.crm.associations import (
     batch_get_params,
+    batch_create_params,
     batch_delete_params,
     batch_delete_labels_params,
     batch_create_default_params,
 )
 from ....types.crm.public_association_multi_post_param import PublicAssociationMultiPostParam
 from ....types.crm.public_association_multi_archive_param import PublicAssociationMultiArchiveParam
+from ....types.crm.batch_response_labels_between_object_pair import BatchResponseLabelsBetweenObjectPair
 from ....types.crm.batch_response_public_default_association import BatchResponsePublicDefaultAssociation
 from ....types.crm.public_default_association_multi_post_param import PublicDefaultAssociationMultiPostParam
 from ....types.crm.public_fetch_associations_batch_request_param import PublicFetchAssociationsBatchRequestParam
@@ -57,19 +59,20 @@ class BatchResource(SyncAPIResource):
 
     def create(
         self,
-        to_object_id: str,
+        to_object_type: str,
         *,
         from_object_type: str,
-        from_object_id: str,
-        to_object_type: str,
+        inputs: Iterable[PublicAssociationMultiPostParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponsePublicDefaultAssociation:
+    ) -> BatchResponseLabelsBetweenObjectPair:
         """
+        Batch create associations for objects
+
         Args:
           extra_headers: Send extra headers
 
@@ -81,24 +84,19 @@ class BatchResource(SyncAPIResource):
         """
         if not from_object_type:
             raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
-        if not from_object_id:
-            raise ValueError(f"Expected a non-empty value for `from_object_id` but received {from_object_id!r}")
         if not to_object_type:
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
-        if not to_object_id:
-            raise ValueError(f"Expected a non-empty value for `to_object_id` but received {to_object_id!r}")
-        return self._put(
+        return self._post(
             path_template(
-                "/crm/objects/2026-03/{from_object_type}/{from_object_id}/associations/default/{to_object_type}/{to_object_id}",
+                "/crm/associations/2026-03/{from_object_type}/{to_object_type}/batch/create",
                 from_object_type=from_object_type,
-                from_object_id=from_object_id,
                 to_object_type=to_object_type,
-                to_object_id=to_object_id,
             ),
+            body=maybe_transform({"inputs": inputs}, batch_create_params.BatchCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponsePublicDefaultAssociation,
+            cast_to=BatchResponseLabelsBetweenObjectPair,
         )
 
     def delete(
@@ -301,19 +299,20 @@ class AsyncBatchResource(AsyncAPIResource):
 
     async def create(
         self,
-        to_object_id: str,
+        to_object_type: str,
         *,
         from_object_type: str,
-        from_object_id: str,
-        to_object_type: str,
+        inputs: Iterable[PublicAssociationMultiPostParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchResponsePublicDefaultAssociation:
+    ) -> BatchResponseLabelsBetweenObjectPair:
         """
+        Batch create associations for objects
+
         Args:
           extra_headers: Send extra headers
 
@@ -325,24 +324,19 @@ class AsyncBatchResource(AsyncAPIResource):
         """
         if not from_object_type:
             raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
-        if not from_object_id:
-            raise ValueError(f"Expected a non-empty value for `from_object_id` but received {from_object_id!r}")
         if not to_object_type:
             raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
-        if not to_object_id:
-            raise ValueError(f"Expected a non-empty value for `to_object_id` but received {to_object_id!r}")
-        return await self._put(
+        return await self._post(
             path_template(
-                "/crm/objects/2026-03/{from_object_type}/{from_object_id}/associations/default/{to_object_type}/{to_object_id}",
+                "/crm/associations/2026-03/{from_object_type}/{to_object_type}/batch/create",
                 from_object_type=from_object_type,
-                from_object_id=from_object_id,
                 to_object_type=to_object_type,
-                to_object_id=to_object_id,
             ),
+            body=await async_maybe_transform({"inputs": inputs}, batch_create_params.BatchCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BatchResponsePublicDefaultAssociation,
+            cast_to=BatchResponseLabelsBetweenObjectPair,
         )
 
     async def delete(

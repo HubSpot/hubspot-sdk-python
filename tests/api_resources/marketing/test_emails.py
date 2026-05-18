@@ -613,9 +613,9 @@ class TestEmails:
     def test_method_get_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.get(
             email_ids=[0],
-            end_timestamp="endTimestamp",
+            end_timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
             property="property",
-            start_timestamp="startTimestamp",
+            start_timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(AggregateEmailStatistics, email, path=["response"])
 
@@ -750,9 +750,9 @@ class TestEmails:
     def test_method_get_histogram_with_all_params(self, client: HubSpot) -> None:
         email = client.marketing.emails.get_histogram(
             email_ids=[0],
-            end_timestamp="endTimestamp",
+            end_timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
             interval="DAY",
-            start_timestamp="startTimestamp",
+            start_timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(CollectionResponseWithTotalEmailStatisticInterval, email, path=["response"])
 
@@ -1902,9 +1902,9 @@ class TestAsyncEmails:
     async def test_method_get_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get(
             email_ids=[0],
-            end_timestamp="endTimestamp",
+            end_timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
             property="property",
-            start_timestamp="startTimestamp",
+            start_timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(AggregateEmailStatistics, email, path=["response"])
 
@@ -2039,9 +2039,9 @@ class TestAsyncEmails:
     async def test_method_get_histogram_with_all_params(self, async_client: AsyncHubSpot) -> None:
         email = await async_client.marketing.emails.get_histogram(
             email_ids=[0],
-            end_timestamp="endTimestamp",
+            end_timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
             interval="DAY",
-            start_timestamp="startTimestamp",
+            start_timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(CollectionResponseWithTotalEmailStatisticInterval, email, path=["response"])
 

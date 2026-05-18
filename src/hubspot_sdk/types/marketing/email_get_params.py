@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from typing import Union, Iterable
+from datetime import datetime
 from typing_extensions import Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -13,8 +14,8 @@ __all__ = ["EmailGetParams"]
 class EmailGetParams(TypedDict, total=False):
     email_ids: Annotated[Iterable[int], PropertyInfo(alias="emailIds")]
 
-    end_timestamp: Annotated[str, PropertyInfo(alias="endTimestamp")]
+    end_timestamp: Annotated[Union[str, datetime], PropertyInfo(alias="endTimestamp", format="iso8601")]
 
     property: str
 
-    start_timestamp: Annotated[str, PropertyInfo(alias="startTimestamp")]
+    start_timestamp: Annotated[Union[str, datetime], PropertyInfo(alias="startTimestamp", format="iso8601")]

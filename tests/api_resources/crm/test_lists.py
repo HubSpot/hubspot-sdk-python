@@ -9,6 +9,7 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
+from hubspot_sdk._utils import parse_datetime
 from hubspot_sdk.types.crm import (
     ListFetchResponse,
     ListsByIDResponse,
@@ -1020,8 +1021,8 @@ class TestLists:
     def test_method_get_size_and_edits_history_between_with_all_params(self, client: HubSpot) -> None:
         list_ = client.crm.lists.get_size_and_edits_history_between(
             list_id="listId",
-            end_date="endDate",
-            start_date="startDate",
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(ListSizeAndEditHistoryResponse, list_, path=["response"])
 
@@ -3540,8 +3541,8 @@ class TestAsyncLists:
     async def test_method_get_size_and_edits_history_between_with_all_params(self, async_client: AsyncHubSpot) -> None:
         list_ = await async_client.crm.lists.get_size_and_edits_history_between(
             list_id="listId",
-            end_date="endDate",
-            start_date="startDate",
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(ListSizeAndEditHistoryResponse, list_, path=["response"])
 

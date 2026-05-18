@@ -9,7 +9,25 @@ __all__ = ["SizeParam"]
 
 class SizeParam(TypedDict, total=False):
     units: Required[
-        Literal["%", "ch", "cm", "em", "ex", "in", "lh", "mm", "pc", "pt", "px", "Q", "rem", "vh", "vmax", "vmin", "vw"]
+        Literal[
+            "CH",
+            "CM",
+            "EM",
+            "EX",
+            "IN",
+            "LH",
+            "MM",
+            "PC",
+            "PERCENTAGE",
+            "PT",
+            "PX",
+            "Q",
+            "REM",
+            "VH",
+            "VMAX",
+            "VMIN",
+            "VW",
+        ]
     ]
 
     value: Required[float]

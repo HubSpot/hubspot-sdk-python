@@ -8,7 +8,7 @@ __all__ = ["AngleParam"]
 
 
 class AngleParam(TypedDict, total=False):
-    units: Required[Literal["deg", "grad", "rad", "turn"]]
+    units: Required[Literal["DEGREES", "GRADIANS", "RADIANS", "TURNS"]]
     """The unit of measurement for the angle."""
 
     value: Required[float]
