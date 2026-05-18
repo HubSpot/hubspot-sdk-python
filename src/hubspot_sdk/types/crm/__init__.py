@@ -174,6 +174,7 @@ from .public_property_referenced_time import PublicPropertyReferencedTime as Pub
 from .public_property_validation_rule import PublicPropertyValidationRule as PublicPropertyValidationRule
 from .public_restricted_filter_branch import PublicRestrictedFilterBranch as PublicRestrictedFilterBranch
 from .association_label_limit_response import AssociationLabelLimitResponse as AssociationLabelLimitResponse
+from .association_update_labels_params import AssociationUpdateLabelsParams as AssociationUpdateLabelsParams
 from .feature_flag_list_portals_params import FeatureFlagListPortalsParams as FeatureFlagListPortalsParams
 from .portal_flag_state_batch_response import PortalFlagStateBatchResponse as PortalFlagStateBatchResponse
 from .public_association_filter_branch import PublicAssociationFilterBranch as PublicAssociationFilterBranch
@@ -340,6 +341,9 @@ from .object_type_near_or_at_association_limit import (
 from .public_communication_subscription_filter import (
     PublicCommunicationSubscriptionFilter as PublicCommunicationSubscriptionFilter,
 )
+from .batch_response_labels_between_object_pair import (
+    BatchResponseLabelsBetweenObjectPair as BatchResponseLabelsBetweenObjectPair,
+)
 from .batch_response_public_default_association import (
     BatchResponsePublicDefaultAssociation as BatchResponsePublicDefaultAssociation,
 )
@@ -396,9 +400,6 @@ from .public_form_submission_on_page_filter_param import (
 )
 from .public_ranged_date_property_operation_param import (
     PublicRangedDatePropertyOperationParam as PublicRangedDatePropertyOperationParam,
-)
-from .association_update_association_labels_params import (
-    AssociationUpdateAssociationLabelsParams as AssociationUpdateAssociationLabelsParams,
 )
 from .collection_response_pipeline_stage_no_paging import (
     CollectionResponsePipelineStageNoPaging as CollectionResponsePipelineStageNoPaging,

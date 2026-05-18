@@ -8,7 +8,7 @@ __all__ = ["DoubleFieldSchemaParam"]
 
 
 class DoubleFieldSchemaParam(TypedDict, total=False):
-    type: Required[Literal["DOUBLE"]]
+    type: Required[Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]]
     """Indicates the field type as DOUBLE."""
 
     maximum: float

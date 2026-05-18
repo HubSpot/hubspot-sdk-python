@@ -13,16 +13,15 @@ class LabelsBetweenObjectPair(BaseModel):
     """The relationship descriptors applicable between two object types."""
 
     from_object_id: str = FieldInfo(alias="fromObjectId")
-    """The ID of the source object in the association."""
+    """Source unique ID of the object."""
 
     from_object_type_id: str = FieldInfo(alias="fromObjectTypeId")
-    """The type ID of the source object in the association."""
+    """Source object type."""
 
     labels: List[str]
-    """An array of labels associated with the relationship between the objects."""
 
     to_object_id: str = FieldInfo(alias="toObjectId")
-    """The ID of the target object in the association."""
+    """Target unique ID of the object."""
 
     to_object_type_id: str = FieldInfo(alias="toObjectTypeId")
-    """The type ID of the target object in the association."""
+    """Target object type."""

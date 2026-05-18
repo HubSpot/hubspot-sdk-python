@@ -92,6 +92,14 @@ class TestMessages:
             in_reply_to_id="inReplyToId",
             integration_idempotency_id="integrationIdempotencyId",
             integration_thread_id="integrationThreadId",
+            pre_resolved_contacts={
+                "contacts": [
+                    {
+                        "contact_properties_leading_to_match": ["address"],
+                        "contact_vid": 0,
+                    }
+                ]
+            },
             rich_text="richText",
         )
         assert_matches_type(PublicConversationsMessage, message, path=["response"])
@@ -361,6 +369,14 @@ class TestAsyncMessages:
             in_reply_to_id="inReplyToId",
             integration_idempotency_id="integrationIdempotencyId",
             integration_thread_id="integrationThreadId",
+            pre_resolved_contacts={
+                "contacts": [
+                    {
+                        "contact_properties_leading_to_match": ["address"],
+                        "contact_vid": 0,
+                    }
+                ]
+            },
             rich_text="richText",
         )
         assert_matches_type(PublicConversationsMessage, message, path=["response"])

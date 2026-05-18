@@ -112,6 +112,7 @@ class TestMultiLanguage:
             language="language",
             primary_language="primaryLanguage",
             slug="slug",
+            use_published=True,
         )
         assert_matches_type(Blog, multi_language, path=["response"])
 
@@ -371,6 +372,7 @@ class TestAsyncMultiLanguage:
             language="language",
             primary_language="primaryLanguage",
             slug="slug",
+            use_published=True,
         )
         assert_matches_type(Blog, multi_language, path=["response"])
 

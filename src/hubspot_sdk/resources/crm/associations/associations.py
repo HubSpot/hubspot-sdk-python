@@ -24,10 +24,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....types.crm import (
-    association_list_params,
-    association_search_params,
-)
+from ....types.crm import association_list_params, association_search_params
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.crm.filter_group_param import FilterGroupParam
@@ -35,6 +32,7 @@ from ....types.crm.report_creation_response import ReportCreationResponse
 from ....types.crm.labels_between_object_pair import LabelsBetweenObjectPair
 from ....types.shared_params.association_spec import AssociationSpec
 from ....types.crm.multi_associated_object_with_label import MultiAssociatedObjectWithLabel
+from ....types.crm.batch_response_public_default_association import BatchResponsePublicDefaultAssociation
 from ....types.crm.collection_response_with_total_simple_public_object import (
     CollectionResponseWithTotalSimplePublicObject,
 )
@@ -65,6 +63,54 @@ class AssociationsResource(SyncAPIResource):
         For more information, see https://www.github.com/HubSpot/hubspot-sdk-python#with_streaming_response
         """
         return AssociationsResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        to_object_id: str,
+        *,
+        from_object_type: str,
+        from_object_id: str,
+        to_object_type: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponsePublicDefaultAssociation:
+        """
+        Create the default (most generic) association type between two object types
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not from_object_type:
+            raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
+        if not from_object_id:
+            raise ValueError(f"Expected a non-empty value for `from_object_id` but received {from_object_id!r}")
+        if not to_object_type:
+            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        if not to_object_id:
+            raise ValueError(f"Expected a non-empty value for `to_object_id` but received {to_object_id!r}")
+        return self._put(
+            path_template(
+                "/crm/objects/2026-03/{from_object_type}/{from_object_id}/associations/default/{to_object_type}/{to_object_id}",
+                from_object_type=from_object_type,
+                from_object_id=from_object_id,
+                to_object_type=to_object_type,
+                to_object_id=to_object_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchResponsePublicDefaultAssociation,
+        )
 
     def list(
         self,
@@ -146,6 +192,8 @@ class AssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        deletes all associations between two records.
+
         Args:
           extra_headers: Send extra headers
 
@@ -270,7 +318,7 @@ class AssociationsResource(SyncAPIResource):
             cast_to=CollectionResponseWithTotalSimplePublicObject,
         )
 
-    def update_association_labels(
+    def update_labels(
         self,
         to_object_id: str,
         *,
@@ -286,6 +334,8 @@ class AssociationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LabelsBetweenObjectPair:
         """
+        Set association labels between two records.
+
         Args:
           extra_headers: Send extra headers
 
@@ -342,6 +392,54 @@ class AsyncAssociationsResource(AsyncAPIResource):
         For more information, see https://www.github.com/HubSpot/hubspot-sdk-python#with_streaming_response
         """
         return AsyncAssociationsResourceWithStreamingResponse(self)
+
+    async def create(
+        self,
+        to_object_id: str,
+        *,
+        from_object_type: str,
+        from_object_id: str,
+        to_object_type: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BatchResponsePublicDefaultAssociation:
+        """
+        Create the default (most generic) association type between two object types
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not from_object_type:
+            raise ValueError(f"Expected a non-empty value for `from_object_type` but received {from_object_type!r}")
+        if not from_object_id:
+            raise ValueError(f"Expected a non-empty value for `from_object_id` but received {from_object_id!r}")
+        if not to_object_type:
+            raise ValueError(f"Expected a non-empty value for `to_object_type` but received {to_object_type!r}")
+        if not to_object_id:
+            raise ValueError(f"Expected a non-empty value for `to_object_id` but received {to_object_id!r}")
+        return await self._put(
+            path_template(
+                "/crm/objects/2026-03/{from_object_type}/{from_object_id}/associations/default/{to_object_type}/{to_object_id}",
+                from_object_type=from_object_type,
+                from_object_id=from_object_id,
+                to_object_type=to_object_type,
+                to_object_id=to_object_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchResponsePublicDefaultAssociation,
+        )
 
     def list(
         self,
@@ -423,6 +521,8 @@ class AsyncAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
+        deletes all associations between two records.
+
         Args:
           extra_headers: Send extra headers
 
@@ -547,7 +647,7 @@ class AsyncAssociationsResource(AsyncAPIResource):
             cast_to=CollectionResponseWithTotalSimplePublicObject,
         )
 
-    async def update_association_labels(
+    async def update_labels(
         self,
         to_object_id: str,
         *,
@@ -563,6 +663,8 @@ class AsyncAssociationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LabelsBetweenObjectPair:
         """
+        Set association labels between two records.
+
         Args:
           extra_headers: Send extra headers
 
@@ -600,6 +702,9 @@ class AssociationsResourceWithRawResponse:
     def __init__(self, associations: AssociationsResource) -> None:
         self._associations = associations
 
+        self.create = to_raw_response_wrapper(
+            associations.create,
+        )
         self.list = to_raw_response_wrapper(
             associations.list,
         )
@@ -612,8 +717,8 @@ class AssociationsResourceWithRawResponse:
         self.search = to_raw_response_wrapper(
             associations.search,
         )
-        self.update_association_labels = to_raw_response_wrapper(
-            associations.update_association_labels,
+        self.update_labels = to_raw_response_wrapper(
+            associations.update_labels,
         )
 
     @cached_property
@@ -625,6 +730,9 @@ class AsyncAssociationsResourceWithRawResponse:
     def __init__(self, associations: AsyncAssociationsResource) -> None:
         self._associations = associations
 
+        self.create = async_to_raw_response_wrapper(
+            associations.create,
+        )
         self.list = async_to_raw_response_wrapper(
             associations.list,
         )
@@ -637,8 +745,8 @@ class AsyncAssociationsResourceWithRawResponse:
         self.search = async_to_raw_response_wrapper(
             associations.search,
         )
-        self.update_association_labels = async_to_raw_response_wrapper(
-            associations.update_association_labels,
+        self.update_labels = async_to_raw_response_wrapper(
+            associations.update_labels,
         )
 
     @cached_property
@@ -650,6 +758,9 @@ class AssociationsResourceWithStreamingResponse:
     def __init__(self, associations: AssociationsResource) -> None:
         self._associations = associations
 
+        self.create = to_streamed_response_wrapper(
+            associations.create,
+        )
         self.list = to_streamed_response_wrapper(
             associations.list,
         )
@@ -662,8 +773,8 @@ class AssociationsResourceWithStreamingResponse:
         self.search = to_streamed_response_wrapper(
             associations.search,
         )
-        self.update_association_labels = to_streamed_response_wrapper(
-            associations.update_association_labels,
+        self.update_labels = to_streamed_response_wrapper(
+            associations.update_labels,
         )
 
     @cached_property
@@ -675,6 +786,9 @@ class AsyncAssociationsResourceWithStreamingResponse:
     def __init__(self, associations: AsyncAssociationsResource) -> None:
         self._associations = associations
 
+        self.create = async_to_streamed_response_wrapper(
+            associations.create,
+        )
         self.list = async_to_streamed_response_wrapper(
             associations.list,
         )
@@ -687,8 +801,8 @@ class AsyncAssociationsResourceWithStreamingResponse:
         self.search = async_to_streamed_response_wrapper(
             associations.search,
         )
-        self.update_association_labels = async_to_streamed_response_wrapper(
-            associations.update_association_labels,
+        self.update_labels = async_to_streamed_response_wrapper(
+            associations.update_labels,
         )
 
     @cached_property
