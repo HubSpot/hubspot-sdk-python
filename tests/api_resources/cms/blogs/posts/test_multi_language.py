@@ -117,6 +117,7 @@ class TestMultiLanguage:
         multi_language = client.cms.blogs.posts.multi_language.create_lang_variation(
             id="id",
             language="language",
+            use_published=True,
         )
         assert multi_language.is_closed
         assert multi_language.json() == {"foo": "bar"}
@@ -396,6 +397,7 @@ class TestAsyncMultiLanguage:
         multi_language = await async_client.cms.blogs.posts.multi_language.create_lang_variation(
             id="id",
             language="language",
+            use_published=True,
         )
         assert multi_language.is_closed
         assert await multi_language.json() == {"foo": "bar"}

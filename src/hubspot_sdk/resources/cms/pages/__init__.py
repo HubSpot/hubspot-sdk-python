@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .batch import (
-    BatchResource,
-    AsyncBatchResource,
-    BatchResourceWithRawResponse,
-    AsyncBatchResourceWithRawResponse,
-    BatchResourceWithStreamingResponse,
-    AsyncBatchResourceWithStreamingResponse,
-)
 from .pages import (
     PagesResource,
     AsyncPagesResource,
@@ -16,21 +8,13 @@ from .pages import (
     PagesResourceWithStreamingResponse,
     AsyncPagesResourceWithStreamingResponse,
 )
-from .folders import (
-    FoldersResource,
-    AsyncFoldersResource,
-    FoldersResourceWithRawResponse,
-    AsyncFoldersResourceWithRawResponse,
-    FoldersResourceWithStreamingResponse,
-    AsyncFoldersResourceWithStreamingResponse,
-)
-from .a_b_tests import (
-    ABTestsResource,
-    AsyncABTestsResource,
-    ABTestsResourceWithRawResponse,
-    AsyncABTestsResourceWithRawResponse,
-    ABTestsResourceWithStreamingResponse,
-    AsyncABTestsResourceWithStreamingResponse,
+from .site_pages import (
+    SitePagesResource,
+    AsyncSitePagesResource,
+    SitePagesResourceWithRawResponse,
+    AsyncSitePagesResourceWithRawResponse,
+    SitePagesResourceWithStreamingResponse,
+    AsyncSitePagesResourceWithStreamingResponse,
 )
 from .landing_pages import (
     LandingPagesResource,
@@ -40,60 +24,20 @@ from .landing_pages import (
     LandingPagesResourceWithStreamingResponse,
     AsyncLandingPagesResourceWithStreamingResponse,
 )
-from .website_pages import (
-    WebsitePagesResource,
-    AsyncWebsitePagesResource,
-    WebsitePagesResourceWithRawResponse,
-    AsyncWebsitePagesResourceWithRawResponse,
-    WebsitePagesResourceWithStreamingResponse,
-    AsyncWebsitePagesResourceWithStreamingResponse,
-)
-from .multi_language import (
-    MultiLanguageResource,
-    AsyncMultiLanguageResource,
-    MultiLanguageResourceWithRawResponse,
-    AsyncMultiLanguageResourceWithRawResponse,
-    MultiLanguageResourceWithStreamingResponse,
-    AsyncMultiLanguageResourceWithStreamingResponse,
-)
 
 __all__ = [
-    "ABTestsResource",
-    "AsyncABTestsResource",
-    "ABTestsResourceWithRawResponse",
-    "AsyncABTestsResourceWithRawResponse",
-    "ABTestsResourceWithStreamingResponse",
-    "AsyncABTestsResourceWithStreamingResponse",
-    "BatchResource",
-    "AsyncBatchResource",
-    "BatchResourceWithRawResponse",
-    "AsyncBatchResourceWithRawResponse",
-    "BatchResourceWithStreamingResponse",
-    "AsyncBatchResourceWithStreamingResponse",
-    "FoldersResource",
-    "AsyncFoldersResource",
-    "FoldersResourceWithRawResponse",
-    "AsyncFoldersResourceWithRawResponse",
-    "FoldersResourceWithStreamingResponse",
-    "AsyncFoldersResourceWithStreamingResponse",
     "LandingPagesResource",
     "AsyncLandingPagesResource",
     "LandingPagesResourceWithRawResponse",
     "AsyncLandingPagesResourceWithRawResponse",
     "LandingPagesResourceWithStreamingResponse",
     "AsyncLandingPagesResourceWithStreamingResponse",
-    "MultiLanguageResource",
-    "AsyncMultiLanguageResource",
-    "MultiLanguageResourceWithRawResponse",
-    "AsyncMultiLanguageResourceWithRawResponse",
-    "MultiLanguageResourceWithStreamingResponse",
-    "AsyncMultiLanguageResourceWithStreamingResponse",
-    "WebsitePagesResource",
-    "AsyncWebsitePagesResource",
-    "WebsitePagesResourceWithRawResponse",
-    "AsyncWebsitePagesResourceWithRawResponse",
-    "WebsitePagesResourceWithStreamingResponse",
-    "AsyncWebsitePagesResourceWithStreamingResponse",
+    "SitePagesResource",
+    "AsyncSitePagesResource",
+    "SitePagesResourceWithRawResponse",
+    "AsyncSitePagesResourceWithRawResponse",
+    "SitePagesResourceWithStreamingResponse",
+    "AsyncSitePagesResourceWithStreamingResponse",
     "PagesResource",
     "AsyncPagesResource",
     "PagesResourceWithRawResponse",

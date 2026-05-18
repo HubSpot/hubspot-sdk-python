@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable
+from typing import Dict, Union, Iterable
+from datetime import datetime
 from typing_extensions import Literal, overload
 
 import httpx
@@ -737,8 +738,8 @@ class ListsResource(SyncAPIResource):
         self,
         list_id: str,
         *,
-        end_date: str | Omit = omit,
-        start_date: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        start_date: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2031,8 +2032,8 @@ class AsyncListsResource(AsyncAPIResource):
         self,
         list_id: str,
         *,
-        end_date: str | Omit = omit,
-        start_date: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        start_date: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

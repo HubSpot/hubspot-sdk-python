@@ -21,3 +21,5 @@ class AuthorCreateLanguageVariationParams(TypedDict, total=False):
 
     primary_language: Annotated[str, PropertyInfo(alias="primaryLanguage")]
     """Primary language in multi-language group."""
+
+    use_published: Annotated[bool, PropertyInfo(alias="usePublished")]

@@ -2467,9 +2467,9 @@ class EmailsResource(SyncAPIResource):
         self,
         *,
         email_ids: Iterable[int] | Omit = omit,
-        end_timestamp: str | Omit = omit,
+        end_timestamp: Union[str, datetime] | Omit = omit,
         property: str | Omit = omit,
-        start_timestamp: str | Omit = omit,
+        start_timestamp: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2608,10 +2608,10 @@ class EmailsResource(SyncAPIResource):
         self,
         *,
         email_ids: Iterable[int] | Omit = omit,
-        end_timestamp: str | Omit = omit,
+        end_timestamp: Union[str, datetime] | Omit = omit,
         interval: Literal["DAY", "HOUR", "MINUTE", "MONTH", "QUARTER", "QUARTER_HOUR", "SECOND", "WEEK", "YEAR"]
         | Omit = omit,
-        start_timestamp: str | Omit = omit,
+        start_timestamp: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -6427,9 +6427,9 @@ class AsyncEmailsResource(AsyncAPIResource):
         self,
         *,
         email_ids: Iterable[int] | Omit = omit,
-        end_timestamp: str | Omit = omit,
+        end_timestamp: Union[str, datetime] | Omit = omit,
         property: str | Omit = omit,
-        start_timestamp: str | Omit = omit,
+        start_timestamp: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -6568,10 +6568,10 @@ class AsyncEmailsResource(AsyncAPIResource):
         self,
         *,
         email_ids: Iterable[int] | Omit = omit,
-        end_timestamp: str | Omit = omit,
+        end_timestamp: Union[str, datetime] | Omit = omit,
         interval: Literal["DAY", "HOUR", "MINUTE", "MONTH", "QUARTER", "QUARTER_HOUR", "SECOND", "WEEK", "YEAR"]
         | Omit = omit,
-        start_timestamp: str | Omit = omit,
+        start_timestamp: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

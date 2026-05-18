@@ -81,7 +81,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -121,7 +121,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -264,7 +264,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -304,7 +304,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -447,7 +447,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -487,7 +487,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -636,7 +636,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -676,7 +676,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -821,7 +821,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -853,29 +853,29 @@ class TestPosts:
                                         "hidden": True,
                                         "margin": {
                                             "bottom": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                             "top": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                         },
                                         "padding": {
                                             "bottom": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                             "left": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                             "right": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                             "top": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                         },
@@ -894,7 +894,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -926,29 +926,29 @@ class TestPosts:
                                 "hidden": True,
                                 "margin": {
                                     "bottom": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                     "top": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                 },
                                 "padding": {
                                     "bottom": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                     "left": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                     "right": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                     "top": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                 },
@@ -1075,7 +1075,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -1115,7 +1115,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -1261,7 +1261,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -1301,7 +1301,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -1448,7 +1448,7 @@ class TestPosts:
                                     },
                                     "background_gradient": {
                                         "angle": {
-                                            "units": "deg",
+                                            "units": "DEGREES",
                                             "value": 0,
                                         },
                                         "colors": [
@@ -1488,7 +1488,7 @@ class TestPosts:
                             },
                             "background_gradient": {
                                 "angle": {
-                                    "units": "deg",
+                                    "units": "DEGREES",
                                     "value": 0,
                                 },
                                 "colors": [
@@ -2348,7 +2348,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -2388,7 +2388,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -2534,7 +2534,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -2574,7 +2574,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -2720,7 +2720,7 @@ class TestPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -2760,7 +2760,7 @@ class TestPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -2907,7 +2907,7 @@ class TestPosts:
                                     },
                                     "background_gradient": {
                                         "angle": {
-                                            "units": "deg",
+                                            "units": "DEGREES",
                                             "value": 0,
                                         },
                                         "colors": [
@@ -2947,7 +2947,7 @@ class TestPosts:
                             },
                             "background_gradient": {
                                 "angle": {
-                                    "units": "deg",
+                                    "units": "DEGREES",
                                     "value": 0,
                                 },
                                 "colors": [
@@ -3091,7 +3091,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -3131,7 +3131,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -3274,7 +3274,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -3314,7 +3314,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -3457,7 +3457,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -3497,7 +3497,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -3646,7 +3646,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -3686,7 +3686,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -3831,7 +3831,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -3863,29 +3863,29 @@ class TestAsyncPosts:
                                         "hidden": True,
                                         "margin": {
                                             "bottom": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                             "top": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                         },
                                         "padding": {
                                             "bottom": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                             "left": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                             "right": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                             "top": {
-                                                "units": "%",
+                                                "units": "CH",
                                                 "value": 0,
                                             },
                                         },
@@ -3904,7 +3904,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -3936,29 +3936,29 @@ class TestAsyncPosts:
                                 "hidden": True,
                                 "margin": {
                                     "bottom": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                     "top": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                 },
                                 "padding": {
                                     "bottom": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                     "left": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                     "right": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                     "top": {
-                                        "units": "%",
+                                        "units": "CH",
                                         "value": 0,
                                     },
                                 },
@@ -4085,7 +4085,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -4125,7 +4125,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -4271,7 +4271,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -4311,7 +4311,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -4458,7 +4458,7 @@ class TestAsyncPosts:
                                     },
                                     "background_gradient": {
                                         "angle": {
-                                            "units": "deg",
+                                            "units": "DEGREES",
                                             "value": 0,
                                         },
                                         "colors": [
@@ -4498,7 +4498,7 @@ class TestAsyncPosts:
                             },
                             "background_gradient": {
                                 "angle": {
-                                    "units": "deg",
+                                    "units": "DEGREES",
                                     "value": 0,
                                 },
                                 "colors": [
@@ -5362,7 +5362,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -5402,7 +5402,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -5548,7 +5548,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -5588,7 +5588,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -5734,7 +5734,7 @@ class TestAsyncPosts:
                                 },
                                 "background_gradient": {
                                     "angle": {
-                                        "units": "deg",
+                                        "units": "DEGREES",
                                         "value": 0,
                                     },
                                     "colors": [
@@ -5774,7 +5774,7 @@ class TestAsyncPosts:
                         },
                         "background_gradient": {
                             "angle": {
-                                "units": "deg",
+                                "units": "DEGREES",
                                 "value": 0,
                             },
                             "colors": [
@@ -5921,7 +5921,7 @@ class TestAsyncPosts:
                                     },
                                     "background_gradient": {
                                         "angle": {
-                                            "units": "deg",
+                                            "units": "DEGREES",
                                             "value": 0,
                                         },
                                         "colors": [
@@ -5961,7 +5961,7 @@ class TestAsyncPosts:
                             },
                             "background_gradient": {
                                 "angle": {
-                                    "units": "deg",
+                                    "units": "DEGREES",
                                     "value": 0,
                                 },
                                 "colors": [

@@ -21,3 +21,5 @@ class TagCreateLangVariationParams(TypedDict, total=False):
 
     primary_language: Annotated[str, PropertyInfo(alias="primaryLanguage")]
     """Language of primary blog tag to clone."""
+
+    use_published: Annotated[bool, PropertyInfo(alias="usePublished")]

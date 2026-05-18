@@ -11,5 +11,5 @@ class ObjectFieldSchema(BaseModel):
     properties: object
     """Contains the properties of the object."""
 
-    type: Literal["OBJECT"]
+    type: Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]
     """Specifies the type of the field, which is 'OBJECT' by default."""

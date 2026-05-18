@@ -10,5 +10,5 @@ __all__ = ["ArrayFieldSchema"]
 class ArrayFieldSchema(BaseModel):
     items: object
 
-    type: Literal["ARRAY"]
+    type: Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]
     """Specifies that the field is of type 'ARRAY'."""

@@ -21,3 +21,5 @@ class MultiLanguageCreateLanguageVariationParams(TypedDict, total=False):
 
     slug: str
     """Path to this blog."""
+
+    use_published: Annotated[bool, PropertyInfo(alias="usePublished")]

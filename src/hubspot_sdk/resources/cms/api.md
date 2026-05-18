@@ -536,100 +536,136 @@ from hubspot_sdk.types.cms import (
 )
 ```
 
-Methods:
-
-- <code title="get /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">get_landing_page_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/page_version.py">PageVersion</a></code>
-- <code title="get /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">get_site_page_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/page_version.py">PageVersion</a></code>
-- <code title="get /cms/pages/2026-03/landing-pages/{objectId}/revisions">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">list_landing_page_revisions</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/page_list_landing_page_revisions_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/page_version.py">SyncPage[PageVersion]</a></code>
-- <code title="get /cms/pages/2026-03/site-pages/{objectId}/revisions">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">list_site_page_revisions</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/page_list_site_page_revisions_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/page_version.py">SyncPage[PageVersion]</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/{objectId}/draft/reset">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">reset_site_page_draft</a>(object_id) -> None</code>
-- <code title="post /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}/restore">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">restore_landing_page_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="post /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}/restore-to-draft">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">restore_landing_page_revision_to_draft</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}/restore">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">restore_site_page_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}/restore-to-draft">client.cms.pages.<a href="./src/hubspot_sdk/resources/cms/pages/pages.py">restore_site_page_revision_to_draft</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-
-### ABTests
-
-Methods:
-
-- <code title="post /cms/pages/2026-03/landing-pages/ab-test/create-variation">client.cms.pages.a_b_tests.<a href="./src/hubspot_sdk/resources/cms/pages/a_b_tests.py">create_landing_page_variation</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/a_b_test_create_landing_page_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/ab-test/create-variation">client.cms.pages.a_b_tests.<a href="./src/hubspot_sdk/resources/cms/pages/a_b_tests.py">create_site_page_variation</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/a_b_test_create_site_page_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="post /cms/pages/2026-03/landing-pages/ab-test/end">client.cms.pages.a_b_tests.<a href="./src/hubspot_sdk/resources/cms/pages/a_b_tests.py">end_landing_page_test</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/a_b_test_end_landing_page_test_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/site-pages/ab-test/end">client.cms.pages.a_b_tests.<a href="./src/hubspot_sdk/resources/cms/pages/a_b_tests.py">end_site_page_test</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/a_b_test_end_site_page_test_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/landing-pages/ab-test/rerun">client.cms.pages.a_b_tests.<a href="./src/hubspot_sdk/resources/cms/pages/a_b_tests.py">rerun_landing_page_test</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/a_b_test_rerun_landing_page_test_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/site-pages/ab-test/rerun">client.cms.pages.a_b_tests.<a href="./src/hubspot_sdk/resources/cms/pages/a_b_tests.py">rerun_site_page_test</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/a_b_test_rerun_site_page_test_params.py">params</a>) -> None</code>
-
-### Batch
-
-Methods:
-
-- <code title="post /cms/pages/2026-03/landing-pages/folders/batch/create">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">create_folders</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_create_folders_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_content_folder.py">BatchResponseContentFolder</a></code>
-- <code title="post /cms/pages/2026-03/landing-pages/batch/create">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">create_landing_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_create_landing_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/batch/create">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">create_site_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_create_site_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
-- <code title="post /cms/pages/2026-03/landing-pages/folders/batch/archive">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">delete_folders</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_delete_folders_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/landing-pages/batch/archive">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">delete_landing_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_delete_landing_pages_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/site-pages/batch/archive">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">delete_site_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_delete_site_pages_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/landing-pages/batch/read">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">get_landing_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_get_landing_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/batch/read">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">get_site_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_get_site_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
-- <code title="post /cms/pages/2026-03/landing-pages/folders/batch/update">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">update_folders</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_update_folders_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_content_folder.py">BatchResponseContentFolder</a></code>
-- <code title="post /cms/pages/2026-03/landing-pages/batch/update">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">update_landing_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_update_landing_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/batch/update">client.cms.pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/batch.py">update_site_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/batch_update_site_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
-
-### Folders
-
-Methods:
-
-- <code title="post /cms/pages/2026-03/landing-pages/folders">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">create</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/folder_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">ContentFolder</a></code>
-- <code title="patch /cms/pages/2026-03/landing-pages/folders/{objectId}">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">update</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/folder_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">ContentFolder</a></code>
-- <code title="get /cms/pages/2026-03/landing-pages/folders">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/folder_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">SyncPage[ContentFolder]</a></code>
-- <code title="delete /cms/pages/2026-03/landing-pages/folders/{objectId}">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">delete</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/folder_delete_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/landing-pages/folders/batch/read">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">batch_get</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/folder_batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_content_folder.py">BatchResponseContentFolder</a></code>
-- <code title="get /cms/pages/2026-03/landing-pages/folders/{objectId}">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">get</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/folder_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">ContentFolder</a></code>
-- <code title="get /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions/{revisionId}">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">get_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/content_folder_version.py">ContentFolderVersion</a></code>
-- <code title="get /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">list_revisions</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/folder_list_revisions_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder_version.py">SyncPage[ContentFolderVersion]</a></code>
-- <code title="post /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions/{revisionId}/restore">client.cms.pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/folders.py">restore_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">ContentFolder</a></code>
-
 ### LandingPages
 
 Methods:
 
-- <code title="post /cms/pages/2026-03/landing-pages">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">create</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="patch /cms/pages/2026-03/landing-pages/{objectId}">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">update</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="get /cms/pages/2026-03/landing-pages">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">SyncPage[PagesPage]</a></code>
-- <code title="delete /cms/pages/2026-03/landing-pages/{objectId}">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">delete</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_delete_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/landing-pages/clone">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">clone</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_clone_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="get /cms/pages/2026-03/landing-pages/{objectId}">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">get</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="get /cms/pages/2026-03/landing-pages/{objectId}/draft">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">get_draft</a>(object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="post /cms/pages/2026-03/landing-pages/{objectId}/draft/push-live">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">push_draft_live</a>(object_id) -> None</code>
-- <code title="post /cms/pages/2026-03/landing-pages/{objectId}/draft/reset">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">reset_draft</a>(object_id) -> None</code>
-- <code title="post /cms/pages/2026-03/landing-pages/schedule">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">schedule</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_schedule_params.py">params</a>) -> None</code>
-- <code title="patch /cms/pages/2026-03/landing-pages/{objectId}/draft">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages.py">update_draft</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_update_draft_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/landing_pages.py">create</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="patch /cms/pages/2026-03/landing-pages/{objectId}">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/landing_pages.py">update</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="get /cms/pages/2026-03/landing-pages">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/landing_pages.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">SyncPage[PagesPage]</a></code>
+- <code title="delete /cms/pages/2026-03/landing-pages/{objectId}">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/landing_pages.py">delete</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_delete_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/landing-pages/clone">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/landing_pages.py">clone</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_clone_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="get /cms/pages/2026-03/landing-pages/{objectId}">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/landing_pages.py">get</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/schedule">client.cms.pages.landing_pages.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/landing_pages.py">schedule</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_page_schedule_params.py">params</a>) -> None</code>
 
-### MultiLanguage
+#### AbTest
 
 Methods:
 
-- <code title="post /cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group">client.cms.pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/multi_language.py">attach_to_lang_group</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/multi_language_attach_to_lang_group_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="post /cms/pages/2026-03/site-pages/multi-language/create-language-variation">client.cms.pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/multi_language.py">create_language_variation</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/multi_language_create_language_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group">client.cms.pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/multi_language.py">detach_from_lang_group</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/multi_language_detach_from_lang_group_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="put /cms/pages/2026-03/site-pages/multi-language/set-new-lang-primary">client.cms.pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/multi_language.py">set_new_lang_primary</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/multi_language_set_new_lang_primary_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/site-pages/multi-language/update-languages">client.cms.pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/multi_language.py">update_languages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/multi_language_update_languages_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /cms/pages/2026-03/landing-pages/ab-test/create-variation">client.cms.pages.landing_pages.ab_test.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/ab_test.py">create_landing_page_variation</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/ab_test_create_landing_page_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/ab-test/end">client.cms.pages.landing_pages.ab_test.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/ab_test.py">end_landing_page_test</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/ab_test_end_landing_page_test_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/landing-pages/ab-test/rerun">client.cms.pages.landing_pages.ab_test.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/ab_test.py">rerun_landing_page_test</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/ab_test_rerun_landing_page_test_params.py">params</a>) -> None</code>
 
-### WebsitePages
+#### Batch
 
 Methods:
 
-- <code title="post /cms/pages/2026-03/site-pages">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">create</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="patch /cms/pages/2026-03/site-pages/{objectId}">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">update</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="get /cms/pages/2026-03/site-pages">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">SyncPage[PagesPage]</a></code>
-- <code title="delete /cms/pages/2026-03/site-pages/{objectId}">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">delete</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_delete_params.py">params</a>) -> None</code>
-- <code title="post /cms/pages/2026-03/site-pages/clone">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">clone</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_clone_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="get /cms/pages/2026-03/site-pages/{objectId}">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">get</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="get /cms/pages/2026-03/site-pages/{objectId}/draft">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">get_draft</a>(object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
-- <code title="post /cms/pages/2026-03/site-pages/{objectId}/draft/push-live">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">publish_draft</a>(object_id) -> None</code>
-- <code title="post /cms/pages/2026-03/site-pages/schedule">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">schedule</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_schedule_params.py">params</a>) -> None</code>
-- <code title="put /cms/pages/2026-03/landing-pages/multi-language/set-new-lang-primary">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">set_new_lang_primary</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_set_new_lang_primary_params.py">params</a>) -> None</code>
-- <code title="patch /cms/pages/2026-03/site-pages/{objectId}/draft">client.cms.pages.website_pages.<a href="./src/hubspot_sdk/resources/cms/pages/website_pages.py">update_draft</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/website_page_update_draft_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/batch/create">client.cms.pages.landing_pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/batch.py">create_landing_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/batch_create_landing_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/batch/archive">client.cms.pages.landing_pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/batch.py">delete_landing_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/batch_delete_landing_pages_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/landing-pages/batch/read">client.cms.pages.landing_pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/batch.py">get_landing_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/batch_get_landing_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/batch/update">client.cms.pages.landing_pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/batch.py">update_landing_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/batch_update_landing_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
+
+#### Draft
+
+Methods:
+
+- <code title="patch /cms/pages/2026-03/landing-pages/{objectId}/draft">client.cms.pages.landing_pages.draft.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/draft.py">update</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/draft_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="get /cms/pages/2026-03/landing-pages/{objectId}/draft">client.cms.pages.landing_pages.draft.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/draft.py">get</a>(object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/{objectId}/draft/push-live">client.cms.pages.landing_pages.draft.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/draft.py">push_live</a>(object_id) -> None</code>
+- <code title="post /cms/pages/2026-03/landing-pages/{objectId}/draft/reset">client.cms.pages.landing_pages.draft.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/draft.py">reset</a>(object_id) -> None</code>
+
+#### Folders
+
+Methods:
+
+- <code title="post /cms/pages/2026-03/landing-pages/folders">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">create</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">ContentFolder</a></code>
+- <code title="patch /cms/pages/2026-03/landing-pages/folders/{objectId}">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">update</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">ContentFolder</a></code>
+- <code title="get /cms/pages/2026-03/landing-pages/folders">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">SyncPage[ContentFolder]</a></code>
+- <code title="delete /cms/pages/2026-03/landing-pages/folders/{objectId}">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">delete</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_delete_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/landing-pages/folders/batch/read">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">batch_get</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_batch_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_content_folder.py">BatchResponseContentFolder</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/folders/batch/create">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">create_folders</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_create_folders_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_content_folder.py">BatchResponseContentFolder</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/folders/batch/archive">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">delete_folders</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_delete_folders_params.py">params</a>) -> None</code>
+- <code title="get /cms/pages/2026-03/landing-pages/folders/{objectId}">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">get</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">ContentFolder</a></code>
+- <code title="get /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions/{revisionId}">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">get_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/content_folder_version.py">ContentFolderVersion</a></code>
+- <code title="get /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">list_revisions</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_list_revisions_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/content_folder_version.py">SyncPage[ContentFolderVersion]</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions/{revisionId}/restore">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">restore_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/content_folder.py">ContentFolder</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/folders/batch/update">client.cms.pages.landing_pages.folders.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/folders.py">update_folders</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/folder_update_folders_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_content_folder.py">BatchResponseContentFolder</a></code>
+
+#### MultiLanguage
+
+Methods:
+
+- <code title="post /cms/pages/2026-03/landing-pages/multi-language/attach-to-lang-group">client.cms.pages.landing_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/multi_language.py">attach_to_lang_group</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/multi_language_attach_to_lang_group_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /cms/pages/2026-03/landing-pages/multi-language/create-language-variation">client.cms.pages.landing_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/multi_language.py">create_language_variation</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/multi_language_create_language_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/multi-language/detach-from-lang-group">client.cms.pages.landing_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/multi_language.py">detach_from_lang_group</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/multi_language_detach_from_lang_group_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="put /cms/pages/2026-03/landing-pages/multi-language/set-new-lang-primary">client.cms.pages.landing_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/multi_language.py">set_new_lang_primary</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/multi_language_set_new_lang_primary_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/landing-pages/multi-language/update-languages">client.cms.pages.landing_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/multi_language.py">update_languages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/multi_language_update_languages_params.py">params</a>) -> BinaryAPIResponse</code>
+
+#### Revisions
+
+Methods:
+
+- <code title="get /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}">client.cms.pages.landing_pages.revisions.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/revisions.py">get_landing_page_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/page_version.py">PageVersion</a></code>
+- <code title="get /cms/pages/2026-03/landing-pages/{objectId}/revisions">client.cms.pages.landing_pages.revisions.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/revisions.py">list_landing_page_revisions</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/landing_pages/revision_list_landing_page_revisions_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/page_version.py">SyncPage[PageVersion]</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}/restore">client.cms.pages.landing_pages.revisions.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/revisions.py">restore_landing_page_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}/restore-to-draft">client.cms.pages.landing_pages.revisions.<a href="./src/hubspot_sdk/resources/cms/pages/landing_pages/revisions.py">restore_landing_page_revision_to_draft</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+
+### SitePages
+
+Methods:
+
+- <code title="post /cms/pages/2026-03/site-pages">client.cms.pages.site_pages.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/site_pages.py">create</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_page_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="patch /cms/pages/2026-03/site-pages/{objectId}">client.cms.pages.site_pages.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/site_pages.py">update</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/site_page_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="get /cms/pages/2026-03/site-pages">client.cms.pages.site_pages.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/site_pages.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_page_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">SyncPage[PagesPage]</a></code>
+- <code title="delete /cms/pages/2026-03/site-pages/{objectId}">client.cms.pages.site_pages.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/site_pages.py">delete</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/site_page_delete_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/site-pages/clone">client.cms.pages.site_pages.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/site_pages.py">clone</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_page_clone_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="get /cms/pages/2026-03/site-pages/{objectId}">client.cms.pages.site_pages.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/site_pages.py">get</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/site_page_get_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/site-pages/schedule">client.cms.pages.site_pages.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/site_pages.py">schedule</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_page_schedule_params.py">params</a>) -> None</code>
+
+#### AbTest
+
+Methods:
+
+- <code title="post /cms/pages/2026-03/site-pages/ab-test/create-variation">client.cms.pages.site_pages.ab_test.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/ab_test.py">create_site_page_variation</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/ab_test_create_site_page_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/site-pages/ab-test/end">client.cms.pages.site_pages.ab_test.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/ab_test.py">end_site_page_test</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/ab_test_end_site_page_test_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/site-pages/ab-test/rerun">client.cms.pages.site_pages.ab_test.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/ab_test.py">rerun_site_page_test</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/ab_test_rerun_site_page_test_params.py">params</a>) -> None</code>
+
+#### Batch
+
+Methods:
+
+- <code title="post /cms/pages/2026-03/site-pages/batch/create">client.cms.pages.site_pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/batch.py">create_site_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/batch_create_site_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
+- <code title="post /cms/pages/2026-03/site-pages/batch/archive">client.cms.pages.site_pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/batch.py">delete_site_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/batch_delete_site_pages_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/site-pages/batch/read">client.cms.pages.site_pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/batch.py">get_site_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/batch_get_site_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
+- <code title="post /cms/pages/2026-03/site-pages/batch/update">client.cms.pages.site_pages.batch.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/batch.py">update_site_pages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/batch_update_site_pages_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/batch_response_page.py">BatchResponsePage</a></code>
+
+#### Draft
+
+Methods:
+
+- <code title="get /cms/pages/2026-03/site-pages/{objectId}/draft">client.cms.pages.site_pages.draft.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/draft.py">get_draft</a>(object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/site-pages/{objectId}/draft/push-live">client.cms.pages.site_pages.draft.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/draft.py">publish_draft</a>(object_id) -> None</code>
+- <code title="post /cms/pages/2026-03/site-pages/{objectId}/draft/reset">client.cms.pages.site_pages.draft.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/draft.py">reset_site_page_draft</a>(object_id) -> None</code>
+- <code title="patch /cms/pages/2026-03/site-pages/{objectId}/draft">client.cms.pages.site_pages.draft.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/draft.py">update_draft</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/draft_update_draft_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+
+#### MultiLanguage
+
+Methods:
+
+- <code title="post /cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group">client.cms.pages.site_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/multi_language.py">attach_to_lang_group</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/multi_language_attach_to_lang_group_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /cms/pages/2026-03/site-pages/multi-language/create-language-variation">client.cms.pages.site_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/multi_language.py">create_language_variation</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/multi_language_create_language_variation_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group">client.cms.pages.site_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/multi_language.py">detach_from_lang_group</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/multi_language_detach_from_lang_group_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="put /cms/pages/2026-03/site-pages/multi-language/set-new-lang-primary">client.cms.pages.site_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/multi_language.py">set_new_lang_primary</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/multi_language_set_new_lang_primary_params.py">params</a>) -> None</code>
+- <code title="post /cms/pages/2026-03/site-pages/multi-language/update-languages">client.cms.pages.site_pages.multi_language.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/multi_language.py">update_languages</a>(\*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/multi_language_update_languages_params.py">params</a>) -> BinaryAPIResponse</code>
+
+#### Revisions
+
+Methods:
+
+- <code title="get /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}">client.cms.pages.site_pages.revisions.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/revisions.py">get_site_page_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/page_version.py">PageVersion</a></code>
+- <code title="get /cms/pages/2026-03/site-pages/{objectId}/revisions">client.cms.pages.site_pages.revisions.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/revisions.py">list_site_page_revisions</a>(object_id, \*\*<a href="src/hubspot_sdk/types/cms/pages/site_pages/revision_list_site_page_revisions_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/page_version.py">SyncPage[PageVersion]</a></code>
+- <code title="post /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}/restore">client.cms.pages.site_pages.revisions.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/revisions.py">restore_site_page_revision</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
+- <code title="post /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}/restore-to-draft">client.cms.pages.site_pages.revisions.<a href="./src/hubspot_sdk/resources/cms/pages/site_pages/revisions.py">restore_site_page_revision_to_draft</a>(revision_id, \*, object_id) -> <a href="./src/hubspot_sdk/types/cms/pages_page.py">PagesPage</a></code>
 
 ## SiteSearch
 
@@ -647,7 +683,6 @@ from hubspot_sdk.types.cms import (
 Methods:
 
 - <code title="get /cms/site-search/2026-03/indexed-data/{contentId}">client.cms.site_search.<a href="./src/hubspot_sdk/resources/cms/site_search.py">get_indexed_data</a>(content_id, \*\*<a href="src/hubspot_sdk/types/cms/site_search_get_indexed_data_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/indexed_data.py">IndexedData</a></code>
-- <code title="get /cms/site-search/2026-03/search">client.cms.site_search.<a href="./src/hubspot_sdk/resources/cms/site_search.py">search</a>(\*\*<a href="src/hubspot_sdk/types/cms/site_search_search_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/public_search_results.py">PublicSearchResults</a></code>
 
 ## SourceCode
 

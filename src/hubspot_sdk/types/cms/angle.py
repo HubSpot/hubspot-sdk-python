@@ -8,7 +8,7 @@ __all__ = ["Angle"]
 
 
 class Angle(BaseModel):
-    units: Literal["deg", "grad", "rad", "turn"]
+    units: Literal["DEGREES", "GRADIANS", "RADIANS", "TURNS"]
     """The unit of measurement for the angle."""
 
     value: float

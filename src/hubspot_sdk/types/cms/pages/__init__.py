@@ -2,67 +2,17 @@
 
 from __future__ import annotations
 
-from .folder_get_params import FolderGetParams as FolderGetParams
-from .folder_list_params import FolderListParams as FolderListParams
-from .folder_create_params import FolderCreateParams as FolderCreateParams
-from .folder_delete_params import FolderDeleteParams as FolderDeleteParams
-from .folder_update_params import FolderUpdateParams as FolderUpdateParams
-from .folder_batch_get_params import FolderBatchGetParams as FolderBatchGetParams
+from .site_page_get_params import SitePageGetParams as SitePageGetParams
+from .site_page_list_params import SitePageListParams as SitePageListParams
+from .site_page_clone_params import SitePageCloneParams as SitePageCloneParams
 from .landing_page_get_params import LandingPageGetParams as LandingPageGetParams
-from .website_page_get_params import WebsitePageGetParams as WebsitePageGetParams
+from .site_page_create_params import SitePageCreateParams as SitePageCreateParams
+from .site_page_delete_params import SitePageDeleteParams as SitePageDeleteParams
+from .site_page_update_params import SitePageUpdateParams as SitePageUpdateParams
 from .landing_page_list_params import LandingPageListParams as LandingPageListParams
-from .website_page_list_params import WebsitePageListParams as WebsitePageListParams
 from .landing_page_clone_params import LandingPageCloneParams as LandingPageCloneParams
-from .website_page_clone_params import WebsitePageCloneParams as WebsitePageCloneParams
+from .site_page_schedule_params import SitePageScheduleParams as SitePageScheduleParams
 from .landing_page_create_params import LandingPageCreateParams as LandingPageCreateParams
 from .landing_page_delete_params import LandingPageDeleteParams as LandingPageDeleteParams
 from .landing_page_update_params import LandingPageUpdateParams as LandingPageUpdateParams
-from .website_page_create_params import WebsitePageCreateParams as WebsitePageCreateParams
-from .website_page_delete_params import WebsitePageDeleteParams as WebsitePageDeleteParams
-from .website_page_update_params import WebsitePageUpdateParams as WebsitePageUpdateParams
-from .batch_create_folders_params import BatchCreateFoldersParams as BatchCreateFoldersParams
-from .batch_delete_folders_params import BatchDeleteFoldersParams as BatchDeleteFoldersParams
-from .batch_get_site_pages_params import BatchGetSitePagesParams as BatchGetSitePagesParams
-from .batch_update_folders_params import BatchUpdateFoldersParams as BatchUpdateFoldersParams
-from .folder_list_revisions_params import FolderListRevisionsParams as FolderListRevisionsParams
 from .landing_page_schedule_params import LandingPageScheduleParams as LandingPageScheduleParams
-from .website_page_schedule_params import WebsitePageScheduleParams as WebsitePageScheduleParams
-from .batch_create_site_pages_params import BatchCreateSitePagesParams as BatchCreateSitePagesParams
-from .batch_delete_site_pages_params import BatchDeleteSitePagesParams as BatchDeleteSitePagesParams
-from .batch_get_landing_pages_params import BatchGetLandingPagesParams as BatchGetLandingPagesParams
-from .batch_update_site_pages_params import BatchUpdateSitePagesParams as BatchUpdateSitePagesParams
-from .landing_page_update_draft_params import LandingPageUpdateDraftParams as LandingPageUpdateDraftParams
-from .website_page_update_draft_params import WebsitePageUpdateDraftParams as WebsitePageUpdateDraftParams
-from .batch_create_landing_pages_params import BatchCreateLandingPagesParams as BatchCreateLandingPagesParams
-from .batch_delete_landing_pages_params import BatchDeleteLandingPagesParams as BatchDeleteLandingPagesParams
-from .batch_update_landing_pages_params import BatchUpdateLandingPagesParams as BatchUpdateLandingPagesParams
-from .a_b_test_end_site_page_test_params import ABTestEndSitePageTestParams as ABTestEndSitePageTestParams
-from .a_b_test_rerun_site_page_test_params import ABTestRerunSitePageTestParams as ABTestRerunSitePageTestParams
-from .a_b_test_end_landing_page_test_params import ABTestEndLandingPageTestParams as ABTestEndLandingPageTestParams
-from .multi_language_update_languages_params import (
-    MultiLanguageUpdateLanguagesParams as MultiLanguageUpdateLanguagesParams,
-)
-from .a_b_test_rerun_landing_page_test_params import (
-    ABTestRerunLandingPageTestParams as ABTestRerunLandingPageTestParams,
-)
-from .website_page_set_new_lang_primary_params import (
-    WebsitePageSetNewLangPrimaryParams as WebsitePageSetNewLangPrimaryParams,
-)
-from .a_b_test_create_site_page_variation_params import (
-    ABTestCreateSitePageVariationParams as ABTestCreateSitePageVariationParams,
-)
-from .multi_language_attach_to_lang_group_params import (
-    MultiLanguageAttachToLangGroupParams as MultiLanguageAttachToLangGroupParams,
-)
-from .multi_language_set_new_lang_primary_params import (
-    MultiLanguageSetNewLangPrimaryParams as MultiLanguageSetNewLangPrimaryParams,
-)
-from .multi_language_detach_from_lang_group_params import (
-    MultiLanguageDetachFromLangGroupParams as MultiLanguageDetachFromLangGroupParams,
-)
-from .a_b_test_create_landing_page_variation_params import (
-    ABTestCreateLandingPageVariationParams as ABTestCreateLandingPageVariationParams,
-)
-from .multi_language_create_language_variation_params import (
-    MultiLanguageCreateLanguageVariationParams as MultiLanguageCreateLanguageVariationParams,
-)

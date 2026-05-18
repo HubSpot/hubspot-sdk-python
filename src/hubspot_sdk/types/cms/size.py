@@ -9,7 +9,7 @@ __all__ = ["Size"]
 
 class Size(BaseModel):
     units: Literal[
-        "%", "ch", "cm", "em", "ex", "in", "lh", "mm", "pc", "pt", "px", "Q", "rem", "vh", "vmax", "vmin", "vw"
+        "CH", "CM", "EM", "EX", "IN", "LH", "MM", "PC", "PERCENTAGE", "PT", "PX", "Q", "REM", "VH", "VMAX", "VMIN", "VW"
     ]
 
     value: float

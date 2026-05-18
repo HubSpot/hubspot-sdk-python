@@ -1804,6 +1804,7 @@ class MultiLanguageResource(SyncAPIResource):
         *,
         id: str,
         language: str | Omit = omit,
+        use_published: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1834,6 +1835,7 @@ class MultiLanguageResource(SyncAPIResource):
                 {
                     "id": id,
                     "language": language,
+                    "use_published": use_published,
                 },
                 multi_language_create_lang_variation_params.MultiLanguageCreateLangVariationParams,
             ),
@@ -4578,6 +4580,7 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
         *,
         id: str,
         language: str | Omit = omit,
+        use_published: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -4608,6 +4611,7 @@ class AsyncMultiLanguageResource(AsyncAPIResource):
                 {
                     "id": id,
                     "language": language,
+                    "use_published": use_published,
                 },
                 multi_language_create_lang_variation_params.MultiLanguageCreateLangVariationParams,
             ),

@@ -396,6 +396,7 @@ class TestTags:
             name="name",
             language="language",
             primary_language="primaryLanguage",
+            use_published=True,
         )
         assert tag.is_closed
         assert tag.json() == {"foo": "bar"}
@@ -1391,6 +1392,7 @@ class TestAsyncTags:
             name="name",
             language="language",
             primary_language="primaryLanguage",
+            use_published=True,
         )
         assert tag.is_closed
         assert await tag.json() == {"foo": "bar"}
