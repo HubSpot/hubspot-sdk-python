@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2026-05-18)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* **api:** manual updates ([0b79db0](https://github.com/HubSpot/hubspot-sdk-python/commit/0b79db075f27961ab87fa5c7b1ccd67862ae154d))
+
+
+### Chores
+
+* configure new SDK language ([2c5d24e](https://github.com/HubSpot/hubspot-sdk-python/commit/2c5d24e28a5558af8723078774e339be551da488))
+
 ## 0.1.0-alpha.7 (2026-05-14)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
