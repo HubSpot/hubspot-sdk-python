@@ -15,8 +15,5 @@ fi
 echo "==> Running pyright"
 uv run pyright
 
-echo "==> Running mypy"
-uv run mypy .
-
 echo "==> Making sure it imports"
 uv run python -c 'import hubspot_sdk'
