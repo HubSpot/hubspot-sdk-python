@@ -18,7 +18,7 @@ conflicts = [[
 [[package]]
 name = "aiohappyeyeballs"
 version = "2.6.1"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/26/30/f84a107a9c4331c14b2b586036f40965c128aa4fee4dda5d3d51cb14ad54/aiohappyeyeballs-2.6.1.tar.gz", hash = "md5:2fa845a1ce2f7730045fa763aa9987f8" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/0f/15/5bf3b99495fb160b63f95972b81750f18f7f4e02ad051373b669d17d44f2/aiohappyeyeballs-2.6.1-py3-none-any.whl", hash = "md5:985f77be48d91b069478bd41a02b37b4" },
@@ -27,7 +27,7 @@ wheels = [
 [[package]]
 name = "aiohttp"
 version = "3.13.3"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "aiohappyeyeballs" },
     { name = "aiosignal" },
@@ -164,7 +164,7 @@ wheels = [
 [[package]]
 name = "aiosignal"
 version = "1.4.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "frozenlist" },
     { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
@@ -177,7 +177,7 @@ wheels = [
 [[package]]
 name = "annotated-types"
 version = "0.7.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz", hash = "md5:5c943b7c51b0b7dcadf46da4a99c84a1" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/78/b6/6307fbef88d9b5ee7421e68d78a9f162e0da4900bc5f5793f6d3d0e34fb8/annotated_types-0.7.0-py3-none-any.whl", hash = "md5:b132aea373e91e5a46e3b5425c9970e2" },
@@ -186,7 +186,7 @@ wheels = [
 [[package]]
 name = "anyio"
 version = "4.12.1"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "exceptiongroup", marker = "python_full_version < '3.11' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "idna" },
@@ -200,7 +200,7 @@ wheels = [
 [[package]]
 name = "async-timeout"
 version = "5.0.1"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/a5/ae/136395dfbfe00dfc94da3f3e136d0b13f394cba8f4841120e34226265780/async_timeout-5.0.1.tar.gz", hash = "md5:566a39011e87cb8044ee75369e69b327" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/fe/ba/e2081de779ca30d473f21f5b30e0e737c438205440784c7dfc81efc2b029/async_timeout-5.0.1-py3-none-any.whl", hash = "md5:efe854d55a96998187975472b17f7774" },
@@ -209,7 +209,7 @@ wheels = [
 [[package]]
 name = "attrs"
 version = "25.4.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/6b/5c/685e6633917e101e5dcb62b9dd76946cbb57c26e133bae9e0cd36033c0a9/attrs-25.4.0.tar.gz", hash = "md5:6197561dfec99660529830edcfeee0ba" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/3a/2a/7cc015f5b9f5db42b7d48157e23356022889fc354a2813c15934b7cb5c0e/attrs-25.4.0-py3-none-any.whl", hash = "md5:7b7fab960686d9e318a640d5ddce32f7" },
@@ -218,7 +218,7 @@ wheels = [
 [[package]]
 name = "backports-asyncio-runner"
 version = "1.2.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/8e/ff/70dca7d7cb1cbc0edb2c6cc0c38b65cba36cccc491eca64cabd5fe7f8670/backports_asyncio_runner-1.2.0.tar.gz", hash = "md5:c31cbada5f68f57e80b16484590a6162" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/a0/59/76ab57e3fe74484f48a53f8e337171b4a2349e506eabe136d7e01d059086/backports_asyncio_runner-1.2.0-py3-none-any.whl", hash = "md5:a4353a5c5dbb6fb0a5322b08f6dd8f86" },
@@ -227,7 +227,7 @@ wheels = [
 [[package]]
 name = "certifi"
 version = "2026.1.4"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/e0/2d/a891ca51311197f6ad14a7ef42e2399f36cf2f9bd44752b3dc4eab60fdc5/certifi-2026.1.4.tar.gz", hash = "md5:d8447ad858fa15af16f91e32f182aa85" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/e6/ad/3cc14f097111b4de0040c83a525973216457bbeeb63739ef1ed275c1c021/certifi-2026.1.4-py3-none-any.whl", hash = "md5:1dab98768140ad2d8dbc9be8f14a2af9" },
@@ -236,7 +236,7 @@ wheels = [
 [[package]]
 name = "colorama"
 version = "0.4.6"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/d8/53/6f443c9a4a8358a93a6792e2acffb9d9d5cb0a5cfd8802644b7b1c9a02e4/colorama-0.4.6.tar.gz", hash = "md5:11fe1cbf8299798551ac88f824ea11c4" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl", hash = "md5:3fc7a89530d68d7ea231ebe779c0db9c" },
@@ -245,7 +245,7 @@ wheels = [
 [[package]]
 name = "dirty-equals"
 version = "0.11"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/30/1d/c5913ac9d6615515a00f4bdc71356d302437cb74ff2e9aaccd3c14493b78/dirty_equals-0.11.tar.gz", hash = "md5:6e26e33566c53ab58cc84b8c9cf39999" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/bb/8d/dbff05239043271dbeace563a7686212a3dd517864a35623fe4d4a64ca19/dirty_equals-0.11-py3-none-any.whl", hash = "md5:8f3718a0ee9f46e3d9b3e9c720dfac70" },
@@ -254,7 +254,7 @@ wheels = [
 [[package]]
 name = "distro"
 version = "1.9.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/fc/f8/98eea607f65de6527f8a2e8885fc8015d3e6f5775df186e443e0964a11c3/distro-1.9.0.tar.gz", hash = "md5:c4eee99e1d05691230f223c37b895027" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl", hash = "md5:e2b4993079a16ee01c267fec7f79053d" },
@@ -263,7 +263,7 @@ wheels = [
 [[package]]
 name = "exceptiongroup"
 version = "1.3.1"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
 ]
@@ -275,7 +275,7 @@ wheels = [
 [[package]]
 name = "execnet"
 version = "2.1.2"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/bf/89/780e11f9588d9e7128a3f87788354c7946a9cbb1401ad38a48c4db9a4f07/execnet-2.1.2.tar.gz", hash = "md5:057396dce2b1627b57220d53017a940e" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/ab/84/02fc1827e8cdded4aa65baef11296a9bbe595c474f0d6d758af082d849fd/execnet-2.1.2-py3-none-any.whl", hash = "md5:d2dd795604b192dae2cc033757da2ab6" },
@@ -284,7 +284,7 @@ wheels = [
 [[package]]
 name = "frozenlist"
 version = "1.8.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/2d/f5/c831fac6cc817d26fd54c7eaccd04ef7e0288806943f7cc5bbf69f3ac1f0/frozenlist-1.8.0.tar.gz", hash = "md5:3d8350ebe62603b7be5f516292c7aa6c" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/83/4a/557715d5047da48d54e659203b9335be7bfaafda2c3f627b7c47e0b3aaf3/frozenlist-1.8.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "md5:7156c0edbeff7f64f71f7fda0391451d" },
@@ -421,7 +421,7 @@ wheels = [
 [[package]]
 name = "h11"
 version = "0.16.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/01/ee/02a2c011bdab74c6fb3c75474d40b3052059d95df7e73351460c8588d963/h11-0.16.0.tar.gz", hash = "md5:af51401a776fd654cfd98a197af9f21f" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl", hash = "md5:ab5835960dca6f63c9317c218f646e66" },
@@ -430,7 +430,7 @@ wheels = [
 [[package]]
 name = "httpcore"
 version = "1.0.9"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "certifi" },
     { name = "h11" },
@@ -443,7 +443,7 @@ wheels = [
 [[package]]
 name = "httpx"
 version = "0.28.1"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "anyio" },
     { name = "certifi" },
@@ -458,7 +458,7 @@ wheels = [
 [[package]]
 name = "httpx-aiohttp"
 version = "0.1.12"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "aiohttp" },
     { name = "httpx" },
@@ -476,8 +476,8 @@ dependencies = [
     { name = "anyio" },
     { name = "distro" },
     { name = "httpx" },
-    { name = "pydantic", version = "1.10.26", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "extra == 'group-11-hubspot-sdk-pydantic-v1'" },
-    { name = "pydantic", version = "2.12.5", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "extra == 'group-11-hubspot-sdk-pydantic-v2' or extra != 'group-11-hubspot-sdk-pydantic-v1'" },
+    { name = "pydantic", version = "1.10.26", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "extra == 'group-11-hubspot-sdk-pydantic-v1'" },
+    { name = "pydantic", version = "2.12.5", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "extra == 'group-11-hubspot-sdk-pydantic-v2' or extra != 'group-11-hubspot-sdk-pydantic-v1'" },
     { name = "sniffio" },
     { name = "typing-extensions" },
 ]
@@ -494,22 +494,22 @@ dev = [
     { name = "importlib-metadata" },
     { name = "mypy" },
     { name = "pyright" },
-    { name = "pytest", version = "8.4.2", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "pytest", version = "9.0.2", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "pytest-asyncio", version = "1.2.0", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "pytest-asyncio", version = "1.3.0", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "pytest", version = "8.4.2", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "pytest", version = "9.0.2", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "pytest-asyncio", version = "1.2.0", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "pytest-asyncio", version = "1.3.0", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "pytest-xdist" },
     { name = "respx" },
     { name = "rich" },
     { name = "ruff" },
-    { name = "time-machine", version = "2.19.0", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "time-machine", version = "3.2.0", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "time-machine", version = "2.19.0", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "time-machine", version = "3.2.0", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
 ]
 pydantic-v1 = [
-    { name = "pydantic", version = "1.10.26", source = { registry = "https://private.hubteam.com/pypi/simple/" } },
+    { name = "pydantic", version = "1.10.26", source = { registry = "https://build.hubteam.com/pypi/simple/" } },
 ]
 pydantic-v2 = [
-    { name = "pydantic", version = "2.12.5", source = { registry = "https://private.hubteam.com/pypi/simple/" } },
+    { name = "pydantic", version = "2.12.5", source = { registry = "https://build.hubteam.com/pypi/simple/" } },
 ]
 
 [package.metadata]
@@ -548,7 +548,7 @@ pydantic-v2 = [
 [[package]]
 name = "idna"
 version = "3.11"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz", hash = "md5:9a9c33db960e0d35cc5b257c37dabeff" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/0e/61/66938bbb5fc52dbdf84594873d5b51fb1f7c7794e9c0f5bd885f30bc507b/idna-3.11-py3-none-any.whl", hash = "md5:9a707ac0a65f018883cff8e82f48314e" },
@@ -557,7 +557,7 @@ wheels = [
 [[package]]
 name = "importlib-metadata"
 version = "8.7.1"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "zipp" },
 ]
@@ -569,7 +569,7 @@ wheels = [
 [[package]]
 name = "iniconfig"
 version = "2.1.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version < '3.10'",
 ]
@@ -581,7 +581,7 @@ wheels = [
 [[package]]
 name = "iniconfig"
 version = "2.3.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version >= '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
     "python_full_version >= '3.10' and python_full_version < '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
@@ -596,7 +596,7 @@ wheels = [
 [[package]]
 name = "markdown-it-py"
 version = "3.0.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version < '3.10'",
 ]
@@ -611,7 +611,7 @@ wheels = [
 [[package]]
 name = "markdown-it-py"
 version = "4.0.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version >= '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
     "python_full_version >= '3.10' and python_full_version < '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
@@ -629,7 +629,7 @@ wheels = [
 [[package]]
 name = "mdurl"
 version = "0.1.2"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz", hash = "md5:f18eca6522b438354be2378f216a5a94" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "md5:7db14dc5d739bfca141f035953620659" },
@@ -638,7 +638,7 @@ wheels = [
 [[package]]
 name = "multidict"
 version = "6.7.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
 ]
@@ -794,7 +794,7 @@ wheels = [
 [[package]]
 name = "mypy"
 version = "1.17.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "mypy-extensions" },
     { name = "pathspec" },
@@ -839,7 +839,7 @@ wheels = [
 [[package]]
 name = "mypy-extensions"
 version = "1.1.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/a2/6e/371856a3fb9d31ca8dac321cda606860fa4548858c0cc45d9d1d4ca2628b/mypy_extensions-1.1.0.tar.gz", hash = "md5:f59bfd7f9dca73f36c8feed12f9e8eba" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/79/7b/2c79738432f5c924bef5071f933bcc9efd0473bac3b4aa584a6f7c1c8df8/mypy_extensions-1.1.0-py3-none-any.whl", hash = "md5:625a3dc37151717cabf87b13a0b152b9" },
@@ -848,7 +848,7 @@ wheels = [
 [[package]]
 name = "nodeenv"
 version = "1.10.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/24/bf/d1bda4f6168e0b2e9e5958945e01910052158313224ada5ce1fb2e1113b8/nodeenv-1.10.0.tar.gz", hash = "md5:3f5f271127c11ca9df77864b307e46f4" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/88/b2/d0896bdcdc8d28a7fc5717c305f1a861c26e18c05047949fb371034d98bd/nodeenv-1.10.0-py2.py3-none-any.whl", hash = "md5:c58ab88a38799196f4d6299f804da2b7" },
@@ -857,7 +857,7 @@ wheels = [
 [[package]]
 name = "packaging"
 version = "25.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/a1/d4/1fc4078c65507b51b96ca8f8c3ba19e6a61c8253c72794544580a7b6c24d/packaging-25.0.tar.gz", hash = "md5:ab0ef21ddebe09d1803575120d3f99f8" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl", hash = "md5:5fa4842e2eb0d7883b4b0e7c42d6229e" },
@@ -866,7 +866,7 @@ wheels = [
 [[package]]
 name = "pathspec"
 version = "1.0.3"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/4c/b2/bb8e495d5262bfec41ab5cb18f522f1012933347fb5d9e62452d446baca2/pathspec-1.0.3.tar.gz", hash = "md5:cdb838648278f2c90013a0b947b15d1a" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/32/2b/121e912bd60eebd623f873fd090de0e84f322972ab25a7f9044c056804ed/pathspec-1.0.3-py3-none-any.whl", hash = "md5:279468e95273b557a602c4e788b261a7" },
@@ -875,7 +875,7 @@ wheels = [
 [[package]]
 name = "pluggy"
 version = "1.6.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/f9/e2/3e91f31a7d2b083fe6ef3fa267035b518369d9511ffab804f839851d2779/pluggy-1.6.0.tar.gz", hash = "md5:54391218af778acb006c2d915085d469" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl", hash = "md5:e107bd9fd0c26746617d74bac26fa0c5" },
@@ -884,7 +884,7 @@ wheels = [
 [[package]]
 name = "propcache"
 version = "0.4.1"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/9e/da/e9fc233cf63743258bff22b3dfa7ea5baef7b5bc324af47a0ad89b8ffc6f/propcache-0.4.1.tar.gz", hash = "md5:9efab9358cf05265dbee69297e0de96a" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/3c/0e/934b541323035566a9af292dba85a195f7b78179114f2c6ebb24551118a9/propcache-0.4.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "md5:66d3531a16b8f2ebb027162ca26400b6" },
@@ -1013,7 +1013,7 @@ wheels = [
 [[package]]
 name = "pydantic"
 version = "1.10.26"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version >= '3.10'",
     "python_full_version < '3.10'",
@@ -1059,7 +1059,7 @@ wheels = [
 [[package]]
 name = "pydantic"
 version = "2.12.5"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version >= '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
     "python_full_version >= '3.10' and python_full_version < '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
@@ -1081,7 +1081,7 @@ wheels = [
 [[package]]
 name = "pydantic-core"
 version = "2.41.5"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "typing-extensions", marker = "extra == 'group-11-hubspot-sdk-pydantic-v2' or extra != 'group-11-hubspot-sdk-pydantic-v1'" },
 ]
@@ -1212,7 +1212,7 @@ wheels = [
 [[package]]
 name = "pygments"
 version = "2.19.2"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz", hash = "md5:79260d1c566a507953a81d24b1c51c72" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/c7/21/705964c7812476f378728bdf590ca4b771ec72385c533964653c68e86bdc/pygments-2.19.2-py3-none-any.whl", hash = "md5:c6f882e4a4ffd8543f245d4f7ce0d7fa" },
@@ -1221,7 +1221,7 @@ wheels = [
 [[package]]
 name = "pyright"
 version = "1.1.399"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "nodeenv" },
     { name = "typing-extensions" },
@@ -1234,14 +1234,14 @@ wheels = [
 [[package]]
 name = "pytest"
 version = "8.4.2"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version < '3.10'",
 ]
 dependencies = [
     { name = "colorama", marker = "(python_full_version < '3.10' and sys_platform == 'win32') or (python_full_version >= '3.10' and extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2') or (sys_platform != 'win32' and extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "exceptiongroup", marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "iniconfig", version = "2.1.0", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "iniconfig", version = "2.1.0", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "packaging", marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "pluggy", marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "pygments", marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
@@ -1255,7 +1255,7 @@ wheels = [
 [[package]]
 name = "pytest"
 version = "9.0.2"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version >= '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
     "python_full_version >= '3.10' and python_full_version < '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
@@ -1265,7 +1265,7 @@ resolution-markers = [
 dependencies = [
     { name = "colorama", marker = "(python_full_version >= '3.10' and sys_platform == 'win32') or (python_full_version < '3.10' and extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2') or (sys_platform != 'win32' and extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "exceptiongroup", marker = "python_full_version == '3.10.*' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "iniconfig", version = "2.3.0", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "iniconfig", version = "2.3.0", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "packaging", marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "pluggy", marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "pygments", marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
@@ -1279,13 +1279,13 @@ wheels = [
 [[package]]
 name = "pytest-asyncio"
 version = "1.2.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version < '3.10'",
 ]
 dependencies = [
     { name = "backports-asyncio-runner", marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "pytest", version = "8.4.2", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "pytest", version = "8.4.2", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "typing-extensions", marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
 ]
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/42/86/9e3c5f48f7b7b638b216e4b9e645f54d199d7abbbab7a64a13b4e12ba10f/pytest_asyncio-1.2.0.tar.gz", hash = "md5:f493266e3d161cd8409f28f1278cb5e1" }
@@ -1296,7 +1296,7 @@ wheels = [
 [[package]]
 name = "pytest-asyncio"
 version = "1.3.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version >= '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
     "python_full_version >= '3.10' and python_full_version < '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
@@ -1305,7 +1305,7 @@ resolution-markers = [
 ]
 dependencies = [
     { name = "backports-asyncio-runner", marker = "python_full_version == '3.10.*' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "pytest", version = "9.0.2", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "pytest", version = "9.0.2", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "typing-extensions", marker = "(python_full_version >= '3.10' and python_full_version < '3.13') or (python_full_version < '3.10' and extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2') or (python_full_version >= '3.13' and extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
 ]
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/90/2c/8af215c0f776415f3590cac4f9086ccefd6fd463befeae41cd4d3f193e5a/pytest_asyncio-1.3.0.tar.gz", hash = "md5:f9bf0eed023c7b6bb1d68ebea82d0398" }
@@ -1316,11 +1316,11 @@ wheels = [
 [[package]]
 name = "pytest-xdist"
 version = "3.8.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "execnet" },
-    { name = "pytest", version = "8.4.2", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "pytest", version = "9.0.2", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "pytest", version = "8.4.2", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "pytest", version = "9.0.2", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
 ]
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/78/b4/439b179d1ff526791eb921115fca8e44e596a13efeda518b9d845a619450/pytest_xdist-3.8.0.tar.gz", hash = "md5:9ead4effcd1eba423610acd10d725aad" }
 wheels = [
@@ -1330,7 +1330,7 @@ wheels = [
 [[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "six", marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
 ]
@@ -1342,7 +1342,7 @@ wheels = [
 [[package]]
 name = "respx"
 version = "0.22.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "httpx" },
 ]
@@ -1354,10 +1354,10 @@ wheels = [
 [[package]]
 name = "rich"
 version = "14.2.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
-    { name = "markdown-it-py", version = "3.0.0", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
-    { name = "markdown-it-py", version = "4.0.0", source = { registry = "https://private.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "markdown-it-py", version = "3.0.0", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version < '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
+    { name = "markdown-it-py", version = "4.0.0", source = { registry = "https://build.hubteam.com/pypi/simple/" }, marker = "python_full_version >= '3.10' or (extra == 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2')" },
     { name = "pygments" },
 ]
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/fb/d2/8920e102050a0de7bfabeb4c4614a49248cf8d5d7a8d01885fbb24dc767a/rich-14.2.0.tar.gz", hash = "md5:82b63b3508472d9e8393e571d74ab1a1" }
@@ -1368,7 +1368,7 @@ wheels = [
 [[package]]
 name = "ruff"
 version = "0.14.13"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/50/0a/1914efb7903174b381ee2ffeebb4253e729de57f114e63595114c8ca451f/ruff-0.14.13.tar.gz", hash = "md5:de29bde4917427751160c821f6f51b3a" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/c3/ae/0deefbc65ca74b0ab1fd3917f94dc3b398233346a74b8bbb0a916a1a6bf6/ruff-0.14.13-py3-none-linux_armv6l.whl", hash = "md5:10049ccb7222d7d91f639e8e04ad11bf" },
@@ -1394,7 +1394,7 @@ wheels = [
 [[package]]
 name = "six"
 version = "1.17.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "md5:a0387fe15662c71057b4fb2b7aa9056a" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "md5:090bac7d568f9c1f64b671de641ccdee" },
@@ -1403,7 +1403,7 @@ wheels = [
 [[package]]
 name = "sniffio"
 version = "1.3.1"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/a2/87/a6771e1546d97e7e041b6ae58d80074f81b7d5121207425c964ddf5cfdbd/sniffio-1.3.1.tar.gz", hash = "md5:1673edc4dfeb739130a87bcd7b477864" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/e9/44/75a9c9421471a6c4805dbf2356f7c181a29c1879239abab1ea2cc8f38b40/sniffio-1.3.1-py3-none-any.whl", hash = "md5:995b1c07546ce03df296f3161a60fc4b" },
@@ -1412,7 +1412,7 @@ wheels = [
 [[package]]
 name = "time-machine"
 version = "2.19.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version < '3.10'",
 ]
@@ -1514,7 +1514,7 @@ wheels = [
 [[package]]
 name = "time-machine"
 version = "3.2.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 resolution-markers = [
     "python_full_version >= '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
     "python_full_version >= '3.10' and python_full_version < '3.14' and extra != 'group-11-hubspot-sdk-pydantic-v1' and extra == 'group-11-hubspot-sdk-pydantic-v2'",
@@ -1605,7 +1605,7 @@ wheels = [
 [[package]]
 name = "tomli"
 version = "2.4.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/82/30/31573e9457673ab10aa432461bee537ce6cef177667deca369efb79df071/tomli-2.4.0.tar.gz", hash = "md5:10ef5dd352e7dfd2d6ed322cf0280435" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/3c/d9/3dc2289e1f3b32eb19b9785b6a006b28ee99acb37d1d47f78d4c10e28bf8/tomli-2.4.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "md5:99a9e64d119e01f60648bfbb45e39fe0" },
@@ -1659,7 +1659,7 @@ wheels = [
 [[package]]
 name = "typing-extensions"
 version = "4.15.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/72/94/1a15dd82efb362ac84269196e94cf00f187f7ed21c242792a923cdb1c61f/typing_extensions-4.15.0.tar.gz", hash = "md5:079e529d0b271647f3ec2720aee8fc65" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/18/67/36e9267722cc04a6b9f15c7f3441c2363321a3ea07da7ae0c0707beb2a9c/typing_extensions-4.15.0-py3-none-any.whl", hash = "md5:1394f56d85d87540f7907680572797e1" },
@@ -1668,7 +1668,7 @@ wheels = [
 [[package]]
 name = "typing-inspection"
 version = "0.4.2"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "typing-extensions", marker = "extra == 'group-11-hubspot-sdk-pydantic-v2' or extra != 'group-11-hubspot-sdk-pydantic-v1'" },
 ]
@@ -1680,7 +1680,7 @@ wheels = [
 [[package]]
 name = "yarl"
 version = "1.22.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 dependencies = [
     { name = "idna" },
     { name = "multidict" },
@@ -1822,7 +1822,7 @@ wheels = [
 [[package]]
 name = "zipp"
 version = "3.23.0"
-source = { registry = "https://private.hubteam.com/pypi/simple/" }
+source = { registry = "https://build.hubteam.com/pypi/simple/" }
 sdist = { url = "https://build.hubteam.com/pypi-mirror/packages/e3/02/0f2892c661036d50ede074e376733dca2ae7c6eb617489437771209d4180/zipp-3.23.0.tar.gz", hash = "md5:7565b42f396db31df7e4b3eceff223ad" }
 wheels = [
     { url = "https://build.hubteam.com/pypi-mirror/packages/2e/54/647ade08bf0db230bfea292f893923872fd20be6ac6f53b2b936ba839d75/zipp-3.23.0-py3-none-any.whl", hash = "md5:517d3915cf2576739abd556828f45cc4" },
