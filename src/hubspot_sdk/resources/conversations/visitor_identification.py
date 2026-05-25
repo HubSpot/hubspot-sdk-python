@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Dict
+
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
@@ -45,6 +47,7 @@ class VisitorIdentificationResource(SyncAPIResource):
         self,
         *,
         email: str,
+        hs_customer_agent_context: Dict[str, str],
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -85,6 +88,7 @@ class VisitorIdentificationResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "email": email,
+                    "hs_customer_agent_context": hs_customer_agent_context,
                     "first_name": first_name,
                     "last_name": last_name,
                 },
@@ -121,6 +125,7 @@ class AsyncVisitorIdentificationResource(AsyncAPIResource):
         self,
         *,
         email: str,
+        hs_customer_agent_context: Dict[str, str],
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -161,6 +166,7 @@ class AsyncVisitorIdentificationResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "email": email,
+                    "hs_customer_agent_context": hs_customer_agent_context,
                     "first_name": first_name,
                     "last_name": last_name,
                 },

@@ -6,15 +6,13 @@ from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from .crm_object_snapshot_request_param import CrmObjectSnapshotRequestParam
+from ..shared_params.crm_object_snapshot_request import CrmObjectSnapshotRequest
 
 __all__ = ["WebhookCreateCrmSnapshotsParams"]
 
 
 class WebhookCreateCrmSnapshotsParams(TypedDict, total=False):
-    snapshot_requests: Required[
-        Annotated[Iterable[CrmObjectSnapshotRequestParam], PropertyInfo(alias="snapshotRequests")]
-    ]
+    snapshot_requests: Required[Annotated[Iterable[CrmObjectSnapshotRequest], PropertyInfo(alias="snapshotRequests")]]
     """
     An array of CrmObjectSnapshotRequest objects, each representing a request to
     create a snapshot for a specific CRM object. This property is required.

@@ -672,12 +672,7 @@ Methods:
 Types:
 
 ```python
-from hubspot_sdk.types.cms import (
-    ContentSearchResult,
-    IndexedData,
-    IndexedField,
-    PublicSearchResults,
-)
+from hubspot_sdk.types.cms import IndexedData, IndexedField
 ```
 
 Methods:
@@ -730,4 +725,8 @@ Methods:
 - <code title="patch /cms/url-redirects/2026-03/{urlRedirectId}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">update</a>(url_redirect_id, \*\*<a href="src/hubspot_sdk/types/cms/url_redirect_update_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/url_mapping.py">URLMapping</a></code>
 - <code title="get /cms/url-redirects/2026-03">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">list</a>(\*\*<a href="src/hubspot_sdk/types/cms/url_redirect_list_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/cms/url_mapping.py">SyncPage[URLMapping]</a></code>
 - <code title="delete /cms/url-redirects/2026-03/{urlRedirectId}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">delete</a>(url_redirect_id) -> None</code>
+- <code title="post /cms/url-redirects/2026-03/url-mappings">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">create_url_mapping</a>(\*\*<a href="src/hubspot_sdk/types/cms/url_redirect_create_url_mapping_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="delete /cms/url-redirects/2026-03/url-mappings/{id}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">delete_url_mapping</a>(id) -> None</code>
 - <code title="get /cms/url-redirects/2026-03/{urlRedirectId}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">get</a>(url_redirect_id) -> <a href="./src/hubspot_sdk/types/cms/url_mapping.py">URLMapping</a></code>
+- <code title="get /cms/url-redirects/2026-03/url-mappings/{id}">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">get_url_mapping</a>(id) -> BinaryAPIResponse</code>
+- <code title="get /cms/url-redirects/2026-03/url-mappings">client.cms.url_redirects.<a href="./src/hubspot_sdk/resources/cms/url_redirects.py">list_url_mappings</a>() -> BinaryAPIResponse</code>

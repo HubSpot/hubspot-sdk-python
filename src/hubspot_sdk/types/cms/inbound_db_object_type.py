@@ -104,6 +104,10 @@ class InboundDBObjectType(BaseModel):
 
     status: Optional[Literal["Deprecated", "In development", "Live"]] = None
 
+    visibilities: Optional[
+        List[Literal["Customer-facing", "Internal only", "Customer-facing UI", "Customer-facing public API"]]
+    ] = None
+
     visibility: Optional[
         Literal["Customer-facing", "Customer-facing public API", "Customer-facing UI", "Internal only"]
     ] = None

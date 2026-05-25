@@ -12,12 +12,25 @@ from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
+    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
-from ...types.cms import url_redirect_list_params, url_redirect_create_params, url_redirect_update_params
+from ...types.cms import (
+    url_redirect_list_params,
+    url_redirect_create_params,
+    url_redirect_update_params,
+    url_redirect_create_url_mapping_params,
+)
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.cms.url_mapping import URLMapping
@@ -333,6 +346,129 @@ class URLRedirectsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def create_url_mapping(
+        self,
+        *,
+        id: str,
+        created: Union[str, datetime],
+        destination: str,
+        is_match_full_url: bool,
+        is_match_query_string: bool,
+        is_only_after_not_found: bool,
+        is_pattern: bool,
+        is_protocol_agnostic: bool,
+        is_trailing_slash_optional: bool,
+        precedence: int,
+        redirect_style: int,
+        route_prefix: str,
+        updated: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """
+        Args:
+          id: The unique ID of this URL redirect.
+
+          created: The date and time when the URL mapping was initially created.
+
+          destination: The destination URL, where the target URL should be redirected if it matches the
+              `routePrefix`.
+
+          is_match_full_url: Whether the `routePrefix` should match on the entire URL, including the domain.
+
+          is_match_query_string: Whether the `routePrefix` should match on the entire URL path, including the
+              query string.
+
+          is_only_after_not_found: Whether the URL redirect mapping should apply only if a live page on the URL
+              isn't found. If False, the URL redirect mapping will take precedence over any
+              existing page.
+
+          is_pattern: Whether the `routePrefix` should match based on pattern.
+
+          is_protocol_agnostic: Whether the `routePrefix` should match both HTTP and HTTPS protocols.
+
+          is_trailing_slash_optional: Whether a trailing slash will be ignored.
+
+          precedence: Used to prioritize URL redirection. If a given URL matches more than one
+              redirect, the one with the **lower** precedence will be used.
+
+          redirect_style: The type of redirect to create. Options include: 301 (permanent), 302
+              (temporary), or 305 (proxy). Find more details
+              [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+
+          route_prefix: The target incoming URL, path, or pattern to match for redirection.
+
+          updated: The date and time when the URL mapping was last modified.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/cms/url-redirects/2026-03/url-mappings",
+            body=maybe_transform(
+                {
+                    "id": id,
+                    "created": created,
+                    "destination": destination,
+                    "is_match_full_url": is_match_full_url,
+                    "is_match_query_string": is_match_query_string,
+                    "is_only_after_not_found": is_only_after_not_found,
+                    "is_pattern": is_pattern,
+                    "is_protocol_agnostic": is_protocol_agnostic,
+                    "is_trailing_slash_optional": is_trailing_slash_optional,
+                    "precedence": precedence,
+                    "redirect_style": redirect_style,
+                    "route_prefix": route_prefix,
+                    "updated": updated,
+                },
+                url_redirect_create_url_mapping_params.URLRedirectCreateURLMappingParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def delete_url_mapping(
+        self,
+        id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/cms/url-redirects/2026-03/url-mappings/{id}", id=id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     def get(
         self,
         url_redirect_id: str,
@@ -364,6 +500,55 @@ class URLRedirectsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=URLMapping,
+        )
+
+    def get_url_mapping(
+        self,
+        id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            path_template("/cms/url-redirects/2026-03/url-mappings/{id}", id=id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def list_url_mappings(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/cms/url-redirects/2026-03/url-mappings",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
         )
 
 
@@ -675,6 +860,129 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def create_url_mapping(
+        self,
+        *,
+        id: str,
+        created: Union[str, datetime],
+        destination: str,
+        is_match_full_url: bool,
+        is_match_query_string: bool,
+        is_only_after_not_found: bool,
+        is_pattern: bool,
+        is_protocol_agnostic: bool,
+        is_trailing_slash_optional: bool,
+        precedence: int,
+        redirect_style: int,
+        route_prefix: str,
+        updated: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Args:
+          id: The unique ID of this URL redirect.
+
+          created: The date and time when the URL mapping was initially created.
+
+          destination: The destination URL, where the target URL should be redirected if it matches the
+              `routePrefix`.
+
+          is_match_full_url: Whether the `routePrefix` should match on the entire URL, including the domain.
+
+          is_match_query_string: Whether the `routePrefix` should match on the entire URL path, including the
+              query string.
+
+          is_only_after_not_found: Whether the URL redirect mapping should apply only if a live page on the URL
+              isn't found. If False, the URL redirect mapping will take precedence over any
+              existing page.
+
+          is_pattern: Whether the `routePrefix` should match based on pattern.
+
+          is_protocol_agnostic: Whether the `routePrefix` should match both HTTP and HTTPS protocols.
+
+          is_trailing_slash_optional: Whether a trailing slash will be ignored.
+
+          precedence: Used to prioritize URL redirection. If a given URL matches more than one
+              redirect, the one with the **lower** precedence will be used.
+
+          redirect_style: The type of redirect to create. Options include: 301 (permanent), 302
+              (temporary), or 305 (proxy). Find more details
+              [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+
+          route_prefix: The target incoming URL, path, or pattern to match for redirection.
+
+          updated: The date and time when the URL mapping was last modified.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/cms/url-redirects/2026-03/url-mappings",
+            body=await async_maybe_transform(
+                {
+                    "id": id,
+                    "created": created,
+                    "destination": destination,
+                    "is_match_full_url": is_match_full_url,
+                    "is_match_query_string": is_match_query_string,
+                    "is_only_after_not_found": is_only_after_not_found,
+                    "is_pattern": is_pattern,
+                    "is_protocol_agnostic": is_protocol_agnostic,
+                    "is_trailing_slash_optional": is_trailing_slash_optional,
+                    "precedence": precedence,
+                    "redirect_style": redirect_style,
+                    "route_prefix": route_prefix,
+                    "updated": updated,
+                },
+                url_redirect_create_url_mapping_params.URLRedirectCreateURLMappingParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def delete_url_mapping(
+        self,
+        id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/cms/url-redirects/2026-03/url-mappings/{id}", id=id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def get(
         self,
         url_redirect_id: str,
@@ -708,6 +1016,55 @@ class AsyncURLRedirectsResource(AsyncAPIResource):
             cast_to=URLMapping,
         )
 
+    async def get_url_mapping(
+        self,
+        id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            path_template("/cms/url-redirects/2026-03/url-mappings/{id}", id=id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def list_url_mappings(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/cms/url-redirects/2026-03/url-mappings",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
 
 class URLRedirectsResourceWithRawResponse:
     def __init__(self, url_redirects: URLRedirectsResource) -> None:
@@ -725,8 +1082,23 @@ class URLRedirectsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             url_redirects.delete,
         )
+        self.create_url_mapping = to_custom_raw_response_wrapper(
+            url_redirects.create_url_mapping,
+            BinaryAPIResponse,
+        )
+        self.delete_url_mapping = to_raw_response_wrapper(
+            url_redirects.delete_url_mapping,
+        )
         self.get = to_raw_response_wrapper(
             url_redirects.get,
+        )
+        self.get_url_mapping = to_custom_raw_response_wrapper(
+            url_redirects.get_url_mapping,
+            BinaryAPIResponse,
+        )
+        self.list_url_mappings = to_custom_raw_response_wrapper(
+            url_redirects.list_url_mappings,
+            BinaryAPIResponse,
         )
 
 
@@ -746,8 +1118,23 @@ class AsyncURLRedirectsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             url_redirects.delete,
         )
+        self.create_url_mapping = async_to_custom_raw_response_wrapper(
+            url_redirects.create_url_mapping,
+            AsyncBinaryAPIResponse,
+        )
+        self.delete_url_mapping = async_to_raw_response_wrapper(
+            url_redirects.delete_url_mapping,
+        )
         self.get = async_to_raw_response_wrapper(
             url_redirects.get,
+        )
+        self.get_url_mapping = async_to_custom_raw_response_wrapper(
+            url_redirects.get_url_mapping,
+            AsyncBinaryAPIResponse,
+        )
+        self.list_url_mappings = async_to_custom_raw_response_wrapper(
+            url_redirects.list_url_mappings,
+            AsyncBinaryAPIResponse,
         )
 
 
@@ -767,8 +1154,23 @@ class URLRedirectsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             url_redirects.delete,
         )
+        self.create_url_mapping = to_custom_streamed_response_wrapper(
+            url_redirects.create_url_mapping,
+            StreamedBinaryAPIResponse,
+        )
+        self.delete_url_mapping = to_streamed_response_wrapper(
+            url_redirects.delete_url_mapping,
+        )
         self.get = to_streamed_response_wrapper(
             url_redirects.get,
+        )
+        self.get_url_mapping = to_custom_streamed_response_wrapper(
+            url_redirects.get_url_mapping,
+            StreamedBinaryAPIResponse,
+        )
+        self.list_url_mappings = to_custom_streamed_response_wrapper(
+            url_redirects.list_url_mappings,
+            StreamedBinaryAPIResponse,
         )
 
 
@@ -788,6 +1190,21 @@ class AsyncURLRedirectsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             url_redirects.delete,
         )
+        self.create_url_mapping = async_to_custom_streamed_response_wrapper(
+            url_redirects.create_url_mapping,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.delete_url_mapping = async_to_streamed_response_wrapper(
+            url_redirects.delete_url_mapping,
+        )
         self.get = async_to_streamed_response_wrapper(
             url_redirects.get,
+        )
+        self.get_url_mapping = async_to_custom_streamed_response_wrapper(
+            url_redirects.get_url_mapping,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.list_url_mappings = async_to_custom_streamed_response_wrapper(
+            url_redirects.list_url_mappings,
+            AsyncStreamedBinaryAPIResponse,
         )

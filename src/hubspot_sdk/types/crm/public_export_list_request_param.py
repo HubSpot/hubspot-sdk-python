@@ -22,7 +22,7 @@ class PublicExportListRequestParam(TypedDict, total=False):
 
     export_type: Required[Annotated[Literal["LIST"], PropertyInfo(alias="exportType")]]
 
-    format: Required[Literal["XLS", "XLSX", "CSV"]]
+    format: Required[Literal["CSV", "XLS", "XLSX"]]
 
     include_labeled_associations: Required[Annotated[bool, PropertyInfo(alias="includeLabeledAssociations")]]
 
@@ -32,23 +32,51 @@ class PublicExportListRequestParam(TypedDict, total=False):
 
     language: Required[
         Literal[
-            "EN",
-            "DE",
-            "ES",
-            "FR",
-            "JA",
-            "NL",
-            "PT_BR",
-            "IT",
-            "PL",
-            "SV",
-            "FI",
-            "ZH_TW",
+            "AF_ZA",
+            "AR_EG",
+            "BG",
+            "BN",
+            "CA_ES",
+            "CS",
             "DA_DK",
-            "NO",
+            "DE",
+            "EL_GR",
+            "EN",
+            "EN_GB",
+            "ES",
+            "ES_MX",
+            "ET_EE",
+            "FI",
+            "FR",
+            "FR_CA",
+            "HE_IL",
+            "HI_IN",
+            "HR",
+            "HU",
+            "ID",
+            "IT",
+            "JA",
             "KO_KR",
+            "LT_LT",
+            "MS",
+            "NL",
+            "NO",
+            "PL",
+            "PT_BR",
+            "PT_PT",
+            "RO",
+            "RU",
+            "SK_SK",
+            "SL",
+            "SV",
             "TH",
+            "TL",
+            "TR",
+            "UK",
+            "VI_VN",
             "ZH_CN",
+            "ZH_HK",
+            "ZH_TW",
         ]
     ]
 

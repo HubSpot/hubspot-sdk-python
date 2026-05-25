@@ -10,5 +10,5 @@ __all__ = ["ArrayFieldSchemaParam"]
 class ArrayFieldSchemaParam(TypedDict, total=False):
     items: Required[object]
 
-    type: Required[Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]]
+    type: Required[Literal["ARRAY"]]
     """Specifies that the field is of type 'ARRAY'."""

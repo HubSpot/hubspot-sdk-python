@@ -24,7 +24,6 @@ FilterBranch: TypeAlias = Union[
     "PublicNotAnyFilterBranchParam",
     "PublicRestrictedFilterBranchParam",
     "PublicUnifiedEventsFilterBranchParam",
-    "PublicPropertyAssociationFilterBranchParam",
     "PublicAssociationFilterBranchParam",
 ]
 
@@ -35,4 +34,3 @@ from .public_not_any_filter_branch_param import PublicNotAnyFilterBranchParam
 from .public_restricted_filter_branch_param import PublicRestrictedFilterBranchParam
 from .public_association_filter_branch_param import PublicAssociationFilterBranchParam
 from .public_unified_events_filter_branch_param import PublicUnifiedEventsFilterBranchParam
-from .public_property_association_filter_branch_param import PublicPropertyAssociationFilterBranchParam

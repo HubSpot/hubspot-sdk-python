@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from typing_extensions import overload
+from typing import List
+from typing_extensions import Literal, overload
 
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
-from ..._utils import path_template
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ..._utils import path_template, required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -16,9 +17,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...types.crm import export_create_async_params
 from ..._base_client import make_request_options
 from ...types.shared.task_locator import TaskLocator
 from ...types.crm.public_export_response import PublicExportResponse
+from ...types.crm.public_crm_search_request_param import PublicCrmSearchRequestParam
 from ...types.crm.action_response_with_single_result_uri import ActionResponseWithSingleResultUri
 
 __all__ = ["ExportsResource", "AsyncExportsResource"]
@@ -48,6 +51,64 @@ class ExportsResource(SyncAPIResource):
     def create_async(
         self,
         *,
+        associated_object_type: SequenceNotStr[str],
+        export_internal_values_options: List[Literal["NAMES", "VALUES"]],
+        export_name: str,
+        export_type: Literal["VIEW"],
+        format: Literal["CSV", "XLS", "XLSX"],
+        include_labeled_associations: bool,
+        include_primary_display_property_for_associated_objects: bool,
+        language: Literal[
+            "AF_ZA",
+            "AR_EG",
+            "BG",
+            "BN",
+            "CA_ES",
+            "CS",
+            "DA_DK",
+            "DE",
+            "EL_GR",
+            "EN",
+            "EN_GB",
+            "ES",
+            "ES_MX",
+            "ET_EE",
+            "FI",
+            "FR",
+            "FR_CA",
+            "HE_IL",
+            "HI_IN",
+            "HR",
+            "HU",
+            "ID",
+            "IT",
+            "JA",
+            "KO_KR",
+            "LT_LT",
+            "MS",
+            "NL",
+            "NO",
+            "PL",
+            "PT_BR",
+            "PT_PT",
+            "RO",
+            "RU",
+            "SK_SK",
+            "SL",
+            "SV",
+            "TH",
+            "TL",
+            "TR",
+            "UK",
+            "VI_VN",
+            "ZH_CN",
+            "ZH_HK",
+            "ZH_TW",
+        ],
+        object_properties: SequenceNotStr[str],
+        object_type: str,
+        override_associated_objects_per_definition_per_row_limit: bool,
+        public_crm_search_request: PublicCrmSearchRequestParam | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -55,13 +116,82 @@ class ExportsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TaskLocator:
-        """Begins exporting CRM data for the portal as specified in the request body"""
+        """
+        Begins exporting CRM data for the portal as specified in the request body
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         ...
 
     @overload
     def create_async(
         self,
         *,
+        associated_object_type: SequenceNotStr[str],
+        export_internal_values_options: List[Literal["NAMES", "VALUES"]],
+        export_name: str,
+        export_type: Literal["LIST"],
+        format: Literal["CSV", "XLS", "XLSX"],
+        include_labeled_associations: bool,
+        include_primary_display_property_for_associated_objects: bool,
+        language: Literal[
+            "AF_ZA",
+            "AR_EG",
+            "BG",
+            "BN",
+            "CA_ES",
+            "CS",
+            "DA_DK",
+            "DE",
+            "EL_GR",
+            "EN",
+            "EN_GB",
+            "ES",
+            "ES_MX",
+            "ET_EE",
+            "FI",
+            "FR",
+            "FR_CA",
+            "HE_IL",
+            "HI_IN",
+            "HR",
+            "HU",
+            "ID",
+            "IT",
+            "JA",
+            "KO_KR",
+            "LT_LT",
+            "MS",
+            "NL",
+            "NO",
+            "PL",
+            "PT_BR",
+            "PT_PT",
+            "RO",
+            "RU",
+            "SK_SK",
+            "SL",
+            "SV",
+            "TH",
+            "TL",
+            "TR",
+            "UK",
+            "VI_VN",
+            "ZH_CN",
+            "ZH_HK",
+            "ZH_TW",
+        ],
+        list_id: str,
+        object_properties: SequenceNotStr[str],
+        object_type: str,
+        override_associated_objects_per_definition_per_row_limit: bool,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -69,12 +199,111 @@ class ExportsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TaskLocator:
-        """Begins exporting CRM data for the portal as specified in the request body"""
+        """
+        Begins exporting CRM data for the portal as specified in the request body
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         ...
 
+    @required_args(
+        [
+            "associated_object_type",
+            "export_internal_values_options",
+            "export_name",
+            "export_type",
+            "format",
+            "include_labeled_associations",
+            "include_primary_display_property_for_associated_objects",
+            "language",
+            "object_properties",
+            "object_type",
+            "override_associated_objects_per_definition_per_row_limit",
+        ],
+        [
+            "associated_object_type",
+            "export_internal_values_options",
+            "export_name",
+            "export_type",
+            "format",
+            "include_labeled_associations",
+            "include_primary_display_property_for_associated_objects",
+            "language",
+            "list_id",
+            "object_properties",
+            "object_type",
+            "override_associated_objects_per_definition_per_row_limit",
+        ],
+    )
     def create_async(
         self,
         *,
+        associated_object_type: SequenceNotStr[str],
+        export_internal_values_options: List[Literal["NAMES", "VALUES"]],
+        export_name: str,
+        export_type: Literal["VIEW"] | Literal["LIST"],
+        format: Literal["CSV", "XLS", "XLSX"],
+        include_labeled_associations: bool,
+        include_primary_display_property_for_associated_objects: bool,
+        language: Literal[
+            "AF_ZA",
+            "AR_EG",
+            "BG",
+            "BN",
+            "CA_ES",
+            "CS",
+            "DA_DK",
+            "DE",
+            "EL_GR",
+            "EN",
+            "EN_GB",
+            "ES",
+            "ES_MX",
+            "ET_EE",
+            "FI",
+            "FR",
+            "FR_CA",
+            "HE_IL",
+            "HI_IN",
+            "HR",
+            "HU",
+            "ID",
+            "IT",
+            "JA",
+            "KO_KR",
+            "LT_LT",
+            "MS",
+            "NL",
+            "NO",
+            "PL",
+            "PT_BR",
+            "PT_PT",
+            "RO",
+            "RU",
+            "SK_SK",
+            "SL",
+            "SV",
+            "TH",
+            "TL",
+            "TR",
+            "UK",
+            "VI_VN",
+            "ZH_CN",
+            "ZH_HK",
+            "ZH_TW",
+        ],
+        object_properties: SequenceNotStr[str],
+        object_type: str,
+        override_associated_objects_per_definition_per_row_limit: bool,
+        public_crm_search_request: PublicCrmSearchRequestParam | Omit = omit,
+        list_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -84,6 +313,24 @@ class ExportsResource(SyncAPIResource):
     ) -> TaskLocator:
         return self._post(
             "/crm/exports/2026-03/export/async",
+            body=maybe_transform(
+                {
+                    "associated_object_type": associated_object_type,
+                    "export_internal_values_options": export_internal_values_options,
+                    "export_name": export_name,
+                    "export_type": export_type,
+                    "format": format,
+                    "include_labeled_associations": include_labeled_associations,
+                    "include_primary_display_property_for_associated_objects": include_primary_display_property_for_associated_objects,
+                    "language": language,
+                    "object_properties": object_properties,
+                    "object_type": object_type,
+                    "override_associated_objects_per_definition_per_row_limit": override_associated_objects_per_definition_per_row_limit,
+                    "public_crm_search_request": public_crm_search_request,
+                    "list_id": list_id,
+                },
+                export_create_async_params.ExportCreateAsyncParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -179,6 +426,64 @@ class AsyncExportsResource(AsyncAPIResource):
     async def create_async(
         self,
         *,
+        associated_object_type: SequenceNotStr[str],
+        export_internal_values_options: List[Literal["NAMES", "VALUES"]],
+        export_name: str,
+        export_type: Literal["VIEW"],
+        format: Literal["CSV", "XLS", "XLSX"],
+        include_labeled_associations: bool,
+        include_primary_display_property_for_associated_objects: bool,
+        language: Literal[
+            "AF_ZA",
+            "AR_EG",
+            "BG",
+            "BN",
+            "CA_ES",
+            "CS",
+            "DA_DK",
+            "DE",
+            "EL_GR",
+            "EN",
+            "EN_GB",
+            "ES",
+            "ES_MX",
+            "ET_EE",
+            "FI",
+            "FR",
+            "FR_CA",
+            "HE_IL",
+            "HI_IN",
+            "HR",
+            "HU",
+            "ID",
+            "IT",
+            "JA",
+            "KO_KR",
+            "LT_LT",
+            "MS",
+            "NL",
+            "NO",
+            "PL",
+            "PT_BR",
+            "PT_PT",
+            "RO",
+            "RU",
+            "SK_SK",
+            "SL",
+            "SV",
+            "TH",
+            "TL",
+            "TR",
+            "UK",
+            "VI_VN",
+            "ZH_CN",
+            "ZH_HK",
+            "ZH_TW",
+        ],
+        object_properties: SequenceNotStr[str],
+        object_type: str,
+        override_associated_objects_per_definition_per_row_limit: bool,
+        public_crm_search_request: PublicCrmSearchRequestParam | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -186,13 +491,82 @@ class AsyncExportsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TaskLocator:
-        """Begins exporting CRM data for the portal as specified in the request body"""
+        """
+        Begins exporting CRM data for the portal as specified in the request body
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         ...
 
     @overload
     async def create_async(
         self,
         *,
+        associated_object_type: SequenceNotStr[str],
+        export_internal_values_options: List[Literal["NAMES", "VALUES"]],
+        export_name: str,
+        export_type: Literal["LIST"],
+        format: Literal["CSV", "XLS", "XLSX"],
+        include_labeled_associations: bool,
+        include_primary_display_property_for_associated_objects: bool,
+        language: Literal[
+            "AF_ZA",
+            "AR_EG",
+            "BG",
+            "BN",
+            "CA_ES",
+            "CS",
+            "DA_DK",
+            "DE",
+            "EL_GR",
+            "EN",
+            "EN_GB",
+            "ES",
+            "ES_MX",
+            "ET_EE",
+            "FI",
+            "FR",
+            "FR_CA",
+            "HE_IL",
+            "HI_IN",
+            "HR",
+            "HU",
+            "ID",
+            "IT",
+            "JA",
+            "KO_KR",
+            "LT_LT",
+            "MS",
+            "NL",
+            "NO",
+            "PL",
+            "PT_BR",
+            "PT_PT",
+            "RO",
+            "RU",
+            "SK_SK",
+            "SL",
+            "SV",
+            "TH",
+            "TL",
+            "TR",
+            "UK",
+            "VI_VN",
+            "ZH_CN",
+            "ZH_HK",
+            "ZH_TW",
+        ],
+        list_id: str,
+        object_properties: SequenceNotStr[str],
+        object_type: str,
+        override_associated_objects_per_definition_per_row_limit: bool,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -200,12 +574,111 @@ class AsyncExportsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TaskLocator:
-        """Begins exporting CRM data for the portal as specified in the request body"""
+        """
+        Begins exporting CRM data for the portal as specified in the request body
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         ...
 
+    @required_args(
+        [
+            "associated_object_type",
+            "export_internal_values_options",
+            "export_name",
+            "export_type",
+            "format",
+            "include_labeled_associations",
+            "include_primary_display_property_for_associated_objects",
+            "language",
+            "object_properties",
+            "object_type",
+            "override_associated_objects_per_definition_per_row_limit",
+        ],
+        [
+            "associated_object_type",
+            "export_internal_values_options",
+            "export_name",
+            "export_type",
+            "format",
+            "include_labeled_associations",
+            "include_primary_display_property_for_associated_objects",
+            "language",
+            "list_id",
+            "object_properties",
+            "object_type",
+            "override_associated_objects_per_definition_per_row_limit",
+        ],
+    )
     async def create_async(
         self,
         *,
+        associated_object_type: SequenceNotStr[str],
+        export_internal_values_options: List[Literal["NAMES", "VALUES"]],
+        export_name: str,
+        export_type: Literal["VIEW"] | Literal["LIST"],
+        format: Literal["CSV", "XLS", "XLSX"],
+        include_labeled_associations: bool,
+        include_primary_display_property_for_associated_objects: bool,
+        language: Literal[
+            "AF_ZA",
+            "AR_EG",
+            "BG",
+            "BN",
+            "CA_ES",
+            "CS",
+            "DA_DK",
+            "DE",
+            "EL_GR",
+            "EN",
+            "EN_GB",
+            "ES",
+            "ES_MX",
+            "ET_EE",
+            "FI",
+            "FR",
+            "FR_CA",
+            "HE_IL",
+            "HI_IN",
+            "HR",
+            "HU",
+            "ID",
+            "IT",
+            "JA",
+            "KO_KR",
+            "LT_LT",
+            "MS",
+            "NL",
+            "NO",
+            "PL",
+            "PT_BR",
+            "PT_PT",
+            "RO",
+            "RU",
+            "SK_SK",
+            "SL",
+            "SV",
+            "TH",
+            "TL",
+            "TR",
+            "UK",
+            "VI_VN",
+            "ZH_CN",
+            "ZH_HK",
+            "ZH_TW",
+        ],
+        object_properties: SequenceNotStr[str],
+        object_type: str,
+        override_associated_objects_per_definition_per_row_limit: bool,
+        public_crm_search_request: PublicCrmSearchRequestParam | Omit = omit,
+        list_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -215,6 +688,24 @@ class AsyncExportsResource(AsyncAPIResource):
     ) -> TaskLocator:
         return await self._post(
             "/crm/exports/2026-03/export/async",
+            body=await async_maybe_transform(
+                {
+                    "associated_object_type": associated_object_type,
+                    "export_internal_values_options": export_internal_values_options,
+                    "export_name": export_name,
+                    "export_type": export_type,
+                    "format": format,
+                    "include_labeled_associations": include_labeled_associations,
+                    "include_primary_display_property_for_associated_objects": include_primary_display_property_for_associated_objects,
+                    "language": language,
+                    "object_properties": object_properties,
+                    "object_type": object_type,
+                    "override_associated_objects_per_definition_per_row_limit": override_associated_objects_per_definition_per_row_limit,
+                    "public_crm_search_request": public_crm_search_request,
+                    "list_id": list_id,
+                },
+                export_create_async_params.ExportCreateAsyncParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

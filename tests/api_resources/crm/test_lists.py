@@ -67,31 +67,13 @@ class TestLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -104,12 +86,10 @@ class TestLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -124,7 +104,6 @@ class TestLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -1493,31 +1472,13 @@ class TestLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -1530,12 +1491,10 @@ class TestLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -1550,7 +1509,6 @@ class TestLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -1671,31 +1629,13 @@ class TestLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -1708,12 +1648,10 @@ class TestLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -1728,7 +1666,6 @@ class TestLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -1860,31 +1797,13 @@ class TestLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -1897,12 +1816,10 @@ class TestLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -1917,7 +1834,6 @@ class TestLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -2042,31 +1958,13 @@ class TestLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -2079,12 +1977,10 @@ class TestLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -2099,7 +1995,6 @@ class TestLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -2227,31 +2122,13 @@ class TestLists:
                                                             "event_type_id": "eventTypeId",
                                                             "filter_branches": [
                                                                 {
+                                                                    "association_category": "associationCategory",
+                                                                    "association_type_id": 0,
                                                                     "filter_branches": [
                                                                         {
-                                                                            "association_category": "associationCategory",
-                                                                            "association_type_id": 0,
-                                                                            "filter_branches": [
-                                                                                {
-                                                                                    "filter_branches": [],
-                                                                                    "filter_branch_operator": "filterBranchOperator",
-                                                                                    "filter_branch_type": "OR",
-                                                                                    "filters": [
-                                                                                        {
-                                                                                            "filter_type": "PROPERTY",
-                                                                                            "operation": {
-                                                                                                "include_objects_with_no_value_set": True,
-                                                                                                "operation_type": "BOOL",
-                                                                                                "operator": "operator",
-                                                                                                "value": True,
-                                                                                            },
-                                                                                            "property": "property",
-                                                                                        }
-                                                                                    ],
-                                                                                }
-                                                                            ],
+                                                                            "filter_branches": [],
                                                                             "filter_branch_operator": "filterBranchOperator",
-                                                                            "filter_branch_type": "ASSOCIATION",
+                                                                            "filter_branch_type": "OR",
                                                                             "filters": [
                                                                                 {
                                                                                     "filter_type": "PROPERTY",
@@ -2264,12 +2141,10 @@ class TestLists:
                                                                                     "property": "property",
                                                                                 }
                                                                             ],
-                                                                            "object_type_id": "objectTypeId",
-                                                                            "operator": "operator",
                                                                         }
                                                                     ],
                                                                     "filter_branch_operator": "filterBranchOperator",
-                                                                    "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                    "filter_branch_type": "ASSOCIATION",
                                                                     "filters": [
                                                                         {
                                                                             "filter_type": "PROPERTY",
@@ -2284,7 +2159,6 @@ class TestLists:
                                                                     ],
                                                                     "object_type_id": "objectTypeId",
                                                                     "operator": "operator",
-                                                                    "property_with_object_id": "propertyWithObjectId",
                                                                 }
                                                             ],
                                                             "filter_branch_operator": "filterBranchOperator",
@@ -2587,31 +2461,13 @@ class TestAsyncLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -2624,12 +2480,10 @@ class TestAsyncLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -2644,7 +2498,6 @@ class TestAsyncLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -4013,31 +3866,13 @@ class TestAsyncLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -4050,12 +3885,10 @@ class TestAsyncLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -4070,7 +3903,6 @@ class TestAsyncLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -4191,31 +4023,13 @@ class TestAsyncLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -4228,12 +4042,10 @@ class TestAsyncLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -4248,7 +4060,6 @@ class TestAsyncLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -4380,31 +4191,13 @@ class TestAsyncLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -4417,12 +4210,10 @@ class TestAsyncLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -4437,7 +4228,6 @@ class TestAsyncLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -4562,31 +4352,13 @@ class TestAsyncLists:
                                                         "event_type_id": "eventTypeId",
                                                         "filter_branches": [
                                                             {
+                                                                "association_category": "associationCategory",
+                                                                "association_type_id": 0,
                                                                 "filter_branches": [
                                                                     {
-                                                                        "association_category": "associationCategory",
-                                                                        "association_type_id": 0,
-                                                                        "filter_branches": [
-                                                                            {
-                                                                                "filter_branches": [],
-                                                                                "filter_branch_operator": "filterBranchOperator",
-                                                                                "filter_branch_type": "OR",
-                                                                                "filters": [
-                                                                                    {
-                                                                                        "filter_type": "PROPERTY",
-                                                                                        "operation": {
-                                                                                            "include_objects_with_no_value_set": True,
-                                                                                            "operation_type": "BOOL",
-                                                                                            "operator": "operator",
-                                                                                            "value": True,
-                                                                                        },
-                                                                                        "property": "property",
-                                                                                    }
-                                                                                ],
-                                                                            }
-                                                                        ],
+                                                                        "filter_branches": [],
                                                                         "filter_branch_operator": "filterBranchOperator",
-                                                                        "filter_branch_type": "ASSOCIATION",
+                                                                        "filter_branch_type": "OR",
                                                                         "filters": [
                                                                             {
                                                                                 "filter_type": "PROPERTY",
@@ -4599,12 +4371,10 @@ class TestAsyncLists:
                                                                                 "property": "property",
                                                                             }
                                                                         ],
-                                                                        "object_type_id": "objectTypeId",
-                                                                        "operator": "operator",
                                                                     }
                                                                 ],
                                                                 "filter_branch_operator": "filterBranchOperator",
-                                                                "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                "filter_branch_type": "ASSOCIATION",
                                                                 "filters": [
                                                                     {
                                                                         "filter_type": "PROPERTY",
@@ -4619,7 +4389,6 @@ class TestAsyncLists:
                                                                 ],
                                                                 "object_type_id": "objectTypeId",
                                                                 "operator": "operator",
-                                                                "property_with_object_id": "propertyWithObjectId",
                                                             }
                                                         ],
                                                         "filter_branch_operator": "filterBranchOperator",
@@ -4747,31 +4516,13 @@ class TestAsyncLists:
                                                             "event_type_id": "eventTypeId",
                                                             "filter_branches": [
                                                                 {
+                                                                    "association_category": "associationCategory",
+                                                                    "association_type_id": 0,
                                                                     "filter_branches": [
                                                                         {
-                                                                            "association_category": "associationCategory",
-                                                                            "association_type_id": 0,
-                                                                            "filter_branches": [
-                                                                                {
-                                                                                    "filter_branches": [],
-                                                                                    "filter_branch_operator": "filterBranchOperator",
-                                                                                    "filter_branch_type": "OR",
-                                                                                    "filters": [
-                                                                                        {
-                                                                                            "filter_type": "PROPERTY",
-                                                                                            "operation": {
-                                                                                                "include_objects_with_no_value_set": True,
-                                                                                                "operation_type": "BOOL",
-                                                                                                "operator": "operator",
-                                                                                                "value": True,
-                                                                                            },
-                                                                                            "property": "property",
-                                                                                        }
-                                                                                    ],
-                                                                                }
-                                                                            ],
+                                                                            "filter_branches": [],
                                                                             "filter_branch_operator": "filterBranchOperator",
-                                                                            "filter_branch_type": "ASSOCIATION",
+                                                                            "filter_branch_type": "OR",
                                                                             "filters": [
                                                                                 {
                                                                                     "filter_type": "PROPERTY",
@@ -4784,12 +4535,10 @@ class TestAsyncLists:
                                                                                     "property": "property",
                                                                                 }
                                                                             ],
-                                                                            "object_type_id": "objectTypeId",
-                                                                            "operator": "operator",
                                                                         }
                                                                     ],
                                                                     "filter_branch_operator": "filterBranchOperator",
-                                                                    "filter_branch_type": "PROPERTY_ASSOCIATION",
+                                                                    "filter_branch_type": "ASSOCIATION",
                                                                     "filters": [
                                                                         {
                                                                             "filter_type": "PROPERTY",
@@ -4804,7 +4553,6 @@ class TestAsyncLists:
                                                                     ],
                                                                     "object_type_id": "objectTypeId",
                                                                     "operator": "operator",
-                                                                    "property_with_object_id": "propertyWithObjectId",
                                                                 }
                                                             ],
                                                             "filter_branch_operator": "filterBranchOperator",
