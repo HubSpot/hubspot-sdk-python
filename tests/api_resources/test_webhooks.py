@@ -17,18 +17,22 @@ from hubspot_sdk._response import (
     StreamedBinaryAPIResponse,
     AsyncStreamedBinaryAPIResponse,
 )
-from hubspot_sdk.types.webhooks import (
+from hubspot_sdk.types.shared import (
     FilterResponse,
-    SettingsResponse,
     FilterCreateResponse,
-    SubscriptionResponse,
-    SubscriptionResponse1,
     SnapshotStatusResponse,
-    SubscriptionListResponse,
     CrmObjectSnapshotBatchResponse,
     BatchResponseJournalFetchResponse,
+)
+from hubspot_sdk.types.webhooks import (
+    SettingsResponse,
+    SubscriptionResponse as WebhooksSubscriptionResponse,
+    SubscriptionListResponse,
     BatchResponseSubscriptionResponse,
     WebhookListSubscriptionFiltersResponse,
+)
+from hubspot_sdk.types.webhooks_journal import (
+    SubscriptionResponse as WebhooksJournalSubscriptionResponse,
     CollectionResponseSubscriptionResponseNoPaging,
 )
 
@@ -153,7 +157,7 @@ class TestWebhooks:
             active=True,
             event_type="company.associationChange",
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -166,7 +170,7 @@ class TestWebhooks:
             object_type_id="objectTypeId",
             property_name="propertyName",
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -180,7 +184,7 @@ class TestWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -194,147 +198,234 @@ class TestWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+            assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_journal_subscription_overload_1(self, client: HubSpot) -> None:
-        webhook = client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = client.webhooks.create_journal_subscription(
+            actions=["CREATE"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            properties=["string"],
+            subscription_type="OBJECT",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_journal_subscription_overload_1(self, client: HubSpot) -> None:
-        response = client.webhooks.with_raw_response.create_journal_subscription()
+        response = client.webhooks.with_raw_response.create_journal_subscription(
+            actions=["CREATE"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            properties=["string"],
+            subscription_type="OBJECT",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_journal_subscription_overload_1(self, client: HubSpot) -> None:
-        with client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        with client.webhooks.with_streaming_response.create_journal_subscription(
+            actions=["CREATE"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            properties=["string"],
+            subscription_type="OBJECT",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_journal_subscription_overload_2(self, client: HubSpot) -> None:
-        webhook = client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = client.webhooks.create_journal_subscription(
+            actions=["CREATE"],
+            associated_object_type_ids=["string"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="ASSOCIATION",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_journal_subscription_overload_2(self, client: HubSpot) -> None:
-        response = client.webhooks.with_raw_response.create_journal_subscription()
+        response = client.webhooks.with_raw_response.create_journal_subscription(
+            actions=["CREATE"],
+            associated_object_type_ids=["string"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="ASSOCIATION",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_journal_subscription_overload_2(self, client: HubSpot) -> None:
-        with client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        with client.webhooks.with_streaming_response.create_journal_subscription(
+            actions=["CREATE"],
+            associated_object_type_ids=["string"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="ASSOCIATION",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_journal_subscription_overload_3(self, client: HubSpot) -> None:
-        webhook = client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = client.webhooks.create_journal_subscription(
+            event_type_id="eventTypeId",
+            properties=["string"],
+            subscription_type="APP_LIFECYCLE_EVENT",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_journal_subscription_overload_3(self, client: HubSpot) -> None:
-        response = client.webhooks.with_raw_response.create_journal_subscription()
+        response = client.webhooks.with_raw_response.create_journal_subscription(
+            event_type_id="eventTypeId",
+            properties=["string"],
+            subscription_type="APP_LIFECYCLE_EVENT",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_journal_subscription_overload_3(self, client: HubSpot) -> None:
-        with client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        with client.webhooks.with_streaming_response.create_journal_subscription(
+            event_type_id="eventTypeId",
+            properties=["string"],
+            subscription_type="APP_LIFECYCLE_EVENT",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_journal_subscription_overload_4(self, client: HubSpot) -> None:
-        webhook = client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = client.webhooks.create_journal_subscription(
+            actions=["CREATE"],
+            list_ids=[0],
+            object_ids=[0],
+            portal_id=0,
+            subscription_type="LIST_MEMBERSHIP",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_journal_subscription_overload_4(self, client: HubSpot) -> None:
-        response = client.webhooks.with_raw_response.create_journal_subscription()
+        response = client.webhooks.with_raw_response.create_journal_subscription(
+            actions=["CREATE"],
+            list_ids=[0],
+            object_ids=[0],
+            portal_id=0,
+            subscription_type="LIST_MEMBERSHIP",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_journal_subscription_overload_4(self, client: HubSpot) -> None:
-        with client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        with client.webhooks.with_streaming_response.create_journal_subscription(
+            actions=["CREATE"],
+            list_ids=[0],
+            object_ids=[0],
+            portal_id=0,
+            subscription_type="LIST_MEMBERSHIP",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_journal_subscription_overload_5(self, client: HubSpot) -> None:
-        webhook = client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = client.webhooks.create_journal_subscription(
+            actions=["CREATE"],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="GDPR_PRIVACY_DELETION",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_journal_subscription_overload_5(self, client: HubSpot) -> None:
-        response = client.webhooks.with_raw_response.create_journal_subscription()
+        response = client.webhooks.with_raw_response.create_journal_subscription(
+            actions=["CREATE"],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="GDPR_PRIVACY_DELETION",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_journal_subscription_overload_5(self, client: HubSpot) -> None:
-        with client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        with client.webhooks.with_streaming_response.create_journal_subscription(
+            actions=["CREATE"],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="GDPR_PRIVACY_DELETION",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -779,7 +870,7 @@ class TestWebhooks:
             subscription_id=0,
             app_id=0,
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -792,7 +883,7 @@ class TestWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -805,7 +896,7 @@ class TestWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+            assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -956,7 +1047,7 @@ class TestWebhooks:
         webhook = client.webhooks.get_journal_subscription(
             0,
         )
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -968,7 +1059,7 @@ class TestWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -980,7 +1071,7 @@ class TestWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1640,7 +1731,7 @@ class TestWebhooks:
             subscription_id=0,
             app_id=0,
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1650,7 +1741,7 @@ class TestWebhooks:
             app_id=0,
             active=True,
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1663,7 +1754,7 @@ class TestWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1676,7 +1767,7 @@ class TestWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+            assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1841,7 +1932,7 @@ class TestAsyncWebhooks:
             active=True,
             event_type="company.associationChange",
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1854,7 +1945,7 @@ class TestAsyncWebhooks:
             object_type_id="objectTypeId",
             property_name="propertyName",
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1868,7 +1959,7 @@ class TestAsyncWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1882,147 +1973,234 @@ class TestAsyncWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+            assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_journal_subscription_overload_1(self, async_client: AsyncHubSpot) -> None:
-        webhook = await async_client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = await async_client.webhooks.create_journal_subscription(
+            actions=["CREATE"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            properties=["string"],
+            subscription_type="OBJECT",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_journal_subscription_overload_1(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.webhooks.with_raw_response.create_journal_subscription()
+        response = await async_client.webhooks.with_raw_response.create_journal_subscription(
+            actions=["CREATE"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            properties=["string"],
+            subscription_type="OBJECT",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_journal_subscription_overload_1(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        async with async_client.webhooks.with_streaming_response.create_journal_subscription(
+            actions=["CREATE"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            properties=["string"],
+            subscription_type="OBJECT",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_journal_subscription_overload_2(self, async_client: AsyncHubSpot) -> None:
-        webhook = await async_client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = await async_client.webhooks.create_journal_subscription(
+            actions=["CREATE"],
+            associated_object_type_ids=["string"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="ASSOCIATION",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_journal_subscription_overload_2(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.webhooks.with_raw_response.create_journal_subscription()
+        response = await async_client.webhooks.with_raw_response.create_journal_subscription(
+            actions=["CREATE"],
+            associated_object_type_ids=["string"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="ASSOCIATION",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_journal_subscription_overload_2(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        async with async_client.webhooks.with_streaming_response.create_journal_subscription(
+            actions=["CREATE"],
+            associated_object_type_ids=["string"],
+            object_ids=[0],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="ASSOCIATION",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_journal_subscription_overload_3(self, async_client: AsyncHubSpot) -> None:
-        webhook = await async_client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = await async_client.webhooks.create_journal_subscription(
+            event_type_id="eventTypeId",
+            properties=["string"],
+            subscription_type="APP_LIFECYCLE_EVENT",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_journal_subscription_overload_3(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.webhooks.with_raw_response.create_journal_subscription()
+        response = await async_client.webhooks.with_raw_response.create_journal_subscription(
+            event_type_id="eventTypeId",
+            properties=["string"],
+            subscription_type="APP_LIFECYCLE_EVENT",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_journal_subscription_overload_3(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        async with async_client.webhooks.with_streaming_response.create_journal_subscription(
+            event_type_id="eventTypeId",
+            properties=["string"],
+            subscription_type="APP_LIFECYCLE_EVENT",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_journal_subscription_overload_4(self, async_client: AsyncHubSpot) -> None:
-        webhook = await async_client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = await async_client.webhooks.create_journal_subscription(
+            actions=["CREATE"],
+            list_ids=[0],
+            object_ids=[0],
+            portal_id=0,
+            subscription_type="LIST_MEMBERSHIP",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_journal_subscription_overload_4(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.webhooks.with_raw_response.create_journal_subscription()
+        response = await async_client.webhooks.with_raw_response.create_journal_subscription(
+            actions=["CREATE"],
+            list_ids=[0],
+            object_ids=[0],
+            portal_id=0,
+            subscription_type="LIST_MEMBERSHIP",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_journal_subscription_overload_4(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        async with async_client.webhooks.with_streaming_response.create_journal_subscription(
+            actions=["CREATE"],
+            list_ids=[0],
+            object_ids=[0],
+            portal_id=0,
+            subscription_type="LIST_MEMBERSHIP",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_journal_subscription_overload_5(self, async_client: AsyncHubSpot) -> None:
-        webhook = await async_client.webhooks.create_journal_subscription()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        webhook = await async_client.webhooks.create_journal_subscription(
+            actions=["CREATE"],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="GDPR_PRIVACY_DELETION",
+        )
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_journal_subscription_overload_5(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.webhooks.with_raw_response.create_journal_subscription()
+        response = await async_client.webhooks.with_raw_response.create_journal_subscription(
+            actions=["CREATE"],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="GDPR_PRIVACY_DELETION",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_journal_subscription_overload_5(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.webhooks.with_streaming_response.create_journal_subscription() as response:
+        async with async_client.webhooks.with_streaming_response.create_journal_subscription(
+            actions=["CREATE"],
+            object_type_id="objectTypeId",
+            portal_id=0,
+            subscription_type="GDPR_PRIVACY_DELETION",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2479,7 +2657,7 @@ class TestAsyncWebhooks:
             subscription_id=0,
             app_id=0,
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2492,7 +2670,7 @@ class TestAsyncWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2505,7 +2683,7 @@ class TestAsyncWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+            assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2656,7 +2834,7 @@ class TestAsyncWebhooks:
         webhook = await async_client.webhooks.get_journal_subscription(
             0,
         )
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2668,7 +2846,7 @@ class TestAsyncWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+        assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2680,7 +2858,7 @@ class TestAsyncWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse1, webhook, path=["response"])
+            assert_matches_type(WebhooksJournalSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3364,7 +3542,7 @@ class TestAsyncWebhooks:
             subscription_id=0,
             app_id=0,
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3374,7 +3552,7 @@ class TestAsyncWebhooks:
             app_id=0,
             active=True,
         )
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3387,7 +3565,7 @@ class TestAsyncWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+        assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -3400,7 +3578,7 @@ class TestAsyncWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(SubscriptionResponse, webhook, path=["response"])
+            assert_matches_type(WebhooksSubscriptionResponse, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

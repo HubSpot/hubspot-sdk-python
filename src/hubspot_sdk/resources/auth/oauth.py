@@ -27,6 +27,7 @@ from ..._response import (
 )
 from ...types.auth import oauth_create_token_params, oauth_revoke_token_params, oauth_introspect_token_params
 from ..._base_client import make_request_options
+from ...types.auth.token_response_if import TokenResponseIf
 from ...types.auth.token_info_response_base_if import TokenInfoResponseBaseIf
 
 __all__ = ["OAuthResource", "AsyncOAuthResource"]
@@ -59,7 +60,7 @@ class OAuthResource(SyncAPIResource):
         client_secret: str | Omit = omit,
         code: str | Omit = omit,
         code_verifier: str | Omit = omit,
-        grant_type: Literal["authorization_code", "refresh_token"] | Omit = omit,
+        grant_type: Literal["authorization_code", "client_credentials", "refresh_token"] | Omit = omit,
         redirect_uri: str | Omit = omit,
         refresh_token: str | Omit = omit,
         scope: str | Omit = omit,
@@ -69,7 +70,7 @@ class OAuthResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BinaryAPIResponse:
+    ) -> TokenResponseIf:
         """
         Authenticates a client and returns access and refresh tokens.
 
@@ -82,26 +83,28 @@ class OAuthResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/oauth/2026-03/token",
-            body=maybe_transform(
-                {
-                    "client_id": client_id,
-                    "client_secret": client_secret,
-                    "code": code,
-                    "code_verifier": code_verifier,
-                    "grant_type": grant_type,
-                    "redirect_uri": redirect_uri,
-                    "refresh_token": refresh_token,
-                    "scope": scope,
-                },
-                oauth_create_token_params.OAuthCreateTokenParams,
+        return cast(
+            TokenResponseIf,
+            self._post(
+                "/oauth/2026-03/token",
+                body=maybe_transform(
+                    {
+                        "client_id": client_id,
+                        "client_secret": client_secret,
+                        "code": code,
+                        "code_verifier": code_verifier,
+                        "grant_type": grant_type,
+                        "redirect_uri": redirect_uri,
+                        "refresh_token": refresh_token,
+                        "scope": scope,
+                    },
+                    oauth_create_token_params.OAuthCreateTokenParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(Any, TokenResponseIf),  # Union types cannot be passed in as arguments in the type system
             ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BinaryAPIResponse,
         )
 
     def introspect_token(
@@ -224,7 +227,7 @@ class AsyncOAuthResource(AsyncAPIResource):
         client_secret: str | Omit = omit,
         code: str | Omit = omit,
         code_verifier: str | Omit = omit,
-        grant_type: Literal["authorization_code", "refresh_token"] | Omit = omit,
+        grant_type: Literal["authorization_code", "client_credentials", "refresh_token"] | Omit = omit,
         redirect_uri: str | Omit = omit,
         refresh_token: str | Omit = omit,
         scope: str | Omit = omit,
@@ -234,7 +237,7 @@ class AsyncOAuthResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncBinaryAPIResponse:
+    ) -> TokenResponseIf:
         """
         Authenticates a client and returns access and refresh tokens.
 
@@ -247,26 +250,28 @@ class AsyncOAuthResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/oauth/2026-03/token",
-            body=await async_maybe_transform(
-                {
-                    "client_id": client_id,
-                    "client_secret": client_secret,
-                    "code": code,
-                    "code_verifier": code_verifier,
-                    "grant_type": grant_type,
-                    "redirect_uri": redirect_uri,
-                    "refresh_token": refresh_token,
-                    "scope": scope,
-                },
-                oauth_create_token_params.OAuthCreateTokenParams,
+        return cast(
+            TokenResponseIf,
+            await self._post(
+                "/oauth/2026-03/token",
+                body=await async_maybe_transform(
+                    {
+                        "client_id": client_id,
+                        "client_secret": client_secret,
+                        "code": code,
+                        "code_verifier": code_verifier,
+                        "grant_type": grant_type,
+                        "redirect_uri": redirect_uri,
+                        "refresh_token": refresh_token,
+                        "scope": scope,
+                    },
+                    oauth_create_token_params.OAuthCreateTokenParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(Any, TokenResponseIf),  # Union types cannot be passed in as arguments in the type system
             ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AsyncBinaryAPIResponse,
         )
 
     async def introspect_token(
@@ -366,9 +371,8 @@ class OAuthResourceWithRawResponse:
     def __init__(self, oauth: OAuthResource) -> None:
         self._oauth = oauth
 
-        self.create_token = to_custom_raw_response_wrapper(
+        self.create_token = to_raw_response_wrapper(
             oauth.create_token,
-            BinaryAPIResponse,
         )
         self.introspect_token = to_raw_response_wrapper(
             oauth.introspect_token,
@@ -383,9 +387,8 @@ class AsyncOAuthResourceWithRawResponse:
     def __init__(self, oauth: AsyncOAuthResource) -> None:
         self._oauth = oauth
 
-        self.create_token = async_to_custom_raw_response_wrapper(
+        self.create_token = async_to_raw_response_wrapper(
             oauth.create_token,
-            AsyncBinaryAPIResponse,
         )
         self.introspect_token = async_to_raw_response_wrapper(
             oauth.introspect_token,
@@ -400,9 +403,8 @@ class OAuthResourceWithStreamingResponse:
     def __init__(self, oauth: OAuthResource) -> None:
         self._oauth = oauth
 
-        self.create_token = to_custom_streamed_response_wrapper(
+        self.create_token = to_streamed_response_wrapper(
             oauth.create_token,
-            StreamedBinaryAPIResponse,
         )
         self.introspect_token = to_streamed_response_wrapper(
             oauth.introspect_token,
@@ -417,9 +419,8 @@ class AsyncOAuthResourceWithStreamingResponse:
     def __init__(self, oauth: AsyncOAuthResource) -> None:
         self._oauth = oauth
 
-        self.create_token = async_to_custom_streamed_response_wrapper(
+        self.create_token = async_to_streamed_response_wrapper(
             oauth.create_token,
-            AsyncStreamedBinaryAPIResponse,
         )
         self.introspect_token = async_to_streamed_response_wrapper(
             oauth.introspect_token,

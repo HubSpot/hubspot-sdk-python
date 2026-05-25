@@ -8,7 +8,7 @@ __all__ = ["BooleanFieldSchema"]
 
 
 class BooleanFieldSchema(BaseModel):
-    type: Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]
+    type: Literal["BOOLEAN"]
     """
     Specifies the field type as BOOLEAN, indicating that the field can hold a true
     or false value.

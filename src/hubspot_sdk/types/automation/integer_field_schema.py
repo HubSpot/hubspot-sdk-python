@@ -9,7 +9,7 @@ __all__ = ["IntegerFieldSchema"]
 
 
 class IntegerFieldSchema(BaseModel):
-    type: Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]
+    type: Literal["INTEGER"]
     """The type of the field, which is set to INTEGER."""
 
     maximum: Optional[int] = None

@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .filter_response import FilterResponse
+from ..shared.filter_response import FilterResponse
 
 __all__ = ["WebhookListSubscriptionFiltersResponse"]
 

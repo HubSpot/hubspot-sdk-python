@@ -3,21 +3,39 @@
 ```python
 from hubspot_sdk.types import (
     AbTestCreateRequestVNext,
+    ActionOverrideRequest,
     ActionResponse,
+    AppLifecycleEventSubscriptionUpsertRequest,
     AssociationDefinition,
     AssociationDefinitionEgg,
     AssociationSpec,
+    AssociationSubscriptionUpsertRequest,
     AutomationActionsOption,
     BatchInputPropertyCreate,
     BatchInputPropertyName,
     BatchInputPublicObjectID,
     BatchInputString,
     BatchReadInputPropertyName,
+    BatchResponseJournalFetchResponse,
+    BatchResponseJournalFetchResponseWithErrors,
     CollectionResponsePropertyGroupNoPaging,
+    Condition,
+    CrmObjectSnapshotBatchRequest,
+    CrmObjectSnapshotBatchResponse,
+    CrmObjectSnapshotRequest,
+    CrmObjectSnapshotResponse,
     ErrorData,
     ErrorDetail,
+    Filter,
+    FilterCreateRequest,
+    FilterCreateResponse,
+    FilterResponse,
     ForwardPaging,
+    GdprPrivacyDeletionSubscriptionUpsertRequest,
+    JournalFetchResponse,
+    ListMembershipSubscriptionUpsertRequest,
     NextPage,
+    ObjectSubscriptionUpsertRequest,
     ObjectTypeDefinition,
     ObjectTypeDefinitionLabels,
     ObjectTypeDefinitionPatch,
@@ -34,7 +52,9 @@ from hubspot_sdk.types import (
     PropertyName,
     PropertyValue,
     PublicObjectID,
+    SnapshotStatusResponse,
     StandardError,
+    SubscriptionUpsertRequest,
     TaskLocator,
     VersionUser,
 )
@@ -69,3 +89,5 @@ from hubspot_sdk.types import (
 # [Settings](src/hubspot_sdk/resources/settings/api.md)
 
 # [Webhooks](src/hubspot_sdk/resources/webhooks/api.md)
+
+# [WebhooksJournal](src/hubspot_sdk/resources/webhooks_journal/api.md)

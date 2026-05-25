@@ -50,6 +50,7 @@ if TYPE_CHECKING:
         automation,
         conversations,
         business_units,
+        webhooks_journal,
         communication_preferences,
     )
     from .resources.cms.cms import CmsResource, AsyncCmsResource
@@ -66,6 +67,7 @@ if TYPE_CHECKING:
     from .resources.automation.automation import AutomationResource, AsyncAutomationResource
     from .resources.conversations.conversations import ConversationsResource, AsyncConversationsResource
     from .resources.business_units.business_units import BusinessUnitsResource, AsyncBusinessUnitsResource
+    from .resources.webhooks_journal.webhooks_journal import WebhooksJournalResource, AsyncWebhooksJournalResource
     from .resources.communication_preferences.communication_preferences import (
         CommunicationPreferencesResource,
         AsyncCommunicationPreferencesResource,
@@ -222,6 +224,12 @@ class HubSpot(SyncAPIClient):
         from .resources.webhooks import WebhooksResource
 
         return WebhooksResource(self)
+
+    @cached_property
+    def webhooks_journal(self) -> WebhooksJournalResource:
+        from .resources.webhooks_journal import WebhooksJournalResource
+
+        return WebhooksJournalResource(self)
 
     @cached_property
     def with_raw_response(self) -> HubSpotWithRawResponse:
@@ -499,6 +507,12 @@ class AsyncHubSpot(AsyncAPIClient):
         return AsyncWebhooksResource(self)
 
     @cached_property
+    def webhooks_journal(self) -> AsyncWebhooksJournalResource:
+        from .resources.webhooks_journal import AsyncWebhooksJournalResource
+
+        return AsyncWebhooksJournalResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncHubSpotWithRawResponse:
         return AsyncHubSpotWithRawResponse(self)
 
@@ -720,6 +734,12 @@ class HubSpotWithRawResponse:
 
         return WebhooksResourceWithRawResponse(self._client.webhooks)
 
+    @cached_property
+    def webhooks_journal(self) -> webhooks_journal.WebhooksJournalResourceWithRawResponse:
+        from .resources.webhooks_journal import WebhooksJournalResourceWithRawResponse
+
+        return WebhooksJournalResourceWithRawResponse(self._client.webhooks_journal)
+
 
 class AsyncHubSpotWithRawResponse:
     _client: AsyncHubSpot
@@ -818,6 +838,12 @@ class AsyncHubSpotWithRawResponse:
         from .resources.webhooks import AsyncWebhooksResourceWithRawResponse
 
         return AsyncWebhooksResourceWithRawResponse(self._client.webhooks)
+
+    @cached_property
+    def webhooks_journal(self) -> webhooks_journal.AsyncWebhooksJournalResourceWithRawResponse:
+        from .resources.webhooks_journal import AsyncWebhooksJournalResourceWithRawResponse
+
+        return AsyncWebhooksJournalResourceWithRawResponse(self._client.webhooks_journal)
 
 
 class HubSpotWithStreamedResponse:
@@ -918,6 +944,12 @@ class HubSpotWithStreamedResponse:
 
         return WebhooksResourceWithStreamingResponse(self._client.webhooks)
 
+    @cached_property
+    def webhooks_journal(self) -> webhooks_journal.WebhooksJournalResourceWithStreamingResponse:
+        from .resources.webhooks_journal import WebhooksJournalResourceWithStreamingResponse
+
+        return WebhooksJournalResourceWithStreamingResponse(self._client.webhooks_journal)
+
 
 class AsyncHubSpotWithStreamedResponse:
     _client: AsyncHubSpot
@@ -1016,6 +1048,12 @@ class AsyncHubSpotWithStreamedResponse:
         from .resources.webhooks import AsyncWebhooksResourceWithStreamingResponse
 
         return AsyncWebhooksResourceWithStreamingResponse(self._client.webhooks)
+
+    @cached_property
+    def webhooks_journal(self) -> webhooks_journal.AsyncWebhooksJournalResourceWithStreamingResponse:
+        from .resources.webhooks_journal import AsyncWebhooksJournalResourceWithStreamingResponse
+
+        return AsyncWebhooksJournalResourceWithStreamingResponse(self._client.webhooks_journal)
 
 
 Client = HubSpot

@@ -11,7 +11,7 @@ __all__ = ["WebhookGetEarliestJournalBatchParams"]
 
 class WebhookGetEarliestJournalBatchParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
-    """The ID of the portal installation to filter the webhook journal entries by.
+    """The ID of the portal installation.
 
-    This is an integer value.
+    This is an integer value that specifies which portal's data to access.
     """

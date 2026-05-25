@@ -16,8 +16,8 @@ from hubspot_sdk.types.crm import (
     BatchResponsePublicDefaultAssociation,
     CollectionResponseMultiAssociatedObjectWithLabelForwardPaging,
     CollectionResponseWithTotalSimplePublicObject,
+    CrmFilter,
     DateTime,
-    Filter,
     FilterGroup,
     LabelsBetweenObjectPair,
     MultiAssociatedObjectWithLabel,
@@ -144,7 +144,7 @@ from hubspot_sdk.types.crm import (
 
 Methods:
 
-- <code title="post /crm/exports/2026-03/export/async">client.crm.exports.<a href="./src/hubspot_sdk/resources/crm/exports.py">create_async</a>() -> <a href="./src/hubspot_sdk/types/shared/task_locator.py">TaskLocator</a></code>
+- <code title="post /crm/exports/2026-03/export/async">client.crm.exports.<a href="./src/hubspot_sdk/resources/crm/exports.py">create_async</a>(\*\*<a href="src/hubspot_sdk/types/crm/export_create_async_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/shared/task_locator.py">TaskLocator</a></code>
 - <code title="get /crm/exports/2026-03/export/{exportId}">client.crm.exports.<a href="./src/hubspot_sdk/resources/crm/exports.py">get</a>(export_id) -> <a href="./src/hubspot_sdk/types/crm/public_export_response.py">PublicExportResponse</a></code>
 - <code title="get /crm/exports/2026-03/export/async/tasks/{taskId}/status">client.crm.exports.<a href="./src/hubspot_sdk/resources/crm/exports.py">get_status</a>(task_id) -> <a href="./src/hubspot_sdk/types/crm/action_response_with_single_result_uri.py">ActionResponseWithSingleResultUri</a></code>
 
@@ -406,7 +406,6 @@ from hubspot_sdk.types.crm import (
     PublicBatchMigrationMapping,
     PublicBoolPropertyOperation,
     PublicCalendarDatePropertyOperation,
-    PublicCampaignInfluencedFilter,
     PublicCommunicationSubscriptionFilter,
     PublicComparativeDatePropertyOperation,
     PublicComparativePropertyUpdatedOperation,
@@ -442,7 +441,6 @@ from hubspot_sdk.types.crm import (
     PublicNotAllFilterBranch,
     PublicNotAnyFilterBranch,
     PublicNowReference,
-    PublicNumAssociationsFilter,
     PublicNumOccurrencesRefineBy,
     PublicNumberPropertyOperation,
     PublicObjectList,
@@ -450,8 +448,6 @@ from hubspot_sdk.types.crm import (
     PublicOrFilterBranch,
     PublicPageViewAnalyticsFilter,
     PublicPrivacyAnalyticsFilter,
-    PublicPropertyAssociationFilterBranch,
-    PublicPropertyAssociationInListFilter,
     PublicPropertyFilter,
     PublicPropertyReferencedTime,
     PublicQuarterReference,

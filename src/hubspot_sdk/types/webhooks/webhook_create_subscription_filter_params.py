@@ -5,13 +5,13 @@ from __future__ import annotations
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from .filter_param import FilterParam
+from ..shared_params.filter import Filter
 
 __all__ = ["WebhookCreateSubscriptionFilterParams"]
 
 
 class WebhookCreateSubscriptionFilterParams(TypedDict, total=False):
-    filter: Required[FilterParam]
+    filter: Required[Filter]
     """
     Defines a single condition for searching CRM objects, specifying the property to
     filter on, the operator to use (such as equals, greater than, or contains), and

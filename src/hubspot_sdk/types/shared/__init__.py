@@ -1,8 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .filter import Filter as Filter
 from .option import Option as Option
 from .paging import Paging as Paging
 from .property import Property as Property
+from .condition import Condition as Condition
 from .next_page import NextPage as NextPage
 from .error_data import ErrorData as ErrorData
 from .error_detail import ErrorDetail as ErrorDetail
@@ -16,24 +18,54 @@ from .property_group import PropertyGroup as PropertyGroup
 from .property_value import PropertyValue as PropertyValue
 from .standard_error import StandardError as StandardError
 from .action_response import ActionResponse as ActionResponse
+from .filter_response import FilterResponse as FilterResponse
 from .property_create import PropertyCreate as PropertyCreate
 from .association_spec import AssociationSpec as AssociationSpec
 from .public_object_id import PublicObjectID as PublicObjectID
 from .batch_input_string import BatchInputString as BatchInputString
+from .filter_create_request import FilterCreateRequest as FilterCreateRequest
 from .property_group_create import PropertyGroupCreate as PropertyGroupCreate
 from .property_group_update import PropertyGroupUpdate as PropertyGroupUpdate
 from .association_definition import AssociationDefinition as AssociationDefinition
+from .filter_create_response import FilterCreateResponse as FilterCreateResponse
+from .journal_fetch_response import JournalFetchResponse as JournalFetchResponse
 from .object_type_definition import ObjectTypeDefinition as ObjectTypeDefinition
+from .action_override_request import ActionOverrideRequest as ActionOverrideRequest
+from .snapshot_status_response import SnapshotStatusResponse as SnapshotStatusResponse
 from .automation_actions_option import AutomationActionsOption as AutomationActionsOption
 from .batch_input_property_name import BatchInputPropertyName as BatchInputPropertyName
 from .association_definition_egg import AssociationDefinitionEgg as AssociationDefinitionEgg
 from .batch_input_property_create import BatchInputPropertyCreate as BatchInputPropertyCreate
+from .crm_object_snapshot_request import CrmObjectSnapshotRequest as CrmObjectSnapshotRequest
+from .subscription_upsert_request import SubscriptionUpsertRequest as SubscriptionUpsertRequest
 from .batch_input_public_object_id import BatchInputPublicObjectID as BatchInputPublicObjectID
+from .crm_object_snapshot_response import CrmObjectSnapshotResponse as CrmObjectSnapshotResponse
 from .object_type_definition_patch import ObjectTypeDefinitionPatch as ObjectTypeDefinitionPatch
 from .ab_test_create_request_v_next import AbTestCreateRequestVNext as AbTestCreateRequestVNext
 from .object_type_definition_labels import ObjectTypeDefinitionLabels as ObjectTypeDefinitionLabels
 from .batch_read_input_property_name import BatchReadInputPropertyName as BatchReadInputPropertyName
 from .property_modification_metadata import PropertyModificationMetadata as PropertyModificationMetadata
+from .crm_object_snapshot_batch_request import CrmObjectSnapshotBatchRequest as CrmObjectSnapshotBatchRequest
+from .crm_object_snapshot_batch_response import CrmObjectSnapshotBatchResponse as CrmObjectSnapshotBatchResponse
+from .object_subscription_upsert_request import ObjectSubscriptionUpsertRequest as ObjectSubscriptionUpsertRequest
+from .batch_response_journal_fetch_response import (
+    BatchResponseJournalFetchResponse as BatchResponseJournalFetchResponse,
+)
+from .association_subscription_upsert_request import (
+    AssociationSubscriptionUpsertRequest as AssociationSubscriptionUpsertRequest,
+)
+from .list_membership_subscription_upsert_request import (
+    ListMembershipSubscriptionUpsertRequest as ListMembershipSubscriptionUpsertRequest,
+)
 from .collection_response_property_group_no_paging import (
     CollectionResponsePropertyGroupNoPaging as CollectionResponsePropertyGroupNoPaging,
+)
+from .app_lifecycle_event_subscription_upsert_request import (
+    AppLifecycleEventSubscriptionUpsertRequest as AppLifecycleEventSubscriptionUpsertRequest,
+)
+from .batch_response_journal_fetch_response_with_errors import (
+    BatchResponseJournalFetchResponseWithErrors as BatchResponseJournalFetchResponseWithErrors,
+)
+from .gdpr_privacy_deletion_subscription_upsert_request import (
+    GdprPrivacyDeletionSubscriptionUpsertRequest as GdprPrivacyDeletionSubscriptionUpsertRequest,
 )
