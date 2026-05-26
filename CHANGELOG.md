@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2026-05-26)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Features
+
+* **api:** manual updates ([36cd2ad](https://github.com/HubSpot/hubspot-sdk-python/commit/36cd2ad2ab42aa77d232b064f6f0f6a00fb72708))
+* **api:** manual updates ([dd6d95a](https://github.com/HubSpot/hubspot-sdk-python/commit/dd6d95aa6794f1ccc276ee5415677a560d5e55c7))
+* **api:** manual updates ([36c571b](https://github.com/HubSpot/hubspot-sdk-python/commit/36c571b41e29defa39498e56944b2fabae301192))
+
+
+### Chores
+
+* configure new SDK language ([cc42975](https://github.com/HubSpot/hubspot-sdk-python/commit/cc42975455695e24cb98a8fd645c1e4e89e3506b))
+* remove mypy from lint pipeline ([d690050](https://github.com/HubSpot/hubspot-sdk-python/commit/d6900507e7300d6f005e9cda5073b013b0b84656))
+
 ## 0.1.0-alpha.8 (2026-05-18)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
