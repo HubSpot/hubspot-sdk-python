@@ -27,9 +27,9 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.webhooks_journal import subscription_create_params
-from ....types.webhooks_journal.subscription_response import SubscriptionResponse
-from ....types.webhooks_journal.collection_response_subscription_response_no_paging import (
-    CollectionResponseSubscriptionResponseNoPaging,
+from ....types.webhooks_journal.journal_subscription_response import JournalSubscriptionResponse
+from ....types.webhooks_journal.journal_collection_response_subscription_response_no_paging import (
+    JournalCollectionResponseSubscriptionResponseNoPaging,
 )
 
 __all__ = ["SubscriptionsResource", "AsyncSubscriptionsResource"]
@@ -91,7 +91,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -143,7 +143,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -176,7 +176,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -227,7 +227,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -277,7 +277,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -343,7 +343,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         return self._post(
             "/webhooks-journal/subscriptions/2026-03",
             body=maybe_transform(
@@ -363,7 +363,7 @@ class SubscriptionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SubscriptionResponse,
+            cast_to=JournalSubscriptionResponse,
         )
 
     def list(
@@ -375,7 +375,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseSubscriptionResponseNoPaging:
+    ) -> JournalCollectionResponseSubscriptionResponseNoPaging:
         """Retrieve a list of webhook journal subscriptions for the specified version.
 
         This
@@ -388,7 +388,7 @@ class SubscriptionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponseSubscriptionResponseNoPaging,
+            cast_to=JournalCollectionResponseSubscriptionResponseNoPaging,
         )
 
     def delete(
@@ -472,7 +472,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Retrieve details of a specific webhook subscription using its unique identifier.
         This endpoint is useful for obtaining information about a particular
@@ -492,7 +492,7 @@ class SubscriptionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SubscriptionResponse,
+            cast_to=JournalSubscriptionResponse,
         )
 
 
@@ -552,7 +552,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -604,7 +604,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -637,7 +637,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -688,7 +688,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -738,7 +738,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -804,7 +804,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         return await self._post(
             "/webhooks-journal/subscriptions/2026-03",
             body=await async_maybe_transform(
@@ -824,7 +824,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SubscriptionResponse,
+            cast_to=JournalSubscriptionResponse,
         )
 
     async def list(
@@ -836,7 +836,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseSubscriptionResponseNoPaging:
+    ) -> JournalCollectionResponseSubscriptionResponseNoPaging:
         """Retrieve a list of webhook journal subscriptions for the specified version.
 
         This
@@ -849,7 +849,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponseSubscriptionResponseNoPaging,
+            cast_to=JournalCollectionResponseSubscriptionResponseNoPaging,
         )
 
     async def delete(
@@ -933,7 +933,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Retrieve details of a specific webhook subscription using its unique identifier.
         This endpoint is useful for obtaining information about a particular
@@ -953,7 +953,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SubscriptionResponse,
+            cast_to=JournalSubscriptionResponse,
         )
 
 

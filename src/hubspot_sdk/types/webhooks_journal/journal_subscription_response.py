@@ -9,10 +9,10 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 from ..shared.action_override_request import ActionOverrideRequest
 
-__all__ = ["SubscriptionResponse"]
+__all__ = ["JournalSubscriptionResponse"]
 
 
-class SubscriptionResponse(BaseModel):
+class JournalSubscriptionResponse(BaseModel):
     id: int
     """The unique identifier for the subscription, represented as an integer."""
 
