@@ -4,8 +4,8 @@ Types:
 
 ```python
 from hubspot_sdk.types.webhooks_journal import (
-    CollectionResponseSubscriptionResponseNoPaging,
-    SubscriptionResponse,
+    JournalCollectionResponseSubscriptionResponseNoPaging,
+    JournalSubscriptionResponse,
 )
 ```
 
@@ -53,11 +53,11 @@ Methods:
 
 Methods:
 
-- <code title="post /webhooks-journal/subscriptions/2026-03">client.webhooks_journal.subscriptions.<a href="./src/hubspot_sdk/resources/webhooks_journal/subscriptions/subscriptions.py">create</a>(\*\*<a href="src/hubspot_sdk/types/webhooks_journal/subscription_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/webhooks_journal/subscription_response.py">SubscriptionResponse</a></code>
-- <code title="get /webhooks-journal/subscriptions/2026-03">client.webhooks_journal.subscriptions.<a href="./src/hubspot_sdk/resources/webhooks_journal/subscriptions/subscriptions.py">list</a>() -> <a href="./src/hubspot_sdk/types/webhooks_journal/collection_response_subscription_response_no_paging.py">CollectionResponseSubscriptionResponseNoPaging</a></code>
+- <code title="post /webhooks-journal/subscriptions/2026-03">client.webhooks_journal.subscriptions.<a href="./src/hubspot_sdk/resources/webhooks_journal/subscriptions/subscriptions.py">create</a>(\*\*<a href="src/hubspot_sdk/types/webhooks_journal/subscription_create_params.py">params</a>) -> <a href="./src/hubspot_sdk/types/webhooks_journal/journal_subscription_response.py">JournalSubscriptionResponse</a></code>
+- <code title="get /webhooks-journal/subscriptions/2026-03">client.webhooks_journal.subscriptions.<a href="./src/hubspot_sdk/resources/webhooks_journal/subscriptions/subscriptions.py">list</a>() -> <a href="./src/hubspot_sdk/types/webhooks_journal/journal_collection_response_subscription_response_no_paging.py">JournalCollectionResponseSubscriptionResponseNoPaging</a></code>
 - <code title="delete /webhooks-journal/subscriptions/2026-03/{subscriptionId}">client.webhooks_journal.subscriptions.<a href="./src/hubspot_sdk/resources/webhooks_journal/subscriptions/subscriptions.py">delete</a>(subscription_id) -> None</code>
 - <code title="delete /webhooks-journal/subscriptions/2026-03/portals/{portalId}">client.webhooks_journal.subscriptions.<a href="./src/hubspot_sdk/resources/webhooks_journal/subscriptions/subscriptions.py">delete_for_portal</a>(portal_id) -> None</code>
-- <code title="get /webhooks-journal/subscriptions/2026-03/{subscriptionId}">client.webhooks_journal.subscriptions.<a href="./src/hubspot_sdk/resources/webhooks_journal/subscriptions/subscriptions.py">get</a>(subscription_id) -> <a href="./src/hubspot_sdk/types/webhooks_journal/subscription_response.py">SubscriptionResponse</a></code>
+- <code title="get /webhooks-journal/subscriptions/2026-03/{subscriptionId}">client.webhooks_journal.subscriptions.<a href="./src/hubspot_sdk/resources/webhooks_journal/subscriptions/subscriptions.py">get</a>(subscription_id) -> <a href="./src/hubspot_sdk/types/webhooks_journal/journal_subscription_response.py">JournalSubscriptionResponse</a></code>
 
 ### Filters
 

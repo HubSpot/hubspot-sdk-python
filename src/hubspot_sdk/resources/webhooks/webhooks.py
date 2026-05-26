@@ -53,19 +53,19 @@ from ...types.shared_params.filter import Filter
 from ...types.shared.filter_response import FilterResponse
 from ...types.webhooks.settings_response import SettingsResponse
 from ...types.shared.filter_create_response import FilterCreateResponse
-from ...types.webhooks.subscription_response import SubscriptionResponse as WebhooksSubscriptionResponse
+from ...types.webhooks.subscription_response import SubscriptionResponse
 from ...types.shared.snapshot_status_response import SnapshotStatusResponse
 from ...types.webhooks.throttling_settings_param import ThrottlingSettingsParam
 from ...types.webhooks.subscription_list_response import SubscriptionListResponse
-from ...types.webhooks_journal.subscription_response import SubscriptionResponse as WebhooksJournalSubscriptionResponse
 from ...types.shared.crm_object_snapshot_batch_response import CrmObjectSnapshotBatchResponse
 from ...types.shared_params.crm_object_snapshot_request import CrmObjectSnapshotRequest
 from ...types.shared.batch_response_journal_fetch_response import BatchResponseJournalFetchResponse
 from ...types.webhooks.batch_response_subscription_response import BatchResponseSubscriptionResponse
+from ...types.webhooks_journal.journal_subscription_response import JournalSubscriptionResponse
 from ...types.webhooks.subscription_batch_update_request_param import SubscriptionBatchUpdateRequestParam
 from ...types.webhooks.webhook_list_subscription_filters_response import WebhookListSubscriptionFiltersResponse
-from ...types.webhooks_journal.collection_response_subscription_response_no_paging import (
-    CollectionResponseSubscriptionResponseNoPaging,
+from ...types.webhooks_journal.journal_collection_response_subscription_response_no_paging import (
+    JournalCollectionResponseSubscriptionResponseNoPaging,
 )
 
 __all__ = ["WebhooksResource", "AsyncWebhooksResource"]
@@ -236,7 +236,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksSubscriptionResponse:
+    ) -> SubscriptionResponse:
         """
         Create new event subscription for the specified app.
 
@@ -278,7 +278,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksSubscriptionResponse,
+            cast_to=SubscriptionResponse,
         )
 
     @overload
@@ -313,7 +313,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -365,7 +365,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -398,7 +398,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -449,7 +449,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -499,7 +499,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -565,7 +565,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         return self._post(
             "/webhooks-journal/subscriptions/2026-03",
             body=maybe_transform(
@@ -585,7 +585,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksJournalSubscriptionResponse,
+            cast_to=JournalSubscriptionResponse,
         )
 
     def create_subscription_filter(
@@ -1005,7 +1005,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksSubscriptionResponse:
+    ) -> SubscriptionResponse:
         """
         Retrieve a specific event subscription by ID.
 
@@ -1027,7 +1027,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksSubscriptionResponse,
+            cast_to=SubscriptionResponse,
         )
 
     def get_journal_batch_by_request(
@@ -1173,7 +1173,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Retrieve details of a specific webhook subscription using its unique identifier.
         This endpoint is useful for obtaining information about a particular
@@ -1193,7 +1193,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksJournalSubscriptionResponse,
+            cast_to=JournalSubscriptionResponse,
         )
 
     def get_latest_journal_batch(
@@ -1712,7 +1712,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseSubscriptionResponseNoPaging:
+    ) -> JournalCollectionResponseSubscriptionResponseNoPaging:
         """Retrieve a list of webhook journal subscriptions for the specified version.
 
         This
@@ -1725,7 +1725,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponseSubscriptionResponseNoPaging,
+            cast_to=JournalCollectionResponseSubscriptionResponseNoPaging,
         )
 
     def list_subscription_filters(
@@ -1777,7 +1777,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksSubscriptionResponse:
+    ) -> SubscriptionResponse:
         """
         Update an existing event subscription by ID.
 
@@ -1805,7 +1805,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksSubscriptionResponse,
+            cast_to=SubscriptionResponse,
         )
 
     def update_settings(
@@ -2016,7 +2016,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksSubscriptionResponse:
+    ) -> SubscriptionResponse:
         """
         Create new event subscription for the specified app.
 
@@ -2058,7 +2058,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksSubscriptionResponse,
+            cast_to=SubscriptionResponse,
         )
 
     @overload
@@ -2093,7 +2093,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -2145,7 +2145,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -2178,7 +2178,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -2229,7 +2229,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -2279,7 +2279,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Create a new subscription in the Webhooks Journal for the specified version.
         This endpoint allows you to define the subscription details by providing the
@@ -2345,7 +2345,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         return await self._post(
             "/webhooks-journal/subscriptions/2026-03",
             body=await async_maybe_transform(
@@ -2365,7 +2365,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksJournalSubscriptionResponse,
+            cast_to=JournalSubscriptionResponse,
         )
 
     async def create_subscription_filter(
@@ -2785,7 +2785,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksSubscriptionResponse:
+    ) -> SubscriptionResponse:
         """
         Retrieve a specific event subscription by ID.
 
@@ -2807,7 +2807,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksSubscriptionResponse,
+            cast_to=SubscriptionResponse,
         )
 
     async def get_journal_batch_by_request(
@@ -2953,7 +2953,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksJournalSubscriptionResponse:
+    ) -> JournalSubscriptionResponse:
         """
         Retrieve details of a specific webhook subscription using its unique identifier.
         This endpoint is useful for obtaining information about a particular
@@ -2973,7 +2973,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksJournalSubscriptionResponse,
+            cast_to=JournalSubscriptionResponse,
         )
 
     async def get_latest_journal_batch(
@@ -3492,7 +3492,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseSubscriptionResponseNoPaging:
+    ) -> JournalCollectionResponseSubscriptionResponseNoPaging:
         """Retrieve a list of webhook journal subscriptions for the specified version.
 
         This
@@ -3505,7 +3505,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponseSubscriptionResponseNoPaging,
+            cast_to=JournalCollectionResponseSubscriptionResponseNoPaging,
         )
 
     async def list_subscription_filters(
@@ -3557,7 +3557,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebhooksSubscriptionResponse:
+    ) -> SubscriptionResponse:
         """
         Update an existing event subscription by ID.
 
@@ -3585,7 +3585,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhooksSubscriptionResponse,
+            cast_to=SubscriptionResponse,
         )
 
     async def update_settings(
