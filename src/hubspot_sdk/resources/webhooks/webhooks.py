@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from typing import List, Iterable
 from typing_extensions import Literal, overload
 
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import path_template, maybe_transform, async_maybe_transform
+from ..._utils import path_template, required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -37,6 +37,7 @@ from ...types.webhooks import (
     webhook_create_subscription_filter_params,
     webhook_get_earliest_journal_batch_params,
     webhook_get_earliest_journal_entry_params,
+    webhook_create_journal_subscription_params,
     webhook_get_journal_batch_by_request_params,
     webhook_get_journal_batch_from_offset_params,
     webhook_get_latest_local_journal_batch_params,
@@ -48,23 +49,23 @@ from ...types.webhooks import (
     webhook_get_local_journal_batch_by_request_params,
     webhook_get_local_journal_batch_from_offset_params,
 )
-from ...types.webhooks.filter_param import FilterParam
-from ...types.webhooks.filter_response import FilterResponse
+from ...types.shared_params.filter import Filter
+from ...types.shared.filter_response import FilterResponse
 from ...types.webhooks.settings_response import SettingsResponse
+from ...types.shared.filter_create_response import FilterCreateResponse
 from ...types.webhooks.subscription_response import SubscriptionResponse
-from ...types.webhooks.filter_create_response import FilterCreateResponse
-from ...types.webhooks.subscription_response_1 import SubscriptionResponse1
-from ...types.webhooks.snapshot_status_response import SnapshotStatusResponse
+from ...types.shared.snapshot_status_response import SnapshotStatusResponse
 from ...types.webhooks.throttling_settings_param import ThrottlingSettingsParam
 from ...types.webhooks.subscription_list_response import SubscriptionListResponse
-from ...types.webhooks.crm_object_snapshot_request_param import CrmObjectSnapshotRequestParam
-from ...types.webhooks.crm_object_snapshot_batch_response import CrmObjectSnapshotBatchResponse
+from ...types.shared.crm_object_snapshot_batch_response import CrmObjectSnapshotBatchResponse
+from ...types.shared_params.crm_object_snapshot_request import CrmObjectSnapshotRequest
+from ...types.shared.batch_response_journal_fetch_response import BatchResponseJournalFetchResponse
 from ...types.webhooks.batch_response_subscription_response import BatchResponseSubscriptionResponse
-from ...types.webhooks.batch_response_journal_fetch_response import BatchResponseJournalFetchResponse
+from ...types.webhooks_journal.journal_subscription_response import JournalSubscriptionResponse
 from ...types.webhooks.subscription_batch_update_request_param import SubscriptionBatchUpdateRequestParam
 from ...types.webhooks.webhook_list_subscription_filters_response import WebhookListSubscriptionFiltersResponse
-from ...types.webhooks.collection_response_subscription_response_no_paging import (
-    CollectionResponseSubscriptionResponseNoPaging,
+from ...types.webhooks_journal.journal_collection_response_subscription_response_no_paging import (
+    JournalCollectionResponseSubscriptionResponseNoPaging,
 )
 
 __all__ = ["WebhooksResource", "AsyncWebhooksResource"]
@@ -132,7 +133,7 @@ class WebhooksResource(SyncAPIResource):
     def create_crm_snapshots(
         self,
         *,
-        snapshot_requests: Iterable[CrmObjectSnapshotRequestParam],
+        snapshot_requests: Iterable[CrmObjectSnapshotRequest],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,13 +141,12 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CrmObjectSnapshotBatchResponse:
-        """Create a batch of CRM object snapshots for the specified portal.
+        """Create a batch of CRM object snapshots in HubSpot.
 
-        This endpoint
-        allows you to capture the state of CRM objects at a specific point in time,
-        which can be useful for auditing or historical analysis. The request requires a
-        list of CRM object snapshot requests, each specifying the portal ID, object ID,
-        object type ID, and properties to include in the snapshot.
+        This endpoint is used to
+        capture the current state of specified CRM objects for later reference or
+        analysis. It requires a JSON payload containing the details of the CRM objects
+        to snapshot. This operation is exempt from daily and ten-secondly rate limits.
 
         Args:
           snapshot_requests: An array of CrmObjectSnapshotRequest objects, each representing a request to
@@ -285,19 +285,51 @@ class WebhooksResource(SyncAPIResource):
     def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ],
+        object_ids: Iterable[int],
+        object_type_id: str,
+        portal_id: int,
+        properties: SequenceNotStr[str],
+        subscription_type: Literal["OBJECT"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
@@ -305,19 +337,51 @@ class WebhooksResource(SyncAPIResource):
     def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ],
+        associated_object_type_ids: SequenceNotStr[str],
+        object_ids: Iterable[int],
+        object_type_id: str,
+        portal_id: int,
+        subscription_type: Literal["ASSOCIATION"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
@@ -325,19 +389,32 @@ class WebhooksResource(SyncAPIResource):
     def create_journal_subscription(
         self,
         *,
+        event_type_id: str,
+        properties: SequenceNotStr[str],
+        subscription_type: Literal["APP_LIFECYCLE_EVENT"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
@@ -345,19 +422,50 @@ class WebhooksResource(SyncAPIResource):
     def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ],
+        list_ids: Iterable[int],
+        object_ids: Iterable[int],
+        portal_id: int,
+        subscription_type: Literal["LIST_MEMBERSHIP"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
@@ -365,44 +473,125 @@ class WebhooksResource(SyncAPIResource):
     def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ],
+        object_type_id: str,
+        portal_id: int,
+        subscription_type: Literal["GDPR_PRIVACY_DELETION"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
+    @required_args(
+        ["actions", "object_ids", "object_type_id", "portal_id", "properties", "subscription_type"],
+        ["actions", "associated_object_type_ids", "object_ids", "object_type_id", "portal_id", "subscription_type"],
+        ["event_type_id", "properties", "subscription_type"],
+        ["actions", "list_ids", "object_ids", "portal_id", "subscription_type"],
+        ["actions", "object_type_id", "portal_id", "subscription_type"],
+    )
     def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ]
+        | Omit = omit,
+        object_ids: Iterable[int] | Omit = omit,
+        object_type_id: str | Omit = omit,
+        portal_id: int | Omit = omit,
+        properties: SequenceNotStr[str] | Omit = omit,
+        subscription_type: Literal["OBJECT"]
+        | Literal["ASSOCIATION"]
+        | Literal["APP_LIFECYCLE_EVENT"]
+        | Literal["LIST_MEMBERSHIP"]
+        | Literal["GDPR_PRIVACY_DELETION"],
+        associated_object_type_ids: SequenceNotStr[str] | Omit = omit,
+        event_type_id: str | Omit = omit,
+        list_ids: Iterable[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         return self._post(
             "/webhooks-journal/subscriptions/2026-03",
+            body=maybe_transform(
+                {
+                    "actions": actions,
+                    "object_ids": object_ids,
+                    "object_type_id": object_type_id,
+                    "portal_id": portal_id,
+                    "properties": properties,
+                    "subscription_type": subscription_type,
+                    "associated_object_type_ids": associated_object_type_ids,
+                    "event_type_id": event_type_id,
+                    "list_ids": list_ids,
+                },
+                webhook_create_journal_subscription_params.WebhookCreateJournalSubscriptionParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SubscriptionResponse1,
+            cast_to=JournalSubscriptionResponse,
         )
 
     def create_subscription_filter(
         self,
         *,
-        filter: FilterParam,
+        filter: Filter,
         subscription_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -411,12 +600,11 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FilterCreateResponse:
-        """Create a new filter for a webhook subscription in your HubSpot account.
-
-        This
-        endpoint allows you to define specific conditions that a webhook event must meet
-        to trigger the subscription. It is useful for managing and customizing the
-        behavior of webhook subscriptions based on specific criteria.
+        """
+        Create a new filter for a specific webhook subscription in the HubSpot account.
+        This endpoint allows you to define conditions that determine when a webhook
+        should be triggered. The filter is associated with a subscription identified by
+        its ID, and the request must include the filter details.
 
         Args:
           filter: Defines a single condition for searching CRM objects, specifying the property to
@@ -501,7 +689,7 @@ class WebhooksResource(SyncAPIResource):
 
         This
         operation is useful for managing and cleaning up subscriptions that are no
-        longer needed or relevant.
+        longer needed in your HubSpot account.
 
         Args:
           extra_headers: Send extra headers
@@ -535,8 +723,9 @@ class WebhooksResource(SyncAPIResource):
         """Delete a webhook journal subscription for a specific portal.
 
         This operation
-        removes the subscription associated with the given portalId, and no content is
-        returned upon successful deletion.
+        removes the subscription associated with the given portalId, ensuring that no
+        further webhook events are sent for this portal. Use this endpoint to manage and
+        clean up subscriptions that are no longer needed.
 
         Args:
           extra_headers: Send extra headers
@@ -601,12 +790,11 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete a specific filter associated with a webhook journal subscription.
+        """Remove a specific filter from the webhooks journal subscriptions.
 
-        This
-        operation is useful for managing and cleaning up filters that are no longer
-        needed in your subscription setup. The endpoint requires the unique identifier
-        of the filter to be deleted.
+        This operation
+        is useful for managing and cleaning up filters that are no longer needed. Once
+        deleted, the filter cannot be recovered.
 
         Args:
           extra_headers: Send extra headers
@@ -638,15 +826,15 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
-        """Retrieve the earliest batch of webhook journal entries up to the specified
-        count.
-
-        This endpoint is useful for fetching historical webhook data in batches,
-        allowing you to process or analyze the earliest entries first.
+        """
+        Retrieve the earliest batch of webhook journal entries for a specified count.
+        This endpoint is useful for accessing historical webhook data in batches,
+        allowing you to process or analyze older entries. The number of entries
+        retrieved is determined by the count parameter.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the webhook journal entries by. This
-              is an integer value.
+          install_portal_id: The ID of the portal installation. This is an integer value that specifies which
+              portal's data to access.
 
           extra_headers: Send extra headers
 
@@ -683,13 +871,13 @@ class WebhooksResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
-        Retrieve the earliest entry from the webhooks journal for the specified version.
-        This endpoint is useful for accessing the oldest records available in the
-        journal, which can be helpful for auditing or historical data analysis.
+        Retrieve the earliest entry from the webhooks journal for the specified portal.
+        This endpoint is useful for accessing the first recorded webhook event in the
+        journal, which can be helpful for auditing or debugging purposes.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the journal entries. It is an
-              integer.
+          install_portal_id: The ID of the portal installation to filter the journal entries by. This is an
+              integer value.
 
           extra_headers: Send extra headers
 
@@ -727,13 +915,16 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
-        """
-        Retrieve the earliest batch of webhook journal entries based on the specified
-        count. This endpoint is useful for fetching a specific number of the earliest
-        entries in the webhook journal for analysis or processing.
+        """Retrieve the earliest batch of webhook journal entries.
+
+        This endpoint is useful
+        for accessing the oldest available data in the webhook journal, allowing users
+        to process or analyze historical webhook events. The number of entries to fetch
+        is specified by the 'count' path parameter.
 
         Args:
-          install_portal_id: The ID of the portal where the webhooks are installed. This is an integer value.
+          install_portal_id: The ID of the portal installation to filter the webhook journal entries. This is
+              an optional integer parameter.
 
           extra_headers: Send extra headers
 
@@ -769,14 +960,15 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
-        """
-        Retrieve the earliest entry from the webhooks journal for the specified portal.
-        This endpoint is useful for accessing the oldest records in the journal, which
-        can be helpful for auditing or tracking purposes.
+        """Retrieve the earliest webhook journal entries for the specified portal.
+
+        This
+        endpoint can be used to access the oldest records available in the webhook
+        journal, which may be useful for auditing or historical analysis.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the journal entries by. This
-              parameter is optional and should be an integer.
+          install_portal_id: The ID of the portal for which to retrieve the earliest webhook journal entries.
+              This parameter is optional and should be an integer.
 
           extra_headers: Send extra headers
 
@@ -851,15 +1043,17 @@ class WebhooksResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
         """
-        Perform a batch read operation on the webhooks journal for the specified date.
-        This endpoint allows you to retrieve multiple entries from the webhooks journal
-        in a single request, which can be useful for processing large amounts of data
-        efficiently.
+        Execute a batch read operation on the webhooks journal for the specified date,
+        2026-03. This endpoint allows you to retrieve multiple entries from the webhooks
+        journal in a single request, which can be useful for processing large amounts of
+        data efficiently. Ensure that the request body is provided in the required
+        format.
 
         Args:
           inputs: Strings to input.
 
-          install_portal_id: The ID of the portal where the webhooks are installed. This is an integer value.
+          install_portal_id: An integer representing the ID of the portal installation for which the webhooks
+              journal data should be retrieved.
 
           extra_headers: Send extra headers
 
@@ -902,12 +1096,11 @@ class WebhooksResource(SyncAPIResource):
     ) -> BatchResponseJournalFetchResponse:
         """
         Retrieve a batch of webhook journal entries starting from a specified offset.
-        This endpoint allows you to fetch a specified number of entries, making it
-        useful for paginating through large sets of webhook journal data.
+        This endpoint allows you to fetch a defined number of entries, which can be
+        useful for processing large datasets in manageable chunks.
 
         Args:
-          install_portal_id: The ID of the portal installation. This is an integer value used to specify the
-              portal context for the request.
+          install_portal_id: The ID of the portal installation. This is an integer value.
 
           extra_headers: Send extra headers
 
@@ -946,9 +1139,10 @@ class WebhooksResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SnapshotStatusResponse:
         """
-        Retrieve the status of a specific webhook journal entry using its status ID.
-        This endpoint is useful for checking the current state of a webhook process,
-        such as whether it is pending, in progress, completed, failed, or expired.
+        Retrieve the status of a specific webhook journal entry using its unique status
+        ID. This endpoint provides detailed information about the status, including
+        whether it is pending, in progress, completed, failed, or expired. It is useful
+        for monitoring and managing the state of webhook journal entries.
 
         Args:
           extra_headers: Send extra headers
@@ -979,11 +1173,11 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
         Retrieve details of a specific webhook subscription using its unique identifier.
         This endpoint is useful for obtaining information about a particular
-        subscription's configuration and status within the HubSpot account.
+        subscription, such as its actions, object type, and associated properties.
 
         Args:
           extra_headers: Send extra headers
@@ -999,7 +1193,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SubscriptionResponse1,
+            cast_to=JournalSubscriptionResponse,
         )
 
     def get_latest_journal_batch(
@@ -1014,15 +1208,15 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
-        """Retrieve the latest batch of webhook journal entries.
-
-        This endpoint allows you
-        to specify the number of entries to fetch, providing a way to access recent
-        webhook activity within your HubSpot account.
+        """
+        Retrieve the latest batch of webhook journal entries up to the specified count.
+        This endpoint is useful for fetching recent webhook data for analysis or
+        processing. The count parameter determines the maximum number of entries to
+        return.
 
         Args:
-          install_portal_id: The ID of the portal installation. This is an integer value used to identify the
-              specific portal.
+          install_portal_id: The ID of the portal installation. This is an integer value used to specify the
+              portal context for the request.
 
           extra_headers: Send extra headers
 
@@ -1060,13 +1254,12 @@ class WebhooksResource(SyncAPIResource):
     ) -> BinaryAPIResponse:
         """
         Retrieve the latest entries from the webhooks journal for the specified portal.
-        This endpoint is useful for accessing the most recent webhook events processed
-        by your HubSpot account. It allows you to filter the results by the portal ID to
-        ensure you are retrieving data relevant to a specific installation.
+        This endpoint is useful for accessing the most recent webhook events and their
+        statuses, allowing you to monitor and debug webhook activity effectively.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the journal entries. It is an
-              integer value.
+          install_portal_id: The unique identifier of the portal installation for which to retrieve the
+              latest journal entries. This parameter is optional and should be an integer.
 
           extra_headers: Send extra headers
 
@@ -1106,13 +1299,13 @@ class WebhooksResource(SyncAPIResource):
     ) -> BatchResponseJournalFetchResponse:
         """Retrieve the latest batch of webhook journal entries.
 
-        This endpoint is useful
-        for accessing the most recent data entries processed by the webhook journal. It
-        requires specifying the number of entries to retrieve.
+        This endpoint allows you
+        to specify the number of entries to fetch, providing a way to access the most
+        recent webhook events processed by your HubSpot account.
 
         Args:
-          install_portal_id: The ID of the portal installation. This parameter is optional and used to filter
-              the journal entries by a specific portal.
+          install_portal_id: The ID of the portal where the webhook journal is installed. This parameter is
+              optional and used to specify the target portal.
 
           extra_headers: Send extra headers
 
@@ -1151,11 +1344,12 @@ class WebhooksResource(SyncAPIResource):
         """
         Retrieve the latest entries from the webhooks journal for the specified portal.
         This endpoint is useful for accessing the most recent webhook events that have
-        been logged, allowing you to process or analyze them as needed.
+        been logged, allowing for real-time monitoring or debugging of webhook
+        activities.
 
         Args:
-          install_portal_id: The ID of the portal for which to retrieve the latest journal entries. This
-              parameter is optional and should be an integer.
+          install_portal_id: The ID of the portal for which to retrieve the latest journal entries. This is
+              an integer value.
 
           extra_headers: Send extra headers
 
@@ -1193,19 +1387,18 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
-        """Perform a batch read operation on the webhooks journal.
+        """Execute a batch read operation on the webhooks journal.
 
         This endpoint allows you
-        to read multiple entries from the journal in a single request. It requires a
-        JSON request body specifying the inputs to be read. The response includes the
-        results of the batch read operation, and may return multiple statuses if there
-        are errors.
+        to retrieve a batch of webhook journal entries by providing the necessary input
+        data. It is useful for processing multiple records in a single request,
+        streamlining data retrieval tasks.
 
         Args:
           inputs: Strings to input.
 
           install_portal_id: The ID of the portal where the webhooks are installed. This parameter is
-              optional and is used to specify the target portal.
+              optional and is used to specify the target portal for the operation.
 
           extra_headers: Send extra headers
 
@@ -1249,12 +1442,12 @@ class WebhooksResource(SyncAPIResource):
     ) -> BatchResponseJournalFetchResponse:
         """
         Retrieve a batch of webhook journal entries starting from a specified offset.
-        This endpoint allows you to fetch a defined number of entries, facilitating the
-        processing of webhook data in manageable chunks.
+        This endpoint is useful for paginating through large sets of webhook data. The
+        number of entries returned is determined by the 'count' parameter.
 
         Args:
-          install_portal_id: The ID of the portal installation. This is an integer value used to specify the
-              portal context for the request.
+          install_portal_id: The ID of the portal where the webhooks are installed. This is an optional
+              parameter.
 
           extra_headers: Send extra headers
 
@@ -1296,8 +1489,9 @@ class WebhooksResource(SyncAPIResource):
     ) -> SnapshotStatusResponse:
         """
         Retrieve the status of a specific webhook journal entry using its unique status
-        ID. This endpoint is useful for monitoring the progress or completion of webhook
-        processing tasks.
+        ID. This endpoint is useful for monitoring the progress or outcome of webhook
+        journal entries, allowing you to check if an entry is pending, in progress,
+        completed, failed, or expired.
 
         Args:
           extra_headers: Send extra headers
@@ -1331,13 +1525,12 @@ class WebhooksResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
-        Retrieve the next batch of webhook journal entries starting from a specified
-        offset. This endpoint is useful for paginating through large sets of webhook
-        data, allowing you to continue fetching entries from where you last left off.
+        Retrieve the next set of entries from the webhooks journal starting from a
+        specified offset. This endpoint is useful for paginating through journal entries
+        to process or analyze webhook events sequentially.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the webhook journal entries. This is
-              an optional parameter.
+          install_portal_id: The ID of the portal where the webhooks are installed. This is an integer value.
 
           extra_headers: Send extra headers
 
@@ -1379,11 +1572,12 @@ class WebhooksResource(SyncAPIResource):
     ) -> BinaryAPIResponse:
         """
         Retrieve the next set of webhook journal entries starting from a specified
-        offset. This endpoint is useful for paginating through webhook journal data in a
-        sequential manner, allowing you to fetch entries beyond a given point.
+        offset. This endpoint is useful for paginating through large sets of webhook
+        data, allowing you to continue from where a previous request left off.
 
         Args:
-          install_portal_id: The ID of the portal where the webhook is installed. This is an integer value.
+          install_portal_id: The ID of the portal installation to filter the webhook journal entries. This is
+              an integer value.
 
           extra_headers: Send extra headers
 
@@ -1454,10 +1648,12 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FilterResponse:
-        """
-        Retrieve details of a specific filter associated with a webhook subscription in
-        the HubSpot account. This endpoint is useful for accessing the configuration and
-        conditions of a filter by its unique identifier.
+        """Retrieve a specific filter associated with a webhook journal subscription.
+
+        This
+        endpoint allows you to access the details of the filter identified by the
+        filterId, which is useful for managing and understanding the conditions applied
+        to webhook events.
 
         Args:
           extra_headers: Send extra headers
@@ -1516,19 +1712,20 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseSubscriptionResponseNoPaging:
-        """
-        Retrieve a list of webhook journal subscriptions for the specified API version.
-        This endpoint provides details about each subscription, including actions,
-        object types, and associated properties. It is useful for managing and reviewing
-        current webhook subscriptions.
+    ) -> JournalCollectionResponseSubscriptionResponseNoPaging:
+        """Retrieve a list of webhook journal subscriptions for the specified version.
+
+        This
+        endpoint allows you to view all active subscriptions without pagination. It is
+        useful for monitoring and managing webhook subscriptions in your HubSpot
+        account.
         """
         return self._get(
             "/webhooks-journal/subscriptions/2026-03",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponseSubscriptionResponseNoPaging,
+            cast_to=JournalCollectionResponseSubscriptionResponseNoPaging,
         )
 
     def list_subscription_filters(
@@ -1542,11 +1739,11 @@ class WebhooksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WebhookListSubscriptionFiltersResponse:
-        """
-        Retrieve the filters associated with a specific webhook subscription in the
-        HubSpot account. This endpoint is useful for obtaining detailed information
-        about the filters applied to a given subscription, identified by its
-        subscription ID.
+        """Retrieve the filters associated with a specific webhook subscription.
+
+        This
+        endpoint allows you to view the filters applied to a subscription, which can
+        help in managing and understanding the conditions set for webhook events.
 
         Args:
           extra_headers: Send extra headers
@@ -1716,7 +1913,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
     async def create_crm_snapshots(
         self,
         *,
-        snapshot_requests: Iterable[CrmObjectSnapshotRequestParam],
+        snapshot_requests: Iterable[CrmObjectSnapshotRequest],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1724,13 +1921,12 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CrmObjectSnapshotBatchResponse:
-        """Create a batch of CRM object snapshots for the specified portal.
+        """Create a batch of CRM object snapshots in HubSpot.
 
-        This endpoint
-        allows you to capture the state of CRM objects at a specific point in time,
-        which can be useful for auditing or historical analysis. The request requires a
-        list of CRM object snapshot requests, each specifying the portal ID, object ID,
-        object type ID, and properties to include in the snapshot.
+        This endpoint is used to
+        capture the current state of specified CRM objects for later reference or
+        analysis. It requires a JSON payload containing the details of the CRM objects
+        to snapshot. This operation is exempt from daily and ten-secondly rate limits.
 
         Args:
           snapshot_requests: An array of CrmObjectSnapshotRequest objects, each representing a request to
@@ -1869,19 +2065,51 @@ class AsyncWebhooksResource(AsyncAPIResource):
     async def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ],
+        object_ids: Iterable[int],
+        object_type_id: str,
+        portal_id: int,
+        properties: SequenceNotStr[str],
+        subscription_type: Literal["OBJECT"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
@@ -1889,19 +2117,51 @@ class AsyncWebhooksResource(AsyncAPIResource):
     async def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ],
+        associated_object_type_ids: SequenceNotStr[str],
+        object_ids: Iterable[int],
+        object_type_id: str,
+        portal_id: int,
+        subscription_type: Literal["ASSOCIATION"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
@@ -1909,19 +2169,32 @@ class AsyncWebhooksResource(AsyncAPIResource):
     async def create_journal_subscription(
         self,
         *,
+        event_type_id: str,
+        properties: SequenceNotStr[str],
+        subscription_type: Literal["APP_LIFECYCLE_EVENT"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
@@ -1929,19 +2202,50 @@ class AsyncWebhooksResource(AsyncAPIResource):
     async def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ],
+        list_ids: Iterable[int],
+        object_ids: Iterable[int],
+        portal_id: int,
+        subscription_type: Literal["LIST_MEMBERSHIP"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
@@ -1949,44 +2253,125 @@ class AsyncWebhooksResource(AsyncAPIResource):
     async def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ],
+        object_type_id: str,
+        portal_id: int,
+        subscription_type: Literal["GDPR_PRIVACY_DELETION"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
-        Create a new webhook subscription for the specified portal in the HubSpot
-        account. This endpoint allows you to define the subscription details, including
-        the types of events you want to subscribe to. The request body must include the
-        necessary subscription information as defined by the SubscriptionUpsertRequest
-        schema.
+        Create a new subscription in the Webhooks Journal for the specified version.
+        This endpoint allows you to define the subscription details by providing the
+        necessary information in the request body. It supports various types of
+        subscriptions, including object, association, event, app lifecycle event, list
+        membership, and GDPR privacy deletion. Ensure that all required fields are
+        included in the request to successfully create a subscription.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         ...
 
+    @required_args(
+        ["actions", "object_ids", "object_type_id", "portal_id", "properties", "subscription_type"],
+        ["actions", "associated_object_type_ids", "object_ids", "object_type_id", "portal_id", "subscription_type"],
+        ["event_type_id", "properties", "subscription_type"],
+        ["actions", "list_ids", "object_ids", "portal_id", "subscription_type"],
+        ["actions", "object_type_id", "portal_id", "subscription_type"],
+    )
     async def create_journal_subscription(
         self,
         *,
+        actions: List[
+            Literal[
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "MERGE",
+                "RESTORE",
+                "ASSOCIATION_ADDED",
+                "ASSOCIATION_REMOVED",
+                "SNAPSHOT",
+                "APP_INSTALL",
+                "APP_UNINSTALL",
+                "ADDED_TO_LIST",
+                "REMOVED_FROM_LIST",
+                "GDPR_DELETE",
+            ]
+        ]
+        | Omit = omit,
+        object_ids: Iterable[int] | Omit = omit,
+        object_type_id: str | Omit = omit,
+        portal_id: int | Omit = omit,
+        properties: SequenceNotStr[str] | Omit = omit,
+        subscription_type: Literal["OBJECT"]
+        | Literal["ASSOCIATION"]
+        | Literal["APP_LIFECYCLE_EVENT"]
+        | Literal["LIST_MEMBERSHIP"]
+        | Literal["GDPR_PRIVACY_DELETION"],
+        associated_object_type_ids: SequenceNotStr[str] | Omit = omit,
+        event_type_id: str | Omit = omit,
+        list_ids: Iterable[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         return await self._post(
             "/webhooks-journal/subscriptions/2026-03",
+            body=await async_maybe_transform(
+                {
+                    "actions": actions,
+                    "object_ids": object_ids,
+                    "object_type_id": object_type_id,
+                    "portal_id": portal_id,
+                    "properties": properties,
+                    "subscription_type": subscription_type,
+                    "associated_object_type_ids": associated_object_type_ids,
+                    "event_type_id": event_type_id,
+                    "list_ids": list_ids,
+                },
+                webhook_create_journal_subscription_params.WebhookCreateJournalSubscriptionParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SubscriptionResponse1,
+            cast_to=JournalSubscriptionResponse,
         )
 
     async def create_subscription_filter(
         self,
         *,
-        filter: FilterParam,
+        filter: Filter,
         subscription_id: int,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1995,12 +2380,11 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FilterCreateResponse:
-        """Create a new filter for a webhook subscription in your HubSpot account.
-
-        This
-        endpoint allows you to define specific conditions that a webhook event must meet
-        to trigger the subscription. It is useful for managing and customizing the
-        behavior of webhook subscriptions based on specific criteria.
+        """
+        Create a new filter for a specific webhook subscription in the HubSpot account.
+        This endpoint allows you to define conditions that determine when a webhook
+        should be triggered. The filter is associated with a subscription identified by
+        its ID, and the request must include the filter details.
 
         Args:
           filter: Defines a single condition for searching CRM objects, specifying the property to
@@ -2085,7 +2469,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
 
         This
         operation is useful for managing and cleaning up subscriptions that are no
-        longer needed or relevant.
+        longer needed in your HubSpot account.
 
         Args:
           extra_headers: Send extra headers
@@ -2119,8 +2503,9 @@ class AsyncWebhooksResource(AsyncAPIResource):
         """Delete a webhook journal subscription for a specific portal.
 
         This operation
-        removes the subscription associated with the given portalId, and no content is
-        returned upon successful deletion.
+        removes the subscription associated with the given portalId, ensuring that no
+        further webhook events are sent for this portal. Use this endpoint to manage and
+        clean up subscriptions that are no longer needed.
 
         Args:
           extra_headers: Send extra headers
@@ -2185,12 +2570,11 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
-        """Delete a specific filter associated with a webhook journal subscription.
+        """Remove a specific filter from the webhooks journal subscriptions.
 
-        This
-        operation is useful for managing and cleaning up filters that are no longer
-        needed in your subscription setup. The endpoint requires the unique identifier
-        of the filter to be deleted.
+        This operation
+        is useful for managing and cleaning up filters that are no longer needed. Once
+        deleted, the filter cannot be recovered.
 
         Args:
           extra_headers: Send extra headers
@@ -2222,15 +2606,15 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
-        """Retrieve the earliest batch of webhook journal entries up to the specified
-        count.
-
-        This endpoint is useful for fetching historical webhook data in batches,
-        allowing you to process or analyze the earliest entries first.
+        """
+        Retrieve the earliest batch of webhook journal entries for a specified count.
+        This endpoint is useful for accessing historical webhook data in batches,
+        allowing you to process or analyze older entries. The number of entries
+        retrieved is determined by the count parameter.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the webhook journal entries by. This
-              is an integer value.
+          install_portal_id: The ID of the portal installation. This is an integer value that specifies which
+              portal's data to access.
 
           extra_headers: Send extra headers
 
@@ -2267,13 +2651,13 @@ class AsyncWebhooksResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
-        Retrieve the earliest entry from the webhooks journal for the specified version.
-        This endpoint is useful for accessing the oldest records available in the
-        journal, which can be helpful for auditing or historical data analysis.
+        Retrieve the earliest entry from the webhooks journal for the specified portal.
+        This endpoint is useful for accessing the first recorded webhook event in the
+        journal, which can be helpful for auditing or debugging purposes.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the journal entries. It is an
-              integer.
+          install_portal_id: The ID of the portal installation to filter the journal entries by. This is an
+              integer value.
 
           extra_headers: Send extra headers
 
@@ -2311,13 +2695,16 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
-        """
-        Retrieve the earliest batch of webhook journal entries based on the specified
-        count. This endpoint is useful for fetching a specific number of the earliest
-        entries in the webhook journal for analysis or processing.
+        """Retrieve the earliest batch of webhook journal entries.
+
+        This endpoint is useful
+        for accessing the oldest available data in the webhook journal, allowing users
+        to process or analyze historical webhook events. The number of entries to fetch
+        is specified by the 'count' path parameter.
 
         Args:
-          install_portal_id: The ID of the portal where the webhooks are installed. This is an integer value.
+          install_portal_id: The ID of the portal installation to filter the webhook journal entries. This is
+              an optional integer parameter.
 
           extra_headers: Send extra headers
 
@@ -2353,14 +2740,15 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
-        """
-        Retrieve the earliest entry from the webhooks journal for the specified portal.
-        This endpoint is useful for accessing the oldest records in the journal, which
-        can be helpful for auditing or tracking purposes.
+        """Retrieve the earliest webhook journal entries for the specified portal.
+
+        This
+        endpoint can be used to access the oldest records available in the webhook
+        journal, which may be useful for auditing or historical analysis.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the journal entries by. This
-              parameter is optional and should be an integer.
+          install_portal_id: The ID of the portal for which to retrieve the earliest webhook journal entries.
+              This parameter is optional and should be an integer.
 
           extra_headers: Send extra headers
 
@@ -2435,15 +2823,17 @@ class AsyncWebhooksResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
         """
-        Perform a batch read operation on the webhooks journal for the specified date.
-        This endpoint allows you to retrieve multiple entries from the webhooks journal
-        in a single request, which can be useful for processing large amounts of data
-        efficiently.
+        Execute a batch read operation on the webhooks journal for the specified date,
+        2026-03. This endpoint allows you to retrieve multiple entries from the webhooks
+        journal in a single request, which can be useful for processing large amounts of
+        data efficiently. Ensure that the request body is provided in the required
+        format.
 
         Args:
           inputs: Strings to input.
 
-          install_portal_id: The ID of the portal where the webhooks are installed. This is an integer value.
+          install_portal_id: An integer representing the ID of the portal installation for which the webhooks
+              journal data should be retrieved.
 
           extra_headers: Send extra headers
 
@@ -2486,12 +2876,11 @@ class AsyncWebhooksResource(AsyncAPIResource):
     ) -> BatchResponseJournalFetchResponse:
         """
         Retrieve a batch of webhook journal entries starting from a specified offset.
-        This endpoint allows you to fetch a specified number of entries, making it
-        useful for paginating through large sets of webhook journal data.
+        This endpoint allows you to fetch a defined number of entries, which can be
+        useful for processing large datasets in manageable chunks.
 
         Args:
-          install_portal_id: The ID of the portal installation. This is an integer value used to specify the
-              portal context for the request.
+          install_portal_id: The ID of the portal installation. This is an integer value.
 
           extra_headers: Send extra headers
 
@@ -2530,9 +2919,10 @@ class AsyncWebhooksResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SnapshotStatusResponse:
         """
-        Retrieve the status of a specific webhook journal entry using its status ID.
-        This endpoint is useful for checking the current state of a webhook process,
-        such as whether it is pending, in progress, completed, failed, or expired.
+        Retrieve the status of a specific webhook journal entry using its unique status
+        ID. This endpoint provides detailed information about the status, including
+        whether it is pending, in progress, completed, failed, or expired. It is useful
+        for monitoring and managing the state of webhook journal entries.
 
         Args:
           extra_headers: Send extra headers
@@ -2563,11 +2953,11 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SubscriptionResponse1:
+    ) -> JournalSubscriptionResponse:
         """
         Retrieve details of a specific webhook subscription using its unique identifier.
         This endpoint is useful for obtaining information about a particular
-        subscription's configuration and status within the HubSpot account.
+        subscription, such as its actions, object type, and associated properties.
 
         Args:
           extra_headers: Send extra headers
@@ -2583,7 +2973,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SubscriptionResponse1,
+            cast_to=JournalSubscriptionResponse,
         )
 
     async def get_latest_journal_batch(
@@ -2598,15 +2988,15 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
-        """Retrieve the latest batch of webhook journal entries.
-
-        This endpoint allows you
-        to specify the number of entries to fetch, providing a way to access recent
-        webhook activity within your HubSpot account.
+        """
+        Retrieve the latest batch of webhook journal entries up to the specified count.
+        This endpoint is useful for fetching recent webhook data for analysis or
+        processing. The count parameter determines the maximum number of entries to
+        return.
 
         Args:
-          install_portal_id: The ID of the portal installation. This is an integer value used to identify the
-              specific portal.
+          install_portal_id: The ID of the portal installation. This is an integer value used to specify the
+              portal context for the request.
 
           extra_headers: Send extra headers
 
@@ -2644,13 +3034,12 @@ class AsyncWebhooksResource(AsyncAPIResource):
     ) -> AsyncBinaryAPIResponse:
         """
         Retrieve the latest entries from the webhooks journal for the specified portal.
-        This endpoint is useful for accessing the most recent webhook events processed
-        by your HubSpot account. It allows you to filter the results by the portal ID to
-        ensure you are retrieving data relevant to a specific installation.
+        This endpoint is useful for accessing the most recent webhook events and their
+        statuses, allowing you to monitor and debug webhook activity effectively.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the journal entries. It is an
-              integer value.
+          install_portal_id: The unique identifier of the portal installation for which to retrieve the
+              latest journal entries. This parameter is optional and should be an integer.
 
           extra_headers: Send extra headers
 
@@ -2690,13 +3079,13 @@ class AsyncWebhooksResource(AsyncAPIResource):
     ) -> BatchResponseJournalFetchResponse:
         """Retrieve the latest batch of webhook journal entries.
 
-        This endpoint is useful
-        for accessing the most recent data entries processed by the webhook journal. It
-        requires specifying the number of entries to retrieve.
+        This endpoint allows you
+        to specify the number of entries to fetch, providing a way to access the most
+        recent webhook events processed by your HubSpot account.
 
         Args:
-          install_portal_id: The ID of the portal installation. This parameter is optional and used to filter
-              the journal entries by a specific portal.
+          install_portal_id: The ID of the portal where the webhook journal is installed. This parameter is
+              optional and used to specify the target portal.
 
           extra_headers: Send extra headers
 
@@ -2735,11 +3124,12 @@ class AsyncWebhooksResource(AsyncAPIResource):
         """
         Retrieve the latest entries from the webhooks journal for the specified portal.
         This endpoint is useful for accessing the most recent webhook events that have
-        been logged, allowing you to process or analyze them as needed.
+        been logged, allowing for real-time monitoring or debugging of webhook
+        activities.
 
         Args:
-          install_portal_id: The ID of the portal for which to retrieve the latest journal entries. This
-              parameter is optional and should be an integer.
+          install_portal_id: The ID of the portal for which to retrieve the latest journal entries. This is
+              an integer value.
 
           extra_headers: Send extra headers
 
@@ -2777,19 +3167,18 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatchResponseJournalFetchResponse:
-        """Perform a batch read operation on the webhooks journal.
+        """Execute a batch read operation on the webhooks journal.
 
         This endpoint allows you
-        to read multiple entries from the journal in a single request. It requires a
-        JSON request body specifying the inputs to be read. The response includes the
-        results of the batch read operation, and may return multiple statuses if there
-        are errors.
+        to retrieve a batch of webhook journal entries by providing the necessary input
+        data. It is useful for processing multiple records in a single request,
+        streamlining data retrieval tasks.
 
         Args:
           inputs: Strings to input.
 
           install_portal_id: The ID of the portal where the webhooks are installed. This parameter is
-              optional and is used to specify the target portal.
+              optional and is used to specify the target portal for the operation.
 
           extra_headers: Send extra headers
 
@@ -2833,12 +3222,12 @@ class AsyncWebhooksResource(AsyncAPIResource):
     ) -> BatchResponseJournalFetchResponse:
         """
         Retrieve a batch of webhook journal entries starting from a specified offset.
-        This endpoint allows you to fetch a defined number of entries, facilitating the
-        processing of webhook data in manageable chunks.
+        This endpoint is useful for paginating through large sets of webhook data. The
+        number of entries returned is determined by the 'count' parameter.
 
         Args:
-          install_portal_id: The ID of the portal installation. This is an integer value used to specify the
-              portal context for the request.
+          install_portal_id: The ID of the portal where the webhooks are installed. This is an optional
+              parameter.
 
           extra_headers: Send extra headers
 
@@ -2880,8 +3269,9 @@ class AsyncWebhooksResource(AsyncAPIResource):
     ) -> SnapshotStatusResponse:
         """
         Retrieve the status of a specific webhook journal entry using its unique status
-        ID. This endpoint is useful for monitoring the progress or completion of webhook
-        processing tasks.
+        ID. This endpoint is useful for monitoring the progress or outcome of webhook
+        journal entries, allowing you to check if an entry is pending, in progress,
+        completed, failed, or expired.
 
         Args:
           extra_headers: Send extra headers
@@ -2915,13 +3305,12 @@ class AsyncWebhooksResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
-        Retrieve the next batch of webhook journal entries starting from a specified
-        offset. This endpoint is useful for paginating through large sets of webhook
-        data, allowing you to continue fetching entries from where you last left off.
+        Retrieve the next set of entries from the webhooks journal starting from a
+        specified offset. This endpoint is useful for paginating through journal entries
+        to process or analyze webhook events sequentially.
 
         Args:
-          install_portal_id: The ID of the portal installation to filter the webhook journal entries. This is
-              an optional parameter.
+          install_portal_id: The ID of the portal where the webhooks are installed. This is an integer value.
 
           extra_headers: Send extra headers
 
@@ -2963,11 +3352,12 @@ class AsyncWebhooksResource(AsyncAPIResource):
     ) -> AsyncBinaryAPIResponse:
         """
         Retrieve the next set of webhook journal entries starting from a specified
-        offset. This endpoint is useful for paginating through webhook journal data in a
-        sequential manner, allowing you to fetch entries beyond a given point.
+        offset. This endpoint is useful for paginating through large sets of webhook
+        data, allowing you to continue from where a previous request left off.
 
         Args:
-          install_portal_id: The ID of the portal where the webhook is installed. This is an integer value.
+          install_portal_id: The ID of the portal installation to filter the webhook journal entries. This is
+              an integer value.
 
           extra_headers: Send extra headers
 
@@ -3038,10 +3428,12 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FilterResponse:
-        """
-        Retrieve details of a specific filter associated with a webhook subscription in
-        the HubSpot account. This endpoint is useful for accessing the configuration and
-        conditions of a filter by its unique identifier.
+        """Retrieve a specific filter associated with a webhook journal subscription.
+
+        This
+        endpoint allows you to access the details of the filter identified by the
+        filterId, which is useful for managing and understanding the conditions applied
+        to webhook events.
 
         Args:
           extra_headers: Send extra headers
@@ -3100,19 +3492,20 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CollectionResponseSubscriptionResponseNoPaging:
-        """
-        Retrieve a list of webhook journal subscriptions for the specified API version.
-        This endpoint provides details about each subscription, including actions,
-        object types, and associated properties. It is useful for managing and reviewing
-        current webhook subscriptions.
+    ) -> JournalCollectionResponseSubscriptionResponseNoPaging:
+        """Retrieve a list of webhook journal subscriptions for the specified version.
+
+        This
+        endpoint allows you to view all active subscriptions without pagination. It is
+        useful for monitoring and managing webhook subscriptions in your HubSpot
+        account.
         """
         return await self._get(
             "/webhooks-journal/subscriptions/2026-03",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CollectionResponseSubscriptionResponseNoPaging,
+            cast_to=JournalCollectionResponseSubscriptionResponseNoPaging,
         )
 
     async def list_subscription_filters(
@@ -3126,11 +3519,11 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WebhookListSubscriptionFiltersResponse:
-        """
-        Retrieve the filters associated with a specific webhook subscription in the
-        HubSpot account. This endpoint is useful for obtaining detailed information
-        about the filters applied to a given subscription, identified by its
-        subscription ID.
+        """Retrieve the filters associated with a specific webhook subscription.
+
+        This
+        endpoint allows you to view the filters applied to a subscription, which can
+        help in managing and understanding the conditions set for webhook events.
 
         Args:
           extra_headers: Send extra headers

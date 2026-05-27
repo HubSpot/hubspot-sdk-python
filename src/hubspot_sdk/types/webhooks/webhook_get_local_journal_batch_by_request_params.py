@@ -17,5 +17,6 @@ class WebhookGetLocalJournalBatchByRequestParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
     """The ID of the portal where the webhooks are installed.
 
-    This parameter is optional and is used to specify the target portal.
+    This parameter is optional and is used to specify the target portal for the
+    operation.
     """

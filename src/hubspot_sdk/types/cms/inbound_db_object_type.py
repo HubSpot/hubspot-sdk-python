@@ -108,4 +108,8 @@ class InboundDBObjectType(BaseModel):
         Literal["Customer-facing", "Customer-facing public API", "Customer-facing UI", "Internal only"]
     ] = None
 
+    visibility_values: Optional[
+        List[Literal["Customer-facing", "Internal only", "Customer-facing UI", "Customer-facing public API"]]
+    ] = None
+
     write_scope_name: Optional[str] = FieldInfo(alias="writeScopeName", default=None)

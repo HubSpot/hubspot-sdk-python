@@ -8,7 +8,7 @@ __all__ = ["StringFieldSchemaParam"]
 
 
 class StringFieldSchemaParam(TypedDict, total=False):
-    type: Required[Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]]
+    type: Required[Literal["STRING"]]
     """Indicates that the type is a string, with the default value being STRING."""
 
     format: Literal["DATE", "DATE_TIME", "OBJECT_COORDINATE", "TIME", "URI"]

@@ -5,11 +5,19 @@ from __future__ import annotations
 import os
 from typing import Any, cast
 
+import httpx
 import pytest
+from respx import MockRouter
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
 from hubspot_sdk._utils import parse_datetime
+from hubspot_sdk._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
+)
 from hubspot_sdk.types.cms import (
     URLMapping,
 )
@@ -259,6 +267,124 @@ class TestURLRedirects:
                 "",
             )
 
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_url_mapping(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.post("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        url_redirect = client.cms.url_redirects.create_url_mapping(
+            id="id",
+            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            destination="destination",
+            is_match_full_url=True,
+            is_match_query_string=True,
+            is_only_after_not_found=True,
+            is_pattern=True,
+            is_protocol_agnostic=True,
+            is_trailing_slash_optional=True,
+            precedence=0,
+            redirect_style=0,
+            route_prefix="routePrefix",
+            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert url_redirect.is_closed
+        assert url_redirect.json() == {"foo": "bar"}
+        assert cast(Any, url_redirect.is_closed) is True
+        assert isinstance(url_redirect, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_create_url_mapping(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.post("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        url_redirect = client.cms.url_redirects.with_raw_response.create_url_mapping(
+            id="id",
+            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            destination="destination",
+            is_match_full_url=True,
+            is_match_query_string=True,
+            is_only_after_not_found=True,
+            is_pattern=True,
+            is_protocol_agnostic=True,
+            is_trailing_slash_optional=True,
+            precedence=0,
+            redirect_style=0,
+            route_prefix="routePrefix",
+            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert url_redirect.is_closed is True
+        assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert url_redirect.json() == {"foo": "bar"}
+        assert isinstance(url_redirect, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_create_url_mapping(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.post("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.url_redirects.with_streaming_response.create_url_mapping(
+            id="id",
+            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            destination="destination",
+            is_match_full_url=True,
+            is_match_query_string=True,
+            is_only_after_not_found=True,
+            is_pattern=True,
+            is_protocol_agnostic=True,
+            is_trailing_slash_optional=True,
+            precedence=0,
+            redirect_style=0,
+            route_prefix="routePrefix",
+            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as url_redirect:
+            assert not url_redirect.is_closed
+            assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert url_redirect.json() == {"foo": "bar"}
+            assert cast(Any, url_redirect.is_closed) is True
+            assert isinstance(url_redirect, StreamedBinaryAPIResponse)
+
+        assert cast(Any, url_redirect.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete_url_mapping(self, client: HubSpot) -> None:
+        url_redirect = client.cms.url_redirects.delete_url_mapping(
+            0,
+        )
+        assert url_redirect is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_delete_url_mapping(self, client: HubSpot) -> None:
+        response = client.cms.url_redirects.with_raw_response.delete_url_mapping(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        url_redirect = response.parse()
+        assert url_redirect is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_delete_url_mapping(self, client: HubSpot) -> None:
+        with client.cms.url_redirects.with_streaming_response.delete_url_mapping(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            url_redirect = response.parse()
+            assert url_redirect is None
+
+        assert cast(Any, response.is_closed) is True
+
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get(self, client: HubSpot) -> None:
@@ -300,6 +426,96 @@ class TestURLRedirects:
             client.cms.url_redirects.with_raw_response.get(
                 "",
             )
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_get_url_mapping(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings/0").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        url_redirect = client.cms.url_redirects.get_url_mapping(
+            0,
+        )
+        assert url_redirect.is_closed
+        assert url_redirect.json() == {"foo": "bar"}
+        assert cast(Any, url_redirect.is_closed) is True
+        assert isinstance(url_redirect, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_get_url_mapping(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings/0").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        url_redirect = client.cms.url_redirects.with_raw_response.get_url_mapping(
+            0,
+        )
+
+        assert url_redirect.is_closed is True
+        assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert url_redirect.json() == {"foo": "bar"}
+        assert isinstance(url_redirect, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_get_url_mapping(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings/0").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.url_redirects.with_streaming_response.get_url_mapping(
+            0,
+        ) as url_redirect:
+            assert not url_redirect.is_closed
+            assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert url_redirect.json() == {"foo": "bar"}
+            assert cast(Any, url_redirect.is_closed) is True
+            assert isinstance(url_redirect, StreamedBinaryAPIResponse)
+
+        assert cast(Any, url_redirect.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_list_url_mappings(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        url_redirect = client.cms.url_redirects.list_url_mappings()
+        assert url_redirect.is_closed
+        assert url_redirect.json() == {"foo": "bar"}
+        assert cast(Any, url_redirect.is_closed) is True
+        assert isinstance(url_redirect, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_list_url_mappings(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        url_redirect = client.cms.url_redirects.with_raw_response.list_url_mappings()
+
+        assert url_redirect.is_closed is True
+        assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert url_redirect.json() == {"foo": "bar"}
+        assert isinstance(url_redirect, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_list_url_mappings(self, client: HubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        with client.cms.url_redirects.with_streaming_response.list_url_mappings() as url_redirect:
+            assert not url_redirect.is_closed
+            assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert url_redirect.json() == {"foo": "bar"}
+            assert cast(Any, url_redirect.is_closed) is True
+            assert isinstance(url_redirect, StreamedBinaryAPIResponse)
+
+        assert cast(Any, url_redirect.is_closed) is True
 
 
 class TestAsyncURLRedirects:
@@ -545,6 +761,126 @@ class TestAsyncURLRedirects:
                 "",
             )
 
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_url_mapping(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.post("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        url_redirect = await async_client.cms.url_redirects.create_url_mapping(
+            id="id",
+            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            destination="destination",
+            is_match_full_url=True,
+            is_match_query_string=True,
+            is_only_after_not_found=True,
+            is_pattern=True,
+            is_protocol_agnostic=True,
+            is_trailing_slash_optional=True,
+            precedence=0,
+            redirect_style=0,
+            route_prefix="routePrefix",
+            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert url_redirect.is_closed
+        assert await url_redirect.json() == {"foo": "bar"}
+        assert cast(Any, url_redirect.is_closed) is True
+        assert isinstance(url_redirect, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_create_url_mapping(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.post("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        url_redirect = await async_client.cms.url_redirects.with_raw_response.create_url_mapping(
+            id="id",
+            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            destination="destination",
+            is_match_full_url=True,
+            is_match_query_string=True,
+            is_only_after_not_found=True,
+            is_pattern=True,
+            is_protocol_agnostic=True,
+            is_trailing_slash_optional=True,
+            precedence=0,
+            redirect_style=0,
+            route_prefix="routePrefix",
+            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert url_redirect.is_closed is True
+        assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await url_redirect.json() == {"foo": "bar"}
+        assert isinstance(url_redirect, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_create_url_mapping(
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.post("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.url_redirects.with_streaming_response.create_url_mapping(
+            id="id",
+            created=parse_datetime("2019-12-27T18:11:19.117Z"),
+            destination="destination",
+            is_match_full_url=True,
+            is_match_query_string=True,
+            is_only_after_not_found=True,
+            is_pattern=True,
+            is_protocol_agnostic=True,
+            is_trailing_slash_optional=True,
+            precedence=0,
+            redirect_style=0,
+            route_prefix="routePrefix",
+            updated=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as url_redirect:
+            assert not url_redirect.is_closed
+            assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await url_redirect.json() == {"foo": "bar"}
+            assert cast(Any, url_redirect.is_closed) is True
+            assert isinstance(url_redirect, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, url_redirect.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete_url_mapping(self, async_client: AsyncHubSpot) -> None:
+        url_redirect = await async_client.cms.url_redirects.delete_url_mapping(
+            0,
+        )
+        assert url_redirect is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_delete_url_mapping(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.cms.url_redirects.with_raw_response.delete_url_mapping(
+            0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        url_redirect = await response.parse()
+        assert url_redirect is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_delete_url_mapping(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.cms.url_redirects.with_streaming_response.delete_url_mapping(
+            0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            url_redirect = await response.parse()
+            assert url_redirect is None
+
+        assert cast(Any, response.is_closed) is True
+
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get(self, async_client: AsyncHubSpot) -> None:
@@ -586,3 +922,95 @@ class TestAsyncURLRedirects:
             await async_client.cms.url_redirects.with_raw_response.get(
                 "",
             )
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_get_url_mapping(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings/0").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        url_redirect = await async_client.cms.url_redirects.get_url_mapping(
+            0,
+        )
+        assert url_redirect.is_closed
+        assert await url_redirect.json() == {"foo": "bar"}
+        assert cast(Any, url_redirect.is_closed) is True
+        assert isinstance(url_redirect, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_get_url_mapping(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings/0").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        url_redirect = await async_client.cms.url_redirects.with_raw_response.get_url_mapping(
+            0,
+        )
+
+        assert url_redirect.is_closed is True
+        assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await url_redirect.json() == {"foo": "bar"}
+        assert isinstance(url_redirect, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_get_url_mapping(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings/0").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.url_redirects.with_streaming_response.get_url_mapping(
+            0,
+        ) as url_redirect:
+            assert not url_redirect.is_closed
+            assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await url_redirect.json() == {"foo": "bar"}
+            assert cast(Any, url_redirect.is_closed) is True
+            assert isinstance(url_redirect, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, url_redirect.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_list_url_mappings(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        url_redirect = await async_client.cms.url_redirects.list_url_mappings()
+        assert url_redirect.is_closed
+        assert await url_redirect.json() == {"foo": "bar"}
+        assert cast(Any, url_redirect.is_closed) is True
+        assert isinstance(url_redirect, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_list_url_mappings(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+
+        url_redirect = await async_client.cms.url_redirects.with_raw_response.list_url_mappings()
+
+        assert url_redirect.is_closed is True
+        assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await url_redirect.json() == {"foo": "bar"}
+        assert isinstance(url_redirect, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_list_url_mappings(
+        self, async_client: AsyncHubSpot, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/cms/url-redirects/2026-03/url-mappings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        async with async_client.cms.url_redirects.with_streaming_response.list_url_mappings() as url_redirect:
+            assert not url_redirect.is_closed
+            assert url_redirect.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await url_redirect.json() == {"foo": "bar"}
+            assert cast(Any, url_redirect.is_closed) is True
+            assert isinstance(url_redirect, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, url_redirect.is_closed) is True

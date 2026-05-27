@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from .token_response_if import TokenResponseIf as TokenResponseIf
 from .signed_access_token import SignedAccessToken as SignedAccessToken
+from .access_token_response import AccessTokenResponse as AccessTokenResponse
 from .oauth_create_token_params import OAuthCreateTokenParams as OAuthCreateTokenParams
 from .oauth_revoke_token_params import OAuthRevokeTokenParams as OAuthRevokeTokenParams
 from .token_info_response_base_if import TokenInfoResponseBaseIf as TokenInfoResponseBaseIf
 from .oauth_introspect_token_params import OAuthIntrospectTokenParams as OAuthIntrospectTokenParams
+from .client_credentials_token_response import ClientCredentialsTokenResponse as ClientCredentialsTokenResponse
 from .public_access_token_info_response import PublicAccessTokenInfoResponse as PublicAccessTokenInfoResponse
 from .public_refresh_token_info_response import PublicRefreshTokenInfoResponse as PublicRefreshTokenInfoResponse

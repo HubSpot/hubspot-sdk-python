@@ -13,5 +13,5 @@ class WebhookGetLatestJournalBatchParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
     """The ID of the portal installation.
 
-    This is an integer value used to identify the specific portal.
+    This is an integer value used to specify the portal context for the request.
     """

@@ -9,7 +9,10 @@ import pytest
 
 from hubspot_sdk import HubSpot, AsyncHubSpot
 from tests.utils import assert_matches_type
-from hubspot_sdk.types.crm import PublicExportResponse, ActionResponseWithSingleResultUri
+from hubspot_sdk.types.crm import (
+    PublicExportResponse,
+    ActionResponseWithSingleResultUri,
+)
 from hubspot_sdk.types.shared import TaskLocator
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -21,13 +24,81 @@ class TestExports:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_async_overload_1(self, client: HubSpot) -> None:
-        export = client.crm.exports.create_async()
+        export = client.crm.exports.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="VIEW",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        )
+        assert_matches_type(TaskLocator, export, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_async_with_all_params_overload_1(self, client: HubSpot) -> None:
+        export = client.crm.exports.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="VIEW",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+            public_crm_search_request={
+                "filter_groups": [
+                    {
+                        "filters": [
+                            {
+                                "operator": "BETWEEN",
+                                "property_name": "propertyName",
+                                "high_value": "highValue",
+                                "value": "value",
+                                "values": ["string"],
+                            }
+                        ]
+                    }
+                ],
+                "filters": [
+                    {
+                        "operator": "BETWEEN",
+                        "property_name": "propertyName",
+                        "high_value": "highValue",
+                        "value": "value",
+                        "values": ["string"],
+                    }
+                ],
+                "sorts": ["string"],
+                "query": "query",
+            },
+        )
         assert_matches_type(TaskLocator, export, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_async_overload_1(self, client: HubSpot) -> None:
-        response = client.crm.exports.with_raw_response.create_async()
+        response = client.crm.exports.with_raw_response.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="VIEW",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -37,7 +108,19 @@ class TestExports:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_async_overload_1(self, client: HubSpot) -> None:
-        with client.crm.exports.with_streaming_response.create_async() as response:
+        with client.crm.exports.with_streaming_response.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="VIEW",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -49,13 +132,39 @@ class TestExports:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_async_overload_2(self, client: HubSpot) -> None:
-        export = client.crm.exports.create_async()
+        export = client.crm.exports.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="LIST",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            list_id="listId",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        )
         assert_matches_type(TaskLocator, export, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_async_overload_2(self, client: HubSpot) -> None:
-        response = client.crm.exports.with_raw_response.create_async()
+        response = client.crm.exports.with_raw_response.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="LIST",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            list_id="listId",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,7 +174,20 @@ class TestExports:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_async_overload_2(self, client: HubSpot) -> None:
-        with client.crm.exports.with_streaming_response.create_async() as response:
+        with client.crm.exports.with_streaming_response.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="LIST",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            list_id="listId",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -151,13 +273,81 @@ class TestAsyncExports:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_async_overload_1(self, async_client: AsyncHubSpot) -> None:
-        export = await async_client.crm.exports.create_async()
+        export = await async_client.crm.exports.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="VIEW",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        )
+        assert_matches_type(TaskLocator, export, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_async_with_all_params_overload_1(self, async_client: AsyncHubSpot) -> None:
+        export = await async_client.crm.exports.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="VIEW",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+            public_crm_search_request={
+                "filter_groups": [
+                    {
+                        "filters": [
+                            {
+                                "operator": "BETWEEN",
+                                "property_name": "propertyName",
+                                "high_value": "highValue",
+                                "value": "value",
+                                "values": ["string"],
+                            }
+                        ]
+                    }
+                ],
+                "filters": [
+                    {
+                        "operator": "BETWEEN",
+                        "property_name": "propertyName",
+                        "high_value": "highValue",
+                        "value": "value",
+                        "values": ["string"],
+                    }
+                ],
+                "sorts": ["string"],
+                "query": "query",
+            },
+        )
         assert_matches_type(TaskLocator, export, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_async_overload_1(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.exports.with_raw_response.create_async()
+        response = await async_client.crm.exports.with_raw_response.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="VIEW",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -167,7 +357,19 @@ class TestAsyncExports:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_async_overload_1(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.exports.with_streaming_response.create_async() as response:
+        async with async_client.crm.exports.with_streaming_response.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="VIEW",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -179,13 +381,39 @@ class TestAsyncExports:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_async_overload_2(self, async_client: AsyncHubSpot) -> None:
-        export = await async_client.crm.exports.create_async()
+        export = await async_client.crm.exports.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="LIST",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            list_id="listId",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        )
         assert_matches_type(TaskLocator, export, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_async_overload_2(self, async_client: AsyncHubSpot) -> None:
-        response = await async_client.crm.exports.with_raw_response.create_async()
+        response = await async_client.crm.exports.with_raw_response.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="LIST",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            list_id="listId",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -195,7 +423,20 @@ class TestAsyncExports:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_async_overload_2(self, async_client: AsyncHubSpot) -> None:
-        async with async_client.crm.exports.with_streaming_response.create_async() as response:
+        async with async_client.crm.exports.with_streaming_response.create_async(
+            associated_object_type=["string"],
+            export_internal_values_options=["NAMES"],
+            export_name="exportName",
+            export_type="LIST",
+            format="CSV",
+            include_labeled_associations=True,
+            include_primary_display_property_for_associated_objects=True,
+            language="AF_ZA",
+            list_id="listId",
+            object_properties=["string"],
+            object_type="objectType",
+            override_associated_objects_per_definition_per_row_limit=True,
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

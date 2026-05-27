@@ -25,20 +25,17 @@ from .public_ranged_time_operation import PublicRangedTimeOperation
 from .public_unified_events_filter import PublicUnifiedEventsFilter
 from .public_event_analytics_filter import PublicEventAnalyticsFilter
 from .public_form_submission_filter import PublicFormSubmissionFilter
-from .public_num_associations_filter import PublicNumAssociationsFilter
 from .public_integration_event_filter import PublicIntegrationEventFilter
 from .public_privacy_analytics_filter import PublicPrivacyAnalyticsFilter
 from .public_email_subscription_filter import PublicEmailSubscriptionFilter
 from .public_num_occurrences_refine_by import PublicNumOccurrencesRefineBy
 from .public_set_occurrences_refine_by import PublicSetOccurrencesRefineBy
 from .public_association_in_list_filter import PublicAssociationInListFilter
-from .public_campaign_influenced_filter import PublicCampaignInfluencedFilter
 from .public_page_view_analytics_filter import PublicPageViewAnalyticsFilter
 from .public_survey_monkey_value_filter import PublicSurveyMonkeyValueFilter
 from .public_form_submission_on_page_filter import PublicFormSubmissionOnPageFilter
 from .public_communication_subscription_filter import PublicCommunicationSubscriptionFilter
 from .public_absolute_ranged_timestamp_refine_by import PublicAbsoluteRangedTimestampRefineBy
-from .public_property_association_in_list_filter import PublicPropertyAssociationInListFilter
 from .public_relative_ranged_timestamp_refine_by import PublicRelativeRangedTimestampRefineBy
 from .public_absolute_comparative_timestamp_refine_by import PublicAbsoluteComparativeTimestampRefineBy
 from .public_relative_comparative_timestamp_refine_by import PublicRelativeComparativeTimestampRefineBy
@@ -56,7 +53,6 @@ if TYPE_CHECKING or not PYDANTIC_V1:
                 "PublicNotAnyFilterBranch",
                 "PublicRestrictedFilterBranch",
                 "PublicUnifiedEventsFilterBranch",
-                "PublicPropertyAssociationFilterBranch",
                 "PublicAssociationFilterBranch",
             ],
             PropertyInfo(discriminator="filter_branch_type"),
@@ -71,7 +67,6 @@ else:
             "PublicNotAnyFilterBranch",
             "PublicRestrictedFilterBranch",
             "PublicUnifiedEventsFilterBranch",
-            "PublicPropertyAssociationFilterBranch",
             "PublicAssociationFilterBranch",
         ],
         PropertyInfo(discriminator="filter_branch_type"),
@@ -89,7 +84,6 @@ Filter: TypeAlias = Annotated[
         PublicIntegrationEventFilter,
         PublicEmailSubscriptionFilter,
         PublicCommunicationSubscriptionFilter,
-        PublicCampaignInfluencedFilter,
         PublicSurveyMonkeyFilter,
         PublicSurveyMonkeyValueFilter,
         PublicWebinarFilter,
@@ -98,9 +92,7 @@ Filter: TypeAlias = Annotated[
         PublicAdsSearchFilter,
         PublicAdsTimeFilter,
         PublicInListFilter,
-        PublicNumAssociationsFilter,
         PublicUnifiedEventsFilter,
-        PublicPropertyAssociationInListFilter,
         PublicConstantFilter,
     ],
     PropertyInfo(discriminator="filter_type"),
@@ -163,4 +155,3 @@ from .public_not_all_filter_branch import PublicNotAllFilterBranch
 from .public_not_any_filter_branch import PublicNotAnyFilterBranch
 from .public_restricted_filter_branch import PublicRestrictedFilterBranch
 from .public_association_filter_branch import PublicAssociationFilterBranch
-from .public_property_association_filter_branch import PublicPropertyAssociationFilterBranch

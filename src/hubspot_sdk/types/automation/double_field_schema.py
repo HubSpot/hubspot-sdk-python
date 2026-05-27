@@ -9,7 +9,7 @@ __all__ = ["DoubleFieldSchema"]
 
 
 class DoubleFieldSchema(BaseModel):
-    type: Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]
+    type: Literal["DOUBLE"]
     """Indicates the field type as DOUBLE."""
 
     maximum: Optional[float] = None

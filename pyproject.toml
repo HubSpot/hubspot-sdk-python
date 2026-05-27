@@ -1,6 +1,6 @@
 [project]
 name = "hubspot-sdk"
-version = "0.1.0-alpha.8"
+version = "0.1.0-alpha.9"
 description = "The official Python library for the hubspot API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -57,7 +57,7 @@ conflicts = [
 # version pins are in uv.lock
 dev = [
     "pyright==1.1.399",
-    "mypy==1.17",
+
     "respx",
     "pytest",
     "pytest-asyncio",

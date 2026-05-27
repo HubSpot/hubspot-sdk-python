@@ -18,6 +18,7 @@ from hubspot_sdk._response import (
     AsyncStreamedBinaryAPIResponse,
 )
 from hubspot_sdk.types.auth import (
+    TokenResponseIf,
     TokenInfoResponseBaseIf,
 )
 
@@ -27,20 +28,15 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestOAuth:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    def test_method_create_token(self, client: HubSpot) -> None:
         oauth = client.auth.oauth.create_token()
-        assert oauth.is_closed
-        assert oauth.json() == {"foo": "bar"}
-        assert cast(Any, oauth.is_closed) is True
-        assert isinstance(oauth, BinaryAPIResponse)
+        assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_token_with_all_params(self, client: HubSpot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    def test_method_create_token_with_all_params(self, client: HubSpot) -> None:
         oauth = client.auth.oauth.create_token(
             client_id="client_id",
             client_secret="client_secret",
@@ -51,36 +47,29 @@ class TestOAuth:
             refresh_token="refresh_token",
             scope="scope",
         )
-        assert oauth.is_closed
-        assert oauth.json() == {"foo": "bar"}
-        assert cast(Any, oauth.is_closed) is True
-        assert isinstance(oauth, BinaryAPIResponse)
+        assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_create_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    def test_raw_response_create_token(self, client: HubSpot) -> None:
+        response = client.auth.oauth.with_raw_response.create_token()
 
-        oauth = client.auth.oauth.with_raw_response.create_token()
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        oauth = response.parse()
+        assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
-        assert oauth.is_closed is True
-        assert oauth.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert oauth.json() == {"foo": "bar"}
-        assert isinstance(oauth, BinaryAPIResponse)
-
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_create_token(self, client: HubSpot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        with client.auth.oauth.with_streaming_response.create_token() as oauth:
-            assert not oauth.is_closed
-            assert oauth.http_request.headers.get("X-Stainless-Lang") == "python"
+    def test_streaming_response_create_token(self, client: HubSpot) -> None:
+        with client.auth.oauth.with_streaming_response.create_token() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            assert oauth.json() == {"foo": "bar"}
-            assert cast(Any, oauth.is_closed) is True
-            assert isinstance(oauth, StreamedBinaryAPIResponse)
+            oauth = response.parse()
+            assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
-        assert cast(Any, oauth.is_closed) is True
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -178,22 +167,15 @@ class TestAsyncOAuth:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    async def test_method_create_token(self, async_client: AsyncHubSpot) -> None:
         oauth = await async_client.auth.oauth.create_token()
-        assert oauth.is_closed
-        assert await oauth.json() == {"foo": "bar"}
-        assert cast(Any, oauth.is_closed) is True
-        assert isinstance(oauth, AsyncBinaryAPIResponse)
+        assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_token_with_all_params(
-        self, async_client: AsyncHubSpot, respx_mock: MockRouter
-    ) -> None:
-        respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    async def test_method_create_token_with_all_params(self, async_client: AsyncHubSpot) -> None:
         oauth = await async_client.auth.oauth.create_token(
             client_id="client_id",
             client_secret="client_secret",
@@ -204,36 +186,29 @@ class TestAsyncOAuth:
             refresh_token="refresh_token",
             scope="scope",
         )
-        assert oauth.is_closed
-        assert await oauth.json() == {"foo": "bar"}
-        assert cast(Any, oauth.is_closed) is True
-        assert isinstance(oauth, AsyncBinaryAPIResponse)
+        assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_create_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    async def test_raw_response_create_token(self, async_client: AsyncHubSpot) -> None:
+        response = await async_client.auth.oauth.with_raw_response.create_token()
 
-        oauth = await async_client.auth.oauth.with_raw_response.create_token()
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        oauth = await response.parse()
+        assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
-        assert oauth.is_closed is True
-        assert oauth.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await oauth.json() == {"foo": "bar"}
-        assert isinstance(oauth, AsyncBinaryAPIResponse)
-
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_create_token(self, async_client: AsyncHubSpot, respx_mock: MockRouter) -> None:
-        respx_mock.post("/oauth/2026-03/token").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        async with async_client.auth.oauth.with_streaming_response.create_token() as oauth:
-            assert not oauth.is_closed
-            assert oauth.http_request.headers.get("X-Stainless-Lang") == "python"
+    async def test_streaming_response_create_token(self, async_client: AsyncHubSpot) -> None:
+        async with async_client.auth.oauth.with_streaming_response.create_token() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            assert await oauth.json() == {"foo": "bar"}
-            assert cast(Any, oauth.is_closed) is True
-            assert isinstance(oauth, AsyncStreamedBinaryAPIResponse)
+            oauth = await response.parse()
+            assert_matches_type(TokenResponseIf, oauth, path=["response"])
 
-        assert cast(Any, oauth.is_closed) is True
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

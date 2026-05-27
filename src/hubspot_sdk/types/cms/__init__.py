@@ -130,6 +130,9 @@ from .media_bridge_create_association_params import (
 from .media_bridge_create_object_type_params import (
     MediaBridgeCreateObjectTypeParams as MediaBridgeCreateObjectTypeParams,
 )
+from .url_redirect_create_url_mapping_params import (
+    URLRedirectCreateURLMappingParams as URLRedirectCreateURLMappingParams,
+)
 from .media_bridge_list_oembed_domains_params import (
     MediaBridgeListOembedDomainsParams as MediaBridgeListOembedDomainsParams,
 )

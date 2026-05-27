@@ -23,7 +23,6 @@ FilterBranch: TypeAlias = Annotated[
         "PublicNotAnyFilterBranch",
         "PublicRestrictedFilterBranch",
         "PublicUnifiedEventsFilterBranch",
-        "PublicPropertyAssociationFilterBranch",
         "PublicAssociationFilterBranch",
     ],
     PropertyInfo(discriminator="filter_branch_type"),
@@ -88,4 +87,3 @@ from .public_not_any_filter_branch import PublicNotAnyFilterBranch
 from .public_restricted_filter_branch import PublicRestrictedFilterBranch
 from .public_association_filter_branch import PublicAssociationFilterBranch
 from .public_unified_events_filter_branch import PublicUnifiedEventsFilterBranch
-from .public_property_association_filter_branch import PublicPropertyAssociationFilterBranch

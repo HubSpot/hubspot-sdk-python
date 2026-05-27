@@ -138,7 +138,7 @@ class TestDefinitions:
                             }
                         ],
                         "schema": {
-                            "type": "ARRAY",
+                            "type": "INTEGER",
                             "maximum": 0,
                             "minimum": 0,
                         },
@@ -318,7 +318,7 @@ class TestDefinitions:
                             }
                         ],
                         "schema": {
-                            "type": "ARRAY",
+                            "type": "INTEGER",
                             "maximum": 0,
                             "minimum": 0,
                         },
@@ -741,7 +741,7 @@ class TestAsyncDefinitions:
                             }
                         ],
                         "schema": {
-                            "type": "ARRAY",
+                            "type": "INTEGER",
                             "maximum": 0,
                             "minimum": 0,
                         },
@@ -921,7 +921,7 @@ class TestAsyncDefinitions:
                             }
                         ],
                         "schema": {
-                            "type": "ARRAY",
+                            "type": "INTEGER",
                             "maximum": 0,
                             "minimum": 0,
                         },

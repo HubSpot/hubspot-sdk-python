@@ -16,7 +16,7 @@ class OAuthCreateTokenParams(TypedDict, total=False):
 
     code_verifier: str
 
-    grant_type: Literal["authorization_code", "refresh_token"]
+    grant_type: Literal["authorization_code", "client_credentials", "refresh_token"]
 
     redirect_uri: str
 

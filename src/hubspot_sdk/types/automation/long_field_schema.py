@@ -9,7 +9,7 @@ __all__ = ["LongFieldSchema"]
 
 
 class LongFieldSchema(BaseModel):
-    type: Literal["ARRAY", "BOOLEAN", "DOUBLE", "INTEGER", "LONG", "OBJECT", "STRING"]
+    type: Literal["LONG"]
     """The type of the field, which is LONG by default."""
 
     maximum: Optional[int] = None

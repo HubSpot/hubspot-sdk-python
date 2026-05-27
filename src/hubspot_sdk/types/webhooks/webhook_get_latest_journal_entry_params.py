@@ -11,7 +11,7 @@ __all__ = ["WebhookGetLatestJournalEntryParams"]
 
 class WebhookGetLatestJournalEntryParams(TypedDict, total=False):
     install_portal_id: Annotated[int, PropertyInfo(alias="installPortalId")]
-    """The ID of the portal installation to filter the journal entries.
-
-    It is an integer value.
+    """
+    The unique identifier of the portal installation for which to retrieve the
+    latest journal entries. This parameter is optional and should be an integer.
     """
