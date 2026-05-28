@@ -1,8 +1,9 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Union
-from typing_extensions import TypeAlias
+from typing_extensions import Annotated, TypeAlias
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .public_time_point_operation import PublicTimePointOperation
 from .public_ranged_time_operation import PublicRangedTimeOperation
@@ -24,24 +25,27 @@ from .public_comparative_property_updated_operation import PublicComparativeProp
 
 __all__ = ["PublicEventFilterMetadata", "Operation"]
 
-Operation: TypeAlias = Union[
-    PublicBoolPropertyOperation,
-    PublicNumberPropertyOperation,
-    PublicStringPropertyOperation,
-    PublicDateTimePropertyOperation,
-    PublicRangedDatePropertyOperation,
-    PublicComparativePropertyUpdatedOperation,
-    PublicComparativeDatePropertyOperation,
-    PublicRollingDateRangePropertyOperation,
-    PublicRollingPropertyUpdatedOperation,
-    PublicEnumerationPropertyOperation,
-    PublicAllPropertyTypesOperation,
-    PublicRangedNumberPropertyOperation,
-    PublicMultiStringPropertyOperation,
-    PublicDatePropertyOperation,
-    PublicCalendarDatePropertyOperation,
-    PublicTimePointOperation,
-    PublicRangedTimeOperation,
+Operation: TypeAlias = Annotated[
+    Union[
+        PublicBoolPropertyOperation,
+        PublicNumberPropertyOperation,
+        PublicStringPropertyOperation,
+        PublicDateTimePropertyOperation,
+        PublicRangedDatePropertyOperation,
+        PublicComparativePropertyUpdatedOperation,
+        PublicComparativeDatePropertyOperation,
+        PublicRollingDateRangePropertyOperation,
+        PublicRollingPropertyUpdatedOperation,
+        PublicEnumerationPropertyOperation,
+        PublicAllPropertyTypesOperation,
+        PublicRangedNumberPropertyOperation,
+        PublicMultiStringPropertyOperation,
+        PublicDatePropertyOperation,
+        PublicCalendarDatePropertyOperation,
+        PublicTimePointOperation,
+        PublicRangedTimeOperation,
+    ],
+    PropertyInfo(discriminator="operation_type"),
 ]
 
 

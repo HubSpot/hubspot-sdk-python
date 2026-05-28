@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Union, Optional
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .time_point_operation import TimePointOperation
 from .ranged_time_operation import RangedTimeOperation
@@ -31,28 +32,31 @@ from .comparative_property_updated_operation import ComparativePropertyUpdatedOp
 
 __all__ = ["PropertyFilter", "Operation"]
 
-Operation: TypeAlias = Union[
-    BoolPropertyOperation,
-    NumberPropertyOperation,
-    StringPropertyOperation,
-    DateTimePropertyOperation,
-    RangedDatePropertyOperation,
-    ComparativeDatePropertyOperation,
-    ComparativeBoolPropertyOperation,
-    ComparativeNumberPropertyOperation,
-    ComparativeStringPropertyOperation,
-    ComparativePropertyUpdatedOperation,
-    RollingDateRangePropertyOperation,
-    RollingPropertyUpdatedOperation,
-    EnumerationPropertyOperation,
-    AllPropertyTypesOperation,
-    RangedNumberPropertyOperation,
-    MultiStringPropertyOperation,
-    DatePropertyOperation,
-    CalendarDatePropertyOperation,
-    TimePointOperation,
-    RangedTimeOperation,
-    RegexPropertyOperation,
+Operation: TypeAlias = Annotated[
+    Union[
+        BoolPropertyOperation,
+        NumberPropertyOperation,
+        StringPropertyOperation,
+        DateTimePropertyOperation,
+        RangedDatePropertyOperation,
+        ComparativeDatePropertyOperation,
+        ComparativeBoolPropertyOperation,
+        ComparativeNumberPropertyOperation,
+        ComparativeStringPropertyOperation,
+        ComparativePropertyUpdatedOperation,
+        RollingDateRangePropertyOperation,
+        RollingPropertyUpdatedOperation,
+        EnumerationPropertyOperation,
+        AllPropertyTypesOperation,
+        RangedNumberPropertyOperation,
+        MultiStringPropertyOperation,
+        DatePropertyOperation,
+        CalendarDatePropertyOperation,
+        TimePointOperation,
+        RangedTimeOperation,
+        RegexPropertyOperation,
+    ],
+    PropertyInfo(discriminator="property_type"),
 ]
 
 

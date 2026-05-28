@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Union, Optional
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .long_field_schema import LongFieldSchema
 from .array_field_schema import ArrayFieldSchema
@@ -17,14 +18,17 @@ from ..shared.automation_actions_option import AutomationActionsOption
 
 __all__ = ["FieldTypeDefinition", "Schema"]
 
-Schema: TypeAlias = Union[
-    IntegerFieldSchema,
-    LongFieldSchema,
-    DoubleFieldSchema,
-    StringFieldSchema,
-    BooleanFieldSchema,
-    ArrayFieldSchema,
-    ObjectFieldSchema,
+Schema: TypeAlias = Annotated[
+    Union[
+        IntegerFieldSchema,
+        LongFieldSchema,
+        DoubleFieldSchema,
+        StringFieldSchema,
+        BooleanFieldSchema,
+        ArrayFieldSchema,
+        ObjectFieldSchema,
+    ],
+    PropertyInfo(discriminator="type"),
 ]
 
 

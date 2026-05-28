@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Union, Optional
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .public_index_offset import PublicIndexOffset
 from .public_now_reference import PublicNowReference
@@ -18,15 +19,18 @@ from .public_fiscal_quarter_reference import PublicFiscalQuarterReference
 
 __all__ = ["PublicIndexedTimePoint", "IndexReference"]
 
-IndexReference: TypeAlias = Union[
-    PublicNowReference,
-    PublicTodayReference,
-    PublicWeekReference,
-    PublicFiscalQuarterReference,
-    PublicFiscalYearReference,
-    PublicYearReference,
-    PublicQuarterReference,
-    PublicMonthReference,
+IndexReference: TypeAlias = Annotated[
+    Union[
+        PublicNowReference,
+        PublicTodayReference,
+        PublicWeekReference,
+        PublicFiscalQuarterReference,
+        PublicFiscalYearReference,
+        PublicYearReference,
+        PublicQuarterReference,
+        PublicMonthReference,
+    ],
+    PropertyInfo(discriminator="reference_type"),
 ]
 
 

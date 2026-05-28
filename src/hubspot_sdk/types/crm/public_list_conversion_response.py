@@ -2,17 +2,20 @@
 
 from typing import Union, Optional
 from datetime import datetime
-from typing_extensions import TypeAlias
+from typing_extensions import Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .public_list_conversion_date import PublicListConversionDate
 from .public_list_conversion_inactivity import PublicListConversionInactivity
 
 __all__ = ["PublicListConversionResponse", "RequestedConversionTime"]
 
-RequestedConversionTime: TypeAlias = Union[PublicListConversionDate, PublicListConversionInactivity]
+RequestedConversionTime: TypeAlias = Annotated[
+    Union[PublicListConversionDate, PublicListConversionInactivity], PropertyInfo(discriminator="conversion_type")
+]
 
 
 class PublicListConversionResponse(BaseModel):

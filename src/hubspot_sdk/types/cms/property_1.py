@@ -76,6 +76,19 @@ class Property1(BaseModel):
 
     show_currency_symbol: Optional[bool] = FieldInfo(alias="showCurrencySymbol", default=None)
 
+    text_display_hint: Optional[
+        Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+    ] = FieldInfo(alias="textDisplayHint", default=None)
+
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
 
     updated_user_id: Optional[str] = FieldInfo(alias="updatedUserId", default=None)

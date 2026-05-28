@@ -453,6 +453,7 @@ class TestMediaBridge:
             ],
             referenced_object_type="referencedObjectType",
             show_currency_symbol=True,
+            text_display_hint="domain_name",
         )
         assert_matches_type(MediaBridgeProperty, media_bridge, path=["response"])
 
@@ -1538,6 +1539,7 @@ class TestMediaBridge:
                 }
             ],
             show_currency_symbol=True,
+            text_display_hint="domain_name",
             type="bool",
         )
         assert_matches_type(MediaBridgeProperty, media_bridge, path=["response"])
@@ -2197,6 +2199,7 @@ class TestAsyncMediaBridge:
             ],
             referenced_object_type="referencedObjectType",
             show_currency_symbol=True,
+            text_display_hint="domain_name",
         )
         assert_matches_type(MediaBridgeProperty, media_bridge, path=["response"])
 
@@ -3282,6 +3285,7 @@ class TestAsyncMediaBridge:
                 }
             ],
             show_currency_symbol=True,
+            text_display_hint="domain_name",
             type="bool",
         )
         assert_matches_type(MediaBridgeProperty, media_bridge, path=["response"])

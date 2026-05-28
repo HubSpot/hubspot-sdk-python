@@ -106,6 +106,17 @@ class PropertiesResource(SyncAPIResource):
         options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
+        text_display_hint: Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -149,6 +160,7 @@ class PropertiesResource(SyncAPIResource):
                     "options": options,
                     "referenced_object_type": referenced_object_type,
                     "show_currency_symbol": show_currency_symbol,
+                    "text_display_hint": text_display_hint,
                 },
                 property_create_params.PropertyCreateParams,
             ),
@@ -190,6 +202,17 @@ class PropertiesResource(SyncAPIResource):
         | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
+        text_display_hint: Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+        | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -258,6 +281,7 @@ class PropertiesResource(SyncAPIResource):
                     "number_display_hint": number_display_hint,
                     "options": options,
                     "show_currency_symbol": show_currency_symbol,
+                    "text_display_hint": text_display_hint,
                     "type": type,
                 },
                 property_update_params.PropertyUpdateParams,
@@ -483,6 +507,17 @@ class AsyncPropertiesResource(AsyncAPIResource):
         options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
+        text_display_hint: Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -526,6 +561,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
                     "options": options,
                     "referenced_object_type": referenced_object_type,
                     "show_currency_symbol": show_currency_symbol,
+                    "text_display_hint": text_display_hint,
                 },
                 property_create_params.PropertyCreateParams,
             ),
@@ -567,6 +603,17 @@ class AsyncPropertiesResource(AsyncAPIResource):
         | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
+        text_display_hint: Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+        | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -635,6 +682,7 @@ class AsyncPropertiesResource(AsyncAPIResource):
                     "number_display_hint": number_display_hint,
                     "options": options,
                     "show_currency_symbol": show_currency_symbol,
+                    "text_display_hint": text_display_hint,
                     "type": type,
                 },
                 property_update_params.PropertyUpdateParams,
