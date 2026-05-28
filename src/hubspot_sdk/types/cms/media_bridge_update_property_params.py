@@ -61,4 +61,18 @@ class MediaBridgeUpdatePropertyParams(TypedDict, total=False):
 
     show_currency_symbol: Annotated[bool, PropertyInfo(alias="showCurrencySymbol")]
 
+    text_display_hint: Annotated[
+        Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ],
+        PropertyInfo(alias="textDisplayHint"),
+    ]
+
     type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"]

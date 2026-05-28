@@ -463,6 +463,17 @@ class MediaBridgeResource(SyncAPIResource):
         options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
+        text_display_hint: Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -508,6 +519,7 @@ class MediaBridgeResource(SyncAPIResource):
                     "options": options,
                     "referenced_object_type": referenced_object_type,
                     "show_currency_symbol": show_currency_symbol,
+                    "text_display_hint": text_display_hint,
                 },
                 media_bridge_create_property_params.MediaBridgeCreatePropertyParams,
             ),
@@ -1353,6 +1365,17 @@ class MediaBridgeResource(SyncAPIResource):
         | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
+        text_display_hint: Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+        | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1399,6 +1422,7 @@ class MediaBridgeResource(SyncAPIResource):
                     "number_display_hint": number_display_hint,
                     "options": options,
                     "show_currency_symbol": show_currency_symbol,
+                    "text_display_hint": text_display_hint,
                     "type": type,
                 },
                 media_bridge_update_property_params.MediaBridgeUpdatePropertyParams,
@@ -1952,6 +1976,17 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         options: Iterable[OptionInput] | Omit = omit,
         referenced_object_type: str | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
+        text_display_hint: Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1997,6 +2032,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
                     "options": options,
                     "referenced_object_type": referenced_object_type,
                     "show_currency_symbol": show_currency_symbol,
+                    "text_display_hint": text_display_hint,
                 },
                 media_bridge_create_property_params.MediaBridgeCreatePropertyParams,
             ),
@@ -2842,6 +2878,17 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
         | Omit = omit,
         options: Iterable[OptionInput] | Omit = omit,
         show_currency_symbol: bool | Omit = omit,
+        text_display_hint: Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+        | Omit = omit,
         type: Literal["bool", "date", "datetime", "enumeration", "number", "phone_number", "string"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2888,6 +2935,7 @@ class AsyncMediaBridgeResource(AsyncAPIResource):
                     "number_display_hint": number_display_hint,
                     "options": options,
                     "show_currency_symbol": show_currency_symbol,
+                    "text_display_hint": text_display_hint,
                     "type": type,
                 },
                 media_bridge_update_property_params.MediaBridgeUpdatePropertyParams,

@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Union
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .public_time_point_operation import PublicTimePointOperation
 from .public_all_history_refine_by import PublicAllHistoryRefineBy
@@ -18,16 +19,19 @@ from .public_relative_comparative_timestamp_refine_by import PublicRelativeCompa
 
 __all__ = ["PublicAdsTimeFilter", "PruningRefineBy"]
 
-PruningRefineBy: TypeAlias = Union[
-    PublicNumOccurrencesRefineBy,
-    PublicSetOccurrencesRefineBy,
-    PublicRelativeComparativeTimestampRefineBy,
-    PublicRelativeRangedTimestampRefineBy,
-    PublicAbsoluteComparativeTimestampRefineBy,
-    PublicAbsoluteRangedTimestampRefineBy,
-    PublicAllHistoryRefineBy,
-    PublicTimePointOperation,
-    PublicRangedTimeOperation,
+PruningRefineBy: TypeAlias = Annotated[
+    Union[
+        PublicNumOccurrencesRefineBy,
+        PublicSetOccurrencesRefineBy,
+        PublicRelativeComparativeTimestampRefineBy,
+        PublicRelativeRangedTimestampRefineBy,
+        PublicAbsoluteComparativeTimestampRefineBy,
+        PublicAbsoluteRangedTimestampRefineBy,
+        PublicAllHistoryRefineBy,
+        PublicTimePointOperation,
+        PublicRangedTimeOperation,
+    ],
+    PropertyInfo(discriminator="type"),
 ]
 
 
