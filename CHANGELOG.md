@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2026-07-18)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* **api:** api update ([0bd9047](https://github.com/HubSpot/hubspot-sdk-python/commit/0bd90471faa37b22cc8e0b118b6a7763f24f7f9f))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([ce638e8](https://github.com/HubSpot/hubspot-sdk-python/commit/ce638e8369f7d555cdbbffe203455d635ef193e8))
+
+
+### Bug Fixes
+
+* **internal:** resolve build failures ([bde7703](https://github.com/HubSpot/hubspot-sdk-python/commit/bde770386cf4c47148741f570fc307a6004f8f01))
+
 ## 0.1.0-alpha.9 (2026-05-26)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/HubSpot/hubspot-sdk-python/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
