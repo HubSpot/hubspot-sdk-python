@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Union, Optional
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .date_point import DatePoint
 from .indexed_time_point import IndexedTimePoint
@@ -12,9 +13,13 @@ from .property_referenced_time import PropertyReferencedTime
 
 __all__ = ["RangedTimeOperation", "LowerBoundTimePoint", "UpperBoundTimePoint"]
 
-LowerBoundTimePoint: TypeAlias = Union[DatePoint, IndexedTimePoint, PropertyReferencedTime]
+LowerBoundTimePoint: TypeAlias = Annotated[
+    Union[DatePoint, IndexedTimePoint, PropertyReferencedTime], PropertyInfo(discriminator="time_type")
+]
 
-UpperBoundTimePoint: TypeAlias = Union[DatePoint, IndexedTimePoint, PropertyReferencedTime]
+UpperBoundTimePoint: TypeAlias = Annotated[
+    Union[DatePoint, IndexedTimePoint, PropertyReferencedTime], PropertyInfo(discriminator="time_type")
+]
 
 
 class RangedTimeOperation(BaseModel):

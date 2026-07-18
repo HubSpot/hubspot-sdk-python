@@ -98,28 +98,34 @@ Filter: TypeAlias = Annotated[
     PropertyInfo(discriminator="filter_type"),
 ]
 
-CoalescingRefineBy: TypeAlias = Union[
-    PublicNumOccurrencesRefineBy,
-    PublicSetOccurrencesRefineBy,
-    PublicRelativeComparativeTimestampRefineBy,
-    PublicRelativeRangedTimestampRefineBy,
-    PublicAbsoluteComparativeTimestampRefineBy,
-    PublicAbsoluteRangedTimestampRefineBy,
-    PublicAllHistoryRefineBy,
-    PublicTimePointOperation,
-    PublicRangedTimeOperation,
+CoalescingRefineBy: TypeAlias = Annotated[
+    Union[
+        PublicNumOccurrencesRefineBy,
+        PublicSetOccurrencesRefineBy,
+        PublicRelativeComparativeTimestampRefineBy,
+        PublicRelativeRangedTimestampRefineBy,
+        PublicAbsoluteComparativeTimestampRefineBy,
+        PublicAbsoluteRangedTimestampRefineBy,
+        PublicAllHistoryRefineBy,
+        PublicTimePointOperation,
+        PublicRangedTimeOperation,
+    ],
+    PropertyInfo(discriminator="type"),
 ]
 
-PruningRefineBy: TypeAlias = Union[
-    PublicNumOccurrencesRefineBy,
-    PublicSetOccurrencesRefineBy,
-    PublicRelativeComparativeTimestampRefineBy,
-    PublicRelativeRangedTimestampRefineBy,
-    PublicAbsoluteComparativeTimestampRefineBy,
-    PublicAbsoluteRangedTimestampRefineBy,
-    PublicAllHistoryRefineBy,
-    PublicTimePointOperation,
-    PublicRangedTimeOperation,
+PruningRefineBy: TypeAlias = Annotated[
+    Union[
+        PublicNumOccurrencesRefineBy,
+        PublicSetOccurrencesRefineBy,
+        PublicRelativeComparativeTimestampRefineBy,
+        PublicRelativeRangedTimestampRefineBy,
+        PublicAbsoluteComparativeTimestampRefineBy,
+        PublicAbsoluteRangedTimestampRefineBy,
+        PublicAllHistoryRefineBy,
+        PublicTimePointOperation,
+        PublicRangedTimeOperation,
+    ],
+    PropertyInfo(discriminator="type"),
 ]
 
 

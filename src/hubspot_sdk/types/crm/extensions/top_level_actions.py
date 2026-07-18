@@ -1,17 +1,18 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Union, Optional
-from typing_extensions import TypeAlias
+from typing_extensions import Annotated, TypeAlias
 
+from ...._utils import PropertyInfo
 from ...._models import BaseModel
 from .i_frame_action_body import IFrameActionBody
 from .action_hook_action_body import ActionHookActionBody
 
 __all__ = ["TopLevelActions", "Secondary", "Primary"]
 
-Secondary: TypeAlias = Union[ActionHookActionBody, IFrameActionBody]
+Secondary: TypeAlias = Annotated[Union[ActionHookActionBody, IFrameActionBody], PropertyInfo(discriminator="type")]
 
-Primary: TypeAlias = Union[ActionHookActionBody, IFrameActionBody]
+Primary: TypeAlias = Annotated[Union[ActionHookActionBody, IFrameActionBody], PropertyInfo(discriminator="type")]
 
 
 class TopLevelActions(BaseModel):

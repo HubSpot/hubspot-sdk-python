@@ -64,6 +64,7 @@ class TestProperties:
             ],
             referenced_object_type="referencedObjectType",
             show_currency_symbol=True,
+            text_display_hint="domain_name",
         )
         assert_matches_type(Property, property, path=["response"])
 
@@ -151,6 +152,7 @@ class TestProperties:
                 }
             ],
             show_currency_symbol=True,
+            text_display_hint="domain_name",
             type="bool",
         )
         assert_matches_type(Property, property, path=["response"])
@@ -419,6 +421,7 @@ class TestAsyncProperties:
             ],
             referenced_object_type="referencedObjectType",
             show_currency_symbol=True,
+            text_display_hint="domain_name",
         )
         assert_matches_type(Property, property, path=["response"])
 
@@ -506,6 +509,7 @@ class TestAsyncProperties:
                 }
             ],
             show_currency_symbol=True,
+            text_display_hint="domain_name",
             type="bool",
         )
         assert_matches_type(Property, property, path=["response"])

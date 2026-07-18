@@ -144,6 +144,24 @@ class Property(BaseModel):
     settings.
     """
 
+    text_display_hint: Optional[
+        Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+    ] = FieldInfo(alias="textDisplayHint", default=None)
+    """Hint for how the text is displayed and validated in HubSpot's UI.
+
+    Can be: "unformatted_single_line", "multi_line", "email", "phone_number",
+    "domain_name", "ip_address", "physical_address", or "postal_code".
+    """
+
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """When the object type was last updated."""
 

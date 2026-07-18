@@ -2,10 +2,11 @@
 
 from typing import List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .public_file import PublicFile
 from .public_client import PublicClient
@@ -22,15 +23,18 @@ from .public_whats_app_template_metadata import PublicWhatsAppTemplateMetadata
 
 __all__ = ["PublicConversationsMessage", "Attachment"]
 
-Attachment: TypeAlias = Union[
-    PublicFile,
-    PublicLocation,
-    PublicContact,
-    PublicUnsupportedContent,
-    PublicMessageHeader,
-    PublicQuickReplies,
-    PublicWhatsAppTemplateMetadata,
-    PublicSocialMetadataAttachment,
+Attachment: TypeAlias = Annotated[
+    Union[
+        PublicFile,
+        PublicLocation,
+        PublicContact,
+        PublicUnsupportedContent,
+        PublicMessageHeader,
+        PublicQuickReplies,
+        PublicWhatsAppTemplateMetadata,
+        PublicSocialMetadataAttachment,
+    ],
+    PropertyInfo(discriminator="type"),
 ]
 
 

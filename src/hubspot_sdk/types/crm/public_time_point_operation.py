@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Union, Optional
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 from .public_date_point import PublicDatePoint
 from .public_indexed_time_point import PublicIndexedTimePoint
@@ -12,7 +13,10 @@ from .public_property_referenced_time import PublicPropertyReferencedTime
 
 __all__ = ["PublicTimePointOperation", "TimePoint"]
 
-TimePoint: TypeAlias = Union[PublicDatePoint, PublicIndexedTimePoint, PublicPropertyReferencedTime]
+TimePoint: TypeAlias = Annotated[
+    Union[PublicDatePoint, PublicIndexedTimePoint, PublicPropertyReferencedTime],
+    PropertyInfo(discriminator="time_type"),
+]
 
 
 class PublicTimePointOperation(BaseModel):

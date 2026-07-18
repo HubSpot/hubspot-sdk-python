@@ -64,3 +64,16 @@ class PropertyCreate(BaseModel):
     referenced_object_type: Optional[str] = FieldInfo(alias="referencedObjectType", default=None)
 
     show_currency_symbol: Optional[bool] = FieldInfo(alias="showCurrencySymbol", default=None)
+
+    text_display_hint: Optional[
+        Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ]
+    ] = FieldInfo(alias="textDisplayHint", default=None)

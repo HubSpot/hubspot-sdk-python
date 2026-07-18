@@ -70,3 +70,17 @@ class PropertyCreateParams(TypedDict, total=False):
     referenced_object_type: Annotated[str, PropertyInfo(alias="referencedObjectType")]
 
     show_currency_symbol: Annotated[bool, PropertyInfo(alias="showCurrencySymbol")]
+
+    text_display_hint: Annotated[
+        Literal[
+            "domain_name",
+            "email",
+            "ip_address",
+            "multi_line",
+            "phone_number",
+            "physical_address",
+            "postal_code",
+            "unformatted_single_line",
+        ],
+        PropertyInfo(alias="textDisplayHint"),
+    ]
